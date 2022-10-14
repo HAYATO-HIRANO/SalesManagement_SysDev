@@ -48,7 +48,7 @@ namespace SalesManagement_SysDev
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(110, 53);
+            this.label1.Location = new System.Drawing.Point(368, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(265, 60);
             this.label1.TabIndex = 1;
