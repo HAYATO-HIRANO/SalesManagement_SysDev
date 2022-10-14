@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormTestMain : Form
+    public partial class FormClient : Form
     {
-        public FormTestMain()
+        public FormClient()
         {
             InitializeComponent();
         }
 
-        private void FormTestMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
