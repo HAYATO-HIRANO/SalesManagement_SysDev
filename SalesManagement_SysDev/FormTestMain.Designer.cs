@@ -1,7 +1,7 @@
 ﻿
 namespace SalesManagement_SysDev
 {
-    partial class FormMain
+    partial class FormTestMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,33 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // FormMain
+            // button1
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.Location = new System.Drawing.Point(79, 112);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(230, 98);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "顧客管理";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // FormTestMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Name = "FormMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormMain";
+            this.Controls.Add(this.button1);
+            this.Name = "FormTestMain";
+            this.Text = "FormTestMain";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
     }
 }
