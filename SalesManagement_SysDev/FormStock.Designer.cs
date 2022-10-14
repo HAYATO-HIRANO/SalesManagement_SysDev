@@ -40,7 +40,7 @@ namespace SalesManagement_SysDev
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1141, 195);
+            this.panel1.Size = new System.Drawing.Size(1141, 175);
             this.panel1.TabIndex = 0;
             // 
             // label1
