@@ -16,5 +16,20 @@ namespace SalesManagement_SysDev
         {
             InitializeComponent();
         }
+
+        private void FormTestMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
