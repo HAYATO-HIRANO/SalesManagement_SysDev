@@ -68,11 +68,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(343, 318);
+            this.label2.Location = new System.Drawing.Point(343, 319);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.Size = new System.Drawing.Size(52, 15);
             this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.label2.Text = "山之内";
             // 
             // F_Login
             // 
