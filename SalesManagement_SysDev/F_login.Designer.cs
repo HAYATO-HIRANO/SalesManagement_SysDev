@@ -30,6 +30,7 @@
         {
             this.btn_CleateDabase = new System.Windows.Forms.Button();
             this.Lbl_tag = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_CleateDabase
@@ -51,11 +52,21 @@
             this.Lbl_tag.TabIndex = 1;
             this.Lbl_tag.Text = "このページはログイン画面として作成してください";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(195, 255);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "平野隼";
+            // 
             // F_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Lbl_tag);
             this.Controls.Add(this.btn_CleateDabase);
             this.Name = "F_Login";
@@ -69,6 +80,7 @@
 
         private System.Windows.Forms.Button btn_CleateDabase;
         private System.Windows.Forms.Label Lbl_tag;
+        private System.Windows.Forms.Label label1;
     }
 }
 
