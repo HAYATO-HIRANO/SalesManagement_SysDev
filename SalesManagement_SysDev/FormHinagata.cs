@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormMain : Form
+    public partial class FormHinagata : Form
     {
-        public FormMain()
+        public FormHinagata()
         {
             InitializeComponent();
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            this.Close();
         }
     }
 }

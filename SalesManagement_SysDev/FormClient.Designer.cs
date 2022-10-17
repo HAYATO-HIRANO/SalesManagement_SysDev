@@ -97,9 +97,10 @@ namespace SalesManagement_SysDev
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(317, 227);
+            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.Location = new System.Drawing.Point(317, 222);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 12);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "営業所ID";
             // 

@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="FormHinagata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHinagata.Designer.cs">
+      <DependentUpon>FormHinagata.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <EmbeddedResource Include="FormHinagata.resx">
+      <DependentUpon>FormHinagata.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
     </EmbeddedResource>
