@@ -56,48 +56,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DataGridViewPrinter.cs" />
+    <Compile Include="Common\DataInputFormCheck.cs" />
+    <Compile Include="Common\MessageCD.cs" />
+    <Compile Include="Common\PasswordHash.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
-    <Compile Include="FormHinagata.cs">
+    <Compile Include="DbAccess\ChumonDataAccess.cs" />
+    <Compile Include="DbAccess\ArrivalDataAccess.cs" />
+    <Compile Include="DbAccess\ShipmentDataAccess.cs" />
+    <Compile Include="DbAccess\SyukkoDataAccess.cs" />
+    <Compile Include="DbAccess\WarehousingDataAccess.cs" />
+    <Compile Include="DbAccess\HattyuDataAccess.cs" />
+    <Compile Include="DbAccess\OrderDataAccess.cs" />
+    <Compile Include="DbAccess\SaleDataAccess.cs" />
+    <Compile Include="DbAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DbAccess\StockDataAccess.cs" />
+    <Compile Include="DbAccess\ProductDataAccess.cs" />
+    <Compile Include="DbAccess\ClientDataAccess.cs" />
+    <Compile Include="Form1\FormHinagata.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHinagata.Designer.cs">
+    <Compile Include="Form1\FormHinagata.Designer.cs">
       <DependentUpon>FormHinagata.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStock.cs">
+    <Compile Include="Form1\FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStock.Designer.cs">
+    <Compile Include="Form1\FormStock.Designer.cs">
       <DependentUpon>FormStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProduct.cs">
+    <Compile Include="Form1\FormProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProduct.Designer.cs">
+    <Compile Include="Form1\FormProduct.Designer.cs">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormClient.cs">
+    <Compile Include="Form1\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClient.Designer.cs">
+    <Compile Include="Form1\FormClient.Designer.cs">
       <DependentUpon>FormClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Form1\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Form1\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTestMain.cs">
+    <Compile Include="Form1\FormTestMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTestMain.Designer.cs">
+    <Compile Include="Form1\FormTestMain.Designer.cs">
       <DependentUpon>FormTestMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="F_login.cs">
+    <Compile Include="Form1\F_login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_login.Designer.cs">
+    <Compile Include="Form1\F_login.Designer.cs">
       <DependentUpon>F_login.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\M_Client.cs" />
@@ -128,25 +144,25 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <EmbeddedResource Include="FormHinagata.resx">
+    <EmbeddedResource Include="Form1\FormHinagata.resx">
       <DependentUpon>FormHinagata.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStock.resx">
+    <EmbeddedResource Include="Form1\FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProduct.resx">
+    <EmbeddedResource Include="Form1\FormProduct.resx">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClient.resx">
+    <EmbeddedResource Include="Form1\FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Form1\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTestMain.resx">
+    <EmbeddedResource Include="Form1\FormTestMain.resx">
       <DependentUpon>FormTestMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F_login.resx">
+    <EmbeddedResource Include="Form1\F_login.resx">
       <DependentUpon>F_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -172,6 +188,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
