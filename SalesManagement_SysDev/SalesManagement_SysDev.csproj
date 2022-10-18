@@ -62,6 +62,18 @@
     <Compile Include="Common\PasswordHash.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Form\DbAccess\ChumonDataAccess.cs" />
+    <Compile Include="Form\DbAccess\ArrivalDataAccess.cs" />
+    <Compile Include="Form\DbAccess\ShipmentDataAccess.cs" />
+    <Compile Include="Form\DbAccess\SyukkoDataAccess.cs" />
+    <Compile Include="Form\DbAccess\WarehousingDataAccess.cs" />
+    <Compile Include="Form\DbAccess\HattyuDataAccess.cs" />
+    <Compile Include="Form\DbAccess\OrderDataAccess.cs" />
+    <Compile Include="Form\DbAccess\SaleDataAccess.cs" />
+    <Compile Include="Form\DbAccess\EmployeeDataAccess.cs" />
+    <Compile Include="Form\DbAccess\StockDataAccess.cs" />
+    <Compile Include="Form\DbAccess\ProductDataAccess.cs" />
+    <Compile Include="Form\DbAccess\ClientDataAccess.cs" />
     <Compile Include="Form\FormHinagata.cs">
       <SubType>Form</SubType>
     </Compile>
