@@ -74,6 +74,7 @@
     <Compile Include="DbAccess\StockDataAccess.cs" />
     <Compile Include="DbAccess\ProductDataAccess.cs" />
     <Compile Include="DbAccess\ClientDataAccess.cs" />
+<<<<<<< HEAD
     <Compile Include="Form1\FormHinagata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +115,48 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1\F_login.Designer.cs">
+=======
+    <Compile Include="Form\FormHinagata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormHinagata.Designer.cs">
+      <DependentUpon>FormHinagata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormStock.Designer.cs">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormProduct.Designer.cs">
+      <DependentUpon>FormProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormClient.Designer.cs">
+      <DependentUpon>FormClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormTestMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormTestMain.Designer.cs">
+      <DependentUpon>FormTestMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\F_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\F_login.Designer.cs">
+>>>>>>> 6d7c096b6e330b5d872b87fe9f8ea91999095283
       <DependentUpon>F_login.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\M_Client.cs" />
@@ -144,6 +187,7 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+<<<<<<< HEAD
     <EmbeddedResource Include="Form1\FormHinagata.resx">
       <DependentUpon>FormHinagata.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +207,27 @@
       <DependentUpon>FormTestMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1\F_login.resx">
+=======
+    <EmbeddedResource Include="Form\FormHinagata.resx">
+      <DependentUpon>FormHinagata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormStock.resx">
+      <DependentUpon>FormStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormProduct.resx">
+      <DependentUpon>FormProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormClient.resx">
+      <DependentUpon>FormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormTestMain.resx">
+      <DependentUpon>FormTestMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\F_login.resx">
+>>>>>>> 6d7c096b6e330b5d872b87fe9f8ea91999095283
       <DependentUpon>F_login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
