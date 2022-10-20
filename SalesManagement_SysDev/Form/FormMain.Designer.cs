@@ -88,11 +88,11 @@ namespace SalesManagement_SysDev
             // labelDay
             // 
             this.labelDay.AutoSize = true;
-            this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelDay.ForeColor = System.Drawing.Color.White;
-            this.labelDay.Location = new System.Drawing.Point(1392, 8);
+            this.labelDay.Location = new System.Drawing.Point(1350, 2);
             this.labelDay.Name = "labelDay";
-            this.labelDay.Size = new System.Drawing.Size(168, 24);
+            this.labelDay.Size = new System.Drawing.Size(252, 35);
             this.labelDay.TabIndex = 9;
             this.labelDay.Text = "2022/10/10(月)";
             // 
@@ -102,7 +102,7 @@ namespace SalesManagement_SysDev
             this.labelTime.BackColor = System.Drawing.Color.DarkGreen;
             this.labelTime.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelTime.ForeColor = System.Drawing.Color.White;
-            this.labelTime.Location = new System.Drawing.Point(1391, 36);
+            this.labelTime.Location = new System.Drawing.Point(1384, 36);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(174, 64);
             this.labelTime.TabIndex = 8;
