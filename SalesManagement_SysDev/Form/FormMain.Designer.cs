@@ -40,7 +40,7 @@ namespace SalesManagement_SysDev
             this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonHonbu = new System.Windows.Forms.Button();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -149,7 +149,7 @@ namespace SalesManagement_SysDev
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.buttonHonbu);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -181,17 +181,18 @@ namespace SalesManagement_SysDev
             this.button3.Text = "物流";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // buttonHonbu
             // 
-            this.button2.BackColor = System.Drawing.Color.LightGreen;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(250, 130);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "本部";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonHonbu.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonHonbu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHonbu.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHonbu.Location = new System.Drawing.Point(0, 0);
+            this.buttonHonbu.Name = "buttonHonbu";
+            this.buttonHonbu.Size = new System.Drawing.Size(250, 130);
+            this.buttonHonbu.TabIndex = 0;
+            this.buttonHonbu.Text = "本部";
+            this.buttonHonbu.UseVisualStyleBackColor = false;
+            this.buttonHonbu.Click += new System.EventHandler(this.buttonHonbu_Click);
             // 
             // userControl11
             // 
@@ -200,6 +201,7 @@ namespace SalesManagement_SysDev
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(1670, 980);
             this.userControl11.TabIndex = 3;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // FormMain
             // 
@@ -234,7 +236,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonHonbu;
         private UserControlMain.UserControl1 userControl11;
     }
 }

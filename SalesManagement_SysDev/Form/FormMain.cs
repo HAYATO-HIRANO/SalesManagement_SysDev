@@ -15,6 +15,8 @@ namespace SalesManagement_SysDev
         public FormMain()
         {
             InitializeComponent();
+            userControl11.Visible = false;
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -26,6 +28,17 @@ namespace SalesManagement_SysDev
         {
             
             this.Close();
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonHonbu_Click(object sender, EventArgs e)
+        {
+
+            userControl11.Visible = true;
         }
     }
 }
