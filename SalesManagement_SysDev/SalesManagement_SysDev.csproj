@@ -181,6 +181,7 @@
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Form\DbAccess\" />
+    <Folder Include="Form\UserControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
