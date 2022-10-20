@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbAccess\ArrivalDataAccess.cs" />
+    <Compile Include="DbAccess\ChumonDataAccess.cs" />
+    <Compile Include="DbAccess\ClientDataAccess.cs" />
+    <Compile Include="DbAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DbAccess\HattyuDataAccess.cs" />
+    <Compile Include="DbAccess\OrderDataAccess.cs" />
+    <Compile Include="DbAccess\ProductDataAccess.cs" />
+    <Compile Include="DbAccess\SaleDataAccess.cs" />
+    <Compile Include="DbAccess\ShipmentDataAccess.cs" />
+    <Compile Include="DbAccess\StockDataAccess.cs" />
+    <Compile Include="DbAccess\SyukkoDataAccess.cs" />
+    <Compile Include="DbAccess\WarehousingDataAccess.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Form\FormDialog.cs">
