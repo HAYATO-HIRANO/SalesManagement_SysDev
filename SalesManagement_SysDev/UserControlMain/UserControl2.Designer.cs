@@ -1,7 +1,7 @@
 ﻿
 namespace SalesManagement_SysDev.UserControlMain
 {
-    partial class UserControl1
+    partial class UserControl2
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -29,32 +29,10 @@ namespace SalesManagement_SysDev.UserControlMain
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonEmployee = new System.Windows.Forms.Button();
-            this.buttonClient = new System.Windows.Forms.Button();
             this.buttonSale = new System.Windows.Forms.Button();
+            this.buttonClient = new System.Windows.Forms.Button();
+            this.buttonEmployee = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // buttonEmployee
-            // 
-            this.buttonEmployee.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonEmployee.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonEmployee.Location = new System.Drawing.Point(175, 104);
-            this.buttonEmployee.Name = "buttonEmployee";
-            this.buttonEmployee.Size = new System.Drawing.Size(1331, 206);
-            this.buttonEmployee.TabIndex = 0;
-            this.buttonEmployee.Text = "社員管理";
-            this.buttonEmployee.UseVisualStyleBackColor = false;
-            // 
-            // buttonClient
-            // 
-            this.buttonClient.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonClient.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClient.Location = new System.Drawing.Point(175, 397);
-            this.buttonClient.Name = "buttonClient";
-            this.buttonClient.Size = new System.Drawing.Size(1331, 206);
-            this.buttonClient.TabIndex = 1;
-            this.buttonClient.Text = "顧客管理";
-            this.buttonClient.UseVisualStyleBackColor = false;
             // 
             // buttonSale
             // 
@@ -63,11 +41,33 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonSale.Location = new System.Drawing.Point(175, 704);
             this.buttonSale.Name = "buttonSale";
             this.buttonSale.Size = new System.Drawing.Size(1331, 206);
-            this.buttonSale.TabIndex = 2;
-            this.buttonSale.Text = "売上管理";
+            this.buttonSale.TabIndex = 5;
+            this.buttonSale.Text = "出荷管理";
             this.buttonSale.UseVisualStyleBackColor = false;
             // 
-            // UserControl1
+            // buttonClient
+            // 
+            this.buttonClient.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonClient.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClient.Location = new System.Drawing.Point(175, 397);
+            this.buttonClient.Name = "buttonClient";
+            this.buttonClient.Size = new System.Drawing.Size(1331, 206);
+            this.buttonClient.TabIndex = 4;
+            this.buttonClient.Text = "入荷管理";
+            this.buttonClient.UseVisualStyleBackColor = false;
+            // 
+            // buttonEmployee
+            // 
+            this.buttonEmployee.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonEmployee.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonEmployee.Location = new System.Drawing.Point(175, 104);
+            this.buttonEmployee.Name = "buttonEmployee";
+            this.buttonEmployee.Size = new System.Drawing.Size(1331, 206);
+            this.buttonEmployee.TabIndex = 3;
+            this.buttonEmployee.Text = "受注管理";
+            this.buttonEmployee.UseVisualStyleBackColor = false;
+            // 
+            // UserControl2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -75,7 +75,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.Controls.Add(this.buttonSale);
             this.Controls.Add(this.buttonClient);
             this.Controls.Add(this.buttonEmployee);
-            this.Name = "UserControl1";
+            this.Name = "UserControl2";
             this.Size = new System.Drawing.Size(1670, 980);
             this.ResumeLayout(false);
 
@@ -83,8 +83,8 @@ namespace SalesManagement_SysDev.UserControlMain
 
         #endregion
 
-        private System.Windows.Forms.Button buttonEmployee;
-        private System.Windows.Forms.Button buttonClient;
         private System.Windows.Forms.Button buttonSale;
+        private System.Windows.Forms.Button buttonClient;
+        private System.Windows.Forms.Button buttonEmployee;
     }
 }
