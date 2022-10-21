@@ -38,10 +38,13 @@ namespace SalesManagement_SysDev
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonHinagata = new System.Windows.Forms.Button();
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
+            this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControl2();
+            this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControl3();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -90,11 +93,12 @@ namespace SalesManagement_SysDev
             this.labelDay.AutoSize = true;
             this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelDay.ForeColor = System.Drawing.Color.White;
-            this.labelDay.Location = new System.Drawing.Point(1350, 2);
+            this.labelDay.Location = new System.Drawing.Point(1344, 2);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(252, 35);
             this.labelDay.TabIndex = 9;
             this.labelDay.Text = "2022/10/10(月)";
+            this.labelDay.Click += new System.EventHandler(this.labelDay_Click);
             // 
             // labelTime
             // 
@@ -119,6 +123,7 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou.TabIndex = 7;
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
+            this.buttonSaisyou.Click += new System.EventHandler(this.buttonSaisyou_Click);
             // 
             // label1
             // 
@@ -147,6 +152,7 @@ namespace SalesManagement_SysDev
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel2.Controls.Add(this.buttonHinagata);
             this.panel2.Controls.Add(this.buttonEigyou);
             this.panel2.Controls.Add(this.buttonButuryu);
             this.panel2.Controls.Add(this.buttonHonbu);
@@ -156,6 +162,16 @@ namespace SalesManagement_SysDev
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 980);
             this.panel2.TabIndex = 2;
+            // 
+            // buttonHinagata
+            // 
+            this.buttonHinagata.Location = new System.Drawing.Point(29, 459);
+            this.buttonHinagata.Name = "buttonHinagata";
+            this.buttonHinagata.Size = new System.Drawing.Size(176, 86);
+            this.buttonHinagata.TabIndex = 3;
+            this.buttonHinagata.Text = "ひな形";
+            this.buttonHinagata.UseVisualStyleBackColor = true;
+            this.buttonHinagata.Click += new System.EventHandler(this.buttonHinagata_Click);
             // 
             // buttonEigyou
             // 
@@ -197,11 +213,27 @@ namespace SalesManagement_SysDev
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.Honeydew;
-            this.userControl11.Location = new System.Drawing.Point(250, 101);
+            this.userControl11.Location = new System.Drawing.Point(250, 100);
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(1670, 980);
             this.userControl11.TabIndex = 3;
             this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            // 
+            // userControl21
+            // 
+            this.userControl21.BackColor = System.Drawing.Color.Honeydew;
+            this.userControl21.Location = new System.Drawing.Point(250, 100);
+            this.userControl21.Name = "userControl21";
+            this.userControl21.Size = new System.Drawing.Size(1670, 980);
+            this.userControl21.TabIndex = 4;
+            // 
+            // userControl31
+            // 
+            this.userControl31.BackColor = System.Drawing.Color.Honeydew;
+            this.userControl31.Location = new System.Drawing.Point(250, 100);
+            this.userControl31.Name = "userControl31";
+            this.userControl31.Size = new System.Drawing.Size(1670, 980);
+            this.userControl31.TabIndex = 5;
             // 
             // FormMain
             // 
@@ -209,8 +241,10 @@ namespace SalesManagement_SysDev
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.userControl21);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.userControl31);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -238,5 +272,8 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonButuryu;
         private System.Windows.Forms.Button buttonHonbu;
         private UserControlMain.UserControl1 userControl11;
+        private UserControlMain.UserControl2 userControl21;
+        private UserControlMain.UserControl3 userControl31;
+        private System.Windows.Forms.Button buttonHinagata;
     }
 }
