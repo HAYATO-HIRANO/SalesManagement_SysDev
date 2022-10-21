@@ -42,6 +42,8 @@ namespace SalesManagement_SysDev
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
+            this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControl2();
+            this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControl3();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -197,11 +199,27 @@ namespace SalesManagement_SysDev
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.Honeydew;
-            this.userControl11.Location = new System.Drawing.Point(250, 101);
+            this.userControl11.Location = new System.Drawing.Point(250, 100);
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(1670, 980);
             this.userControl11.TabIndex = 3;
             this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            // 
+            // userControl21
+            // 
+            this.userControl21.BackColor = System.Drawing.Color.Honeydew;
+            this.userControl21.Location = new System.Drawing.Point(250, 100);
+            this.userControl21.Name = "userControl21";
+            this.userControl21.Size = new System.Drawing.Size(1670, 980);
+            this.userControl21.TabIndex = 4;
+            // 
+            // userControl31
+            // 
+            this.userControl31.BackColor = System.Drawing.Color.Honeydew;
+            this.userControl31.Location = new System.Drawing.Point(250, 100);
+            this.userControl31.Name = "userControl31";
+            this.userControl31.Size = new System.Drawing.Size(1670, 980);
+            this.userControl31.TabIndex = 5;
             // 
             // FormMain
             // 
@@ -209,8 +227,10 @@ namespace SalesManagement_SysDev
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.userControl21);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.userControl31);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -238,5 +258,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonButuryu;
         private System.Windows.Forms.Button buttonHonbu;
         private UserControlMain.UserControl1 userControl11;
+        private UserControlMain.UserControl2 userControl21;
+        private UserControlMain.UserControl3 userControl31;
     }
 }
