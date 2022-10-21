@@ -107,7 +107,7 @@
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.PasswordChar = '●';
             this.textBoxEmPassword.Size = new System.Drawing.Size(168, 22);
-            this.textBoxEmPassword.TabIndex = 7;
+            this.textBoxEmPassword.TabIndex = 10;
             // 
             // buttonLogin
             // 
@@ -131,7 +131,7 @@
             this.buttonClose.Text = "閉じる";
             this.buttonClose.UseVisualStyleBackColor = true;
             // 
-            // F_Login
+            // FormLogin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
@@ -145,7 +145,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "F_Login";
+            this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "販売管理システムログイン画面";
             this.panel1.ResumeLayout(false);
