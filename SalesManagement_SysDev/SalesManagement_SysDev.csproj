@@ -59,9 +59,12 @@
     <Compile Include="DbAccess\ArrivalDataAccess.cs" />
     <Compile Include="DbAccess\ChumonDataAccess.cs" />
     <Compile Include="DbAccess\ClientDataAccess.cs" />
+    <Compile Include="DbAccess\DataGridViewPrinter.cs" />
+    <Compile Include="DbAccess\DataInputFormCheck.cs" />
     <Compile Include="DbAccess\EmployeeDataAccess.cs" />
     <Compile Include="DbAccess\HattyuDataAccess.cs" />
     <Compile Include="DbAccess\OrderDataAccess.cs" />
+    <Compile Include="DbAccess\PasswordHash.cs" />
     <Compile Include="DbAccess\ProductDataAccess.cs" />
     <Compile Include="DbAccess\SaleDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDataAccess.cs" />
