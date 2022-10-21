@@ -1,6 +1,6 @@
 ﻿namespace SalesManagement_SysDev
 {
-    partial class F_Login
+    partial class FormLogin
     {
         /// <summary>
         /// 必要なデザイナー変数です。
