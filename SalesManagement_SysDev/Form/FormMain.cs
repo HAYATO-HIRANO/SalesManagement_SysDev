@@ -24,6 +24,9 @@ namespace SalesManagement_SysDev
             userControl11.Visible = false;
             userControl21.Visible = false;
             userControl31.Visible = false;
+            //日時の表示
+            labelDay.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
         private void button1_Click(object sender, EventArgs e)
