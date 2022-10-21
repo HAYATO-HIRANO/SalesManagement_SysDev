@@ -25,7 +25,7 @@ namespace SalesManagement_SysDev
             userControl21.Visible = false;
             userControl31.Visible = false;
             //日時の表示
-            labelDay.Text = DateTime.Now.ToString("yyyy年MM月dd日(ddd)");
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
@@ -56,6 +56,11 @@ namespace SalesManagement_SysDev
         private void buttonSaisyou_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void labelDay_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
