@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MessageDsp.cs" />
     <Compile Include="Common\PasswordHash.cs" />
     <Compile Include="DbAccess\ArrivalDataAccess.cs" />
     <Compile Include="DbAccess\ChumonDataAccess.cs" />
