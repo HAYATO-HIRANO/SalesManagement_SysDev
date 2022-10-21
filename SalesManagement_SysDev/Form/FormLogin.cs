@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace SalesManagement_SysDev
 {
-    public partial class F_Login : Form
+    public partial class FormLogin : Form
     {
-        public F_Login()
+
+        public FormLogin()
         {
             InitializeComponent();
         }
@@ -48,6 +50,16 @@ namespace SalesManagement_SysDev
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            string loginID = textBoxEmID.Text;
+            string loginPass = textBoxEmPassword.Text;
+            bool flg;
+            //ユーザID・PWの入力状況チェック
+            if (loginID.Trim() == "" || loginID == null || loginPass.Trim() == "" || loginPass == null)
+            {
+                //ID・PW未入力メッセージ
+                
+            }
+
             FormMain formMain = new FormMain();
             formMain.Show();
             this.Visible = false;
