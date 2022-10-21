@@ -38,8 +38,8 @@ namespace SalesManagement_SysDev
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonEigyou = new System.Windows.Forms.Button();
+            this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
             this.panel1.SuspendLayout();
@@ -147,8 +147,8 @@ namespace SalesManagement_SysDev
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.buttonEigyou);
+            this.panel2.Controls.Add(this.buttonButuryu);
             this.panel2.Controls.Add(this.buttonHonbu);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 100);
@@ -157,29 +157,29 @@ namespace SalesManagement_SysDev
             this.panel2.Size = new System.Drawing.Size(250, 980);
             this.panel2.TabIndex = 2;
             // 
-            // button4
+            // buttonEigyou
             // 
-            this.button4.BackColor = System.Drawing.Color.LightGreen;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button4.Location = new System.Drawing.Point(0, 258);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(250, 130);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "営業";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonEigyou.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonEigyou.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEigyou.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonEigyou.Location = new System.Drawing.Point(0, 129);
+            this.buttonEigyou.Name = "buttonEigyou";
+            this.buttonEigyou.Size = new System.Drawing.Size(250, 130);
+            this.buttonEigyou.TabIndex = 2;
+            this.buttonEigyou.Text = "営業";
+            this.buttonEigyou.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // buttonButuryu
             // 
-            this.button3.BackColor = System.Drawing.Color.LightGreen;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Location = new System.Drawing.Point(0, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(250, 130);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "物流";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonButuryu.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonButuryu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonButuryu.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonButuryu.Location = new System.Drawing.Point(0, 258);
+            this.buttonButuryu.Name = "buttonButuryu";
+            this.buttonButuryu.Size = new System.Drawing.Size(250, 130);
+            this.buttonButuryu.TabIndex = 1;
+            this.buttonButuryu.Text = "物流";
+            this.buttonButuryu.UseVisualStyleBackColor = false;
             // 
             // buttonHonbu
             // 
@@ -234,8 +234,8 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonEigyou;
+        private System.Windows.Forms.Button buttonButuryu;
         private System.Windows.Forms.Button buttonHonbu;
         private UserControlMain.UserControl1 userControl11;
     }
