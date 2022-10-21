@@ -43,7 +43,7 @@ namespace SalesManagement_SysDev
         private void buttonHonbu_Click(object sender, EventArgs e)
         {
             userControl21.Visible = false;
-            userControl21.Visible = false;
+            userControl31.Visible = false;
             userControl11.Visible = true;
         }
 
@@ -61,6 +61,20 @@ namespace SalesManagement_SysDev
         private void labelDay_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonEigyou_Click(object sender, EventArgs e)
+        {
+            userControl21.Visible = true;
+            userControl31.Visible = false;
+            userControl11.Visible = false;
+        }
+
+        private void buttonButuryu_Click(object sender, EventArgs e)
+        {
+            userControl21.Visible = false;
+            userControl31.Visible = true;
+            userControl11.Visible = false;
         }
     }
 }

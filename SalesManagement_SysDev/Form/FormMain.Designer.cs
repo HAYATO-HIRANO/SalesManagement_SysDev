@@ -29,9 +29,9 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.label = new System.Windows.Forms.Label();
+            this.labelUserName = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.buttonSaisyou = new System.Windows.Forms.Button();
@@ -45,48 +45,48 @@ namespace SalesManagement_SysDev
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
             this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControl2();
             this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControl3();
-            this.panel1.SuspendLayout();
+            this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelHeader
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.labelDay);
-            this.panel1.Controls.Add(this.labelTime);
-            this.panel1.Controls.Add(this.buttonSaisyou);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonFormDel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 100);
-            this.panel1.TabIndex = 1;
+            this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
+            this.panelHeader.Controls.Add(this.label);
+            this.panelHeader.Controls.Add(this.labelUserName);
+            this.panelHeader.Controls.Add(this.labelDay);
+            this.panelHeader.Controls.Add(this.labelTime);
+            this.panelHeader.Controls.Add(this.buttonSaisyou);
+            this.panelHeader.Controls.Add(this.label1);
+            this.panelHeader.Controls.Add(this.buttonFormDel);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1920, 100);
+            this.panelHeader.TabIndex = 1;
             // 
-            // label3
+            // label
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(914, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 16);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "権限：";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label.ForeColor = System.Drawing.Color.White;
+            this.label.Location = new System.Drawing.Point(914, 59);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(51, 16);
+            this.label.TabIndex = 11;
+            this.label.Text = "権限：";
             // 
-            // label2
+            // labelUserName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(875, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "ユーザー名：";
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserName.ForeColor = System.Drawing.Color.White;
+            this.labelUserName.Location = new System.Drawing.Point(875, 21);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(90, 16);
+            this.labelUserName.TabIndex = 10;
+            this.labelUserName.Text = "ユーザー名：";
             // 
             // labelDay
             // 
@@ -184,6 +184,7 @@ namespace SalesManagement_SysDev
             this.buttonEigyou.TabIndex = 2;
             this.buttonEigyou.Text = "営業";
             this.buttonEigyou.UseVisualStyleBackColor = false;
+            this.buttonEigyou.Click += new System.EventHandler(this.buttonEigyou_Click);
             // 
             // buttonButuryu
             // 
@@ -196,6 +197,7 @@ namespace SalesManagement_SysDev
             this.buttonButuryu.TabIndex = 1;
             this.buttonButuryu.Text = "物流";
             this.buttonButuryu.UseVisualStyleBackColor = false;
+            this.buttonButuryu.Click += new System.EventHandler(this.buttonButuryu_Click);
             // 
             // buttonHonbu
             // 
@@ -243,15 +245,15 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.userControl21);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.userControl31);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -259,9 +261,9 @@ namespace SalesManagement_SysDev
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Button buttonSaisyou;
