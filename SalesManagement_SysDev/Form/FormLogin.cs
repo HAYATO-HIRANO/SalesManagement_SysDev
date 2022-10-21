@@ -45,5 +45,12 @@ namespace SalesManagement_SysDev
             //画面を閉じる
             this.Close();
         }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
+            this.Visible = false;
+        }
     }
 }

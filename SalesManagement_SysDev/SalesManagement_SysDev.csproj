@@ -152,6 +152,9 @@
     <Compile Include="UserControlMain\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormDialog.resx">
+      <DependentUpon>FormDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormHinagata.resx">
       <DependentUpon>FormHinagata.cs</DependentUpon>
     </EmbeddedResource>
