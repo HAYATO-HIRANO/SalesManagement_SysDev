@@ -55,6 +55,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonClient.TabIndex = 1;
             this.buttonClient.Text = "顧客管理";
             this.buttonClient.UseVisualStyleBackColor = false;
+            this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
             // buttonSale
             // 

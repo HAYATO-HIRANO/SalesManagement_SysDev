@@ -21,7 +21,9 @@ namespace SalesManagement_SysDev
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            userControl11.Visible = false;
+            userControl21.Visible = false;
+            userControl31.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,7 +39,8 @@ namespace SalesManagement_SysDev
 
         private void buttonHonbu_Click(object sender, EventArgs e)
         {
-
+            userControl21.Visible = false;
+            userControl21.Visible = false;
             userControl11.Visible = true;
         }
     }
