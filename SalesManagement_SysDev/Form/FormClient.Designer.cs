@@ -116,9 +116,9 @@ namespace SalesManagement_SysDev
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(594, 219);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 12);
+            this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 5;
-            this.label4.Text = "l顧客名";
+            this.label4.Text = "顧客名";
             // 
             // textBoxClName
             // 
