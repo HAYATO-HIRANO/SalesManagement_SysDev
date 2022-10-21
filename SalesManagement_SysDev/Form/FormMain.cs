@@ -46,5 +46,16 @@ namespace SalesManagement_SysDev
             userControl21.Visible = false;
             userControl11.Visible = true;
         }
+
+        private void buttonHinagata_Click(object sender, EventArgs e)
+        {
+            FormHinagata form = new FormHinagata();
+            form.Show();
+        }
+
+        private void buttonSaisyou_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

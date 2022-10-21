@@ -41,6 +41,7 @@ namespace SalesManagement_SysDev
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
+            this.buttonHinagata = new System.Windows.Forms.Button();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
             this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControl2();
             this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControl3();
@@ -121,6 +122,7 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou.TabIndex = 7;
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
+            this.buttonSaisyou.Click += new System.EventHandler(this.buttonSaisyou_Click);
             // 
             // label1
             // 
@@ -149,6 +151,7 @@ namespace SalesManagement_SysDev
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel2.Controls.Add(this.buttonHinagata);
             this.panel2.Controls.Add(this.buttonEigyou);
             this.panel2.Controls.Add(this.buttonButuryu);
             this.panel2.Controls.Add(this.buttonHonbu);
@@ -195,6 +198,16 @@ namespace SalesManagement_SysDev
             this.buttonHonbu.Text = "本部";
             this.buttonHonbu.UseVisualStyleBackColor = false;
             this.buttonHonbu.Click += new System.EventHandler(this.buttonHonbu_Click);
+            // 
+            // buttonHinagata
+            // 
+            this.buttonHinagata.Location = new System.Drawing.Point(29, 459);
+            this.buttonHinagata.Name = "buttonHinagata";
+            this.buttonHinagata.Size = new System.Drawing.Size(176, 86);
+            this.buttonHinagata.TabIndex = 3;
+            this.buttonHinagata.Text = "ひな形";
+            this.buttonHinagata.UseVisualStyleBackColor = true;
+            this.buttonHinagata.Click += new System.EventHandler(this.buttonHinagata_Click);
             // 
             // userControl11
             // 
@@ -260,5 +273,6 @@ namespace SalesManagement_SysDev
         private UserControlMain.UserControl1 userControl11;
         private UserControlMain.UserControl2 userControl21;
         private UserControlMain.UserControl3 userControl31;
+        private System.Windows.Forms.Button buttonHinagata;
     }
 }
