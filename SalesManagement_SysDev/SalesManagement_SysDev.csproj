@@ -57,6 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\PasswordHash.cs" />
+    <Compile Include="DbAccess\ArrivalDataAccess.cs" />
+    <Compile Include="DbAccess\ChumonDataAccess.cs" />
+    <Compile Include="DbAccess\ClientDataAccess.cs" />
+    <Compile Include="DbAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DbAccess\HattyuDataAccess.cs" />
+    <Compile Include="DbAccess\OrderDataAccess.cs" />
+    <Compile Include="DbAccess\ProductDataAccess.cs" />
+    <Compile Include="DbAccess\SaleDataAccess.cs" />
+    <Compile Include="DbAccess\ShipmentDataAccess.cs" />
+    <Compile Include="DbAccess\StockDataAccess.cs" />
+    <Compile Include="DbAccess\SyukkoDataAccess.cs" />
+    <Compile Include="DbAccess\WarehousingDataAccess.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Form\FormDialog.cs">
@@ -141,6 +153,12 @@
     <Compile Include="UserControlMain\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlMain\UserControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMain\UserControl2.Designer.cs">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form\FormDialog.resx">
       <DependentUpon>FormDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="UserControlMain\UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMain\UserControl2.resx">
+      <DependentUpon>UserControl2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
