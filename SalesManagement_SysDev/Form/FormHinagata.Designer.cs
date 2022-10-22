@@ -38,16 +38,17 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonEigyou = new System.Windows.Forms.Button();
-            this.buttonButuryu = new System.Windows.Forms.Button();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -161,42 +162,43 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.UseVisualStyleBackColor = false;
             this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click);
             // 
-            // panel2
+            // panelLeft
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel2.Controls.Add(this.buttonEigyou);
-            this.panel2.Controls.Add(this.buttonButuryu);
-            this.panel2.Controls.Add(this.buttonRegist);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 980);
-            this.panel2.TabIndex = 3;
+            this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.Controls.Add(this.buttonLogout);
+            this.panelLeft.Controls.Add(this.buttonUpdate);
+            this.panelLeft.Controls.Add(this.buttonSearch);
+            this.panelLeft.Controls.Add(this.buttonRegist);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 100);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(250, 980);
+            this.panelLeft.TabIndex = 3;
             // 
-            // buttonEigyou
+            // buttonUpdate
             // 
-            this.buttonEigyou.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonEigyou.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEigyou.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonEigyou.Location = new System.Drawing.Point(0, 129);
-            this.buttonEigyou.Name = "buttonEigyou";
-            this.buttonEigyou.Size = new System.Drawing.Size(250, 130);
-            this.buttonEigyou.TabIndex = 2;
-            this.buttonEigyou.Text = "更新";
-            this.buttonEigyou.UseVisualStyleBackColor = false;
+            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Location = new System.Drawing.Point(0, 129);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(250, 130);
+            this.buttonUpdate.TabIndex = 2;
+            this.buttonUpdate.Text = "更新";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
             // 
-            // buttonButuryu
+            // buttonSearch
             // 
-            this.buttonButuryu.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonButuryu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonButuryu.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonButuryu.Location = new System.Drawing.Point(0, 258);
-            this.buttonButuryu.Name = "buttonButuryu";
-            this.buttonButuryu.Size = new System.Drawing.Size(250, 130);
-            this.buttonButuryu.TabIndex = 1;
-            this.buttonButuryu.Text = "検索";
-            this.buttonButuryu.UseVisualStyleBackColor = false;
+            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(0, 258);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(250, 130);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "検索";
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
             // buttonRegist
             // 
@@ -225,7 +227,7 @@ namespace SalesManagement_SysDev
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(306, 143);
+            this.panel4.Location = new System.Drawing.Point(311, 143);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1552, 169);
             this.panel4.TabIndex = 5;
@@ -233,11 +235,24 @@ namespace SalesManagement_SysDev
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(306, 358);
+            this.dataGridView1.Location = new System.Drawing.Point(311, 385);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 7;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
             // 
             // FormHinagata
             // 
@@ -245,7 +260,7 @@ namespace SalesManagement_SysDev
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -255,7 +270,7 @@ namespace SalesManagement_SysDev
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.panelLeft.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -266,9 +281,9 @@ namespace SalesManagement_SysDev
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button buttonEigyou;
-        private System.Windows.Forms.Button buttonButuryu;
+        private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
@@ -281,5 +296,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }
