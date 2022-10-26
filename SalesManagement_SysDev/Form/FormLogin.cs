@@ -162,7 +162,10 @@ namespace SalesManagement_SysDev
             }
         }
 
-
-
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
+        }
     }
 }
