@@ -223,7 +223,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelClName.AutoSize = true;
             this.labelClName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClName.Location = new System.Drawing.Point(542, 22);
+            this.labelClName.Location = new System.Drawing.Point(568, 22);
             this.labelClName.Name = "labelClName";
             this.labelClName.Size = new System.Drawing.Size(82, 24);
             this.labelClName.TabIndex = 5;
@@ -232,7 +232,7 @@ namespace SalesManagement_SysDev
             // textBoxClName
             // 
             this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClName.Location = new System.Drawing.Point(630, 22);
+            this.textBoxClName.Location = new System.Drawing.Point(656, 22);
             this.textBoxClName.Name = "textBoxClName";
             this.textBoxClName.Size = new System.Drawing.Size(199, 28);
             this.textBoxClName.TabIndex = 6;
@@ -252,14 +252,14 @@ namespace SalesManagement_SysDev
             this.textBoxClAddres.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxClAddres.Location = new System.Drawing.Point(340, 81);
             this.textBoxClAddres.Name = "textBoxClAddres";
-            this.textBoxClAddres.Size = new System.Drawing.Size(710, 28);
+            this.textBoxClAddres.Size = new System.Drawing.Size(787, 28);
             this.textBoxClAddres.TabIndex = 8;
             // 
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
             this.labelPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPhone.Location = new System.Drawing.Point(868, 22);
+            this.labelPhone.Location = new System.Drawing.Point(894, 22);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(106, 24);
             this.labelPhone.TabIndex = 9;
@@ -268,7 +268,7 @@ namespace SalesManagement_SysDev
             // textBoxClphone
             // 
             this.textBoxClphone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClphone.Location = new System.Drawing.Point(980, 21);
+            this.textBoxClphone.Location = new System.Drawing.Point(1006, 21);
             this.textBoxClphone.Name = "textBoxClphone";
             this.textBoxClphone.Size = new System.Drawing.Size(147, 28);
             this.textBoxClphone.TabIndex = 10;
@@ -297,7 +297,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelFAX.AutoSize = true;
             this.labelFAX.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelFAX.Location = new System.Drawing.Point(1178, 22);
+            this.labelFAX.Location = new System.Drawing.Point(1204, 22);
             this.labelFAX.Name = "labelFAX";
             this.labelFAX.Size = new System.Drawing.Size(52, 24);
             this.labelFAX.TabIndex = 13;
@@ -306,7 +306,7 @@ namespace SalesManagement_SysDev
             // textBoxClFAX
             // 
             this.textBoxClFAX.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClFAX.Location = new System.Drawing.Point(1236, 21);
+            this.textBoxClFAX.Location = new System.Drawing.Point(1262, 21);
             this.textBoxClFAX.Name = "textBoxClFAX";
             this.textBoxClFAX.Size = new System.Drawing.Size(150, 28);
             this.textBoxClFAX.TabIndex = 14;
@@ -436,7 +436,7 @@ namespace SalesManagement_SysDev
             this.comboBoxSoID.FormattingEnabled = true;
             this.comboBoxSoID.Location = new System.Drawing.Point(340, 21);
             this.comboBoxSoID.Name = "comboBoxSoID";
-            this.comboBoxSoID.Size = new System.Drawing.Size(156, 29);
+            this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
             this.comboBoxSoID.TabIndex = 7;
             // 
             // dataGridViewClient
