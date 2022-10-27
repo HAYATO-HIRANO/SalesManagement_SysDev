@@ -70,7 +70,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(25, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(462, 30);
+            this.label1.Size = new System.Drawing.Size(372, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "販売在庫管理システム - ログイン - ";
             // 
@@ -80,7 +80,7 @@
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(184, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 19);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "社員ID";
             // 
@@ -90,7 +90,7 @@
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(164, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 19);
+            this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "パスワード";
             // 
@@ -98,7 +98,7 @@
             // 
             this.textBoxEmID.Location = new System.Drawing.Point(258, 143);
             this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(168, 22);
+            this.textBoxEmID.Size = new System.Drawing.Size(168, 19);
             this.textBoxEmID.TabIndex = 6;
             // 
             // textBoxEmPassword
@@ -106,7 +106,7 @@
             this.textBoxEmPassword.Location = new System.Drawing.Point(258, 197);
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.PasswordChar = '●';
-            this.textBoxEmPassword.Size = new System.Drawing.Size(168, 22);
+            this.textBoxEmPassword.Size = new System.Drawing.Size(168, 19);
             this.textBoxEmPassword.TabIndex = 10;
             // 
             // buttonLogin
