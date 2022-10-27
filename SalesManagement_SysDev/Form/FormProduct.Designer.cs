@@ -29,321 +29,492 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.bu = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.label = new System.Windows.Forms.Label();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.labelDay = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.buttonSaisyou = new System.Windows.Forms.Button();
+            this.labelClient = new System.Windows.Forms.Label();
+            this.buttonFormDel = new System.Windows.Forms.Button();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonLogout = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonRegist = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxMaker = new System.Windows.Forms.ComboBox();
+            this.textBoxPrID = new System.Windows.Forms.TextBox();
+            this.labelPrHidden = new System.Windows.Forms.Label();
+            this.textBoxPrHidden = new System.Windows.Forms.TextBox();
+            this.labelPrID = new System.Windows.Forms.Label();
+            this.checkBoxPrFlag = new System.Windows.Forms.CheckBox();
+            this.labelMName = new System.Windows.Forms.Label();
+            this.textBoxPrSafetyStock = new System.Windows.Forms.TextBox();
+            this.labelMaker = new System.Windows.Forms.Label();
+            this.labelPrSafetyStock = new System.Windows.Forms.Label();
+            this.textBoxPrName = new System.Windows.Forms.TextBox();
+            this.textBoxPrModelNumber = new System.Windows.Forms.TextBox();
+            this.labelColor = new System.Windows.Forms.Label();
+            this.labelPrModelNumber = new System.Windows.Forms.Label();
+            this.textBoxColor = new System.Windows.Forms.TextBox();
+            this.textBoxJCode = new System.Windows.Forms.TextBox();
+            this.labelJcode = new System.Windows.Forms.Label();
+            this.labelSc = new System.Windows.Forms.Label();
+            this.comboBoxSc = new System.Windows.Forms.ComboBox();
+            this.DateTimePickerPrReleaseDate = new System.Windows.Forms.DateTimePicker();
+            this.labelPrReleaseDate = new System.Windows.Forms.Label();
+            this.panelHeader.SuspendLayout();
+            this.panelLeft.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelHeader
             // 
-            this.panel1.BackColor = System.Drawing.Color.Green;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel1.Location = new System.Drawing.Point(0, 1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1907, 117);
-            this.panel1.TabIndex = 0;
+            this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
+            this.panelHeader.Controls.Add(this.label);
+            this.panelHeader.Controls.Add(this.labelUserName);
+            this.panelHeader.Controls.Add(this.labelDay);
+            this.panelHeader.Controls.Add(this.labelTime);
+            this.panelHeader.Controls.Add(this.buttonSaisyou);
+            this.panelHeader.Controls.Add(this.labelClient);
+            this.panelHeader.Controls.Add(this.buttonFormDel);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1920, 100);
+            this.panelHeader.TabIndex = 25;
             // 
-            // label1
+            // label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(387, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 60);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "商品管理";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label.ForeColor = System.Drawing.Color.White;
+            this.label.Location = new System.Drawing.Point(914, 59);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(51, 16);
+            this.label.TabIndex = 11;
+            this.label.Text = "権限：";
             // 
-            // label2
+            // labelUserName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 202);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserName.ForeColor = System.Drawing.Color.White;
+            this.labelUserName.Location = new System.Drawing.Point(875, 21);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(90, 16);
+            this.labelUserName.TabIndex = 10;
+            this.labelUserName.Text = "ユーザー名：";
             // 
-            // label3
+            // labelDay
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(586, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.labelDay.AutoSize = true;
+            this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelDay.ForeColor = System.Drawing.Color.White;
+            this.labelDay.Location = new System.Drawing.Point(1344, 2);
+            this.labelDay.Name = "labelDay";
+            this.labelDay.Size = new System.Drawing.Size(252, 35);
+            this.labelDay.TabIndex = 9;
+            this.labelDay.Text = "2022/10/10(月)";
             // 
-            // label4
+            // labelTime
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 287);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.labelTime.AutoSize = true;
+            this.labelTime.BackColor = System.Drawing.Color.DarkGreen;
+            this.labelTime.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelTime.ForeColor = System.Drawing.Color.White;
+            this.labelTime.Location = new System.Drawing.Point(1384, 36);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(174, 64);
+            this.labelTime.TabIndex = 8;
+            this.labelTime.Text = "12:00";
             // 
-            // label5
+            // buttonSaisyou
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1047, 202);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "label5";
+            this.buttonSaisyou.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonSaisyou.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSaisyou.ForeColor = System.Drawing.Color.White;
+            this.buttonSaisyou.Location = new System.Drawing.Point(1773, 0);
+            this.buttonSaisyou.Name = "buttonSaisyou";
+            this.buttonSaisyou.Size = new System.Drawing.Size(75, 75);
+            this.buttonSaisyou.TabIndex = 7;
+            this.buttonSaisyou.Text = "ー";
+            this.buttonSaisyou.UseVisualStyleBackColor = false;
             // 
-            // label6
+            // labelClient
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(586, 287);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 15);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
+            this.labelClient.AutoSize = true;
+            this.labelClient.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelClient.ForeColor = System.Drawing.Color.White;
+            this.labelClient.Location = new System.Drawing.Point(297, 20);
+            this.labelClient.Name = "labelClient";
+            this.labelClient.Size = new System.Drawing.Size(235, 53);
+            this.labelClient.TabIndex = 1;
+            this.labelClient.Text = "商品管理";
             // 
-            // label7
+            // buttonFormDel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1050, 287);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 15);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "label7";
+            this.buttonFormDel.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonFormDel.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFormDel.ForeColor = System.Drawing.Color.White;
+            this.buttonFormDel.Location = new System.Drawing.Point(1845, 0);
+            this.buttonFormDel.Name = "buttonFormDel";
+            this.buttonFormDel.Size = new System.Drawing.Size(75, 75);
+            this.buttonFormDel.TabIndex = 0;
+            this.buttonFormDel.Text = "✕";
+            this.buttonFormDel.UseVisualStyleBackColor = false;
             // 
-            // label8
+            // panelLeft
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(71, 373);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 15);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "label8";
+            this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.Controls.Add(this.buttonLogout);
+            this.panelLeft.Controls.Add(this.buttonUpdate);
+            this.panelLeft.Controls.Add(this.buttonSearch);
+            this.panelLeft.Controls.Add(this.buttonRegist);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 100);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(250, 980);
+            this.panelLeft.TabIndex = 26;
             // 
-            // label9
+            // buttonLogout
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(589, 372);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 15);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "label9";
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 5;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
             // 
-            // label10
+            // buttonUpdate
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1050, 371);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 15);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "label10";
+            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Location = new System.Drawing.Point(0, 129);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(250, 130);
+            this.buttonUpdate.TabIndex = 2;
+            this.buttonUpdate.Text = "更新";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
             // 
-            // label11
+            // buttonSearch
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(71, 466);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 15);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "label11";
+            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(0, 258);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(250, 130);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "検索";
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // buttonRegist
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 199);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(325, 22);
-            this.textBox1.TabIndex = 11;
+            this.buttonRegist.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonRegist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegist.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRegist.Location = new System.Drawing.Point(0, 0);
+            this.buttonRegist.Name = "buttonRegist";
+            this.buttonRegist.Size = new System.Drawing.Size(250, 130);
+            this.buttonRegist.TabIndex = 0;
+            this.buttonRegist.Text = "登録";
+            this.buttonRegist.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // panel4
             // 
-            this.textBox2.Location = new System.Drawing.Point(692, 199);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(291, 22);
-            this.textBox2.TabIndex = 12;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel4.Controls.Add(this.labelPrReleaseDate);
+            this.panel4.Controls.Add(this.DateTimePickerPrReleaseDate);
+            this.panel4.Controls.Add(this.comboBoxSc);
+            this.panel4.Controls.Add(this.labelSc);
+            this.panel4.Controls.Add(this.comboBoxMaker);
+            this.panel4.Controls.Add(this.textBoxPrID);
+            this.panel4.Controls.Add(this.labelPrHidden);
+            this.panel4.Controls.Add(this.textBoxPrHidden);
+            this.panel4.Controls.Add(this.labelPrID);
+            this.panel4.Controls.Add(this.checkBoxPrFlag);
+            this.panel4.Controls.Add(this.labelMName);
+            this.panel4.Controls.Add(this.textBoxPrSafetyStock);
+            this.panel4.Controls.Add(this.labelMaker);
+            this.panel4.Controls.Add(this.labelPrSafetyStock);
+            this.panel4.Controls.Add(this.textBoxPrName);
+            this.panel4.Controls.Add(this.textBoxPrModelNumber);
+            this.panel4.Controls.Add(this.labelColor);
+            this.panel4.Controls.Add(this.labelPrModelNumber);
+            this.panel4.Controls.Add(this.textBoxColor);
+            this.panel4.Controls.Add(this.textBoxJCode);
+            this.panel4.Controls.Add(this.labelJcode);
+            this.panel4.Location = new System.Drawing.Point(306, 143);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1552, 230);
+            this.panel4.TabIndex = 27;
             // 
-            // textBox3
+            // comboBoxMaker
             // 
-            this.textBox3.Location = new System.Drawing.Point(146, 284);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(325, 22);
-            this.textBox3.TabIndex = 13;
+            this.comboBoxMaker.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxMaker.FormattingEnabled = true;
+            this.comboBoxMaker.Location = new System.Drawing.Point(340, 21);
+            this.comboBoxMaker.Name = "comboBoxMaker";
+            this.comboBoxMaker.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxMaker.TabIndex = 7;
             // 
-            // textBox4
+            // textBoxPrID
             // 
-            this.textBox4.Location = new System.Drawing.Point(692, 283);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(291, 22);
-            this.textBox4.TabIndex = 14;
+            this.textBoxPrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrID.Location = new System.Drawing.Point(101, 21);
+            this.textBoxPrID.Name = "textBoxPrID";
+            this.textBoxPrID.Size = new System.Drawing.Size(84, 28);
+            this.textBoxPrID.TabIndex = 2;
+            this.textBoxPrID.Text = "012345";
             // 
-            // textBox5
+            // labelPrHidden
             // 
-            this.textBox5.Location = new System.Drawing.Point(146, 365);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(325, 22);
-            this.textBox5.TabIndex = 15;
+            this.labelPrHidden.AutoSize = true;
+            this.labelPrHidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrHidden.Location = new System.Drawing.Point(204, 134);
+            this.labelPrHidden.Name = "labelPrHidden";
+            this.labelPrHidden.Size = new System.Drawing.Size(130, 24);
+            this.labelPrHidden.TabIndex = 17;
+            this.labelPrHidden.Text = "非表示理由";
             // 
-            // textBox6
+            // textBoxPrHidden
             // 
-            this.textBox6.Location = new System.Drawing.Point(692, 365);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(291, 22);
-            this.textBox6.TabIndex = 16;
+            this.textBoxPrHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrHidden.Location = new System.Drawing.Point(340, 134);
+            this.textBoxPrHidden.Multiline = true;
+            this.textBoxPrHidden.Name = "textBoxPrHidden";
+            this.textBoxPrHidden.Size = new System.Drawing.Size(787, 84);
+            this.textBoxPrHidden.TabIndex = 18;
             // 
-            // textBox7
+            // labelPrID
             // 
-            this.textBox7.Location = new System.Drawing.Point(1134, 198);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(350, 22);
-            this.textBox7.TabIndex = 17;
+            this.labelPrID.AutoSize = true;
+            this.labelPrID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrID.Location = new System.Drawing.Point(15, 22);
+            this.labelPrID.Name = "labelPrID";
+            this.labelPrID.Size = new System.Drawing.Size(80, 24);
+            this.labelPrID.TabIndex = 1;
+            this.labelPrID.Text = "商品ID";
             // 
-            // textBox8
+            // checkBoxPrFlag
             // 
-            this.textBox8.Location = new System.Drawing.Point(1134, 280);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(350, 22);
-            this.textBox8.TabIndex = 18;
+            this.checkBoxPrFlag.AutoSize = true;
+            this.checkBoxPrFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxPrFlag.Location = new System.Drawing.Point(19, 134);
+            this.checkBoxPrFlag.Name = "checkBoxPrFlag";
+            this.checkBoxPrFlag.Size = new System.Drawing.Size(176, 28);
+            this.checkBoxPrFlag.TabIndex = 16;
+            this.checkBoxPrFlag.Text = "商品管理フラグ";
+            this.checkBoxPrFlag.UseVisualStyleBackColor = true;
             // 
-            // textBox9
+            // labelMName
             // 
-            this.textBox9.Location = new System.Drawing.Point(1134, 364);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(350, 22);
-            this.textBox9.TabIndex = 19;
+            this.labelMName.AutoSize = true;
+            this.labelMName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMName.Location = new System.Drawing.Point(230, 22);
+            this.labelMName.Name = "labelMName";
+            this.labelMName.Size = new System.Drawing.Size(108, 24);
+            this.labelMName.TabIndex = 3;
+            this.labelMName.Text = "メーカー名";
             // 
-            // textBox10
+            // textBoxPrSafetyStock
             // 
-            this.textBox10.Location = new System.Drawing.Point(146, 458);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(978, 22);
-            this.textBox10.TabIndex = 20;
+            this.textBoxPrSafetyStock.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrSafetyStock.Location = new System.Drawing.Point(1340, 21);
+            this.textBoxPrSafetyStock.Name = "textBoxPrSafetyStock";
+            this.textBoxPrSafetyStock.Size = new System.Drawing.Size(150, 28);
+            this.textBoxPrSafetyStock.TabIndex = 14;
+            this.textBoxPrSafetyStock.Text = "0123456789012";
+            this.textBoxPrSafetyStock.TextChanged += new System.EventHandler(this.textBoxClFAX_TextChanged);
             // 
-            // dataGridView1
+            // labelMaker
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(194, 544);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(918, 216);
-            this.dataGridView1.TabIndex = 21;
+            this.labelMaker.AutoSize = true;
+            this.labelMaker.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMaker.Location = new System.Drawing.Point(568, 22);
+            this.labelMaker.Name = "labelMaker";
+            this.labelMaker.Size = new System.Drawing.Size(82, 24);
+            this.labelMaker.TabIndex = 5;
+            this.labelMaker.Text = "商品名";
             // 
-            // button1
+            // labelPrSafetyStock
             // 
-            this.button1.Location = new System.Drawing.Point(240, 139);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelPrSafetyStock.AutoSize = true;
+            this.labelPrSafetyStock.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrSafetyStock.Location = new System.Drawing.Point(1204, 22);
+            this.labelPrSafetyStock.Name = "labelPrSafetyStock";
+            this.labelPrSafetyStock.Size = new System.Drawing.Size(130, 24);
+            this.labelPrSafetyStock.TabIndex = 13;
+            this.labelPrSafetyStock.Text = "安全在庫数";
             // 
-            // bu
+            // textBoxPrName
             // 
-            this.bu.Location = new System.Drawing.Point(592, 139);
-            this.bu.Name = "bu";
-            this.bu.Size = new System.Drawing.Size(75, 23);
-            this.bu.TabIndex = 23;
-            this.bu.Text = "検索";
-            this.bu.UseVisualStyleBackColor = true;
+            this.textBoxPrName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrName.Location = new System.Drawing.Point(656, 22);
+            this.textBoxPrName.Name = "textBoxPrName";
+            this.textBoxPrName.Size = new System.Drawing.Size(199, 28);
+            this.textBoxPrName.TabIndex = 6;
             // 
-            // button3
+            // textBoxPrModelNumber
             // 
-            this.button3.Location = new System.Drawing.Point(938, 139);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.textBoxPrModelNumber.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrModelNumber.Location = new System.Drawing.Point(499, 81);
+            this.textBoxPrModelNumber.Name = "textBoxPrModelNumber";
+            this.textBoxPrModelNumber.Size = new System.Drawing.Size(267, 28);
+            this.textBoxPrModelNumber.TabIndex = 12;
+            this.textBoxPrModelNumber.Text = "0123456";
+            // 
+            // labelColor
+            // 
+            this.labelColor.AutoSize = true;
+            this.labelColor.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelColor.Location = new System.Drawing.Point(850, 83);
+            this.labelColor.Name = "labelColor";
+            this.labelColor.Size = new System.Drawing.Size(34, 24);
+            this.labelColor.TabIndex = 7;
+            this.labelColor.Text = "色";
+            // 
+            // labelPrModelNumber
+            // 
+            this.labelPrModelNumber.AutoSize = true;
+            this.labelPrModelNumber.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrModelNumber.Location = new System.Drawing.Point(384, 81);
+            this.labelPrModelNumber.Name = "labelPrModelNumber";
+            this.labelPrModelNumber.Size = new System.Drawing.Size(58, 24);
+            this.labelPrModelNumber.TabIndex = 11;
+            this.labelPrModelNumber.Text = "型番";
+            // 
+            // textBoxColor
+            // 
+            this.textBoxColor.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxColor.Location = new System.Drawing.Point(918, 79);
+            this.textBoxColor.Name = "textBoxColor";
+            this.textBoxColor.Size = new System.Drawing.Size(209, 28);
+            this.textBoxColor.TabIndex = 8;
+            // 
+            // textBoxJCode
+            // 
+            this.textBoxJCode.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxJCode.Location = new System.Drawing.Point(1006, 21);
+            this.textBoxJCode.Name = "textBoxJCode";
+            this.textBoxJCode.Size = new System.Drawing.Size(147, 28);
+            this.textBoxJCode.TabIndex = 10;
+            this.textBoxJCode.Text = "0123456789012";
+            // 
+            // labelJcode
+            // 
+            this.labelJcode.AutoSize = true;
+            this.labelJcode.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelJcode.Location = new System.Drawing.Point(894, 22);
+            this.labelJcode.Name = "labelJcode";
+            this.labelJcode.Size = new System.Drawing.Size(107, 24);
+            this.labelJcode.TabIndex = 9;
+            this.labelJcode.Text = "JANコード";
+            // 
+            // labelSc
+            // 
+            this.labelSc.AutoSize = true;
+            this.labelSc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSc.Location = new System.Drawing.Point(15, 81);
+            this.labelSc.Name = "labelSc";
+            this.labelSc.Size = new System.Drawing.Size(106, 24);
+            this.labelSc.TabIndex = 19;
+            this.labelSc.Text = "小分類名";
+            // 
+            // comboBoxSc
+            // 
+            this.comboBoxSc.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxSc.FormattingEnabled = true;
+            this.comboBoxSc.Location = new System.Drawing.Point(142, 81);
+            this.comboBoxSc.Name = "comboBoxSc";
+            this.comboBoxSc.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxSc.TabIndex = 20;
+            // 
+            // DateTimePickerPrReleaseDate
+            // 
+            this.DateTimePickerPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DateTimePickerPrReleaseDate.Location = new System.Drawing.Point(1288, 79);
+            this.DateTimePickerPrReleaseDate.Name = "DateTimePickerPrReleaseDate";
+            this.DateTimePickerPrReleaseDate.Size = new System.Drawing.Size(220, 30);
+            this.DateTimePickerPrReleaseDate.TabIndex = 21;
+            // 
+            // labelPrReleaseDate
+            // 
+            this.labelPrReleaseDate.AutoSize = true;
+            this.labelPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrReleaseDate.Location = new System.Drawing.Point(1170, 83);
+            this.labelPrReleaseDate.Name = "labelPrReleaseDate";
+            this.labelPrReleaseDate.Size = new System.Drawing.Size(82, 24);
+            this.labelPrReleaseDate.TabIndex = 22;
+            this.labelPrReleaseDate.Text = "発売日";
             // 
             // FormProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.bu);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelLeft);
+            this.Controls.Add(this.panelHeader);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormProduct";
-            this.Text = "Form1";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.FormProduct_Load);
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
+            this.panelLeft.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button bu;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelDay;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Button buttonSaisyou;
+        private System.Windows.Forms.Label labelClient;
+        private System.Windows.Forms.Button buttonFormDel;
+        private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonRegist;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox comboBoxMaker;
+        private System.Windows.Forms.TextBox textBoxPrID;
+        private System.Windows.Forms.Label labelPrHidden;
+        private System.Windows.Forms.TextBox textBoxPrHidden;
+        private System.Windows.Forms.Label labelPrID;
+        private System.Windows.Forms.CheckBox checkBoxPrFlag;
+        private System.Windows.Forms.Label labelMName;
+        private System.Windows.Forms.TextBox textBoxPrSafetyStock;
+        private System.Windows.Forms.Label labelMaker;
+        private System.Windows.Forms.Label labelPrSafetyStock;
+        private System.Windows.Forms.TextBox textBoxPrName;
+        private System.Windows.Forms.TextBox textBoxPrModelNumber;
+        private System.Windows.Forms.Label labelColor;
+        private System.Windows.Forms.Label labelPrModelNumber;
+        private System.Windows.Forms.TextBox textBoxColor;
+        private System.Windows.Forms.TextBox textBoxJCode;
+        private System.Windows.Forms.Label labelJcode;
+        private System.Windows.Forms.Label labelSc;
+        private System.Windows.Forms.ComboBox comboBoxSc;
+        private System.Windows.Forms.Label labelPrReleaseDate;
+        private System.Windows.Forms.DateTimePicker DateTimePickerPrReleaseDate;
     }
 }

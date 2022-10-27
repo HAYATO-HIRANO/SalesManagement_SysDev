@@ -16,5 +16,15 @@ namespace SalesManagement_SysDev
         {
             InitializeComponent();
         }
+
+        private void textBoxClFAX_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormProduct_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
