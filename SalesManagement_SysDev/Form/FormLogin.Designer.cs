@@ -130,6 +130,7 @@
             this.buttonClose.TabIndex = 9;
             this.buttonClose.Text = "閉じる";
             this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // FormLogin
             // 
