@@ -15,6 +15,7 @@ namespace SalesManagement_SysDev
         public DbSet<M_Employee> M_Employees { get; set; }
         public DbSet<M_MajorCassification> M_MajorCassifications { get; set; }
         public DbSet<M_Maker> M_Makers { get; set; }
+        public DbSet<M_Message> M_Messages { get; set; }
         public DbSet<M_Position> M_Positions { get; set; }
         public DbSet<M_Product> M_Products { get; set; }
         public DbSet<M_SalesOffice> M_SalesOffices { get; set; }
@@ -38,5 +39,6 @@ namespace SalesManagement_SysDev
         public DbSet<T_SyukkoDetail> T_SyukkoDetails { get; set; }
         public DbSet<T_Warehousing> T_Warehousings { get; set; }
         public DbSet<T_WarehousingDetail> T_WarehousingDetails { get; set; }
+        
     }
 }
