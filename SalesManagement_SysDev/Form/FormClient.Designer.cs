@@ -31,7 +31,7 @@ namespace SalesManagement_SysDev
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.label = new System.Windows.Forms.Label();
+            this.labelAuthority = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
@@ -84,7 +84,7 @@ namespace SalesManagement_SysDev
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
-            this.panelHeader.Controls.Add(this.label);
+            this.panelHeader.Controls.Add(this.labelAuthority);
             this.panelHeader.Controls.Add(this.labelUserName);
             this.panelHeader.Controls.Add(this.labelDay);
             this.panelHeader.Controls.Add(this.labelTime);
@@ -98,16 +98,16 @@ namespace SalesManagement_SysDev
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
             this.panelHeader.TabIndex = 2;
             // 
-            // label
+            // labelAuthority
             // 
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label.ForeColor = System.Drawing.Color.White;
-            this.label.Location = new System.Drawing.Point(914, 59);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(51, 16);
-            this.label.TabIndex = 11;
-            this.label.Text = "権限：";
+            this.labelAuthority.AutoSize = true;
+            this.labelAuthority.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelAuthority.ForeColor = System.Drawing.Color.White;
+            this.labelAuthority.Location = new System.Drawing.Point(914, 59);
+            this.labelAuthority.Name = "labelAuthority";
+            this.labelAuthority.Size = new System.Drawing.Size(51, 16);
+            this.labelAuthority.TabIndex = 11;
+            this.labelAuthority.Text = "権限：";
             // 
             // labelUserName
             // 
@@ -498,7 +498,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelAuthority;
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
