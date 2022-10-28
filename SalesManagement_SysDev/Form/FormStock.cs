@@ -16,5 +16,10 @@ namespace SalesManagement_SysDev
         {
             InitializeComponent();
         }
+
+        private void labelClient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

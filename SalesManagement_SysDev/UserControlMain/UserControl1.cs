@@ -16,5 +16,16 @@ namespace SalesManagement_SysDev.UserControlMain
         {
             InitializeComponent();
         }
+
+        private void buttonClient_Click(object sender, EventArgs e)
+        {
+            FormClient formclient = new FormClient();
+            formclient.Show();
+        }
+
+        private void buttonEmployee_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

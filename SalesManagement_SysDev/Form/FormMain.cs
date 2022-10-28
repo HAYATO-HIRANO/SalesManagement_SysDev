@@ -21,7 +21,12 @@ namespace SalesManagement_SysDev
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            userControl11.Visible = false;
+            userControl21.Visible = false;
+            userControl31.Visible = false;
+            //日時の表示
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,8 +42,39 @@ namespace SalesManagement_SysDev
 
         private void buttonHonbu_Click(object sender, EventArgs e)
         {
-
+            userControl21.Visible = false;
+            userControl31.Visible = false;
             userControl11.Visible = true;
+        }
+
+        private void buttonHinagata_Click(object sender, EventArgs e)
+        {
+            FormHinagata form = new FormHinagata();
+            form.Show();
+        }
+
+        private void buttonSaisyou_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void labelDay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEigyou_Click(object sender, EventArgs e)
+        {
+            userControl21.Visible = true;
+            userControl31.Visible = false;
+            userControl11.Visible = false;
+        }
+
+        private void buttonButuryu_Click(object sender, EventArgs e)
+        {
+            userControl21.Visible = false;
+            userControl31.Visible = true;
+            userControl11.Visible = false;
         }
     }
 }

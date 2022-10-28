@@ -44,6 +44,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonEmployee.TabIndex = 0;
             this.buttonEmployee.Text = "社員管理";
             this.buttonEmployee.UseVisualStyleBackColor = false;
+            this.buttonEmployee.Click += new System.EventHandler(this.buttonEmployee_Click);
             // 
             // buttonClient
             // 
@@ -55,6 +56,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonClient.TabIndex = 1;
             this.buttonClient.Text = "顧客管理";
             this.buttonClient.UseVisualStyleBackColor = false;
+            this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
             // buttonSale
             // 

@@ -16,5 +16,15 @@ namespace SalesManagement_SysDev
         {
             InitializeComponent();
         }
+
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSaisyou_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

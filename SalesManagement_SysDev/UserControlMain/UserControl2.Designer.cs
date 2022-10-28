@@ -29,52 +29,52 @@ namespace SalesManagement_SysDev.UserControlMain
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonSale = new System.Windows.Forms.Button();
-            this.buttonClient = new System.Windows.Forms.Button();
-            this.buttonEmployee = new System.Windows.Forms.Button();
+            this.buttonShipment = new System.Windows.Forms.Button();
+            this.buttonArrival = new System.Windows.Forms.Button();
+            this.buttonOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // buttonSale
+            // buttonShipment
             // 
-            this.buttonSale.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonSale.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSale.Location = new System.Drawing.Point(175, 704);
-            this.buttonSale.Name = "buttonSale";
-            this.buttonSale.Size = new System.Drawing.Size(1331, 206);
-            this.buttonSale.TabIndex = 5;
-            this.buttonSale.Text = "出荷管理";
-            this.buttonSale.UseVisualStyleBackColor = false;
+            this.buttonShipment.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonShipment.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonShipment.Location = new System.Drawing.Point(175, 704);
+            this.buttonShipment.Name = "buttonShipment";
+            this.buttonShipment.Size = new System.Drawing.Size(1331, 206);
+            this.buttonShipment.TabIndex = 5;
+            this.buttonShipment.Text = "出荷管理";
+            this.buttonShipment.UseVisualStyleBackColor = false;
             // 
-            // buttonClient
+            // buttonArrival
             // 
-            this.buttonClient.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonClient.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClient.Location = new System.Drawing.Point(175, 397);
-            this.buttonClient.Name = "buttonClient";
-            this.buttonClient.Size = new System.Drawing.Size(1331, 206);
-            this.buttonClient.TabIndex = 4;
-            this.buttonClient.Text = "入荷管理";
-            this.buttonClient.UseVisualStyleBackColor = false;
+            this.buttonArrival.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonArrival.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonArrival.Location = new System.Drawing.Point(175, 397);
+            this.buttonArrival.Name = "buttonArrival";
+            this.buttonArrival.Size = new System.Drawing.Size(1331, 206);
+            this.buttonArrival.TabIndex = 4;
+            this.buttonArrival.Text = "入荷管理";
+            this.buttonArrival.UseVisualStyleBackColor = false;
             // 
-            // buttonEmployee
+            // buttonOrder
             // 
-            this.buttonEmployee.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.buttonEmployee.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonEmployee.Location = new System.Drawing.Point(175, 104);
-            this.buttonEmployee.Name = "buttonEmployee";
-            this.buttonEmployee.Size = new System.Drawing.Size(1331, 206);
-            this.buttonEmployee.TabIndex = 3;
-            this.buttonEmployee.Text = "受注管理";
-            this.buttonEmployee.UseVisualStyleBackColor = false;
+            this.buttonOrder.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonOrder.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonOrder.Location = new System.Drawing.Point(175, 104);
+            this.buttonOrder.Name = "buttonOrder";
+            this.buttonOrder.Size = new System.Drawing.Size(1331, 206);
+            this.buttonOrder.TabIndex = 3;
+            this.buttonOrder.Text = "受注管理";
+            this.buttonOrder.UseVisualStyleBackColor = false;
             // 
             // UserControl2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.Controls.Add(this.buttonSale);
-            this.Controls.Add(this.buttonClient);
-            this.Controls.Add(this.buttonEmployee);
+            this.Controls.Add(this.buttonShipment);
+            this.Controls.Add(this.buttonArrival);
+            this.Controls.Add(this.buttonOrder);
             this.Name = "UserControl2";
             this.Size = new System.Drawing.Size(1670, 980);
             this.ResumeLayout(false);
@@ -83,8 +83,8 @@ namespace SalesManagement_SysDev.UserControlMain
 
         #endregion
 
-        private System.Windows.Forms.Button buttonSale;
-        private System.Windows.Forms.Button buttonClient;
-        private System.Windows.Forms.Button buttonEmployee;
+        private System.Windows.Forms.Button buttonShipment;
+        private System.Windows.Forms.Button buttonArrival;
+        private System.Windows.Forms.Button buttonOrder;
     }
 }

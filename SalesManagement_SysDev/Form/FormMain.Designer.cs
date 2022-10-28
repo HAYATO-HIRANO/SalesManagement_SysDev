@@ -29,72 +29,77 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.label = new System.Windows.Forms.Label();
+            this.labelUserName = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.buttonSaisyou = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonHinagata = new System.Windows.Forms.Button();
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
-            this.panel1.SuspendLayout();
+            this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControl2();
+            this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControl3();
+            this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelHeader
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.labelDay);
-            this.panel1.Controls.Add(this.labelTime);
-            this.panel1.Controls.Add(this.buttonSaisyou);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.buttonFormDel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 100);
-            this.panel1.TabIndex = 1;
+            this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
+            this.panelHeader.Controls.Add(this.label);
+            this.panelHeader.Controls.Add(this.labelUserName);
+            this.panelHeader.Controls.Add(this.labelDay);
+            this.panelHeader.Controls.Add(this.labelTime);
+            this.panelHeader.Controls.Add(this.buttonSaisyou);
+            this.panelHeader.Controls.Add(this.label1);
+            this.panelHeader.Controls.Add(this.buttonFormDel);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1920, 100);
+            this.panelHeader.TabIndex = 1;
             // 
-            // label3
+            // label
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(914, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 16);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "権限：";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label.ForeColor = System.Drawing.Color.White;
+            this.label.Location = new System.Drawing.Point(914, 59);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(51, 16);
+            this.label.TabIndex = 11;
+            this.label.Text = "権限：";
             // 
-            // label2
+            // labelUserName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(875, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "ユーザー名：";
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserName.ForeColor = System.Drawing.Color.White;
+            this.labelUserName.Location = new System.Drawing.Point(875, 21);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(90, 16);
+            this.labelUserName.TabIndex = 10;
+            this.labelUserName.Text = "ユーザー名：";
             // 
             // labelDay
             // 
             this.labelDay.AutoSize = true;
             this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelDay.ForeColor = System.Drawing.Color.White;
-            this.labelDay.Location = new System.Drawing.Point(1350, 2);
+            this.labelDay.Location = new System.Drawing.Point(1344, 2);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(252, 35);
             this.labelDay.TabIndex = 9;
             this.labelDay.Text = "2022/10/10(月)";
+            this.labelDay.Click += new System.EventHandler(this.labelDay_Click);
             // 
             // labelTime
             // 
@@ -119,6 +124,7 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou.TabIndex = 7;
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
+            this.buttonSaisyou.Click += new System.EventHandler(this.buttonSaisyou_Click);
             // 
             // label1
             // 
@@ -147,6 +153,8 @@ namespace SalesManagement_SysDev
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel2.Controls.Add(this.buttonLogout);
+            this.panel2.Controls.Add(this.buttonHinagata);
             this.panel2.Controls.Add(this.buttonEigyou);
             this.panel2.Controls.Add(this.buttonButuryu);
             this.panel2.Controls.Add(this.buttonHonbu);
@@ -156,6 +164,16 @@ namespace SalesManagement_SysDev
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 980);
             this.panel2.TabIndex = 2;
+            // 
+            // buttonHinagata
+            // 
+            this.buttonHinagata.Location = new System.Drawing.Point(29, 459);
+            this.buttonHinagata.Name = "buttonHinagata";
+            this.buttonHinagata.Size = new System.Drawing.Size(176, 86);
+            this.buttonHinagata.TabIndex = 3;
+            this.buttonHinagata.Text = "ひな形";
+            this.buttonHinagata.UseVisualStyleBackColor = true;
+            this.buttonHinagata.Click += new System.EventHandler(this.buttonHinagata_Click);
             // 
             // buttonEigyou
             // 
@@ -168,6 +186,7 @@ namespace SalesManagement_SysDev
             this.buttonEigyou.TabIndex = 2;
             this.buttonEigyou.Text = "営業";
             this.buttonEigyou.UseVisualStyleBackColor = false;
+            this.buttonEigyou.Click += new System.EventHandler(this.buttonEigyou_Click);
             // 
             // buttonButuryu
             // 
@@ -180,6 +199,7 @@ namespace SalesManagement_SysDev
             this.buttonButuryu.TabIndex = 1;
             this.buttonButuryu.Text = "物流";
             this.buttonButuryu.UseVisualStyleBackColor = false;
+            this.buttonButuryu.Click += new System.EventHandler(this.buttonButuryu_Click);
             // 
             // buttonHonbu
             // 
@@ -194,14 +214,43 @@ namespace SalesManagement_SysDev
             this.buttonHonbu.UseVisualStyleBackColor = false;
             this.buttonHonbu.Click += new System.EventHandler(this.buttonHonbu_Click);
             // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 4;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            // 
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.Honeydew;
-            this.userControl11.Location = new System.Drawing.Point(250, 101);
+            this.userControl11.Location = new System.Drawing.Point(250, 100);
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(1670, 980);
             this.userControl11.TabIndex = 3;
             this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            // 
+            // userControl21
+            // 
+            this.userControl21.BackColor = System.Drawing.Color.Honeydew;
+            this.userControl21.Location = new System.Drawing.Point(250, 100);
+            this.userControl21.Name = "userControl21";
+            this.userControl21.Size = new System.Drawing.Size(1670, 980);
+            this.userControl21.TabIndex = 4;
+            // 
+            // userControl31
+            // 
+            this.userControl31.BackColor = System.Drawing.Color.Honeydew;
+            this.userControl31.Location = new System.Drawing.Point(250, 100);
+            this.userControl31.Name = "userControl31";
+            this.userControl31.Size = new System.Drawing.Size(1670, 980);
+            this.userControl31.TabIndex = 5;
             // 
             // FormMain
             // 
@@ -209,15 +258,17 @@ namespace SalesManagement_SysDev
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.userControl21);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.userControl31);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -225,9 +276,9 @@ namespace SalesManagement_SysDev
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Button buttonSaisyou;
@@ -238,5 +289,9 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonButuryu;
         private System.Windows.Forms.Button buttonHonbu;
         private UserControlMain.UserControl1 userControl11;
+        private UserControlMain.UserControl2 userControl21;
+        private UserControlMain.UserControl3 userControl31;
+        private System.Windows.Forms.Button buttonHinagata;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }
