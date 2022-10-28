@@ -37,6 +37,7 @@
             this.textBoxEmPassword = new System.Windows.Forms.TextBox();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.btn_CleateDabase = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(25, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(372, 24);
+            this.label1.Size = new System.Drawing.Size(552, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "販売在庫管理システム - ログイン - ";
             // 
@@ -80,7 +81,7 @@
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(184, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 15);
+            this.label2.Size = new System.Drawing.Size(77, 22);
             this.label2.TabIndex = 4;
             this.label2.Text = "社員ID";
             // 
@@ -90,7 +91,7 @@
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(164, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
+            this.label3.Size = new System.Drawing.Size(101, 22);
             this.label3.TabIndex = 5;
             this.label3.Text = "パスワード";
             // 
@@ -98,7 +99,7 @@
             // 
             this.textBoxEmID.Location = new System.Drawing.Point(258, 143);
             this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(168, 19);
+            this.textBoxEmID.Size = new System.Drawing.Size(168, 25);
             this.textBoxEmID.TabIndex = 6;
             // 
             // textBoxEmPassword
@@ -106,7 +107,7 @@
             this.textBoxEmPassword.Location = new System.Drawing.Point(258, 197);
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.PasswordChar = '●';
-            this.textBoxEmPassword.Size = new System.Drawing.Size(168, 19);
+            this.textBoxEmPassword.Size = new System.Drawing.Size(168, 25);
             this.textBoxEmPassword.TabIndex = 10;
             // 
             // buttonLogin
@@ -132,11 +133,22 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // btn_CleateDabase
+            // 
+            this.btn_CleateDabase.Location = new System.Drawing.Point(573, 301);
+            this.btn_CleateDabase.Name = "btn_CleateDabase";
+            this.btn_CleateDabase.Size = new System.Drawing.Size(75, 23);
+            this.btn_CleateDabase.TabIndex = 11;
+            this.btn_CleateDabase.Text = "button2";
+            this.btn_CleateDabase.UseVisualStyleBackColor = true;
+            this.btn_CleateDabase.Click += new System.EventHandler(this.btn_CleateDabase_Click_1);
+            // 
             // FormLogin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(714, 452);
+            this.Controls.Add(this.btn_CleateDabase);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxEmPassword);
@@ -166,6 +178,7 @@
         private System.Windows.Forms.TextBox textBoxEmPassword;
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Button btn_CleateDabase;
     }
 }
 
