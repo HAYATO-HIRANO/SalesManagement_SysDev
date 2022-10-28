@@ -64,9 +64,11 @@ namespace SalesManagement_SysDev
             this.comboBoxSc = new System.Windows.Forms.ComboBox();
             this.DateTimePickerPrReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.labelPrReleaseDate = new System.Windows.Forms.Label();
+            this.dataGridViewPr = new System.Windows.Forms.DataGridView();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPr)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -150,9 +152,9 @@ namespace SalesManagement_SysDev
             this.labelClient.ForeColor = System.Drawing.Color.White;
             this.labelClient.Location = new System.Drawing.Point(297, 20);
             this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(235, 53);
+            this.labelClient.Size = new System.Drawing.Size(394, 53);
             this.labelClient.TabIndex = 1;
-            this.labelClient.Text = "商品管理";
+            this.labelClient.Text = "商品マスタ管理";
             // 
             // buttonFormDel
             // 
@@ -458,11 +460,21 @@ namespace SalesManagement_SysDev
             this.labelPrReleaseDate.TabIndex = 22;
             this.labelPrReleaseDate.Text = "発売日";
             // 
+            // dataGridViewPr
+            // 
+            this.dataGridViewPr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPr.Location = new System.Drawing.Point(309, 406);
+            this.dataGridViewPr.Name = "dataGridViewPr";
+            this.dataGridViewPr.RowTemplate.Height = 21;
+            this.dataGridViewPr.Size = new System.Drawing.Size(1549, 630);
+            this.dataGridViewPr.TabIndex = 28;
+            // 
             // FormProduct
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.dataGridViewPr);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelHeader);
@@ -476,6 +488,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -516,5 +529,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.ComboBox comboBoxSc;
         private System.Windows.Forms.Label labelPrReleaseDate;
         private System.Windows.Forms.DateTimePicker DateTimePickerPrReleaseDate;
+        private System.Windows.Forms.DataGridView dataGridViewPr;
     }
 }

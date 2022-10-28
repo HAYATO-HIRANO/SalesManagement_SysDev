@@ -442,7 +442,7 @@ namespace SalesManagement_SysDev
             // dataGridViewClient
             // 
             this.dataGridViewClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClient.Location = new System.Drawing.Point(306, 450);
+            this.dataGridViewClient.Location = new System.Drawing.Point(306, 412);
             this.dataGridViewClient.Name = "dataGridViewClient";
             this.dataGridViewClient.RowTemplate.Height = 21;
             this.dataGridViewClient.Size = new System.Drawing.Size(1552, 580);
