@@ -43,6 +43,10 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelPrReleaseDate = new System.Windows.Forms.Label();
+            this.DateTimePickerPrReleaseDate = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxSc = new System.Windows.Forms.ComboBox();
+            this.labelSc = new System.Windows.Forms.Label();
             this.comboBoxMaker = new System.Windows.Forms.ComboBox();
             this.textBoxPrID = new System.Windows.Forms.TextBox();
             this.labelPrHidden = new System.Windows.Forms.Label();
@@ -60,10 +64,6 @@ namespace SalesManagement_SysDev
             this.textBoxColor = new System.Windows.Forms.TextBox();
             this.textBoxJCode = new System.Windows.Forms.TextBox();
             this.labelJcode = new System.Windows.Forms.Label();
-            this.labelSc = new System.Windows.Forms.Label();
-            this.comboBoxSc = new System.Windows.Forms.ComboBox();
-            this.DateTimePickerPrReleaseDate = new System.Windows.Forms.DateTimePicker();
-            this.labelPrReleaseDate = new System.Windows.Forms.Label();
             this.dataGridViewPr = new System.Windows.Forms.DataGridView();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -260,6 +260,43 @@ namespace SalesManagement_SysDev
             this.panel4.Size = new System.Drawing.Size(1552, 230);
             this.panel4.TabIndex = 27;
             // 
+            // labelPrReleaseDate
+            // 
+            this.labelPrReleaseDate.AutoSize = true;
+            this.labelPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrReleaseDate.Location = new System.Drawing.Point(1170, 83);
+            this.labelPrReleaseDate.Name = "labelPrReleaseDate";
+            this.labelPrReleaseDate.Size = new System.Drawing.Size(82, 24);
+            this.labelPrReleaseDate.TabIndex = 22;
+            this.labelPrReleaseDate.Text = "発売日";
+            // 
+            // DateTimePickerPrReleaseDate
+            // 
+            this.DateTimePickerPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DateTimePickerPrReleaseDate.Location = new System.Drawing.Point(1288, 79);
+            this.DateTimePickerPrReleaseDate.Name = "DateTimePickerPrReleaseDate";
+            this.DateTimePickerPrReleaseDate.Size = new System.Drawing.Size(220, 30);
+            this.DateTimePickerPrReleaseDate.TabIndex = 21;
+            // 
+            // comboBoxSc
+            // 
+            this.comboBoxSc.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxSc.FormattingEnabled = true;
+            this.comboBoxSc.Location = new System.Drawing.Point(142, 81);
+            this.comboBoxSc.Name = "comboBoxSc";
+            this.comboBoxSc.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxSc.TabIndex = 20;
+            // 
+            // labelSc
+            // 
+            this.labelSc.AutoSize = true;
+            this.labelSc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSc.Location = new System.Drawing.Point(15, 81);
+            this.labelSc.Name = "labelSc";
+            this.labelSc.Size = new System.Drawing.Size(106, 24);
+            this.labelSc.TabIndex = 19;
+            this.labelSc.Text = "小分類名";
+            // 
             // comboBoxMaker
             // 
             this.comboBoxMaker.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -423,47 +460,10 @@ namespace SalesManagement_SysDev
             this.labelJcode.TabIndex = 9;
             this.labelJcode.Text = "JANコード";
             // 
-            // labelSc
-            // 
-            this.labelSc.AutoSize = true;
-            this.labelSc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSc.Location = new System.Drawing.Point(15, 81);
-            this.labelSc.Name = "labelSc";
-            this.labelSc.Size = new System.Drawing.Size(106, 24);
-            this.labelSc.TabIndex = 19;
-            this.labelSc.Text = "小分類名";
-            // 
-            // comboBoxSc
-            // 
-            this.comboBoxSc.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxSc.FormattingEnabled = true;
-            this.comboBoxSc.Location = new System.Drawing.Point(142, 81);
-            this.comboBoxSc.Name = "comboBoxSc";
-            this.comboBoxSc.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxSc.TabIndex = 20;
-            // 
-            // DateTimePickerPrReleaseDate
-            // 
-            this.DateTimePickerPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateTimePickerPrReleaseDate.Location = new System.Drawing.Point(1288, 79);
-            this.DateTimePickerPrReleaseDate.Name = "DateTimePickerPrReleaseDate";
-            this.DateTimePickerPrReleaseDate.Size = new System.Drawing.Size(220, 30);
-            this.DateTimePickerPrReleaseDate.TabIndex = 21;
-            // 
-            // labelPrReleaseDate
-            // 
-            this.labelPrReleaseDate.AutoSize = true;
-            this.labelPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPrReleaseDate.Location = new System.Drawing.Point(1170, 83);
-            this.labelPrReleaseDate.Name = "labelPrReleaseDate";
-            this.labelPrReleaseDate.Size = new System.Drawing.Size(82, 24);
-            this.labelPrReleaseDate.TabIndex = 22;
-            this.labelPrReleaseDate.Text = "発売日";
-            // 
             // dataGridViewPr
             // 
             this.dataGridViewPr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPr.Location = new System.Drawing.Point(309, 406);
+            this.dataGridViewPr.Location = new System.Drawing.Point(309, 411);
             this.dataGridViewPr.Name = "dataGridViewPr";
             this.dataGridViewPr.RowTemplate.Height = 21;
             this.dataGridViewPr.Size = new System.Drawing.Size(1549, 630);
@@ -479,7 +479,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FormProduct_Load);
