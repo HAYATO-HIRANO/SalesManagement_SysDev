@@ -115,7 +115,7 @@ namespace SalesManagement_SysDev
 
                 SqlConnectionStringBuilder bilder = new SqlConnectionStringBuilder();
 
-                bilder.DataSource = "(localdb)";
+                bilder.DataSource = "(local)";
                 bilder.InitialCatalog = "SalesManagement_SysDev";
                 bilder.UserID = "user1";
                 bilder.Password = "pass";
