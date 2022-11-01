@@ -43,28 +43,28 @@ namespace SalesManagement_SysDev//.Common
         public string MsgId { get; set; }           //メッセージID
 
         [Required]
-        [MaxLength]
+        [MaxLength(4000)]
         [Column("MsgComments", TypeName = "nvarchar", Order = 1)]
         [DisplayName("メッセージ内容")]
         public string MsgComments { get; set; }      //メッセージ内容
 
         [Required]
-        [MaxLength]
+        [MaxLength(4000)]
         [Column("MsgTitle", TypeName = "nvarchar", Order = 2)]
         [DisplayName("メッセージタイトル")]
-        public string MsgTitle { get; set; }         //
+        public string MsgTitle { get; set; }         //メッセージタイトル
 
         [Required]
         [Column("MsgButton", TypeName = "int", Order = 3)]
         [DisplayName("メッセージボタン")]
-        public int MsgButton { get; set; }
+        public int MsgButton { get; set; }          //メッセージボタン
 
         [Required]
         [Column("MsgICon", TypeName = "int", Order = 4)]
         [DisplayName("メッセージアイコン")]
-        public int MsgICon { get; set; }
+        public int MsgICon { get; set; }            //メッセージアイコン
 
-       
+
 
 
     }
