@@ -60,13 +60,13 @@ namespace SalesManagement_SysDev
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelInput = new System.Windows.Forms.Panel();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.dataGridViewClient = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
             this.SuspendLayout();
             // 
@@ -405,30 +405,30 @@ namespace SalesManagement_SysDev
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
             // 
-            // panel4
+            // panelInput
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel4.Controls.Add(this.comboBoxSoID);
-            this.panel4.Controls.Add(this.textBoxClID);
-            this.panel4.Controls.Add(this.labelHidden);
-            this.panel4.Controls.Add(this.textBoxClHidden);
-            this.panel4.Controls.Add(this.labelClID);
-            this.panel4.Controls.Add(this.checkBoxClFlag);
-            this.panel4.Controls.Add(this.labelSoID);
-            this.panel4.Controls.Add(this.textBoxClFAX);
-            this.panel4.Controls.Add(this.labelClName);
-            this.panel4.Controls.Add(this.labelFAX);
-            this.panel4.Controls.Add(this.textBoxClName);
-            this.panel4.Controls.Add(this.textBoxClpostal);
-            this.panel4.Controls.Add(this.labelAddress);
-            this.panel4.Controls.Add(this.labelPostal);
-            this.panel4.Controls.Add(this.textBoxClAddres);
-            this.panel4.Controls.Add(this.textBoxClphone);
-            this.panel4.Controls.Add(this.labelPhone);
-            this.panel4.Location = new System.Drawing.Point(306, 131);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1552, 230);
-            this.panel4.TabIndex = 25;
+            this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.comboBoxSoID);
+            this.panelInput.Controls.Add(this.textBoxClID);
+            this.panelInput.Controls.Add(this.labelHidden);
+            this.panelInput.Controls.Add(this.textBoxClHidden);
+            this.panelInput.Controls.Add(this.labelClID);
+            this.panelInput.Controls.Add(this.checkBoxClFlag);
+            this.panelInput.Controls.Add(this.labelSoID);
+            this.panelInput.Controls.Add(this.textBoxClFAX);
+            this.panelInput.Controls.Add(this.labelClName);
+            this.panelInput.Controls.Add(this.labelFAX);
+            this.panelInput.Controls.Add(this.textBoxClName);
+            this.panelInput.Controls.Add(this.textBoxClpostal);
+            this.panelInput.Controls.Add(this.labelAddress);
+            this.panelInput.Controls.Add(this.labelPostal);
+            this.panelInput.Controls.Add(this.textBoxClAddres);
+            this.panelInput.Controls.Add(this.textBoxClphone);
+            this.panelInput.Controls.Add(this.labelPhone);
+            this.panelInput.Location = new System.Drawing.Point(306, 131);
+            this.panelInput.Name = "panelInput";
+            this.panelInput.Size = new System.Drawing.Size(1552, 230);
+            this.panelInput.TabIndex = 25;
             // 
             // comboBoxSoID
             // 
@@ -456,7 +456,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.dataGridViewClient);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -466,8 +466,8 @@ namespace SalesManagement_SysDev
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelLeft.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelInput.ResumeLayout(false);
+            this.panelInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).EndInit();
             this.ResumeLayout(false);
 
@@ -505,7 +505,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSaisyou;
         private System.Windows.Forms.Label labelClient;
         private System.Windows.Forms.Button buttonFormDel;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.DataGridView dataGridViewClient;
         private System.Windows.Forms.ComboBox comboBoxSoID;

@@ -1,7 +1,7 @@
 ﻿
 namespace SalesManagement_SysDev
 {
-    partial class FormHinagata
+    partial class FormOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,25 +42,16 @@ namespace SalesManagement_SysDev
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1.SuspendLayout();
+            this.labelOrID = new System.Windows.Forms.Label();
+            this.textBoxOrID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel1.Controls.Add(this.panelHeader);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 100);
-            this.panel1.TabIndex = 0;
             // 
             // panelHeader
             // 
@@ -78,7 +68,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
-            this.panelHeader.TabIndex = 2;
+            this.panelHeader.TabIndex = 3;
             // 
             // label3
             // 
@@ -136,7 +126,6 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou.TabIndex = 7;
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
-            this.buttonSaisyou.Click += new System.EventHandler(this.buttonSaisyou_Click);
             // 
             // label1
             // 
@@ -145,9 +134,9 @@ namespace SalesManagement_SysDev
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(297, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(447, 53);
+            this.label1.Size = new System.Drawing.Size(235, 53);
             this.label1.TabIndex = 1;
-            this.label1.Text = "販売管理システム";
+            this.label1.Text = "受注管理";
             // 
             // buttonFormDel
             // 
@@ -160,7 +149,6 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.TabIndex = 0;
             this.buttonFormDel.Text = "✕";
             this.buttonFormDel.UseVisualStyleBackColor = false;
-            this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click);
             // 
             // panelLeft
             // 
@@ -174,8 +162,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
-            this.panelLeft.TabIndex = 3;
-            this.panelLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLeft_Paint);
+            this.panelLeft.TabIndex = 4;
             // 
             // buttonLogout
             // 
@@ -226,25 +213,16 @@ namespace SalesManagement_SysDev
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(24, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 24);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.textBoxOrID);
+            this.panel4.Controls.Add(this.labelOrID);
             this.panel4.Location = new System.Drawing.Point(311, 143);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1552, 169);
-            this.panel4.TabIndex = 5;
+            this.panel4.TabIndex = 6;
             // 
             // dataGridView1
             // 
@@ -253,22 +231,52 @@ namespace SalesManagement_SysDev
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.TabIndex = 7;
             // 
-            // FormHinagata
+            // labelOrID
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.labelOrID.AutoSize = true;
+            this.labelOrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOrID.Location = new System.Drawing.Point(13, 15);
+            this.labelOrID.Name = "labelOrID";
+            this.labelOrID.Size = new System.Drawing.Size(80, 24);
+            this.labelOrID.TabIndex = 0;
+            this.labelOrID.Text = "受注ID";
+            // 
+            // textBoxOrID
+            // 
+            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrID.Location = new System.Drawing.Point(99, 13);
+            this.textBoxOrID.Name = "textBoxOrID";
+            this.textBoxOrID.Size = new System.Drawing.Size(84, 28);
+            this.textBoxOrID.TabIndex = 1;
+            this.textBoxOrID.Text = "123456";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label4.Location = new System.Drawing.Point(233, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 24);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "受注ID";
+            // 
+            // FormOrder
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panelLeft);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelLeft);
+            this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormHinagata";
+            this.Name = "FormOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormHinagata";
-            this.panel1.ResumeLayout(false);
+            this.Text = "FormOrder";
+            this.Load += new System.EventHandler(this.FormOrder_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelLeft.ResumeLayout(false);
@@ -281,11 +289,6 @@ namespace SalesManagement_SysDev
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panelLeft;
-        private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -294,9 +297,15 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSaisyou;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonFormDel;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.TextBox textBoxOrID;
+        private System.Windows.Forms.Label labelOrID;
+        private System.Windows.Forms.Label label4;
     }
 }

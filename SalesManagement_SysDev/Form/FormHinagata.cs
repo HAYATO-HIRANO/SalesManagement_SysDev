@@ -26,5 +26,10 @@ namespace SalesManagement_SysDev
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void panelLeft_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
