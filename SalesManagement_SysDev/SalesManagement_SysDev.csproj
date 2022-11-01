@@ -189,6 +189,9 @@
     <EmbeddedResource Include="Form\FormHinagata.resx">
       <DependentUpon>FormHinagata.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormOrder.resx">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>
     </EmbeddedResource>
