@@ -43,8 +43,17 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelEmID = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.labelEmName = new System.Windows.Forms.Label();
+            this.labelSoID = new System.Windows.Forms.Label();
+            this.labelPoID = new System.Windows.Forms.Label();
+            this.labelHiredate = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.labelHidden = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBoxEmID = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -132,9 +141,9 @@ namespace SalesManagement_SysDev
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(297, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(447, 53);
+            this.label1.Size = new System.Drawing.Size(235, 53);
             this.label1.TabIndex = 1;
-            this.label1.Text = "販売管理システム";
+            this.label1.Text = "社員管理";
             // 
             // buttonFormDel
             // 
@@ -214,22 +223,31 @@ namespace SalesManagement_SysDev
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.textBoxEmID);
+            this.panel4.Controls.Add(this.checkBox1);
+            this.panel4.Controls.Add(this.labelHidden);
+            this.panel4.Controls.Add(this.labelPhone);
+            this.panel4.Controls.Add(this.labelPassword);
+            this.panel4.Controls.Add(this.labelHiredate);
+            this.panel4.Controls.Add(this.labelPoID);
+            this.panel4.Controls.Add(this.labelSoID);
+            this.panel4.Controls.Add(this.labelEmName);
+            this.panel4.Controls.Add(this.labelEmID);
             this.panel4.Location = new System.Drawing.Point(306, 150);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1552, 169);
             this.panel4.TabIndex = 6;
             // 
-            // label4
+            // labelEmID
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(24, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 24);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
+            this.labelEmID.AutoSize = true;
+            this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelEmID.Location = new System.Drawing.Point(24, 15);
+            this.labelEmID.Name = "labelEmID";
+            this.labelEmID.Size = new System.Drawing.Size(80, 24);
+            this.labelEmID.TabIndex = 4;
+            this.labelEmID.Text = "社員ID";
             // 
             // dataGridView1
             // 
@@ -239,6 +257,102 @@ namespace SalesManagement_SysDev
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // labelEmName
+            // 
+            this.labelEmName.AutoSize = true;
+            this.labelEmName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelEmName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelEmName.Location = new System.Drawing.Point(327, 15);
+            this.labelEmName.Name = "labelEmName";
+            this.labelEmName.Size = new System.Drawing.Size(82, 24);
+            this.labelEmName.TabIndex = 5;
+            this.labelEmName.Text = "社員名";
+            // 
+            // labelSoID
+            // 
+            this.labelSoID.AutoSize = true;
+            this.labelSoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSoID.Location = new System.Drawing.Point(607, 15);
+            this.labelSoID.Name = "labelSoID";
+            this.labelSoID.Size = new System.Drawing.Size(104, 24);
+            this.labelSoID.TabIndex = 6;
+            this.labelSoID.Text = "営業所ID";
+            // 
+            // labelPoID
+            // 
+            this.labelPoID.AutoSize = true;
+            this.labelPoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPoID.Location = new System.Drawing.Point(927, 15);
+            this.labelPoID.Name = "labelPoID";
+            this.labelPoID.Size = new System.Drawing.Size(80, 24);
+            this.labelPoID.TabIndex = 7;
+            this.labelPoID.Text = "役職ID";
+            // 
+            // labelHiredate
+            // 
+            this.labelHiredate.AutoSize = true;
+            this.labelHiredate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelHiredate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelHiredate.Location = new System.Drawing.Point(1199, 15);
+            this.labelHiredate.Name = "labelHiredate";
+            this.labelHiredate.Size = new System.Drawing.Size(130, 24);
+            this.labelHiredate.TabIndex = 8;
+            this.labelHiredate.Text = "入社年月日";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPassword.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPassword.Location = new System.Drawing.Point(24, 99);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(103, 24);
+            this.labelPassword.TabIndex = 9;
+            this.labelPassword.Text = "パスワード";
+            // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPhone.Location = new System.Drawing.Point(327, 99);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(106, 24);
+            this.labelPhone.TabIndex = 10;
+            this.labelPhone.Text = "電話番号";
+            // 
+            // labelHidden
+            // 
+            this.labelHidden.AutoSize = true;
+            this.labelHidden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelHidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelHidden.Location = new System.Drawing.Point(1199, 99);
+            this.labelHidden.Name = "labelHidden";
+            this.labelHidden.Size = new System.Drawing.Size(130, 24);
+            this.labelHidden.TabIndex = 13;
+            this.labelHidden.Text = "非表示理由";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBox1.Location = new System.Drawing.Point(799, 95);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(176, 28);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "社員管理フラグ";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxEmID
+            // 
+            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmID.Location = new System.Drawing.Point(110, 15);
+            this.textBoxEmID.Name = "textBoxEmID";
+            this.textBoxEmID.Size = new System.Drawing.Size(151, 28);
+            this.textBoxEmID.TabIndex = 15;
             // 
             // FormEmployee
             // 
@@ -280,7 +394,16 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelEmID;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label labelHidden;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label labelHiredate;
+        private System.Windows.Forms.Label labelPoID;
+        private System.Windows.Forms.Label labelSoID;
+        private System.Windows.Forms.Label labelEmName;
+        private System.Windows.Forms.TextBox textBoxEmID;
     }
 }
