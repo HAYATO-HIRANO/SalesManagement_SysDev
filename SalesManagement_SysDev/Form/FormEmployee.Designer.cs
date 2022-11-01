@@ -42,6 +42,14 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxPoID = new System.Windows.Forms.ComboBox();
+            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
+            this.textBoxEmHidden = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxEmName = new System.Windows.Forms.TextBox();
             this.textBoxEmID = new System.Windows.Forms.TextBox();
             this.label1HIdden = new System.Windows.Forms.Label();
             this.labelPhone = new System.Windows.Forms.Label();
@@ -52,14 +60,15 @@
             this.labelEmName = new System.Windows.Forms.Label();
             this.labelEmID = new System.Windows.Forms.Label();
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
-            this.textBoxEmName = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
-            this.textBoxEmHidden = new System.Windows.Forms.TextBox();
-            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
-            this.comboBoxPoID = new System.Windows.Forms.ComboBox();
-            this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
+            this.buttonPageSizeChange = new System.Windows.Forms.Button();
+            this.textBoxPageSize = new System.Windows.Forms.TextBox();
+            this.labelPageSize = new System.Windows.Forms.Label();
+            this.buttonLastPage = new System.Windows.Forms.Button();
+            this.buttonNextPage = new System.Windows.Forms.Button();
+            this.buttonPreviousPage = new System.Windows.Forms.Button();
+            this.buttonFirstPage = new System.Windows.Forms.Button();
+            this.labelPage = new System.Windows.Forms.Label();
+            this.textBoxPage = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -251,6 +260,76 @@
             this.panel4.Size = new System.Drawing.Size(1552, 169);
             this.panel4.TabIndex = 6;
             // 
+            // checkBoxEmFlag
+            // 
+            this.checkBoxEmFlag.AutoSize = true;
+            this.checkBoxEmFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxEmFlag.Location = new System.Drawing.Point(635, 92);
+            this.checkBoxEmFlag.Name = "checkBoxEmFlag";
+            this.checkBoxEmFlag.Size = new System.Drawing.Size(176, 28);
+            this.checkBoxEmFlag.TabIndex = 17;
+            this.checkBoxEmFlag.Text = "社員管理フラグ";
+            this.checkBoxEmFlag.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePickerHiredate
+            // 
+            this.dateTimePickerHiredate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerHiredate.Location = new System.Drawing.Point(1349, 12);
+            this.dateTimePickerHiredate.Name = "dateTimePickerHiredate";
+            this.dateTimePickerHiredate.Size = new System.Drawing.Size(200, 31);
+            this.dateTimePickerHiredate.TabIndex = 22;
+            // 
+            // comboBoxPoID
+            // 
+            this.comboBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxPoID.FormattingEnabled = true;
+            this.comboBoxPoID.Location = new System.Drawing.Point(1000, 14);
+            this.comboBoxPoID.Name = "comboBoxPoID";
+            this.comboBoxPoID.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxPoID.TabIndex = 21;
+            // 
+            // comboBoxSoID
+            // 
+            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxSoID.FormattingEnabled = true;
+            this.comboBoxSoID.Location = new System.Drawing.Point(712, 14);
+            this.comboBoxSoID.Name = "comboBoxSoID";
+            this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxSoID.TabIndex = 20;
+            // 
+            // textBoxEmHidden
+            // 
+            this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmHidden.Location = new System.Drawing.Point(988, 92);
+            this.textBoxEmHidden.Multiline = true;
+            this.textBoxEmHidden.Name = "textBoxEmHidden";
+            this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
+            this.textBoxEmHidden.TabIndex = 19;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPhone.Location = new System.Drawing.Point(419, 92);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(144, 28);
+            this.textBoxPhone.TabIndex = 17;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPassword.Location = new System.Drawing.Point(143, 92);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(144, 28);
+            this.textBoxPassword.TabIndex = 16;
+            // 
+            // textBoxEmName
+            // 
+            this.textBoxEmName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmName.Location = new System.Drawing.Point(419, 15);
+            this.textBoxEmName.Name = "textBoxEmName";
+            this.textBoxEmName.Size = new System.Drawing.Size(144, 28);
+            this.textBoxEmName.TabIndex = 15;
+            // 
             // textBoxEmID
             // 
             this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -350,81 +429,109 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(306, 341);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(303, 371);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.RowTemplate.Height = 21;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 652);
             this.dataGridViewEmployee.TabIndex = 7;
             // 
-            // textBoxEmName
+            // buttonPageSizeChange
             // 
-            this.textBoxEmName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmName.Location = new System.Drawing.Point(419, 15);
-            this.textBoxEmName.Name = "textBoxEmName";
-            this.textBoxEmName.Size = new System.Drawing.Size(144, 28);
-            this.textBoxEmName.TabIndex = 15;
+            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1749, 337);
+            this.buttonPageSizeChange.Name = "buttonPageSizeChange";
+            this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
+            this.buttonPageSizeChange.TabIndex = 24;
+            this.buttonPageSizeChange.Text = "行数変更";
+            this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
-            // textBoxPassword
+            // textBoxPageSize
             // 
-            this.textBoxPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPassword.Location = new System.Drawing.Point(143, 92);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(144, 28);
-            this.textBoxPassword.TabIndex = 16;
+            this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPageSize.Location = new System.Drawing.Point(1702, 339);
+            this.textBoxPageSize.Name = "textBoxPageSize";
+            this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
+            this.textBoxPageSize.TabIndex = 23;
+            this.textBoxPageSize.Text = "100";
+            this.textBoxPageSize.TextChanged += new System.EventHandler(this.textBoxPageSize_TextChanged);
             // 
-            // textBoxPhone
+            // labelPageSize
             // 
-            this.textBoxPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPhone.Location = new System.Drawing.Point(419, 92);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(144, 28);
-            this.textBoxPhone.TabIndex = 17;
+            this.labelPageSize.AutoSize = true;
+            this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPageSize.Location = new System.Drawing.Point(1591, 344);
+            this.labelPageSize.Name = "labelPageSize";
+            this.labelPageSize.Size = new System.Drawing.Size(105, 19);
+            this.labelPageSize.TabIndex = 22;
+            this.labelPageSize.Text = "1ページ行数";
+            this.labelPageSize.Click += new System.EventHandler(this.labelPageSize_Click);
             // 
-            // textBoxEmHidden
+            // buttonLastPage
             // 
-            this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmHidden.Location = new System.Drawing.Point(988, 92);
-            this.textBoxEmHidden.Multiline = true;
-            this.textBoxEmHidden.Name = "textBoxEmHidden";
-            this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
-            this.textBoxEmHidden.TabIndex = 19;
+            this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLastPage.Location = new System.Drawing.Point(1171, 330);
+            this.buttonLastPage.Name = "buttonLastPage";
+            this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonLastPage.TabIndex = 21;
+            this.buttonLastPage.Text = "▶l";
+            this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
-            // comboBoxSoID
+            // buttonNextPage
             // 
-            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxSoID.FormattingEnabled = true;
-            this.comboBoxSoID.Location = new System.Drawing.Point(712, 14);
-            this.comboBoxSoID.Name = "comboBoxSoID";
-            this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxSoID.TabIndex = 20;
+            this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNextPage.Location = new System.Drawing.Point(1103, 330);
+            this.buttonNextPage.Name = "buttonNextPage";
+            this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonNextPage.TabIndex = 20;
+            this.buttonNextPage.Text = "▶";
+            this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
-            // comboBoxPoID
+            // buttonPreviousPage
             // 
-            this.comboBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxPoID.FormattingEnabled = true;
-            this.comboBoxPoID.Location = new System.Drawing.Point(1000, 14);
-            this.comboBoxPoID.Name = "comboBoxPoID";
-            this.comboBoxPoID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxPoID.TabIndex = 21;
+            this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1023, 330);
+            this.buttonPreviousPage.Name = "buttonPreviousPage";
+            this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
+            this.buttonPreviousPage.TabIndex = 19;
+            this.buttonPreviousPage.Text = "◀";
+            this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
-            // dateTimePickerHiredate
+            // buttonFirstPage
             // 
-            this.dateTimePickerHiredate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePickerHiredate.Location = new System.Drawing.Point(1349, 12);
-            this.dateTimePickerHiredate.Name = "dateTimePickerHiredate";
-            this.dateTimePickerHiredate.Size = new System.Drawing.Size(200, 31);
-            this.dateTimePickerHiredate.TabIndex = 22;
+            this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFirstPage.Location = new System.Drawing.Point(956, 330);
+            this.buttonFirstPage.Name = "buttonFirstPage";
+            this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonFirstPage.TabIndex = 18;
+            this.buttonFirstPage.Text = "l◀";
+            this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
-            // checkBoxEmFlag
+            // labelPage
             // 
-            this.checkBoxEmFlag.AutoSize = true;
-            this.checkBoxEmFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxEmFlag.Location = new System.Drawing.Point(635, 92);
-            this.checkBoxEmFlag.Name = "checkBoxEmFlag";
-            this.checkBoxEmFlag.Size = new System.Drawing.Size(176, 28);
-            this.checkBoxEmFlag.TabIndex = 17;
-            this.checkBoxEmFlag.Text = "社員管理フラグ";
-            this.checkBoxEmFlag.UseVisualStyleBackColor = true;
+            this.labelPage.AutoSize = true;
+            this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPage.Location = new System.Drawing.Point(361, 337);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(70, 24);
+            this.labelPage.TabIndex = 17;
+            this.labelPage.Text = "ページ";
+            this.labelPage.Click += new System.EventHandler(this.labelPage_Click);
+            // 
+            // textBoxPage
+            // 
+            this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPage.Location = new System.Drawing.Point(311, 330);
+            this.textBoxPage.Name = "textBoxPage";
+            this.textBoxPage.Size = new System.Drawing.Size(45, 31);
+            this.textBoxPage.TabIndex = 16;
+            this.textBoxPage.Text = "100";
+            this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
             // FormEmployee
             // 
@@ -432,6 +539,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.buttonPageSizeChange);
+            this.Controls.Add(this.textBoxPageSize);
+            this.Controls.Add(this.labelPageSize);
+            this.Controls.Add(this.buttonLastPage);
+            this.Controls.Add(this.buttonNextPage);
+            this.Controls.Add(this.buttonPreviousPage);
+            this.Controls.Add(this.buttonFirstPage);
+            this.Controls.Add(this.labelPage);
+            this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.dataGridViewEmployee);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
@@ -447,6 +563,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -484,5 +601,14 @@
         private System.Windows.Forms.ComboBox comboBoxPoID;
         private System.Windows.Forms.ComboBox comboBoxSoID;
         private System.Windows.Forms.CheckBox checkBoxEmFlag;
+        private System.Windows.Forms.Button buttonPageSizeChange;
+        private System.Windows.Forms.TextBox textBoxPageSize;
+        private System.Windows.Forms.Label labelPageSize;
+        private System.Windows.Forms.Button buttonLastPage;
+        private System.Windows.Forms.Button buttonNextPage;
+        private System.Windows.Forms.Button buttonPreviousPage;
+        private System.Windows.Forms.Button buttonFirstPage;
+        private System.Windows.Forms.Label labelPage;
+        private System.Windows.Forms.TextBox textBoxPage;
     }
 }

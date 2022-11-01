@@ -12,7 +12,6 @@ namespace SalesManagement_SysDev
 {
     public partial class FormMain : Form
     {
-        
         public FormMain()
         {
             InitializeComponent();
@@ -32,6 +31,7 @@ namespace SalesManagement_SysDev
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             this.Close();
         }
 
@@ -75,13 +75,6 @@ namespace SalesManagement_SysDev
             userControl21.Visible = false;
             userControl31.Visible = true;
             userControl11.Visible = false;
-        }
-
-        private void buttonLogout_Click(object sender, EventArgs e)
-        {
-            FormLogin formLogin = new FormLogin();
-            formLogin.Visible = true;
-            this.Close();     
         }
     }
 }
