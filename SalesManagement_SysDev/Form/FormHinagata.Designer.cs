@@ -39,13 +39,22 @@ namespace SalesManagement_SysDev
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonLogout = new System.Windows.Forms.Button();
+            this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.labelPage = new System.Windows.Forms.Label();
+            this.buttonFirstPage = new System.Windows.Forms.Button();
+            this.buttonPreviousPage = new System.Windows.Forms.Button();
+            this.buttonNextPage = new System.Windows.Forms.Button();
+            this.buttonLastPage = new System.Windows.Forms.Button();
+            this.labelPageSize = new System.Windows.Forms.Label();
+            this.textBoxPageSize = new System.Windows.Forms.TextBox();
+            this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -176,6 +185,19 @@ namespace SalesManagement_SysDev
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 3;
             // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 7;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            // 
             // buttonUpdate
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
@@ -241,24 +263,111 @@ namespace SalesManagement_SysDev
             this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
             this.dataGridView1.TabIndex = 6;
             // 
-            // buttonLogout
+            // textBoxPage
             // 
-            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
-            this.buttonLogout.TabIndex = 7;
-            this.buttonLogout.Text = "ログアウト";
-            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPage.Location = new System.Drawing.Point(311, 349);
+            this.textBoxPage.Name = "textBoxPage";
+            this.textBoxPage.Size = new System.Drawing.Size(45, 31);
+            this.textBoxPage.TabIndex = 7;
+            this.textBoxPage.Text = "100";
+            this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPage.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // labelPage
+            // 
+            this.labelPage.AutoSize = true;
+            this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPage.Location = new System.Drawing.Point(361, 356);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(70, 24);
+            this.labelPage.TabIndex = 8;
+            this.labelPage.Text = "ページ";
+            this.labelPage.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // buttonFirstPage
+            // 
+            this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFirstPage.Location = new System.Drawing.Point(956, 349);
+            this.buttonFirstPage.Name = "buttonFirstPage";
+            this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonFirstPage.TabIndex = 9;
+            this.buttonFirstPage.Text = "l◀";
+            this.buttonFirstPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonPreviousPage
+            // 
+            this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1023, 349);
+            this.buttonPreviousPage.Name = "buttonPreviousPage";
+            this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
+            this.buttonPreviousPage.TabIndex = 10;
+            this.buttonPreviousPage.Text = "◀";
+            this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonNextPage
+            // 
+            this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNextPage.Location = new System.Drawing.Point(1103, 349);
+            this.buttonNextPage.Name = "buttonNextPage";
+            this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonNextPage.TabIndex = 11;
+            this.buttonNextPage.Text = "▶";
+            this.buttonNextPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonLastPage
+            // 
+            this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLastPage.Location = new System.Drawing.Point(1171, 349);
+            this.buttonLastPage.Name = "buttonLastPage";
+            this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonLastPage.TabIndex = 12;
+            this.buttonLastPage.Text = "▶l";
+            this.buttonLastPage.UseVisualStyleBackColor = true;
+            // 
+            // labelPageSize
+            // 
+            this.labelPageSize.AutoSize = true;
+            this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPageSize.Location = new System.Drawing.Point(1591, 363);
+            this.labelPageSize.Name = "labelPageSize";
+            this.labelPageSize.Size = new System.Drawing.Size(105, 19);
+            this.labelPageSize.TabIndex = 13;
+            this.labelPageSize.Text = "1ページ行数";
+            // 
+            // textBoxPageSize
+            // 
+            this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPageSize.Location = new System.Drawing.Point(1702, 358);
+            this.textBoxPageSize.Name = "textBoxPageSize";
+            this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
+            this.textBoxPageSize.TabIndex = 14;
+            this.textBoxPageSize.Text = "100";
+            // 
+            // buttonPageSizeChange
+            // 
+            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1749, 356);
+            this.buttonPageSizeChange.Name = "buttonPageSizeChange";
+            this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
+            this.buttonPageSizeChange.TabIndex = 15;
+            this.buttonPageSizeChange.Text = "行数変更";
+            this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             // 
             // FormHinagata
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.buttonPageSizeChange);
+            this.Controls.Add(this.textBoxPageSize);
+            this.Controls.Add(this.labelPageSize);
+            this.Controls.Add(this.buttonLastPage);
+            this.Controls.Add(this.buttonNextPage);
+            this.Controls.Add(this.buttonPreviousPage);
+            this.Controls.Add(this.buttonFirstPage);
+            this.Controls.Add(this.labelPage);
+            this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel1);
@@ -275,6 +384,7 @@ namespace SalesManagement_SysDev
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -297,5 +407,14 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.TextBox textBoxPage;
+        private System.Windows.Forms.Label labelPage;
+        private System.Windows.Forms.Button buttonFirstPage;
+        private System.Windows.Forms.Button buttonPreviousPage;
+        private System.Windows.Forms.Button buttonNextPage;
+        private System.Windows.Forms.Button buttonLastPage;
+        private System.Windows.Forms.Label labelPageSize;
+        private System.Windows.Forms.TextBox textBoxPageSize;
+        private System.Windows.Forms.Button buttonPageSizeChange;
     }
 }
