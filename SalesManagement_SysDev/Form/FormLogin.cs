@@ -110,13 +110,13 @@ namespace SalesManagement_SysDev
 
             try
             {
-                //con.ConnectionString = "Data = Source=(local);Initial Catalog=TEST_DB;InteGrated Security=SSPI";
+                //con.ConnectionString = "Data Source=(local);Initial Catalog=MSSQLLocalDB;InteGrated Security=SSPI";
                 //con.ConnectionString = "Data = Source=(local);User ID=user1;Password=pass;Inital Catalog=TEST_DB";
 
                 SqlConnectionStringBuilder bilder = new SqlConnectionStringBuilder();
 
-                bilder.DataSource = "(localdb)";
-                bilder.InitialCatalog = "SalesManagement_SysDev";
+                bilder.DataSource = "(local)";
+                bilder.InitialCatalog = "SalesManagement_SysDev.SalesManagement_DevContext";
                 bilder.UserID = "user1";
                 bilder.Password = "pass";
 
@@ -129,13 +129,13 @@ namespace SalesManagement_SysDev
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter();
 
-                SqlCommand cad = con.CreateCommand();
+                SqlCommand cmd = con.CreateCommand();
 
-                cad.CommandText = "SELECT EmPassword FROM M_Employee WHERE EmID = e社員";
-                cad.Parameters.Add("e社員", System.Data.SqlDbType.NVarChar, 6);
-                cad.Parameters["e社員"].Value = textBoxEmID.Text;
+                cmd.CommandText = "SELECT EmPassword FROM M_Employee WHERE EmID = e社員";
+                cmd.Parameters.Add("e社員", System.Data.SqlDbType.NVarChar, 6);
+                cmd.Parameters["e社員"].Value = textBoxEmID.Text;
 
-                da.SelectCommand = cad;
+                da.SelectCommand = cmd;
                 da.Fill(dt);
 
                 if (dt.Rows.Count != 1)
