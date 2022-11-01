@@ -12,6 +12,7 @@ namespace SalesManagement_SysDev
 {
     public partial class FormMain : Form
     {
+        
         public FormMain()
         {
             InitializeComponent();
@@ -78,8 +79,9 @@ namespace SalesManagement_SysDev
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
-          
+            FormLogin formLogin = new FormLogin();
+            formLogin.Visible = true;
+            this.Close();     
         }
     }
 }
