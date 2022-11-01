@@ -21,5 +21,50 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPageSize_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPage_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPageSize_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

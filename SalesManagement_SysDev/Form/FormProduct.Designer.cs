@@ -64,11 +64,11 @@ namespace SalesManagement_SysDev
             this.textBoxColor = new System.Windows.Forms.TextBox();
             this.textBoxJCode = new System.Windows.Forms.TextBox();
             this.labelJcode = new System.Windows.Forms.Label();
-            this.dataGridViewPr = new System.Windows.Forms.DataGridView();
+            this.dataGridViewProduct = new System.Windows.Forms.DataGridView();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -460,21 +460,21 @@ namespace SalesManagement_SysDev
             this.labelJcode.TabIndex = 9;
             this.labelJcode.Text = "JANコード";
             // 
-            // dataGridViewPr
+            // dataGridViewProduct
             // 
-            this.dataGridViewPr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPr.Location = new System.Drawing.Point(309, 411);
-            this.dataGridViewPr.Name = "dataGridViewPr";
-            this.dataGridViewPr.RowTemplate.Height = 21;
-            this.dataGridViewPr.Size = new System.Drawing.Size(1549, 630);
-            this.dataGridViewPr.TabIndex = 28;
+            this.dataGridViewProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProduct.Location = new System.Drawing.Point(309, 411);
+            this.dataGridViewProduct.Name = "dataGridViewProduct";
+            this.dataGridViewProduct.RowTemplate.Height = 21;
+            this.dataGridViewProduct.Size = new System.Drawing.Size(1549, 630);
+            this.dataGridViewProduct.TabIndex = 28;
             // 
             // FormProduct
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.dataGridViewPr);
+            this.Controls.Add(this.dataGridViewProduct);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelHeader);
@@ -488,7 +488,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -529,6 +529,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.ComboBox comboBoxSc;
         private System.Windows.Forms.Label labelPrReleaseDate;
         private System.Windows.Forms.DateTimePicker DateTimePickerPrReleaseDate;
-        private System.Windows.Forms.DataGridView dataGridViewPr;
+        private System.Windows.Forms.DataGridView dataGridViewProduct;
     }
 }
