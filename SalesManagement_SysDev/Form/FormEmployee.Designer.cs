@@ -1,5 +1,4 @@
-﻿
-namespace SalesManagement_SysDev
+﻿namespace SalesManagement_SysDev
 {
     partial class FormEmployee
     {
