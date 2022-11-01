@@ -83,12 +83,6 @@
     <Compile Include="Form\FormDialog.Designer.cs">
       <DependentUpon>FormDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\FormEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\FormEmployee.Designer.cs">
-      <DependentUpon>FormEmployee.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form\FormHinagata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,9 +173,6 @@
     </Compile>
     <EmbeddedResource Include="Form\FormDialog.resx">
       <DependentUpon>FormDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form\FormEmployee.resx">
-      <DependentUpon>FormEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormHinagata.resx">
       <DependentUpon>FormHinagata.cs</DependentUpon>
