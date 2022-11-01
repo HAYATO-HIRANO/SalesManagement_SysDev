@@ -42,18 +42,18 @@ namespace SalesManagement_SysDev
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
-            this.dataGridViewSt = new System.Windows.Forms.DataGridView();
+            this.dataGridViewStock = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelStID = new System.Windows.Forms.Label();
-            this.labelPrID = new System.Windows.Forms.Label();
-            this.labelStQuantity = new System.Windows.Forms.Label();
-            this.checkBoxStFlag = new System.Windows.Forms.CheckBox();
-            this.textBoxStID = new System.Windows.Forms.TextBox();
-            this.textBoxPrID = new System.Windows.Forms.TextBox();
             this.textBoxStQuantity = new System.Windows.Forms.TextBox();
+            this.textBoxPrID = new System.Windows.Forms.TextBox();
+            this.textBoxStID = new System.Windows.Forms.TextBox();
+            this.checkBoxStFlag = new System.Windows.Forms.CheckBox();
+            this.labelStQuantity = new System.Windows.Forms.Label();
+            this.labelPrID = new System.Windows.Forms.Label();
+            this.labelStID = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,14 +218,14 @@ namespace SalesManagement_SysDev
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
             // 
-            // dataGridViewSt
+            // dataGridViewStock
             // 
-            this.dataGridViewSt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSt.Location = new System.Drawing.Point(306, 411);
-            this.dataGridViewSt.Name = "dataGridViewSt";
-            this.dataGridViewSt.RowTemplate.Height = 21;
-            this.dataGridViewSt.Size = new System.Drawing.Size(1549, 630);
-            this.dataGridViewSt.TabIndex = 29;
+            this.dataGridViewStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStock.Location = new System.Drawing.Point(306, 411);
+            this.dataGridViewStock.Name = "dataGridViewStock";
+            this.dataGridViewStock.RowTemplate.Height = 21;
+            this.dataGridViewStock.Size = new System.Drawing.Size(1549, 630);
+            this.dataGridViewStock.TabIndex = 29;
             // 
             // panel4
             // 
@@ -243,33 +243,29 @@ namespace SalesManagement_SysDev
             this.panel4.Size = new System.Drawing.Size(1552, 230);
             this.panel4.TabIndex = 30;
             // 
-            // labelStID
+            // textBoxStQuantity
             // 
-            this.labelStID.AutoSize = true;
-            this.labelStID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelStID.Location = new System.Drawing.Point(82, 111);
-            this.labelStID.Name = "labelStID";
-            this.labelStID.Size = new System.Drawing.Size(80, 24);
-            this.labelStID.TabIndex = 0;
-            this.labelStID.Text = "在庫ID";
+            this.textBoxStQuantity.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxStQuantity.Location = new System.Drawing.Point(1089, 109);
+            this.textBoxStQuantity.Name = "textBoxStQuantity";
+            this.textBoxStQuantity.Size = new System.Drawing.Size(163, 28);
+            this.textBoxStQuantity.TabIndex = 6;
             // 
-            // labelPrID
+            // textBoxPrID
             // 
-            this.labelPrID.AutoSize = true;
-            this.labelPrID.Location = new System.Drawing.Point(526, 111);
-            this.labelPrID.Name = "labelPrID";
-            this.labelPrID.Size = new System.Drawing.Size(80, 24);
-            this.labelPrID.TabIndex = 1;
-            this.labelPrID.Text = "商品ID";
+            this.textBoxPrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrID.Location = new System.Drawing.Point(625, 109);
+            this.textBoxPrID.Name = "textBoxPrID";
+            this.textBoxPrID.Size = new System.Drawing.Size(251, 28);
+            this.textBoxPrID.TabIndex = 5;
             // 
-            // labelStQuantity
+            // textBoxStID
             // 
-            this.labelStQuantity.AutoSize = true;
-            this.labelStQuantity.Location = new System.Drawing.Point(984, 111);
-            this.labelStQuantity.Name = "labelStQuantity";
-            this.labelStQuantity.Size = new System.Drawing.Size(82, 24);
-            this.labelStQuantity.TabIndex = 2;
-            this.labelStQuantity.Text = "在庫数";
+            this.textBoxStID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxStID.Location = new System.Drawing.Point(182, 108);
+            this.textBoxStID.Name = "textBoxStID";
+            this.textBoxStID.Size = new System.Drawing.Size(251, 28);
+            this.textBoxStID.TabIndex = 4;
             // 
             // checkBoxStFlag
             // 
@@ -281,29 +277,33 @@ namespace SalesManagement_SysDev
             this.checkBoxStFlag.Text = "在庫管理フラグ";
             this.checkBoxStFlag.UseVisualStyleBackColor = true;
             // 
-            // textBoxStID
+            // labelStQuantity
             // 
-            this.textBoxStID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxStID.Location = new System.Drawing.Point(182, 108);
-            this.textBoxStID.Name = "textBoxStID";
-            this.textBoxStID.Size = new System.Drawing.Size(251, 28);
-            this.textBoxStID.TabIndex = 4;
+            this.labelStQuantity.AutoSize = true;
+            this.labelStQuantity.Location = new System.Drawing.Point(984, 111);
+            this.labelStQuantity.Name = "labelStQuantity";
+            this.labelStQuantity.Size = new System.Drawing.Size(82, 24);
+            this.labelStQuantity.TabIndex = 2;
+            this.labelStQuantity.Text = "在庫数";
             // 
-            // textBoxPrID
+            // labelPrID
             // 
-            this.textBoxPrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPrID.Location = new System.Drawing.Point(625, 109);
-            this.textBoxPrID.Name = "textBoxPrID";
-            this.textBoxPrID.Size = new System.Drawing.Size(251, 28);
-            this.textBoxPrID.TabIndex = 5;
+            this.labelPrID.AutoSize = true;
+            this.labelPrID.Location = new System.Drawing.Point(526, 111);
+            this.labelPrID.Name = "labelPrID";
+            this.labelPrID.Size = new System.Drawing.Size(80, 24);
+            this.labelPrID.TabIndex = 1;
+            this.labelPrID.Text = "商品ID";
             // 
-            // textBoxStQuantity
+            // labelStID
             // 
-            this.textBoxStQuantity.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxStQuantity.Location = new System.Drawing.Point(1089, 109);
-            this.textBoxStQuantity.Name = "textBoxStQuantity";
-            this.textBoxStQuantity.Size = new System.Drawing.Size(163, 28);
-            this.textBoxStQuantity.TabIndex = 6;
+            this.labelStID.AutoSize = true;
+            this.labelStID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelStID.Location = new System.Drawing.Point(82, 111);
+            this.labelStID.Name = "labelStID";
+            this.labelStID.Size = new System.Drawing.Size(80, 24);
+            this.labelStID.TabIndex = 0;
+            this.labelStID.Text = "在庫ID";
             // 
             // FormStock
             // 
@@ -311,17 +311,17 @@ namespace SalesManagement_SysDev
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.dataGridViewSt);
+            this.Controls.Add(this.dataGridViewStock);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormStock";
             this.Text = "FormStock";
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelLeft.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStock)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -342,7 +342,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
-        private System.Windows.Forms.DataGridView dataGridViewSt;
+        private System.Windows.Forms.DataGridView dataGridViewStock;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBoxStQuantity;
         private System.Windows.Forms.TextBox textBoxPrID;
