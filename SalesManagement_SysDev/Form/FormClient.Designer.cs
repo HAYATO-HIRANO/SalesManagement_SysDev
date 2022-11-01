@@ -241,7 +241,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelAddress.AutoSize = true;
             this.labelAddress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelAddress.Location = new System.Drawing.Point(276, 84);
+            this.labelAddress.Location = new System.Drawing.Point(276, 81);
             this.labelAddress.Name = "labelAddress";
             this.labelAddress.Size = new System.Drawing.Size(58, 24);
             this.labelAddress.TabIndex = 7;
@@ -250,7 +250,7 @@ namespace SalesManagement_SysDev
             // textBoxClAddres
             // 
             this.textBoxClAddres.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClAddres.Location = new System.Drawing.Point(340, 81);
+            this.textBoxClAddres.Location = new System.Drawing.Point(340, 78);
             this.textBoxClAddres.Name = "textBoxClAddres";
             this.textBoxClAddres.Size = new System.Drawing.Size(787, 28);
             this.textBoxClAddres.TabIndex = 8;
@@ -278,7 +278,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPostal.AutoSize = true;
             this.labelPostal.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPostal.Location = new System.Drawing.Point(15, 85);
+            this.labelPostal.Location = new System.Drawing.Point(15, 82);
             this.labelPostal.Name = "labelPostal";
             this.labelPostal.Size = new System.Drawing.Size(106, 24);
             this.labelPostal.TabIndex = 11;
@@ -287,7 +287,7 @@ namespace SalesManagement_SysDev
             // textBoxClpostal
             // 
             this.textBoxClpostal.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClpostal.Location = new System.Drawing.Point(127, 81);
+            this.textBoxClpostal.Location = new System.Drawing.Point(127, 78);
             this.textBoxClpostal.Name = "textBoxClpostal";
             this.textBoxClpostal.Size = new System.Drawing.Size(99, 28);
             this.textBoxClpostal.TabIndex = 12;

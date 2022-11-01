@@ -26,5 +26,25 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerOrdDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
