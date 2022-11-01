@@ -51,7 +51,7 @@
             this.labelSoID = new System.Windows.Forms.Label();
             this.labelEmName = new System.Windows.Forms.Label();
             this.labelEmID = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
             this.textBoxEmName = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
@@ -63,7 +63,7 @@
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -347,14 +347,14 @@
             this.labelEmID.TabIndex = 4;
             this.labelEmID.Text = "社員ID";
             // 
-            // dataGridView1
+            // dataGridViewEmployee
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(306, 341);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
-            this.dataGridView1.TabIndex = 7;
+            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(306, 341);
+            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
+            this.dataGridViewEmployee.RowTemplate.Height = 21;
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 652);
+            this.dataGridViewEmployee.TabIndex = 7;
             // 
             // textBoxEmName
             // 
@@ -432,7 +432,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewEmployee);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
@@ -445,7 +445,7 @@
             this.panelLeft.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -467,7 +467,7 @@
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelEmID;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewEmployee;
         private System.Windows.Forms.Label label1HIdden;
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelPassword;
