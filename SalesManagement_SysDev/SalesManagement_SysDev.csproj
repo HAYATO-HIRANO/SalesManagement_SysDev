@@ -89,6 +89,12 @@
     <Compile Include="Form\FormEmployee.Designer.cs">
       <DependentUpon>FormEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\FormDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDialog.Designer.cs">
+      <DependentUpon>FormDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormHinagata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,12 @@
     </Compile>
     <Compile Include="Form\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormTestMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormTestMain.Designer.cs">
+      <DependentUpon>FormTestMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\FormLogin.cs">
       <SubType>Form</SubType>
@@ -171,6 +183,9 @@
     <Compile Include="UserControlMain\UserControl3.Designer.cs">
       <DependentUpon>UserControl3.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormDialog.resx">
+      <DependentUpon>FormDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormTestMain.resx">
+      <DependentUpon>FormTestMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
