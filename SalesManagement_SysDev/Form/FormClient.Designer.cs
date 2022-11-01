@@ -287,7 +287,7 @@ namespace SalesManagement_SysDev
             // textBoxClpostal
             // 
             this.textBoxClpostal.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClpostal.Location = new System.Drawing.Point(127, 85);
+            this.textBoxClpostal.Location = new System.Drawing.Point(127, 81);
             this.textBoxClpostal.Name = "textBoxClpostal";
             this.textBoxClpostal.Size = new System.Drawing.Size(99, 28);
             this.textBoxClpostal.TabIndex = 12;

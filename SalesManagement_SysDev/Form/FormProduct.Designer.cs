@@ -371,9 +371,9 @@ namespace SalesManagement_SysDev
             this.textBoxPrSafetyStock.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPrSafetyStock.Location = new System.Drawing.Point(1340, 21);
             this.textBoxPrSafetyStock.Name = "textBoxPrSafetyStock";
-            this.textBoxPrSafetyStock.Size = new System.Drawing.Size(150, 28);
+            this.textBoxPrSafetyStock.Size = new System.Drawing.Size(55, 28);
             this.textBoxPrSafetyStock.TabIndex = 14;
-            this.textBoxPrSafetyStock.Text = "0123456789012";
+            this.textBoxPrSafetyStock.Text = "0123";
             this.textBoxPrSafetyStock.TextChanged += new System.EventHandler(this.textBoxClFAX_TextChanged);
             // 
             // labelMaker
@@ -446,9 +446,9 @@ namespace SalesManagement_SysDev
             this.textBoxJCode.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxJCode.Location = new System.Drawing.Point(1006, 21);
             this.textBoxJCode.Name = "textBoxJCode";
-            this.textBoxJCode.Size = new System.Drawing.Size(147, 28);
+            this.textBoxJCode.Size = new System.Drawing.Size(159, 28);
             this.textBoxJCode.TabIndex = 10;
-            this.textBoxJCode.Text = "0123456789012";
+            this.textBoxJCode.Text = "01234567890123";
             // 
             // labelJcode
             // 
