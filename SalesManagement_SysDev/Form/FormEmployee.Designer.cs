@@ -42,20 +42,28 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelEmID = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labelEmName = new System.Windows.Forms.Label();
-            this.labelSoID = new System.Windows.Forms.Label();
-            this.labelPoID = new System.Windows.Forms.Label();
-            this.labelEmHiredate = new System.Windows.Forms.Label();
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.labelPhone = new System.Windows.Forms.Label();
+            this.textBoxEmID = new System.Windows.Forms.TextBox();
             this.label1HIdden = new System.Windows.Forms.Label();
-            this.textBoxClName = new System.Windows.Forms.TextBox();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelEmHiredate = new System.Windows.Forms.Label();
+            this.labelPoID = new System.Windows.Forms.Label();
+            this.labelSoID = new System.Windows.Forms.Label();
+            this.labelEmName = new System.Windows.Forms.Label();
+            this.labelEmID = new System.Windows.Forms.Label();
+            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
+            this.textBoxEmName = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxEmHidden = new System.Windows.Forms.TextBox();
+            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
+            this.comboBoxPoID = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -221,7 +229,15 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel4.Controls.Add(this.textBoxClName);
+            this.panel4.Controls.Add(this.checkBoxEmFlag);
+            this.panel4.Controls.Add(this.dateTimePickerHiredate);
+            this.panel4.Controls.Add(this.comboBoxPoID);
+            this.panel4.Controls.Add(this.comboBoxSoID);
+            this.panel4.Controls.Add(this.textBoxEmHidden);
+            this.panel4.Controls.Add(this.textBoxPhone);
+            this.panel4.Controls.Add(this.textBoxPassword);
+            this.panel4.Controls.Add(this.textBoxEmName);
+            this.panel4.Controls.Add(this.textBoxEmID);
             this.panel4.Controls.Add(this.label1HIdden);
             this.panel4.Controls.Add(this.labelPhone);
             this.panel4.Controls.Add(this.labelPassword);
@@ -235,69 +251,35 @@
             this.panel4.Size = new System.Drawing.Size(1552, 169);
             this.panel4.TabIndex = 6;
             // 
-            // labelEmID
+            // textBoxEmID
             // 
-            this.labelEmID.AutoSize = true;
-            this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmID.Location = new System.Drawing.Point(24, 15);
-            this.labelEmID.Name = "labelEmID";
-            this.labelEmID.Size = new System.Drawing.Size(80, 24);
-            this.labelEmID.TabIndex = 4;
-            this.labelEmID.Text = "社員ID";
+            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmID.Location = new System.Drawing.Point(143, 11);
+            this.textBoxEmID.Name = "textBoxEmID";
+            this.textBoxEmID.Size = new System.Drawing.Size(144, 28);
+            this.textBoxEmID.TabIndex = 14;
             // 
-            // dataGridView1
+            // label1HIdden
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(306, 341);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
-            this.dataGridView1.TabIndex = 7;
+            this.label1HIdden.AutoSize = true;
+            this.label1HIdden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.label1HIdden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1HIdden.Location = new System.Drawing.Point(852, 92);
+            this.label1HIdden.Name = "label1HIdden";
+            this.label1HIdden.Size = new System.Drawing.Size(130, 24);
+            this.label1HIdden.TabIndex = 13;
+            this.label1HIdden.Text = "非表示理由";
             // 
-            // labelEmName
+            // labelPhone
             // 
-            this.labelEmName.AutoSize = true;
-            this.labelEmName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelEmName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmName.Location = new System.Drawing.Point(307, 15);
-            this.labelEmName.Name = "labelEmName";
-            this.labelEmName.Size = new System.Drawing.Size(82, 24);
-            this.labelEmName.TabIndex = 5;
-            this.labelEmName.Text = "社員名";
-            // 
-            // labelSoID
-            // 
-            this.labelSoID.AutoSize = true;
-            this.labelSoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSoID.Location = new System.Drawing.Point(596, 15);
-            this.labelSoID.Name = "labelSoID";
-            this.labelSoID.Size = new System.Drawing.Size(104, 24);
-            this.labelSoID.TabIndex = 6;
-            this.labelSoID.Text = "営業所ID";
-            // 
-            // labelPoID
-            // 
-            this.labelPoID.AutoSize = true;
-            this.labelPoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPoID.Location = new System.Drawing.Point(914, 15);
-            this.labelPoID.Name = "labelPoID";
-            this.labelPoID.Size = new System.Drawing.Size(80, 24);
-            this.labelPoID.TabIndex = 7;
-            this.labelPoID.Text = "役職ID";
-            // 
-            // labelEmHiredate
-            // 
-            this.labelEmHiredate.AutoSize = true;
-            this.labelEmHiredate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelEmHiredate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmHiredate.Location = new System.Drawing.Point(1217, 15);
-            this.labelEmHiredate.Name = "labelEmHiredate";
-            this.labelEmHiredate.Size = new System.Drawing.Size(130, 24);
-            this.labelEmHiredate.TabIndex = 8;
-            this.labelEmHiredate.Text = "入社年月日";
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPhone.Location = new System.Drawing.Point(307, 96);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(106, 24);
+            this.labelPhone.TabIndex = 10;
+            this.labelPhone.Text = "電話番号";
             // 
             // labelPassword
             // 
@@ -310,35 +292,139 @@
             this.labelPassword.TabIndex = 9;
             this.labelPassword.Text = "パスワード";
             // 
-            // labelPhone
+            // labelEmHiredate
             // 
-            this.labelPhone.AutoSize = true;
-            this.labelPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPhone.Location = new System.Drawing.Point(283, 96);
-            this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(106, 24);
-            this.labelPhone.TabIndex = 10;
-            this.labelPhone.Text = "電話番号";
+            this.labelEmHiredate.AutoSize = true;
+            this.labelEmHiredate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelEmHiredate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelEmHiredate.Location = new System.Drawing.Point(1217, 15);
+            this.labelEmHiredate.Name = "labelEmHiredate";
+            this.labelEmHiredate.Size = new System.Drawing.Size(130, 24);
+            this.labelEmHiredate.TabIndex = 8;
+            this.labelEmHiredate.Text = "入社年月日";
             // 
-            // label1HIdden
+            // labelPoID
             // 
-            this.label1HIdden.AutoSize = true;
-            this.label1HIdden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label1HIdden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1HIdden.Location = new System.Drawing.Point(1217, 96);
-            this.label1HIdden.Name = "label1HIdden";
-            this.label1HIdden.Size = new System.Drawing.Size(130, 24);
-            this.label1HIdden.TabIndex = 13;
-            this.label1HIdden.Text = "非表示理由";
+            this.labelPoID.AutoSize = true;
+            this.labelPoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPoID.Location = new System.Drawing.Point(914, 15);
+            this.labelPoID.Name = "labelPoID";
+            this.labelPoID.Size = new System.Drawing.Size(80, 24);
+            this.labelPoID.TabIndex = 7;
+            this.labelPoID.Text = "役職ID";
             // 
-            // textBoxClName
+            // labelSoID
             // 
-            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClName.Location = new System.Drawing.Point(110, 11);
-            this.textBoxClName.Name = "textBoxClName";
-            this.textBoxClName.Size = new System.Drawing.Size(144, 28);
-            this.textBoxClName.TabIndex = 14;
+            this.labelSoID.AutoSize = true;
+            this.labelSoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSoID.Location = new System.Drawing.Point(596, 15);
+            this.labelSoID.Name = "labelSoID";
+            this.labelSoID.Size = new System.Drawing.Size(104, 24);
+            this.labelSoID.TabIndex = 6;
+            this.labelSoID.Text = "営業所ID";
+            // 
+            // labelEmName
+            // 
+            this.labelEmName.AutoSize = true;
+            this.labelEmName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelEmName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelEmName.Location = new System.Drawing.Point(307, 15);
+            this.labelEmName.Name = "labelEmName";
+            this.labelEmName.Size = new System.Drawing.Size(82, 24);
+            this.labelEmName.TabIndex = 5;
+            this.labelEmName.Text = "社員名";
+            // 
+            // labelEmID
+            // 
+            this.labelEmID.AutoSize = true;
+            this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelEmID.Location = new System.Drawing.Point(24, 15);
+            this.labelEmID.Name = "labelEmID";
+            this.labelEmID.Size = new System.Drawing.Size(80, 24);
+            this.labelEmID.TabIndex = 4;
+            this.labelEmID.Text = "社員ID";
+            // 
+            // dataGridViewEmployee
+            // 
+            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(306, 341);
+            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
+            this.dataGridViewEmployee.RowTemplate.Height = 21;
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 652);
+            this.dataGridViewEmployee.TabIndex = 7;
+            // 
+            // textBoxEmName
+            // 
+            this.textBoxEmName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmName.Location = new System.Drawing.Point(419, 15);
+            this.textBoxEmName.Name = "textBoxEmName";
+            this.textBoxEmName.Size = new System.Drawing.Size(144, 28);
+            this.textBoxEmName.TabIndex = 15;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPassword.Location = new System.Drawing.Point(143, 92);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(144, 28);
+            this.textBoxPassword.TabIndex = 16;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPhone.Location = new System.Drawing.Point(419, 92);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(144, 28);
+            this.textBoxPhone.TabIndex = 17;
+            // 
+            // textBoxEmHidden
+            // 
+            this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmHidden.Location = new System.Drawing.Point(988, 92);
+            this.textBoxEmHidden.Multiline = true;
+            this.textBoxEmHidden.Name = "textBoxEmHidden";
+            this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
+            this.textBoxEmHidden.TabIndex = 19;
+            // 
+            // comboBoxSoID
+            // 
+            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxSoID.FormattingEnabled = true;
+            this.comboBoxSoID.Location = new System.Drawing.Point(712, 14);
+            this.comboBoxSoID.Name = "comboBoxSoID";
+            this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxSoID.TabIndex = 20;
+            // 
+            // comboBoxPoID
+            // 
+            this.comboBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxPoID.FormattingEnabled = true;
+            this.comboBoxPoID.Location = new System.Drawing.Point(1000, 14);
+            this.comboBoxPoID.Name = "comboBoxPoID";
+            this.comboBoxPoID.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxPoID.TabIndex = 21;
+            // 
+            // dateTimePickerHiredate
+            // 
+            this.dateTimePickerHiredate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerHiredate.Location = new System.Drawing.Point(1349, 12);
+            this.dateTimePickerHiredate.Name = "dateTimePickerHiredate";
+            this.dateTimePickerHiredate.Size = new System.Drawing.Size(200, 31);
+            this.dateTimePickerHiredate.TabIndex = 22;
+            // 
+            // checkBoxEmFlag
+            // 
+            this.checkBoxEmFlag.AutoSize = true;
+            this.checkBoxEmFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxEmFlag.Location = new System.Drawing.Point(635, 92);
+            this.checkBoxEmFlag.Name = "checkBoxEmFlag";
+            this.checkBoxEmFlag.Size = new System.Drawing.Size(176, 28);
+            this.checkBoxEmFlag.TabIndex = 17;
+            this.checkBoxEmFlag.Text = "社員管理フラグ";
+            this.checkBoxEmFlag.UseVisualStyleBackColor = true;
             // 
             // FormEmployee
             // 
@@ -346,7 +432,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewEmployee);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
@@ -359,7 +445,7 @@
             this.panelLeft.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -381,7 +467,7 @@
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelEmID;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewEmployee;
         private System.Windows.Forms.Label label1HIdden;
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelPassword;
@@ -389,6 +475,14 @@
         private System.Windows.Forms.Label labelPoID;
         private System.Windows.Forms.Label labelSoID;
         private System.Windows.Forms.Label labelEmName;
-        private System.Windows.Forms.TextBox textBoxClName;
+        private System.Windows.Forms.TextBox textBoxEmID;
+        private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxEmName;
+        private System.Windows.Forms.TextBox textBoxEmHidden;
+        private System.Windows.Forms.DateTimePicker dateTimePickerHiredate;
+        private System.Windows.Forms.ComboBox comboBoxPoID;
+        private System.Windows.Forms.ComboBox comboBoxSoID;
+        private System.Windows.Forms.CheckBox checkBoxEmFlag;
     }
 }
