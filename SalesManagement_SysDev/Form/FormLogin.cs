@@ -106,7 +106,7 @@ namespace SalesManagement_SysDev
         }
         private bool Authentjcate()
         {
-            SqlConnection con = new SqlConnection();
+            SqlConnection con = new SqlConnection(); 
 
             try
             {
