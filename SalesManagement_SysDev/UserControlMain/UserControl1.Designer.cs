@@ -68,6 +68,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonSale.TabIndex = 2;
             this.buttonSale.Text = "売上管理";
             this.buttonSale.UseVisualStyleBackColor = false;
+            this.buttonSale.Click += new System.EventHandler(this.buttonSale_Click);
             // 
             // UserControl1
             // 
