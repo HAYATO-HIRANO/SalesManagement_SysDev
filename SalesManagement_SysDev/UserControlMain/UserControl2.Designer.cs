@@ -66,7 +66,6 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonOrder.TabIndex = 3;
             this.buttonOrder.Text = "受注管理";
             this.buttonOrder.UseVisualStyleBackColor = false;
-            this.buttonOrder.Click += new System.EventHandler(this.buttonOrder_Click);
             // 
             // UserControl2
             // 

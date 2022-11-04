@@ -16,11 +16,5 @@ namespace SalesManagement_SysDev.UserControlMain
         {
             InitializeComponent();
         }
-
-        private void buttonOrder_Click(object sender, EventArgs e)
-        {
-            FormOrder formOrder = new FormOrder();
-            formOrder.Show();
-        }
     }
 }

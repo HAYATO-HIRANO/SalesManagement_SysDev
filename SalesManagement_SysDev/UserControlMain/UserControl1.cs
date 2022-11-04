@@ -25,8 +25,7 @@ namespace SalesManagement_SysDev.UserControlMain
 
         private void buttonEmployee_Click(object sender, EventArgs e)
         {
-            FormEmployee formEmployee = new FormEmployee();
-            formEmployee.Show();
+
         }
     }
 }
