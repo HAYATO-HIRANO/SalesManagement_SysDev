@@ -45,9 +45,6 @@ namespace SalesManagement_SysDev
         [DisplayName("営業所ID")]
         public int SoID { get; set; }
 
-        [DisplayName("営業所名")]
-        public string SoName { get; set; }
-
         [DisplayName("顧客名")]
         public string ClName { get; set; }
 

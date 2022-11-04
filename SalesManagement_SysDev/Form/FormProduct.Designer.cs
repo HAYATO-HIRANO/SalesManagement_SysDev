@@ -38,6 +38,7 @@ namespace SalesManagement_SysDev
             this.labelClient = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -74,7 +75,8 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.buttonList = new System.Windows.Forms.Button();
+            this.labelMc = new System.Windows.Forms.Label();
+            this.comboBoxMc = new System.Windows.Forms.ComboBox();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -193,6 +195,18 @@ namespace SalesManagement_SysDev
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 26;
             // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 38;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            // 
             // buttonLogout
             // 
             this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
@@ -245,6 +259,8 @@ namespace SalesManagement_SysDev
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel4.Controls.Add(this.comboBoxMc);
+            this.panel4.Controls.Add(this.labelMc);
             this.panel4.Controls.Add(this.labelPrReleaseDate);
             this.panel4.Controls.Add(this.DateTimePickerPrReleaseDate);
             this.panel4.Controls.Add(this.comboBoxSc);
@@ -275,7 +291,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPrReleaseDate.AutoSize = true;
             this.labelPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPrReleaseDate.Location = new System.Drawing.Point(1170, 83);
+            this.labelPrReleaseDate.Location = new System.Drawing.Point(1170, 144);
             this.labelPrReleaseDate.Name = "labelPrReleaseDate";
             this.labelPrReleaseDate.Size = new System.Drawing.Size(82, 24);
             this.labelPrReleaseDate.TabIndex = 22;
@@ -284,7 +300,7 @@ namespace SalesManagement_SysDev
             // DateTimePickerPrReleaseDate
             // 
             this.DateTimePickerPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateTimePickerPrReleaseDate.Location = new System.Drawing.Point(1288, 79);
+            this.DateTimePickerPrReleaseDate.Location = new System.Drawing.Point(1287, 140);
             this.DateTimePickerPrReleaseDate.Name = "DateTimePickerPrReleaseDate";
             this.DateTimePickerPrReleaseDate.Size = new System.Drawing.Size(220, 30);
             this.DateTimePickerPrReleaseDate.TabIndex = 21;
@@ -418,7 +434,7 @@ namespace SalesManagement_SysDev
             // textBoxPrModelNumber
             // 
             this.textBoxPrModelNumber.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPrModelNumber.Location = new System.Drawing.Point(499, 81);
+            this.textBoxPrModelNumber.Location = new System.Drawing.Point(886, 81);
             this.textBoxPrModelNumber.Name = "textBoxPrModelNumber";
             this.textBoxPrModelNumber.Size = new System.Drawing.Size(267, 28);
             this.textBoxPrModelNumber.TabIndex = 12;
@@ -428,7 +444,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelColor.AutoSize = true;
             this.labelColor.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelColor.Location = new System.Drawing.Point(850, 83);
+            this.labelColor.Location = new System.Drawing.Point(1204, 81);
             this.labelColor.Name = "labelColor";
             this.labelColor.Size = new System.Drawing.Size(34, 24);
             this.labelColor.TabIndex = 7;
@@ -438,7 +454,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPrModelNumber.AutoSize = true;
             this.labelPrModelNumber.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPrModelNumber.Location = new System.Drawing.Point(384, 81);
+            this.labelPrModelNumber.Location = new System.Drawing.Point(810, 81);
             this.labelPrModelNumber.Name = "labelPrModelNumber";
             this.labelPrModelNumber.Size = new System.Drawing.Size(58, 24);
             this.labelPrModelNumber.TabIndex = 11;
@@ -447,7 +463,7 @@ namespace SalesManagement_SysDev
             // textBoxColor
             // 
             this.textBoxColor.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxColor.Location = new System.Drawing.Point(918, 79);
+            this.textBoxColor.Location = new System.Drawing.Point(1281, 81);
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.Size = new System.Drawing.Size(209, 28);
             this.textBoxColor.TabIndex = 8;
@@ -569,17 +585,24 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonList
+            // labelMc
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 385);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
-            this.buttonList.TabIndex = 38;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
+            this.labelMc.AutoSize = true;
+            this.labelMc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMc.Location = new System.Drawing.Point(386, 81);
+            this.labelMc.Name = "labelMc";
+            this.labelMc.Size = new System.Drawing.Size(106, 24);
+            this.labelMc.TabIndex = 23;
+            this.labelMc.Text = "大分類名";
+            // 
+            // comboBoxMc
+            // 
+            this.comboBoxMc.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxMc.FormattingEnabled = true;
+            this.comboBoxMc.Location = new System.Drawing.Point(531, 81);
+            this.comboBoxMc.Name = "comboBoxMc";
+            this.comboBoxMc.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxMc.TabIndex = 24;
             // 
             // FormProduct
             // 
@@ -662,5 +685,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonList;
+        private System.Windows.Forms.ComboBox comboBoxMc;
+        private System.Windows.Forms.Label labelMc;
     }
 }
