@@ -44,7 +44,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelInput = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.labelPage = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@ namespace SalesManagement_SysDev
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,6 +110,7 @@ namespace SalesManagement_SysDev
             this.label2.Size = new System.Drawing.Size(90, 16);
             this.label2.TabIndex = 10;
             this.label2.Text = "ユーザー名：";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // labelDay
             // 
@@ -245,14 +246,15 @@ namespace SalesManagement_SysDev
             this.label4.TabIndex = 4;
             this.label4.Text = "label4";
             // 
-            // panel4
+            // panelInput
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(311, 143);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1552, 169);
-            this.panel4.TabIndex = 5;
+            this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.label4);
+            this.panelInput.Location = new System.Drawing.Point(311, 143);
+            this.panelInput.Name = "panelInput";
+            this.panelInput.Size = new System.Drawing.Size(1552, 169);
+            this.panelInput.TabIndex = 5;
+            this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // dataGridView1
             // 
@@ -371,7 +373,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHinagata";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -380,8 +382,8 @@ namespace SalesManagement_SysDev
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panelLeft.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelInput.ResumeLayout(false);
+            this.panelInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -404,7 +406,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.TextBox textBoxPage;

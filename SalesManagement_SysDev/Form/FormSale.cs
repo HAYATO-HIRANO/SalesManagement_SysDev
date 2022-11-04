@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormOrder : Form
+    public partial class FormSale : Form
     {
-        public FormOrder()
+        public FormSale()
         {
             InitializeComponent();
-        }
-
-        private void FormOrder_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
