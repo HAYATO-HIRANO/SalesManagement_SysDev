@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
-namespace SalesManagement_SysDev
+namespace SalesManagement_SysDev.DbAccess
 {
     class ClientDataAccess
     {
@@ -62,7 +62,7 @@ namespace SalesManagement_SysDev
 
                 return true;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -75,9 +75,9 @@ namespace SalesManagement_SysDev
         //戻り値   ：全顧客データ
         //機　能   ：全顧客データの取得
         ///////////////////////////////
-
+        
         //途中
-        public List<M_ClientDsp> GetClientData()
+        /*public List<M_ClientDsp> GetClientData()
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
 
@@ -85,110 +85,18 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
                 // tbはIEnumerable型
-                var tb = from t1 in context.M_Clients
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
-                         select new
-                         {
-                             t1.ClID,
-                             t1.ClName,
-                             t1.SoID,
-                             t2.SoName,
-                             t1.ClAddress,
-                             t1.ClPhone,
-                             t1.ClPostal,
-                             t1.ClFAX,
-                             t1.ClFlag,
-                             t1.ClHidden
-                         };
-                foreach (var p in tb)
-                {
-                    client.Add(new M_ClientDsp()
-                    {
-                        ClID = p.ClID,
-                        SoID = p.SoID,
-                        ClName = p.ClName,
-                        ClAddress = p.ClAddress,
-                        ClPhone = p.ClPhone,
-                        ClFAX = p.ClFAX,
-                        ClPostal = p.ClPostal,
-                        ClFlag = p.ClFlag,
-                        ClHidden = p.ClHidden,
-                    });
-                }
-                context.Dispose();
+                var tb=from t1 in context.M_Clients
+                       join t2 in context.M_SalesOffices
+                       on t1.SoID equals t2.SoID
+                       select new
+                       {
+                           t1.ClID,
+                           t1.ClName,
+                           t1.SoID
+                           
+                       }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }*/
 
-            }
-            return client;
-        }
-        ///////////////////////////////
-        //メソッド名：GetStaffData() オーバーロード
-        //引　数   ：検索条件
-        //戻り値   ：条件一致スタッフデータ
-        //機　能   ：条件一致スタッフデータの取得
-        ///////////////////////////////
-        public List<M_ClientDsp> GetStaffData(M_ClientDsp selectCondition)
-        {
-            List<M_ClientDsp> client = new List<M_ClientDsp>();
-
-            try
-            {
-                var context = new SalesManagement_DevContext();
-
-                var tb = from t1 in context.M_Clients
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
-                         where t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-                         t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
-                         t1.ClName.Contains(selectCondition.ClName)
-                         select new
-                         {
-                             t1.ClID,
-                             t1.ClName,
-                             t1.SoID,
-                             t2.SoName,
-                             t1.ClAddress,
-                             t1.ClPhone,
-                             t1.ClPostal,
-                             t1.ClFAX,
-                             t1.ClFlag,
-                             t1.ClHidden
-
-                         };
-
-                foreach(var p in tb)
-                {
-                    client.Add(new M_ClientDsp()
-                    {
-                        ClID = p.ClID,
-                        SoID = p.SoID,
-                        ClName = p.ClName,
-                        ClAddress = p.ClAddress,
-                        ClPhone = p.ClPhone,
-                        ClFAX = p.ClFAX,
-                        ClPostal = p.ClPostal,
-                        ClFlag = p.ClFlag,
-                        ClHidden = p.ClHidden,
-
-                    });
-                }
-                context.Dispose();
-
-
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            return client;
-
-
-        }
     }
 }
