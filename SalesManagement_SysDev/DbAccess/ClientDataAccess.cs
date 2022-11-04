@@ -10,6 +10,32 @@ namespace SalesManagement_SysDev
     class ClientDataAccess
     {
         ///////////////////////////////
+        //メソッド名：CheckStaffCDExistence()
+        //引　数   ：スタッフコード
+        //戻り値   ：True or False
+        //機　能   ：一致するスタッフコードの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckClIDExistence(int clID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //スタッフCDで一致するデータが存在するか
+                flg = context.M_Clients.Any(x => x.ClID == clID);
+                context.Dispose();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+        ///////////////////////////////
         //メソッド名：AddClientData()
         //引　数   ：スタッフデータ
         //戻り値   ：True or False
