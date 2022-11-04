@@ -74,6 +74,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonList = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -180,6 +181,7 @@ namespace SalesManagement_SysDev
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonLogout);
             this.panelLeft.Controls.Add(this.buttonUpdate);
             this.panelLeft.Controls.Add(this.buttonSearch);
@@ -567,6 +569,18 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 38;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            // 
             // FormProduct
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -647,5 +661,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
+        private System.Windows.Forms.Button buttonList;
     }
 }

@@ -69,6 +69,7 @@
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonList = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -175,6 +176,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonLogout);
             this.panelLeft.Controls.Add(this.buttonUpdate);
             this.panelLeft.Controls.Add(this.buttonSearch);
@@ -533,6 +535,18 @@
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 25;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            // 
             // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -610,5 +624,6 @@
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
+        private System.Windows.Forms.Button buttonList;
     }
 }
