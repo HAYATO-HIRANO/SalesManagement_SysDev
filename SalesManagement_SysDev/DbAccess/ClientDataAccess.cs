@@ -10,10 +10,10 @@ namespace SalesManagement_SysDev.DbAccess
     class ClientDataAccess
     {
         ///////////////////////////////
-        //メソッド名：CheckStaffCDExistence()
+        //メソッド名：CheckClientCDExistence()
         //引　数   ：顧客ID
         //戻り値   ：True or False
-        //機　能   ：一致するスタッフコードの有無を確認
+        //機　能   ：一致する顧客IDの有無を確認
         //          ：一致データありの場合True
         //          ：一致データなしの場合False
         ///////////////////////////////
@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                //スタッフCDで一致するデータが存在するか
+                //顧客IDで一致するデータが存在するか
                 flg = context.M_Clients.Any(x => x.ClID == clID);
                 context.Dispose();
 
@@ -31,7 +31,7 @@ namespace SalesManagement_SysDev.DbAccess
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+               
             }
             return flg;
         }
@@ -102,7 +102,7 @@ namespace SalesManagement_SysDev.DbAccess
         //機　能   ：全顧客データの取得
         ///////////////////////////////
         
-        //途中
+       
         public List<M_ClientDsp> GetClientData()
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
@@ -150,18 +150,18 @@ namespace SalesManagement_SysDev.DbAccess
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                
             }
             return client;
         }
 
         ///////////////////////////////
-        //メソッド名：GetStaffData() オーバーロード
+        //メソッド名：GetClientData() オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致顧客データ
         //機　能   ：条件一致顧客データの取得
         ///////////////////////////////
-        public List<M_ClientDsp> GetStaffData(M_ClientDsp selectCondition)
+        public List<M_ClientDsp> GetClientData(M_ClientDsp selectCondition)
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
 
@@ -174,7 +174,11 @@ namespace SalesManagement_SysDev.DbAccess
                          on t1.SoID equals t2.SoID
                          where t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                          t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
-                         t1.ClName.Contains(selectCondition.ClName)
+                         t1.ClName.Contains(selectCondition.ClName)&&
+                         t1.ClAddress.Contains(selectCondition.ClAddress)&&
+                         t1.ClPhone.Contains(selectCondition.ClPhone)&&
+                         t1.ClPostal.Contains(selectCondition.ClPostal)
+                         
                          select new
                          {
                              t1.ClID,
