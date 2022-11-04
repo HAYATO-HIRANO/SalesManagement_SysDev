@@ -19,7 +19,7 @@ namespace SalesManagement_SysDev
 
         private void FormEmployee_Load(object sender, EventArgs e)
         {
-
+            panelSetting.Visible = false;
         }
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
@@ -65,6 +65,16 @@ namespace SalesManagement_SysDev
         private void textBoxPageSize_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSetting_Click(object sender, EventArgs e)
+        {
+            panelSetting.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panelSetting.Visible = false;
         }
     }
 }
