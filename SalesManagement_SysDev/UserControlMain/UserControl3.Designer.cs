@@ -90,6 +90,7 @@
             this.buttonProduct.TabIndex = 3;
             this.buttonProduct.Text = "商品管理";
             this.buttonProduct.UseVisualStyleBackColor = false;
+            this.buttonProduct.Click += new System.EventHandler(this.buttonProduct_Click);
             // 
             // buttonStock
             // 
@@ -101,6 +102,7 @@
             this.buttonStock.TabIndex = 5;
             this.buttonStock.Text = "在庫管理";
             this.buttonStock.UseVisualStyleBackColor = false;
+            this.buttonStock.Click += new System.EventHandler(this.buttonStock_Click);
             // 
             // UserControl3
             // 

@@ -74,7 +74,7 @@ namespace SalesManagement_SysDev.DbAccess
             {
                 var context = new SalesManagement_DevContext();
                 var Client = context.M_Clients.Single(x => x.ClID == updClient.ClID);
-                Client.SoID = updClient.SoID;
+
                 Client.ClName = updClient.ClName;
                 Client.ClAddress = updClient.ClAddress;
                 Client.ClPhone = updClient.ClPhone;
