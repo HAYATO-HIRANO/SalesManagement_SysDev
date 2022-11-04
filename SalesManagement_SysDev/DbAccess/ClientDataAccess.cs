@@ -11,7 +11,7 @@ namespace SalesManagement_SysDev.DbAccess
     {
         ///////////////////////////////
         //メソッド名：CheckStaffCDExistence()
-        //引　数   ：スタッフコード
+        //引　数   ：顧客ID
         //戻り値   ：True or False
         //機　能   ：一致するスタッフコードの有無を確認
         //          ：一致データありの場合True
@@ -74,7 +74,7 @@ namespace SalesManagement_SysDev.DbAccess
             {
                 var context = new SalesManagement_DevContext();
                 var Client = context.M_Clients.Single(x => x.ClID == updClient.ClID);
-
+                Client.SoID = updClient.SoID;
                 Client.ClName = updClient.ClName;
                 Client.ClAddress = updClient.ClAddress;
                 Client.ClPhone = updClient.ClPhone;
@@ -161,6 +161,58 @@ namespace SalesManagement_SysDev.DbAccess
         //戻り値   ：条件一致顧客データ
         //機　能   ：条件一致顧客データの取得
         ///////////////////////////////
+        public List<M_ClientDsp> GetStaffData(M_ClientDsp selectCondition)
+        {
+            List<M_ClientDsp> client = new List<M_ClientDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.M_Clients
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         where t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                         t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
+                         t1.ClName.Contains(selectCondition.ClName)
+                         select new
+                         {
+                             t1.ClID,
+                             t1.ClName,
+                             t1.SoID,
+                             t2.SoName,
+                             t1.ClAddress,
+                             t1.ClFAX,
+                             t1.ClPhone,
+                             t1.ClPostal,
+                             t1.ClFlag,
+                             t1.ClHidden
+                         };
+                    foreach(var p in tb)
+                {
+                    client.Add(new M_ClientDsp()
+                    {
+                        ClID = p.ClID,
+                        ClName = p.ClName,
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        ClPhone = p.ClPhone,
+                        ClAddress = p.ClAddress,
+                        ClPostal = p.ClPostal,
+                        ClFAX = p.ClFAX,
+                        ClFlag = p.ClFlag,
+                        ClHidden = p.ClHidden
+                    });
+                }
+                context.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return client;
+        }
 
 
     }
