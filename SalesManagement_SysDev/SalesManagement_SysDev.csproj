@@ -77,6 +77,12 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Form\FormChumon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormChumon.Designer.cs">
+      <DependentUpon>FormChumon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     <Compile Include="UserControlMain\UserControl3.Designer.cs">
       <DependentUpon>UserControl3.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormChumon.resx">
+      <DependentUpon>FormChumon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>
     </EmbeddedResource>
