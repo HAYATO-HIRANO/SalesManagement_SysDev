@@ -103,7 +103,7 @@ namespace SalesManagement_SysDev.DbAccess
         ///////////////////////////////
         
         //途中
-        /*public List<M_ClientDsp> GetClientData()
+        public List<M_ClientDsp> GetClientData()
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
 
@@ -111,18 +111,57 @@ namespace SalesManagement_SysDev.DbAccess
             {
                 var context = new SalesManagement_DevContext();
                 // tbはIEnumerable型
-                var tb=from t1 in context.M_Clients
-                       join t2 in context.M_SalesOffices
-                       on t1.SoID equals t2.SoID
-                       select new
-                       {
-                           t1.ClID,
-                           t1.ClName,
-                           t1.SoID
-                           
-                       }
+                var tb = from t1 in context.M_Clients
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         select new
+                         {
+                             t1.ClID,
+                             t1.ClName,
+                             t1.SoID,
+                             t2.SoName,
+                             t1.ClAddress,
+                             t1.ClFAX,
+                             t1.ClPhone,
+                             t1.ClPostal,
+                             t1.ClFlag,
+                             t1.ClHidden
+                         };
+                foreach(var p in tb)
+                {
+                    client.Add(new M_ClientDsp()
+                    {
+                        ClID=p.ClID,
+                        ClName=p.ClName,
+                        SoID=p.SoID,
+                        SoName=p.SoName,
+                        ClPhone=p.ClPhone,
+                        ClAddress=p.ClAddress,
+                        ClPostal=p.ClPostal,
+                        ClFAX=p.ClFAX,
+                        ClFlag=p.ClFlag,
+                        ClHidden=p.ClHidden
+                    });
+                }
+                context.Dispose();
+
+
             }
-        }*/
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return client;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetStaffData() オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：条件一致顧客データ
+        //機　能   ：条件一致顧客データの取得
+        ///////////////////////////////
+
 
     }
 }
