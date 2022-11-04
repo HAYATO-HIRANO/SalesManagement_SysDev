@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormChumon : Form
+    public partial class FormSale : Form
     {
-        public FormChumon()
+        public FormSale()
         {
             InitializeComponent();
-        }
-
-        private void FormChumon_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
