@@ -56,7 +56,7 @@ namespace SalesManagement_SysDev
 
             //入力チェック
             ret = this.Check();
-            if (ret = false)
+            if (ret == false)
             {
                 return;
             }
@@ -150,7 +150,7 @@ namespace SalesManagement_SysDev
 
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("接続エラー");
                 return false;
