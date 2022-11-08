@@ -43,9 +43,10 @@ namespace SalesManagement_SysDev
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
-            this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControl1();
-            this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControl2();
-            this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControl3();
+            this.buttonLogout = new System.Windows.Forms.Button();
+            this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControlHQ();
+            this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControlSales();
+            this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControlLogistics();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -289,9 +290,9 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonEigyou;
         private System.Windows.Forms.Button buttonButuryu;
         private System.Windows.Forms.Button buttonHonbu;
-        private UserControlMain.UserControl1 userControl11;
-        private UserControlMain.UserControl2 userControl21;
-        private UserControlMain.UserControl3 userControl31;
+        private UserControlMain.UserControlHQ userControl11;
+        private UserControlMain.UserControlSales userControl21;
+        private UserControlMain.UserControlLogistics userControl31;
         private System.Windows.Forms.Button buttonHinagata;
         private System.Windows.Forms.Button buttonLogout;
     }

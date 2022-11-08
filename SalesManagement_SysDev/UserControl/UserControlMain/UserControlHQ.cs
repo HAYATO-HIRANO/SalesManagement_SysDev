@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev.UserControlMain
 {
-    public partial class UserControl1 : UserControl
+    public partial class UserControlHQ : UserControl
     {
-        public UserControl1()
+        public UserControlHQ()
         {
             InitializeComponent();
         }
@@ -25,7 +25,8 @@ namespace SalesManagement_SysDev.UserControlMain
 
         private void buttonEmployee_Click(object sender, EventArgs e)
         {
-
+            FormEmployee formEmployee = new FormEmployee();
+            formEmployee.Show();
         }
 
         private void buttonSale_Click(object sender, EventArgs e)
