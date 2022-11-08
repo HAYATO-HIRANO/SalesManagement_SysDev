@@ -143,7 +143,7 @@ namespace SalesManagement_SysDev
             try
             {
                 var context = new SalesManagement_DevContext();
-                positions = context.M_Positions.Where(x => x.PoFlag == 2).ToList();
+                positions = context.M_Positions.Where(x => x.PoFlag == 0).ToList();
                 context.Dispose();
             }
             catch(Exception ex)
