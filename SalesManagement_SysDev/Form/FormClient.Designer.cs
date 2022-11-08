@@ -47,15 +47,16 @@ namespace SalesManagement_SysDev
             this.labelAddress = new System.Windows.Forms.Label();
             this.textBoxClAddres = new System.Windows.Forms.TextBox();
             this.labelPhone = new System.Windows.Forms.Label();
-            this.textBoxClphone = new System.Windows.Forms.TextBox();
+            this.textBoxClPhone = new System.Windows.Forms.TextBox();
             this.labelPostal = new System.Windows.Forms.Label();
-            this.textBoxClpostal = new System.Windows.Forms.TextBox();
+            this.textBoxClPostal = new System.Windows.Forms.TextBox();
             this.labelFAX = new System.Windows.Forms.Label();
             this.textBoxClFAX = new System.Windows.Forms.TextBox();
             this.checkBoxClFlag = new System.Windows.Forms.CheckBox();
             this.labelHidden = new System.Windows.Forms.Label();
             this.textBoxClHidden = new System.Windows.Forms.TextBox();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -72,7 +73,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.buttonList = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -187,6 +187,7 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.TabIndex = 0;
             this.buttonFormDel.Text = "✕";
             this.buttonFormDel.UseVisualStyleBackColor = false;
+            this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click);
             // 
             // label1
             // 
@@ -275,14 +276,14 @@ namespace SalesManagement_SysDev
             this.labelPhone.TabIndex = 9;
             this.labelPhone.Text = "電話番号";
             // 
-            // textBoxClphone
+            // textBoxClPhone
             // 
-            this.textBoxClphone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClphone.Location = new System.Drawing.Point(1006, 21);
-            this.textBoxClphone.Name = "textBoxClphone";
-            this.textBoxClphone.Size = new System.Drawing.Size(147, 28);
-            this.textBoxClphone.TabIndex = 10;
-            this.textBoxClphone.Text = "0123456789012";
+            this.textBoxClPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClPhone.Location = new System.Drawing.Point(1006, 21);
+            this.textBoxClPhone.Name = "textBoxClPhone";
+            this.textBoxClPhone.Size = new System.Drawing.Size(147, 28);
+            this.textBoxClPhone.TabIndex = 10;
+            this.textBoxClPhone.Text = "0123456789012";
             // 
             // labelPostal
             // 
@@ -294,14 +295,14 @@ namespace SalesManagement_SysDev
             this.labelPostal.TabIndex = 11;
             this.labelPostal.Text = "郵便番号";
             // 
-            // textBoxClpostal
+            // textBoxClPostal
             // 
-            this.textBoxClpostal.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClpostal.Location = new System.Drawing.Point(127, 78);
-            this.textBoxClpostal.Name = "textBoxClpostal";
-            this.textBoxClpostal.Size = new System.Drawing.Size(99, 28);
-            this.textBoxClpostal.TabIndex = 12;
-            this.textBoxClpostal.Text = "0123456";
+            this.textBoxClPostal.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClPostal.Location = new System.Drawing.Point(127, 78);
+            this.textBoxClPostal.Name = "textBoxClPostal";
+            this.textBoxClPostal.Size = new System.Drawing.Size(99, 28);
+            this.textBoxClPostal.TabIndex = 12;
+            this.textBoxClPostal.Text = "0123456";
             // 
             // labelFAX
             // 
@@ -328,9 +329,9 @@ namespace SalesManagement_SysDev
             this.checkBoxClFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.checkBoxClFlag.Location = new System.Drawing.Point(19, 134);
             this.checkBoxClFlag.Name = "checkBoxClFlag";
-            this.checkBoxClFlag.Size = new System.Drawing.Size(176, 28);
+            this.checkBoxClFlag.Size = new System.Drawing.Size(152, 28);
             this.checkBoxClFlag.TabIndex = 16;
-            this.checkBoxClFlag.Text = "顧客管理フラグ";
+            this.checkBoxClFlag.Text = "非表示フラグ";
             this.checkBoxClFlag.UseVisualStyleBackColor = true;
             // 
             // labelHidden
@@ -366,6 +367,18 @@ namespace SalesManagement_SysDev
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 24;
+            // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 6;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
             // 
             // buttonLogout
             // 
@@ -415,6 +428,7 @@ namespace SalesManagement_SysDev
             this.buttonRegist.TabIndex = 0;
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
+            this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
             // 
             // panelInput
             // 
@@ -430,11 +444,11 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelClName);
             this.panelInput.Controls.Add(this.labelFAX);
             this.panelInput.Controls.Add(this.textBoxClName);
-            this.panelInput.Controls.Add(this.textBoxClpostal);
+            this.panelInput.Controls.Add(this.textBoxClPostal);
             this.panelInput.Controls.Add(this.labelAddress);
             this.panelInput.Controls.Add(this.labelPostal);
             this.panelInput.Controls.Add(this.textBoxClAddres);
-            this.panelInput.Controls.Add(this.textBoxClphone);
+            this.panelInput.Controls.Add(this.textBoxClPhone);
             this.panelInput.Controls.Add(this.labelPhone);
             this.panelInput.Location = new System.Drawing.Point(306, 131);
             this.panelInput.Name = "panelInput";
@@ -548,18 +562,6 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonList
-            // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 385);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
-            this.buttonList.TabIndex = 6;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
-            // 
             // FormClient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -582,6 +584,7 @@ namespace SalesManagement_SysDev
             this.Name = "FormClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormClient";
+            this.Load += new System.EventHandler(this.FormClient_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelHeader.ResumeLayout(false);
@@ -607,9 +610,9 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelAddress;
         private System.Windows.Forms.TextBox textBoxClAddres;
         private System.Windows.Forms.Label labelPhone;
-        private System.Windows.Forms.TextBox textBoxClphone;
+        private System.Windows.Forms.TextBox textBoxClPhone;
         private System.Windows.Forms.Label labelPostal;
-        private System.Windows.Forms.TextBox textBoxClpostal;
+        private System.Windows.Forms.TextBox textBoxClPostal;
         private System.Windows.Forms.Label labelFAX;
         private System.Windows.Forms.TextBox textBoxClFAX;
         private System.Windows.Forms.CheckBox checkBoxClFlag;

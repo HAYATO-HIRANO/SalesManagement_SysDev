@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesManagement_SysDev
+namespace SalesManagement_SysDev.Common
 {
-    class DataInputFormCheck
+    class EmployeeDateAccess
     {
-        
     }
 }
