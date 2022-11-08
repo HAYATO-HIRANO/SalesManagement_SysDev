@@ -70,6 +70,7 @@
     <Compile Include="DbAccess\PositionDataAccess.cs" />
     <Compile Include="DbAccess\ProductDataAccess.cs" />
     <Compile Include="DbAccess\SaleDataAccess.cs" />
+    <Compile Include="DbAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDataAccess.cs" />
     <Compile Include="DbAccess\StockDataAccess.cs" />
     <Compile Include="DbAccess\SyukkoDataAccess.cs" />
@@ -160,22 +161,28 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="UserControlMain\UserControlHQ.cs">
+    <Compile Include="UserControl\UserControlEmployee\UserControlPosition.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain\UserControlHQ.Designer.cs">
+    <Compile Include="UserControl\UserControlEmployee\UserControlPosition.Designer.cs">
+      <DependentUpon>UserControlPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UserControlMain\UserControlHQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserControlMain\UserControlHQ.Designer.cs">
       <DependentUpon>UserControlHQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMain\UserControlSales.cs">
+    <Compile Include="UserControl\UserControlMain\UserControlSales.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain\UserControlSales.Designer.cs">
+    <Compile Include="UserControl\UserControlMain\UserControlSales.Designer.cs">
       <DependentUpon>UserControlSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMain\UserControlLogistics.cs">
+    <Compile Include="UserControl\UserControlMain\UserControlLogistics.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain\UserControlLogistics.Designer.cs">
+    <Compile Include="UserControl\UserControlMain\UserControlLogistics.Designer.cs">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form\FormSale.resx">
@@ -213,14 +220,18 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControlMain\UserControlHQ.resx">
+    <EmbeddedResource Include="UserControl\UserControlEmployee\UserControlPosition.resx">
+      <DependentUpon>UserControlPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UserControlMain\UserControlHQ.resx">
       <DependentUpon>UserControlHQ.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMain\UserControlSales.resx">
+    <EmbeddedResource Include="UserControl\UserControlMain\UserControlSales.resx">
       <DependentUpon>UserControlSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMain\UserControlLogistics.resx">
+    <EmbeddedResource Include="UserControl\UserControlMain\UserControlLogistics.resx">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -237,7 +248,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\14569.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\145691.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
