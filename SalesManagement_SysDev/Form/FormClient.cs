@@ -63,5 +63,14 @@ namespace SalesManagement_SysDev
             
         }
 
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonRegist_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
