@@ -57,7 +57,6 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxEmName = new System.Windows.Forms.TextBox();
             this.textBoxEmID = new System.Windows.Forms.TextBox();
-            this.label1HIdden = new System.Windows.Forms.Label();
             this.labelPhone = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelEmHiredate = new System.Windows.Forms.Label();
@@ -331,7 +330,6 @@
             this.panel4.Controls.Add(this.textBoxPassword);
             this.panel4.Controls.Add(this.textBoxEmName);
             this.panel4.Controls.Add(this.textBoxEmID);
-            this.panel4.Controls.Add(this.label1HIdden);
             this.panel4.Controls.Add(this.labelPhone);
             this.panel4.Controls.Add(this.labelPassword);
             this.panel4.Controls.Add(this.labelEmHiredate);
@@ -350,9 +348,9 @@
             this.checkBoxEmFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.checkBoxEmFlag.Location = new System.Drawing.Point(635, 92);
             this.checkBoxEmFlag.Name = "checkBoxEmFlag";
-            this.checkBoxEmFlag.Size = new System.Drawing.Size(176, 28);
+            this.checkBoxEmFlag.Size = new System.Drawing.Size(152, 28);
             this.checkBoxEmFlag.TabIndex = 17;
-            this.checkBoxEmFlag.Text = "社員管理フラグ";
+            this.checkBoxEmFlag.Text = "非表示フラグ";
             this.checkBoxEmFlag.UseVisualStyleBackColor = true;
             // 
             // dateTimePickerHiredate
@@ -384,10 +382,10 @@
             // textBoxEmHidden
             // 
             this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmHidden.Location = new System.Drawing.Point(988, 92);
+            this.textBoxEmHidden.Location = new System.Drawing.Point(793, 92);
             this.textBoxEmHidden.Multiline = true;
             this.textBoxEmHidden.Name = "textBoxEmHidden";
-            this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
+            this.textBoxEmHidden.Size = new System.Drawing.Size(736, 60);
             this.textBoxEmHidden.TabIndex = 19;
             // 
             // textBoxPhone
@@ -421,17 +419,6 @@
             this.textBoxEmID.Name = "textBoxEmID";
             this.textBoxEmID.Size = new System.Drawing.Size(144, 28);
             this.textBoxEmID.TabIndex = 14;
-            // 
-            // label1HIdden
-            // 
-            this.label1HIdden.AutoSize = true;
-            this.label1HIdden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label1HIdden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1HIdden.Location = new System.Drawing.Point(852, 92);
-            this.label1HIdden.Name = "label1HIdden";
-            this.label1HIdden.Size = new System.Drawing.Size(130, 24);
-            this.label1HIdden.TabIndex = 13;
-            this.label1HIdden.Text = "非表示理由";
             // 
             // labelPhone
             // 
@@ -522,7 +509,7 @@
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1756, 342);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1777, 339);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 24;
@@ -533,7 +520,7 @@
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1709, 344);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1730, 341);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
             this.textBoxPageSize.TabIndex = 23;
@@ -544,7 +531,7 @@
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1598, 349);
+            this.labelPageSize.Location = new System.Drawing.Point(1619, 346);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 22;
@@ -554,7 +541,7 @@
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(1178, 335);
+            this.buttonLastPage.Location = new System.Drawing.Point(1199, 332);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 21;
@@ -565,7 +552,7 @@
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(1110, 335);
+            this.buttonNextPage.Location = new System.Drawing.Point(1131, 332);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 20;
@@ -576,7 +563,7 @@
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(1030, 335);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1051, 332);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 19;
@@ -587,7 +574,7 @@
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(963, 335);
+            this.buttonFirstPage.Location = new System.Drawing.Point(984, 332);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 18;
@@ -599,7 +586,7 @@
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(368, 342);
+            this.labelPage.Location = new System.Drawing.Point(389, 339);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
             this.labelPage.TabIndex = 17;
@@ -609,7 +596,7 @@
             // textBoxPage
             // 
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(318, 335);
+            this.textBoxPage.Location = new System.Drawing.Point(339, 332);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 16;
@@ -670,7 +657,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelEmID;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;
-        private System.Windows.Forms.Label label1HIdden;
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelEmHiredate;
