@@ -76,5 +76,12 @@ namespace SalesManagement_SysDev
             userControl31.Visible = true;
             userControl11.Visible = false;
         }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            formLogin.Show();
+            this.Visible = false;
+        }
     }
 }
