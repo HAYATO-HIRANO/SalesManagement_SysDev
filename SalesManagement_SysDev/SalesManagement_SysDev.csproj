@@ -69,6 +69,7 @@
     <Compile Include="DbAccess\PasswordHash.cs" />
     <Compile Include="DbAccess\ProductDataAccess.cs" />
     <Compile Include="DbAccess\SaleDataAccess.cs" />
+    <Compile Include="DbAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDataAccess.cs" />
     <Compile Include="DbAccess\StockDataAccess.cs" />
     <Compile Include="DbAccess\SyukkoDataAccess.cs" />

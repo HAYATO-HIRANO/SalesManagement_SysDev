@@ -9,6 +9,14 @@ namespace SalesManagement_SysDev//.DbAccess
 {
     class ProductDataAccess
     {
+        ///////////////////////////////
+        //メソッド名：CheckPrIDExistence()
+        //引　数   ：商品ID
+        //戻り値   ：True or False
+        //機　能   ：一致する商品IDの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
         public bool CheckPrIDExistence(int prID)
         {
             bool flg = false;
@@ -25,6 +33,15 @@ namespace SalesManagement_SysDev//.DbAccess
             return flg;
         }
 
+
+        ///////////////////////////////
+        //メソッド名：AddProductData()
+        //引　数   ：商品データ
+        //戻り値   ：True or False
+        //機　能   ：商品データの登録
+        //          ：登録成功の場合True
+        //          ：登録失敗の場合False
+        ///////////////////////////////
         public bool AddProductData(M_Product regpd)
         {
             try
@@ -41,6 +58,15 @@ namespace SalesManagement_SysDev//.DbAccess
                 return false;
             }
         }
+
+        ///////////////////////////////
+        //メソッド名　UpdateProductData()
+        //引　数   ：商品データ
+        //戻り値   ：True or False
+        //機　能   ：商品データの更新
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
+        ///////////////////////////////
 
         public bool UpdateProductData(M_Product updPd)
         {
@@ -70,7 +96,12 @@ namespace SalesManagement_SysDev//.DbAccess
                 return false;
             }
         }
-
+        ///////////////////////////////
+        //メソッド名：GetProductData()　オーバーロード
+        //引　数   ：商品データ
+        //戻り値   ：条件一致商品データ
+        //機　能   ：条件一致商品データの取得
+        ///////////////////////////////
         public List<M_Product> GetProductData(M_Product selectCondition)
         {
             List<M_Product> product = new List<M_Product>();
@@ -87,7 +118,12 @@ namespace SalesManagement_SysDev//.DbAccess
             return product;
         }
 
-
+        ///////////////////////////////
+        //メソッド名： GetProductData()
+        //引　数   ：なし
+        //戻り値   ：商品データ
+        //機　能   ：商品データの取得
+        ///////////////////////////////
 
         public List<M_Product> GetProductData()
         {
