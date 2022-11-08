@@ -56,6 +56,7 @@ namespace SalesManagement_SysDev
             this.labelHidden = new System.Windows.Forms.Label();
             this.textBoxClHidden = new System.Windows.Forms.TextBox();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -72,7 +73,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.buttonList = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -367,6 +367,18 @@ namespace SalesManagement_SysDev
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 24;
             // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 6;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            // 
             // buttonLogout
             // 
             this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
@@ -548,18 +560,6 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonList
-            // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 385);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
-            this.buttonList.TabIndex = 6;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
-            // 
             // FormClient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -582,6 +582,7 @@ namespace SalesManagement_SysDev
             this.Name = "FormClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormClient";
+            this.Load += new System.EventHandler(this.FormClient_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelHeader.ResumeLayout(false);

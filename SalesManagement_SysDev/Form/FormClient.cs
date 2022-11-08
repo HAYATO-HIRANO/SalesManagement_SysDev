@@ -12,6 +12,20 @@ namespace SalesManagement_SysDev
 {
     public partial class FormClient : Form
     {
+        //メッセージ表示用クラスのインスタンス化
+        MessageDsp messageDsp = new MessageDsp();
+        //データベース顧客テーブルアクセス用クラスのインスタンス化
+        ClientDataAccess clientDataAccess = new ClientDataAccess();
+        //データベース営業所テーブルアクセス用クラスのインスタンス化
+
+        //入力形式チェック用クラスのインスタンス化
+        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+        //データグリッドビュー用の顧客データ
+        private static List<M_ClientDsp> Client;
+        //コンボボックス用の営業所データ
+        private static List<M_SalesOffice> SalesOffices;
+        
+
         public FormClient()
         {
             InitializeComponent();
@@ -26,5 +40,28 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void FormClient_Load(object sender, EventArgs e)
+        {
+            
+            //コンボボックスの設定
+            SetFormComboBox();
+
+            //データグリッドビューの設定
+
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetFormComboBox()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コンボボックスのデータ設定
+        ///////////////////////////////
+        private void SetFormComboBox()
+        {
+            //営業所データの取得
+            
+        }
+
     }
 }

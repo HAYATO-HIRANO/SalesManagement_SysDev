@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesManagement_SysDev.DbAccess
+namespace SalesManagement_SysDev
 {
     class DataInputFormCheck
     {
