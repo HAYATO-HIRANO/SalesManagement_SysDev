@@ -42,6 +42,15 @@ namespace SalesManagement_SysDev
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBoxChID = new System.Windows.Forms.TextBox();
+            this.textBoxClID = new System.Windows.Forms.TextBox();
+            this.comboBoxEmID = new System.Windows.Forms.ComboBox();
+            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
+            this.textBoxSaID = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
@@ -53,15 +62,6 @@ namespace SalesManagement_SysDev
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxSaID = new System.Windows.Forms.TextBox();
-            this.comboBoxClD = new System.Windows.Forms.ComboBox();
-            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
-            this.comboBoxChID = new System.Windows.Forms.ComboBox();
-            this.comboBoxEmID = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -82,7 +82,7 @@ namespace SalesManagement_SysDev
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1904, 100);
+            this.panel3.Size = new System.Drawing.Size(1920, 100);
             this.panel3.TabIndex = 3;
             // 
             // label3
@@ -175,7 +175,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.Location = new System.Drawing.Point(0, 100);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 941);
+            this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 4;
             // 
             // buttonList
@@ -218,10 +218,10 @@ namespace SalesManagement_SysDev
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.textBoxChID);
+            this.panelInput.Controls.Add(this.textBoxClID);
             this.panelInput.Controls.Add(this.comboBoxEmID);
-            this.panelInput.Controls.Add(this.comboBoxChID);
             this.panelInput.Controls.Add(this.comboBoxSoID);
-            this.panelInput.Controls.Add(this.comboBoxClD);
             this.panelInput.Controls.Add(this.textBoxSaID);
             this.panelInput.Controls.Add(this.label8);
             this.panelInput.Controls.Add(this.label7);
@@ -232,6 +232,92 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 169);
             this.panelInput.TabIndex = 6;
+            // 
+            // textBoxChID
+            // 
+            this.textBoxChID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxChID.Location = new System.Drawing.Point(860, 14);
+            this.textBoxChID.Name = "textBoxChID";
+            this.textBoxChID.Size = new System.Drawing.Size(196, 28);
+            this.textBoxChID.TabIndex = 21;
+            // 
+            // textBoxClID
+            // 
+            this.textBoxClID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClID.Location = new System.Drawing.Point(473, 14);
+            this.textBoxClID.Name = "textBoxClID";
+            this.textBoxClID.Size = new System.Drawing.Size(196, 28);
+            this.textBoxClID.TabIndex = 20;
+            // 
+            // comboBoxEmID
+            // 
+            this.comboBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxEmID.FormattingEnabled = true;
+            this.comboBoxEmID.Location = new System.Drawing.Point(110, 73);
+            this.comboBoxEmID.Name = "comboBoxEmID";
+            this.comboBoxEmID.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxEmID.TabIndex = 19;
+            // 
+            // comboBoxSoID
+            // 
+            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxSoID.FormattingEnabled = true;
+            this.comboBoxSoID.Location = new System.Drawing.Point(473, 73);
+            this.comboBoxSoID.Name = "comboBoxSoID";
+            this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxSoID.TabIndex = 17;
+            // 
+            // textBoxSaID
+            // 
+            this.textBoxSaID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxSaID.Location = new System.Drawing.Point(110, 15);
+            this.textBoxSaID.Name = "textBoxSaID";
+            this.textBoxSaID.Size = new System.Drawing.Size(196, 28);
+            this.textBoxSaID.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.label8.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label8.Location = new System.Drawing.Point(752, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 24);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "受注ID";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.label7.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label7.Location = new System.Drawing.Point(15, 78);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 24);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "社員ID";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.label6.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label6.Location = new System.Drawing.Point(362, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 24);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "営業所ID";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label5.Location = new System.Drawing.Point(362, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 24);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "顧客ID";
             // 
             // label4
             // 
@@ -257,7 +343,7 @@ namespace SalesManagement_SysDev
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1712, 331);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1687, 337);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
             this.textBoxPageSize.TabIndex = 24;
@@ -267,7 +353,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1587, 336);
+            this.labelPageSize.Location = new System.Drawing.Point(1576, 342);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 23;
@@ -342,100 +428,12 @@ namespace SalesManagement_SysDev
             this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
             this.dataGridView1.TabIndex = 16;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(386, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 24);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "顧客ID";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label6.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(708, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 24);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "営業所ID";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label7.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(15, 78);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 24);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "社員ID";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label8.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(1085, 15);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 24);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "受注ID";
-            // 
-            // textBoxSaID
-            // 
-            this.textBoxSaID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxSaID.Location = new System.Drawing.Point(110, 15);
-            this.textBoxSaID.Name = "textBoxSaID";
-            this.textBoxSaID.Size = new System.Drawing.Size(196, 28);
-            this.textBoxSaID.TabIndex = 15;
-            // 
-            // comboBoxClD
-            // 
-            this.comboBoxClD.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxClD.FormattingEnabled = true;
-            this.comboBoxClD.Location = new System.Drawing.Point(473, 14);
-            this.comboBoxClD.Name = "comboBoxClD";
-            this.comboBoxClD.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxClD.TabIndex = 16;
-            // 
-            // comboBoxSoID
-            // 
-            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxSoID.FormattingEnabled = true;
-            this.comboBoxSoID.Location = new System.Drawing.Point(842, 14);
-            this.comboBoxSoID.Name = "comboBoxSoID";
-            this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxSoID.TabIndex = 17;
-            // 
-            // comboBoxChID
-            // 
-            this.comboBoxChID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxChID.FormattingEnabled = true;
-            this.comboBoxChID.Location = new System.Drawing.Point(1212, 15);
-            this.comboBoxChID.Name = "comboBoxChID";
-            this.comboBoxChID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxChID.TabIndex = 18;
-            // 
-            // comboBoxEmID
-            // 
-            this.comboBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxEmID.FormattingEnabled = true;
-            this.comboBoxEmID.Location = new System.Drawing.Point(110, 78);
-            this.comboBoxEmID.Name = "comboBoxEmID";
-            this.comboBoxEmID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxEmID.TabIndex = 19;
-            // 
             // FormSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
             this.Controls.Add(this.labelPageSize);
@@ -451,6 +449,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSale";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -489,14 +488,14 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonList;
+        private System.Windows.Forms.TextBox textBoxSaID;
+        private System.Windows.Forms.ComboBox comboBoxEmID;
+        private System.Windows.Forms.ComboBox comboBoxSoID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxSaID;
-        private System.Windows.Forms.ComboBox comboBoxChID;
-        private System.Windows.Forms.ComboBox comboBoxSoID;
-        private System.Windows.Forms.ComboBox comboBoxClD;
-        private System.Windows.Forms.ComboBox comboBoxEmID;
+        private System.Windows.Forms.TextBox textBoxClID;
+        private System.Windows.Forms.TextBox textBoxChID;
     }
 }

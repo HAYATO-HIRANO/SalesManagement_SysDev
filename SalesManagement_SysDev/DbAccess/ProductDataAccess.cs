@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace SalesManagement_SysDev.DbAccess
+namespace SalesManagement_SysDev//.DbAccess
 {
     class ProductDataAccess
     {

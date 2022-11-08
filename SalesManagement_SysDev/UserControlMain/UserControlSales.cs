@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev.UserControlMain
 {
-    public partial class UserControl2 : UserControl
+    public partial class UserControlSales : UserControl
     {
-        public UserControl2()
+        public UserControlSales()
         {
             InitializeComponent();
+        }
+
+        private void buttonOrder_Click(object sender, EventArgs e)
+        {
+            FormOrder formOrder = new FormOrder();
+            formOrder.Show();
         }
     }
 }

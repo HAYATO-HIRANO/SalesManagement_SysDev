@@ -160,23 +160,23 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="UserControlMain\UserControl1.cs">
+    <Compile Include="UserControlMain\UserControlHQ.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="UserControlMain\UserControlHQ.Designer.cs">
+      <DependentUpon>UserControlHQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMain\UserControl2.cs">
+    <Compile Include="UserControlMain\UserControlSales.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain\UserControl2.Designer.cs">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <Compile Include="UserControlMain\UserControlSales.Designer.cs">
+      <DependentUpon>UserControlSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMain\UserControl3.cs">
+    <Compile Include="UserControlMain\UserControlLogistics.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlMain\UserControl3.Designer.cs">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <Compile Include="UserControlMain\UserControlLogistics.Designer.cs">
+      <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form\FormSale.resx">
       <DependentUpon>FormSale.cs</DependentUpon>
@@ -214,14 +214,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControlMain\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlMain\UserControlHQ.resx">
+      <DependentUpon>UserControlHQ.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMain\UserControl2.resx">
-      <DependentUpon>UserControl2.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlMain\UserControlSales.resx">
+      <DependentUpon>UserControlSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlMain\UserControl3.resx">
-      <DependentUpon>UserControl3.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlMain\UserControlLogistics.resx">
+      <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
