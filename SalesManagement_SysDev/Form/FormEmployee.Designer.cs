@@ -37,16 +37,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.panelSetting = new System.Windows.Forms.Panel();
-            this.buttonEmployee = new System.Windows.Forms.Button();
-            this.buttonSalesOffice = new System.Windows.Forms.Button();
-            this.buttonPosition = new System.Windows.Forms.Button();
             this.buttonSetting = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
+            this.panelSetting = new System.Windows.Forms.Panel();
+            this.buttonEmployee = new System.Windows.Forms.Button();
+            this.buttonSalesOffice = new System.Windows.Forms.Button();
+            this.buttonPosition = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
             this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
@@ -197,54 +197,6 @@
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 4;
             // 
-            // panelSetting
-            // 
-            this.panelSetting.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panelSetting.Controls.Add(this.buttonEmployee);
-            this.panelSetting.Controls.Add(this.buttonSalesOffice);
-            this.panelSetting.Controls.Add(this.buttonPosition);
-            this.panelSetting.Location = new System.Drawing.Point(1, 0);
-            this.panelSetting.Name = "panelSetting";
-            this.panelSetting.Size = new System.Drawing.Size(250, 901);
-            this.panelSetting.TabIndex = 25;
-            // 
-            // buttonEmployee
-            // 
-            this.buttonEmployee.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEmployee.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonEmployee.Location = new System.Drawing.Point(-1, 801);
-            this.buttonEmployee.Name = "buttonEmployee";
-            this.buttonEmployee.Size = new System.Drawing.Size(250, 100);
-            this.buttonEmployee.TabIndex = 27;
-            this.buttonEmployee.Text = "社員管理";
-            this.buttonEmployee.UseVisualStyleBackColor = false;
-            this.buttonEmployee.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // buttonSalesOffice
-            // 
-            this.buttonSalesOffice.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSalesOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSalesOffice.Location = new System.Drawing.Point(-1, 129);
-            this.buttonSalesOffice.Name = "buttonSalesOffice";
-            this.buttonSalesOffice.Size = new System.Drawing.Size(250, 130);
-            this.buttonSalesOffice.TabIndex = 2;
-            this.buttonSalesOffice.Text = "営業所管理";
-            this.buttonSalesOffice.UseVisualStyleBackColor = false;
-            // 
-            // buttonPosition
-            // 
-            this.buttonPosition.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPosition.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPosition.Location = new System.Drawing.Point(-1, 0);
-            this.buttonPosition.Name = "buttonPosition";
-            this.buttonPosition.Size = new System.Drawing.Size(250, 130);
-            this.buttonPosition.TabIndex = 1;
-            this.buttonPosition.Text = "役職管理";
-            this.buttonPosition.UseVisualStyleBackColor = false;
-            // 
             // buttonSetting
             // 
             this.buttonSetting.BackColor = System.Drawing.Color.LightGreen;
@@ -318,6 +270,54 @@
             this.buttonRegist.TabIndex = 0;
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
+            // 
+            // panelSetting
+            // 
+            this.panelSetting.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelSetting.Controls.Add(this.buttonEmployee);
+            this.panelSetting.Controls.Add(this.buttonSalesOffice);
+            this.panelSetting.Controls.Add(this.buttonPosition);
+            this.panelSetting.Location = new System.Drawing.Point(1, 0);
+            this.panelSetting.Name = "panelSetting";
+            this.panelSetting.Size = new System.Drawing.Size(250, 901);
+            this.panelSetting.TabIndex = 25;
+            // 
+            // buttonEmployee
+            // 
+            this.buttonEmployee.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmployee.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonEmployee.Location = new System.Drawing.Point(-1, 801);
+            this.buttonEmployee.Name = "buttonEmployee";
+            this.buttonEmployee.Size = new System.Drawing.Size(250, 100);
+            this.buttonEmployee.TabIndex = 27;
+            this.buttonEmployee.Text = "社員管理";
+            this.buttonEmployee.UseVisualStyleBackColor = false;
+            this.buttonEmployee.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonSalesOffice
+            // 
+            this.buttonSalesOffice.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSalesOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSalesOffice.Location = new System.Drawing.Point(-1, 129);
+            this.buttonSalesOffice.Name = "buttonSalesOffice";
+            this.buttonSalesOffice.Size = new System.Drawing.Size(250, 130);
+            this.buttonSalesOffice.TabIndex = 2;
+            this.buttonSalesOffice.Text = "営業所管理";
+            this.buttonSalesOffice.UseVisualStyleBackColor = false;
+            // 
+            // buttonPosition
+            // 
+            this.buttonPosition.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPosition.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPosition.Location = new System.Drawing.Point(-1, 0);
+            this.buttonPosition.Name = "buttonPosition";
+            this.buttonPosition.Size = new System.Drawing.Size(250, 130);
+            this.buttonPosition.TabIndex = 1;
+            this.buttonPosition.Text = "役職管理";
+            this.buttonPosition.UseVisualStyleBackColor = false;
             // 
             // panel4
             // 
@@ -513,7 +513,7 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(303, 371);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(334, 369);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.RowTemplate.Height = 21;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 652);
