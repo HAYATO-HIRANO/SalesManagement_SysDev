@@ -17,13 +17,13 @@ namespace SalesManagement_SysDev
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
-
+        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の顧客データ
         private static List<M_ClientDsp> Client;
         //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffices;
+        private static List<M_SalesOffice> SalesOffice;
         
 
         public FormClient()
@@ -60,7 +60,7 @@ namespace SalesManagement_SysDev
         private void SetFormComboBox()
         {
             //営業所データの取得
-            
+            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
         }
 
         private void buttonFormDel_Click(object sender, EventArgs e)
