@@ -110,7 +110,129 @@ namespace SalesManagement_SysDev
            //顧客名の適否
            if(!String.IsNullOrEmpty(textBoxClName.Text.Trim()))
             {
+                if (textBoxClName.TextLength > 50)
+                {
+                    //顧客名は50文字以下です
+                    messageDsp.DspMsg("M0309");
+                    textBoxClName.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //顧客名が入力されていません
+                messageDsp.DspMsg("M0310");
+                textBoxClName.Focus();
+                return false;
+
+            }
+            //住所の適否
+            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
+            {
+                if (textBoxClAddres.TextLength > 50)
+                {
+                    messageDsp.DspMsg("M0318");
+                    textBoxClAddres.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+               MessageBox.Show("住所が入力されていません");
                 
+                textBoxClAddres.Focus();
+                return false;
+
+            }
+            //電話番号の適否
+            if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
+            {
+                //電話番号の半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxClPhone.Text.Trim()))
+                {
+                    MessageBox.Show("電話番号は半角英数字入力です");
+                    textBoxClPhone.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClPhone.TextLength > 13)
+                {
+                    MessageBox.Show("電話番号は13文字以下です");
+                    textBoxClPhone.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("電話番号が入力されていません");
+                textBoxClPhone.Focus();
+                return false;
+            }
+            //郵便番号の適否
+            if (!String.IsNullOrEmpty(textBoxClPostal.Text.Trim()))
+            {
+                //郵便番号の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
+                {
+                    //郵便番号は半角英数字入力です
+                    messageDsp.DspMsg("M0321");
+                    textBoxClPostal.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClPostal.TextLength > 7)
+                {
+                    MessageBox.Show("郵便番号は7文字以下です");
+                    textBoxClPostal.Focus();
+                    return false;
+                }
+                
+            }
+            else
+            {
+                //郵便番号を入力してください
+                messageDsp.DspMsg("M0322");
+                textBoxClPostal.Focus();
+                return false;
+            }
+            //FAXの適否
+            if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
+            {
+                //FAXの半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxClFAX.Text.Trim()))
+                {
+                    MessageBox.Show("FAXは半角英数字入力です");
+                    textBoxClFAX.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClFAX.TextLength > 13)
+                {
+                    MessageBox.Show("FAXは13文字以下です");
+                    textBoxClFAX.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //FAXを入力してください
+                messageDsp.DspMsg("M0324");
+                textBoxClFAX.Focus();
+                return false;
+            }
+            //フラグの適否
+            if (checkBoxClFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示フラグが不確定の状態です");
+                checkBoxClFlag.Focus();
+                return false;
+            }
+            //非表示理由の適否
+            if(checkBoxClFlag.Checked==true && String.IsNullOrEmpty(textBoxClHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由を入力してください");
+                textBoxClHidden.Focus();
+                return false;
             }
             return true;
         }
