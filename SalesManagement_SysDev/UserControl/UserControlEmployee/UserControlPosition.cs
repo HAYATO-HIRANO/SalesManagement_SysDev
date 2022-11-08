@@ -16,5 +16,10 @@ namespace SalesManagement_SysDev
         {
             InitializeComponent();
         }
+
+        private void panelButtons_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
