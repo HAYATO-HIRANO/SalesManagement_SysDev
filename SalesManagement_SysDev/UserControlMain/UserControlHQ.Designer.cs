@@ -1,7 +1,7 @@
 ﻿
 namespace SalesManagement_SysDev.UserControlMain
 {
-    partial class UserControl1
+    partial class UserControlHQ
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

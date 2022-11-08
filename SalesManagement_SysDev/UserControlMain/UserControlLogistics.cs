@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev.UserControlMain
 {
-    public partial class UserControl3 : UserControl
+    public partial class UserControlLogistics : UserControl
     {
-        public UserControl3()
+        public UserControlLogistics()
         {
             InitializeComponent();
         }

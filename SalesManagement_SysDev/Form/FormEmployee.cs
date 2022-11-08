@@ -76,5 +76,10 @@ namespace SalesManagement_SysDev
         {
             panelSetting.Visible = false;
         }
+
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
