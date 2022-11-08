@@ -63,7 +63,7 @@ namespace SalesManagement_SysDev
         //メソッド名：UpdatePositionData()
         //引　数   :役職データ
         //戻り値   ：True or False
-        //機　能   ：社員データの更新
+        //機　能   ：役職データの更新
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
@@ -93,18 +93,65 @@ namespace SalesManagement_SysDev
         //戻り値   ：全社員データ
         //機　能   ：全社員データの取得
         ///////////////////////////////
-        public List<M_PositionDSp> GetPositionData()
+        public List<M_Position> GetPositionData()
         {
-            List<M_PositionDSp> position = new List<M_PositionDSp>();
+            List<M_Position> positions = new List<M_Position>();
 
             try
             {
                 var context = new SalesManagement_DevContext();
-                //はPosition型
-                
+                positions = context.M_Positions.ToList();
+                context.Dispose();
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return positions;
         }
-
+        ///////////////////////////////
+        //メソッド名：GetPositionlData()　オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：表示用役職データ
+        //機　能   ：表示用役職データの取得
+        ///////////////////////////////
+        public List<M_Position>GetPositonData(M_Position position)
+        {
+            List<M_Position> positions = new List<M_Position>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                positions = context.M_Positions.Where(x => x.PoID == position.PoID).ToList();
+                context.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return positions;
+        }
+        ///////////////////////////////
+        //メソッド名：GetPositionDspData()　
+        //引　数   ：検索条件
+        //戻り値   ：表示用役職所データ
+        //機　能   ：表示用役職データの取得
+        ///////////////////////////////
+        
+        public List<M_Position>GetPositionDspData()
+        {
+            List<M_Position> positions = new List<M_Position>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                positions = context.M_Positions.Where(x => x.PoFlag == 2).ToList();
+                context.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return positions;
+        }
     }
 }
     
