@@ -65,6 +65,7 @@
     <Compile Include="DbAccess\DataInputFormCheck.cs" />
     <Compile Include="DbAccess\EmployeeDataAccess.cs" />
     <Compile Include="DbAccess\HattyuDataAccess.cs" />
+    <Compile Include="DbAccess\MajorClassificationDataAccess.cs" />
     <Compile Include="DbAccess\OrderDataAccess.cs" />
     <Compile Include="DbAccess\PasswordHash.cs" />
     <Compile Include="DbAccess\PositionDataAccess.cs" />
