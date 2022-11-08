@@ -136,21 +136,22 @@ namespace SalesManagement_SysDev//.DbAccess
         }
 
         ///////////////////////////////
-        //メソッド名：GetSalesOfficeData()　オーバーロード
+        //メソッド名：GetSalesOfficeDspData()　
         //引　数   ：検索条件
         //戻り値   ：表示用営業所データ
         //機　能   ：表示用営業所データの取得
         ///////////////////////////////
 
-        public List <M_SalesOffice> GetSalesOfficeDspData(int soID)
+        public List <M_SalesOffice> GetSalesOfficeDspData()
         {
             List<M_SalesOffice> salesOffices = new List<M_SalesOffice>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.Where(x => x.SoID==soID).ToList();
+                salesOffices = context.M_SalesOffices.Where(x=> x.SoFlag==2).ToList();
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
