@@ -75,7 +75,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                MessageBox.Show("ユーザー名またはパスワードが間違っています。");
+                MessageBox.Show("社員IDまたはパスワードが間違っています。");
                 return;
             }
             FormMain formMain = new FormMain();
@@ -87,7 +87,7 @@ namespace SalesManagement_SysDev
             //必要チェック
             if (textBoxEmID.Text == "")
             {
-                MessageBox.Show("ユーザーID:入力してください。");
+                MessageBox.Show("社員ID:入力してください。");
                 return false;
             }
             if (textBoxEmPassword.Text == "")
@@ -98,14 +98,14 @@ namespace SalesManagement_SysDev
             //文字種チェック
             if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
             {
-                MessageBox.Show("ユーザーID:数字で入力してください");
+                MessageBox.Show("社員ID:数字で入力してください");
                 return false;
             }
 
             //文字数チェック
             if (textBoxEmID.Text.Length > 6)
             {
-                MessageBox.Show("ユーザーID:入力値に誤りがあります。");
+                MessageBox.Show("社員ID:入力値に誤りがあります。");
                 return false;
             }
             if (textBoxEmPassword.Text.Length > 10)
@@ -223,9 +223,7 @@ namespace SalesManagement_SysDev
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Visible = false;
+            this.Close();
         }
 
         private void btn_CleateDabase_Click_1(object sender, EventArgs e)
