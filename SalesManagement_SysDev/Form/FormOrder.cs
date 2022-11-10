@@ -26,5 +26,10 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void buttonRegist_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

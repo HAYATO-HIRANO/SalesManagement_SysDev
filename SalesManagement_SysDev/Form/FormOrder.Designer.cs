@@ -38,6 +38,7 @@ namespace SalesManagement_SysDev
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@ namespace SalesManagement_SysDev
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonList = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -169,6 +169,18 @@ namespace SalesManagement_SysDev
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 4;
             // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 8;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            // 
             // buttonLogout
             // 
             this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
@@ -217,6 +229,7 @@ namespace SalesManagement_SysDev
             this.buttonRegist.TabIndex = 0;
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
+            this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
             // 
             // panelInput
             // 
@@ -300,18 +313,6 @@ namespace SalesManagement_SysDev
             this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // buttonList
-            // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 385);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
-            this.buttonList.TabIndex = 8;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
             // 
             // FormOrder
             // 
