@@ -403,6 +403,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -415,6 +416,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonRegist
             // 

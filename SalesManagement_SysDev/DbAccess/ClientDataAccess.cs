@@ -73,9 +73,12 @@ namespace SalesManagement_SysDev
             try
             {
                 var context = new SalesManagement_DevContext();
+
+
                 var Client = context.M_Clients.Single(x => x.ClID == updClient.ClID);
 
                 Client.ClName = updClient.ClName;
+                Client.SoID = updClient.SoID;
                 Client.ClAddress = updClient.ClAddress;
                 Client.ClPhone = updClient.ClPhone;
                 Client.ClPostal = updClient.ClPostal;
@@ -177,7 +180,8 @@ namespace SalesManagement_SysDev
                          t1.ClName.Contains(selectCondition.ClName)&&
                          t1.ClAddress.Contains(selectCondition.ClAddress)&&
                          t1.ClPhone.Contains(selectCondition.ClPhone)&&
-                         t1.ClPostal.Contains(selectCondition.ClPostal)
+                         t1.ClPostal.Contains(selectCondition.ClPostal)&&
+                         t1.ClFAX.Contains(selectCondition.ClFAX)
                          
                          select new
                          {
