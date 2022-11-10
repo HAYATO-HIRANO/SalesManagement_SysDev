@@ -15,9 +15,10 @@ namespace SalesManagement_SysDev
 
         //他のフォームから変数の内容を共有できるように宣言
         internal static string loginName = "";
-        internal static string loginSo = "";
-        internal static string loginPo = "";
-
+        internal static string loginSoName = "";
+        internal static string loginPoName = "";
+        //権限分割機能に使用
+        internal static int loginPoID;
         public FormMain()
         {
             InitializeComponent();
@@ -34,8 +35,30 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
             labelUserName.Text = "ユーザー名:" + loginName;
-            labelPosition.Text = "権限:" + loginPo;
-            labelSalesOffice.Text = loginSo;
+            labelPosition.Text = "権限:" + loginPoName;
+            labelSalesOffice.Text = loginSoName;
+
+            //機能分割
+            //ログインしたユーザーが営業だった場合
+            if (loginPoID == 2)
+            {
+                //本部無効化
+                buttonHonbu.Enabled = false;
+                buttonHonbu.BackColor = Color.Gray;
+                //物流無効化
+                buttonButuryu.Enabled = false;
+                buttonButuryu.BackColor = Color.Gray;
+            }
+            //ログインしたユーザーが物流だった場合
+            if (loginPoID == 3)
+            {
+                //本部無効化
+                buttonHonbu.Enabled = false;
+                buttonHonbu.BackColor = Color.Gray;
+                //営業無効化
+                buttonEigyou.Enabled = false;
+                buttonEigyou.BackColor = Color.Gray;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
