@@ -14,8 +14,13 @@ namespace SalesManagement_SysDev
 {
     public partial class FormLogin : Form
     {
+        //メッセージ表示用クラスのインスタンス化
+        MessageDsp messageDsp = new MessageDsp();
         //パスワードハッシュ用クラスのインスタンス化
         PasswordHash passwordHash = new PasswordHash();
+        //入力形式チェック用クラスのインスタンス化
+        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+
         public FormLogin()
         {
             InitializeComponent();
@@ -82,7 +87,7 @@ namespace SalesManagement_SysDev
             //必要チェック
             if (textBoxEmID.Text == "")
             {
-                MessageBox.Show("ユーザー名:入力してください。");
+                MessageBox.Show("ユーザーID:入力してください。");
                 return false;
             }
             if (textBoxEmPassword.Text == "")
@@ -90,11 +95,17 @@ namespace SalesManagement_SysDev
                 MessageBox.Show("パスワード:入力してください。");
                 return false;
             }
+            //文字種チェック
+            if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
+            {
+                MessageBox.Show("ユーザーID:数字で入力してください");
+                return false;
+            }
 
             //文字数チェック
             if (textBoxEmID.Text.Length > 6)
             {
-                MessageBox.Show("ユーザー名:入力値に誤りがあります。");
+                MessageBox.Show("ユーザーID:入力値に誤りがあります。");
                 return false;
             }
             if (textBoxEmPassword.Text.Length > 10)
@@ -102,10 +113,58 @@ namespace SalesManagement_SysDev
                 MessageBox.Show("パスワード:入力値に誤りがあります。");
                 return false;
             }
+
             return true;
         }
         private bool Authentjcate()
         {
+            int EmID = int.Parse(textBoxEmID.Text);
+            string Empw = textBoxEmPassword.Text;
+            bool flg;
+            //ハッシュ化
+            //var pw = passwordHash.CreatePasswordHash(textBoxPassword.Text.Trim());
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                flg = context.M_Employees.Any(x => x.EmID == EmID && x.EmPassword == Empw && x.EmFlag == 0);
+                if (flg == true)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where t1.EmID == EmID && t1.EmPassword == Empw
+                             select new
+                             {
+                                 t1.EmName,
+                                 t2.SoName,
+                                 t3.PoName,
+                             };
+                    foreach (var p in tb)
+                    {
+                        FormMain.loginName = p.EmName;
+                        FormMain.loginSo = p.SoName;
+                        FormMain.loginPo = p.PoName;
+                        //FormMenu.loginTime = DateTime.Now;
+                    }
+                    context.Dispose();
+                    //this.Close();
+                    return true;
+                        
+                }
+                else
+                {
+                    return false;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            /*
             SqlConnection con = new SqlConnection();
 
             try
@@ -159,7 +218,7 @@ namespace SalesManagement_SysDev
             {
                 con.Close();
                 con.Dispose();
-            }
+            }*/
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

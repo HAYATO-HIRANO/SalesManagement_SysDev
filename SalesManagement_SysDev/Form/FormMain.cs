@@ -12,6 +12,12 @@ namespace SalesManagement_SysDev
 {
     public partial class FormMain : Form
     {
+
+        //他のフォームから変数の内容を共有できるように宣言
+        internal static string loginName = "";
+        internal static string loginSo = "";
+        internal static string loginPo = "";
+
         public FormMain()
         {
             InitializeComponent();
@@ -27,6 +33,8 @@ namespace SalesManagement_SysDev
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
+            labelUserName.Text = loginName;
+            labelPosition.Text = loginPo;
         }
 
         private void button1_Click(object sender, EventArgs e)
