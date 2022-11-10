@@ -48,7 +48,7 @@ namespace SalesManagement_SysDev
             SetFormComboBox();
 
             //データグリッドビューの設定
-
+            SetFormDataGridView();
         }
 
         ///////////////////////////////
@@ -147,10 +147,10 @@ namespace SalesManagement_SysDev
             //電話番号の適否
             if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
             {
-                //電話番号の半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxClPhone.Text.Trim()))
+                //電話番号の半角チェック
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は半角英数字入力です");
+                    MessageBox.Show("電話番号は数字とハイフンのみです");
                     textBoxClPhone.Focus();
                     return false;
                 }
@@ -174,8 +174,8 @@ namespace SalesManagement_SysDev
                 //郵便番号の半角英数字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
-                    //郵便番号は半角英数字入力です
-                    messageDsp.DspMsg("M0321");
+                    MessageBox.Show("郵便番号は数字入力です");
+                   // messageDsp.DspMsg("M0321");
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -199,9 +199,9 @@ namespace SalesManagement_SysDev
             if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
             {
                 //FAXの半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxClFAX.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
                 {
-                    MessageBox.Show("FAXは半角英数字入力です");
+                    MessageBox.Show("FAXは数字とハイフンのみです");
                     textBoxClFAX.Focus();
                     return false;
                 }
@@ -246,9 +246,22 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Client GenerateDataAtRegistration()
         {
+            int ClFlag = 0;
+            if (checkBoxClFlag.Checked == true)
+            {
+                ClFlag = 2;
+            }
+
             return new M_Client
             {
-
+                ClName = textBoxClName.Text.Trim(),
+                SoID = int.Parse(comboBoxSoID.SelectedValue.ToString()),
+                ClAddress=textBoxClAddres.Text.Trim(),
+                ClPhone=textBoxClPhone.Text.Trim(),
+                ClPostal=textBoxClPostal.Text.Trim(),
+                ClFAX=textBoxClFAX.Text.Trim(),
+                ClFlag=ClFlag,
+                ClHidden=textBoxClHidden.Text.Trim()
             };
         }
 
@@ -261,8 +274,204 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void RegistrationStaff(M_Client regClient)
         {
+            // 登録確認メッセージ
+            DialogResult result = messageDsp.DspMsg("M0311");
+            if (result == DialogResult.Cancel)
+                return;
+            // 顧客情報の登録
+            bool flg = clientDataAccess.AddClientData(regClient);
+            if (flg == true)
+                //MessageBox.Show("データを登録しました。");
+                messageDsp.DspMsg("M0312");
+            else
+                //MessageBox.Show("データの登録に失敗しました。");
+                messageDsp.DspMsg("M0313");
+
+            textBoxClID.Focus();
+
+            //入力エリアのクリア
+
+            //データグリッドビューの表示
+
 
         }
 
+        ///////////////////////////////
+        //メソッド名：SetFormDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定
+        ///////////////////////////////
+        private void SetFormDataGridView()
+        {
+            //dataGridViewのページサイズ指定
+            textBoxPageSize.Text = "10";
+            //dataGridViewのページ番号指定
+            textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewClient.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            dataGridViewClient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //ヘッダー位置の指定
+            dataGridViewClient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            GetDataGridView();
+
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetDataGridView()
+        {
+            // 顧客データの取得
+            Client = clientDataAccess.GetClientData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューへの表示
+        ///////////////////////////////
+        private void SetDataGridView()
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 1;
+            dataGridViewClient.DataSource = Client.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            //各列幅の指定 //1500
+            dataGridViewClient.Columns[0].Width = 100;
+            dataGridViewClient.Columns[1].Visible = false;
+            dataGridViewClient.Columns[2].Width = 180;
+            dataGridViewClient.Columns[3].Width = 180;
+            dataGridViewClient.Columns[4].Width = 280;
+            dataGridViewClient.Columns[5].Width = 110;
+            dataGridViewClient.Columns[6].Width = 110;
+            dataGridViewClient.Columns[7].Width = 110;
+            dataGridViewClient.Columns[8].Width = 80;
+            dataGridViewClient.Columns[9].Width = 360;
+
+            //各列の文字位置の指定
+            dataGridViewClient.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewClient.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewClient.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewClient.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewClient.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewClient.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewClient.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewClient.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewClient.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //dataGridViewの総ページ数
+            labelPage.Text = "/" + ((int)Math.Ceiling(Client.Count / (double)pageSize)) + "ページ";
+
+            dataGridViewClient.Refresh();
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+        
+
+        private void buttonFirstPage_Click_1(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewClient.DataSource = Client.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewClient.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewClient.DataSource = Client.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewClient.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Client.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewClient.DataSource = Client.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewClient.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Client.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Client.Count / (double)pageSize) - 1;
+            dataGridViewClient.DataSource = Client.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewClient.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+        }
     }
 }
