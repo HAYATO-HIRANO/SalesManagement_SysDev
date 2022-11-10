@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-using System.Data.SqlClient;
 
 namespace SalesManagement_SysDev
 {
@@ -70,17 +69,16 @@ namespace SalesManagement_SysDev
             ret = this.Authentjcate();
             if (ret)
             {
-                MessageBox.Show("ログイン成功！");
-
+                FormMain formMain = new FormMain();
+                formMain.Show();
+                this.Visible = false;
             }
             else
             {
                 MessageBox.Show("社員IDまたはパスワードが間違っています。");
                 return;
             }
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Visible = false;
+
         }
         private bool Check()
         {
