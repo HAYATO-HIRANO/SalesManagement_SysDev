@@ -72,6 +72,7 @@
     <Compile Include="DbAccess\SaleDataAccess.cs" />
     <Compile Include="DbAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDataAccess.cs" />
+    <Compile Include="DbAccess\SmallClassification.cs" />
     <Compile Include="DbAccess\StockDataAccess.cs" />
     <Compile Include="DbAccess\SyukkoDataAccess.cs" />
     <Compile Include="DbAccess\WarehousingDataAccess.cs" />
