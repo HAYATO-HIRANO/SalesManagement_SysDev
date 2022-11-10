@@ -510,6 +510,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 32;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
@@ -520,6 +521,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 31;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -530,6 +532,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 30;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -540,6 +543,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 29;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click_1);
             // 
             // labelPage
             // 
