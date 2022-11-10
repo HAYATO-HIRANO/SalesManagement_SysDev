@@ -147,10 +147,10 @@ namespace SalesManagement_SysDev
             //電話番号の適否
             if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
             {
-                //電話番号の半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxClPhone.Text.Trim()))
+                //電話番号の半角チェック
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は半角英数字入力です");
+                    MessageBox.Show("電話番号は数字とハイフンのみです");
                     textBoxClPhone.Focus();
                     return false;
                 }
@@ -174,8 +174,8 @@ namespace SalesManagement_SysDev
                 //郵便番号の半角英数字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
-                    //郵便番号は半角英数字入力です
-                    messageDsp.DspMsg("M0321");
+                    MessageBox.Show("郵便番号は数字入力です");
+                   // messageDsp.DspMsg("M0321");
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -199,9 +199,9 @@ namespace SalesManagement_SysDev
             if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
             {
                 //FAXの半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxClFAX.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
                 {
-                    MessageBox.Show("FAXは半角英数字入力です");
+                    MessageBox.Show("FAXは数字とハイフンのみです");
                     textBoxClFAX.Focus();
                     return false;
                 }
@@ -246,9 +246,22 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Client GenerateDataAtRegistration()
         {
+            int ClFlag = 0;
+            if (checkBoxClFlag.Checked == true)
+            {
+                ClFlag = 2;
+            }
+
             return new M_Client
             {
-
+                ClName = textBoxClName.Text.Trim(),
+                SoID = int.Parse(comboBoxSoID.SelectedValue.ToString()),
+                ClAddress=textBoxClAddres.Text.Trim(),
+                ClPhone=textBoxClPhone.Text.Trim(),
+                ClPostal=textBoxClPostal.Text.Trim(),
+                ClFAX=textBoxClFAX.Text.Trim(),
+                ClFlag=ClFlag,
+                ClHidden=textBoxClHidden.Text.Trim()
             };
         }
 
@@ -261,6 +274,25 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void RegistrationStaff(M_Client regClient)
         {
+            // 登録確認メッセージ
+            DialogResult result = messageDsp.DspMsg("M0311");
+            if (result == DialogResult.Cancel)
+                return;
+            // 顧客情報の登録
+            bool flg = clientDataAccess.AddClientData(regClient);
+            if (flg == true)
+                //MessageBox.Show("データを登録しました。");
+                messageDsp.DspMsg("M0312");
+            else
+                //MessageBox.Show("データの登録に失敗しました。");
+                messageDsp.DspMsg("M0313");
+
+            textBoxClID.Focus();
+
+            //入力エリアのクリア
+
+            //データグリッドビューの表示
+
 
         }
 

@@ -144,11 +144,11 @@ namespace SalesManagement_SysDev//.DbAccess
 
         public List <M_SalesOffice> GetSalesOfficeDspData()
         {
-            List<M_SalesOffice> salesOffices = new List<M_SalesOffice>();
+            List<M_SalesOffice> salesOffices = null;
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.Where(x=> x.SoFlag==2).ToList();
+                salesOffices = context.M_SalesOffices.Where(x=> x.SoFlag==0).ToList();
                 context.Dispose();
             }
             catch(Exception ex)

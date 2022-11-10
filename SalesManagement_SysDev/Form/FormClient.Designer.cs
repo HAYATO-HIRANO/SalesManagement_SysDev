@@ -214,11 +214,11 @@ namespace SalesManagement_SysDev
             // textBoxClID
             // 
             this.textBoxClID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClID.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBoxClID.Location = new System.Drawing.Point(101, 21);
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(84, 28);
             this.textBoxClID.TabIndex = 2;
-            this.textBoxClID.Text = "012345";
             // 
             // labelSoID
             // 
@@ -226,9 +226,9 @@ namespace SalesManagement_SysDev
             this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelSoID.Location = new System.Drawing.Point(230, 22);
             this.labelSoID.Name = "labelSoID";
-            this.labelSoID.Size = new System.Drawing.Size(104, 24);
+            this.labelSoID.Size = new System.Drawing.Size(106, 24);
             this.labelSoID.TabIndex = 3;
-            this.labelSoID.Text = "営業所ID";
+            this.labelSoID.Text = "営業所名";
             // 
             // labelClName
             // 
@@ -279,11 +279,11 @@ namespace SalesManagement_SysDev
             // textBoxClPhone
             // 
             this.textBoxClPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClPhone.Location = new System.Drawing.Point(1006, 21);
+            this.textBoxClPhone.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.textBoxClPhone.Location = new System.Drawing.Point(1010, 21);
             this.textBoxClPhone.Name = "textBoxClPhone";
-            this.textBoxClPhone.Size = new System.Drawing.Size(147, 28);
+            this.textBoxClPhone.Size = new System.Drawing.Size(159, 28);
             this.textBoxClPhone.TabIndex = 10;
-            this.textBoxClPhone.Text = "0123456789012";
             // 
             // labelPostal
             // 
@@ -302,7 +302,6 @@ namespace SalesManagement_SysDev
             this.textBoxClPostal.Name = "textBoxClPostal";
             this.textBoxClPostal.Size = new System.Drawing.Size(99, 28);
             this.textBoxClPostal.TabIndex = 12;
-            this.textBoxClPostal.Text = "0123456";
             // 
             // labelFAX
             // 
@@ -317,11 +316,11 @@ namespace SalesManagement_SysDev
             // textBoxClFAX
             // 
             this.textBoxClFAX.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClFAX.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBoxClFAX.Location = new System.Drawing.Point(1262, 21);
             this.textBoxClFAX.Name = "textBoxClFAX";
             this.textBoxClFAX.Size = new System.Drawing.Size(150, 28);
             this.textBoxClFAX.TabIndex = 14;
-            this.textBoxClFAX.Text = "0123456789012";
             // 
             // checkBoxClFlag
             // 
