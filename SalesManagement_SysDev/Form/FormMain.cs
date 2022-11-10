@@ -33,8 +33,9 @@ namespace SalesManagement_SysDev
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
-            labelUserName.Text = loginName;
-            labelPosition.Text = loginPo;
+            labelUserName.Text = "ユーザー名:" + loginName;
+            labelPosition.Text = "権限:" + loginPo;
+            labelSalesOffice.Text = loginSo;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,6 +91,16 @@ namespace SalesManagement_SysDev
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
             this.Visible = false;
+        }
+
+        private void labelUserName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPosition_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
