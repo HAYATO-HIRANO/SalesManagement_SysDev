@@ -117,12 +117,14 @@ namespace SalesManagement_SysDev
         private bool Authentjcate()
         {
             int EmID = int.Parse(textBoxEmID.Text);
-            string Empw = textBoxEmPassword.Text;
             bool flg;
-            //ハッシュ化
-            //var pw = passwordHash.CreatePasswordHash(textBoxPassword.Text.Trim());
+            //下のコードは仮決めです
+            string Empw = textBoxEmPassword.Text;
+            //ハッシュ化したパスワードを読み込むときに有効にしてください
+            //var Empw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
             try
             {
+                
                 var context = new SalesManagement_DevContext();
                 flg = context.M_Employees.Any(x => x.EmID == EmID && x.EmPassword == Empw && x.EmFlag == 0);
                 if (flg == true)
