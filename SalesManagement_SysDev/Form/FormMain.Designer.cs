@@ -30,7 +30,7 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.label = new System.Windows.Forms.Label();
+            this.labelPosition = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@ namespace SalesManagement_SysDev
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
+            this.labelSalesOffice = new System.Windows.Forms.Label();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControlHQ();
             this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControlSales();
             this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControlLogistics();
@@ -53,7 +54,8 @@ namespace SalesManagement_SysDev
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
-            this.panelHeader.Controls.Add(this.label);
+            this.panelHeader.Controls.Add(this.labelPosition);
+            this.panelHeader.Controls.Add(this.labelSalesOffice);
             this.panelHeader.Controls.Add(this.labelUserName);
             this.panelHeader.Controls.Add(this.labelDay);
             this.panelHeader.Controls.Add(this.labelTime);
@@ -67,34 +69,36 @@ namespace SalesManagement_SysDev
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
             this.panelHeader.TabIndex = 1;
             // 
-            // label
+            // labelPosition
             // 
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label.ForeColor = System.Drawing.Color.White;
-            this.label.Location = new System.Drawing.Point(914, 59);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(51, 16);
-            this.label.TabIndex = 11;
-            this.label.Text = "権限：";
+            this.labelPosition.AutoSize = true;
+            this.labelPosition.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPosition.ForeColor = System.Drawing.Color.White;
+            this.labelPosition.Location = new System.Drawing.Point(12, 56);
+            this.labelPosition.Name = "labelPosition";
+            this.labelPosition.Size = new System.Drawing.Size(139, 27);
+            this.labelPosition.TabIndex = 11;
+            this.labelPosition.Text = "権限：営業";
+            this.labelPosition.Click += new System.EventHandler(this.labelPosition_Click);
             // 
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
-            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelUserName.ForeColor = System.Drawing.Color.White;
-            this.labelUserName.Location = new System.Drawing.Point(875, 21);
+            this.labelUserName.Location = new System.Drawing.Point(202, 56);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(90, 16);
+            this.labelUserName.Size = new System.Drawing.Size(147, 27);
             this.labelUserName.TabIndex = 10;
             this.labelUserName.Text = "ユーザー名：";
+            this.labelUserName.Click += new System.EventHandler(this.labelUserName_Click);
             // 
             // labelDay
             // 
             this.labelDay.AutoSize = true;
             this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelDay.ForeColor = System.Drawing.Color.White;
-            this.labelDay.Location = new System.Drawing.Point(1344, 2);
+            this.labelDay.Location = new System.Drawing.Point(1382, 2);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(252, 35);
             this.labelDay.TabIndex = 9;
@@ -107,7 +111,7 @@ namespace SalesManagement_SysDev
             this.labelTime.BackColor = System.Drawing.Color.DarkGreen;
             this.labelTime.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelTime.ForeColor = System.Drawing.Color.White;
-            this.labelTime.Location = new System.Drawing.Point(1384, 36);
+            this.labelTime.Location = new System.Drawing.Point(1422, 36);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(174, 64);
             this.labelTime.TabIndex = 8;
@@ -131,7 +135,7 @@ namespace SalesManagement_SysDev
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(297, 20);
+            this.label1.Location = new System.Drawing.Point(694, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(447, 53);
             this.label1.TabIndex = 1;
@@ -177,6 +181,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.TabIndex = 4;
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // buttonHinagata
             // 
@@ -226,6 +231,17 @@ namespace SalesManagement_SysDev
             this.buttonHonbu.Text = "本部";
             this.buttonHonbu.UseVisualStyleBackColor = false;
             this.buttonHonbu.Click += new System.EventHandler(this.buttonHonbu_Click);
+            // 
+            // labelSalesOffice
+            // 
+            this.labelSalesOffice.AutoSize = true;
+            this.labelSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSalesOffice.ForeColor = System.Drawing.Color.White;
+            this.labelSalesOffice.Location = new System.Drawing.Point(12, 14);
+            this.labelSalesOffice.Name = "labelSalesOffice";
+            this.labelSalesOffice.Size = new System.Drawing.Size(180, 27);
+            this.labelSalesOffice.TabIndex = 12;
+            this.labelSalesOffice.Text = "和歌山営業所";
             // 
             // userControl11
             // 
@@ -277,7 +293,7 @@ namespace SalesManagement_SysDev
         #endregion
 
         private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
@@ -293,5 +309,6 @@ namespace SalesManagement_SysDev
         private UserControlMain.UserControlLogistics userControl31;
         private System.Windows.Forms.Button buttonHinagata;
         private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.Label labelSalesOffice;
     }
 }

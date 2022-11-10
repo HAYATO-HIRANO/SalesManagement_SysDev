@@ -20,6 +20,7 @@ namespace SalesManagement_SysDev
         private void FormEmployee_Load(object sender, EventArgs e)
         {
             panelSetting.Visible = false;
+            userControlPosition1.Visible = false;
         }
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
@@ -75,11 +76,19 @@ namespace SalesManagement_SysDev
         private void button2_Click(object sender, EventArgs e)
         {
             panelSetting.Visible = false;
+            userControlPosition1.Visible = false;
+            labelManagement.Text = "社員管理";
         }
 
         private void buttonFormDel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonPosition_Click(object sender, EventArgs e)
+        {
+            userControlPosition1.Visible = true;
+            labelManagement.Text = "役職管理";
         }
     }
 }

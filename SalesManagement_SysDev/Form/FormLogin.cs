@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-using System.Data.SqlClient;
 
 namespace SalesManagement_SysDev
 {
     public partial class FormLogin : Form
     {
+        //メッセージ表示用クラスのインスタンス化
+        MessageDsp messageDsp = new MessageDsp();
         //パスワードハッシュ用クラスのインスタンス化
         PasswordHash passwordHash = new PasswordHash();
+        //入力形式チェック用クラスのインスタンス化
+        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+
         public FormLogin()
         {
             InitializeComponent();
@@ -65,24 +69,23 @@ namespace SalesManagement_SysDev
             ret = this.Authentjcate();
             if (ret)
             {
-                MessageBox.Show("ログイン成功！");
-
+                FormMain formMain = new FormMain();
+                formMain.Show();
+                this.Visible = false;
             }
             else
             {
-                MessageBox.Show("ユーザー名またはパスワードが間違っています。");
+                MessageBox.Show("社員IDまたはパスワードが間違っています。");
                 return;
             }
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Visible = false;
+
         }
         private bool Check()
         {
             //必要チェック
             if (textBoxEmID.Text == "")
             {
-                MessageBox.Show("ユーザー名:入力してください。");
+                MessageBox.Show("社員ID:入力してください。");
                 return false;
             }
             if (textBoxEmPassword.Text == "")
@@ -90,11 +93,17 @@ namespace SalesManagement_SysDev
                 MessageBox.Show("パスワード:入力してください。");
                 return false;
             }
+            //文字種チェック
+            if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
+            {
+                MessageBox.Show("社員ID:数字で入力してください");
+                return false;
+            }
 
             //文字数チェック
             if (textBoxEmID.Text.Length > 6)
             {
-                MessageBox.Show("ユーザー名:入力値に誤りがあります。");
+                MessageBox.Show("社員ID:入力値に誤りがあります。");
                 return false;
             }
             if (textBoxEmPassword.Text.Length > 10)
@@ -102,10 +111,64 @@ namespace SalesManagement_SysDev
                 MessageBox.Show("パスワード:入力値に誤りがあります。");
                 return false;
             }
+
             return true;
         }
         private bool Authentjcate()
         {
+            int EmID = int.Parse(textBoxEmID.Text);
+            bool flg;
+            //下のコードは仮決めです
+            string Empw = textBoxEmPassword.Text;
+            //ハッシュ化したパスワードを読み込むときに有効にしてください
+            //var Empw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
+            try
+            {
+                
+                var context = new SalesManagement_DevContext();
+                flg = context.M_Employees.Any(x => x.EmID == EmID && x.EmPassword == Empw && x.EmFlag == 0);
+                if (flg == true)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             join t4 in context.M_Positions
+                             on t1.PoID equals t4.PoID
+                             where t1.EmID == EmID && t1.EmPassword == Empw
+                             select new
+                             {
+                                 t1.EmName,
+                                 t2.SoName,
+                                 t3.PoName,
+                                 t4.PoID,
+                             };
+                    foreach (var p in tb)
+                    {
+                        FormMain.loginName = p.EmName;
+                        FormMain.loginSoName = p.SoName;
+                        FormMain.loginPoName = p.PoName;
+                        FormMain.loginPoID = p.PoID;
+                        //FormMenu.loginTime = DateTime.Now;
+                    }
+                    context.Dispose();
+                    //this.Close();
+                    return true;
+                        
+                }
+                else
+                {
+                    return false;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            /*
             SqlConnection con = new SqlConnection();
 
             try
@@ -159,14 +222,12 @@ namespace SalesManagement_SysDev
             {
                 con.Close();
                 con.Dispose();
-            }
+            }*/
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-            formMain.Show();
-            this.Visible = false;
+            this.Close();
         }
 
         private void btn_CleateDabase_Click_1(object sender, EventArgs e)

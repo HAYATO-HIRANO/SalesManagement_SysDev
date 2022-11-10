@@ -34,7 +34,7 @@
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.buttonSaisyou = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelManagement = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelSetting = new System.Windows.Forms.Panel();
@@ -75,6 +75,7 @@
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.userControlPosition1 = new SalesManagement_SysDev.UserControlPosition();
             this.panel3.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelSetting.SuspendLayout();
@@ -90,7 +91,7 @@
             this.panel3.Controls.Add(this.labelDay);
             this.panel3.Controls.Add(this.labelTime);
             this.panel3.Controls.Add(this.buttonSaisyou);
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.labelManagement);
             this.panel3.Controls.Add(this.buttonFormDel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -156,16 +157,16 @@
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // labelManagement
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(297, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 53);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "社員管理";
+            this.labelManagement.AutoSize = true;
+            this.labelManagement.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelManagement.ForeColor = System.Drawing.Color.White;
+            this.labelManagement.Location = new System.Drawing.Point(297, 20);
+            this.labelManagement.Name = "labelManagement";
+            this.labelManagement.Size = new System.Drawing.Size(235, 53);
+            this.labelManagement.TabIndex = 1;
+            this.labelManagement.Text = "社員管理";
             // 
             // buttonFormDel
             // 
@@ -244,6 +245,7 @@
             this.buttonPosition.TabIndex = 1;
             this.buttonPosition.Text = "役職管理";
             this.buttonPosition.UseVisualStyleBackColor = false;
+            this.buttonPosition.Click += new System.EventHandler(this.buttonPosition_Click);
             // 
             // buttonSetting
             // 
@@ -617,12 +619,24 @@
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
+            // userControlPosition1
+            // 
+            this.userControlPosition1.BackColor = System.Drawing.Color.Honeydew;
+            this.userControlPosition1.Location = new System.Drawing.Point(250, 100);
+            this.userControlPosition1.Name = "userControlPosition1";
+            this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
+            this.userControlPosition1.TabIndex = 25;
+            // 
             // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.userControlPosition1);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelLeft);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
             this.Controls.Add(this.labelPageSize);
@@ -633,9 +647,6 @@
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.dataGridViewEmployee);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panelLeft);
-            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployee";
             this.Text = "FormEmployee";
@@ -660,7 +671,7 @@
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Button buttonSaisyou;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelManagement;
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Button buttonLogout;
@@ -701,5 +712,6 @@
         private System.Windows.Forms.Button buttonSalesOffice;
         private System.Windows.Forms.Button buttonPosition;
         private System.Windows.Forms.Button buttonSetting;
+        private UserControlPosition userControlPosition1;
     }
 }
