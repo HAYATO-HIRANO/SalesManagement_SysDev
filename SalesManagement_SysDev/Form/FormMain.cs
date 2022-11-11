@@ -17,6 +17,7 @@ namespace SalesManagement_SysDev
         internal static string loginName = "";
         internal static string loginSoName = "";
         internal static string loginPoName = "";
+        internal static int loginEmID = 0;
         //権限分割機能に使用
         internal static int loginPoID;
         public FormMain()
@@ -34,9 +35,10 @@ namespace SalesManagement_SysDev
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
-            labelUserName.Text = "ユーザー名:" + loginName;
+            labelUserName.Text = "ユーザー名：" + loginName;
             labelPosition.Text = "権限:" + loginPoName;
             labelSalesOffice.Text = loginSoName;
+            labelUserID.Text = "ユーザーID：" + loginEmID.ToString();
 
             //機能分割
             //ログインしたユーザーが営業だった場合

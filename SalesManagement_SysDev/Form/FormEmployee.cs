@@ -90,5 +90,10 @@ namespace SalesManagement_SysDev
             userControlPosition1.Visible = true;
             labelManagement.Text = "役職管理";
         }
+
+        private void userControlPosition1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

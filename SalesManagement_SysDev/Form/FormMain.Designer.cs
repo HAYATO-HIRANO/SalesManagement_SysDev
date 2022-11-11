@@ -30,7 +30,9 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.labelUserID = new System.Windows.Forms.Label();
             this.labelPosition = new System.Windows.Forms.Label();
+            this.labelSalesOffice = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
@@ -43,7 +45,6 @@ namespace SalesManagement_SysDev
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
-            this.labelSalesOffice = new System.Windows.Forms.Label();
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControlHQ();
             this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControlSales();
             this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControlLogistics();
@@ -54,6 +55,7 @@ namespace SalesManagement_SysDev
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
+            this.panelHeader.Controls.Add(this.labelUserID);
             this.panelHeader.Controls.Add(this.labelPosition);
             this.panelHeader.Controls.Add(this.labelSalesOffice);
             this.panelHeader.Controls.Add(this.labelUserName);
@@ -69,6 +71,17 @@ namespace SalesManagement_SysDev
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
             this.panelHeader.TabIndex = 1;
             // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserID.ForeColor = System.Drawing.Color.White;
+            this.labelUserID.Location = new System.Drawing.Point(245, 14);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.TabIndex = 13;
+            this.labelUserID.Text = "ユーザーID：";
+            // 
             // labelPosition
             // 
             this.labelPosition.AutoSize = true;
@@ -76,17 +89,28 @@ namespace SalesManagement_SysDev
             this.labelPosition.ForeColor = System.Drawing.Color.White;
             this.labelPosition.Location = new System.Drawing.Point(12, 56);
             this.labelPosition.Name = "labelPosition";
-            this.labelPosition.Size = new System.Drawing.Size(139, 27);
+            this.labelPosition.Size = new System.Drawing.Size(83, 27);
             this.labelPosition.TabIndex = 11;
-            this.labelPosition.Text = "権限：営業";
+            this.labelPosition.Text = "権限：";
             this.labelPosition.Click += new System.EventHandler(this.labelPosition_Click);
+            // 
+            // labelSalesOffice
+            // 
+            this.labelSalesOffice.AutoSize = true;
+            this.labelSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSalesOffice.ForeColor = System.Drawing.Color.White;
+            this.labelSalesOffice.Location = new System.Drawing.Point(12, 14);
+            this.labelSalesOffice.Name = "labelSalesOffice";
+            this.labelSalesOffice.Size = new System.Drawing.Size(180, 27);
+            this.labelSalesOffice.TabIndex = 12;
+            this.labelSalesOffice.Text = "和歌山営業所";
             // 
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
             this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelUserName.ForeColor = System.Drawing.Color.White;
-            this.labelUserName.Location = new System.Drawing.Point(202, 56);
+            this.labelUserName.Location = new System.Drawing.Point(245, 56);
             this.labelUserName.Name = "labelUserName";
             this.labelUserName.Size = new System.Drawing.Size(147, 27);
             this.labelUserName.TabIndex = 10;
@@ -232,17 +256,6 @@ namespace SalesManagement_SysDev
             this.buttonHonbu.UseVisualStyleBackColor = false;
             this.buttonHonbu.Click += new System.EventHandler(this.buttonHonbu_Click);
             // 
-            // labelSalesOffice
-            // 
-            this.labelSalesOffice.AutoSize = true;
-            this.labelSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSalesOffice.ForeColor = System.Drawing.Color.White;
-            this.labelSalesOffice.Location = new System.Drawing.Point(12, 14);
-            this.labelSalesOffice.Name = "labelSalesOffice";
-            this.labelSalesOffice.Size = new System.Drawing.Size(180, 27);
-            this.labelSalesOffice.TabIndex = 12;
-            this.labelSalesOffice.Text = "和歌山営業所";
-            // 
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.Honeydew;
@@ -310,5 +323,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonHinagata;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Label labelSalesOffice;
+        private System.Windows.Forms.Label labelUserID;
     }
 }

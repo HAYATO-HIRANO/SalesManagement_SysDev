@@ -44,6 +44,8 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxMc = new System.Windows.Forms.ComboBox();
+            this.labelMc = new System.Windows.Forms.Label();
             this.labelPrReleaseDate = new System.Windows.Forms.Label();
             this.DateTimePickerPrReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.comboBoxSc = new System.Windows.Forms.ComboBox();
@@ -75,8 +77,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.labelMc = new System.Windows.Forms.Label();
-            this.comboBoxMc = new System.Windows.Forms.ComboBox();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -286,6 +286,25 @@ namespace SalesManagement_SysDev
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1552, 230);
             this.panel4.TabIndex = 27;
+            // 
+            // comboBoxMc
+            // 
+            this.comboBoxMc.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxMc.FormattingEnabled = true;
+            this.comboBoxMc.Location = new System.Drawing.Point(531, 81);
+            this.comboBoxMc.Name = "comboBoxMc";
+            this.comboBoxMc.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxMc.TabIndex = 24;
+            // 
+            // labelMc
+            // 
+            this.labelMc.AutoSize = true;
+            this.labelMc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMc.Location = new System.Drawing.Point(386, 81);
+            this.labelMc.Name = "labelMc";
+            this.labelMc.Size = new System.Drawing.Size(106, 24);
+            this.labelMc.TabIndex = 23;
+            this.labelMc.Text = "大分類名";
             // 
             // labelPrReleaseDate
             // 
@@ -499,7 +518,7 @@ namespace SalesManagement_SysDev
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1747, 386);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1747, 382);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 37;
@@ -509,7 +528,7 @@ namespace SalesManagement_SysDev
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1700, 388);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1700, 384);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
             this.textBoxPageSize.TabIndex = 36;
@@ -519,7 +538,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1589, 393);
+            this.labelPageSize.Location = new System.Drawing.Point(1589, 389);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 35;
@@ -584,25 +603,6 @@ namespace SalesManagement_SysDev
             this.textBoxPage.TabIndex = 29;
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // labelMc
-            // 
-            this.labelMc.AutoSize = true;
-            this.labelMc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMc.Location = new System.Drawing.Point(386, 81);
-            this.labelMc.Name = "labelMc";
-            this.labelMc.Size = new System.Drawing.Size(106, 24);
-            this.labelMc.TabIndex = 23;
-            this.labelMc.Text = "大分類名";
-            // 
-            // comboBoxMc
-            // 
-            this.comboBoxMc.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxMc.FormattingEnabled = true;
-            this.comboBoxMc.Location = new System.Drawing.Point(531, 81);
-            this.comboBoxMc.Name = "comboBoxMc";
-            this.comboBoxMc.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxMc.TabIndex = 24;
             // 
             // FormProduct
             // 
