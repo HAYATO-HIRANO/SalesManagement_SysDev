@@ -130,6 +130,7 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou.TabIndex = 7;
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
+            this.buttonSaisyou.Click += new System.EventHandler(this.buttonSaisyou_Click);
             // 
             // label1
             // 
@@ -153,6 +154,7 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.TabIndex = 0;
             this.buttonFormDel.Text = "✕";
             this.buttonFormDel.UseVisualStyleBackColor = false;
+            this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click);
             // 
             // panelLeft
             // 
@@ -180,6 +182,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonLogout
             // 
@@ -193,6 +196,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.TabIndex = 7;
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // buttonUpdate
             // 
@@ -205,6 +209,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -217,6 +222,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonRegist
             // 

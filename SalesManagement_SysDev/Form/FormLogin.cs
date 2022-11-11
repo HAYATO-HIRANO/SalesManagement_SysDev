@@ -117,6 +117,7 @@ namespace SalesManagement_SysDev
         private bool Authentjcate()
         {
             int EmID = int.Parse(textBoxEmID.Text);
+            string Empw = textBoxEmPassword.Text;
             bool flg;
             //下のコードは仮決めです
             string Empw = textBoxEmPassword.Text;
