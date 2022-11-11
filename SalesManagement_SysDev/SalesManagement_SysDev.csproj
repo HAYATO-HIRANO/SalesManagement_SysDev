@@ -68,6 +68,7 @@
     <Compile Include="DbAccess\MajorClassificationDataAccess.cs" />
     <Compile Include="DbAccess\MakerDataAccess.cs" />
     <Compile Include="DbAccess\OrderDataAccess.cs" />
+    <Compile Include="DbAccess\PositionDataAccess.cs" />
     <Compile Include="DbAccess\ProductDataAccess.cs" />
     <Compile Include="DbAccess\SaleDataAccess.cs" />
     <Compile Include="DbAccess\SalesOfficeDataAccess.cs" />
