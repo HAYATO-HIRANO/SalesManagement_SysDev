@@ -15,6 +15,8 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
 
         MessageDsp messageDsp = new MessageDsp();
+
+        PositionDataAccess positionDataAccess = new PositionDataAccess();
         public UserControlPosition()
         {
             InitializeComponent();
@@ -42,10 +44,7 @@ namespace SalesManagement_SysDev
                 return;
 
             // 8.2.1.2 役職情報作成
-            var regPosition = GenerateDataAtRegistration();
 
-            // 8.2.1.3 役職情報登録
-            RegistrationPosition(regPosition);
         }
         ///////////////////////////////
         //　8.2.1.1 妥当な役職データ取得
@@ -60,38 +59,29 @@ namespace SalesManagement_SysDev
         {
 
             // 役職IDの適否
-            if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            if (!String.IsNullOrEmpty(textBoxPoID.Text.Trim()))
             {
                 // 役職IDの半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmID.Text.Trim()))
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
                 {
                     //MessageBox.Show("役職IDは全て半角英数字入力です");
-                    MessageDsp.DspMsg("M2001");
-                    textBoxEmID.Focus();
+                    textBoxPoID.Focus();
                     return false;
                 }
                 // 役職IDの文字数チェック
-                if (textBoxEmID.TextLength != 2)
+                if (textBoxPoID.TextLength != 2)
                 {
                     //MessageBox.Show("役職IDは2文字です");
-                    MessageDsp.DspMsg("M2002");
-                    textBoxEmID.Focus();
+                    textBoxPoID.Focus();
                     return false;
                 }
-                // 役職IDの重複チェック
-                if (positionDataAccess.CheckPositionCDExistence(textBoxEmID.Text.Trim()))
-                {
-                    //MessageBox.Show("入力された役職CDは既に存在します");
-                    messageDsp.DspMsg("M2003");
-                    textBoxEmID.Focus();
-                    return false;
-                }
+
             }
             else
             {
                 //MessageBox.Show("役職CDが入力されていません");
                 messageDsp.DspMsg("M2004");
-                textBoxEmID.Focus();
+                textBoxPoID.Focus();
                 return false;
             }
 
@@ -99,19 +89,19 @@ namespace SalesManagement_SysDev
             if (!String.IsNullOrEmpty(textBoxPoName.Text.Trim()))
             {
                 // 役職名の全角チェック
-                if (!dataInputFormCheck.CheckFullWidth(textBoxPositionName.Text.Trim()))
+                if (!dataInputFormCheck.CheckFullWidth(textBoxPoName.Text.Trim()))
                 {
                     //MessageBox.Show("役職名は全て全角入力です");
                     messageDsp.DspMsg("M2005");
-                    textBoxPositionName.Focus();
+                    textBoxPoName.Focus();
                     return false;
                 }
                 // 役職名の文字数チェック
-                if (textBoxPositionName.TextLength > 25)
+                if (textBoxPoName.TextLength > 25)
                 {
                     //MessageBox.Show("役職名は25文字以下です");
                     messageDsp.DspMsg("M2006");
-                    textBoxPositionName.Focus();
+                    textBoxPoName.Focus();
                     return false;
                 }
             }
@@ -119,31 +109,11 @@ namespace SalesManagement_SysDev
             {
                 //MessageBox.Show("役職名が入力されていません");
                 messageDsp.DspMsg("M2007");
-                textBoxPositionName.Focus();
+                textBoxPoName.Focus();
                 return false;
-            }
-
-            // 削除フラグの適否
-            if (checkBoxDeleteFlg.CheckState == CheckState.Indeterminate)
-            {
-                //MessageBox.Show("削除フラグが不確定の状態です");
-                messageDsp.DspMsg("M2008");
-                checkBoxDeleteFlg.Focus();
-                return false;
-            }
-
-            // 備考の適否
-            if (!String.IsNullOrEmpty(textBoxComments.Text.Trim()))
-            {
-                if (textBoxComments.TextLength > 80)
-                {
-                    //MessageBox.Show("備考は80文字以下です");
-                    messageDsp.DspMsg("M2009");
-                    textBoxComments.Focus();
-                    return false;
-                }
             }
             return true;
+
         }
 
         private void textBoxPoName_TextChanged(object sender, EventArgs e)

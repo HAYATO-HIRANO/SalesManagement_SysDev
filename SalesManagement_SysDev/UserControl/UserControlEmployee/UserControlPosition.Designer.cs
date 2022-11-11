@@ -40,7 +40,7 @@ namespace SalesManagement_SysDev
             this.checkBoxPoFlag = new System.Windows.Forms.CheckBox();
             this.textBoxPoName = new System.Windows.Forms.TextBox();
             this.labelPoName = new System.Windows.Forms.Label();
-            this.textBoxEmID = new System.Windows.Forms.TextBox();
+            this.textBoxPoID = new System.Windows.Forms.TextBox();
             this.labelPoID = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
@@ -125,7 +125,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.checkBoxPoFlag);
             this.panelInput.Controls.Add(this.textBoxPoName);
             this.panelInput.Controls.Add(this.labelPoName);
-            this.panelInput.Controls.Add(this.textBoxEmID);
+            this.panelInput.Controls.Add(this.textBoxPoID);
             this.panelInput.Controls.Add(this.labelPoID);
             this.panelInput.Location = new System.Drawing.Point(317, 178);
             this.panelInput.Name = "panelInput";
@@ -181,15 +181,15 @@ namespace SalesManagement_SysDev
             this.labelPoName.TabIndex = 16;
             this.labelPoName.Text = "役職名";
             // 
-            // textBoxEmID
+            // textBoxPoID
             // 
-            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmID.Location = new System.Drawing.Point(113, 15);
-            this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(41, 34);
-            this.textBoxEmID.TabIndex = 15;
-            this.textBoxEmID.Text = "99";
-            this.textBoxEmID.TextChanged += new System.EventHandler(this.textBoxEmID_TextChanged);
+            this.textBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPoID.Location = new System.Drawing.Point(113, 15);
+            this.textBoxPoID.Name = "textBoxPoID";
+            this.textBoxPoID.Size = new System.Drawing.Size(41, 34);
+            this.textBoxPoID.TabIndex = 15;
+            this.textBoxPoID.Text = "99";
+            this.textBoxPoID.TextChanged += new System.EventHandler(this.textBoxEmID_TextChanged);
             // 
             // labelPoID
             // 
@@ -340,7 +340,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonResist;
         private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Label labelPoID;
-        private System.Windows.Forms.TextBox textBoxEmID;
+        private System.Windows.Forms.TextBox textBoxPoID;
         private System.Windows.Forms.TextBox textBoxPoName;
         private System.Windows.Forms.Label labelPoName;
         private System.Windows.Forms.CheckBox checkBoxPoFlag;
