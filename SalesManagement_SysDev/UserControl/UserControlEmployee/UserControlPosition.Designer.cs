@@ -30,17 +30,18 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelHeader2 = new System.Windows.Forms.Panel();
-            this.buttonResist = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonResist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
-            this.labelPoID = new System.Windows.Forms.Label();
-            this.textBoxEmID = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxEmHidden = new System.Windows.Forms.TextBox();
+            this.checkBoxPoFlag = new System.Windows.Forms.CheckBox();
             this.textBoxPoName = new System.Windows.Forms.TextBox();
             this.labelPoName = new System.Windows.Forms.Label();
-            this.checkBoxPoFlag = new System.Windows.Forms.CheckBox();
-            this.textBoxEmHidden = new System.Windows.Forms.TextBox();
+            this.textBoxEmID = new System.Windows.Forms.TextBox();
+            this.labelPoID = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,28 +69,17 @@ namespace SalesManagement_SysDev
             this.panelHeader2.Size = new System.Drawing.Size(1670, 130);
             this.panelHeader2.TabIndex = 0;
             // 
-            // buttonResist
+            // buttonList
             // 
-            this.buttonResist.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonResist.Location = new System.Drawing.Point(234, 22);
-            this.buttonResist.Name = "buttonResist";
-            this.buttonResist.Size = new System.Drawing.Size(180, 80);
-            this.buttonResist.TabIndex = 0;
-            this.buttonResist.Text = "登録";
-            this.buttonResist.UseVisualStyleBackColor = false;
-            this.buttonResist.Click += new System.EventHandler(this.buttonResist_Click);
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonUpdate.Location = new System.Drawing.Point(555, 22);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(180, 80);
-            this.buttonUpdate.TabIndex = 1;
-            this.buttonUpdate.Text = "更新";
-            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(1205, 22);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(180, 80);
+            this.buttonList.TabIndex = 3;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -102,17 +91,31 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
-            // buttonList
+            // buttonUpdate
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(1205, 22);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(180, 80);
-            this.buttonList.TabIndex = 3;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Location = new System.Drawing.Point(555, 22);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(180, 80);
+            this.buttonUpdate.TabIndex = 1;
+            this.buttonUpdate.Text = "更新";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // buttonResist
+            // 
+            this.buttonResist.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonResist.Location = new System.Drawing.Point(234, 22);
+            this.buttonResist.Name = "buttonResist";
+            this.buttonResist.Size = new System.Drawing.Size(180, 80);
+            this.buttonResist.TabIndex = 0;
+            this.buttonResist.Text = "登録";
+            this.buttonResist.UseVisualStyleBackColor = false;
+            this.buttonResist.Click += new System.EventHandler(this.buttonResist_Click);
             // 
             // panelInput
             // 
@@ -129,27 +132,34 @@ namespace SalesManagement_SysDev
             this.panelInput.Size = new System.Drawing.Size(1019, 192);
             this.panelInput.TabIndex = 6;
             // 
-            // labelPoID
+            // button1
             // 
-            this.labelPoID.AutoSize = true;
-            this.labelPoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPoID.Location = new System.Drawing.Point(10, 18);
-            this.labelPoID.Name = "labelPoID";
-            this.labelPoID.Size = new System.Drawing.Size(97, 29);
-            this.labelPoID.TabIndex = 4;
-            this.labelPoID.Text = "役職ID";
-            this.labelPoID.Click += new System.EventHandler(this.labelPoID_Click);
+            this.button1.Location = new System.Drawing.Point(941, 166);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "入力クリア";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBoxEmID
+            // textBoxEmHidden
             // 
-            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmID.Location = new System.Drawing.Point(113, 15);
-            this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(41, 34);
-            this.textBoxEmID.TabIndex = 15;
-            this.textBoxEmID.Text = "99";
-            this.textBoxEmID.TextChanged += new System.EventHandler(this.textBoxEmID_TextChanged);
+            this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmHidden.Location = new System.Drawing.Point(358, 80);
+            this.textBoxEmHidden.Multiline = true;
+            this.textBoxEmHidden.Name = "textBoxEmHidden";
+            this.textBoxEmHidden.Size = new System.Drawing.Size(564, 94);
+            this.textBoxEmHidden.TabIndex = 20;
+            // 
+            // checkBoxPoFlag
+            // 
+            this.checkBoxPoFlag.AutoSize = true;
+            this.checkBoxPoFlag.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxPoFlag.Location = new System.Drawing.Point(182, 80);
+            this.checkBoxPoFlag.Name = "checkBoxPoFlag";
+            this.checkBoxPoFlag.Size = new System.Drawing.Size(170, 31);
+            this.checkBoxPoFlag.TabIndex = 18;
+            this.checkBoxPoFlag.Text = "非表示フラグ";
+            this.checkBoxPoFlag.UseVisualStyleBackColor = true;
             // 
             // textBoxPoName
             // 
@@ -171,25 +181,27 @@ namespace SalesManagement_SysDev
             this.labelPoName.TabIndex = 16;
             this.labelPoName.Text = "役職名";
             // 
-            // checkBoxPoFlag
+            // textBoxEmID
             // 
-            this.checkBoxPoFlag.AutoSize = true;
-            this.checkBoxPoFlag.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxPoFlag.Location = new System.Drawing.Point(182, 80);
-            this.checkBoxPoFlag.Name = "checkBoxPoFlag";
-            this.checkBoxPoFlag.Size = new System.Drawing.Size(170, 31);
-            this.checkBoxPoFlag.TabIndex = 18;
-            this.checkBoxPoFlag.Text = "非表示フラグ";
-            this.checkBoxPoFlag.UseVisualStyleBackColor = true;
+            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmID.Location = new System.Drawing.Point(113, 15);
+            this.textBoxEmID.Name = "textBoxEmID";
+            this.textBoxEmID.Size = new System.Drawing.Size(41, 34);
+            this.textBoxEmID.TabIndex = 15;
+            this.textBoxEmID.Text = "99";
+            this.textBoxEmID.TextChanged += new System.EventHandler(this.textBoxEmID_TextChanged);
             // 
-            // textBoxEmHidden
+            // labelPoID
             // 
-            this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmHidden.Location = new System.Drawing.Point(358, 80);
-            this.textBoxEmHidden.Multiline = true;
-            this.textBoxEmHidden.Name = "textBoxEmHidden";
-            this.textBoxEmHidden.Size = new System.Drawing.Size(564, 94);
-            this.textBoxEmHidden.TabIndex = 20;
+            this.labelPoID.AutoSize = true;
+            this.labelPoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPoID.Location = new System.Drawing.Point(10, 18);
+            this.labelPoID.Name = "labelPoID";
+            this.labelPoID.Size = new System.Drawing.Size(97, 29);
+            this.labelPoID.TabIndex = 4;
+            this.labelPoID.Text = "役職ID";
+            this.labelPoID.Click += new System.EventHandler(this.labelPoID_Click);
             // 
             // dataGridView1
             // 
@@ -289,15 +301,6 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(941, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "入力クリア";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // UserControlPosition
             // 

@@ -130,25 +130,5 @@ namespace SalesManagement_SysDev
                 flg = true;
             return flg;
         }
-        ///////////////////////////////
-        //メソッド名：CheckNumericHyphen()
-        //引　数   ：文字列
-        //戻り値   ：True or False
-        //機　能   ：数値かハイフンのチェック
-        //          ：数値かハイフンの場合True
-        //          ：数値かハイフンでない場合False
-        ///////////////////////////////
-        public bool CheckNumericHyphen(string text)
-        {
-            bool flg = false;
-
-            Regex regex = new Regex("^-?[0-9]+$");
-            if (!regex.IsMatch(text))
-                flg = false;
-            else
-                flg = true;
-            return flg;
-        }
-
     }
 }
