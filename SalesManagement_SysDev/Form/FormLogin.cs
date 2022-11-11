@@ -117,10 +117,10 @@ namespace SalesManagement_SysDev
         private bool Authentjcate()
         {
             int EmID = int.Parse(textBoxEmID.Text);
-            string Empw = textBoxEmPassword.Text;
+            //string Empw = textBoxEmPassword.Text;
             bool flg;
             //ハッシュ化
-            //var pw = passwordHash.CreatePasswordHash(textBoxPassword.Text.Trim());
+            var Empw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
             try
             {
                 var context = new SalesManagement_DevContext();
