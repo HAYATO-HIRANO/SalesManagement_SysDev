@@ -30,6 +30,7 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.labelUserID = new System.Windows.Forms.Label();
             this.labelPosition = new System.Windows.Forms.Label();
             this.labelSalesOffice = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@ namespace SalesManagement_SysDev
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControlHQ();
             this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControlSales();
             this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControlLogistics();
-            this.labelUserID = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,17 @@ namespace SalesManagement_SysDev
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
             this.panelHeader.TabIndex = 1;
             // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserID.ForeColor = System.Drawing.Color.White;
+            this.labelUserID.Location = new System.Drawing.Point(245, 14);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.TabIndex = 13;
+            this.labelUserID.Text = "ユーザーID：";
+            // 
             // labelPosition
             // 
             this.labelPosition.AutoSize = true;
@@ -78,9 +89,9 @@ namespace SalesManagement_SysDev
             this.labelPosition.ForeColor = System.Drawing.Color.White;
             this.labelPosition.Location = new System.Drawing.Point(12, 56);
             this.labelPosition.Name = "labelPosition";
-            this.labelPosition.Size = new System.Drawing.Size(139, 27);
+            this.labelPosition.Size = new System.Drawing.Size(83, 27);
             this.labelPosition.TabIndex = 11;
-            this.labelPosition.Text = "権限：営業";
+            this.labelPosition.Text = "権限：";
             this.labelPosition.Click += new System.EventHandler(this.labelPosition_Click);
             // 
             // labelSalesOffice
@@ -269,17 +280,6 @@ namespace SalesManagement_SysDev
             this.userControl31.Name = "userControl31";
             this.userControl31.Size = new System.Drawing.Size(1670, 980);
             this.userControl31.TabIndex = 5;
-            // 
-            // labelUserID
-            // 
-            this.labelUserID.AutoSize = true;
-            this.labelUserID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelUserID.ForeColor = System.Drawing.Color.White;
-            this.labelUserID.Location = new System.Drawing.Point(245, 14);
-            this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(146, 27);
-            this.labelUserID.TabIndex = 13;
-            this.labelUserID.Text = "ユーザーID：";
             // 
             // FormMain
             // 
