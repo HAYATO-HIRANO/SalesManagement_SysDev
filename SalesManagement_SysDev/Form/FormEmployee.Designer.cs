@@ -626,6 +626,7 @@
             this.userControlPosition1.Name = "userControlPosition1";
             this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
             this.userControlPosition1.TabIndex = 25;
+            this.userControlPosition1.Load += new System.EventHandler(this.userControlPosition1_Load);
             // 
             // FormEmployee
             // 
@@ -633,7 +634,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.userControlPosition1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
@@ -647,6 +647,7 @@
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.dataGridViewEmployee);
+            this.Controls.Add(this.userControlPosition1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployee";
             this.Text = "FormEmployee";
