@@ -114,6 +114,7 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
                 // tbはIEnumerable型
+
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
@@ -130,6 +131,7 @@ namespace SalesManagement_SysDev
                              t1.ClFlag,
                              t1.ClHidden
                          };
+
                 foreach(var p in tb)
                 {
                     client.Add(new M_ClientDsp()
@@ -145,7 +147,9 @@ namespace SalesManagement_SysDev
                         ClFlag=p.ClFlag,
                         ClHidden=p.ClHidden
                     });
+                    
                 }
+                
                 context.Dispose();
 
 
@@ -175,13 +179,14 @@ namespace SalesManagement_SysDev
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
-                         where t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-                         t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
+                         where 
+                         t1.ClID==selectCondition.ClID &&
+                         t1.SoID==selectCondition.SoID &&
                          t1.ClName.Contains(selectCondition.ClName)&&
                          t1.ClAddress.Contains(selectCondition.ClAddress)&&
                          t1.ClPhone.Contains(selectCondition.ClPhone)&&
                          t1.ClPostal.Contains(selectCondition.ClPostal)&&
-                         t1.ClFAX.Contains(selectCondition.ClFAX)
+                         t1.ClFAX.Contains(selectCondition.ClFAX) && t1.ClFlag!=2
                          
                          select new
                          {

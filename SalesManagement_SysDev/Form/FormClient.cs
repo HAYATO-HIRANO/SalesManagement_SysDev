@@ -126,24 +126,7 @@ namespace SalesManagement_SysDev
                 return false;
 
             }
-            //住所の適否
-            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
-            {
-                if (textBoxClAddres.TextLength > 50)
-                {
-                    messageDsp.DspMsg("M0318");
-                    textBoxClAddres.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-               MessageBox.Show("住所が入力されていません");
-                
-                textBoxClAddres.Focus();
-                return false;
-
-            }
+           
             //電話番号の適否
             if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
             {
@@ -194,6 +177,24 @@ namespace SalesManagement_SysDev
                 messageDsp.DspMsg("M0322");
                 textBoxClPostal.Focus();
                 return false;
+            }
+            //住所の適否
+            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
+            {
+                if (textBoxClAddres.TextLength > 50)
+                {
+                    messageDsp.DspMsg("M0318");
+                    textBoxClAddres.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("住所が入力されていません");
+
+                textBoxClAddres.Focus();
+                return false;
+
             }
             //FAXの適否
             if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
@@ -331,7 +332,7 @@ namespace SalesManagement_SysDev
         {
             // 顧客データの取得
             Client = clientDataAccess.GetClientData();
-
+            
             // DataGridViewに表示するデータを指定
             SetDataGridView();
         }
@@ -888,18 +889,28 @@ namespace SalesManagement_SysDev
         private void GenerateDataAtSelect()
         {
             // コンボボックスが未選択の場合Emptyを設定
-            string cSalesOffice = "";
+            int cSalesOffice = -1;
             if (comboBoxSoID.SelectedIndex != -1)
-                cSalesOffice = comboBoxSoID.SelectedValue.ToString();
+                cSalesOffice = int.Parse(comboBoxSoID.SelectedValue.ToString());
+
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+
+            }
+            else
+            {
+
+            }
             M_ClientDsp selectCondition = new M_ClientDsp()
             {
-                ClID=int.Parse(textBoxClID.Text),
-                SoID=int.Parse(cSalesOffice),
+                ClID=int.Parse(textBoxClID.Text.Trim()),
+                SoID=cSalesOffice,
                 ClName=textBoxClName.Text,
                 ClAddress=textBoxClAddres.Text,
-                ClFAX=textBoxClFAX.Text,
-                ClPhone=textBoxClPhone.Text,
-                ClPostal=textBoxClPostal.Text
+                ClPhone = textBoxClPhone.Text,
+                ClPostal = textBoxClPostal.Text,
+                ClFAX =textBoxClFAX.Text,
+               
 
             };
             //顧客データの抽出
@@ -924,6 +935,7 @@ namespace SalesManagement_SysDev
             labelPage.Text = "/" + ((int)Math.Ceiling(Client.Count / (double)pageSize)) + "ページ";
             dataGridViewClient.Refresh();
 
+          
         }
 
     }

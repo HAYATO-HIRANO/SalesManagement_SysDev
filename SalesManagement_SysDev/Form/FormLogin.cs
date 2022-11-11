@@ -120,7 +120,7 @@ namespace SalesManagement_SysDev
             string Empw = textBoxEmPassword.Text;
             bool flg;
             //下のコードは仮決めです
-            string Empw = textBoxEmPassword.Text;
+             Empw = textBoxEmPassword.Text;
             //ハッシュ化したパスワードを読み込むときに有効にしてください
             //var Empw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
             try
