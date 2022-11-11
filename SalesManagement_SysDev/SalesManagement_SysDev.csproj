@@ -65,6 +65,7 @@
     <Compile Include="DbAccess\DataInputFormCheck.cs" />
     <Compile Include="DbAccess\EmployeeDataAccess.cs" />
     <Compile Include="DbAccess\HattyuDataAccess.cs" />
+    <Compile Include="DbAccess\MajorClassificationDataAccess.cs" />
     <Compile Include="DbAccess\MakerDataAccess.cs" />
     <Compile Include="DbAccess\OrderDataAccess.cs" />
     <Compile Include="DbAccess\PasswordHash.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="DbAccess\SaleDataAccess.cs" />
     <Compile Include="DbAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDataAccess.cs" />
+    <Compile Include="DbAccess\SmallClassification.cs" />
     <Compile Include="DbAccess\StockDataAccess.cs" />
     <Compile Include="DbAccess\SyukkoDataAccess.cs" />
     <Compile Include="DbAccess\WarehousingDataAccess.cs" />

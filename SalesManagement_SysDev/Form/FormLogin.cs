@@ -117,12 +117,15 @@ namespace SalesManagement_SysDev
         private bool Authentjcate()
         {
             int EmID = int.Parse(textBoxEmID.Text);
-            //string Empw = textBoxEmPassword.Text;
+            string Empw = textBoxEmPassword.Text;
             bool flg;
-            //ハッシュ化
-            var Empw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
+            //下のコードは仮決めです
+            string Empw = textBoxEmPassword.Text;
+            //ハッシュ化したパスワードを読み込むときに有効にしてください
+            //var Empw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
             try
             {
+                
                 var context = new SalesManagement_DevContext();
                 flg = context.M_Employees.Any(x => x.EmID == EmID && x.EmPassword == Empw && x.EmFlag == 0);
                 if (flg == true)
@@ -132,18 +135,22 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t2.SoID
                              join t3 in context.M_Positions
                              on t1.PoID equals t3.PoID
+                             join t4 in context.M_Positions
+                             on t1.PoID equals t4.PoID
                              where t1.EmID == EmID && t1.EmPassword == Empw
                              select new
                              {
                                  t1.EmName,
                                  t2.SoName,
                                  t3.PoName,
+                                 t4.PoID,
                              };
                     foreach (var p in tb)
                     {
                         FormMain.loginName = p.EmName;
-                        FormMain.loginSo = p.SoName;
-                        FormMain.loginPo = p.PoName;
+                        FormMain.loginSoName = p.SoName;
+                        FormMain.loginPoName = p.PoName;
+                        FormMain.loginPoID = p.PoID;
                         //FormMenu.loginTime = DateTime.Now;
                     }
                     context.Dispose();
