@@ -35,7 +35,6 @@ namespace SalesManagement_SysDev
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonResist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBoxEmHidden = new System.Windows.Forms.TextBox();
             this.checkBoxPoFlag = new System.Windows.Forms.CheckBox();
             this.textBoxPoName = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -120,7 +120,7 @@ namespace SalesManagement_SysDev
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panelInput.Controls.Add(this.button1);
+            this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.textBoxEmHidden);
             this.panelInput.Controls.Add(this.checkBoxPoFlag);
             this.panelInput.Controls.Add(this.textBoxPoName);
@@ -132,19 +132,10 @@ namespace SalesManagement_SysDev
             this.panelInput.Size = new System.Drawing.Size(1019, 192);
             this.panelInput.TabIndex = 6;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(941, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "入力クリア";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // textBoxEmHidden
             // 
             this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmHidden.Location = new System.Drawing.Point(358, 80);
+            this.textBoxEmHidden.Location = new System.Drawing.Point(347, 80);
             this.textBoxEmHidden.Multiline = true;
             this.textBoxEmHidden.Name = "textBoxEmHidden";
             this.textBoxEmHidden.Size = new System.Drawing.Size(564, 94);
@@ -154,7 +145,7 @@ namespace SalesManagement_SysDev
             // 
             this.checkBoxPoFlag.AutoSize = true;
             this.checkBoxPoFlag.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxPoFlag.Location = new System.Drawing.Point(182, 80);
+            this.checkBoxPoFlag.Location = new System.Drawing.Point(171, 80);
             this.checkBoxPoFlag.Name = "checkBoxPoFlag";
             this.checkBoxPoFlag.Size = new System.Drawing.Size(170, 31);
             this.checkBoxPoFlag.TabIndex = 18;
@@ -164,7 +155,7 @@ namespace SalesManagement_SysDev
             // textBoxPoName
             // 
             this.textBoxPoName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPoName.Location = new System.Drawing.Point(280, 15);
+            this.textBoxPoName.Location = new System.Drawing.Point(269, 15);
             this.textBoxPoName.Name = "textBoxPoName";
             this.textBoxPoName.Size = new System.Drawing.Size(642, 34);
             this.textBoxPoName.TabIndex = 17;
@@ -175,7 +166,7 @@ namespace SalesManagement_SysDev
             this.labelPoName.AutoSize = true;
             this.labelPoName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelPoName.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPoName.Location = new System.Drawing.Point(177, 18);
+            this.labelPoName.Location = new System.Drawing.Point(166, 18);
             this.labelPoName.Name = "labelPoName";
             this.labelPoName.Size = new System.Drawing.Size(100, 29);
             this.labelPoName.TabIndex = 16;
@@ -302,6 +293,16 @@ namespace SalesManagement_SysDev
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(914, 159);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 33;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            // 
             // UserControlPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -355,6 +356,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonClear;
     }
 }

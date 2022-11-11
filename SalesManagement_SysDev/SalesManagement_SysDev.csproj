@@ -163,6 +163,12 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <Compile Include="UserControl\UserConrolProduct\UserControlMaker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserConrolProduct\UserControlMaker.Designer.cs">
+      <DependentUpon>UserControlMaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UserControlEmployee\UserControlPosition.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +229,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlMaker.resx">
+      <DependentUpon>UserControlMaker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserControlEmployee\UserControlPosition.resx">
       <DependentUpon>UserControlPosition.cs</DependentUpon>
     </EmbeddedResource>
