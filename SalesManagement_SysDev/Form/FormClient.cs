@@ -895,26 +895,42 @@ namespace SalesManagement_SysDev
 
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
+                M_ClientDsp selectCondition = new M_ClientDsp()
+                {
+                    ClID = int.Parse(textBoxClID.Text.Trim()),
+                    SoID = cSalesOffice,
+                    ClName = textBoxClName.Text,
+                    ClAddress = textBoxClAddres.Text,
+                    ClPhone = textBoxClPhone.Text,
+                    ClPostal = textBoxClPostal.Text,
+                    ClFAX = textBoxClFAX.Text,
 
+
+                };
+
+                //顧客データの抽出
+                clientDataAccess.GetClientData(selectCondition);
             }
             else
             {
+                M_ClientDsp selectCondition = new M_ClientDsp()
+                {
+                   
+                    SoID = cSalesOffice,
+                    ClName = textBoxClName.Text,
+                    ClAddress = textBoxClAddres.Text,
+                    ClPhone = textBoxClPhone.Text,
+                    ClPostal = textBoxClPostal.Text,
+                    ClFAX = textBoxClFAX.Text,
 
+
+                };
+
+                //顧客データの抽出
+                clientDataAccess.GetClientData(selectCondition);
             }
-            M_ClientDsp selectCondition = new M_ClientDsp()
-            {
-                ClID=int.Parse(textBoxClID.Text.Trim()),
-                SoID=cSalesOffice,
-                ClName=textBoxClName.Text,
-                ClAddress=textBoxClAddres.Text,
-                ClPhone = textBoxClPhone.Text,
-                ClPostal = textBoxClPostal.Text,
-                ClFAX =textBoxClFAX.Text,
-               
-
-            };
-            //顧客データの抽出
-            clientDataAccess.GetClientData(selectCondition);
+           
+            
         }
 
         ///////////////////////////////
