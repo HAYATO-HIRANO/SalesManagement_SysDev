@@ -31,5 +31,39 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSaisyou_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            FormMain formMain = new FormMain();
+            formLogin.Show();
+            this.Visible = false;
+            formMain.Close();
+        }
     }
 }

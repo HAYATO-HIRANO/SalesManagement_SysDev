@@ -9,6 +9,58 @@ namespace SalesManagement_SysDev.DbAccess
 {
     class SmallClassification
     {
+        ///////////////////////////////
+        //メソッド名： CheckScIDExistence()
+        //引　数   ：小分類ID
+        //戻り値   ：True or False
+        //機　能   ：一致する小分類コードの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+
+        public bool CheckScIDExistence(int scID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                flg = context.M_SmallClassifications.Any(x => x.ScID == scID);
+                context.Dispose();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名： SelectScExistenceCheck()
+        //引　数   ：小分類ID、小分類名
+        //戻り値   ：True or False
+        //機　能   ：部分一致する小分類コード、小分類名の有無を確認
+        //          ：部分一致データありの場合True
+        //          ：部分一致データなしの場合False
+        ///////////////////////////////
+
+        public bool SelectScExistenceCheck(int scID, string scName)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                flg = context.M_SmallClassifications.Any(x=>x.ScID==scID&&x.ScName.Contains(scName));
+                context.Dispose();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+
+
+
 
         ///////////////////////////////
         //メソッド名： AddSmallClassData()
