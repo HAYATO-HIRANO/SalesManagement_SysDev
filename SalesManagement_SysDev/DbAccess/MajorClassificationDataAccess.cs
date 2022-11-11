@@ -42,7 +42,22 @@ namespace SalesManagement_SysDev//.DbAccess
         //          ：一致データありの場合True
         //          ：一致データなしの場合False
         ///////////////////////////////
+        public bool SelectMcExistenceCheck(int mcID,string mcName)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                flg = context.M_MajorCassifications.Any(x => x.McID == mcID && x.McName.Contains(mcName));
+                context.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+            return flg;
+        }
 
 
         ///////////////////////////////
@@ -174,7 +189,13 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   ：大分類IDからカテゴリ名
         //機　能   ：表示大分類IDからカテゴリ名の取得
         ///////////////////////////////
+        public bool GetComboboxText(int McID)
+        {
+            var context = new SalesManagement_DevContext();
+            bool flg = context.M_MajorCassifications.Any(x => x.McID == McID);
 
+            return flg;
+        }
 
 
     }
@@ -182,3 +203,4 @@ namespace SalesManagement_SysDev//.DbAccess
 
 }
 
+　

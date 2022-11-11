@@ -134,20 +134,20 @@ namespace SalesManagement_SysDev
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
                              join t3 in context.M_Positions
-                             on t1.PoID equals t3.PoID
-                             join t4 in context.M_Positions
-                             on t1.PoID equals t4.PoID
+                             on t1.PoID equals t3.PoID                            
                              where t1.EmID == EmID && t1.EmPassword == Empw
                              select new
                              {
                                  t1.EmName,
+                                 t1.EmID,
                                  t2.SoName,
                                  t3.PoName,
-                                 t4.PoID,
+                                 t3.PoID,                   //FormMain権限分割機能で使用
                              };
                     foreach (var p in tb)
                     {
                         FormMain.loginName = p.EmName;
+                        FormMain.loginEmID = p.EmID;
                         FormMain.loginSoName = p.SoName;
                         FormMain.loginPoName = p.PoName;
                         FormMain.loginPoID = p.PoID;
