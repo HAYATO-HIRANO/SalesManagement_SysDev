@@ -350,9 +350,9 @@ namespace SalesManagement_SysDev
             this.buttonNotList.BackColor = System.Drawing.Color.LightGreen;
             this.buttonNotList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNotList.Location = new System.Drawing.Point(0, 511);
+            this.buttonNotList.Location = new System.Drawing.Point(0, 821);
             this.buttonNotList.Name = "buttonNotList";
-            this.buttonNotList.Size = new System.Drawing.Size(250, 130);
+            this.buttonNotList.Size = new System.Drawing.Size(250, 80);
             this.buttonNotList.TabIndex = 39;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
@@ -381,6 +381,7 @@ namespace SalesManagement_SysDev
             this.button3.TabIndex = 5;
             this.button3.Text = "ログアウト";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 

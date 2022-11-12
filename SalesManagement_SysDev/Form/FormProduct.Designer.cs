@@ -35,7 +35,7 @@ namespace SalesManagement_SysDev
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.buttonSaisyou = new System.Windows.Forms.Button();
-            this.labelClient = new System.Windows.Forms.Label();
+            this.labelProduct = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonList = new System.Windows.Forms.Button();
@@ -77,10 +77,18 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonSetting = new System.Windows.Forms.Button();
+            this.panelSetting = new System.Windows.Forms.Panel();
+            this.buttonProduct = new System.Windows.Forms.Button();
+            this.buttonMajorClassification = new System.Windows.Forms.Button();
+            this.buttonMaker = new System.Windows.Forms.Button();
+            this.buttonSmallClassification = new System.Windows.Forms.Button();
+            this.userControlMaker1 = new SalesManagement_SysDev.UserControlMaker();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).BeginInit();
+            this.panelSetting.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -91,7 +99,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.Controls.Add(this.labelDay);
             this.panelHeader.Controls.Add(this.labelTime);
             this.panelHeader.Controls.Add(this.buttonSaisyou);
-            this.panelHeader.Controls.Add(this.labelClient);
+            this.panelHeader.Controls.Add(this.labelProduct);
             this.panelHeader.Controls.Add(this.buttonFormDel);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
@@ -157,16 +165,16 @@ namespace SalesManagement_SysDev
             this.buttonSaisyou.Text = "ー";
             this.buttonSaisyou.UseVisualStyleBackColor = false;
             // 
-            // labelClient
+            // labelProduct
             // 
-            this.labelClient.AutoSize = true;
-            this.labelClient.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClient.ForeColor = System.Drawing.Color.White;
-            this.labelClient.Location = new System.Drawing.Point(297, 20);
-            this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(394, 53);
-            this.labelClient.TabIndex = 1;
-            this.labelClient.Text = "商品マスタ管理";
+            this.labelProduct.AutoSize = true;
+            this.labelProduct.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelProduct.ForeColor = System.Drawing.Color.White;
+            this.labelProduct.Location = new System.Drawing.Point(297, 20);
+            this.labelProduct.Name = "labelProduct";
+            this.labelProduct.Size = new System.Drawing.Size(235, 53);
+            this.labelProduct.TabIndex = 1;
+            this.labelProduct.Text = "商品管理";
             // 
             // buttonFormDel
             // 
@@ -179,10 +187,13 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.TabIndex = 0;
             this.buttonFormDel.Text = "✕";
             this.buttonFormDel.UseVisualStyleBackColor = false;
+            this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click);
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.Controls.Add(this.panelSetting);
+            this.panelLeft.Controls.Add(this.buttonSetting);
             this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonLogout);
             this.panelLeft.Controls.Add(this.buttonUpdate);
@@ -604,11 +615,96 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // buttonSetting
+            // 
+            this.buttonSetting.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSetting.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSetting.Location = new System.Drawing.Point(0, 801);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(250, 100);
+            this.buttonSetting.TabIndex = 39;
+            this.buttonSetting.Text = "設定";
+            this.buttonSetting.UseVisualStyleBackColor = false;
+            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
+            // 
+            // panelSetting
+            // 
+            this.panelSetting.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelSetting.Controls.Add(this.buttonSmallClassification);
+            this.panelSetting.Controls.Add(this.buttonProduct);
+            this.panelSetting.Controls.Add(this.buttonMajorClassification);
+            this.panelSetting.Controls.Add(this.buttonMaker);
+            this.panelSetting.Location = new System.Drawing.Point(1, 0);
+            this.panelSetting.Name = "panelSetting";
+            this.panelSetting.Size = new System.Drawing.Size(250, 901);
+            this.panelSetting.TabIndex = 40;
+            this.panelSetting.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSetting_Paint);
+            // 
+            // buttonProduct
+            // 
+            this.buttonProduct.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProduct.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonProduct.Location = new System.Drawing.Point(-1, 801);
+            this.buttonProduct.Name = "buttonProduct";
+            this.buttonProduct.Size = new System.Drawing.Size(250, 100);
+            this.buttonProduct.TabIndex = 27;
+            this.buttonProduct.Text = "商品管理";
+            this.buttonProduct.UseVisualStyleBackColor = false;
+            this.buttonProduct.Click += new System.EventHandler(this.buttonEmployee_Click);
+            // 
+            // buttonMajorClassification
+            // 
+            this.buttonMajorClassification.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonMajorClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMajorClassification.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonMajorClassification.Location = new System.Drawing.Point(-1, 129);
+            this.buttonMajorClassification.Name = "buttonMajorClassification";
+            this.buttonMajorClassification.Size = new System.Drawing.Size(250, 130);
+            this.buttonMajorClassification.TabIndex = 2;
+            this.buttonMajorClassification.Text = "大分類管理";
+            this.buttonMajorClassification.UseVisualStyleBackColor = false;
+            // 
+            // buttonMaker
+            // 
+            this.buttonMaker.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonMaker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMaker.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonMaker.Location = new System.Drawing.Point(-1, 0);
+            this.buttonMaker.Name = "buttonMaker";
+            this.buttonMaker.Size = new System.Drawing.Size(250, 130);
+            this.buttonMaker.TabIndex = 1;
+            this.buttonMaker.Text = "メーカー管理";
+            this.buttonMaker.UseVisualStyleBackColor = false;
+            this.buttonMaker.Click += new System.EventHandler(this.buttonMaker_Click);
+            // 
+            // buttonSmallClassification
+            // 
+            this.buttonSmallClassification.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSmallClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSmallClassification.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSmallClassification.Location = new System.Drawing.Point(-1, 258);
+            this.buttonSmallClassification.Name = "buttonSmallClassification";
+            this.buttonSmallClassification.Size = new System.Drawing.Size(250, 130);
+            this.buttonSmallClassification.TabIndex = 28;
+            this.buttonSmallClassification.Text = "小分類管理";
+            this.buttonSmallClassification.UseVisualStyleBackColor = false;
+            // 
+            // userControlMaker1
+            // 
+            this.userControlMaker1.BackColor = System.Drawing.Color.Honeydew;
+            this.userControlMaker1.Location = new System.Drawing.Point(250, 100);
+            this.userControlMaker1.Name = "userControlMaker1";
+            this.userControlMaker1.Size = new System.Drawing.Size(1670, 980);
+            this.userControlMaker1.TabIndex = 38;
+            // 
             // FormProduct
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.userControlMaker1);
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
             this.Controls.Add(this.labelPageSize);
@@ -633,6 +729,7 @@ namespace SalesManagement_SysDev
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).EndInit();
+            this.panelSetting.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -645,7 +742,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Button buttonSaisyou;
-        private System.Windows.Forms.Label labelClient;
+        private System.Windows.Forms.Label labelProduct;
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Button buttonLogout;
@@ -687,5 +784,12 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.ComboBox comboBoxMc;
         private System.Windows.Forms.Label labelMc;
+        private System.Windows.Forms.Button buttonSetting;
+        private System.Windows.Forms.Panel panelSetting;
+        private System.Windows.Forms.Button buttonProduct;
+        private System.Windows.Forms.Button buttonMajorClassification;
+        private System.Windows.Forms.Button buttonMaker;
+        private System.Windows.Forms.Button buttonSmallClassification;
+        private UserControlMaker userControlMaker1;
     }
 }
