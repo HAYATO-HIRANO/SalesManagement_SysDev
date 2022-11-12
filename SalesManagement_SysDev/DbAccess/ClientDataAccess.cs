@@ -118,6 +118,7 @@ namespace SalesManagement_SysDev
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
+                         where t1.ClFlag!=2
                          select new
                          {
                              t1.ClID,
@@ -179,14 +180,15 @@ namespace SalesManagement_SysDev
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
-                         where 
-                         t1.ClID==selectCondition.ClID &&
-                         t1.SoID==selectCondition.SoID &&
+                         where        
+                         t1.ClID==selectCondition.ClID&&
+                         t1.SoID==selectCondition.SoID&&
                          t1.ClName.Contains(selectCondition.ClName)&&
-                         t1.ClAddress.Contains(selectCondition.ClAddress)&&
                          t1.ClPhone.Contains(selectCondition.ClPhone)&&
                          t1.ClPostal.Contains(selectCondition.ClPostal)&&
-                         t1.ClFAX.Contains(selectCondition.ClFAX) && t1.ClFlag!=2
+                         t1.ClFAX.Contains(selectCondition.ClFAX) &&
+                         t1.ClAddress.Contains(selectCondition.ClAddress) &&
+                         t1.ClFlag!=2
                          
                          select new
                          {

@@ -378,6 +378,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 6;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonLogout
             // 
@@ -473,6 +474,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewClient.RowTemplate.Height = 21;
             this.dataGridViewClient.Size = new System.Drawing.Size(1552, 580);
             this.dataGridViewClient.TabIndex = 26;
+            this.dataGridViewClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClient_CellClick_1);
             // 
             // buttonPageSizeChange
             // 

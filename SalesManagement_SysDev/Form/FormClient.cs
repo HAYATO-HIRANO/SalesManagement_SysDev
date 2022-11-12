@@ -74,6 +74,8 @@ namespace SalesManagement_SysDev
             this.Close();
         }
 
+        //顧客情報登録
+        
         private void buttonRegist_Click(object sender, EventArgs e)
         {
             // 8.3.1.1 妥当なスタッフデータ取得
@@ -151,51 +153,7 @@ namespace SalesManagement_SysDev
                 textBoxClPhone.Focus();
                 return false;
             }
-            //郵便番号の適否
-            if (!String.IsNullOrEmpty(textBoxClPostal.Text.Trim()))
-            {
-                //郵便番号の半角英数字チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
-                {
-                    MessageBox.Show("郵便番号は数字入力です");
-                   // messageDsp.DspMsg("M0321");
-                    textBoxClPostal.Focus();
-                    return false;
-                }
-                //文字数
-                if (textBoxClPostal.TextLength > 7)
-                {
-                    MessageBox.Show("郵便番号は7文字以下です");
-                    textBoxClPostal.Focus();
-                    return false;
-                }
-                
-            }
-            else
-            {
-                //郵便番号を入力してください
-                messageDsp.DspMsg("M0322");
-                textBoxClPostal.Focus();
-                return false;
-            }
-            //住所の適否
-            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
-            {
-                if (textBoxClAddres.TextLength > 50)
-                {
-                    messageDsp.DspMsg("M0318");
-                    textBoxClAddres.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("住所が入力されていません");
-
-                textBoxClAddres.Focus();
-                return false;
-
-            }
+            
             //FAXの適否
             if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
             {
@@ -221,6 +179,53 @@ namespace SalesManagement_SysDev
                 textBoxClFAX.Focus();
                 return false;
             }
+            //郵便番号の適否
+            if (!String.IsNullOrEmpty(textBoxClPostal.Text.Trim()))
+            {
+                //郵便番号の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
+                {
+                    MessageBox.Show("郵便番号は数字入力です");
+                    // messageDsp.DspMsg("M0321");
+                    textBoxClPostal.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClPostal.TextLength > 7)
+                {
+                    MessageBox.Show("郵便番号は7文字以下です");
+                    textBoxClPostal.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                //郵便番号を入力してください
+                messageDsp.DspMsg("M0322");
+                textBoxClPostal.Focus();
+                return false;
+            }
+
+            //住所の適否
+            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
+            {
+                if (textBoxClAddres.TextLength > 50)
+                {
+                    messageDsp.DspMsg("M0318");
+                    textBoxClAddres.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("住所が入力されていません");
+
+                textBoxClAddres.Focus();
+                return false;
+
+            }
+
             //フラグの適否
             if (checkBoxClFlag.CheckState == CheckState.Indeterminate)
             {
@@ -374,6 +379,9 @@ namespace SalesManagement_SysDev
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Client.Count / (double)pageSize)) + "ページ";
+            
+
+
 
             dataGridViewClient.Refresh();
 
@@ -395,8 +403,6 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューの先頭ページ表示
         ///////////////////////////////
-        
-
         private void buttonFirstPage_Click_1(object sender, EventArgs e)
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
@@ -436,7 +442,6 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューの次ページ表示
         ///////////////////////////////
-
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
@@ -456,6 +461,7 @@ namespace SalesManagement_SysDev
             else
                 textBoxPage.Text = (pageNo + 1).ToString();
         }
+
         ///////////////////////////////
         //メソッド名：buttonLastPage_Click()
         //引　数   ：なし
@@ -474,6 +480,7 @@ namespace SalesManagement_SysDev
             //ページ番号の設定
             textBoxPage.Text = (pageNo + 1).ToString();
         }
+       
         ///////////////////////////////
         //メソッド名：ClearInput()
         //引　数   ：なし
@@ -493,6 +500,7 @@ namespace SalesManagement_SysDev
             textBoxClHidden.Text = "";
         }
 
+        //顧客情報更新
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             // 3.2.1.1 妥当な顧客データ取得
@@ -529,7 +537,7 @@ namespace SalesManagement_SysDev
                 }
 
 
-                // 顧客IDの重複チェック
+                // 顧客IDの存在チェック
                 if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
                 {
                     //MessageBox.Show("入力された顧客IDは存在しません");
@@ -556,6 +564,7 @@ namespace SalesManagement_SysDev
                 return false;
 
             }
+
             //顧客名の適否
             if (!String.IsNullOrEmpty(textBoxClName.Text.Trim()))
             {
@@ -572,24 +581,6 @@ namespace SalesManagement_SysDev
                 //顧客名が入力されていません
                 messageDsp.DspMsg("M0310");
                 textBoxClName.Focus();
-                return false;
-
-            }
-            //住所の適否
-            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
-            {
-                if (textBoxClAddres.TextLength > 50)
-                {
-                    messageDsp.DspMsg("M0318");
-                    textBoxClAddres.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("住所が入力されていません");
-
-                textBoxClAddres.Focus();
                 return false;
 
             }
@@ -617,6 +608,32 @@ namespace SalesManagement_SysDev
                 textBoxClPhone.Focus();
                 return false;
             }
+            //FAXの適否
+            if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
+            {
+                //FAXの半角英数字チェック
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
+                {
+                    MessageBox.Show("FAXは数字とハイフンのみです");
+                    textBoxClFAX.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClFAX.TextLength > 13)
+                {
+                    MessageBox.Show("FAXは13文字以下です");
+                    textBoxClFAX.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //FAXを入力してください
+                messageDsp.DspMsg("M0324");
+                textBoxClFAX.Focus();
+                return false;
+            }
+
             //郵便番号の適否
             if (!String.IsNullOrEmpty(textBoxClPostal.Text.Trim()))
             {
@@ -644,30 +661,24 @@ namespace SalesManagement_SysDev
                 textBoxClPostal.Focus();
                 return false;
             }
-            //FAXの適否
-            if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
+
+            //住所の適否
+            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
             {
-                //FAXの半角英数字チェック
-                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
+                if (textBoxClAddres.TextLength > 50)
                 {
-                    MessageBox.Show("FAXは数字とハイフンのみです");
-                    textBoxClFAX.Focus();
-                    return false;
-                }
-                //文字数
-                if (textBoxClFAX.TextLength > 13)
-                {
-                    MessageBox.Show("FAXは13文字以下です");
-                    textBoxClFAX.Focus();
+                    messageDsp.DspMsg("M0318");
+                    textBoxClAddres.Focus();
                     return false;
                 }
             }
             else
             {
-                //FAXを入力してください
-                messageDsp.DspMsg("M0324");
-                textBoxClFAX.Focus();
+                MessageBox.Show("住所が入力されていません");
+
+                textBoxClAddres.Focus();
                 return false;
+
             }
             //フラグの適否
             if (checkBoxClFlag.CheckState == CheckState.Indeterminate)
@@ -747,7 +758,7 @@ namespace SalesManagement_SysDev
             // データグリッドビューの表示
             GetDataGridView();
         }
-
+        //顧客情報検索
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             
@@ -760,8 +771,6 @@ namespace SalesManagement_SysDev
 
             //  顧客抽出結果表示
             SetSelectData();
-
-            
 
         }
 
@@ -795,10 +804,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
 
-                
-
             }
-
             
             //顧客名の適否
             if (!String.IsNullOrEmpty(textBoxClName.Text.Trim()))
@@ -808,16 +814,6 @@ namespace SalesManagement_SysDev
                     //顧客名は50文字以下です
                     messageDsp.DspMsg("M0309");
                     textBoxClName.Focus();
-                    return false;
-                }
-            }
-            //住所の適否
-            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
-            {
-                if (textBoxClAddres.TextLength > 50)
-                {
-                    messageDsp.DspMsg("M0318");
-                    textBoxClAddres.Focus();
                     return false;
                 }
             }
@@ -836,6 +832,24 @@ namespace SalesManagement_SysDev
                 {
                     MessageBox.Show("電話番号は13文字以下です");
                     textBoxClPhone.Focus();
+                    return false;
+                }
+            }
+            //FAXの適否
+            if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
+            {
+                //FAXの半角英数字チェック
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
+                {
+                    MessageBox.Show("FAXは数字とハイフンのみです");
+                    textBoxClFAX.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClFAX.TextLength > 13)
+                {
+                    MessageBox.Show("FAXは13文字以下です");
+                    textBoxClFAX.Focus();
                     return false;
                 }
             }
@@ -858,24 +872,19 @@ namespace SalesManagement_SysDev
                     return false;
                 }
 
-            }//FAXの適否
-            if (!String.IsNullOrEmpty(textBoxClFAX.Text.Trim()))
+            }
+
+            //住所の適否
+            if (!String.IsNullOrEmpty(textBoxClAddres.Text.Trim()))
             {
-                //FAXの半角英数字チェック
-                if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
+                if (textBoxClAddres.TextLength > 50)
                 {
-                    MessageBox.Show("FAXは数字とハイフンのみです");
-                    textBoxClFAX.Focus();
-                    return false;
-                }
-                //文字数
-                if (textBoxClFAX.TextLength > 13)
-                {
-                    MessageBox.Show("FAXは13文字以下です");
-                    textBoxClFAX.Focus();
+                    messageDsp.DspMsg("M0318");
+                    textBoxClAddres.Focus();
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -889,48 +898,80 @@ namespace SalesManagement_SysDev
         private void GenerateDataAtSelect()
         {
             // コンボボックスが未選択の場合Emptyを設定
-            int cSalesOffice = -1;
+            string cSalesOffice = "";
             if (comboBoxSoID.SelectedIndex != -1)
-                cSalesOffice = int.Parse(comboBoxSoID.SelectedValue.ToString());
+                cSalesOffice =comboBoxSoID.SelectedValue.ToString();
 
-            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            //検索条件のセット
+
+            //顧客IDが入力されていて、営業所も選択されている場合
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim())&&cSalesOffice!="")
             {
                 M_ClientDsp selectCondition = new M_ClientDsp()
                 {
                     ClID = int.Parse(textBoxClID.Text.Trim()),
-                    SoID = cSalesOffice,
+                    SoID = int.Parse(cSalesOffice),
                     ClName = textBoxClName.Text,
                     ClAddress = textBoxClAddres.Text,
                     ClPhone = textBoxClPhone.Text,
                     ClPostal = textBoxClPostal.Text,
                     ClFAX = textBoxClFAX.Text,
-
-
                 };
 
                 //顧客データの抽出
-                clientDataAccess.GetClientData(selectCondition);
+               Client= clientDataAccess.GetClientData(selectCondition);
             }
-            else
+
+            //顧客IDが入力されていて、営業所が未選択の場合
+            else if(!String.IsNullOrEmpty(textBoxClID.Text.Trim())&&cSalesOffice =="")
             {
                 M_ClientDsp selectCondition = new M_ClientDsp()
                 {
-                   
-                    SoID = cSalesOffice,
+                    ClID = int.Parse(textBoxClID.Text.Trim()),
                     ClName = textBoxClName.Text,
                     ClAddress = textBoxClAddres.Text,
                     ClPhone = textBoxClPhone.Text,
                     ClPostal = textBoxClPostal.Text,
                     ClFAX = textBoxClFAX.Text,
-
-
                 };
 
                 //顧客データの抽出
-                clientDataAccess.GetClientData(selectCondition);
+               Client= clientDataAccess.GetClientData(selectCondition);
             }
-           
-            
+
+            //顧客IDが未入力で、営業所が選択されている場合
+            else if(cSalesOffice != "")
+            {
+                M_ClientDsp selectCondition = new M_ClientDsp()
+                {
+                    SoID = int.Parse(cSalesOffice),
+                    ClName = textBoxClName.Text,
+                    ClAddress = textBoxClAddres.Text,
+                    ClPhone = textBoxClPhone.Text,
+                    ClPostal = textBoxClPostal.Text,
+                    ClFAX = textBoxClFAX.Text,
+                };
+
+                //顧客データの抽出
+               Client= clientDataAccess.GetClientData(selectCondition);
+            }
+
+            //顧客IDが未入力で、営業所も未選択の場合
+            else 
+            {
+                M_ClientDsp selectCondition = new M_ClientDsp()
+                {                  
+                    ClName = textBoxClName.Text,
+                    ClAddress = textBoxClAddres.Text,
+                    ClPhone = textBoxClPhone.Text,
+                    ClPostal = textBoxClPostal.Text,
+                    ClFAX = textBoxClFAX.Text,
+                };
+
+                //顧客データの抽出
+                Client = clientDataAccess.GetClientData(selectCondition);
+            }
+
         }
 
         ///////////////////////////////
@@ -954,5 +995,50 @@ namespace SalesManagement_SysDev
           
         }
 
+        ///////////////////////////////
+        //メソッド名：dataGridViewClient_CellClick()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューから選択された情報を各入力エリアにセット
+        ///////////////////////////////
+        private void dataGridViewClient_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxClID.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[0].Value.ToString();
+            comboBoxSoID.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxClName.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxClAddres.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxClPhone.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxClPostal.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxClFAX.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[7].Value.ToString();
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
+            {
+                checkBoxClFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxClFlag.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if(dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[9].Value != null)
+            {
+                textBoxClHidden.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[9].Value.ToString();
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonList_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：顧客データの一覧表示機能
+        ///////////////////////////////
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            // 入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            SetFormDataGridView();
+        }
     }
 }
