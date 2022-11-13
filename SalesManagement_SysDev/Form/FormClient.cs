@@ -132,7 +132,7 @@ namespace SalesManagement_SysDev
             //電話番号の適否
             if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
             {
-                //電話番号の半角チェック
+                //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
                     MessageBox.Show("電話番号は数字とハイフンのみです");
@@ -185,15 +185,16 @@ namespace SalesManagement_SysDev
                 //郵便番号の半角英数字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
-                    MessageBox.Show("郵便番号は数字入力です");
+                    MessageBox.Show("郵便番号は半角数値です");
                     // messageDsp.DspMsg("M0321");
                     textBoxClPostal.Focus();
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength > 7)
+                if (textBoxClPostal.TextLength ==7)
                 {
-                    MessageBox.Show("郵便番号は7文字以下です");
+                    //MessageBox.Show("郵便番号は7文字です");
+                    messageDsp.DspMsg("M0320");
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -236,7 +237,7 @@ namespace SalesManagement_SysDev
             //非表示理由の適否
             if(checkBoxClFlag.Checked==true && String.IsNullOrEmpty(textBoxClHidden.Text.Trim()))
             {
-                MessageBox.Show("非表示理由を入力してください");
+                MessageBox.Show("非表示理由が入力されていません");
                 textBoxClHidden.Focus();
                 return false;
             }
@@ -387,18 +388,17 @@ namespace SalesManagement_SysDev
 
         }
         ///////////////////////////////
-        //メソッド名：buttonPageSizeChange_Click()
+        //メソッド名：buttonPageSizeChange_Click_1()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：データグリッドビューの表示件数変更
         ///////////////////////////////
-        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        private void buttonPageSizeChange_Click_1(object sender, EventArgs e)
         {
             SetDataGridView();
         }
-
         ///////////////////////////////
-        //メソッド名：buttonFirstPage_Click()
+        //メソッド名：buttonFirstPage_Click_1()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：データグリッドビューの先頭ページ表示
@@ -528,10 +528,10 @@ namespace SalesManagement_SysDev
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
-                //文字チェック
+                //顧客IDの半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
                 {
-                    MessageBox.Show("顧客IDは半角数値です");
+                    MessageBox.Show("顧客IDは半角数値入力です");
                     textBoxClID.Focus();
                     return false;
                 }
@@ -587,7 +587,7 @@ namespace SalesManagement_SysDev
             //電話番号の適否
             if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
             {
-                //電話番号の半角チェック
+                //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
                     MessageBox.Show("電話番号は数字とハイフンのみです");
@@ -640,15 +640,15 @@ namespace SalesManagement_SysDev
                 //郵便番号の半角英数字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
-                    MessageBox.Show("郵便番号は数字入力です");
+                    MessageBox.Show("郵便番号は半角数値入力です");
                     // messageDsp.DspMsg("M0321");
                     textBoxClPostal.Focus();
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength > 7)
+                if (textBoxClPostal.TextLength == 7)
                 {
-                    MessageBox.Show("郵便番号は7文字以下です");
+                    MessageBox.Show("郵便番号は7文字です");
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -690,7 +690,7 @@ namespace SalesManagement_SysDev
             //非表示理由の適否
             if (checkBoxClFlag.Checked == true && String.IsNullOrEmpty(textBoxClHidden.Text.Trim()))
             {
-                MessageBox.Show("非表示理由を入力してください");
+                MessageBox.Show("非表示理由が入力されていません");
                 textBoxClHidden.Focus();
                 return false;
             }
@@ -758,6 +758,8 @@ namespace SalesManagement_SysDev
             // データグリッドビューの表示
             GetDataGridView();
         }
+
+
         //顧客情報検索
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -791,7 +793,7 @@ namespace SalesManagement_SysDev
                 //文字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
                 {
-                    MessageBox.Show("顧客IDは半角数値です");
+                    MessageBox.Show("顧客IDは半角数値入力です");
                     textBoxClID.Focus();
                     return false;
                 }
@@ -820,7 +822,7 @@ namespace SalesManagement_SysDev
             //電話番号の適否
             if (!String.IsNullOrEmpty(textBoxClPhone.Text.Trim()))
             {
-                //電話番号の半角チェック
+                //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
                     MessageBox.Show("電話番号は数字とハイフンのみです");
@@ -859,15 +861,15 @@ namespace SalesManagement_SysDev
                 //郵便番号の半角英数字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
-                    MessageBox.Show("郵便番号は数字入力です");
+                    MessageBox.Show("郵便番号は半角数値入力です");
                     // messageDsp.DspMsg("M0321");
                     textBoxClPostal.Focus();
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength > 7)
+                if (textBoxClPostal.TextLength == 7)
                 {
-                    MessageBox.Show("郵便番号は7文字以下です");
+                    MessageBox.Show("郵便番号は7文字です");
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -903,7 +905,6 @@ namespace SalesManagement_SysDev
                 cSalesOffice =comboBoxSoID.SelectedValue.ToString();
 
             //検索条件のセット
-
             //顧客IDが入力されていて、営業所も選択されている場合
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim())&&cSalesOffice!="")
             {
@@ -1040,5 +1041,7 @@ namespace SalesManagement_SysDev
             //データグリッドビューの表示
             SetFormDataGridView();
         }
+
+        
     }
 }
