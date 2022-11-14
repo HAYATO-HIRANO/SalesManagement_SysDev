@@ -1042,6 +1042,9 @@ namespace SalesManagement_SysDev
             SetFormDataGridView();
         }
 
-        
+        private void buttonHinaDel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
