@@ -73,7 +73,7 @@ namespace SalesManagement_SysDev
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelFormClient = new System.Windows.Forms.Label();
-            this.buttonHinaDel = new System.Windows.Forms.Button();
+            this.buttonFormDel = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
@@ -487,7 +487,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.Controls.Add(this.labelDay);
             this.panelHeader.Controls.Add(this.labelTime);
             this.panelHeader.Controls.Add(this.labelFormClient);
-            this.panelHeader.Controls.Add(this.buttonHinaDel);
+            this.panelHeader.Controls.Add(this.buttonFormDel);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
@@ -573,18 +573,18 @@ namespace SalesManagement_SysDev
             this.labelFormClient.TabIndex = 1;
             this.labelFormClient.Text = "顧客管理";
             // 
-            // buttonHinaDel
+            // buttonFormDel
             // 
-            this.buttonHinaDel.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonHinaDel.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHinaDel.ForeColor = System.Drawing.Color.White;
-            this.buttonHinaDel.Location = new System.Drawing.Point(1720, 0);
-            this.buttonHinaDel.Name = "buttonHinaDel";
-            this.buttonHinaDel.Size = new System.Drawing.Size(200, 100);
-            this.buttonHinaDel.TabIndex = 0;
-            this.buttonHinaDel.Text = "✕閉じる";
-            this.buttonHinaDel.UseVisualStyleBackColor = false;
-            this.buttonHinaDel.Click += new System.EventHandler(this.buttonHinaDel_Click);
+            this.buttonFormDel.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonFormDel.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFormDel.ForeColor = System.Drawing.Color.White;
+            this.buttonFormDel.Location = new System.Drawing.Point(1720, 0);
+            this.buttonFormDel.Name = "buttonFormDel";
+            this.buttonFormDel.Size = new System.Drawing.Size(200, 100);
+            this.buttonFormDel.TabIndex = 0;
+            this.buttonFormDel.Text = "✕閉じる";
+            this.buttonFormDel.UseVisualStyleBackColor = false;
+            this.buttonFormDel.Click += new System.EventHandler(this.buttonHinaDel_Click);
             // 
             // buttonClear
             // 
@@ -689,7 +689,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelFormClient;
-        private System.Windows.Forms.Button buttonHinaDel;
+        private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonHiddenList;
     }
