@@ -29,16 +29,6 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.labelAuthority = new System.Windows.Forms.Label();
-            this.labelUserName = new System.Windows.Forms.Label();
-            this.labelDay = new System.Windows.Forms.Label();
-            this.labelTime = new System.Windows.Forms.Label();
-            this.buttonSaisyou = new System.Windows.Forms.Button();
-            this.labelClient = new System.Windows.Forms.Label();
-            this.buttonFormDel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelClID = new System.Windows.Forms.Label();
             this.textBoxClID = new System.Windows.Forms.TextBox();
             this.labelSoID = new System.Windows.Forms.Label();
@@ -55,12 +45,6 @@ namespace SalesManagement_SysDev
             this.checkBoxClFlag = new System.Windows.Forms.CheckBox();
             this.labelHidden = new System.Windows.Forms.Label();
             this.textBoxClHidden = new System.Windows.Forms.TextBox();
-            this.panelLeft = new System.Windows.Forms.Panel();
-            this.buttonList = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonRegist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.dataGridViewClient = new System.Windows.Forms.DataGridView();
@@ -73,132 +57,28 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            this.panelHeader.SuspendLayout();
-            this.panelLeft.SuspendLayout();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.labelUserID = new System.Windows.Forms.Label();
+            this.labelPosition = new System.Windows.Forms.Label();
+            this.labelSalesOffice = new System.Windows.Forms.Label();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.labelDay = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.labelClient = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonNotList = new System.Windows.Forms.Button();
+            this.buttonList = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.buttonFormDel = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
+            this.panelHeader.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel1.Controls.Add(this.panelHeader);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 100);
-            this.panel1.TabIndex = 0;
-            // 
-            // panelHeader
-            // 
-            this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
-            this.panelHeader.Controls.Add(this.labelAuthority);
-            this.panelHeader.Controls.Add(this.labelUserName);
-            this.panelHeader.Controls.Add(this.labelDay);
-            this.panelHeader.Controls.Add(this.labelTime);
-            this.panelHeader.Controls.Add(this.buttonSaisyou);
-            this.panelHeader.Controls.Add(this.labelClient);
-            this.panelHeader.Controls.Add(this.buttonFormDel);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1920, 100);
-            this.panelHeader.TabIndex = 2;
-            // 
-            // labelAuthority
-            // 
-            this.labelAuthority.AutoSize = true;
-            this.labelAuthority.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelAuthority.ForeColor = System.Drawing.Color.White;
-            this.labelAuthority.Location = new System.Drawing.Point(914, 59);
-            this.labelAuthority.Name = "labelAuthority";
-            this.labelAuthority.Size = new System.Drawing.Size(51, 16);
-            this.labelAuthority.TabIndex = 11;
-            this.labelAuthority.Text = "権限：";
-            // 
-            // labelUserName
-            // 
-            this.labelUserName.AutoSize = true;
-            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelUserName.ForeColor = System.Drawing.Color.White;
-            this.labelUserName.Location = new System.Drawing.Point(875, 21);
-            this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(90, 16);
-            this.labelUserName.TabIndex = 10;
-            this.labelUserName.Text = "ユーザー名：";
-            // 
-            // labelDay
-            // 
-            this.labelDay.AutoSize = true;
-            this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelDay.ForeColor = System.Drawing.Color.White;
-            this.labelDay.Location = new System.Drawing.Point(1344, 2);
-            this.labelDay.Name = "labelDay";
-            this.labelDay.Size = new System.Drawing.Size(252, 35);
-            this.labelDay.TabIndex = 9;
-            this.labelDay.Text = "2022/10/10(月)";
-            // 
-            // labelTime
-            // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.BackColor = System.Drawing.Color.DarkGreen;
-            this.labelTime.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelTime.ForeColor = System.Drawing.Color.White;
-            this.labelTime.Location = new System.Drawing.Point(1384, 36);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(174, 64);
-            this.labelTime.TabIndex = 8;
-            this.labelTime.Text = "12:00";
-            // 
-            // buttonSaisyou
-            // 
-            this.buttonSaisyou.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonSaisyou.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSaisyou.ForeColor = System.Drawing.Color.White;
-            this.buttonSaisyou.Location = new System.Drawing.Point(1773, 0);
-            this.buttonSaisyou.Name = "buttonSaisyou";
-            this.buttonSaisyou.Size = new System.Drawing.Size(75, 75);
-            this.buttonSaisyou.TabIndex = 7;
-            this.buttonSaisyou.Text = "ー";
-            this.buttonSaisyou.UseVisualStyleBackColor = false;
-            // 
-            // labelClient
-            // 
-            this.labelClient.AutoSize = true;
-            this.labelClient.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClient.ForeColor = System.Drawing.Color.White;
-            this.labelClient.Location = new System.Drawing.Point(297, 20);
-            this.labelClient.Name = "labelClient";
-            this.labelClient.Size = new System.Drawing.Size(235, 53);
-            this.labelClient.TabIndex = 1;
-            this.labelClient.Text = "顧客管理";
-            // 
-            // buttonFormDel
-            // 
-            this.buttonFormDel.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonFormDel.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFormDel.ForeColor = System.Drawing.Color.White;
-            this.buttonFormDel.Location = new System.Drawing.Point(1845, 0);
-            this.buttonFormDel.Name = "buttonFormDel";
-            this.buttonFormDel.Size = new System.Drawing.Size(75, 75);
-            this.buttonFormDel.TabIndex = 0;
-            this.buttonFormDel.Text = "✕";
-            this.buttonFormDel.UseVisualStyleBackColor = false;
-            this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(291, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 48);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "顧客管理";
             // 
             // labelClID
             // 
@@ -352,89 +232,10 @@ namespace SalesManagement_SysDev
             this.textBoxClHidden.Size = new System.Drawing.Size(787, 84);
             this.textBoxClHidden.TabIndex = 18;
             // 
-            // panelLeft
-            // 
-            this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panelLeft.Controls.Add(this.buttonList);
-            this.panelLeft.Controls.Add(this.buttonLogout);
-            this.panelLeft.Controls.Add(this.buttonUpdate);
-            this.panelLeft.Controls.Add(this.buttonSearch);
-            this.panelLeft.Controls.Add(this.buttonRegist);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 100);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 980);
-            this.panelLeft.TabIndex = 24;
-            // 
-            // buttonList
-            // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 385);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
-            this.buttonList.TabIndex = 6;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
-            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
-            // 
-            // buttonLogout
-            // 
-            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
-            this.buttonLogout.TabIndex = 5;
-            this.buttonLogout.Text = "ログアウト";
-            this.buttonLogout.UseVisualStyleBackColor = false;
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonUpdate.Location = new System.Drawing.Point(0, 129);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(250, 130);
-            this.buttonUpdate.TabIndex = 2;
-            this.buttonUpdate.Text = "更新";
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(0, 258);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(250, 130);
-            this.buttonSearch.TabIndex = 1;
-            this.buttonSearch.Text = "検索";
-            this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // buttonRegist
-            // 
-            this.buttonRegist.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonRegist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegist.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRegist.Location = new System.Drawing.Point(0, 0);
-            this.buttonRegist.Name = "buttonRegist";
-            this.buttonRegist.Size = new System.Drawing.Size(250, 130);
-            this.buttonRegist.TabIndex = 0;
-            this.buttonRegist.Text = "登録";
-            this.buttonRegist.UseVisualStyleBackColor = false;
-            this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
-            // 
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.comboBoxSoID);
             this.panelInput.Controls.Add(this.textBoxClID);
             this.panelInput.Controls.Add(this.labelHidden);
@@ -472,7 +273,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewClient.Location = new System.Drawing.Point(306, 412);
             this.dataGridViewClient.Name = "dataGridViewClient";
             this.dataGridViewClient.RowTemplate.Height = 21;
-            this.dataGridViewClient.Size = new System.Drawing.Size(1552, 580);
+            this.dataGridViewClient.Size = new System.Drawing.Size(1552, 619);
             this.dataGridViewClient.TabIndex = 26;
             this.dataGridViewClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClient_CellClick_1);
             // 
@@ -569,11 +370,221 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
+            this.panelHeader.Controls.Add(this.buttonFormDel);
+            this.panelHeader.Controls.Add(this.labelUserID);
+            this.panelHeader.Controls.Add(this.labelPosition);
+            this.panelHeader.Controls.Add(this.labelSalesOffice);
+            this.panelHeader.Controls.Add(this.labelUserName);
+            this.panelHeader.Controls.Add(this.labelDay);
+            this.panelHeader.Controls.Add(this.labelTime);
+            this.panelHeader.Controls.Add(this.labelClient);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1920, 100);
+            this.panelHeader.TabIndex = 36;
+            // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserID.ForeColor = System.Drawing.Color.White;
+            this.labelUserID.Location = new System.Drawing.Point(245, 14);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.TabIndex = 13;
+            this.labelUserID.Text = "ユーザーID：";
+            // 
+            // labelPosition
+            // 
+            this.labelPosition.AutoSize = true;
+            this.labelPosition.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPosition.ForeColor = System.Drawing.Color.White;
+            this.labelPosition.Location = new System.Drawing.Point(12, 56);
+            this.labelPosition.Name = "labelPosition";
+            this.labelPosition.Size = new System.Drawing.Size(83, 27);
+            this.labelPosition.TabIndex = 11;
+            this.labelPosition.Text = "権限：";
+            // 
+            // labelSalesOffice
+            // 
+            this.labelSalesOffice.AutoSize = true;
+            this.labelSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSalesOffice.ForeColor = System.Drawing.Color.White;
+            this.labelSalesOffice.Location = new System.Drawing.Point(12, 14);
+            this.labelSalesOffice.Name = "labelSalesOffice";
+            this.labelSalesOffice.Size = new System.Drawing.Size(180, 27);
+            this.labelSalesOffice.TabIndex = 12;
+            this.labelSalesOffice.Text = "和歌山営業所";
+            // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelUserName.ForeColor = System.Drawing.Color.White;
+            this.labelUserName.Location = new System.Drawing.Point(245, 56);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(147, 27);
+            this.labelUserName.TabIndex = 10;
+            this.labelUserName.Text = "ユーザー名：";
+            // 
+            // labelDay
+            // 
+            this.labelDay.AutoSize = true;
+            this.labelDay.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelDay.ForeColor = System.Drawing.Color.White;
+            this.labelDay.Location = new System.Drawing.Point(1382, 2);
+            this.labelDay.Name = "labelDay";
+            this.labelDay.Size = new System.Drawing.Size(252, 35);
+            this.labelDay.TabIndex = 9;
+            this.labelDay.Text = "2022/10/10(月)";
+            // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.BackColor = System.Drawing.Color.DarkGreen;
+            this.labelTime.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelTime.ForeColor = System.Drawing.Color.White;
+            this.labelTime.Location = new System.Drawing.Point(1422, 36);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(174, 64);
+            this.labelTime.TabIndex = 8;
+            this.labelTime.Text = "12:00";
+            // 
+            // labelClient
+            // 
+            this.labelClient.AutoSize = true;
+            this.labelClient.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelClient.ForeColor = System.Drawing.Color.White;
+            this.labelClient.Location = new System.Drawing.Point(694, 22);
+            this.labelClient.Name = "labelClient";
+            this.labelClient.Size = new System.Drawing.Size(235, 53);
+            this.labelClient.TabIndex = 1;
+            this.labelClient.Text = "顧客管理";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel2.Controls.Add(this.buttonNotList);
+            this.panel2.Controls.Add(this.buttonList);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 980);
+            this.panel2.TabIndex = 37;
+            // 
+            // buttonNotList
+            // 
+            this.buttonNotList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonNotList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNotList.Location = new System.Drawing.Point(0, 821);
+            this.buttonNotList.Name = "buttonNotList";
+            this.buttonNotList.Size = new System.Drawing.Size(250, 80);
+            this.buttonNotList.TabIndex = 39;
+            this.buttonNotList.Text = "非表示リスト";
+            this.buttonNotList.UseVisualStyleBackColor = false;
+            // 
+            // buttonList
+            // 
+            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(0, 385);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.TabIndex = 38;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.DarkGreen;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(0, 900);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(250, 80);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "ログアウト";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LightGreen;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button4.Location = new System.Drawing.Point(0, 129);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(250, 130);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "更新";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.LightGreen;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button5.Location = new System.Drawing.Point(0, 258);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(250, 130);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "検索";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.LightGreen;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button6.Location = new System.Drawing.Point(0, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(250, 130);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "登録";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // buttonFormDel
+            // 
+            this.buttonFormDel.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonFormDel.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFormDel.ForeColor = System.Drawing.Color.White;
+            this.buttonFormDel.Location = new System.Drawing.Point(1722, 0);
+            this.buttonFormDel.Name = "buttonFormDel";
+            this.buttonFormDel.Size = new System.Drawing.Size(198, 100);
+            this.buttonFormDel.TabIndex = 14;
+            this.buttonFormDel.Text = "✕閉じる";
+            this.buttonFormDel.UseVisualStyleBackColor = false;
+            this.buttonFormDel.Click += new System.EventHandler(this.buttonFormDel_Click_1);
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(1444, 195);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 29;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            // 
             // FormClient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
             this.Controls.Add(this.labelPageSize);
@@ -584,31 +595,24 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.dataGridViewClient);
-            this.Controls.Add(this.panelLeft);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormClient";
             this.Load += new System.EventHandler(this.FormClient_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            this.panelLeft.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).EndInit();
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelClID;
         private System.Windows.Forms.TextBox textBoxClID;
         private System.Windows.Forms.Label labelSoID;
@@ -625,20 +629,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.CheckBox checkBoxClFlag;
         private System.Windows.Forms.Label labelHidden;
         private System.Windows.Forms.TextBox textBoxClHidden;
-        private System.Windows.Forms.Panel panelLeft;
-        private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.Button buttonRegist;
-        private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Label labelAuthority;
-        private System.Windows.Forms.Label labelUserName;
-        private System.Windows.Forms.Label labelDay;
-        private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Button buttonSaisyou;
-        private System.Windows.Forms.Label labelClient;
-        private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panelInput;
-        private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.DataGridView dataGridViewClient;
         private System.Windows.Forms.ComboBox comboBoxSoID;
         private System.Windows.Forms.Button buttonPageSizeChange;
@@ -650,6 +641,22 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label labelUserID;
+        private System.Windows.Forms.Label labelPosition;
+        private System.Windows.Forms.Label labelSalesOffice;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelDay;
+        private System.Windows.Forms.Label labelTime;
+        private System.Windows.Forms.Label labelClient;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button buttonNotList;
         private System.Windows.Forms.Button buttonList;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonFormDel;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
