@@ -499,6 +499,7 @@ namespace SalesManagement_SysDev
             this.Name = "FormHinagata";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormHinagata";
+            this.Load += new System.EventHandler(this.FormHinagata_Load);
             this.panelLeft.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);

@@ -55,7 +55,19 @@ namespace SalesManagement_SysDev
 
         private void buttonHinaDel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void FormHinagata_Load(object sender, EventArgs e)
+        {
+            //日時の表示
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
+            //panelHeaderに表示するログインデータ
+            labelUserName.Text = "ユーザー名：" + FormMain.loginName;
+            labelPosition.Text = "権限:" + FormMain.loginPoName;
+            labelSalesOffice.Text = FormMain.loginSoName;
+            labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
         }
     }
 }
