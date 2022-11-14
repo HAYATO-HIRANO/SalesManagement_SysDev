@@ -36,13 +36,14 @@ namespace SalesManagement_SysDev
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void FormClient_Load(object sender, EventArgs e)
         {
-            //ヘッダーに表示する情報
-            labelUserName.Text = "ユーザー名：" + FormMain.loginName;
-            labelPosition.Text = "権限:" + FormMain.loginPoName;
-            labelSalesOffice.Text = FormMain.loginSoName;
-            labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+
             //コンボボックスの設定
             SetFormComboBox();
 
@@ -1038,11 +1039,6 @@ namespace SalesManagement_SysDev
             ClearInput();
             //データグリッドビューの表示
             SetFormDataGridView();
-        }
-
-        private void buttonFormDel_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

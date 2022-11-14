@@ -38,7 +38,9 @@ namespace SalesManagement_SysDev
             this.labelUserName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
@@ -71,7 +73,6 @@ namespace SalesManagement_SysDev
             this.labelPageSize = new System.Windows.Forms.Label();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelHeader.SuspendLayout();
@@ -112,14 +113,15 @@ namespace SalesManagement_SysDev
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.DarkGreen;
-            this.panelHeader.Controls.Add(this.button1);
             this.panelHeader.Controls.Add(this.labelUserID);
             this.panelHeader.Controls.Add(this.labelPosition);
             this.panelHeader.Controls.Add(this.labelSalesOffice);
             this.panelHeader.Controls.Add(this.labelUserName);
             this.panelHeader.Controls.Add(this.label5);
             this.panelHeader.Controls.Add(this.label6);
+            this.panelHeader.Controls.Add(this.button1);
             this.panelHeader.Controls.Add(this.label7);
+            this.panelHeader.Controls.Add(this.button2);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
@@ -194,6 +196,18 @@ namespace SalesManagement_SysDev
             this.label6.TabIndex = 8;
             this.label6.Text = "12:00";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkGreen;
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(1773, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 75);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "ー";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -204,6 +218,18 @@ namespace SalesManagement_SysDev
             this.label7.Size = new System.Drawing.Size(447, 53);
             this.label7.TabIndex = 1;
             this.label7.Text = "販売管理システム";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DarkGreen;
+            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(1845, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 75);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "✕";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -574,18 +600,6 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkGreen;
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1722, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 100);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "✕閉じる";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // FormHinagata
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -658,7 +672,9 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonNotList;
         private System.Windows.Forms.Button buttonList;
@@ -667,6 +683,5 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button button1;
     }
 }
