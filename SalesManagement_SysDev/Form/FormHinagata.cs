@@ -19,6 +19,7 @@ namespace SalesManagement_SysDev
 
         private void buttonFormDel_Click(object sender, EventArgs e)
         {
+            //いらない
             this.Close();
         }
 
@@ -48,6 +49,11 @@ namespace SalesManagement_SysDev
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonHinaDel_Click(object sender, EventArgs e)
         {
 
         }
