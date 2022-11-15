@@ -46,12 +46,14 @@ namespace SalesManagement_SysDev
             this.labelHidden = new System.Windows.Forms.Label();
             this.textBoxClHidden = new System.Windows.Forms.TextBox();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.dataGridViewClient = new System.Windows.Forms.DataGridView();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
@@ -74,8 +76,6 @@ namespace SalesManagement_SysDev
             this.labelTime = new System.Windows.Forms.Label();
             this.labelFormClient = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonHiddenList = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
@@ -251,6 +251,19 @@ namespace SalesManagement_SysDev
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 1;
             // 
+            // buttonHiddenList
+            // 
+            this.buttonHiddenList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHiddenList.Location = new System.Drawing.Point(0, 821);
+            this.buttonHiddenList.Name = "buttonHiddenList";
+            this.buttonHiddenList.Size = new System.Drawing.Size(250, 80);
+            this.buttonHiddenList.TabIndex = 40;
+            this.buttonHiddenList.Text = "非表示リスト";
+            this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
+            // 
             // buttonList
             // 
             this.buttonList.BackColor = System.Drawing.Color.LightGreen;
@@ -341,6 +354,17 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 230);
             this.panelInput.TabIndex = 0;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(1447, 198);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 29;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // comboBoxSoID
             // 
@@ -493,7 +517,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
-            this.panelHeader.TabIndex = 13;
+            this.panelHeader.TabIndex = 1;
             // 
             // labelUserID
             // 
@@ -547,7 +571,7 @@ namespace SalesManagement_SysDev
             this.labelDay.Location = new System.Drawing.Point(1382, 2);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(252, 35);
-            this.labelDay.TabIndex = 9;
+            this.labelDay.TabIndex = 1;
             this.labelDay.Text = "2022/10/10(月)";
             // 
             // labelTime
@@ -581,32 +605,10 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.Location = new System.Drawing.Point(1720, 0);
             this.buttonFormDel.Name = "buttonFormDel";
             this.buttonFormDel.Size = new System.Drawing.Size(200, 100);
-            this.buttonFormDel.TabIndex = 0;
+            this.buttonFormDel.TabIndex = 9;
             this.buttonFormDel.Text = "✕閉じる";
             this.buttonFormDel.UseVisualStyleBackColor = false;
             this.buttonFormDel.Click += new System.EventHandler(this.buttonHinaDel_Click);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClear.Location = new System.Drawing.Point(1447, 198);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear.TabIndex = 29;
-            this.buttonClear.Text = "入力クリア";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            // 
-            // buttonHiddenList
-            // 
-            this.buttonHiddenList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(0, 821);
-            this.buttonHiddenList.Name = "buttonHiddenList";
-            this.buttonHiddenList.Size = new System.Drawing.Size(250, 80);
-            this.buttonHiddenList.TabIndex = 40;
-            this.buttonHiddenList.Text = "非表示リスト";
-            this.buttonHiddenList.UseVisualStyleBackColor = false;
             // 
             // FormClient
             // 

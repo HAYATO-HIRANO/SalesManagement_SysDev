@@ -48,7 +48,7 @@
             this.button1.Location = new System.Drawing.Point(662, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(40, 40);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 1;
             this.button1.Text = "×";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -62,7 +62,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(714, 65);
-            this.panel1.TabIndex = 3;
+            this.panel1.TabIndex = 4;
             // 
             // label1
             // 
@@ -71,7 +71,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(25, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(552, 36);
+            this.label1.Size = new System.Drawing.Size(372, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "販売在庫管理システム - ログイン - ";
             // 
@@ -81,7 +81,7 @@
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.Location = new System.Drawing.Point(184, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 22);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "社員ID";
             // 
@@ -91,7 +91,7 @@
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.Location = new System.Drawing.Point(164, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 22);
+            this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "パスワード";
             // 
@@ -99,16 +99,16 @@
             // 
             this.textBoxEmID.Location = new System.Drawing.Point(258, 143);
             this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(168, 25);
-            this.textBoxEmID.TabIndex = 6;
+            this.textBoxEmID.Size = new System.Drawing.Size(168, 19);
+            this.textBoxEmID.TabIndex = 0;
             // 
             // textBoxEmPassword
             // 
             this.textBoxEmPassword.Location = new System.Drawing.Point(258, 197);
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.PasswordChar = '●';
-            this.textBoxEmPassword.Size = new System.Drawing.Size(168, 25);
-            this.textBoxEmPassword.TabIndex = 10;
+            this.textBoxEmPassword.Size = new System.Drawing.Size(168, 19);
+            this.textBoxEmPassword.TabIndex = 1;
             // 
             // buttonLogin
             // 
@@ -117,7 +117,7 @@
             this.buttonLogin.Location = new System.Drawing.Point(202, 301);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(109, 33);
-            this.buttonLogin.TabIndex = 8;
+            this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "ログイン";
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
@@ -128,7 +128,7 @@
             this.buttonClose.Location = new System.Drawing.Point(378, 301);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(109, 33);
-            this.buttonClose.TabIndex = 9;
+            this.buttonClose.TabIndex = 3;
             this.buttonClose.Text = "閉じる";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);

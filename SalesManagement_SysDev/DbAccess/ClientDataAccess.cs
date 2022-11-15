@@ -228,6 +228,71 @@ namespace SalesManagement_SysDev
             }
             return client;
         }
+        ///////////////////////////////
+        //メソッド名：GetClientHiddenData()
+        //引　数   ：なし
+        //戻り値   ：非表示データ
+        //機　能   ：非表示データの取得
+        ///////////////////////////////
+
+
+        public List<M_ClientDsp> GetClientHiddenData()
+        {
+            List<M_ClientDsp> client = new List<M_ClientDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                // tbはIEnumerable型
+
+                var tb = from t1 in context.M_Clients
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         where t1.ClFlag == 2
+                         select new
+                         {
+                             t1.ClID,
+                             t1.ClName,
+                             t1.SoID,
+                             t2.SoName,
+                             t1.ClAddress,
+                             t1.ClFAX,
+                             t1.ClPhone,
+                             t1.ClPostal,
+                             t1.ClFlag,
+                             t1.ClHidden
+                         };
+
+                foreach (var p in tb)
+                {
+                    client.Add(new M_ClientDsp()
+                    {
+                        ClID = p.ClID,
+                        ClName = p.ClName,
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        ClPhone = p.ClPhone,
+                        ClAddress = p.ClAddress,
+                        ClPostal = p.ClPostal,
+                        ClFAX = p.ClFAX,
+                        ClFlag = p.ClFlag,
+                        ClHidden = p.ClHidden
+                    });
+
+                }
+
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return client;
+        }
+
 
 
     }
