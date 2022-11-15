@@ -180,7 +180,7 @@ namespace SalesManagement_SysDev
             this.textBoxScID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxScID.Location = new System.Drawing.Point(514, 17);
             this.textBoxScID.Name = "textBoxScID";
-            this.textBoxScID.Size = new System.Drawing.Size(39, 34);
+            this.textBoxScID.Size = new System.Drawing.Size(46, 34);
             this.textBoxScID.TabIndex = 17;
             // 
             // labelScID
