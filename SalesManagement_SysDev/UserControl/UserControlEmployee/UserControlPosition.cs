@@ -216,7 +216,15 @@ namespace SalesManagement_SysDev
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            // 8.2.4.1 妥当な役職データ取得
+            if (!GetValidDataAtSelect())
+                return;
 
+            // 8.2.4.2 役職情報抽出
+            GenerateDataAtSelect();
+
+            // 8.2.4.3 役職抽出結果表示
+            SetSelectData();
         }
 
         private void buttonList_Click(object sender, EventArgs e)
@@ -399,6 +407,99 @@ namespace SalesManagement_SysDev
             dataGridView1.Refresh();
             //ページ番号の設定
             textBoxPage.Text = (pageNo + 1).ToString();
+        }
+        ///////////////////////////////
+        //　8.2.4.1 妥当な役職データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtSelect()
+        {
+
+            // 役職CD入力時チェック
+            if (!String.IsNullOrEmpty(textBoxPoID.Text.Trim()))
+            {
+                // 役職CDの半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
+                {
+                    //MessageBox.Show("役職CDは全て半角英数字入力です");
+                    messageDsp.DspMsg("M2001");
+                    textBoxPoID.Focus();
+                    return false;
+                }
+                // 役職CDの文字数チェック
+                if (textBoxPoID.TextLength > 2)
+                {
+                    //MessageBox.Show("役職CDは2 文字までです");
+                    messageDsp.DspMsg("M2002");
+                    textBoxPoID.Focus();
+                    return false;
+                }
+            }
+            // 役職名入力時チェック
+            if (!String.IsNullOrEmpty(textBoxPoName.Text.Trim()))
+            {
+                // 役職名の全角チェック
+                if (!dataInputFormCheck.CheckFullWidth(textBoxPoName.Text.Trim()))
+                {
+                    //MessageBox.Show("役職名は全て全角入力です");
+                    messageDsp.DspMsg("M2005");
+                    textBoxPoName.Focus();
+                    return false;
+                }
+                // 役職名の文字数チェック
+                if (textBoxPoName.TextLength > 25)
+                {
+                    //MessageBox.Show("役職名は25文字以下です");
+                    messageDsp.DspMsg("M2006");
+                    textBoxPoName.Focus();
+                    return false;
+                }
+            }
+
+            return true;
+
+        }
+        ///////////////////////////////
+        //　8.2.4.2 役職情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：役職情報の取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            // 検索条件のセット
+            M_Position position = new M_Position()
+            {
+                PoID =int.Parse(textBoxPoID.Text.Trim()),
+                PoName = textBoxPoName.Text.Trim()
+            };
+            // 役職データの抽出
+            Position = positionDataAccess.GetPositionData(position);
+
+        }
+        ///////////////////////////////
+        //　8.2.4.3 役職抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：役職情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridView1.DataSource = Position;
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Position.Count / (double)pageSize)) + "ページ";
+            dataGridView1.Refresh();
         }
     }
 }
