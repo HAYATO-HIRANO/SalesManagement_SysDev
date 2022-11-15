@@ -250,6 +250,9 @@
     <EmbeddedResource Include="UserControl\UserControlEmployee\UserControlPosition.resx">
       <DependentUpon>UserControlPosition.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UserControlEmployee\UserControlSalesOffice.resx">
+      <DependentUpon>UserControlSalesOffice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserControlMain\UserControlHQ.resx">
       <DependentUpon>UserControlHQ.cs</DependentUpon>
     </EmbeddedResource>
