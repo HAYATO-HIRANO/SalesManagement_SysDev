@@ -639,9 +639,9 @@
             this.labelEmployee.ForeColor = System.Drawing.Color.White;
             this.labelEmployee.Location = new System.Drawing.Point(694, 22);
             this.labelEmployee.Name = "labelEmployee";
-            this.labelEmployee.Size = new System.Drawing.Size(447, 53);
+            this.labelEmployee.Size = new System.Drawing.Size(235, 53);
             this.labelEmployee.TabIndex = 1;
-            this.labelEmployee.Text = "販売管理システム";
+            this.labelEmployee.Text = "社員管理";
             // 
             // buttonFormDel
             // 
