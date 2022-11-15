@@ -169,6 +169,18 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <Compile Include="UserControlSmallClassification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSmallClassification.Designer.cs">
+      <DependentUpon>UserControlSmallClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UserConrolProduct\UserControlMajorClassification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserConrolProduct\UserControlMajorClassification.Designer.cs">
+      <DependentUpon>UserControlMajorClassification.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UserControlEmployee\UserControlSalesOffice.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +256,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlSmallClassification.resx">
+      <DependentUpon>UserControlSmallClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlMajorClassification.resx">
+      <DependentUpon>UserControlMajorClassification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlMaker.resx">
       <DependentUpon>UserControlMaker.cs</DependentUpon>
     </EmbeddedResource>
