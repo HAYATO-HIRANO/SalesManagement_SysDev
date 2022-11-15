@@ -83,7 +83,7 @@ namespace SalesManagement_SysDev
             // 
             this.buttonNotList.BackColor = System.Drawing.Color.LightGreen;
             this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNotList.Location = new System.Drawing.Point(1276, 22);
+            this.buttonNotList.Location = new System.Drawing.Point(1295, 22);
             this.buttonNotList.Name = "buttonNotList";
             this.buttonNotList.Size = new System.Drawing.Size(205, 80);
             this.buttonNotList.TabIndex = 4;
@@ -94,7 +94,7 @@ namespace SalesManagement_SysDev
             // 
             this.buttonList.BackColor = System.Drawing.Color.LightGreen;
             this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(988, 22);
+            this.buttonList.Location = new System.Drawing.Point(1007, 22);
             this.buttonList.Name = "buttonList";
             this.buttonList.Size = new System.Drawing.Size(205, 80);
             this.buttonList.TabIndex = 3;
@@ -105,7 +105,7 @@ namespace SalesManagement_SysDev
             // 
             this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
             this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(702, 22);
+            this.buttonSearch.Location = new System.Drawing.Point(721, 22);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(205, 80);
             this.buttonSearch.TabIndex = 2;
@@ -116,7 +116,7 @@ namespace SalesManagement_SysDev
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
             this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonUpdate.Location = new System.Drawing.Point(406, 22);
+            this.buttonUpdate.Location = new System.Drawing.Point(425, 22);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(205, 80);
             this.buttonUpdate.TabIndex = 1;
@@ -127,7 +127,7 @@ namespace SalesManagement_SysDev
             // 
             this.buttonResist.BackColor = System.Drawing.Color.LightGreen;
             this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonResist.Location = new System.Drawing.Point(103, 22);
+            this.buttonResist.Location = new System.Drawing.Point(122, 22);
             this.buttonResist.Name = "buttonResist";
             this.buttonResist.Size = new System.Drawing.Size(205, 80);
             this.buttonResist.TabIndex = 0;
@@ -152,7 +152,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelSoName);
             this.panelInput.Controls.Add(this.textBoxSoID);
             this.panelInput.Controls.Add(this.labelSaID);
-            this.panelInput.Location = new System.Drawing.Point(251, 136);
+            this.panelInput.Location = new System.Drawing.Point(270, 136);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1110, 192);
             this.panelInput.TabIndex = 8;
@@ -317,9 +317,9 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPageSize.Location = new System.Drawing.Point(1487, 359);
             this.textBoxPageSize.Name = "textBoxPageSize";
-            this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
+            this.textBoxPageSize.Size = new System.Drawing.Size(29, 26);
             this.textBoxPageSize.TabIndex = 53;
-            this.textBoxPageSize.Text = "100";
+            this.textBoxPageSize.Text = "20";
             // 
             // labelPageSize
             // 
@@ -334,7 +334,7 @@ namespace SalesManagement_SysDev
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(916, 349);
+            this.buttonLastPage.Location = new System.Drawing.Point(904, 349);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 51;
@@ -344,7 +344,7 @@ namespace SalesManagement_SysDev
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(848, 349);
+            this.buttonNextPage.Location = new System.Drawing.Point(836, 349);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 50;
@@ -354,7 +354,7 @@ namespace SalesManagement_SysDev
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(768, 349);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(756, 349);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 49;
@@ -364,7 +364,7 @@ namespace SalesManagement_SysDev
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(701, 349);
+            this.buttonFirstPage.Location = new System.Drawing.Point(689, 349);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 48;
