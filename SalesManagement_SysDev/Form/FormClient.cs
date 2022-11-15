@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace SalesManagement_SysDev
 {
     public partial class FormClient : Form
@@ -43,14 +42,11 @@ namespace SalesManagement_SysDev
 
         private void FormClient_Load(object sender, EventArgs e)
         {
-            //日時の表示
-            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
-            labelTime.Text = DateTime.Now.ToString("HH:mm");
-            //panelHeaderに表示するログインデータ
-            labelUserName.Text = "ユーザー名：" + FormMain.loginName;
-            labelPosition.Text = "権限:" + FormMain.loginPoName;
-            labelSalesOffice.Text = FormMain.loginSoName;
-            labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+
+            //次の顧客IDを表示
+            var context = new SalesManagement_DevContext();
+            var lastData = context.M_Clients.ToList().Last();
+            textBoxClID.Text = (lastData.ClID + 1).ToString(); ;
             //コンボボックスの設定
             SetFormComboBox();
 
@@ -142,7 +138,7 @@ namespace SalesManagement_SysDev
                 //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は数字とハイフンのみです");
+                    MessageBox.Show("電話番号は数字とハイフンのみです","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     textBoxClPhone.Focus();
                     return false;
                 }
