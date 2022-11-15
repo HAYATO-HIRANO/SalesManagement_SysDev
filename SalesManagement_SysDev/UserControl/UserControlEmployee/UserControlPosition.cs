@@ -46,7 +46,10 @@ namespace SalesManagement_SysDev
                 return;
 
             // 8.2.1.2 役職情報作成
+            var regPosition = GenerateDataAtRegistration();
 
+            // 8.2.1.3 役職情報登録
+            RegistrationPosition(regPosition);
         }
         ///////////////////////////////
         //　8.2.1.1 妥当な役職データ取得
@@ -67,6 +70,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
                 {
                     //MessageBox.Show("役職IDは全て半角英数字入力です");
+                    messageDsp.DspMsg("M0617");
                     textBoxPoID.Focus();
                     return false;
                 }
@@ -312,7 +316,95 @@ namespace SalesManagement_SysDev
             labelPage.Text = "/" + ((int)Math.Ceiling(Position.Count / (double)pageSize)) + "ページ";
 
             dataGridView1.Refresh();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridView1.DataSource = Position.Take(pageSize).ToList();
 
+            // DataGridViewを更新
+            dataGridView1.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridView1.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+        }
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Position.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridView1.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Position.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Position.Count / (double)pageSize) - 1;
+            dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridView1.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
         }
     }
 }
