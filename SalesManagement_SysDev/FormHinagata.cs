@@ -10,24 +10,55 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormSale : Form
+    public partial class FormHinagata : Form
     {
-        public FormSale()
+        public FormHinagata()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            //いらない
+            this.Close();
+        }
+
+        private void buttonSaisyou_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonFormDel_Click(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonHinaDel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void FormSale_Load(object sender, EventArgs e)
+        private void FormHinagata_Load(object sender, EventArgs e)
         {
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
