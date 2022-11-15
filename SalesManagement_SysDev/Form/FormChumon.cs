@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormSale : Form
+    public partial class FormChumon : Form
     {
-        public FormSale()
+        public FormChumon()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonFormDel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void FormSale_Load(object sender, EventArgs e)
+        private void FormChumon_Load(object sender, EventArgs e)
         {
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
