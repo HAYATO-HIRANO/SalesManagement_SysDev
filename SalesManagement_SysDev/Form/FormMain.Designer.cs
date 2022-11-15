@@ -36,7 +36,6 @@ namespace SalesManagement_SysDev
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
-            this.buttonSaisyou = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -61,7 +60,6 @@ namespace SalesManagement_SysDev
             this.panelHeader.Controls.Add(this.labelUserName);
             this.panelHeader.Controls.Add(this.labelDay);
             this.panelHeader.Controls.Add(this.labelTime);
-            this.panelHeader.Controls.Add(this.buttonSaisyou);
             this.panelHeader.Controls.Add(this.label1);
             this.panelHeader.Controls.Add(this.buttonFormDel);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -141,19 +139,6 @@ namespace SalesManagement_SysDev
             this.labelTime.TabIndex = 8;
             this.labelTime.Text = "12:00";
             // 
-            // buttonSaisyou
-            // 
-            this.buttonSaisyou.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonSaisyou.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSaisyou.ForeColor = System.Drawing.Color.White;
-            this.buttonSaisyou.Location = new System.Drawing.Point(1773, 0);
-            this.buttonSaisyou.Name = "buttonSaisyou";
-            this.buttonSaisyou.Size = new System.Drawing.Size(75, 75);
-            this.buttonSaisyou.TabIndex = 7;
-            this.buttonSaisyou.Text = "ー";
-            this.buttonSaisyou.UseVisualStyleBackColor = false;
-            this.buttonSaisyou.Click += new System.EventHandler(this.buttonSaisyou_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -170,11 +155,11 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.BackColor = System.Drawing.Color.DarkGreen;
             this.buttonFormDel.Font = new System.Drawing.Font("MS UI Gothic", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonFormDel.ForeColor = System.Drawing.Color.White;
-            this.buttonFormDel.Location = new System.Drawing.Point(1845, 0);
+            this.buttonFormDel.Location = new System.Drawing.Point(1720, 0);
             this.buttonFormDel.Name = "buttonFormDel";
-            this.buttonFormDel.Size = new System.Drawing.Size(75, 75);
+            this.buttonFormDel.Size = new System.Drawing.Size(200, 100);
             this.buttonFormDel.TabIndex = 0;
-            this.buttonFormDel.Text = "✕";
+            this.buttonFormDel.Text = "✕閉じる";
             this.buttonFormDel.UseVisualStyleBackColor = false;
             this.buttonFormDel.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -310,7 +295,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.Button buttonSaisyou;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panel2;
