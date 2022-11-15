@@ -118,7 +118,7 @@ namespace SalesManagement_SysDev
             //戻り値   ：表示用役職データ
             //機　能   ：表示用役職データの取得
             ///////////////////////////////
-            public List<M_Position> GetPositonData(M_Position position)
+            public List<M_Position> GetPositionData(M_Position position)
             {
                 List<M_Position> positions = new List<M_Position>();
                 try
