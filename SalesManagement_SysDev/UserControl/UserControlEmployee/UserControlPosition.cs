@@ -78,14 +78,14 @@ namespace SalesManagement_SysDev
                 if (textBoxPoID.TextLength != 2)
                 {
                     //MessageBox.Show("役職IDは2文字です");
+                    messageDsp.DspMsg("M0618");
                     textBoxPoID.Focus();
                     return false;
                 }
                 // 役職IDの重複チェック
                 if (positionDataAccess.CheckPoIDExistence(int.Parse(textBoxPoID.Text.Trim())))
                 {
-                    //MessageBox.Show("入力された役職IDは既に存在します");
-                    messageDsp.DspMsg("M2003");
+                    MessageBox.Show("入力された役職IDは既に存在します");
                     textBoxPoID.Focus();
                     return false;
                 }
@@ -93,7 +93,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //MessageBox.Show("役職IDが入力されていません");
-                messageDsp.DspMsg("M2004");
+                messageDsp.DspMsg("M0619");
                 textBoxPoID.Focus();
                 return false;
             }
@@ -104,8 +104,7 @@ namespace SalesManagement_SysDev
                 // 役職名の全角チェック
                 if (!dataInputFormCheck.CheckFullWidth(textBoxPoName.Text.Trim()))
                 {
-                    //MessageBox.Show("役職名は全て全角入力です");
-                    messageDsp.DspMsg("M2005");
+                    MessageBox.Show("役職名は全て全角入力です");
                     textBoxPoName.Focus();
                     return false;
                 }
@@ -113,23 +112,21 @@ namespace SalesManagement_SysDev
                 if (textBoxPoName.TextLength > 50)
                 {
                     //MessageBox.Show("役職名は50文字以下です");
-                    messageDsp.DspMsg("M2006");
+                    messageDsp.DspMsg("M0621");
                     textBoxPoName.Focus();
                     return false;
                 }
             }
             else
             {
-                //MessageBox.Show("役職名が入力されていません");
-                messageDsp.DspMsg("M2007");
+                MessageBox.Show("役職名が入力されていません");
                 textBoxPoName.Focus();
                 return false;
             }
             // 削除フラグの適否
             if (checkBoxPoFlag.CheckState == CheckState.Indeterminate)
             {
-                //MessageBox.Show(" 非表示フラグが不確定の状態です");
-                messageDsp.DspMsg("M2008");
+                MessageBox.Show(" 非表示フラグが不確定の状態です");
                 checkBoxPoFlag.Focus();
                 return false;
             }
@@ -139,8 +136,7 @@ namespace SalesManagement_SysDev
             {
                 if (textBoxPoHidden.TextLength > 100)
                 {
-                    //MessageBox.Show("備考は80文字以下です");
-                    messageDsp.DspMsg("M2009");
+                    MessageBox.Show("備考は80文字以下です");
                     textBoxPoHidden.Focus();
                     return false;
                 }
@@ -174,18 +170,16 @@ namespace SalesManagement_SysDev
         private void RegistrationPosition(M_Position regPosition)
         {
             // 登録確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M2010");
+            DialogResult result = MessageBox.Show("役職データを登録してよろしいですか?");
             if (result == DialogResult.Cancel)
                 return;
 
             // 役職情報の登録
             bool flg = positionDataAccess.AddPositionData(regPosition);
             if (flg == true)
-                //MessageBox.Show("データを登録しました。");
-                messageDsp.DspMsg("M2011");
+                MessageBox.Show("データを登録しました。");
             else
-                //MessageBox.Show("データの登録に失敗しました。");
-                messageDsp.DspMsg("M2012");
+                MessageBox.Show("データの登録に失敗しました。");
 
             textBoxPoID.Focus();
 
