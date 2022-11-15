@@ -81,10 +81,10 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
-    <Compile Include="FormChumon.cs">
+    <Compile Include="Form\FormChumon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormChumon.Designer.cs">
+    <Compile Include="Form\FormChumon.Designer.cs">
       <DependentUpon>FormChumon.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\FormSale.cs">
@@ -169,6 +169,12 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <Compile Include="UserControl\UserControlEmployee\UserControlSalesOffice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserControlEmployee\UserControlSalesOffice.Designer.cs">
+      <DependentUpon>UserControlSalesOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UserConrolProduct\UserControlMaker.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,7 +205,7 @@
     <Compile Include="UserControl\UserControlMain\UserControlLogistics.Designer.cs">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormChumon.resx">
+    <EmbeddedResource Include="Form\FormChumon.resx">
       <DependentUpon>FormChumon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSale.resx">
