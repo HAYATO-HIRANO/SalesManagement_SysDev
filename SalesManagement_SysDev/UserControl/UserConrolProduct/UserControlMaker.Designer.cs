@@ -30,27 +30,27 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelHeader2 = new System.Windows.Forms.Panel();
+            this.buttonNotList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonResist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.textBoxSoAddress = new System.Windows.Forms.TextBox();
+            this.labelMaAdress = new System.Windows.Forms.Label();
             this.textBoxMaHidden = new System.Windows.Forms.TextBox();
             this.checkBoxMaFlag = new System.Windows.Forms.CheckBox();
-            this.textBoxPoID = new System.Windows.Forms.TextBox();
-            this.labelMaID = new System.Windows.Forms.Label();
-            this.buttonNotList = new System.Windows.Forms.Button();
-            this.textBoxMaName = new System.Windows.Forms.TextBox();
-            this.labelMaName = new System.Windows.Forms.Label();
-            this.textBoxMaPhone = new System.Windows.Forms.TextBox();
-            this.labelMaPhone = new System.Windows.Forms.Label();
-            this.textBoxMaFAX = new System.Windows.Forms.TextBox();
-            this.labelMaFAX = new System.Windows.Forms.Label();
             this.textBoxMaPostal = new System.Windows.Forms.TextBox();
             this.labelMaPostal = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelMaAdress = new System.Windows.Forms.Label();
-            this.buttonClear = new System.Windows.Forms.Button();
+            this.textBoxMaFAX = new System.Windows.Forms.TextBox();
+            this.labelMaFAX = new System.Windows.Forms.Label();
+            this.textBoxMaPhone = new System.Windows.Forms.TextBox();
+            this.labelMaPhone = new System.Windows.Forms.Label();
+            this.textBoxMaName = new System.Windows.Forms.TextBox();
+            this.labelMaName = new System.Windows.Forms.Label();
+            this.textBoxPoID = new System.Windows.Forms.TextBox();
+            this.labelMaID = new System.Windows.Forms.Label();
             this.dataGridViewMaker = new System.Windows.Forms.DataGridView();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
@@ -78,6 +78,17 @@ namespace SalesManagement_SysDev
             this.panelHeader2.Name = "panelHeader2";
             this.panelHeader2.Size = new System.Drawing.Size(1670, 130);
             this.panelHeader2.TabIndex = 1;
+            // 
+            // buttonNotList
+            // 
+            this.buttonNotList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNotList.Location = new System.Drawing.Point(1276, 22);
+            this.buttonNotList.Name = "buttonNotList";
+            this.buttonNotList.Size = new System.Drawing.Size(205, 80);
+            this.buttonNotList.TabIndex = 4;
+            this.buttonNotList.Text = "非表示リスト";
+            this.buttonNotList.UseVisualStyleBackColor = false;
             // 
             // buttonList
             // 
@@ -127,7 +138,7 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.Controls.Add(this.buttonClear);
-            this.panelInput.Controls.Add(this.textBox1);
+            this.panelInput.Controls.Add(this.textBoxSoAddress);
             this.panelInput.Controls.Add(this.labelMaAdress);
             this.panelInput.Controls.Add(this.textBoxMaHidden);
             this.panelInput.Controls.Add(this.checkBoxMaFlag);
@@ -145,6 +156,36 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1607, 192);
             this.panelInput.TabIndex = 7;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(1502, 159);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 32;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSoAddress
+            // 
+            this.textBoxSoAddress.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxSoAddress.Location = new System.Drawing.Point(302, 66);
+            this.textBoxSoAddress.Name = "textBoxSoAddress";
+            this.textBoxSoAddress.Size = new System.Drawing.Size(573, 28);
+            this.textBoxSoAddress.TabIndex = 31;
+            this.textBoxSoAddress.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // labelMaAdress
+            // 
+            this.labelMaAdress.AutoSize = true;
+            this.labelMaAdress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelMaAdress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMaAdress.Location = new System.Drawing.Point(238, 68);
+            this.labelMaAdress.Name = "labelMaAdress";
+            this.labelMaAdress.Size = new System.Drawing.Size(58, 24);
+            this.labelMaAdress.TabIndex = 30;
+            this.labelMaAdress.Text = "住所";
             // 
             // textBoxMaHidden
             // 
@@ -166,74 +207,24 @@ namespace SalesManagement_SysDev
             this.checkBoxMaFlag.Text = "非表示フラグ";
             this.checkBoxMaFlag.UseVisualStyleBackColor = true;
             // 
-            // textBoxPoID
+            // textBoxMaPostal
             // 
-            this.textBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPoID.Location = new System.Drawing.Point(102, 16);
-            this.textBoxPoID.Name = "textBoxPoID";
-            this.textBoxPoID.Size = new System.Drawing.Size(78, 28);
-            this.textBoxPoID.TabIndex = 15;
-            this.textBoxPoID.TextChanged += new System.EventHandler(this.textBoxPoID_TextChanged);
+            this.textBoxMaPostal.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxMaPostal.Location = new System.Drawing.Point(122, 64);
+            this.textBoxMaPostal.Name = "textBoxMaPostal";
+            this.textBoxMaPostal.Size = new System.Drawing.Size(91, 28);
+            this.textBoxMaPostal.TabIndex = 29;
             // 
-            // labelMaID
+            // labelMaPostal
             // 
-            this.labelMaID.AutoSize = true;
-            this.labelMaID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelMaID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMaID.Location = new System.Drawing.Point(10, 18);
-            this.labelMaID.Name = "labelMaID";
-            this.labelMaID.Size = new System.Drawing.Size(86, 24);
-            this.labelMaID.TabIndex = 4;
-            this.labelMaID.Text = "メーカID";
-            // 
-            // buttonNotList
-            // 
-            this.buttonNotList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNotList.Location = new System.Drawing.Point(1276, 22);
-            this.buttonNotList.Name = "buttonNotList";
-            this.buttonNotList.Size = new System.Drawing.Size(205, 80);
-            this.buttonNotList.TabIndex = 4;
-            this.buttonNotList.Text = "非表示リスト";
-            this.buttonNotList.UseVisualStyleBackColor = false;
-            // 
-            // textBoxMaName
-            // 
-            this.textBoxMaName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxMaName.Location = new System.Drawing.Point(302, 16);
-            this.textBoxMaName.Name = "textBoxMaName";
-            this.textBoxMaName.Size = new System.Drawing.Size(450, 28);
-            this.textBoxMaName.TabIndex = 23;
-            // 
-            // labelMaName
-            // 
-            this.labelMaName.AutoSize = true;
-            this.labelMaName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelMaName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMaName.Location = new System.Drawing.Point(208, 18);
-            this.labelMaName.Name = "labelMaName";
-            this.labelMaName.Size = new System.Drawing.Size(88, 24);
-            this.labelMaName.TabIndex = 22;
-            this.labelMaName.Text = "メーカ名";
-            // 
-            // textBoxMaPhone
-            // 
-            this.textBoxMaPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxMaPhone.Location = new System.Drawing.Point(891, 14);
-            this.textBoxMaPhone.Name = "textBoxMaPhone";
-            this.textBoxMaPhone.Size = new System.Drawing.Size(154, 28);
-            this.textBoxMaPhone.TabIndex = 25;
-            // 
-            // labelMaPhone
-            // 
-            this.labelMaPhone.AutoSize = true;
-            this.labelMaPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelMaPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMaPhone.Location = new System.Drawing.Point(779, 16);
-            this.labelMaPhone.Name = "labelMaPhone";
-            this.labelMaPhone.Size = new System.Drawing.Size(106, 24);
-            this.labelMaPhone.TabIndex = 24;
-            this.labelMaPhone.Text = "電話番号";
+            this.labelMaPostal.AutoSize = true;
+            this.labelMaPostal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelMaPostal.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMaPostal.Location = new System.Drawing.Point(10, 66);
+            this.labelMaPostal.Name = "labelMaPostal";
+            this.labelMaPostal.Size = new System.Drawing.Size(106, 24);
+            this.labelMaPostal.TabIndex = 28;
+            this.labelMaPostal.Text = "郵便番号";
             // 
             // textBoxMaFAX
             // 
@@ -254,54 +245,63 @@ namespace SalesManagement_SysDev
             this.labelMaFAX.TabIndex = 26;
             this.labelMaFAX.Text = "FAX";
             // 
-            // textBoxMaPostal
+            // textBoxMaPhone
             // 
-            this.textBoxMaPostal.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxMaPostal.Location = new System.Drawing.Point(122, 64);
-            this.textBoxMaPostal.Name = "textBoxMaPostal";
-            this.textBoxMaPostal.Size = new System.Drawing.Size(91, 28);
-            this.textBoxMaPostal.TabIndex = 29;
+            this.textBoxMaPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxMaPhone.Location = new System.Drawing.Point(891, 14);
+            this.textBoxMaPhone.Name = "textBoxMaPhone";
+            this.textBoxMaPhone.Size = new System.Drawing.Size(154, 28);
+            this.textBoxMaPhone.TabIndex = 25;
             // 
-            // labelMaPostal
+            // labelMaPhone
             // 
-            this.labelMaPostal.AutoSize = true;
-            this.labelMaPostal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelMaPostal.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMaPostal.Location = new System.Drawing.Point(10, 66);
-            this.labelMaPostal.Name = "labelMaPostal";
-            this.labelMaPostal.Size = new System.Drawing.Size(106, 24);
-            this.labelMaPostal.TabIndex = 28;
-            this.labelMaPostal.Text = "郵便番号";
+            this.labelMaPhone.AutoSize = true;
+            this.labelMaPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelMaPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMaPhone.Location = new System.Drawing.Point(779, 16);
+            this.labelMaPhone.Name = "labelMaPhone";
+            this.labelMaPhone.Size = new System.Drawing.Size(106, 24);
+            this.labelMaPhone.TabIndex = 24;
+            this.labelMaPhone.Text = "電話番号";
             // 
-            // textBox1
+            // textBoxMaName
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(302, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(573, 28);
-            this.textBox1.TabIndex = 31;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxMaName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxMaName.Location = new System.Drawing.Point(302, 16);
+            this.textBoxMaName.Name = "textBoxMaName";
+            this.textBoxMaName.Size = new System.Drawing.Size(450, 28);
+            this.textBoxMaName.TabIndex = 23;
             // 
-            // labelMaAdress
+            // labelMaName
             // 
-            this.labelMaAdress.AutoSize = true;
-            this.labelMaAdress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelMaAdress.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelMaAdress.Location = new System.Drawing.Point(238, 68);
-            this.labelMaAdress.Name = "labelMaAdress";
-            this.labelMaAdress.Size = new System.Drawing.Size(58, 24);
-            this.labelMaAdress.TabIndex = 30;
-            this.labelMaAdress.Text = "住所";
+            this.labelMaName.AutoSize = true;
+            this.labelMaName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelMaName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMaName.Location = new System.Drawing.Point(208, 18);
+            this.labelMaName.Name = "labelMaName";
+            this.labelMaName.Size = new System.Drawing.Size(88, 24);
+            this.labelMaName.TabIndex = 22;
+            this.labelMaName.Text = "メーカ名";
             // 
-            // buttonClear
+            // textBoxPoID
             // 
-            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClear.Location = new System.Drawing.Point(1502, 159);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear.TabIndex = 32;
-            this.buttonClear.Text = "入力クリア";
-            this.buttonClear.UseVisualStyleBackColor = true;
+            this.textBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPoID.Location = new System.Drawing.Point(102, 16);
+            this.textBoxPoID.Name = "textBoxPoID";
+            this.textBoxPoID.Size = new System.Drawing.Size(78, 28);
+            this.textBoxPoID.TabIndex = 15;
+            this.textBoxPoID.TextChanged += new System.EventHandler(this.textBoxPoID_TextChanged);
+            // 
+            // labelMaID
+            // 
+            this.labelMaID.AutoSize = true;
+            this.labelMaID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelMaID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelMaID.Location = new System.Drawing.Point(10, 18);
+            this.labelMaID.Name = "labelMaID";
+            this.labelMaID.Size = new System.Drawing.Size(86, 24);
+            this.labelMaID.TabIndex = 4;
+            this.labelMaID.Text = "メーカID";
             // 
             // dataGridViewMaker
             // 
@@ -451,7 +451,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelMaPhone;
         private System.Windows.Forms.TextBox textBoxMaFAX;
         private System.Windows.Forms.Label labelMaFAX;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSoAddress;
         private System.Windows.Forms.Label labelMaAdress;
         private System.Windows.Forms.TextBox textBoxMaPostal;
         private System.Windows.Forms.Label labelMaPostal;

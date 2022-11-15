@@ -29,6 +29,7 @@ namespace SalesManagement_SysDev
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
             panelSetting.Visible = false;
             userControlPosition1.Visible = false;
+            userControlSalesOffice1.Visible = false;
         }
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
@@ -85,6 +86,7 @@ namespace SalesManagement_SysDev
         {
             panelSetting.Visible = false;
             userControlPosition1.Visible = false;
+            userControlSalesOffice1.Visible = false;
             labelEmployee.Text = "社員管理";
         }
 
@@ -95,6 +97,7 @@ namespace SalesManagement_SysDev
 
         private void buttonPosition_Click(object sender, EventArgs e)
         {
+            userControlSalesOffice1.Visible = false;
             userControlPosition1.Visible = true;
             labelEmployee.Text = "役職管理";
         }
@@ -112,6 +115,13 @@ namespace SalesManagement_SysDev
         private void panelSetting_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonSalesOffice_Click(object sender, EventArgs e)
+        {
+            userControlPosition1.Visible = false;
+            userControlSalesOffice1.Visible = true;
+            labelEmployee.Text = "営業所管理";
         }
     }
 }
