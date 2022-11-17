@@ -211,6 +211,165 @@ namespace SalesManagement_SysDev
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            // 8.2.2.1 妥当な役職データ取得
+            if (!GetValidDataAtUpdate())
+                return;
+
+            // 8.2.2.2 役職情報作成
+            var updPosition = GenerateDataAtUpdate();
+
+            // 8.2.2.3 役職情報更新
+            UpdatePosition(updPosition);
+        }
+        ///////////////////////////////
+        //　8.2.2.1 妥当な役職データ取得
+        //メソッド名：GetValidDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtUpdate()
+        {
+
+            // 役職IDの未入力チェック
+            if (!String.IsNullOrEmpty(textBoxPoID.Text.Trim()))
+            {
+                // 役職IDの半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
+                {
+                    //MessageBox.Show("役職IDは全て半角英数字入力です");
+                    messageDsp.DspMsg("M2001");
+                    textBoxPoID.Focus();
+                    return false;
+                }
+                // 役職IDの文字数チェック
+                if (textBoxPoID.TextLength != 2)
+                {
+                    //MessageBox.Show("役職IDは2文字です");
+                    messageDsp.DspMsg("M2002");
+                    textBoxPoID.Focus();
+                    return false;
+                }
+                // 役職IDの存在チェック
+                if (!positionDataAccess.CheckPoIDExistence(int.Parse(textBoxPoID.Text.Trim())))
+                {
+                    //MessageBox.Show("入力された役職IDは存在しません");
+                    messageDsp.DspMsg("M2013");
+                    textBoxPoID.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //MessageBox.Show("役職IDが入力されていません");
+                messageDsp.DspMsg("M2004");
+                textBoxPoID.Focus();
+                return false;
+            }
+
+
+            // 役職名の適否
+            if (!String.IsNullOrEmpty(textBoxPoName.Text.Trim()))
+            {
+                // 役職名の全角チェック
+                if (!dataInputFormCheck.CheckFullWidth(textBoxPoName.Text.Trim()))
+                {
+                    //MessageBox.Show("役職名は全て全角入力です");
+                    messageDsp.DspMsg("M2005");
+                    textBoxPoName.Focus();
+                    return false;
+                }
+                // 役職名の文字数チェック
+                if (textBoxPoName.TextLength > 50)
+                {
+                    //MessageBox.Show("役職名は50文字以下です");
+                    messageDsp.DspMsg("M2006");
+                    textBoxPoName.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //MessageBox.Show("役職名が入力されていません");
+                messageDsp.DspMsg("M2007");
+                textBoxPoName.Focus();
+                return false;
+            }
+
+
+
+            // 削除フラグの適否
+            if (checkBoxPoFlag.CheckState == CheckState.Indeterminate)
+            {
+                //MessageBox.Show("非表示フラグが不確定の状態です");
+                messageDsp.DspMsg("M2008");
+                checkBoxPoFlag.Focus();
+                return false;
+            }
+
+            // 備考の適否
+            if (!String.IsNullOrEmpty(textBoxPoHidden.Text.Trim()))
+            {
+                if (textBoxPoHidden.TextLength > 100)
+                {
+                    //MessageBox.Show("備考は100文字以下です");
+                    messageDsp.DspMsg("M2009");
+                    textBoxPoHidden.Focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //　8.2.2.2 役職情報作成
+        //メソッド名：GenerateDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：役職更新情報
+        //機　能   ：更新データのセット
+        ///////////////////////////////
+        private M_Position GenerateDataAtUpdate()
+        {
+            return new M_Position
+            {
+                PoID = int.Parse(textBoxPoID.Text.Trim()),
+                PoName = textBoxPoName.Text.Trim(),
+                PoFlag = Convert.ToInt32(checkBoxPoFlag.Checked),
+                PoHidden = textBoxPoHidden.Text.Trim()
+            };
+        }
+        ///////////////////////////////
+        //　8.2.2.3 役職情報更新
+        //メソッド名：UpdatePosition()
+        //引　数   ：役職情報
+        //戻り値   ：なし
+        //機　能   ：役職情報の更新
+        ///////////////////////////////
+        private void UpdatePosition(M_Position updPosition)
+        {
+            // 更新確認メッセージ
+            DialogResult result = messageDsp.DspMsg("M2014");
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 役職情報の更新
+            bool flg = positionDataAccess.UpdatePositionData(updPosition);
+            if (flg == true)
+                //MessageBox.Show("データを更新しました。");
+                messageDsp.DspMsg("M2015");
+            else
+                //MessageBox.Show("データの更新に失敗しました。");
+                messageDsp.DspMsg("M2016");
+
+            textBoxPoID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+
 
         }
 

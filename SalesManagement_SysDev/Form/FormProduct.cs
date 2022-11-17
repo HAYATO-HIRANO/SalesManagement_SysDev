@@ -12,6 +12,26 @@ namespace SalesManagement_SysDev
 {
     public partial class FormProduct : Form
     {
+        //メッセージ表示用クラスのインスタンス化
+        MessageDsp messageDsp = new MessageDsp();
+        //データベース商品テーブルアクセス用クラスのインスタンス化
+        ProductDataAccess ProductDataAccess = new ProductDataAccess();
+        //データベース大分類テーブルアクセス用クラスのインスタンス化
+        MajorClassificationDataAccess majorClassificationDataAccess = new MajorClassificationDataAccess();
+        //データベース小分類テーブルアクセス用クラスのインスタンス化
+        SmallClassification smallClassification = new SmallClassification();
+        //データベースメーカーテーブルアクセス用クラスのインスタンス化
+        MakerDataAccess makerDataAccess = new MakerDataAccess();
+        //入力形式チェック用クラスのインスタンス化
+        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+        //データグリッドビュー用の商品データ
+        private static List<M_Product> Product;
+        //コンボボックス用のメーカーデータ
+        private static List<M_Maker> Maker;
+        //コンボボックス用のメーカーデータ
+        private static List<M_MajorCassification> MajorCassifications;
+        //コンボボックス用のメーカーデータ
+        private static List<M_SmallClassification> SmallClassifications;
         public FormProduct()
         {
             InitializeComponent();
