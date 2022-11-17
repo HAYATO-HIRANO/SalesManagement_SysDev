@@ -45,6 +45,52 @@ namespace SalesManagement_SysDev//.DbAccess
 
 
         }
+        ///////////////////////////////
+        //メソッド名：GetStockData()　オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：条件一致在庫データ
+        //機　能   ：条件一致在庫データの取得
+        ///////////////////////////////
+
+        public List<T_Stock> GetStockData(T_Stock selectCondition)
+        {
+            List<T_Stock> stock = new List<T_Stock>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                stock = context.T_Stocks.Where(x => x.StID == selectCondition.StID&&x.PrID==selectCondition.PrID).ToList();
+                context.Dispose();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return stock;
+
+        }
+
+        ///////////////////////////////
+        //メソッド名： GetStockData()
+        //引　数   :なし
+        //戻り値   :在庫データ
+        //機　能   :在庫データの取得
+        //////////////////////////////
+        
+        public List<T_Stock> GetStockData()
+        {
+            List<T_Stock> stock = new List<T_Stock>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                stock = context.T_Stocks.ToList();
+                context.Dispose();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return stock;
+        }
+
+
 
     }
 }
