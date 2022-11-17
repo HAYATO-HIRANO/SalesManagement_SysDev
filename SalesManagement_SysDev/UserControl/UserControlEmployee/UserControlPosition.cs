@@ -388,7 +388,7 @@ namespace SalesManagement_SysDev
 
         private void buttonList_Click(object sender, EventArgs e)
         {
-
+            SetDataGridView();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
