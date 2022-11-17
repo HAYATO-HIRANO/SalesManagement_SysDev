@@ -29,6 +29,7 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelUserID = new System.Windows.Forms.Label();
             this.labelPosition = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@ namespace SalesManagement_SysDev
             this.panelInput = new System.Windows.Forms.Panel();
             this.buttonClear = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -267,6 +269,12 @@ namespace SalesManagement_SysDev
             this.label4.TabIndex = 4;
             this.label4.Text = "label4";
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // FormChumon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -309,5 +317,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer timer;
     }
 }

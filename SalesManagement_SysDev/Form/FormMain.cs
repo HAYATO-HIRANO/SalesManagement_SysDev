@@ -34,7 +34,8 @@ namespace SalesManagement_SysDev
             userControl31.Visible = false;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
-            labelTime.Text = DateTime.Now.ToString("HH:mm");
+            labelTime.Text = DateTime.Now.ToString("HH:mm:");
+            //ログインユーザーの情報を表示
             labelUserName.Text = "ユーザー名：" + loginName;
             labelPosition.Text = "権限:" + loginPoName;
             labelSalesOffice.Text = loginSoName;
@@ -126,6 +127,13 @@ namespace SalesManagement_SysDev
         private void labelPosition_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timerDate_Tick(object sender, EventArgs e)
+        {
+            //日時更新
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
     }
 }
