@@ -86,6 +86,27 @@ namespace SalesManagement_SysDev
 
         private void buttonDetail_Click(object sender, EventArgs e)
         {
+            if(buttonDetail.Text == "受注詳細")
+            {
+                labelOrder.Text = "受注詳細管理";
+                buttonRegist.Enabled = false;
+                buttonRegist.BackColor = Color.Gray;
+                buttonKakutei.Enabled = false;
+                buttonKakutei.BackColor = Color.Gray;
+                buttonDetail.Text = "受注管理";
+                return;
+            }
+            if (buttonDetail.Text == "受注管理")
+            {
+                labelOrder.Text = "受注管理";
+                buttonRegist.Enabled = true;
+                buttonRegist.BackColor = Color.LightGreen;
+                buttonKakutei.Enabled = true;
+                buttonKakutei.BackColor = Color.LightGreen;
+                buttonDetail.Text = "受注詳細";
+                return;
+            }
+            
 
         }
 
