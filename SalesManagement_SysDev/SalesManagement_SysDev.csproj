@@ -169,10 +169,10 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="UserControlSmallClassification.cs">
+    <Compile Include="UserControl\UserConrolProduct\UserControlSmallClassification.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlSmallClassification.Designer.cs">
+    <Compile Include="UserControl\UserConrolProduct\UserControlSmallClassification.Designer.cs">
       <DependentUpon>UserControlSmallClassification.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UserConrolProduct\UserControlMajorClassification.cs">
@@ -256,7 +256,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControlSmallClassification.resx">
+    <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlSmallClassification.resx">
       <DependentUpon>UserControlSmallClassification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlMajorClassification.resx">

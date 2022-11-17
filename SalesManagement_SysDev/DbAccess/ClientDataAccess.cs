@@ -37,7 +37,7 @@ namespace SalesManagement_SysDev
         }
         ///////////////////////////////
         //メソッド名：AddClientData()
-        //引　数   ：スタッフデータ
+        //引　数   ：顧客データ
         //戻り値   ：True or False
         //機　能   ：顧客データの登録
         //          ：登録成功の場合True
