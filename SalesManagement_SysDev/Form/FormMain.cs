@@ -34,7 +34,7 @@ namespace SalesManagement_SysDev
             userControl31.Visible = false;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
-            labelTime.Text = DateTime.Now.ToString("HH:mm:");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
             //ログインユーザーの情報を表示
             labelUserName.Text = "ユーザー名：" + loginName;
             labelPosition.Text = "権限:" + loginPoName;
@@ -66,8 +66,7 @@ namespace SalesManagement_SysDev
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            this.Close();
+            Application.Exit();
         }
 
         private void userControl11_Load(object sender, EventArgs e)

@@ -38,5 +38,12 @@ namespace SalesManagement_SysDev
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
         }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //日時更新
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
+        }
     }
 }

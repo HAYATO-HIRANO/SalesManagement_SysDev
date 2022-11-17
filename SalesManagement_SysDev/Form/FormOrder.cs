@@ -194,5 +194,12 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //日時更新
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
+        }
     }
 }
