@@ -32,7 +32,7 @@ namespace SalesManagement_SysDev
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,6 +42,9 @@ namespace SalesManagement_SysDev
 
         private void FormClient_Load(object sender, EventArgs e)
         {
+            //非表示理由タブ選択不可、入力不可
+            textBoxClHidden.TabStop = false;
+            textBoxClHidden.ReadOnly = true;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
@@ -50,10 +53,8 @@ namespace SalesManagement_SysDev
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
 
-            //次の顧客IDを表示
-            var context = new SalesManagement_DevContext();
-            var lastData = context.M_Clients.ToList().Last();
-            textBoxClID.Text = (lastData.ClID + 1).ToString(); ;
+            
+           
             //コンボボックスの設定
             SetFormComboBox();
 
@@ -125,7 +126,6 @@ namespace SalesManagement_SysDev
                 messageDsp.DspMsg("M0307");
                 comboBoxSoID.Focus();
                 return false;
-
             }
            //顧客名の適否
            if(!String.IsNullOrEmpty(textBoxClName.Text.Trim()))
@@ -153,7 +153,7 @@ namespace SalesManagement_SysDev
                 //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は数字とハイフンのみです","入力確認",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("電話番号の入力形式が正しくありません","入力確認",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     textBoxClPhone.Focus();
                     return false;
                 }
@@ -178,7 +178,7 @@ namespace SalesManagement_SysDev
                 //FAXの半角英数字チェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
                 {
-                    MessageBox.Show("FAXは数字とハイフンのみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("FAXの入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClFAX.Focus();
                     return false;
                 }
@@ -209,7 +209,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength ==7)
+                if (textBoxClPostal.TextLength !=7)
                 {
                     //MessageBox.Show("郵便番号は7文字です");
                     messageDsp.DspMsg("M0320");
@@ -254,15 +254,21 @@ namespace SalesManagement_SysDev
                 checkBoxClFlag.Focus();
                 return false;
             }
-            //非表示理由の適否
-            if(checkBoxClFlag.Checked==true && String.IsNullOrEmpty(textBoxClHidden.Text.Trim()))
+            if (checkBoxClFlag.Checked == true)
             {
-                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-
+                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxClFlag.Focus();
+                return false;
+            }
+            //非表示理由の適否
+            if (!String.IsNullOrEmpty(textBoxClHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxClHidden.Focus();
                 return false;
             }
+
+
             return true;
         }
 
@@ -339,9 +345,15 @@ namespace SalesManagement_SysDev
             textBoxPage.Text = "1";
             //読み取り専用に指定
             dataGridViewClient.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewClient.AllowUserToResizeRows = false;
+            dataGridViewClient.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewClient.AllowUserToAddRows = false;
             //行内をクリックすることで行を選択
             dataGridViewClient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+            //奇数行の色を変更
+            dataGridViewClient.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
             dataGridViewClient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             if (flg == 0)
@@ -403,10 +415,10 @@ namespace SalesManagement_SysDev
             dataGridViewClient.Columns[1].Visible = false;
             dataGridViewClient.Columns[2].Width = 180;
             dataGridViewClient.Columns[3].Width = 180;
-            dataGridViewClient.Columns[4].Width = 280;
+            dataGridViewClient.Columns[4].Width = 110;
             dataGridViewClient.Columns[5].Width = 110;
             dataGridViewClient.Columns[6].Width = 110;
-            dataGridViewClient.Columns[7].Width = 110;
+            dataGridViewClient.Columns[7].Width = 280;
             dataGridViewClient.Columns[8].Width = 80;
             dataGridViewClient.Columns[9].Width = 360;
 
@@ -578,7 +590,14 @@ namespace SalesManagement_SysDev
                     textBoxClID.Focus();
                     return false;
                 }
-
+                //文字数
+                if (textBoxClID.TextLength > 6)
+                {
+                    //MessageBox.Show("顧客IDは6文字以下です");
+                    messageDsp.DspMsg("M0302");
+                    textBoxClID.Focus();
+                    return false;
+                }
 
                 // 顧客IDの存在チェック
                 if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
@@ -633,7 +652,7 @@ namespace SalesManagement_SysDev
                 //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は数字とハイフンのみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("電話番号の入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClPhone.Focus();
                     return false;
                 }
@@ -657,7 +676,7 @@ namespace SalesManagement_SysDev
                 //FAXの半角英数字チェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
                 {
-                    MessageBox.Show("FAXは数字とハイフンのみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("FAXの入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClFAX.Focus();
                     return false;
                 }
@@ -689,7 +708,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength == 7)
+                if (textBoxClPostal.TextLength != 7)
                 {
                     //MessageBox.Show("郵便番号は7文字です");
                     messageDsp.DspMsg("M0320");
@@ -851,6 +870,14 @@ namespace SalesManagement_SysDev
                     textBoxClID.Focus();
                     return false;
                 }
+                // 顧客IDの存在チェック
+                if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    //MessageBox.Show("入力された顧客IDは存在しません");
+                    messageDsp.DspMsg("M0314");
+                    textBoxClID.Focus();
+                    return false;
+                }
 
             }
             
@@ -871,7 +898,7 @@ namespace SalesManagement_SysDev
                 //電話番号の半角数値ハイフンチェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は数字とハイフンのみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("電話番号の入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClPhone.Focus();
                     return false;
                 }
@@ -889,7 +916,7 @@ namespace SalesManagement_SysDev
                 //FAXの半角英数字チェック
                 if (!dataInputFormCheck.CheckNumericHyphen(textBoxClFAX.Text.Trim()))
                 {
-                    MessageBox.Show("FAXは数字とハイフンのみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("FAXの入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClFAX.Focus();
                     return false;
                 }
@@ -904,7 +931,7 @@ namespace SalesManagement_SysDev
             //郵便番号の適否
             if (!String.IsNullOrEmpty(textBoxClPostal.Text.Trim()))
             {
-                //郵便番号の半角英数字チェック
+                //郵便番号の半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
                     MessageBox.Show("郵便番号は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -913,7 +940,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength == 7)
+                if (textBoxClPostal.TextLength != 7)
                 {
                     MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClPostal.Focus();
@@ -966,7 +993,7 @@ namespace SalesManagement_SysDev
                 };
 
                 //顧客データの抽出
-               Client= clientDataAccess.GetClientData(selectCondition);
+               Client= clientDataAccess.GetClientData(1,selectCondition);
             }
 
             //顧客IDが入力されていて、営業所が未選択の場合
@@ -983,7 +1010,7 @@ namespace SalesManagement_SysDev
                 };
 
                 //顧客データの抽出
-               Client= clientDataAccess.GetClientData(selectCondition);
+               Client= clientDataAccess.GetClientData(2,selectCondition);
             }
 
             //顧客IDが未入力で、営業所が選択されている場合
@@ -1000,7 +1027,7 @@ namespace SalesManagement_SysDev
                 };
 
                 //顧客データの抽出
-               Client= clientDataAccess.GetClientData(selectCondition);
+               Client= clientDataAccess.GetClientData(3,selectCondition);
             }
 
             //顧客IDが未入力で、営業所も未選択の場合
@@ -1016,7 +1043,7 @@ namespace SalesManagement_SysDev
                 };
 
                 //顧客データの抽出
-                Client = clientDataAccess.GetClientData(selectCondition);
+                Client = clientDataAccess.GetClientData(4,selectCondition);
             }
 
         }
@@ -1113,6 +1140,21 @@ namespace SalesManagement_SysDev
             //日時更新
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
+        }
+
+        private void checkBoxClFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxClFlag.Checked == true)
+            {
+                textBoxClHidden.TabStop = true;
+                textBoxClHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxClHidden.Text = "";
+                textBoxClHidden.TabStop = false;
+                textBoxClHidden.ReadOnly = true;
+            }
         }
     }
 }

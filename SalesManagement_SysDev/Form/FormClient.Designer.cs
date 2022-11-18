@@ -217,6 +217,7 @@ namespace SalesManagement_SysDev
             this.checkBoxClFlag.TabIndex = 7;
             this.checkBoxClFlag.Text = "非表示フラグ";
             this.checkBoxClFlag.UseVisualStyleBackColor = true;
+            this.checkBoxClFlag.CheckedChanged += new System.EventHandler(this.checkBoxClFlag_CheckedChanged);
             // 
             // labelHidden
             // 

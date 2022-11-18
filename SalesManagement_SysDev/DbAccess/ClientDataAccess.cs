@@ -169,7 +169,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：条件一致顧客データ
         //機　能   ：条件一致顧客データの取得
         ///////////////////////////////
-        public List<M_ClientDsp> GetClientData(M_ClientDsp selectCondition)
+        public List<M_ClientDsp> GetClientData(int flg,M_ClientDsp selectCondition)
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
 
@@ -177,49 +177,193 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
 
-                var tb = from t1 in context.M_Clients
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
-                         where        
-                         t1.ClID==selectCondition.ClID&&
-                         t1.SoID==selectCondition.SoID&&
-                         t1.ClName.Contains(selectCondition.ClName)&&
-                         t1.ClPhone.Contains(selectCondition.ClPhone)&&
-                         t1.ClPostal.Contains(selectCondition.ClPostal)&&
-                         t1.ClFAX.Contains(selectCondition.ClFAX) &&
-                         t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                         t1.ClFlag!=2
-                         
-                         select new
-                         {
-                             t1.ClID,
-                             t1.ClName,
-                             t1.SoID,
-                             t2.SoName,
-                             t1.ClAddress,
-                             t1.ClFAX,
-                             t1.ClPhone,
-                             t1.ClPostal,
-                             t1.ClFlag,
-                             t1.ClHidden
-                         };
-                    foreach(var p in tb)
+                if (flg == 1)
                 {
-                    client.Add(new M_ClientDsp()
+
+
+                    var tb = from t1 in context.M_Clients
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             where
+
+                             t1.ClID == selectCondition.ClID &&
+                             t1.SoID == selectCondition.SoID &&
+                             t1.ClName.Contains(selectCondition.ClName) &&
+                             t1.ClPhone.Contains(selectCondition.ClPhone) &&
+                             t1.ClPostal.Contains(selectCondition.ClPostal) &&
+                             t1.ClFAX.Contains(selectCondition.ClFAX) &&
+                             t1.ClAddress.Contains(selectCondition.ClAddress) &&
+                             t1.ClFlag != 2
+
+                             select new
+                             {
+                                 t1.ClID,
+                                 t1.ClName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.ClAddress,
+                                 t1.ClFAX,
+                                 t1.ClPhone,
+                                 t1.ClPostal,
+                                 t1.ClFlag,
+                                 t1.ClHidden
+                             };
+
+                    foreach (var p in tb)
                     {
-                        ClID = p.ClID,
-                        ClName = p.ClName,
-                        SoID = p.SoID,
-                        SoName = p.SoName,
-                        ClPhone = p.ClPhone,
-                        ClAddress = p.ClAddress,
-                        ClPostal = p.ClPostal,
-                        ClFAX = p.ClFAX,
-                        ClFlag = p.ClFlag,
-                        ClHidden = p.ClHidden
-                    });
+                        client.Add(new M_ClientDsp()
+                        {
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            ClPhone = p.ClPhone,
+                            ClAddress = p.ClAddress,
+                            ClPostal = p.ClPostal,
+                            ClFAX = p.ClFAX,
+                            ClFlag = p.ClFlag,
+                            ClHidden = p.ClHidden
+                        });
+                    }
                 }
-                context.Dispose();
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.M_Clients
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             where
+
+                             t1.ClID == selectCondition.ClID &&
+             
+                             t1.ClName.Contains(selectCondition.ClName) &&
+                             t1.ClPhone.Contains(selectCondition.ClPhone) &&
+                             t1.ClPostal.Contains(selectCondition.ClPostal) &&
+                             t1.ClFAX.Contains(selectCondition.ClFAX) &&
+                             t1.ClAddress.Contains(selectCondition.ClAddress) &&
+                             t1.ClFlag != 2
+
+                             select new
+                             {
+                                 t1.ClID,
+                                 t1.ClName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.ClAddress,
+                                 t1.ClFAX,
+                                 t1.ClPhone,
+                                 t1.ClPostal,
+                                 t1.ClFlag,
+                                 t1.ClHidden
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        client.Add(new M_ClientDsp()
+                        {
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            ClPhone = p.ClPhone,
+                            ClAddress = p.ClAddress,
+                            ClPostal = p.ClPostal,
+                            ClFAX = p.ClFAX,
+                            ClFlag = p.ClFlag,
+                            ClHidden = p.ClHidden
+                        });
+                    }
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.M_Clients
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             where
+                             t1.SoID == selectCondition.SoID &&
+                             t1.ClName.Contains(selectCondition.ClName) &&
+                             t1.ClPhone.Contains(selectCondition.ClPhone) &&
+                             t1.ClPostal.Contains(selectCondition.ClPostal) &&
+                             t1.ClFAX.Contains(selectCondition.ClFAX) &&
+                             t1.ClAddress.Contains(selectCondition.ClAddress) &&
+                             t1.ClFlag != 2
+
+                             select new
+                             {
+                                 t1.ClID,
+                                 t1.ClName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.ClAddress,
+                                 t1.ClFAX,
+                                 t1.ClPhone,
+                                 t1.ClPostal,
+                                 t1.ClFlag,
+                                 t1.ClHidden
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        client.Add(new M_ClientDsp()
+                        {
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            ClPhone = p.ClPhone,
+                            ClAddress = p.ClAddress,
+                            ClPostal = p.ClPostal,
+                            ClFAX = p.ClFAX,
+                            ClFlag = p.ClFlag,
+                            ClHidden = p.ClHidden
+                        });
+                    }
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.M_Clients
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             where
+                             t1.ClName.Contains(selectCondition.ClName) &&
+                             t1.ClPhone.Contains(selectCondition.ClPhone) &&
+                             t1.ClPostal.Contains(selectCondition.ClPostal) &&
+                             t1.ClFAX.Contains(selectCondition.ClFAX) &&
+                             t1.ClAddress.Contains(selectCondition.ClAddress) &&
+                             t1.ClFlag != 2
+
+                             select new
+                             {
+                                 t1.ClID,
+                                 t1.ClName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.ClAddress,
+                                 t1.ClFAX,
+                                 t1.ClPhone,
+                                 t1.ClPostal,
+                                 t1.ClFlag,
+                                 t1.ClHidden
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        client.Add(new M_ClientDsp()
+                        {
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            ClPhone = p.ClPhone,
+                            ClAddress = p.ClAddress,
+                            ClPostal = p.ClPostal,
+                            ClFAX = p.ClFAX,
+                            ClFlag = p.ClFlag,
+                            ClHidden = p.ClHidden
+                        });
+                    }
+                }
+
+                    context.Dispose();
             }
             catch(Exception ex)
             {

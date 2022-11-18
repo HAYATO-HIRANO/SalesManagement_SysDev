@@ -51,17 +51,17 @@ namespace SalesManagement_SysDev
         [DisplayName("顧客名")]
         public string ClName { get; set; }
 
-        [DisplayName("住所")]
-        public string ClAddress { get; set; }
-
         [DisplayName("電話番号")]
         public string ClPhone { get; set; }
+
+        [DisplayName("FAX")]
+        public string ClFAX { get; set; }
 
         [DisplayName("郵便番号")]
         public string ClPostal { get; set; }
 
-        [DisplayName("FAX")]
-        public string ClFAX { get; set; }
+        [DisplayName("住所")]
+        public string ClAddress { get; set; }
 
         [DisplayName("顧客管理フラグ")]
         public int ClFlag { get; set; }

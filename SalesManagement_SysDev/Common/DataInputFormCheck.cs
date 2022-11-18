@@ -135,14 +135,14 @@ namespace SalesManagement_SysDev
         //引　数   ：文字列
         //戻り値   ：True or False
         //機　能   ：半角文字のチェック
-        //          ：半角文字の場合True
-        //          ：半角文字でない場合False
+        //          ：数字とハイフンの場合True
+        //          ：数字とハイフンでない場合False
         //////////////////////////////
         public bool CheckNumericHyphen(string text)
         {
-            bool flg = false;
+            bool flg;
 
-            Regex regex = new Regex("^-?[0-9]+$");
+            Regex regex = new Regex("[0-9-]+$");
             if (!regex.IsMatch(text))
                 flg = false;
             else
