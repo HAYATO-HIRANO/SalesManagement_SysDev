@@ -44,11 +44,11 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.buttonHidden = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -164,12 +164,13 @@ namespace SalesManagement_SysDev
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel2.BackColor = System.Drawing.Color.Honeydew;
+            this.panel2.Controls.Add(this.buttonHidden);
             this.panel2.Controls.Add(this.buttonChumonDetail);
             this.panel2.Controls.Add(this.buttonHiddenList);
             this.panel2.Controls.Add(this.buttonList);
             this.panel2.Controls.Add(this.buttonLogout);
-            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.buttonSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -191,24 +192,28 @@ namespace SalesManagement_SysDev
             // 
             // buttonHiddenList
             // 
-            this.buttonHiddenList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonHiddenList.BackColor = System.Drawing.Color.White;
+            this.buttonHiddenList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHiddenList.FlatAppearance.BorderSize = 4;
             this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(0, 724);
+            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHiddenList.Location = new System.Drawing.Point(25, 330);
             this.buttonHiddenList.Name = "buttonHiddenList";
-            this.buttonHiddenList.Size = new System.Drawing.Size(250, 80);
+            this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
             this.buttonHiddenList.TabIndex = 39;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
             // 
             // buttonList
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.BackColor = System.Drawing.Color.White;
+            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonList.FlatAppearance.BorderSize = 4;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 129);
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(25, 120);
             this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.Size = new System.Drawing.Size(200, 80);
             this.buttonList.TabIndex = 38;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
@@ -226,23 +231,24 @@ namespace SalesManagement_SysDev
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // buttonSearch
             // 
-            this.button5.BackColor = System.Drawing.Color.LightGreen;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 130);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "検索";
-            this.button5.UseVisualStyleBackColor = false;
+            this.buttonSearch.BackColor = System.Drawing.Color.White;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSearch.FlatAppearance.BorderSize = 4;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(25, 15);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(200, 80);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "検索";
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.Controls.Add(this.buttonClear);
-            this.panelInput.Controls.Add(this.label4);
             this.panelInput.Location = new System.Drawing.Point(279, 125);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1616, 169);
@@ -258,22 +264,25 @@ namespace SalesManagement_SysDev
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(24, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 24);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
-            // 
             // timer
             // 
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // buttonHidden
+            // 
+            this.buttonHidden.BackColor = System.Drawing.Color.White;
+            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHidden.FlatAppearance.BorderSize = 4;
+            this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
+            this.buttonHidden.Name = "buttonHidden";
+            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
+            this.buttonHidden.TabIndex = 42;
+            this.buttonHidden.Text = "非表示";
+            this.buttonHidden.UseVisualStyleBackColor = false;
             // 
             // FormChumon
             // 
@@ -292,7 +301,6 @@ namespace SalesManagement_SysDev
             this.panelHeader.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
-            this.panelInput.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,10 +321,10 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonHiddenList;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button buttonHidden;
     }
 }

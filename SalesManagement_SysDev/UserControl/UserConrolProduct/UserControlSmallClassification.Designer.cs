@@ -36,15 +36,15 @@ namespace SalesManagement_SysDev
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonResist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBoxScName = new System.Windows.Forms.TextBox();
+            this.labelScName = new System.Windows.Forms.Label();
+            this.comboBoxMcID = new System.Windows.Forms.ComboBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxScHidden = new System.Windows.Forms.TextBox();
             this.checkBoxScFlag = new System.Windows.Forms.CheckBox();
             this.textBoxScID = new System.Windows.Forms.TextBox();
             this.labelScID = new System.Windows.Forms.Label();
             this.labelMcID = new System.Windows.Forms.Label();
-            this.comboBoxMcID = new System.Windows.Forms.ComboBox();
-            this.textBoxScName = new System.Windows.Forms.TextBox();
-            this.labelScName = new System.Windows.Forms.Label();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
             this.labelPageSize = new System.Windows.Forms.Label();
@@ -75,8 +75,11 @@ namespace SalesManagement_SysDev
             // 
             // buttonNotList
             // 
-            this.buttonNotList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNotList.BackColor = System.Drawing.Color.White;
+            this.buttonNotList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonNotList.FlatAppearance.BorderSize = 4;
+            this.buttonNotList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonNotList.Location = new System.Drawing.Point(1276, 22);
             this.buttonNotList.Name = "buttonNotList";
             this.buttonNotList.Size = new System.Drawing.Size(205, 80);
@@ -86,8 +89,11 @@ namespace SalesManagement_SysDev
             // 
             // buttonList
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.BackColor = System.Drawing.Color.White;
+            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonList.FlatAppearance.BorderSize = 4;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonList.Location = new System.Drawing.Point(988, 22);
             this.buttonList.Name = "buttonList";
             this.buttonList.Size = new System.Drawing.Size(205, 80);
@@ -97,8 +103,11 @@ namespace SalesManagement_SysDev
             // 
             // buttonSearch
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.BackColor = System.Drawing.Color.White;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSearch.FlatAppearance.BorderSize = 4;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSearch.Location = new System.Drawing.Point(702, 22);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(205, 80);
@@ -108,8 +117,11 @@ namespace SalesManagement_SysDev
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.BackColor = System.Drawing.Color.White;
+            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonUpdate.FlatAppearance.BorderSize = 4;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUpdate.Location = new System.Drawing.Point(406, 22);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(205, 80);
@@ -119,9 +131,12 @@ namespace SalesManagement_SysDev
             // 
             // buttonResist
             // 
-            this.buttonResist.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonResist.Location = new System.Drawing.Point(103, 22);
+            this.buttonResist.BackColor = System.Drawing.Color.White;
+            this.buttonResist.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonResist.FlatAppearance.BorderSize = 4;
+            this.buttonResist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonResist.Location = new System.Drawing.Point(83, 22);
             this.buttonResist.Name = "buttonResist";
             this.buttonResist.Size = new System.Drawing.Size(205, 80);
             this.buttonResist.TabIndex = 0;
@@ -144,6 +159,34 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1378, 192);
             this.panelInput.TabIndex = 8;
+            // 
+            // textBoxScName
+            // 
+            this.textBoxScName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxScName.Location = new System.Drawing.Point(753, 17);
+            this.textBoxScName.Name = "textBoxScName";
+            this.textBoxScName.Size = new System.Drawing.Size(250, 34);
+            this.textBoxScName.TabIndex = 36;
+            // 
+            // labelScName
+            // 
+            this.labelScName.AutoSize = true;
+            this.labelScName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelScName.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelScName.Location = new System.Drawing.Point(621, 18);
+            this.labelScName.Name = "labelScName";
+            this.labelScName.Size = new System.Drawing.Size(129, 29);
+            this.labelScName.TabIndex = 35;
+            this.labelScName.Text = "小分類名";
+            // 
+            // comboBoxMcID
+            // 
+            this.comboBoxMcID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.comboBoxMcID.FormattingEnabled = true;
+            this.comboBoxMcID.Location = new System.Drawing.Point(145, 18);
+            this.comboBoxMcID.Name = "comboBoxMcID";
+            this.comboBoxMcID.Size = new System.Drawing.Size(212, 32);
+            this.comboBoxMcID.TabIndex = 34;
             // 
             // buttonClear
             // 
@@ -204,34 +247,6 @@ namespace SalesManagement_SysDev
             this.labelMcID.Size = new System.Drawing.Size(129, 29);
             this.labelMcID.TabIndex = 4;
             this.labelMcID.Text = "大分類名";
-            // 
-            // comboBoxMcID
-            // 
-            this.comboBoxMcID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxMcID.FormattingEnabled = true;
-            this.comboBoxMcID.Location = new System.Drawing.Point(145, 18);
-            this.comboBoxMcID.Name = "comboBoxMcID";
-            this.comboBoxMcID.Size = new System.Drawing.Size(212, 32);
-            this.comboBoxMcID.TabIndex = 34;
-            // 
-            // textBoxScName
-            // 
-            this.textBoxScName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxScName.Location = new System.Drawing.Point(753, 17);
-            this.textBoxScName.Name = "textBoxScName";
-            this.textBoxScName.Size = new System.Drawing.Size(250, 34);
-            this.textBoxScName.TabIndex = 36;
-            // 
-            // labelScName
-            // 
-            this.labelScName.AutoSize = true;
-            this.labelScName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelScName.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelScName.Location = new System.Drawing.Point(621, 18);
-            this.labelScName.Name = "labelScName";
-            this.labelScName.Size = new System.Drawing.Size(129, 29);
-            this.labelScName.TabIndex = 35;
-            this.labelScName.Text = "小分類名";
             // 
             // buttonPageSizeChange
             // 
