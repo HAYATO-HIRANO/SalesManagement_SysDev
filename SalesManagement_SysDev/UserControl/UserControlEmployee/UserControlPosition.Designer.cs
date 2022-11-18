@@ -52,6 +52,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonNotList = new System.Windows.Forms.Button();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -59,6 +60,7 @@ namespace SalesManagement_SysDev
             // 
             // panelHeader2
             // 
+            this.panelHeader2.Controls.Add(this.buttonNotList);
             this.panelHeader2.Controls.Add(this.buttonList);
             this.panelHeader2.Controls.Add(this.buttonSearch);
             this.panelHeader2.Controls.Add(this.buttonUpdate);
@@ -71,9 +73,12 @@ namespace SalesManagement_SysDev
             // 
             // buttonList
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(1205, 22);
+            this.buttonList.BackColor = System.Drawing.Color.White;
+            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonList.FlatAppearance.BorderSize = 4;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(1007, 22);
             this.buttonList.Name = "buttonList";
             this.buttonList.Size = new System.Drawing.Size(180, 80);
             this.buttonList.TabIndex = 3;
@@ -83,9 +88,12 @@ namespace SalesManagement_SysDev
             // 
             // buttonSearch
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(881, 22);
+            this.buttonSearch.BackColor = System.Drawing.Color.White;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSearch.FlatAppearance.BorderSize = 4;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(721, 22);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(180, 80);
             this.buttonSearch.TabIndex = 2;
@@ -95,9 +103,12 @@ namespace SalesManagement_SysDev
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonUpdate.Location = new System.Drawing.Point(555, 22);
+            this.buttonUpdate.BackColor = System.Drawing.Color.White;
+            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonUpdate.FlatAppearance.BorderSize = 4;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Location = new System.Drawing.Point(425, 22);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(180, 80);
             this.buttonUpdate.TabIndex = 1;
@@ -107,9 +118,12 @@ namespace SalesManagement_SysDev
             // 
             // buttonResist
             // 
-            this.buttonResist.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonResist.Location = new System.Drawing.Point(234, 22);
+            this.buttonResist.BackColor = System.Drawing.Color.White;
+            this.buttonResist.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonResist.FlatAppearance.BorderSize = 4;
+            this.buttonResist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonResist.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonResist.Location = new System.Drawing.Point(122, 22);
             this.buttonResist.Name = "buttonResist";
             this.buttonResist.Size = new System.Drawing.Size(180, 80);
             this.buttonResist.TabIndex = 0;
@@ -208,7 +222,7 @@ namespace SalesManagement_SysDev
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(317, 453);
+            this.dataGridView1.Location = new System.Drawing.Point(332, 453);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(1019, 503);
@@ -304,6 +318,20 @@ namespace SalesManagement_SysDev
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
+            // buttonNotList
+            // 
+            this.buttonNotList.BackColor = System.Drawing.Color.White;
+            this.buttonNotList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonNotList.FlatAppearance.BorderSize = 4;
+            this.buttonNotList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNotList.Location = new System.Drawing.Point(1295, 22);
+            this.buttonNotList.Name = "buttonNotList";
+            this.buttonNotList.Size = new System.Drawing.Size(205, 80);
+            this.buttonNotList.TabIndex = 34;
+            this.buttonNotList.Text = "非表示リスト";
+            this.buttonNotList.UseVisualStyleBackColor = false;
+            // 
             // UserControlPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -358,5 +386,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonNotList;
     }
 }

@@ -98,6 +98,40 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：UpdateOrderDetailData()
+        //引　数   :受注詳細データ
+        //戻り値   ：True or False
+        //機　能   ：受注詳細データの更新
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
+        ///////////////////////////////
+        public bool UpdateOrderDetailData(T_OrderDetail updOrderDetail)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var OrderDetail = context.T_OrderDetails.Single(x => x.OrDetailID == updOrderDetail.OrDetailID);
+                OrderDetail.OrID = updOrderDetail.OrID;
+                OrderDetail.PrID = updOrderDetail.PrID;
+                OrderDetail.OrQuantity = updOrderDetail.OrQuantity;
+                OrderDetail.OrTotalPrice = updOrderDetail.OrTotalPrice;
+                
+
+
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        ///////////////////////////////
         //メソッド名：GetOrderData()
         //引　数   ：なし
         //戻り値   ：全受注データ
