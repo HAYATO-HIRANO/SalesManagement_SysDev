@@ -48,17 +48,17 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panelSetting = new System.Windows.Forms.Panel();
-            this.buttonEmployee = new System.Windows.Forms.Button();
             this.buttonSalesOffice = new System.Windows.Forms.Button();
             this.buttonPosition = new System.Windows.Forms.Button();
+            this.buttonEmployee = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
             this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
             this.comboBoxPoID = new System.Windows.Forms.ComboBox();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.textBoxEmHidden = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxEmPhone = new System.Windows.Forms.TextBox();
+            this.textBoxEmPassword = new System.Windows.Forms.TextBox();
             this.textBoxEmName = new System.Windows.Forms.TextBox();
             this.textBoxEmID = new System.Windows.Forms.TextBox();
             this.labelPhone = new System.Windows.Forms.Label();
@@ -213,7 +213,7 @@
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
+            this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panelLeft.Controls.Add(this.buttonHiddenList);
             this.panelLeft.Controls.Add(this.buttonSetting);
             this.panelLeft.Controls.Add(this.buttonList);
@@ -221,6 +221,8 @@
             this.panelLeft.Controls.Add(this.buttonUpdate);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Controls.Add(this.buttonRegist);
+            this.panelLeft.Controls.Add(this.panelSetting);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 100);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
@@ -323,18 +325,45 @@
             this.buttonRegist.TabIndex = 0;
             this.buttonRegist.Text = "登録";
             this.buttonRegist.UseVisualStyleBackColor = false;
+            this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
             // 
             // panelSetting
             // 
             this.panelSetting.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panelSetting.Controls.Add(this.buttonEmployee);
             this.panelSetting.Controls.Add(this.buttonSalesOffice);
             this.panelSetting.Controls.Add(this.buttonPosition);
-            this.panelSetting.Location = new System.Drawing.Point(0, 100);
+            this.panelSetting.Controls.Add(this.buttonEmployee);
+            this.panelSetting.Location = new System.Drawing.Point(1, 0);
             this.panelSetting.Name = "panelSetting";
             this.panelSetting.Size = new System.Drawing.Size(250, 901);
             this.panelSetting.TabIndex = 25;
             this.panelSetting.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSetting_Paint);
+            // 
+            // buttonSalesOffice
+            // 
+            this.buttonSalesOffice.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSalesOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSalesOffice.Location = new System.Drawing.Point(-1, 129);
+            this.buttonSalesOffice.Name = "buttonSalesOffice";
+            this.buttonSalesOffice.Size = new System.Drawing.Size(250, 130);
+            this.buttonSalesOffice.TabIndex = 2;
+            this.buttonSalesOffice.Text = "営業所管理";
+            this.buttonSalesOffice.UseVisualStyleBackColor = false;
+            this.buttonSalesOffice.Click += new System.EventHandler(this.buttonSalesOffice_Click);
+            // 
+            // buttonPosition
+            // 
+            this.buttonPosition.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPosition.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPosition.Location = new System.Drawing.Point(-1, 0);
+            this.buttonPosition.Name = "buttonPosition";
+            this.buttonPosition.Size = new System.Drawing.Size(250, 130);
+            this.buttonPosition.TabIndex = 1;
+            this.buttonPosition.Text = "役職管理";
+            this.buttonPosition.UseVisualStyleBackColor = false;
+            this.buttonPosition.Click += new System.EventHandler(this.buttonPosition_Click);
             // 
             // buttonEmployee
             // 
@@ -349,32 +378,6 @@
             this.buttonEmployee.UseVisualStyleBackColor = false;
             this.buttonEmployee.Click += new System.EventHandler(this.button2_Click);
             // 
-            // buttonSalesOffice
-            // 
-            this.buttonSalesOffice.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSalesOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSalesOffice.Location = new System.Drawing.Point(0, 129);
-            this.buttonSalesOffice.Name = "buttonSalesOffice";
-            this.buttonSalesOffice.Size = new System.Drawing.Size(250, 130);
-            this.buttonSalesOffice.TabIndex = 2;
-            this.buttonSalesOffice.Text = "営業所管理";
-            this.buttonSalesOffice.UseVisualStyleBackColor = false;
-            this.buttonSalesOffice.Click += new System.EventHandler(this.buttonSalesOffice_Click);
-            // 
-            // buttonPosition
-            // 
-            this.buttonPosition.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPosition.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPosition.Location = new System.Drawing.Point(0, 0);
-            this.buttonPosition.Name = "buttonPosition";
-            this.buttonPosition.Size = new System.Drawing.Size(250, 130);
-            this.buttonPosition.TabIndex = 1;
-            this.buttonPosition.Text = "役職管理";
-            this.buttonPosition.UseVisualStyleBackColor = false;
-            this.buttonPosition.Click += new System.EventHandler(this.buttonPosition_Click);
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -383,8 +386,8 @@
             this.panel4.Controls.Add(this.comboBoxPoID);
             this.panel4.Controls.Add(this.comboBoxSoID);
             this.panel4.Controls.Add(this.textBoxEmHidden);
-            this.panel4.Controls.Add(this.textBoxPhone);
-            this.panel4.Controls.Add(this.textBoxPassword);
+            this.panel4.Controls.Add(this.textBoxEmPhone);
+            this.panel4.Controls.Add(this.textBoxEmPassword);
             this.panel4.Controls.Add(this.textBoxEmName);
             this.panel4.Controls.Add(this.textBoxEmID);
             this.panel4.Controls.Add(this.labelPhone);
@@ -445,22 +448,21 @@
             this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
             this.textBoxEmHidden.TabIndex = 19;
             // 
-            // textBoxPhone
+            // textBoxEmPhone
             // 
-            this.textBoxPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPhone.Location = new System.Drawing.Point(1385, 13);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(144, 28);
-            this.textBoxPhone.TabIndex = 17;
+            this.textBoxEmPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmPhone.Location = new System.Drawing.Point(419, 92);
+            this.textBoxEmPhone.Name = "textBoxEmPhone";
+            this.textBoxEmPhone.Size = new System.Drawing.Size(144, 28);
+            this.textBoxEmPhone.TabIndex = 17;
             // 
-            // textBoxPassword
+            // textBoxEmPassword
             // 
-            this.textBoxPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPassword.Location = new System.Drawing.Point(143, 73);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(122, 28);
-            this.textBoxPassword.TabIndex = 16;
-            this.textBoxPassword.Text = "0123456789";
+            this.textBoxEmPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxEmPassword.Location = new System.Drawing.Point(143, 92);
+            this.textBoxEmPassword.Name = "textBoxEmPassword";
+            this.textBoxEmPassword.Size = new System.Drawing.Size(144, 28);
+            this.textBoxEmPassword.TabIndex = 16;
             // 
             // textBoxEmName
             // 
@@ -709,12 +711,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.panelEmployee);
+            this.Controls.Add(this.buttonPageSizeChange);
+            this.Controls.Add(this.textBoxPageSize);
+            this.Controls.Add(this.labelPageSize);
+            this.Controls.Add(this.buttonLastPage);
+            this.Controls.Add(this.buttonNextPage);
+            this.Controls.Add(this.buttonPreviousPage);
+            this.Controls.Add(this.buttonFirstPage);
+            this.Controls.Add(this.labelPage);
+            this.Controls.Add(this.textBoxPage);
+            this.Controls.Add(this.dataGridViewEmployee);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.userControlPosition1);
             this.Controls.Add(this.userControlSalesOffice1);
-            this.Controls.Add(this.panelSetting);
-            this.Controls.Add(this.panelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployee";
             this.Text = "FormEmployee";
@@ -751,8 +762,8 @@
         private System.Windows.Forms.Label labelSoID;
         private System.Windows.Forms.Label labelEmName;
         private System.Windows.Forms.TextBox textBoxEmID;
-        private System.Windows.Forms.TextBox textBoxPhone;
-        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxEmPhone;
+        private System.Windows.Forms.TextBox textBoxEmPassword;
         private System.Windows.Forms.TextBox textBoxEmName;
         private System.Windows.Forms.TextBox textBoxEmHidden;
         private System.Windows.Forms.DateTimePicker dateTimePickerHiredate;
