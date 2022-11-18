@@ -60,10 +60,10 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.dataGridViewMaker = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSalesOffice = new System.Windows.Forms.DataGridView();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesOffice)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader2
@@ -103,6 +103,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click_1);
             // 
             // buttonSearch
             // 
@@ -115,6 +116,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonUpdate
             // 
@@ -127,6 +129,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.TabIndex = 1;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonResist
             // 
@@ -175,6 +178,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 32;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxSoAddress
             // 
@@ -324,7 +328,6 @@ namespace SalesManagement_SysDev
             this.labelSaID.Size = new System.Drawing.Size(155, 36);
             this.labelSaID.TabIndex = 4;
             this.labelSaID.Text = "営業所ID";
-            this.labelSaID.Click += new System.EventHandler(this.labelSaID_Click);
             // 
             // buttonPageSizeChange
             // 
@@ -424,16 +427,17 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // dataGridViewMaker
+            // dataGridViewSalesOffice
             // 
-            this.dataGridViewMaker.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMaker.Location = new System.Drawing.Point(53, 579);
-            this.dataGridViewMaker.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dataGridViewMaker.Name = "dataGridViewMaker";
-            this.dataGridViewMaker.RowHeadersWidth = 62;
-            this.dataGridViewMaker.RowTemplate.Height = 21;
-            this.dataGridViewMaker.Size = new System.Drawing.Size(2678, 854);
-            this.dataGridViewMaker.TabIndex = 45;
+            this.dataGridViewSalesOffice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSalesOffice.Location = new System.Drawing.Point(53, 579);
+            this.dataGridViewSalesOffice.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dataGridViewSalesOffice.Name = "dataGridViewSalesOffice";
+            this.dataGridViewSalesOffice.RowHeadersWidth = 62;
+            this.dataGridViewSalesOffice.RowTemplate.Height = 21;
+            this.dataGridViewSalesOffice.Size = new System.Drawing.Size(2678, 854);
+            this.dataGridViewSalesOffice.TabIndex = 45;
+            this.dataGridViewSalesOffice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMaker_CellClick);
             // 
             // UserControlSalesOffice
             // 
@@ -449,7 +453,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonFirstPage);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
-            this.Controls.Add(this.dataGridViewMaker);
+            this.Controls.Add(this.dataGridViewSalesOffice);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.panelHeader2);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -459,7 +463,7 @@ namespace SalesManagement_SysDev
             this.panelHeader2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMaker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesOffice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,6 +502,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
-        private System.Windows.Forms.DataGridView dataGridViewMaker;
+        private System.Windows.Forms.DataGridView dataGridViewSalesOffice;
     }
 }
