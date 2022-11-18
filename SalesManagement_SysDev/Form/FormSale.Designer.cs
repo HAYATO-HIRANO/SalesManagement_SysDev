@@ -199,7 +199,7 @@ namespace SalesManagement_SysDev
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
             this.panelLeft.Controls.Add(this.buttonSalesDetail);
             this.panelLeft.Controls.Add(this.buttonHiddenList);
             this.panelLeft.Controls.Add(this.buttonList);
@@ -226,24 +226,28 @@ namespace SalesManagement_SysDev
             // 
             // buttonHiddenList
             // 
-            this.buttonHiddenList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonHiddenList.BackColor = System.Drawing.Color.White;
+            this.buttonHiddenList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHiddenList.FlatAppearance.BorderSize = 4;
             this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(0, 722);
+            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHiddenList.Location = new System.Drawing.Point(25, 225);
             this.buttonHiddenList.Name = "buttonHiddenList";
-            this.buttonHiddenList.Size = new System.Drawing.Size(250, 80);
+            this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
             this.buttonHiddenList.TabIndex = 40;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
             // 
             // buttonList
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.BackColor = System.Drawing.Color.White;
+            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonList.FlatAppearance.BorderSize = 4;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 128);
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(25, 120);
             this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 130);
+            this.buttonList.Size = new System.Drawing.Size(200, 80);
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
@@ -263,12 +267,14 @@ namespace SalesManagement_SysDev
             // 
             // buttonSearch
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSearch.BackColor = System.Drawing.Color.White;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSearch.FlatAppearance.BorderSize = 4;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(0, 0);
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(25, 15);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(250, 130);
+            this.buttonSearch.Size = new System.Drawing.Size(200, 80);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
@@ -509,6 +515,7 @@ namespace SalesManagement_SysDev
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
             this.Controls.Add(this.labelPageSize);
@@ -520,7 +527,6 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelInput);
-            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSale";
