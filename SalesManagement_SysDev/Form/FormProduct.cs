@@ -131,7 +131,7 @@ namespace SalesManagement_SysDev
         {
             comboBoxMaker.SelectedIndex = -1;
             textBoxPrName.Text = "";
-            textBoxJCode.Text = "";
+            textBoxPrice.Text = "";
             comboBoxMc.SelectedIndex = -1;
             comboBoxSc.SelectedIndex = -1;
             textBoxColor.Text = "";
@@ -226,6 +226,8 @@ namespace SalesManagement_SysDev
                 comboBoxMaker.Focus();
                 return false;
             }
+
+            // 商品名の適否
             if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
             {
 
@@ -246,18 +248,7 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            if (comboBoxSc.SelectedIndex == -1)
-            {
-                DialogResult result = messageDsp.DspMsg("M0419");
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxSc.Focus();
-                    return false;
-                }
-            }
-
-           
+            //大分類IDの選択チェック
             if (comboBoxMc.SelectedIndex == -1)
             {
                 //大分類IDが選択されていません
@@ -269,7 +260,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
-
+            //小分類IDの選択チェック
             if (comboBoxSc.SelectedIndex == -1)
             {
                 //小分類IDが選択されていません
@@ -282,13 +273,14 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            if (!String.IsNullOrEmpty(textBoxJCode.Text.Trim()))
+            //価格入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
-                if (textBoxJCode.TextLength > 9)
+                if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
                     messageDsp.DspMsg("M0412");
-                    textBoxJCode.Focus();
+                    textBoxPrice.Focus();
                     return false;
                 }
             }
@@ -296,10 +288,10 @@ namespace SalesManagement_SysDev
             {
                 //価格が入力されていません
                 messageDsp.DspMsg("M0413");
-                textBoxJCode.Focus();
+                textBoxPrice.Focus();
                 return false;
             }
-
+            //色の入力チェック
             if (!String.IsNullOrEmpty(textBoxColor.Text.Trim()))
             {
                 if (textBoxColor.TextLength > 20)
@@ -325,7 +317,7 @@ namespace SalesManagement_SysDev
                 textBoxColor.Focus();
                 return false;
             }
-
+            //非表示フラグのチェック
             if (checkBoxPrFlag.CheckState == CheckState.Indeterminate)
             {
                 //非表示フラグが未確定な状態です
@@ -334,7 +326,7 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-
+            //非表示理由の入力チェック
             if (checkBoxPrFlag.Checked==true&& String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
             {
                 //非表示理由が入力されていません
@@ -360,7 +352,7 @@ namespace SalesManagement_SysDev
                 PrID = int.Parse(textBoxPrID.Text.Trim()),
                 MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
                 PrName = textBoxPrName.Text.Trim(),
-                Price =int.Parse(textBoxJCode.Text.Trim()),
+                Price =int.Parse(textBoxPrice.Text.Trim()),
                 PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
                 ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
                 PrModelNumber = textBoxPrModelNumber.Text.Trim(),
@@ -392,8 +384,10 @@ namespace SalesManagement_SysDev
 
             textBoxPrID.Focus();
 
+            // 入力エリアのクリア
             ClearInput();
 
+            // データグリッドビューの表示
             GetDataGridView();
 
             
