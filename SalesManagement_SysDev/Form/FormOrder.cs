@@ -91,8 +91,8 @@ namespace SalesManagement_SysDev
                 labelOrder.Text = "受注詳細管理";
                 buttonRegist.Enabled = false;
                 buttonRegist.BackColor = Color.Gray;
-                buttonKakutei.Enabled = false;
-                buttonKakutei.BackColor = Color.Gray;
+                buttonUpdateKakutei.Enabled = false;
+                buttonUpdateKakutei.BackColor = Color.Gray;
                 buttonDetail.Text = "受注管理";
                 return;
             }
@@ -101,8 +101,8 @@ namespace SalesManagement_SysDev
                 labelOrder.Text = "受注管理";
                 buttonRegist.Enabled = true;
                 buttonRegist.BackColor = Color.LightGreen;
-                buttonKakutei.Enabled = true;
-                buttonKakutei.BackColor = Color.LightGreen;
+                buttonUpdateKakutei.Enabled = true;
+                buttonUpdateKakutei.BackColor = Color.LightGreen;
                 buttonDetail.Text = "受注詳細";
                 return;
             }
@@ -191,6 +191,23 @@ namespace SalesManagement_SysDev
         }
 
         private void checkBoxStateFlag_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //日時更新
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
+        }
+
+        private void buttonHidden_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelClCharge_Click(object sender, EventArgs e)
         {
 
         }

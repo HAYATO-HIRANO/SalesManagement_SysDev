@@ -29,6 +29,7 @@ namespace SalesManagement_SysDev
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelUserID = new System.Windows.Forms.Label();
             this.labelPosition = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@ namespace SalesManagement_SysDev
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
+            this.timerDate = new System.Windows.Forms.Timer(this.components);
             this.userControl11 = new SalesManagement_SysDev.UserControlMain.UserControlHQ();
             this.userControl21 = new SalesManagement_SysDev.UserControlMain.UserControlSales();
             this.userControl31 = new SalesManagement_SysDev.UserControlMain.UserControlLogistics();
@@ -241,6 +243,12 @@ namespace SalesManagement_SysDev
             this.buttonHonbu.UseVisualStyleBackColor = false;
             this.buttonHonbu.Click += new System.EventHandler(this.buttonHonbu_Click);
             // 
+            // timerDate
+            // 
+            this.timerDate.Enabled = true;
+            this.timerDate.Interval = 1000;
+            this.timerDate.Tick += new System.EventHandler(this.timerDate_Tick);
+            // 
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.Honeydew;
@@ -308,5 +316,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Label labelSalesOffice;
         private System.Windows.Forms.Label labelUserID;
+        private System.Windows.Forms.Timer timerDate;
     }
 }
