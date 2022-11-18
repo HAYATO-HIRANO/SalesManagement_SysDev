@@ -66,8 +66,8 @@ namespace SalesManagement_SysDev
                 // 営業所IDの文字数チェック
                 if (textBoxSoID.TextLength != 15)
                 {
-                    MessageBox.Show("営業所IDは15文字です","入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error)；
-                    messageDsp.DspMsg("M***");
+                    MessageBox.Show("営業所IDは15文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //messageDsp.DspMsg("M***");
                     textBoxSoID.Focus();
                     return false;
                 }
@@ -351,15 +351,6 @@ namespace SalesManagement_SysDev
         private void buttonSearch_Click(object sender, EventArgs e)
         {
 
-            // *.2.4.1 妥当な営業所データ取得
-            if (!GetValidDataAtSelect())
-                return;
-
-            // *.2.4.2 営業所情報抽出
-            GenerateDataAtSelect();
-
-            // *.2.4.3 営業所抽出結果表示
-            SetSelectData();
         }
       
 
