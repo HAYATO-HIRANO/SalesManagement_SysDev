@@ -126,6 +126,24 @@ namespace SalesManagement_SysDev
         {
 
         }
+        private void SetFormComboBox()
+        {
+            // 商品データの取得
+            Maker = makerDataAccess.GetMakerDspData();
+            MajorCassifications = majorClassificationDataAccess.GetMcDspData();
+            comboBoxMaker.DataSource = Maker;
+            comboBoxMaker.DisplayMember = "MaName";
+            comboBoxMaker.ValueMember = "MaID";
+            comboBoxMc.DataSource = MajorCassifications;
+            comboBoxMc.DisplayMember = "McName";
+            comboBoxMc.ValueMember = "McID";
+            //
+            // コンボボックスを読み取り専用
+            comboBoxMaker.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMaker.SelectedIndex = -1;
+            comboBoxMc.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMc.SelectedIndex = -1;
+        }
 
         private void ClearInput()
         {
