@@ -1107,5 +1107,12 @@ namespace SalesManagement_SysDev
             //データグリッドビューの表示
             SetFormDataGridView(1);
         }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //日時更新
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
+        }
     }
 }

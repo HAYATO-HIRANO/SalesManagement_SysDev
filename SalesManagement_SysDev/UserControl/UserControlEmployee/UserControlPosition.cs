@@ -57,7 +57,7 @@ namespace SalesManagement_SysDev
         //引　数   ：なし
         //戻り値   ：true or false
         //機　能   ：入力データの形式チェック
-        //          ：エラーがない場合True
+        //          ：エラーがなbbbbbbbい場合True
         //          ：エラーがある場合False
         ///////////////////////////////
         private bool GetValidDataAtRegistration()
@@ -388,7 +388,7 @@ namespace SalesManagement_SysDev
 
         private void buttonList_Click(object sender, EventArgs e)
         {
-
+            SetDataGridView();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)

@@ -133,6 +133,7 @@ namespace SalesManagement_SysDev
             this.buttonResist.TabIndex = 0;
             this.buttonResist.Text = "登録";
             this.buttonResist.UseVisualStyleBackColor = false;
+            this.buttonResist.Click += new System.EventHandler(this.buttonResist_Click);
             // 
             // panelInput
             // 
@@ -285,11 +286,10 @@ namespace SalesManagement_SysDev
             // textBoxSoID
             // 
             this.textBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxSoID.Location = new System.Drawing.Point(104, 14);
+            this.textBoxSoID.Location = new System.Drawing.Point(122, 14);
             this.textBoxSoID.Name = "textBoxSoID";
             this.textBoxSoID.Size = new System.Drawing.Size(34, 28);
             this.textBoxSoID.TabIndex = 15;
-            this.textBoxSoID.Text = "11";
             // 
             // labelSaID
             // 
@@ -298,9 +298,9 @@ namespace SalesManagement_SysDev
             this.labelSaID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelSaID.Location = new System.Drawing.Point(12, 16);
             this.labelSaID.Name = "labelSaID";
-            this.labelSaID.Size = new System.Drawing.Size(86, 24);
+            this.labelSaID.Size = new System.Drawing.Size(104, 24);
             this.labelSaID.TabIndex = 4;
-            this.labelSaID.Text = "メーカID";
+            this.labelSaID.Text = "営業所ID";
             // 
             // buttonPageSizeChange
             // 
@@ -396,6 +396,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewMaker.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMaker.Location = new System.Drawing.Point(32, 386);
             this.dataGridViewMaker.Name = "dataGridViewMaker";
+            this.dataGridViewMaker.RowHeadersWidth = 62;
             this.dataGridViewMaker.RowTemplate.Height = 21;
             this.dataGridViewMaker.Size = new System.Drawing.Size(1607, 569);
             this.dataGridViewMaker.TabIndex = 45;

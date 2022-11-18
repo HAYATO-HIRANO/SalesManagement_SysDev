@@ -27,6 +27,7 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+            panelEmployee.Visible = true;
             panelSetting.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
@@ -79,12 +80,14 @@ namespace SalesManagement_SysDev
 
         private void buttonSetting_Click(object sender, EventArgs e)
         {
+            panelLeft.Visible = true;
             panelSetting.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             panelSetting.Visible = false;
+            panelEmployee.Visible = true;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
             labelEmployee.Text = "社員管理";
@@ -97,6 +100,7 @@ namespace SalesManagement_SysDev
 
         private void buttonPosition_Click(object sender, EventArgs e)
         {
+            panelEmployee.Visible = false;
             userControlSalesOffice1.Visible = false;
             userControlPosition1.Visible = true;
             labelEmployee.Text = "役職管理";
@@ -119,9 +123,17 @@ namespace SalesManagement_SysDev
 
         private void buttonSalesOffice_Click(object sender, EventArgs e)
         {
+            panelEmployee.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = true;
             labelEmployee.Text = "営業所管理";
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //日時更新
+            labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
+            labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
     }
 }
