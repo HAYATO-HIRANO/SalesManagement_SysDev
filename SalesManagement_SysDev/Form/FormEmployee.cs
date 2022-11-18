@@ -135,5 +135,10 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
+
+        private void buttonHiddenList_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
