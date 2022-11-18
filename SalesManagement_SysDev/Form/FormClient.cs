@@ -88,15 +88,15 @@ namespace SalesManagement_SysDev
         
         private void buttonRegist_Click(object sender, EventArgs e)
         {
-            // 8.3.1.1 妥当なスタッフデータ取得
+            //  妥当な顧客データ取得
             if (!GetValidDataAtRegistration())
                 return;
 
-            // 8.3.1.2 スタッフ情報作成
-            var regStaff = GenerateDataAtRegistration();
+            //  顧客情報作成
+            var regClient = GenerateDataAtRegistration();
 
-            // 8.3.1.3 スタッフ情報登録
-            RegistrationStaff(regStaff);
+            // 顧客情報登録
+            RegistrationStaff(regClient );
 
         }
         ///////////////////////////////
@@ -110,6 +110,14 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool GetValidDataAtRegistration()
         {
+            //顧客IDの適否
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+                //顧客IDは入力不要です
+                MessageBox.Show("顧客IDは入力不要です","入力確認",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                textBoxClID.Focus();
+                return false;
+            }
             //営業所名の選択チェック
            if(comboBoxSoID.SelectedIndex == -1)
             {
@@ -1027,6 +1035,10 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
 
             dataGridViewClient.DataSource = Client;
+            if (Client.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
 
             labelPage.Text = "/" + ((int)Math.Ceiling(Client.Count / (double)pageSize)) + "ページ";
             dataGridViewClient.Refresh();

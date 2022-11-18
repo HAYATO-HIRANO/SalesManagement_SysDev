@@ -142,9 +142,65 @@ namespace SalesManagement_SysDev
 
         private void SetFormDataGridView()
         {
+            //dataGridViewのページサイズ指定
             textBoxPageSize.Text = "10";
+            //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewProduct.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            dataGridViewProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //ヘッダー位置の指定
+            dataGridViewProduct.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //データグリッドビューのデータ取得
+            GetDataGridView();
+        }
 
+        private void GetDataGridView()
+        {
+            // 商品データの取得
+            Product = ProductDataAccess.GetProductData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        private void SetDataGridView()
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 1;
+            dataGridViewProduct.DataSource = Product.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            //各列幅の指定
+            dataGridViewProduct.Columns[0].Width = 100;
+            dataGridViewProduct.Columns[1].Visible = false;
+            dataGridViewProduct.Columns[2].Width = 180;
+            dataGridViewProduct.Columns[3].Width = 110;
+            dataGridViewProduct.Columns[4].Width = 110;
+            dataGridViewProduct.Columns[5].Visible = false;
+            dataGridViewProduct.Columns[6].Width = 110;
+            dataGridViewProduct.Columns[7].Width = 110;
+            dataGridViewProduct.Columns[8].Width = 110;
+            dataGridViewProduct.Columns[9].Visible = false;
+            dataGridViewProduct.Columns[10].Width = 80;
+            dataGridViewProduct.Columns[11].Width = 360;
+
+            //各列の文字位置の指定
+            dataGridViewProduct.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewProduct.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewProduct.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Product.Count / (double)pageSize)) + "ページ";
+
+            dataGridViewProduct.Refresh();
         }
 
         private void buttonRegist_Click(object sender, EventArgs e)
@@ -201,14 +257,27 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            //大分類IDが選択されていません
+           
             if (comboBoxMc.SelectedIndex == -1)
             {
+                //大分類IDが選択されていません
                 DialogResult result = messageDsp.DspMsg("M0437");
 
                 if (result == DialogResult.Cancel)
                 {
                     comboBoxMc.Focus();
+                    return false;
+                }
+            }
+
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                //小分類IDが選択されていません
+                DialogResult result = messageDsp.DspMsg("M0419");
+
+                if (result == DialogResult.Cancel)
+                {
+                    comboBoxSc.Focus();
                     return false;
                 }
             }
@@ -325,7 +394,7 @@ namespace SalesManagement_SysDev
 
             ClearInput();
 
-            
+            GetDataGridView();
 
             
         }
