@@ -46,7 +46,7 @@ namespace SalesManagement_SysDev
             this.buttonHidden = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonKakutei = new System.Windows.Forms.Button();
+            this.buttonUpdateKakutei = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
@@ -93,6 +93,7 @@ namespace SalesManagement_SysDev
             this.labelOrDetailID = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelClName = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -223,13 +224,13 @@ namespace SalesManagement_SysDev
             // 
             // panelLeft
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
             this.panelLeft.Controls.Add(this.buttonHiddenList);
             this.panelLeft.Controls.Add(this.buttonDetail);
             this.panelLeft.Controls.Add(this.buttonHidden);
             this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonLogout);
-            this.panelLeft.Controls.Add(this.buttonKakutei);
+            this.panelLeft.Controls.Add(this.buttonUpdateKakutei);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Controls.Add(this.buttonRegist);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -241,12 +242,14 @@ namespace SalesManagement_SysDev
             // 
             // buttonHiddenList
             // 
-            this.buttonHiddenList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonHiddenList.BackColor = System.Drawing.Color.White;
+            this.buttonHiddenList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHiddenList.FlatAppearance.BorderSize = 4;
             this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(0, 821);
+            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHiddenList.Location = new System.Drawing.Point(25, 540);
             this.buttonHiddenList.Name = "buttonHiddenList";
-            this.buttonHiddenList.Size = new System.Drawing.Size(250, 80);
+            this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
             this.buttonHiddenList.TabIndex = 43;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
@@ -256,7 +259,7 @@ namespace SalesManagement_SysDev
             this.buttonDetail.BackColor = System.Drawing.Color.LightGreen;
             this.buttonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonDetail.Location = new System.Drawing.Point(0, 722);
+            this.buttonDetail.Location = new System.Drawing.Point(0, 801);
             this.buttonDetail.Name = "buttonDetail";
             this.buttonDetail.Size = new System.Drawing.Size(250, 100);
             this.buttonDetail.TabIndex = 42;
@@ -266,24 +269,29 @@ namespace SalesManagement_SysDev
             // 
             // buttonHidden
             // 
-            this.buttonHidden.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonHidden.BackColor = System.Drawing.Color.White;
+            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHidden.FlatAppearance.BorderSize = 4;
             this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHidden.Location = new System.Drawing.Point(0, 342);
+            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHidden.Location = new System.Drawing.Point(25, 330);
             this.buttonHidden.Name = "buttonHidden";
-            this.buttonHidden.Size = new System.Drawing.Size(250, 115);
+            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
             this.buttonHidden.TabIndex = 9;
             this.buttonHidden.Text = "非表示";
             this.buttonHidden.UseVisualStyleBackColor = false;
+            this.buttonHidden.Click += new System.EventHandler(this.buttonHidden_Click);
             // 
             // buttonList
             // 
-            this.buttonList.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonList.BackColor = System.Drawing.Color.White;
+            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonList.FlatAppearance.BorderSize = 4;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(0, 456);
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(25, 435);
             this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(250, 115);
+            this.buttonList.Size = new System.Drawing.Size(200, 80);
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
@@ -303,27 +311,32 @@ namespace SalesManagement_SysDev
             this.buttonLogout.UseVisualStyleBackColor = false;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // buttonKakutei
+            // buttonUpdateKakutei
             // 
-            this.buttonKakutei.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonKakutei.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKakutei.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonKakutei.Location = new System.Drawing.Point(0, 114);
-            this.buttonKakutei.Name = "buttonKakutei";
-            this.buttonKakutei.Size = new System.Drawing.Size(250, 115);
-            this.buttonKakutei.TabIndex = 2;
-            this.buttonKakutei.Text = "確定";
-            this.buttonKakutei.UseVisualStyleBackColor = false;
-            this.buttonKakutei.Click += new System.EventHandler(this.buttonUpdate_Click);
+            this.buttonUpdateKakutei.BackColor = System.Drawing.Color.White;
+            this.buttonUpdateKakutei.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonUpdateKakutei.FlatAppearance.BorderSize = 4;
+            this.buttonUpdateKakutei.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdateKakutei.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdateKakutei.Location = new System.Drawing.Point(25, 120);
+            this.buttonUpdateKakutei.Name = "buttonUpdateKakutei";
+            this.buttonUpdateKakutei.Size = new System.Drawing.Size(200, 80);
+            this.buttonUpdateKakutei.TabIndex = 2;
+            this.buttonUpdateKakutei.Text = "更新/確定";
+            this.buttonUpdateKakutei.UseCompatibleTextRendering = true;
+            this.buttonUpdateKakutei.UseVisualStyleBackColor = false;
+            this.buttonUpdateKakutei.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSearch.BackColor = System.Drawing.Color.White;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSearch.FlatAppearance.BorderSize = 4;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(0, 228);
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(25, 225);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(250, 115);
+            this.buttonSearch.Size = new System.Drawing.Size(200, 80);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
@@ -331,14 +344,17 @@ namespace SalesManagement_SysDev
             // 
             // buttonRegist
             // 
-            this.buttonRegist.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonRegist.BackColor = System.Drawing.Color.White;
+            this.buttonRegist.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonRegist.FlatAppearance.BorderSize = 4;
             this.buttonRegist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegist.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRegist.Location = new System.Drawing.Point(0, 0);
+            this.buttonRegist.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRegist.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonRegist.Location = new System.Drawing.Point(25, 15);
             this.buttonRegist.Name = "buttonRegist";
-            this.buttonRegist.Size = new System.Drawing.Size(250, 115);
+            this.buttonRegist.Size = new System.Drawing.Size(200, 80);
             this.buttonRegist.TabIndex = 0;
-            this.buttonRegist.Text = "登録";
+            this.buttonRegist.Text = "登録\r\n";
             this.buttonRegist.UseVisualStyleBackColor = false;
             this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
             // 
@@ -346,6 +362,7 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.labelClName);
             this.panelInput.Controls.Add(this.button2);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.labelExplamation);
@@ -432,7 +449,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrHidden.Location = new System.Drawing.Point(494, 76);
             this.textBoxOrHidden.Multiline = true;
             this.textBoxOrHidden.Name = "textBoxOrHidden";
-            this.textBoxOrHidden.Size = new System.Drawing.Size(787, 84);
+            this.textBoxOrHidden.Size = new System.Drawing.Size(715, 84);
             this.textBoxOrHidden.TabIndex = 26;
             this.textBoxOrHidden.TextChanged += new System.EventHandler(this.textBoxOrHidden_TextChanged);
             // 
@@ -459,9 +476,9 @@ namespace SalesManagement_SysDev
             // textBoxClCharge
             // 
             this.textBoxClCharge.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClCharge.Location = new System.Drawing.Point(1099, 16);
+            this.textBoxClCharge.Location = new System.Drawing.Point(1415, 16);
             this.textBoxClCharge.Name = "textBoxClCharge";
-            this.textBoxClCharge.Size = new System.Drawing.Size(327, 28);
+            this.textBoxClCharge.Size = new System.Drawing.Size(114, 28);
             this.textBoxClCharge.TabIndex = 15;
             // 
             // labelClCharge
@@ -469,16 +486,17 @@ namespace SalesManagement_SysDev
             this.labelClCharge.AutoSize = true;
             this.labelClCharge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelClCharge.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClCharge.Location = new System.Drawing.Point(939, 18);
+            this.labelClCharge.Location = new System.Drawing.Point(1255, 18);
             this.labelClCharge.Name = "labelClCharge";
             this.labelClCharge.Size = new System.Drawing.Size(154, 24);
             this.labelClCharge.TabIndex = 14;
             this.labelClCharge.Text = "顧客担当者名";
+            this.labelClCharge.Click += new System.EventHandler(this.labelClCharge_Click);
             // 
             // textBoxClID
             // 
             this.textBoxClID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClID.Location = new System.Drawing.Point(829, 16);
+            this.textBoxClID.Location = new System.Drawing.Point(812, 16);
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(77, 28);
             this.textBoxClID.TabIndex = 13;
@@ -488,7 +506,7 @@ namespace SalesManagement_SysDev
             this.labelClID.AutoSize = true;
             this.labelClID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelClID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClID.Location = new System.Drawing.Point(743, 18);
+            this.labelClID.Location = new System.Drawing.Point(726, 18);
             this.labelClID.Name = "labelClID";
             this.labelClID.Size = new System.Drawing.Size(80, 24);
             this.labelClID.TabIndex = 12;
@@ -497,7 +515,7 @@ namespace SalesManagement_SysDev
             // textBoxEmID
             // 
             this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmID.Location = new System.Drawing.Point(620, 16);
+            this.textBoxEmID.Location = new System.Drawing.Point(609, 16);
             this.textBoxEmID.Name = "textBoxEmID";
             this.textBoxEmID.Size = new System.Drawing.Size(77, 28);
             this.textBoxEmID.TabIndex = 11;
@@ -507,7 +525,7 @@ namespace SalesManagement_SysDev
             this.labelEmID.AutoSize = true;
             this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmID.Location = new System.Drawing.Point(534, 18);
+            this.labelEmID.Location = new System.Drawing.Point(523, 18);
             this.labelEmID.Name = "labelEmID";
             this.labelEmID.Size = new System.Drawing.Size(80, 24);
             this.labelEmID.TabIndex = 10;
@@ -817,6 +835,16 @@ namespace SalesManagement_SysDev
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // labelClName
+            // 
+            this.labelClName.AutoSize = true;
+            this.labelClName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelClName.Location = new System.Drawing.Point(940, 18);
+            this.labelClName.Name = "labelClName";
+            this.labelClName.Size = new System.Drawing.Size(82, 24);
+            this.labelClName.TabIndex = 50;
+            this.labelClName.Text = "顧客名";
+            // 
             // FormOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -861,7 +889,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Button buttonKakutei;
+        private System.Windows.Forms.Button buttonUpdateKakutei;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panelInput;
@@ -920,5 +948,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelClName;
     }
 }
