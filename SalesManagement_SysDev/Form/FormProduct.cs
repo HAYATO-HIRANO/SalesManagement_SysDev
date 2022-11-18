@@ -142,9 +142,36 @@ namespace SalesManagement_SysDev
 
         private void SetFormDataGridView()
         {
+            //dataGridViewのページサイズ指定
             textBoxPageSize.Text = "10";
+            //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewProduct.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            dataGridViewProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //ヘッダー位置の指定
+            dataGridViewProduct.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //データグリッドビューのデータ取得
+            GetDataGridView();
+        }
 
+        private void GetDataGridView()
+        {
+            // 商品データの取得
+            Product = ProductDataAccess.GetProductData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        private void SetDataGridView()
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 1;
+            dataGridViewProduct.DataSource = Product.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            dataGridViewProduct.Columns[0].Width = 100;
         }
 
         private void buttonRegist_Click(object sender, EventArgs e)
