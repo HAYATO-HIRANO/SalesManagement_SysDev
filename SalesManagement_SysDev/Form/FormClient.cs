@@ -59,7 +59,7 @@ namespace SalesManagement_SysDev
             SetFormComboBox();
 
             //データグリッドビューの設定
-            SetFormDataGridView(0);
+            SetFormDataGridView();
         }
 
         ///////////////////////////////
@@ -85,7 +85,7 @@ namespace SalesManagement_SysDev
             this.Close();
         }
 
-        //顧客情報登録
+        ///////////////顧客情報登録////////////////////
         
         private void buttonRegist_Click(object sender, EventArgs e)
         {
@@ -327,7 +327,7 @@ namespace SalesManagement_SysDev
             //入力エリアのクリア
             ClearInput();
             //データグリッドビューの表示
-            SetFormDataGridView(0);
+            GetDataGridView();
 
         }
 
@@ -335,12 +335,12 @@ namespace SalesManagement_SysDev
         //メソッド名：SetFormDataGridView()
         //引　数   ：flg
         //戻り値   ：なし
-        //機　能   ：データグリッドビューの設定
+        //機　能   ：データグリッドビューの設定 [0]:全件データ取得,[1]:全非表示データ取得
         ///////////////////////////////
-        private void SetFormDataGridView(int flg)
+        private void SetFormDataGridView()
         {
             //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "10";
+            textBoxPageSize.Text = "20";
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
@@ -356,16 +356,10 @@ namespace SalesManagement_SysDev
             dataGridViewClient.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
             dataGridViewClient.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            if (flg == 0)
-            {
-                //データグリッドビューのデータ取得
-                GetDataGridView();
-            }
-            else if(flg==1)
-            {
-                //データグリッドビューのデータ取得
-                GetHiddenDataGridView();
-            }
+            
+            //データグリッドビューのデータ取得
+            GetDataGridView();
+            
 
         }
 
@@ -384,10 +378,10 @@ namespace SalesManagement_SysDev
             SetDataGridView();
         }
         ///////////////////////////////
-        //メソッド名：GetDataHiddenGridView()
+        //メソッド名：GetHiddenDataGridView()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示するデータの取得
+        //機　能   ：データグリッドビューに表示する非表示データの取得
         ///////////////////////////////
         private void GetHiddenDataGridView()
         {
@@ -410,6 +404,7 @@ namespace SalesManagement_SysDev
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewClient.DataSource = Client.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
+            
             //各列幅の指定 //1500
             dataGridViewClient.Columns[0].Width = 100;
             dataGridViewClient.Columns[1].Visible = false;
@@ -555,7 +550,7 @@ namespace SalesManagement_SysDev
             textBoxClHidden.Text = "";
         }
 
-        //顧客情報更新
+        ///////////////顧客情報更新//////////////////
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             // 3.2.1.1 妥当な顧客データ取得
@@ -1085,10 +1080,10 @@ namespace SalesManagement_SysDev
             textBoxClID.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[0].Value.ToString();
             comboBoxSoID.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[2].Value.ToString();
             textBoxClName.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[3].Value.ToString();
-            textBoxClAddres.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[4].Value.ToString();
-            textBoxClPhone.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxClPhone.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[4].Value.ToString();
+             textBoxClFAX.Text= dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[5].Value.ToString();
             textBoxClPostal.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[6].Value.ToString();
-            textBoxClFAX.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[7].Value.ToString();
+            textBoxClAddres.Text = dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[7].Value.ToString();
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewClient.Rows[dataGridViewClient.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
             {
@@ -1116,23 +1111,28 @@ namespace SalesManagement_SysDev
             // 入力エリアのクリア
             ClearInput();
             //データグリッドビューの表示
-            SetFormDataGridView(0);
+            GetDataGridView();
         }
 
         private void buttonHinaDel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        //入力クリアボタン
         private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearInput();
         }
-
+        ///////////////////////////////
+        //メソッド名：buttonHiddenList_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：顧客データの非表示一覧表示機能
+        ///////////////////////////////
         private void buttonHiddenList_Click(object sender, EventArgs e)
-        {           
+        {
             //データグリッドビューの表示
-            SetFormDataGridView(1);
+            GetHiddenDataGridView();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -1144,11 +1144,13 @@ namespace SalesManagement_SysDev
 
         private void checkBoxClFlag_CheckedChanged(object sender, EventArgs e)
         {
+           // 非表示フラグがチェックされたら非表示理由を入力可能にする
             if (checkBoxClFlag.Checked == true)
             {
                 textBoxClHidden.TabStop = true;
                 textBoxClHidden.ReadOnly = false;
             }
+
             else
             {
                 textBoxClHidden.Text = "";
