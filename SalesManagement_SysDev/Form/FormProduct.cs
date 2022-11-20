@@ -119,12 +119,30 @@ namespace SalesManagement_SysDev
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-
+            ClearInput();
         }
 
         private void panel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void SetFormComboBox()
+        {
+            // 商品データの取得
+            Maker = makerDataAccess.GetMakerDspData();
+            MajorCassifications = majorClassificationDataAccess.GetMcDspData();
+            comboBoxMaker.DataSource = Maker;
+            comboBoxMaker.DisplayMember = "MaName";
+            comboBoxMaker.ValueMember = "MaID";
+            comboBoxMc.DataSource = MajorCassifications;
+            comboBoxMc.DisplayMember = "McName";
+            comboBoxMc.ValueMember = "McID";
+            //
+            // コンボボックスを読み取り専用
+            comboBoxMaker.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMaker.SelectedIndex = -1;
+            comboBoxMc.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMc.SelectedIndex = -1;
         }
 
         private void ClearInput()
@@ -398,6 +416,291 @@ namespace SalesManagement_SysDev
             //日時更新
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            // 妥当な商品データ取得
+            if (!GetValidDataAtUpdate())
+            {
+                return;
+            }
+
+            // 商品情報作成
+            var upProduct = ProductDataAtUpdate();
+
+            //商品情報更新
+            UpdateProduct(upProduct);
+        }
+
+        private bool GetValidDataAtUpdate()
+        {
+            //商品IDの適否
+            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                {
+                    //商品IDは半角英数値入力です
+                    messageDsp.DspMsg("M0401");
+                    textBoxPrID.Focus();
+                    return false;
+                }
+
+                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                {
+                    //入力された商品IDは存在していません
+                    messageDsp.DspMsg("M0403");
+                    textBoxPrID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                //商品IDが入力されていません
+                messageDsp.DspMsg("M0404");
+                textBoxPrID.Focus();
+                return false;
+            }
+
+            //メーカー名の選択チェック
+            if (comboBoxMaker.SelectedIndex == -1)
+            {
+                //メーカーIDが選択されていません
+                messageDsp.DspMsg("M0407");
+                comboBoxMaker.Focus();
+                return false;
+            }
+
+            // 商品名の適否
+            if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
+            {
+
+                if (textBoxPrName.TextLength > 50)
+                {
+                    //商品名は50文字以下です
+                    messageDsp.DspMsg("M0409");
+                    textBoxPrName.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                //商品名が入力されていません
+                messageDsp.DspMsg("M0410");
+                textBoxPrName.Focus();
+                return false;
+            }
+
+            //大分類IDの選択チェック
+            if (comboBoxMc.SelectedIndex == -1)
+            {
+                //大分類IDが選択されていません
+                DialogResult result = messageDsp.DspMsg("M0437");
+
+                if (result == DialogResult.Cancel)
+                {
+                    comboBoxMc.Focus();
+                    return false;
+                }
+            }
+            //小分類IDの選択チェック
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                //小分類IDが選択されていません
+                DialogResult result = messageDsp.DspMsg("M0419");
+
+                if (result == DialogResult.Cancel)
+                {
+                    comboBoxSc.Focus();
+                    return false;
+                }
+            }
+
+            //価格入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
+            {
+                if (textBoxPrice.TextLength > 9)
+                {
+                    //価格は9桁以下です
+                    messageDsp.DspMsg("M0412");
+                    textBoxPrice.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //価格が入力されていません
+                messageDsp.DspMsg("M0413");
+                textBoxPrice.Focus();
+                return false;
+            }
+
+            //安全在庫数入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
+            {
+                //安全在庫数は半角英数値入力です
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrSafetyStock.Text.Trim()))
+                {
+                    messageDsp.DspMsg("M0414");
+                    textBoxPrSafetyStock.Focus();
+                    return false;
+                }
+
+                if (textBoxPrSafetyStock.TextLength > 4)
+                {
+                    //安全在庫数は4桁以下です
+                    messageDsp.DspMsg("M0415");
+                    textBoxPrSafetyStock.Focus();
+                    return false;
+                }
+                
+            }
+            else
+            {
+                //安全在庫数が入力されていません
+                messageDsp.DspMsg("M0416");
+                textBoxPrSafetyStock.Focus();
+                return false;
+            }
+
+            //型番の適否
+            if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfChar(textBoxPrModelNumber.Text.Trim()))
+                {
+                    //型番は半角入力です
+                    messageDsp.DspMsg("M0420");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
+
+                
+                if (textBoxPrModelNumber.TextLength >20)
+                {
+                    //型番は20文字以下です
+                    messageDsp.DspMsg("M0421");
+                    textBoxPrModelNumber.Focus();
+
+                }
+
+                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                {
+                    //入力された型番は存在していません
+                    messageDsp.DspMsg("M0441");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                //型番が入力されていません
+                messageDsp.DspMsg("M0422");
+                textBoxPrModelNumber.Focus();
+                return false;
+            }
+
+            //色の入力チェック
+            if (!String.IsNullOrEmpty(textBoxColor.Text.Trim()))
+            {
+                if (textBoxColor.TextLength > 20)
+                {
+                    //色は20文字以下です
+                    messageDsp.DspMsg("M0438");
+                    textBoxColor.Focus();
+                    return false;
+                }
+                if (!dataInputFormCheck.CheckFullWidth(textBoxColor.Text.Trim()))
+                {
+                    //色は全角入力です
+                    messageDsp.DspMsg("M0439");
+                    textBoxColor.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                //色が入力されていません
+                messageDsp.DspMsg("M0423");
+                textBoxColor.Focus();
+                return false;
+            }
+            //非表示フラグのチェック
+            if (checkBoxPrFlag.CheckState == CheckState.Indeterminate)
+            {
+                //非表示フラグが未確定な状態です
+                messageDsp.DspMsg("M0433");
+                checkBoxPrFlag.Focus();
+                return false;
+            }
+
+            //非表示理由の入力チェック
+            if (checkBoxPrFlag.Checked == true && String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            {
+                //非表示理由が入力されていません
+                messageDsp.DspMsg("M0440");
+                textBoxPrHidden.Focus();
+                return false;
+            }
+
+
+            return true;
+        }
+
+        private M_Product ProductDataAtUpdate()
+        {
+            int Pdflg = 0;
+            if (checkBoxPrFlag.Checked == true)
+            {
+                Pdflg = 2;
+            }
+
+            return new M_Product
+            {
+                PrID = int.Parse(textBoxPrID.Text.Trim()),
+                MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
+                PrName = textBoxPrName.Text.Trim(),
+                Price = int.Parse(textBoxPrice.Text.Trim()),
+                PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                PrColor = textBoxColor.Text.Trim(),
+                PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                PrFlag = Pdflg,
+                PrHidden = textBoxPrHidden.Text.Trim()
+            };
+        }
+
+        private void UpdateProduct(M_Product upProduct)
+        {
+            //在庫データを更新してよろしいですか？
+            DialogResult result = messageDsp.DspMsg("M0512");
+            if(result == DialogResult.Cancel)
+            {
+                return;
+            }
+            bool flg = ProductDataAccess.UpdateProductData(upProduct);
+            if (flg == true)
+            {
+                //在庫データを更新しました
+                messageDsp.DspMsg("M0513");
+            }
+            else
+            {
+                //在庫データ更新に失敗しました
+                messageDsp.DspMsg("M0514");
+            }
+            textBoxPrID.Focus();
+
+            ClearInput();
+
+
+
+            GetDataGridView();
+
         }
     }
 

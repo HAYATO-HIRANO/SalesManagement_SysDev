@@ -582,7 +582,7 @@ namespace SalesManagement_SysDev
             // 役職CD入力時チェック
             if (!String.IsNullOrEmpty(textBoxPoID.Text.Trim()))
             {
-                // 役職CDの半角英数字チェック
+                // 役職IDの半角英数字チェック
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
                 {
                     //MessageBox.Show("役職CDは全て半角英数字入力です");
@@ -590,7 +590,7 @@ namespace SalesManagement_SysDev
                     textBoxPoID.Focus();
                     return false;
                 }
-                // 役職CDの文字数チェック
+                // 役職IDの文字数チェック
                 if (textBoxPoID.TextLength > 2)
                 {
                     //MessageBox.Show("役職CDは2 文字までです");
