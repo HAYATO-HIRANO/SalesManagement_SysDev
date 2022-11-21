@@ -298,6 +298,60 @@ namespace SalesManagement_SysDev
         {
 
         }
+        ///////////////////////////////
+        //メソッド名：dataGridViewMaker_CellClick()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューから選択された情報を各入力エリアにセット
+        ///////////////////////////////
 
+        private void dataGridViewMaker_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonList_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：メーカデータの一覧表示機能
+        ///////////////////////////////
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonNotList_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：メーカデータの非表示リスト表示機能
+        ///////////////////////////////
+
+        private void buttonNotList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxMaFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxMaFlag.Checked == true)
+            {
+                textBoxMaHidden.TabStop = true;
+                textBoxMaHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxMaHidden.Text = "";
+                textBoxMaHidden.TabStop = false;
+                textBoxMaHidden.ReadOnly = true;
+
+            }
+
+        }
+        //入力クリア
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

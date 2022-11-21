@@ -92,6 +92,7 @@ namespace SalesManagement_SysDev
             this.buttonNotList.TabIndex = 4;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
+            this.buttonNotList.Click += new System.EventHandler(this.buttonNotList_Click);
             // 
             // buttonList
             // 
@@ -106,6 +107,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -184,6 +186,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 32;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxMaAddress
             // 
@@ -223,6 +226,7 @@ namespace SalesManagement_SysDev
             this.checkBoxMaFlag.TabIndex = 18;
             this.checkBoxMaFlag.Text = "非表示フラグ";
             this.checkBoxMaFlag.UseVisualStyleBackColor = true;
+            this.checkBoxMaFlag.CheckedChanged += new System.EventHandler(this.checkBoxMaFlag_CheckedChanged);
             // 
             // textBoxMaPostal
             // 
@@ -327,6 +331,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewMaker.RowTemplate.Height = 21;
             this.dataGridViewMaker.Size = new System.Drawing.Size(1607, 569);
             this.dataGridViewMaker.TabIndex = 8;
+            this.dataGridViewMaker.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMaker_CellClick);
             // 
             // buttonPageSizeChange
             // 
