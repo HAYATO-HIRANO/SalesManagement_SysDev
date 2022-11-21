@@ -30,16 +30,6 @@ namespace SalesManagement_SysDev
             InitializeComponent();
         }
 
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormClient_Load(object sender, EventArgs e)
         {
             //非表示理由タブ選択不可、入力不可
@@ -333,9 +323,9 @@ namespace SalesManagement_SysDev
 
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
-        //引　数   ：flg
+        //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：データグリッドビューの設定 [0]:全件データ取得,[1]:全非表示データ取得
+        //機　能   ：データグリッドビューの設定 
         ///////////////////////////////
         private void SetFormDataGridView()
         {
@@ -561,7 +551,7 @@ namespace SalesManagement_SysDev
             var updClient = GenerateDataAtUpdate();
 
             // 3.2.1.3 顧客情報更新
-            UpdateStaff(updClient);
+            UpdateClient(updClient);
         }
 
         ///////////////////////////////
@@ -789,12 +779,12 @@ namespace SalesManagement_SysDev
 
         ///////////////////////////////
         //　3.2.1.3 顧客情報更新
-        //メソッド名：UpdateStaff()
+        //メソッド名：UpdateClient()
         //引　数   ：顧客情報
         //戻り値   ：なし
         //機　能   ：顧客情報の更新
         ///////////////////////////////
-        private void UpdateStaff(M_Client updClient)
+        private void UpdateClient(M_Client updClient)
         {
             // 更新確認メッセージ
             DialogResult result = messageDsp.DspMsg("M0315");
@@ -820,7 +810,7 @@ namespace SalesManagement_SysDev
         }
 
 
-        //顧客情報検索
+        ///////////顧客情報検索/////////////
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             
@@ -954,7 +944,13 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
-
+            //フラグの適否
+            if (checkBoxClFlag.Checked == true)
+            {
+                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxClFlag.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -1131,6 +1127,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            //入力クリア
+            ClearInput();
             //データグリッドビューの表示
             GetHiddenDataGridView();
         }
@@ -1144,18 +1142,17 @@ namespace SalesManagement_SysDev
 
         private void checkBoxClFlag_CheckedChanged(object sender, EventArgs e)
         {
-           // 非表示フラグがチェックされたら非表示理由を入力可能にする
             if (checkBoxClFlag.Checked == true)
             {
                 textBoxClHidden.TabStop = true;
                 textBoxClHidden.ReadOnly = false;
             }
-
             else
             {
                 textBoxClHidden.Text = "";
                 textBoxClHidden.TabStop = false;
                 textBoxClHidden.ReadOnly = true;
+
             }
         }
     }

@@ -54,6 +54,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.dataGridViewClient = new System.Windows.Forms.DataGridView();
@@ -78,7 +79,6 @@ namespace SalesManagement_SysDev
             this.labelFormClient = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
@@ -370,6 +370,16 @@ namespace SalesManagement_SysDev
             this.panelInput.Size = new System.Drawing.Size(1552, 230);
             this.panelInput.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(12, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "※登録時入力不要";
+            // 
             // buttonClear
             // 
             this.buttonClear.BackColor = System.Drawing.Color.White;
@@ -636,16 +646,6 @@ namespace SalesManagement_SysDev
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(12, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 12);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "※登録時入力不要";
             // 
             // FormClient
             // 
