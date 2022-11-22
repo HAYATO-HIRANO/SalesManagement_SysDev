@@ -262,6 +262,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlOrderDetail.resx">
+      <DependentUpon>UserControlOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlSmallClassification.resx">
       <DependentUpon>UserControlSmallClassification.cs</DependentUpon>
     </EmbeddedResource>
