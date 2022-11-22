@@ -56,6 +56,12 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+
+            // コンボボックスの設定
+            SetFormComboBox();
+
+            // データグリッドビューの表示
+            SetFormDataGridView();
         }
 
         private void panelSetting_Paint(object sender, PaintEventArgs e)
@@ -109,7 +115,7 @@ namespace SalesManagement_SysDev
 
         private void comboBoxSc_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void labelSc_Click(object sender, EventArgs e)
@@ -241,6 +247,16 @@ namespace SalesManagement_SysDev
             RegistrationProduct(regProduct);
         }
 
+        ///////////////////////////////
+        //　         妥当な商品データ取得
+        //メソッド名：GetValidDataAtRegistration()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+
         private bool GetValidDataAtRegistration()
         {
             //メーカー名の選択チェック
@@ -364,6 +380,14 @@ namespace SalesManagement_SysDev
             return true;
         }
 
+        ///////////////////////////////
+        //　          商品カテゴリ情報作成
+        //メソッド名：GenerateDataAtRegistration()
+        //引　数   ：なし
+        //戻り値   ：商品カテゴリ登録情報
+        //機　能   ：登録データのセット
+        ///////////////////////////////
+
         private M_Product GenerateDataAtRegistration()
         {
             int Pdflg = 0;
@@ -387,6 +411,15 @@ namespace SalesManagement_SysDev
                 PrHidden=textBoxPrHidden.Text.Trim()
             };
         }
+
+        ///////////////////////////////
+        //　          商品情報登録
+        //メソッド名：RegistrationCategory()
+        //引　数   ：商品カテゴリ情報
+        //戻り値   ：なし
+        //機　能   ：商品カテゴリデータの登録
+
+        ///////////////////////////////
 
         private void RegistrationProduct(M_Product regProduct)
         {
@@ -440,6 +473,16 @@ namespace SalesManagement_SysDev
             UpdateProduct(upProduct);
         }
 
+        ///////////////////////////////
+        //　         妥当な商品データ取得
+        //メソッド名：GetValidDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        ///
         private bool GetValidDataAtUpdate()
         {
             //商品IDの適否
@@ -449,6 +492,13 @@ namespace SalesManagement_SysDev
                 {
                     //商品IDは半角英数値入力です
                     messageDsp.DspMsg("M0401");
+                    textBoxPrID.Focus();
+                    return false;
+                }
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                {
+                    //商品IDは6文字です
+                    messageDsp.DspMsg("M0402");
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -657,6 +707,14 @@ namespace SalesManagement_SysDev
             return true;
         }
 
+        ///////////////////////////////
+        //　5.2.2.2 商品情報作成
+        //メソッド名：GenerateDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：商品カテゴリ更新情報
+        //機　能   ：更新データのセット
+        //////////////////////////////
+
         private M_Product ProductDataAtUpdate()
         {
             int Pdflg = 0;
@@ -681,6 +739,15 @@ namespace SalesManagement_SysDev
             };
         }
 
+
+        ///////////////////////////////
+        //　         商品情報更新
+        //メソッド名：UpdateCategory()
+        //引　数   ：商品情報
+        //戻り値   ：なし
+        //機　能   ：商品情報の更新
+        ///////////////////////////////
+
         private void UpdateProduct(M_Product upProduct)
         {
             //在庫データを更新してよろしいですか？
@@ -701,14 +768,326 @@ namespace SalesManagement_SysDev
                 messageDsp.DspMsg("M0514");
             }
             textBoxPrID.Focus();
-
+            //入力エリアのクリア
             ClearInput();
-
+            // コンボボックスの設定
             SetFormComboBox();
-
+            // データグリッドビューの表示
             GetDataGridView();
 
         }
+
+        ///////////////////////////////
+        //　         妥当な商品データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            // 妥当な商品カテゴリデータ取得
+            if (!GetValidDataAtSelect())
+            {
+                return;
+            }
+
+            //  商品カテゴリ情報抽出
+            GenerateDataAtSelect();
+
+            // 商品カテゴリ抽出結果表示
+            SetSelectData();
+        }
+
+        private bool GetValidDataAtSelect()
+        {
+            //商品IDの適否
+            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                {
+                    //商品IDは半角英数値入力です
+                    messageDsp.DspMsg("M0401");
+                    textBoxPrID.Focus();
+                    return false;
+                }
+
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                {
+                    //商品IDは6文字です
+                    messageDsp.DspMsg("M0402");
+                    textBoxPrID.Focus();
+                    return false;
+                }
+
+                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                {
+                    //入力された商品IDは存在していません
+                    messageDsp.DspMsg("M0403");
+                    textBoxPrID.Focus();
+                    return false;
+                }
+
+            }
+            
+
+            
+
+            // 商品名の適否
+            if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
+            {
+
+                if (textBoxPrName.TextLength > 50)
+                {
+                    //商品名は50文字以下です
+                    messageDsp.DspMsg("M0409");
+                    textBoxPrName.Focus();
+                    return false;
+                }
+
+            }
+            
+            //大分類IDの選択チェック
+            if (comboBoxMc.SelectedIndex == -1)
+            {
+                //大分類IDが選択されていません
+                DialogResult result = messageDsp.DspMsg("M0437");
+
+                if (result == DialogResult.Cancel)
+                {
+                    comboBoxMc.Focus();
+                    return false;
+                }
+            }
+            //小分類IDの選択チェック
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                //小分類IDが選択されていません
+                DialogResult result = messageDsp.DspMsg("M0419");
+
+                if (result == DialogResult.Cancel)
+                {
+                    comboBoxSc.Focus();
+                    return false;
+                }
+            }
+
+            //価格入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
+            {
+                if (textBoxPrice.TextLength > 9)
+                {
+                    //価格は9桁以下です
+                    messageDsp.DspMsg("M0412");
+                    textBoxPrice.Focus();
+                    return false;
+                }
+            }
+            
+
+            //安全在庫数入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
+            {
+                //安全在庫数は半角英数値入力です
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrSafetyStock.Text.Trim()))
+                {
+                    messageDsp.DspMsg("M0414");
+                    textBoxPrSafetyStock.Focus();
+                    return false;
+                }
+
+                if (textBoxPrSafetyStock.TextLength > 4)
+                {
+                    //安全在庫数は4桁以下です
+                    messageDsp.DspMsg("M0415");
+                    textBoxPrSafetyStock.Focus();
+                    return false;
+                }
+
+            }
+            
+
+            //型番の適否
+            if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfChar(textBoxPrModelNumber.Text.Trim()))
+                {
+                    //型番は半角入力です
+                    messageDsp.DspMsg("M0420");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
+
+
+                if (textBoxPrModelNumber.TextLength > 20)
+                {
+                    //型番は20文字以下です
+                    messageDsp.DspMsg("M0421");
+                    textBoxPrModelNumber.Focus();
+
+                }
+
+                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                {
+                    //入力された型番は存在していません
+                    messageDsp.DspMsg("M0441");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
+
+            }
+           
+
+            //色の入力チェック
+            if (!String.IsNullOrEmpty(textBoxColor.Text.Trim()))
+            {
+                if (textBoxColor.TextLength > 20)
+                {
+                    //色は20文字以下です
+                    messageDsp.DspMsg("M0438");
+                    textBoxColor.Focus();
+                    return false;
+                }
+                if (!dataInputFormCheck.CheckFullWidth(textBoxColor.Text.Trim()))
+                {
+                    //色は全角入力です
+                    messageDsp.DspMsg("M0439");
+                    textBoxColor.Focus();
+                    return false;
+
+                }
+            }
+            
+            //非表示フラグのチェック
+            if (checkBoxPrFlag.Checked==true)
+            {
+                //非表示フラグがチェックされています
+                messageDsp.DspMsg("M0442");
+                checkBoxPrFlag.Focus();
+                return false;
+            }
+
+
+
+            return true;
+        }
+        ///////////////////////////////
+        //　         商品情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：商品情報の取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            // メーカー名が未選択の場合
+            string makercmb = "";
+            if (comboBoxMaker.SelectedIndex != -1)
+            {
+                makercmb = comboBoxMaker.SelectedValue.ToString();
+            }
+
+            //商品IDが入力されていて、なおかつメーカー名が選択されている状態  
+            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb == "")
+            {
+                M_Product selectCondition = new M_Product()
+                {
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+
+                };
+                Product = ProductDataAccess.GetProductData(selectCondition);
+            }
+
+            //商品IDが入力されていて、メーカー名が選択されていない状態
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != "")
+            {
+                M_Product selectCondition = new M_Product()
+                {
+
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+
+                };
+                Product = ProductDataAccess.GetProductData(selectCondition);
+
+            }
+            //商品IDが入力されていなくて、メーカー名が選択されている状態
+            else if (makercmb == "")
+            {
+                M_Product selectCondition = new M_Product()
+                {
+                    MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text)
+                };
+
+                Product = ProductDataAccess.GetProductData(selectCondition);
+
+
+            }
+            //商品IDが入力されていなくて、メーカー名が選択されていない状態
+            else
+            {
+                M_Product selectCondition = new M_Product()
+                {
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text)
+                };
+
+                Product = ProductDataAccess.GetProductData(selectCondition);
+            }
+            
+
+            
+        }
+
+        ///////////////////////////////
+        //　5.2.4.3 商品カテゴリ抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：商品カテゴリ情報の表示
+        ///////////////////////////////
+       
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewProduct.DataSource = Product;
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Product.Count / (double)pageSize)) + "ページ";
+            dataGridViewProduct.Refresh();
+        }
+
     }
 
 
