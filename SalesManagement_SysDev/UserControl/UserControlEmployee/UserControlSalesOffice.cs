@@ -31,18 +31,18 @@ namespace SalesManagement_SysDev
 
         private void buttonResist_Click(object sender, EventArgs e)
         {
-            //*.2.1.1 妥当な営業所データ取得
+            //6.3.1.1 妥当な営業所データ取得
             if (!GetValidDataAtRegistration())
                 return;
 
-            //*.2.1.2 営業所情報作成
+            //6.3.1.2 営業所情報作成
             var regSalesOffice = GenerateDataAtRegistration();
 
-            //*.2.1.3 営業所情報登録
+            //6.3.1.3 営業所情報登録
             RegistrationSalesOffice(regSalesOffice);
         }
         ///////////////////////////////
-        //　8.2.1.1 妥当な営業所データ取得
+        //　6.3  .1.1 妥当な営業所データ取得
         //メソッド名：GetValidDataAtRegistration()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -112,6 +112,44 @@ namespace SalesManagement_SysDev
                 return false;
 
             }
+            //電話番号の適否
+            if(!String.IsNullOrEmpty(textBoxSoPhone.Text.Trim()))
+            {
+                //電話番号の全角チェック
+                if(!dataInputFormCheck.CheckFullWidth(textBoxSoPhone.Text.Trim()))
+                {
+                    MessageBox.Show("電話番号は全て全角入力です。");
+                    textBoxSoPhone.Focus();
+                    return false;
+                }
+                //電話番号の文字数チェック
+                if(textBoxSoPhone.TextLength<13)
+                {
+                    //MeaaageBox.Show("電話番号は13文字以下です。")；
+                    messageDsp.DspMsg("M***");
+                    textBoxSoPhone.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("電話番号が入力されていません");
+                textBoxSoPhone.Focus();
+                return false;
+            }
+            //FAXの適否
+            if(!String.IsNullOrEmpty(textBoxSoFAX.Text.Trim()))
+            {
+                //FAXの全角チェック
+                if(!dataInputFormCheck.CheckFullWidth(textBoxSoFAX.Text.Trim()))
+                {
+
+                }
+            }
+
+
+
+
             // 削除フラグの適否
             if (checkBoxMaFlag.CheckState == CheckState.Indeterminate)
             {
