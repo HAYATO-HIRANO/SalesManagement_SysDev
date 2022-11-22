@@ -100,9 +100,9 @@ namespace SalesManagement_SysDev
             {
                 labelOrder.Text = "受注管理";
                 buttonRegist.Enabled = true;
-                buttonRegist.BackColor = Color.LightGreen;
+                buttonRegist.BackColor = Color.White;
                 buttonUpdateKakutei.Enabled = true;
-                buttonUpdateKakutei.BackColor = Color.LightGreen;
+                buttonUpdateKakutei.BackColor = Color.White;
                 buttonDetail.Text = "受注詳細";
                 return;
             }
