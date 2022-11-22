@@ -87,7 +87,7 @@ namespace SalesManagement_SysDev
             var regClient = GenerateDataAtRegistration();
 
             // 顧客情報登録
-            RegistrationStaff(regClient );
+            RegistrationClient(regClient );
 
         }
         ///////////////////////////////
@@ -297,7 +297,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：顧客情報の登録
         ///////////////////////////////
-        private void RegistrationStaff(M_Client regClient)
+        private void RegistrationClient(M_Client regClient)
         {
             // 登録確認メッセージ
             DialogResult result = messageDsp.DspMsg("M0311");
@@ -543,14 +543,14 @@ namespace SalesManagement_SysDev
         ///////////////顧客情報更新//////////////////
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            // 3.2.1.1 妥当な顧客データ取得
+            // 3.1.2.1 妥当な顧客データ取得
             if (!GetValidDataAtUpdate())
                 return;
 
-            // 3.2.1.2　顧客情報作成
+            // 3.1.2.2　顧客情報作成
             var updClient = GenerateDataAtUpdate();
 
-            // 3.2.1.3 顧客情報更新
+            // 3.1..3 顧客情報更新
             UpdateClient(updClient);
         }
 
