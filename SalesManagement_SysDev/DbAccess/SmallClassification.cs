@@ -206,7 +206,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClassification = context.M_SmallClassifications.Where(x => x.ScID == 0 && x.ScFlag == 0).ToList();
+                smallClassification = context.M_SmallClassifications.Where(x => x.ScID == 0 && x.ScFlag == 2).ToList();
                 context.Dispose();
             }
             catch (Exception ex)
@@ -216,6 +216,12 @@ namespace SalesManagement_SysDev//.DbAccess
             return smallClassification;
         }
 
+        ///////////////////////////////
+        //メソッド名：GetMcDspData()
+        //引　数   ：検索条件
+        //戻り値   ：表示用小分類データ
+        //機　能   ：表示用小分類データの取得
+        ///////////////////////////////
 
 
         public List<M_SmallClassification> GetScDspData(int scID)
@@ -233,14 +239,19 @@ namespace SalesManagement_SysDev//.DbAccess
             }
             return smallClassification;
         }
-
-        public string GetComboboxText(int mcID)
+        ///////////////////////////////
+        //メソッド名：GetComboboxText()
+        //引　数   ：小分類ID
+        //戻り値   ：小分類IDからカテゴリ名
+        //機　能   ：表示小分類IDからカテゴリ名の取得
+        ///////////////////////////////
+        public string GetComboboxText(int scID)
         {
             string cmbText = null;
             try
             {
                 var context = new SalesManagement_DevContext();
-                cmbText = context.M_SmallClassifications.Single(x => x.McID == mcID).ScName;
+                cmbText = context.M_SmallClassifications.Single(x => x.ScID == scID).ScName;
                 context.Dispose();
             }catch(Exception ex)
             {

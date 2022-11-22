@@ -19,6 +19,7 @@ namespace SalesManagement_SysDev
 
         private void FormOrder_Load(object sender, EventArgs e)
         {
+            userControlOrderDetail1.Visible = false;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
@@ -27,6 +28,10 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+
+            //入力項目に営業所と社員IDを入力
+            comboBoxSoID.Text = FormMain.loginSoName;
+            textBoxEmID.Text = FormMain.loginEmID.ToString();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,27 +91,23 @@ namespace SalesManagement_SysDev
 
         private void buttonDetail_Click(object sender, EventArgs e)
         {
-            if(buttonDetail.Text == "受注詳細")
+            if(labelOrder.Text == "受注管理")
             {
                 labelOrder.Text = "受注詳細管理";
-                buttonRegist.Enabled = false;
-                buttonRegist.BackColor = Color.Gray;
-                buttonUpdateKakutei.Enabled = false;
-                buttonUpdateKakutei.BackColor = Color.Gray;
                 buttonDetail.Text = "受注管理";
+                userControlOrderDetail1.Visible = true;
+                panelOrder.Visible = false;
                 return;
             }
-            if (buttonDetail.Text == "受注管理")
+            if (labelOrder.Text == "受注詳細管理")
             {
                 labelOrder.Text = "受注管理";
-                buttonRegist.Enabled = true;
-                buttonRegist.BackColor = Color.White;
-                buttonUpdateKakutei.Enabled = true;
-                buttonUpdateKakutei.BackColor = Color.White;
                 buttonDetail.Text = "受注詳細";
-                return;
+                panelOrder.Visible = true;
+                userControlOrderDetail1.Visible = false;
             }
-            
+
+
 
         }
 
@@ -208,6 +209,26 @@ namespace SalesManagement_SysDev
         }
 
         private void labelClCharge_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBoxSoID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void userControlOrderDetail1_Load(object sender, EventArgs e)
         {
 
         }
