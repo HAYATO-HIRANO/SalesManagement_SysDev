@@ -144,6 +144,10 @@ namespace SalesManagement_SysDev
             {
                 SoID = int.Parse(textBoxSoID.Text.Trim()),
                 SoName = textBoxSoName.Text.Trim(),
+                SoPhone=textBoxSoPhone.Text.Trim(),
+                SoFAX=textBoxSoFAX.Text.Trim(),
+                SoPostal=textBoxSoPostal.Text.Trim(),
+                SoAddress=textBoxSoAddress.Text.Trim(),
                 SoFlag = Convert.ToInt32(checkBoxMaFlag.Checked),
                 SoHidden = textBoxMaHidden.Text.Trim(),
             };
@@ -215,7 +219,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxSoID.Text.Trim()))
                 {
                     //MessageBox.Show("営業所IDは全て半角英数字入力です");
-                    messageDsp.DspMsg("M2001");
+                    messageDsp.DspMsg("M***");
                     textBoxSoID.Focus();
                     return false;
                 }
@@ -231,7 +235,7 @@ namespace SalesManagement_SysDev
                 if (!salesOfficeDataAccess.CheckSalesOfficeCDExistence(int.Parse(textBoxSoID.Text.Trim())))
                 {
                     //MessageBox.Show("入力された営業所IDは存在しません");
-                    messageDsp.DspMsg("M2013");
+                    messageDsp.DspMsg("M***");
                     textBoxSoID.Focus();
                     return false;
                 }
@@ -347,19 +351,6 @@ namespace SalesManagement_SysDev
             GetDataGridView();
         }
         
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-
-        }
-      
-
-        private void buttonList_Click_1(object sender, EventArgs e)
-        {
-           
-        }
-
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
             // 入力エリアのクリア
@@ -379,6 +370,7 @@ namespace SalesManagement_SysDev
             textBoxSoID.Text = "";
             textBoxSoName.Text = "";
             textBoxSoPhone.Text = "";
+            
             checkBoxMaFlag.Checked = false;
         }
 
