@@ -234,6 +234,8 @@ namespace SalesManagement_SysDev
             dataGridViewProduct.Refresh();
         }
 
+     
+
         private void buttonRegist_Click(object sender, EventArgs e)
         {
             // 8.3.1.1 妥当な商品データ取得
@@ -356,6 +358,42 @@ namespace SalesManagement_SysDev
                 //色が入力されていません
                 messageDsp.DspMsg("M0423");
                 textBoxColor.Focus();
+                return false;
+            }
+            //型番の適否
+            if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfChar(textBoxPrModelNumber.Text.Trim()))
+                {
+                    //型番は半角入力です
+                    messageDsp.DspMsg("M0420");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
+
+
+                if (textBoxPrModelNumber.TextLength > 20)
+                {
+                    //型番は20文字以下です
+                    messageDsp.DspMsg("M0421");
+                    textBoxPrModelNumber.Focus();
+
+                }
+
+                if (ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                {
+                    //入力された型番は存在していません
+                    messageDsp.DspMsg("M0441");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                //型番が入力されていません
+                messageDsp.DspMsg("M0422");
+                textBoxPrModelNumber.Focus();
                 return false;
             }
             //非表示フラグのチェック
@@ -642,7 +680,7 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                if (ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
                 {
                     //入力された型番は存在していません
                     messageDsp.DspMsg("M0441");
@@ -708,7 +746,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //　5.2.2.2 商品情報作成
+        //           商品情報作成
         //メソッド名：GenerateDataAtUpdate()
         //引　数   ：なし
         //戻り値   ：商品カテゴリ更新情報
@@ -850,30 +888,7 @@ namespace SalesManagement_SysDev
 
             }
             
-            //大分類IDの選択チェック
-            if (comboBoxMc.SelectedIndex == -1)
-            {
-                //大分類IDが選択されていません
-                DialogResult result = messageDsp.DspMsg("M0437");
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxMc.Focus();
-                    return false;
-                }
-            }
-            //小分類IDの選択チェック
-            if (comboBoxSc.SelectedIndex == -1)
-            {
-                //小分類IDが選択されていません
-                DialogResult result = messageDsp.DspMsg("M0419");
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxSc.Focus();
-                    return false;
-                }
-            }
+            
 
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
@@ -930,7 +945,7 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
                 {
                     //入力された型番は存在していません
                     messageDsp.DspMsg("M0441");
@@ -990,82 +1005,24 @@ namespace SalesManagement_SysDev
                 makercmb = comboBoxMaker.SelectedValue.ToString();
             }
 
-            //商品IDが入力されていて、なおかつメーカー名が選択されている状態  
-            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb == "")
+            M_Product selectCondition = new M_Product()
             {
-                M_Product selectCondition = new M_Product()
-                {
-                    PrID = int.Parse(textBoxPrID.Text.Trim()),
-                    MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
-                    PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
-                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                    PrColor = textBoxColor.Text.Trim(),
-                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
 
-                };
-                Product = ProductDataAccess.GetProductData(selectCondition);
-            }
+                //s
+                PrID = int.Parse(textBoxPrID.Text.Trim()),
+                MaID = int.Parse(makercmb.ToString()),
+                PrName = textBoxPrName.Text.Trim(),
+                Price = int.Parse(textBoxPrice.Text.Trim()),
+                PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                PrColor = textBoxColor.Text.Trim(),
+                PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                PrHidden = textBoxPrHidden.Text.Trim()
+            };
 
-            //商品IDが入力されていて、メーカー名が選択されていない状態
-            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != "")
-            {
-                M_Product selectCondition = new M_Product()
-                {
+            Product = ProductDataAccess.GetProductData(selectCondition);
 
-                    PrID = int.Parse(textBoxPrID.Text.Trim()),
-                    PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
-                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                    PrColor = textBoxColor.Text.Trim(),
-                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-
-                };
-                Product = ProductDataAccess.GetProductData(selectCondition);
-
-            }
-            //商品IDが入力されていなくて、メーカー名が選択されている状態
-            else if (makercmb == "")
-            {
-                M_Product selectCondition = new M_Product()
-                {
-                    MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
-                    PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
-                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                    PrColor = textBoxColor.Text.Trim(),
-                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text)
-                };
-
-                Product = ProductDataAccess.GetProductData(selectCondition);
-
-
-            }
-            //商品IDが入力されていなくて、メーカー名が選択されていない状態
-            else
-            {
-                M_Product selectCondition = new M_Product()
-                {
-                    PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                    ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
-                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                    PrColor = textBoxColor.Text.Trim(),
-                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text)
-                };
-
-                Product = ProductDataAccess.GetProductData(selectCondition);
-            }
-            
-
-            
         }
 
         ///////////////////////////////
