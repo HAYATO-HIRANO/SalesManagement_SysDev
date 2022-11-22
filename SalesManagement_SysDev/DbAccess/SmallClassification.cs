@@ -206,7 +206,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClassification = context.M_SmallClassifications.Where(x => x.McID == 0 && x.ScFlag == 2).ToList();
+                smallClassification = context.M_SmallClassifications.Where(x => x.ScID == 0 && x.ScFlag == 0).ToList();
                 context.Dispose();
             }
             catch (Exception ex)
@@ -218,13 +218,13 @@ namespace SalesManagement_SysDev//.DbAccess
 
 
 
-        public List<M_SmallClassification> GetScDspData(int mcID)
+        public List<M_SmallClassification> GetScDspData(int scID)
         {
             List<M_SmallClassification> smallClassification = new List<M_SmallClassification>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClassification = context.M_SmallClassifications.Where(x => x.McID == mcID && x.ScFlag == 2).ToList();
+                smallClassification = context.M_SmallClassifications.Where(x => x.ScID == scID && x.ScFlag == 0).ToList();
                 context.Dispose();
             }catch(Exception ex)
             {

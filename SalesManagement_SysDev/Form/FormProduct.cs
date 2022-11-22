@@ -131,18 +131,25 @@ namespace SalesManagement_SysDev
             // 商品データの取得
             Maker = makerDataAccess.GetMakerDspData();
             MajorCassifications = majorClassificationDataAccess.GetMcDspData();
+            SmallClassifications = smallClassification.GetParentScDspData();
             comboBoxMaker.DataSource = Maker;
             comboBoxMaker.DisplayMember = "MaName";
             comboBoxMaker.ValueMember = "MaID";
             comboBoxMc.DataSource = MajorCassifications;
             comboBoxMc.DisplayMember = "McName";
             comboBoxMc.ValueMember = "McID";
-            //
+            comboBoxMaker.DataSource = SmallClassifications;
+            comboBoxSc.DisplayMember = "ScName" ;
+            comboBoxSc.ValueMember = "ScID";
+
+
             // コンボボックスを読み取り専用
             comboBoxMaker.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMaker.SelectedIndex = -1;
             comboBoxMc.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMc.SelectedIndex = -1;
+            comboBoxSc.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSc.SelectedIndex = -1;
         }
 
         private void ClearInput()
@@ -697,7 +704,7 @@ namespace SalesManagement_SysDev
 
             ClearInput();
 
-
+            SetFormComboBox();
 
             GetDataGridView();
 
