@@ -16,6 +16,8 @@ namespace SalesManagement_SysDev
         MessageDsp messageDsp = new MessageDsp();
         //データベース社員テーブルアクセス用クラスのインスタンス化
         EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
+        //データベース営業所テーブルアクセス用クラスのインスタンス化
+        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //データベース役職テーブルアクセス用クラスのインスタンス化
         PositionDataAccess positionDataAccess = new PositionDataAccess();
         //パスワードハッシュ用クラスのインスタンス化
@@ -24,6 +26,10 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用のスタッフデータ
         private static List<M_Employee> Employee;
+        //コンボボックス用の営業所データ
+        private static List<M_SalesOffice> SalesOffice;
+        //コンボボックス用の役職データ
+        private static List<M_Position> Position;
         public FormEmployee()
         {
             InitializeComponent();
@@ -43,6 +49,67 @@ namespace SalesManagement_SysDev
             panelSetting.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
+            //デートタイムピッカの設定
+            SetFormDateTimePiker();
+            //コンボボックスの設定
+            SetFormComboBox();
+            //データグリッドビューの表示
+            SetFormDataGridView();
+
+
+        }
+        private void SetFormDateTimePiker()
+        {
+            dateTimePickerHiredate.Value = DateTime.Now;
+            dateTimePickerHiredate.Checked = false;
+        }
+        ///////////////////////////////
+        //メソッド名：SetFormComboBox()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コンボボックスのデータ設定
+        ///////////////////////////////
+        private void SetFormComboBox()
+        {
+            // 役職データの取得
+            Position = positionDataAccess.GetPositionDspData();
+            comboBoxPoID.DataSource = Position;
+            comboBoxPoID.DisplayMember = "PoName";
+            comboBoxPoID.ValueMember = "PoID";
+            // コンボボックスを読み取り専用
+            comboBoxPoID.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxPoID.SelectedIndex = -1;
+
+            // 部署データの取得
+            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
+            comboBoxSoID.DataSource = SalesOffice;
+            comboBoxSoID.DisplayMember = "SoName";
+            comboBoxSoID.ValueMember = "SoID";
+            // コンボボックスを読み取り専用
+            comboBoxSoID.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSoID.SelectedIndex = -1;
+
+        }
+        ///////////////////////////////
+        //メソッド名：SetFormDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定
+        ///////////////////////////////
+        private void SetFormDataGridView()
+        {
+            //dataGridViewのページサイズ指定
+            textBoxPageSize.Text = "10";
+            //dataGridViewのページ番号指定
+            textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewEmployee.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            dataGridViewEmployee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //ヘッダー位置の指定
+            dataGridViewEmployee.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //データグリッドビューのデータ取得
+            GetDataGridView();
         }
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
@@ -225,8 +292,22 @@ namespace SalesManagement_SysDev
             else
             {
                 //MessageBox.Show("社員名が入力されていません");
-                messageDsp.DspMsg("M3007");
+                messageDsp.DspMsg("");
                 textBoxEmName.Focus();
+                return false;
+            }
+            //営業所の選択チェック
+            if (comboBoxPoID.SelectedIndex == -1)
+            {
+                MessageBox.Show("営業所が選択されていません");
+                comboBoxPoID.Focus();
+                return false;
+            }
+            //役職の選択チェック
+            if (comboBoxSoID.SelectedIndex == -1)
+            {
+                MessageBox.Show("役職が選択されていません");
+                comboBoxSoID.Focus();
                 return false;
             }
             // 電話番号の半角数値チェック
@@ -307,6 +388,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Employee GenerateDataAtRegistration()
         {
+            DateTime? mHireDate;
+            if (dateTimePickerHiredate.Checked == false)
+                mHireDate = null;
+            else
+                mHireDate = DateTime.Parse(dateTimePickerHiredate.Text);
             // パスワードハッシュ化
             string pw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
 
@@ -314,8 +400,11 @@ namespace SalesManagement_SysDev
             {
                 EmID = int.Parse(textBoxEmID.Text.Trim()),
                 EmName = textBoxEmName.Text.Trim(),
-                EmPhone = textBoxEmPhone.Text.Trim(),
+                SoID = int.Parse(comboBoxSoID.SelectedValue.ToString()),
+                PoID = int.Parse(comboBoxPoID.SelectedValue.ToString()),
+                EmHiredate = (DateTime)mHireDate,
                 EmPassword = pw,
+                EmPhone = textBoxEmPhone.Text.Trim(),               
                 EmFlag = Convert.ToInt32(checkBoxEmFlag.Checked),
                 EmHidden = textBoxEmHidden.Text.Trim()
 
