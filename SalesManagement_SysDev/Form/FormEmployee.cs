@@ -394,5 +394,25 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void labelPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxEmPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
