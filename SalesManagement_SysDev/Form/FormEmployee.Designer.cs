@@ -88,7 +88,6 @@
             this.panelSetting.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
-            this.panelEmployee.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -221,7 +220,6 @@
             this.panelLeft.Controls.Add(this.buttonUpdate);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Controls.Add(this.buttonRegist);
-            this.panelLeft.Controls.Add(this.panelSetting);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 100);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
@@ -333,7 +331,7 @@
             this.panelSetting.Controls.Add(this.buttonSalesOffice);
             this.panelSetting.Controls.Add(this.buttonPosition);
             this.panelSetting.Controls.Add(this.buttonEmployee);
-            this.panelSetting.Location = new System.Drawing.Point(1, 0);
+            this.panelSetting.Location = new System.Drawing.Point(1, 100);
             this.panelSetting.Name = "panelSetting";
             this.panelSetting.Size = new System.Drawing.Size(250, 901);
             this.panelSetting.TabIndex = 25;
@@ -397,10 +395,11 @@
             this.panel4.Controls.Add(this.labelSoID);
             this.panel4.Controls.Add(this.labelEmName);
             this.panel4.Controls.Add(this.labelEmID);
-            this.panel4.Location = new System.Drawing.Point(56, 33);
+            this.panel4.Location = new System.Drawing.Point(304, 121);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1552, 144);
             this.panel4.TabIndex = 6;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // checkBoxEmFlag
             // 
@@ -425,7 +424,7 @@
             // 
             this.comboBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBoxPoID.FormattingEnabled = true;
-            this.comboBoxPoID.Location = new System.Drawing.Point(1048, 15);
+            this.comboBoxPoID.Location = new System.Drawing.Point(1026, 14);
             this.comboBoxPoID.Name = "comboBoxPoID";
             this.comboBoxPoID.Size = new System.Drawing.Size(196, 29);
             this.comboBoxPoID.TabIndex = 21;
@@ -451,7 +450,7 @@
             // textBoxEmPhone
             // 
             this.textBoxEmPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmPhone.Location = new System.Drawing.Point(419, 92);
+            this.textBoxEmPhone.Location = new System.Drawing.Point(1375, 16);
             this.textBoxEmPhone.Name = "textBoxEmPhone";
             this.textBoxEmPhone.Size = new System.Drawing.Size(144, 28);
             this.textBoxEmPhone.TabIndex = 17;
@@ -459,10 +458,11 @@
             // textBoxEmPassword
             // 
             this.textBoxEmPassword.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmPassword.Location = new System.Drawing.Point(143, 92);
+            this.textBoxEmPassword.Location = new System.Drawing.Point(121, 72);
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.Size = new System.Drawing.Size(144, 28);
             this.textBoxEmPassword.TabIndex = 16;
+            this.textBoxEmPassword.TextChanged += new System.EventHandler(this.textBoxEmPassword_TextChanged);
             // 
             // textBoxEmName
             // 
@@ -475,7 +475,7 @@
             // textBoxEmID
             // 
             this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmID.Location = new System.Drawing.Point(110, 14);
+            this.textBoxEmID.Location = new System.Drawing.Point(99, 14);
             this.textBoxEmID.Name = "textBoxEmID";
             this.textBoxEmID.Size = new System.Drawing.Size(144, 28);
             this.textBoxEmID.TabIndex = 14;
@@ -485,7 +485,7 @@
             this.labelPhone.AutoSize = true;
             this.labelPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPhone.Location = new System.Drawing.Point(1273, 16);
+            this.labelPhone.Location = new System.Drawing.Point(1263, 16);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(106, 24);
             this.labelPhone.TabIndex = 10;
@@ -496,11 +496,12 @@
             this.labelPassword.AutoSize = true;
             this.labelPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelPassword.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPassword.Location = new System.Drawing.Point(24, 77);
+            this.labelPassword.Location = new System.Drawing.Point(16, 72);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(103, 24);
             this.labelPassword.TabIndex = 9;
             this.labelPassword.Text = "パスワード";
+            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
             // 
             // labelEmHiredate
             // 
@@ -520,9 +521,9 @@
             this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPoID.Location = new System.Drawing.Point(962, 16);
             this.labelPoID.Name = "labelPoID";
-            this.labelPoID.Size = new System.Drawing.Size(80, 24);
+            this.labelPoID.Size = new System.Drawing.Size(58, 24);
             this.labelPoID.TabIndex = 7;
-            this.labelPoID.Text = "役職ID";
+            this.labelPoID.Text = "役職";
             // 
             // labelSoID
             // 
@@ -551,7 +552,7 @@
             this.labelEmID.AutoSize = true;
             this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmID.Location = new System.Drawing.Point(24, 16);
+            this.labelEmID.Location = new System.Drawing.Point(13, 16);
             this.labelEmID.Name = "labelEmID";
             this.labelEmID.Size = new System.Drawing.Size(80, 24);
             this.labelEmID.TabIndex = 4;
@@ -560,16 +561,17 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(53, 237);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(301, 325);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.RowTemplate.Height = 21;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 707);
             this.dataGridViewEmployee.TabIndex = 7;
+            this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
             // 
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1497, 207);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1745, 295);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 24;
@@ -580,7 +582,7 @@
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1457, 209);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1705, 297);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(29, 26);
             this.textBoxPageSize.TabIndex = 23;
@@ -591,7 +593,7 @@
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1346, 214);
+            this.labelPageSize.Location = new System.Drawing.Point(1594, 302);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 22;
@@ -601,7 +603,7 @@
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(919, 200);
+            this.buttonLastPage.Location = new System.Drawing.Point(1167, 288);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 21;
@@ -612,7 +614,7 @@
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(851, 200);
+            this.buttonNextPage.Location = new System.Drawing.Point(1099, 288);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 20;
@@ -623,7 +625,7 @@
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(771, 200);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1019, 288);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 19;
@@ -634,7 +636,7 @@
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(704, 200);
+            this.buttonFirstPage.Location = new System.Drawing.Point(952, 288);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 18;
@@ -646,7 +648,7 @@
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(109, 207);
+            this.labelPage.Location = new System.Drawing.Point(357, 295);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
             this.labelPage.TabIndex = 17;
@@ -656,7 +658,7 @@
             // textBoxPage
             // 
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(59, 200);
+            this.textBoxPage.Location = new System.Drawing.Point(307, 288);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 16;
@@ -673,17 +675,6 @@
             // panelEmployee
             // 
             this.panelEmployee.BackColor = System.Drawing.Color.Honeydew;
-            this.panelEmployee.Controls.Add(this.buttonPageSizeChange);
-            this.panelEmployee.Controls.Add(this.panel4);
-            this.panelEmployee.Controls.Add(this.textBoxPageSize);
-            this.panelEmployee.Controls.Add(this.labelPageSize);
-            this.panelEmployee.Controls.Add(this.dataGridViewEmployee);
-            this.panelEmployee.Controls.Add(this.textBoxPage);
-            this.panelEmployee.Controls.Add(this.buttonLastPage);
-            this.panelEmployee.Controls.Add(this.labelPage);
-            this.panelEmployee.Controls.Add(this.buttonNextPage);
-            this.panelEmployee.Controls.Add(this.buttonFirstPage);
-            this.panelEmployee.Controls.Add(this.buttonPreviousPage);
             this.panelEmployee.Location = new System.Drawing.Point(250, 100);
             this.panelEmployee.Name = "panelEmployee";
             this.panelEmployee.Size = new System.Drawing.Size(1670, 980);
@@ -692,7 +683,7 @@
             // userControlSalesOffice1
             // 
             this.userControlSalesOffice1.BackColor = System.Drawing.Color.Honeydew;
-            this.userControlSalesOffice1.Location = new System.Drawing.Point(250, 100);
+            this.userControlSalesOffice1.Location = new System.Drawing.Point(250, 101);
             this.userControlSalesOffice1.Name = "userControlSalesOffice1";
             this.userControlSalesOffice1.Size = new System.Drawing.Size(1670, 980);
             this.userControlSalesOffice1.TabIndex = 26;
@@ -700,7 +691,7 @@
             // userControlPosition1
             // 
             this.userControlPosition1.BackColor = System.Drawing.Color.Honeydew;
-            this.userControlPosition1.Location = new System.Drawing.Point(250, 100);
+            this.userControlPosition1.Location = new System.Drawing.Point(250, 101);
             this.userControlPosition1.Name = "userControlPosition1";
             this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
             this.userControlPosition1.TabIndex = 27;
@@ -724,6 +715,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelSetting);
             this.Controls.Add(this.userControlPosition1);
             this.Controls.Add(this.userControlSalesOffice1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -738,9 +730,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
-            this.panelEmployee.ResumeLayout(false);
-            this.panelEmployee.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

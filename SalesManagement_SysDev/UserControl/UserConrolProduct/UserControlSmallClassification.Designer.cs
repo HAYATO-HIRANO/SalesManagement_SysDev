@@ -142,6 +142,7 @@ namespace SalesManagement_SysDev
             this.buttonResist.TabIndex = 0;
             this.buttonResist.Text = "登録";
             this.buttonResist.UseVisualStyleBackColor = false;
+            this.buttonResist.Click += new System.EventHandler(this.buttonResist_Click);
             // 
             // panelInput
             // 
@@ -365,6 +366,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.panelHeader2);
             this.Name = "UserControlSmallClassification";
             this.Size = new System.Drawing.Size(1670, 980);
+            this.Load += new System.EventHandler(this.UserControlSmallClassification_Load);
             this.panelHeader2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
