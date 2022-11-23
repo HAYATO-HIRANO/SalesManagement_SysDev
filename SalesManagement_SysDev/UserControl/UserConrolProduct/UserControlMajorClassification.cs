@@ -144,7 +144,7 @@ namespace SalesManagement_SysDev
         private void RegistrationMc(M_MajorCassification regMc)
         {            
             // 登録確認メッセージ
-            DialogResult result = MessageBox.Show("大分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("大分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
             // 大分類情報の登録
@@ -237,10 +237,11 @@ namespace SalesManagement_SysDev
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewMc.DataSource = MajorCassification.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 
-            dataGridViewMc.Columns[0].Width = 100;
-            dataGridViewMc.Columns[1].Width = 100;
+            dataGridViewMc.Columns[0].Width = 180;
+            dataGridViewMc.Columns[1].Width = 360;
             dataGridViewMc.Columns[2].Width = 180;
-            dataGridViewMc.Columns[3].Width = 180;
+            dataGridViewMc.Columns[3].Width = 600;
+
             //各列の文字位置の指定
             dataGridViewMc.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewMc.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -434,7 +435,7 @@ namespace SalesManagement_SysDev
                 return false;
             }
             //非表示理由の適否
-            if (checkBoxMcFlag.Checked == true && !String.IsNullOrEmpty(textBoxMcHidden.Text.Trim()))
+            if (checkBoxMcFlag.Checked == true && String.IsNullOrEmpty(textBoxMcHidden.Text.Trim()))
             {
                 MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxMcHidden.Focus();
@@ -460,6 +461,7 @@ namespace SalesManagement_SysDev
             }
             return new M_MajorCassification
             {
+                McID = int.Parse(textBoxMcID.Text.Trim()),
                 McName = textBoxMcName.Text.Trim(),
                 McFlag = McFlag,
                 McHidden = textBoxMcHidden.Text.Trim(),
@@ -475,7 +477,7 @@ namespace SalesManagement_SysDev
         private void UpdateMc(M_MajorCassification updMc)
         {
             // 更新確認メッセージ
-            DialogResult result = MessageBox.Show("大分類データを更新してよろしいですか?", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("大分類データを更新してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
 
@@ -563,9 +565,9 @@ namespace SalesManagement_SysDev
                 }
             }
             //非表示フラグの適否
-            if (checkBoxMcFlag.Checked == true)
+            if (checkBoxMcFlag.CheckState == CheckState.Indeterminate)
             {
-                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("非表示フラグが不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxMcFlag.Focus();
                 return false;
             }
@@ -580,26 +582,33 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-
+            int Mcflag = 0;
+            if (checkBoxMcFlag.Checked == true)
+            {
+                Mcflag = 2;
+            }
+            //大分類IDが入力されている場合
             if (!String.IsNullOrEmpty(textBoxMcID.Text.Trim()))
             {
+               
                 M_MajorCassification selectCondition = new M_MajorCassification()
                 {
                     McID = int.Parse(textBoxMcID.Text.Trim()),
                     McName = textBoxMcName.Text.Trim(),
-
+                    McFlag=Mcflag,
                 };
-                MajorCassification = majorClassificationDataAccess.GetMcData(selectCondition);
+                MajorCassification = majorClassificationDataAccess.GetMcData(1,selectCondition);
             }
+            //大分類IDが入力されていない場合
             else
             {
                 M_MajorCassification selectCondition = new M_MajorCassification()
                 {
                     
                     McName = textBoxMcName.Text.Trim(),
-
+                    McFlag=Mcflag,
                 };
-                MajorCassification = majorClassificationDataAccess.GetMcData(selectCondition);
+                MajorCassification = majorClassificationDataAccess.GetMcData(2,selectCondition);
             }
                 
         }
@@ -636,6 +645,9 @@ namespace SalesManagement_SysDev
 
         private void buttonList_Click(object sender, EventArgs e)
         {
+            // 入力エリアのクリア
+            ClearInput();
+
             GetDataGridView();
         }
         ///////////////////////////////
@@ -647,6 +659,9 @@ namespace SalesManagement_SysDev
 
         private void buttonNotList_Click(object sender, EventArgs e)
         {
+            // 入力エリアのクリア
+            ClearInput();
+
             GetHiddenDataGridView();
         }
 
@@ -664,6 +679,29 @@ namespace SalesManagement_SysDev
                 textBoxMcHidden.ReadOnly = true;
 
             }
+
+        }
+        //データグリッドビュー セルクリック
+        private void dataGridViewMc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxMcID.Text = dataGridViewMc.Rows[dataGridViewMc.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxMcName.Text = dataGridViewMc.Rows[dataGridViewMc.CurrentRow.Index].Cells[1].Value.ToString();
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewMc.Rows[dataGridViewMc.CurrentRow.Index].Cells[2].Value.ToString() != 2.ToString())
+            {
+                checkBoxMcFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxMcFlag.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewMc.Rows[dataGridViewMc.CurrentRow.Index].Cells[3].Value != null)
+            {
+                textBoxMcHidden.Text = dataGridViewMc.Rows[dataGridViewMc.CurrentRow.Index].Cells[3].Value.ToString();
+            }
+
 
         }
     }

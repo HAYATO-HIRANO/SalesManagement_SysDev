@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SalesManagement_SysDev//.DbAccess
+namespace SalesManagement_SysDev
 {
     class MajorClassificationDataAccess
     {
@@ -101,6 +101,7 @@ namespace SalesManagement_SysDev//.DbAccess
             {
                 var context = new SalesManagement_DevContext();
                 var MajorCassification = context.M_MajorCassifications.Single(x => x.McID == updMajorCassification.McID);
+
                 MajorCassification.McName = updMajorCassification.McName;
                 MajorCassification.McFlag = updMajorCassification.McFlag;
                 MajorCassification.McHidden = updMajorCassification.McHidden;
@@ -143,14 +144,24 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   ：表示大分類用データ
         //機　能   ：表示大分類データの取得
         ///////////////////////////////
-        public List<M_MajorCassification> GetMcData(M_MajorCassification selectCondition)
+        public List<M_MajorCassification> GetMcData(int flg,M_MajorCassification selectCondition)
         {
             List<M_MajorCassification> majorCassifications = new List<M_MajorCassification>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                majorCassifications = context.M_MajorCassifications.Where(x => x.McID == selectCondition.McID&&x.McName==selectCondition.McName&&
-                x.McFlag == 0).ToList();
+                if (flg == 1)
+                {
+                    majorCassifications = context.M_MajorCassifications.Where
+                        (x => x.McID == selectCondition.McID && x.McName.Contains(selectCondition.McName) && x.McFlag == selectCondition.McFlag).ToList();
+
+                }
+                else if(flg==2)
+                {
+                    majorCassifications = context.M_MajorCassifications.Where
+                        (x => x.McName.Contains(selectCondition.McName) &&x.McFlag ==selectCondition.McFlag).ToList();
+
+                }
                 context.Dispose();
             }
             catch (Exception ex)
