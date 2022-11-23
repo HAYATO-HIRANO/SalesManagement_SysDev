@@ -35,32 +35,6 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：SelectMcExistenceCheck()
-        //引　数   ：大分類IDと大分類名
-        //戻り値   ：True or False
-        //機　能   ：一致する大分類IDの有無を確認
-        //          ：一致データありの場合True
-        //          ：一致データなしの場合False
-        ///////////////////////////////
-        public bool SelectMcExistenceCheck(int mcID,string mcName)
-        {
-            bool flg = false;
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                flg = context.M_MajorCassifications.Any(x => x.McID == mcID && x.McName.Contains(mcName));
-                context.Dispose();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            return flg;
-        }
-
-
-        ///////////////////////////////
         //メソッド名：AddMcData()
         //引　数   ：大分類データ
         //戻り値   ：True or False
@@ -116,6 +90,23 @@ namespace SalesManagement_SysDev
                 return false;
             }
         }
+        /////////////////////////////////
+        ////メソッド名：CheckCascadeSc()
+        ////引　数   ：大分類ID
+        ////戻り値   ：True or False
+        ////機　能   ：大分類IDが小分類マスタでの利用可否
+        ////          ：利用されているの場合True
+        ////          ：利用されていない場合False
+        /////////////////////////////////
+        public bool CheckCascadeSc(int mcID)
+        {
+            var context = new SalesManagement_DevContext();
+            //大分類IDが小分類マスタで利用されているか
+            bool flg = context.M_SmallClassifications.Any(x => x.McID == mcID&&x.ScFlag==0);
+
+            return flg;
+        }
+
         ///////////////////////////////
         //メソッド名：GetMcData()
         //引　数   ：なし
@@ -129,7 +120,7 @@ namespace SalesManagement_SysDev
             try
             {
                 var context = new SalesManagement_DevContext();
-                majorCassifications = context.M_MajorCassifications.ToList();
+                majorCassifications = context.M_MajorCassifications.Where(x=>x.McFlag==0).ToList();
                 context.Dispose();
             }
             catch (Exception ex)

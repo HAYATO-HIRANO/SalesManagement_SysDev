@@ -434,12 +434,23 @@ namespace SalesManagement_SysDev
                 checkBoxMcFlag.Focus();
                 return false;
             }
-            //非表示理由の適否
-            if (checkBoxMcFlag.Checked == true && String.IsNullOrEmpty(textBoxMcHidden.Text.Trim()))
+            else if (checkBoxMcFlag.Checked == true)
             {
-                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxMcHidden.Focus();
-                return false;
+                //非表示理由の適否
+                if (String.IsNullOrEmpty(textBoxMcHidden.Text.Trim()))
+                {
+                    MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxMcHidden.Focus();
+                    return false;
+                }
+                //大分類ID参照チェック
+                if (majorClassificationDataAccess.CheckCascadeSc(int.Parse(textBoxMcID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された大分類IDは小分類マスタで利用されているため非表示にできません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxMcID.Focus();
+                    return false;
+                }
+
             }
 
 
