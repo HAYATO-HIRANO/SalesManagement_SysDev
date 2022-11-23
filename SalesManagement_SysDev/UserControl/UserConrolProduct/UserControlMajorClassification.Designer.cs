@@ -339,6 +339,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewMc.RowTemplate.Height = 21;
             this.dataGridViewMc.Size = new System.Drawing.Size(1378, 503);
             this.dataGridViewMc.TabIndex = 34;
+            this.dataGridViewMc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMc_CellClick);
             // 
             // UserControlMajorClassification
             // 
