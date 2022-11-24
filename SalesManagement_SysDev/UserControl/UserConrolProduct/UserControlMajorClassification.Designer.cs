@@ -52,10 +52,10 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewMc = new System.Windows.Forms.DataGridView();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMc)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader2
@@ -84,6 +84,7 @@ namespace SalesManagement_SysDev
             this.buttonNotList.TabIndex = 4;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
+            this.buttonNotList.Click += new System.EventHandler(this.buttonNotList_Click);
             // 
             // buttonList
             // 
@@ -98,6 +99,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -112,6 +114,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonUpdate
             // 
@@ -126,6 +129,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.TabIndex = 1;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonResist
             // 
@@ -140,6 +144,7 @@ namespace SalesManagement_SysDev
             this.buttonResist.TabIndex = 0;
             this.buttonResist.Text = "登録";
             this.buttonResist.UseVisualStyleBackColor = false;
+            this.buttonResist.Click += new System.EventHandler(this.buttonResist_Click);
             // 
             // panelInput
             // 
@@ -158,13 +163,15 @@ namespace SalesManagement_SysDev
             // 
             // buttonClear
             // 
+            this.buttonClear.BackColor = System.Drawing.Color.White;
             this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonClear.Location = new System.Drawing.Point(1273, 159);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(102, 30);
             this.buttonClear.TabIndex = 33;
             this.buttonClear.Text = "入力クリア";
-            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxMcHidden
             // 
@@ -185,6 +192,7 @@ namespace SalesManagement_SysDev
             this.checkBoxMcFlag.TabIndex = 18;
             this.checkBoxMcFlag.Text = "非表示フラグ";
             this.checkBoxMcFlag.UseVisualStyleBackColor = true;
+            this.checkBoxMcFlag.CheckedChanged += new System.EventHandler(this.checkBoxMcFlag_CheckedChanged);
             // 
             // textBoxMcName
             // 
@@ -226,13 +234,15 @@ namespace SalesManagement_SysDev
             // 
             // buttonPageSizeChange
             // 
+            this.buttonPageSizeChange.BackColor = System.Drawing.Color.White;
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonPageSizeChange.Location = new System.Drawing.Point(1378, 368);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 43;
             this.buttonPageSizeChange.Text = "行数変更";
-            this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.UseVisualStyleBackColor = false;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -255,43 +265,51 @@ namespace SalesManagement_SysDev
             // 
             // buttonLastPage
             // 
+            this.buttonLastPage.BackColor = System.Drawing.Color.White;
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonLastPage.Location = new System.Drawing.Point(884, 364);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 40;
             this.buttonLastPage.Text = "▶l";
-            this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.UseVisualStyleBackColor = false;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
+            this.buttonNextPage.BackColor = System.Drawing.Color.White;
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonNextPage.Location = new System.Drawing.Point(816, 364);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 39;
             this.buttonNextPage.Text = "▶";
-            this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.UseVisualStyleBackColor = false;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
+            this.buttonPreviousPage.BackColor = System.Drawing.Color.White;
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonPreviousPage.Location = new System.Drawing.Point(736, 364);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 38;
             this.buttonPreviousPage.Text = "◀";
-            this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.UseVisualStyleBackColor = false;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // buttonFirstPage
             // 
+            this.buttonFirstPage.BackColor = System.Drawing.Color.White;
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonFirstPage.Location = new System.Drawing.Point(669, 364);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 37;
             this.buttonFirstPage.Text = "l◀";
-            this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.UseVisualStyleBackColor = false;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
@@ -313,14 +331,15 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // dataGridView1
+            // dataGridViewMc
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(103, 401);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1378, 503);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridViewMc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMc.Location = new System.Drawing.Point(103, 401);
+            this.dataGridViewMc.Name = "dataGridViewMc";
+            this.dataGridViewMc.RowTemplate.Height = 21;
+            this.dataGridViewMc.Size = new System.Drawing.Size(1378, 503);
+            this.dataGridViewMc.TabIndex = 34;
+            this.dataGridViewMc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMc_CellClick);
             // 
             // UserControlMajorClassification
             // 
@@ -336,15 +355,16 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonFirstPage);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewMc);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.panelHeader2);
             this.Name = "UserControlMajorClassification";
             this.Size = new System.Drawing.Size(1670, 980);
+            this.Load += new System.EventHandler(this.UserControlMajorClassification_Load);
             this.panelHeader2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,6 +395,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewMc;
     }
 }

@@ -63,7 +63,7 @@ namespace SalesManagement_SysDev
         [DisplayName("住所")]
         public string ClAddress { get; set; }
 
-        [DisplayName("顧客管理フラグ")]
+        [DisplayName("非表示フラグ")]
         public int ClFlag { get; set; }
 
         [DisplayName("非表示理由")]

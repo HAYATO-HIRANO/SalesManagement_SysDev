@@ -17,7 +17,7 @@ namespace SalesManagement_SysDev//.DbAccess
         //          ：一致データありの場合True
         //          ：一致データなしの場合False
         ///////////////////////////////
-        public bool CheckPrIDExistence(int prID)
+        public bool CheckPrIDExistence(int prID )
         {
             bool flg = false;
             try
@@ -32,6 +32,25 @@ namespace SalesManagement_SysDev//.DbAccess
             }
             return flg;
         }
+
+        public bool CheckPrModelNumberExistence( string prMB)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                flg = context.M_Products.Any(x => x.PrModelNumber == prMB); 
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+    
+
 
 
         ///////////////////////////////
@@ -102,15 +121,33 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   ：条件一致商品データ
         //機　能   ：条件一致商品データの取得
         ///////////////////////////////
+        //public List<M_Product> GetProductData(M_Product selectCondition)
+        //{
+        //    List<M_Product> product = new List<M_Product>();
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
+        //        product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&&x.MaID==selectCondition.MaID&&
+                                                   //x.PrName.Contains(selectCondition.PrName)&&x.PrModelNumber.Contains(selectCondition.PrModelNumber)&&x.PrColor.Contains(selectCondition.PrColor)&&
+                                                   //x.ScID==selectCondition.ScID&&x.PrColor.Contains(selectCondition.PrColor)).ToList();
+        //        context.Dispose();
+        //    }catch(Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        //    }
+        //    return product;
+        //}
         public List<M_Product> GetProductData(M_Product selectCondition)
         {
             List<M_Product> product = new List<M_Product>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&&x.MaID==selectCondition.MaID).ToList();
+                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID && x.MaID == selectCondition.MaID).ToList();
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
