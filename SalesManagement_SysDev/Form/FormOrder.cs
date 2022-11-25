@@ -263,7 +263,9 @@ namespace SalesManagement_SysDev
             
             return new T_Order
             {
-                EmID=int.Parse(textBoxEmID.Text.Trim()),
+                
+                SoID= int.Parse(comboBoxSoID.SelectedValue.ToString()),
+                EmID =int.Parse(textBoxEmID.Text.Trim()),
                 ClID= int.Parse(textBoxClID.Text.Trim()),
                 ClCharge=textBoxClCharge.Text.Trim(),
                 OrDate=DateTimePickerOrDate.Value,
@@ -309,6 +311,26 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetFormDataGridView()
         {
+            //dataGridViewのページサイズ指定
+            textBoxPageSize.Text = "20";
+            //dataGridViewのページ番号指定
+            textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewOrder.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewOrder.AllowUserToResizeRows = false;
+            dataGridViewOrder.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewOrder.AllowUserToAddRows = false;
+            //行内をクリックすることで行を選択
+            dataGridViewOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //奇数行の色を変更
+            dataGridViewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
+            //ヘッダー位置の指定
+            dataGridViewOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            GetDataGridView();
 
         }
         ///////////////////////////////
@@ -319,6 +341,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GetDataGridView()
         {
+            // 受注データの取得
+            Order = orderDataAccess.GetOrderData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
 
         }
         ///////////////////////////////
@@ -329,6 +356,10 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GetHiddenDataGridView()
         {
+            Order = orderDataAccess.GetOrderHiddenData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
 
         }
         ///////////////////////////////
@@ -339,6 +370,44 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 1;
+            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            //各列幅の指定 //1500
+            dataGridViewOrder.Columns[0].Width = 100;
+            dataGridViewOrder.Columns[1].Width = 100;
+            dataGridViewOrder.Columns[2].Width = 100;
+            dataGridViewOrder.Columns[3].Width = 100;
+            dataGridViewOrder.Columns[4].Width = 100;
+            dataGridViewOrder.Columns[5].Width = 100;
+            dataGridViewOrder.Columns[6].Width = 100;
+            dataGridViewOrder.Columns[7].Width = 100;
+            dataGridViewOrder.Columns[8].Width = 100;
+            dataGridViewOrder.Columns[9].Width = 100;
+            dataGridViewOrder.Columns[10].Width = 100;
+            dataGridViewOrder.Columns[11].Width = 100;
+
+            //各列の文字位置の指定
+            dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOrder.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOrder.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOrder.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOrder.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewOrder.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //dataGridViewの総ページ数
+            labelPage.Text = "/" + ((int)Math.Ceiling(Order.Count / (double)pageSize)) + "ページ";
+
+
+
+
+            dataGridViewOrder.Refresh();
 
         }
 
@@ -403,24 +472,85 @@ namespace SalesManagement_SysDev
 
 
         }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
 
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
+            SetDataGridView();
 
         }
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
 
         private void buttonLastPage_Click(object sender, EventArgs e)
         {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Order.Count / (double)pageSize) - 1;
+            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
 
         }
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
 
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Order.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Order.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
 
         }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
 
         private void buttonPreviousPage_Click(object sender, EventArgs e)
         {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
 
         }
 
@@ -460,6 +590,24 @@ namespace SalesManagement_SysDev
                 textBoxOrHidden.ReadOnly = true;
 
             }
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewOrder.DataSource = Order.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
 
         }
     }

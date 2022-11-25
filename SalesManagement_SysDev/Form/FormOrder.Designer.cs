@@ -641,6 +641,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 40;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
