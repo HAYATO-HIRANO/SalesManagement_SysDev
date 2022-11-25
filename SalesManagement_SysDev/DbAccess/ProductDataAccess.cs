@@ -127,7 +127,9 @@ namespace SalesManagement_SysDev//.DbAccess
         //    try
         //    {
         //        var context = new SalesManagement_DevContext();
-        //        product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&&x.MaID==selectCondition.MaID).ToList();
+        //        product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&&x.MaID==selectCondition.MaID&&
+                                                   //x.PrName.Contains(selectCondition.PrName)&&x.PrModelNumber.Contains(selectCondition.PrModelNumber)&&x.PrColor.Contains(selectCondition.PrColor)&&
+                                                   //x.ScID==selectCondition.ScID&&x.PrColor.Contains(selectCondition.PrColor)).ToList();
         //        context.Dispose();
         //    }catch(Exception ex)
         //    {
@@ -142,9 +144,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID && x.MaID == selectCondition.MaID&&
-                                                   x.PrName.Contains(selectCondition.PrName)&& x.PrID==selectCondition.PrID&&
-                                                   x.PrModelNumber.Contains(selectCondition.PrModelNumber)&&x.PrColor.Contains(selectCondition.PrColor)).ToList();
+                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID && x.MaID == selectCondition.MaID).ToList();
                 context.Dispose();
             }
             catch (Exception ex)

@@ -125,7 +125,11 @@ namespace SalesManagement_SysDev
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
+            // 入力エリアのクリア
             ClearInput();
+
+            // データグリッドビューの表示
+            SetFormDataGridView();
         }
 
         private void panel_Paint(object sender, PaintEventArgs e)
@@ -160,6 +164,7 @@ namespace SalesManagement_SysDev
 
         private void ClearInput()
         {
+            textBoxPrID.Text = "";
             comboBoxMaker.SelectedIndex = -1;
             textBoxPrName.Text = "";
             textBoxPrice.Text = "";
@@ -998,11 +1003,17 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-            // メーカー名が未選択の場合
+            // コンボボックスが未選択の場合
             string makercmb = "";
+            string sccmb = "";
+
             if (comboBoxMaker.SelectedIndex != -1)
             {
                 makercmb = comboBoxMaker.SelectedValue.ToString();
+            }
+            if (comboBoxSc.SelectedIndex != -1)
+            {
+                sccmb = comboBoxSc.SelectedIndex.ToString();
             }
 
             M_Product selectCondition = new M_Product()
@@ -1014,7 +1025,8 @@ namespace SalesManagement_SysDev
                 PrName = textBoxPrName.Text.Trim(),
                 Price = int.Parse(textBoxPrice.Text.Trim()),
                 PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
+                PrJCode=null,
+                ScID = int.Parse(sccmb.ToString()), //int.Parse(comboBoxSc.SelectedValue.ToString()),
                 PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                 PrColor = textBoxColor.Text.Trim(),
                 PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
