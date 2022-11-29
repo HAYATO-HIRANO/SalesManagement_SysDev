@@ -480,6 +480,8 @@ namespace SalesManagement_SysDev
             // 
             this.comboBoxMaker.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBoxMaker.FormattingEnabled = true;
+            this.comboBoxMaker.Items.AddRange(new object[] {
+            "Aメーカ"});
             this.comboBoxMaker.Location = new System.Drawing.Point(333, 21);
             this.comboBoxMaker.Name = "comboBoxMaker";
             this.comboBoxMaker.Size = new System.Drawing.Size(196, 41);

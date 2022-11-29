@@ -206,7 +206,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClassification = context.M_SmallClassifications.Where(x => x.ScID == 0 && x.ScFlag == 2).ToList();
+                smallClassification = context.M_SmallClassifications.Where(x =>x.McID==0&&x.ScFlag == 0).ToList();
                 context.Dispose();
             }
             catch (Exception ex)
