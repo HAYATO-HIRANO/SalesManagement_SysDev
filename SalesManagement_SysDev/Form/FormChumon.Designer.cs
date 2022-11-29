@@ -40,16 +40,20 @@ namespace SalesManagement_SysDev
             this.labelChumon = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonKakutei = new System.Windows.Forms.Button();
             this.buttonChumonDetail = new System.Windows.Forms.Button();
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.buttonKakutei = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxHidden = new System.Windows.Forms.CheckBox();
+            this.textBoxChHidden = new System.Windows.Forms.TextBox();
+            this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
+            this.labelChDate = new System.Windows.Forms.Label();
+            this.DateTimePickerChDate = new System.Windows.Forms.DateTimePicker();
+            this.textBoxOrID = new System.Windows.Forms.TextBox();
+            this.labelOrID = new System.Windows.Forms.Label();
             this.labelClName = new System.Windows.Forms.Label();
             this.textBoxClID = new System.Windows.Forms.TextBox();
             this.labelClID = new System.Windows.Forms.Label();
@@ -59,17 +63,26 @@ namespace SalesManagement_SysDev
             this.labelSoID = new System.Windows.Forms.Label();
             this.textBoxChID = new System.Windows.Forms.TextBox();
             this.labelChID = new System.Windows.Forms.Label();
-            this.textBoxOrID = new System.Windows.Forms.TextBox();
-            this.labelOrID = new System.Windows.Forms.Label();
-            this.labelChDate = new System.Windows.Forms.Label();
-            this.DateTimePickerChDate = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
-            this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
-            this.textBoxOrHidden = new System.Windows.Forms.TextBox();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.panelChumon = new System.Windows.Forms.Panel();
+            this.buttonPageSizeChange = new System.Windows.Forms.Button();
+            this.textBoxPageSize = new System.Windows.Forms.TextBox();
+            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
+            this.labelPageSize = new System.Windows.Forms.Label();
+            this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonLastPage = new System.Windows.Forms.Button();
+            this.labelPage = new System.Windows.Forms.Label();
+            this.buttonNextPage = new System.Windows.Forms.Button();
+            this.buttonFirstPage = new System.Windows.Forms.Button();
+            this.buttonPreviousPage = new System.Windows.Forms.Button();
+            this.userControlChumonDetail1 = new SalesManagement_SysDev.UserControlChumonDetail();
+            this.buttonHidden = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelChumon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -184,11 +197,10 @@ namespace SalesManagement_SysDev
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Honeydew;
+            this.panel2.Controls.Add(this.buttonHidden);
             this.panel2.Controls.Add(this.buttonKakutei);
-            this.panel2.Controls.Add(this.buttonChumonDetail);
             this.panel2.Controls.Add(this.buttonHiddenList);
             this.panel2.Controls.Add(this.buttonList);
-            this.panel2.Controls.Add(this.buttonLogout);
             this.panel2.Controls.Add(this.buttonSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -197,17 +209,32 @@ namespace SalesManagement_SysDev
             this.panel2.Size = new System.Drawing.Size(250, 980);
             this.panel2.TabIndex = 28;
             // 
+            // buttonKakutei
+            // 
+            this.buttonKakutei.BackColor = System.Drawing.Color.White;
+            this.buttonKakutei.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonKakutei.FlatAppearance.BorderSize = 4;
+            this.buttonKakutei.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKakutei.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonKakutei.Location = new System.Drawing.Point(25, 120);
+            this.buttonKakutei.Name = "buttonKakutei";
+            this.buttonKakutei.Size = new System.Drawing.Size(200, 80);
+            this.buttonKakutei.TabIndex = 43;
+            this.buttonKakutei.Text = "確定";
+            this.buttonKakutei.UseVisualStyleBackColor = false;
+            // 
             // buttonChumonDetail
             // 
             this.buttonChumonDetail.BackColor = System.Drawing.Color.LightGreen;
             this.buttonChumonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChumonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonChumonDetail.Location = new System.Drawing.Point(0, 801);
+            this.buttonChumonDetail.Location = new System.Drawing.Point(0, 901);
             this.buttonChumonDetail.Name = "buttonChumonDetail";
             this.buttonChumonDetail.Size = new System.Drawing.Size(250, 100);
             this.buttonChumonDetail.TabIndex = 41;
             this.buttonChumonDetail.Text = "注文詳細";
             this.buttonChumonDetail.UseVisualStyleBackColor = false;
+            this.buttonChumonDetail.Click += new System.EventHandler(this.buttonChumonDetail_Click);
             // 
             // buttonHiddenList
             // 
@@ -216,7 +243,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.FlatAppearance.BorderSize = 4;
             this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(25, 330);
+            this.buttonHiddenList.Location = new System.Drawing.Point(25, 435);
             this.buttonHiddenList.Name = "buttonHiddenList";
             this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
             this.buttonHiddenList.TabIndex = 39;
@@ -230,7 +257,7 @@ namespace SalesManagement_SysDev
             this.buttonList.FlatAppearance.BorderSize = 4;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(25, 225);
+            this.buttonList.Location = new System.Drawing.Point(25, 330);
             this.buttonList.Name = "buttonList";
             this.buttonList.Size = new System.Drawing.Size(200, 80);
             this.buttonList.TabIndex = 38;
@@ -243,7 +270,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(250, 80);
             this.buttonLogout.TabIndex = 5;
@@ -267,8 +294,9 @@ namespace SalesManagement_SysDev
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panelInput.Controls.Add(this.checkBox1Hidden);
-            this.panelInput.Controls.Add(this.textBoxOrHidden);
+            this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.checkBoxHidden);
+            this.panelInput.Controls.Add(this.textBoxChHidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.labelChDate);
             this.panelInput.Controls.Add(this.DateTimePickerChDate);
@@ -284,49 +312,80 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxChID);
             this.panelInput.Controls.Add(this.labelChID);
             this.panelInput.Controls.Add(this.buttonClear);
-            this.panelInput.Location = new System.Drawing.Point(280, 31);
+            this.panelInput.Location = new System.Drawing.Point(306, 48);
             this.panelInput.Name = "panelInput";
-            this.panelInput.Size = new System.Drawing.Size(1616, 169);
+            this.panelInput.Size = new System.Drawing.Size(1552, 169);
             this.panelInput.TabIndex = 29;
             // 
-            // buttonClear
+            // checkBoxHidden
             // 
-            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClear.Location = new System.Drawing.Point(1511, 136);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear.TabIndex = 28;
-            this.buttonClear.Text = "入力クリア";
-            this.buttonClear.UseVisualStyleBackColor = true;
+            this.checkBoxHidden.AutoSize = true;
+            this.checkBoxHidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxHidden.Location = new System.Drawing.Point(382, 69);
+            this.checkBoxHidden.Name = "checkBoxHidden";
+            this.checkBoxHidden.Size = new System.Drawing.Size(149, 28);
+            this.checkBoxHidden.TabIndex = 68;
+            this.checkBoxHidden.Text = "非表示理由";
+            this.checkBoxHidden.UseVisualStyleBackColor = true;
             // 
-            // timer
+            // textBoxChHidden
             // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.textBoxChHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxChHidden.Location = new System.Drawing.Point(533, 68);
+            this.textBoxChHidden.Multiline = true;
+            this.textBoxChHidden.Name = "textBoxChHidden";
+            this.textBoxChHidden.Size = new System.Drawing.Size(715, 84);
+            this.textBoxChHidden.TabIndex = 67;
             // 
-            // buttonKakutei
+            // checkBoxStateFlag
             // 
-            this.buttonKakutei.BackColor = System.Drawing.Color.White;
-            this.buttonKakutei.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonKakutei.FlatAppearance.BorderSize = 4;
-            this.buttonKakutei.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKakutei.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonKakutei.Location = new System.Drawing.Point(25, 120);
-            this.buttonKakutei.Name = "buttonKakutei";
-            this.buttonKakutei.Size = new System.Drawing.Size(200, 80);
-            this.buttonKakutei.TabIndex = 43;
-            this.buttonKakutei.Text = "確定";
-            this.buttonKakutei.UseVisualStyleBackColor = false;
+            this.checkBoxStateFlag.AutoSize = true;
+            this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 115);
+            this.checkBoxStateFlag.Name = "checkBoxStateFlag";
+            this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
+            this.checkBoxStateFlag.TabIndex = 64;
+            this.checkBoxStateFlag.Text = "注文確定";
+            this.checkBoxStateFlag.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // labelChDate
             // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panelInput);
-            this.panel1.Location = new System.Drawing.Point(0, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 980);
-            this.panel1.TabIndex = 30;
+            this.labelChDate.AutoSize = true;
+            this.labelChDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelChDate.Location = new System.Drawing.Point(13, 69);
+            this.labelChDate.Name = "labelChDate";
+            this.labelChDate.Size = new System.Drawing.Size(82, 24);
+            this.labelChDate.TabIndex = 63;
+            this.labelChDate.Text = "注文日";
+            // 
+            // DateTimePickerChDate
+            // 
+            this.DateTimePickerChDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.DateTimePickerChDate.Location = new System.Drawing.Point(101, 68);
+            this.DateTimePickerChDate.Name = "DateTimePickerChDate";
+            this.DateTimePickerChDate.Size = new System.Drawing.Size(220, 30);
+            this.DateTimePickerChDate.TabIndex = 62;
+            // 
+            // textBoxOrID
+            // 
+            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrID.Location = new System.Drawing.Point(316, 16);
+            this.textBoxOrID.Name = "textBoxOrID";
+            this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxOrID.TabIndex = 61;
+            // 
+            // labelOrID
+            // 
+            this.labelOrID.AutoSize = true;
+            this.labelOrID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelOrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOrID.Location = new System.Drawing.Point(230, 18);
+            this.labelOrID.Name = "labelOrID";
+            this.labelOrID.Size = new System.Drawing.Size(80, 24);
+            this.labelOrID.TabIndex = 60;
+            this.labelOrID.Text = "受注ID";
             // 
             // labelClName
             // 
@@ -414,75 +473,160 @@ namespace SalesManagement_SysDev
             this.labelChID.TabIndex = 51;
             this.labelChID.Text = "注文ID";
             // 
-            // textBoxOrID
+            // buttonClear
             // 
-            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrID.Location = new System.Drawing.Point(316, 16);
-            this.textBoxOrID.Name = "textBoxOrID";
-            this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxOrID.TabIndex = 61;
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(1447, 136);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 28;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // labelOrID
+            // timer
             // 
-            this.labelOrID.AutoSize = true;
-            this.labelOrID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrID.Location = new System.Drawing.Point(230, 18);
-            this.labelOrID.Name = "labelOrID";
-            this.labelOrID.Size = new System.Drawing.Size(80, 24);
-            this.labelOrID.TabIndex = 60;
-            this.labelOrID.Text = "受注ID";
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // labelChDate
+            // panelChumon
             // 
-            this.labelChDate.AutoSize = true;
-            this.labelChDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelChDate.Location = new System.Drawing.Point(13, 69);
-            this.labelChDate.Name = "labelChDate";
-            this.labelChDate.Size = new System.Drawing.Size(82, 24);
-            this.labelChDate.TabIndex = 63;
-            this.labelChDate.Text = "受注日";
+            this.panelChumon.Controls.Add(this.buttonPageSizeChange);
+            this.panelChumon.Controls.Add(this.textBoxPageSize);
+            this.panelChumon.Controls.Add(this.dataGridViewOrder);
+            this.panelChumon.Controls.Add(this.labelPageSize);
+            this.panelChumon.Controls.Add(this.textBoxPage);
+            this.panelChumon.Controls.Add(this.buttonLastPage);
+            this.panelChumon.Controls.Add(this.labelPage);
+            this.panelChumon.Controls.Add(this.buttonNextPage);
+            this.panelChumon.Controls.Add(this.buttonFirstPage);
+            this.panelChumon.Controls.Add(this.buttonPreviousPage);
+            this.panelChumon.Controls.Add(this.panel2);
+            this.panelChumon.Controls.Add(this.panelInput);
+            this.panelChumon.Location = new System.Drawing.Point(0, 100);
+            this.panelChumon.Name = "panelChumon";
+            this.panelChumon.Size = new System.Drawing.Size(1920, 980);
+            this.panelChumon.TabIndex = 30;
             // 
-            // DateTimePickerChDate
+            // buttonPageSizeChange
             // 
-            this.DateTimePickerChDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateTimePickerChDate.Location = new System.Drawing.Point(101, 68);
-            this.DateTimePickerChDate.Name = "DateTimePickerChDate";
-            this.DateTimePickerChDate.Size = new System.Drawing.Size(220, 30);
-            this.DateTimePickerChDate.TabIndex = 62;
+            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1746, 286);
+            this.buttonPageSizeChange.Name = "buttonPageSizeChange";
+            this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
+            this.buttonPageSizeChange.TabIndex = 56;
+            this.buttonPageSizeChange.Text = "行数変更";
+            this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             // 
-            // checkBoxStateFlag
+            // textBoxPageSize
             // 
-            this.checkBoxStateFlag.AutoSize = true;
-            this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 115);
-            this.checkBoxStateFlag.Name = "checkBoxStateFlag";
-            this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
-            this.checkBoxStateFlag.TabIndex = 64;
-            this.checkBoxStateFlag.Text = "受注確定";
-            this.checkBoxStateFlag.UseVisualStyleBackColor = false;
+            this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPageSize.Location = new System.Drawing.Point(1707, 288);
+            this.textBoxPageSize.Name = "textBoxPageSize";
+            this.textBoxPageSize.Size = new System.Drawing.Size(33, 26);
+            this.textBoxPageSize.TabIndex = 55;
+            this.textBoxPageSize.Text = "20";
             // 
-            // checkBox1Hidden
+            // dataGridViewOrder
             // 
-            this.checkBox1Hidden.AutoSize = true;
-            this.checkBox1Hidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBox1Hidden.Location = new System.Drawing.Point(382, 69);
-            this.checkBox1Hidden.Name = "checkBox1Hidden";
-            this.checkBox1Hidden.Size = new System.Drawing.Size(149, 28);
-            this.checkBox1Hidden.TabIndex = 68;
-            this.checkBox1Hidden.Text = "非表示理由";
-            this.checkBox1Hidden.UseVisualStyleBackColor = true;
+            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrder.Location = new System.Drawing.Point(306, 316);
+            this.dataGridViewOrder.Name = "dataGridViewOrder";
+            this.dataGridViewOrder.RowTemplate.Height = 21;
+            this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
+            this.dataGridViewOrder.TabIndex = 47;
             // 
-            // textBoxOrHidden
+            // labelPageSize
             // 
-            this.textBoxOrHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrHidden.Location = new System.Drawing.Point(533, 68);
-            this.textBoxOrHidden.Multiline = true;
-            this.textBoxOrHidden.Name = "textBoxOrHidden";
-            this.textBoxOrHidden.Size = new System.Drawing.Size(715, 84);
-            this.textBoxOrHidden.TabIndex = 67;
+            this.labelPageSize.AutoSize = true;
+            this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPageSize.Location = new System.Drawing.Point(1596, 293);
+            this.labelPageSize.Name = "labelPageSize";
+            this.labelPageSize.Size = new System.Drawing.Size(105, 19);
+            this.labelPageSize.TabIndex = 54;
+            this.labelPageSize.Text = "1ページ行数";
+            // 
+            // textBoxPage
+            // 
+            this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPage.Location = new System.Drawing.Point(308, 283);
+            this.textBoxPage.Name = "textBoxPage";
+            this.textBoxPage.Size = new System.Drawing.Size(45, 31);
+            this.textBoxPage.TabIndex = 48;
+            this.textBoxPage.Text = "1";
+            this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // buttonLastPage
+            // 
+            this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLastPage.Location = new System.Drawing.Point(1168, 283);
+            this.buttonLastPage.Name = "buttonLastPage";
+            this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonLastPage.TabIndex = 53;
+            this.buttonLastPage.Text = "▶l";
+            this.buttonLastPage.UseVisualStyleBackColor = true;
+            // 
+            // labelPage
+            // 
+            this.labelPage.AutoSize = true;
+            this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPage.Location = new System.Drawing.Point(358, 290);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(70, 24);
+            this.labelPage.TabIndex = 49;
+            this.labelPage.Text = "ページ";
+            // 
+            // buttonNextPage
+            // 
+            this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNextPage.Location = new System.Drawing.Point(1100, 283);
+            this.buttonNextPage.Name = "buttonNextPage";
+            this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonNextPage.TabIndex = 52;
+            this.buttonNextPage.Text = "▶";
+            this.buttonNextPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonFirstPage
+            // 
+            this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFirstPage.Location = new System.Drawing.Point(953, 283);
+            this.buttonFirstPage.Name = "buttonFirstPage";
+            this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonFirstPage.TabIndex = 50;
+            this.buttonFirstPage.Text = "l◀";
+            this.buttonFirstPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonPreviousPage
+            // 
+            this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1020, 283);
+            this.buttonPreviousPage.Name = "buttonPreviousPage";
+            this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
+            this.buttonPreviousPage.TabIndex = 51;
+            this.buttonPreviousPage.Text = "◀";
+            this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            // 
+            // userControlChumonDetail1
+            // 
+            this.userControlChumonDetail1.BackColor = System.Drawing.Color.Honeydew;
+            this.userControlChumonDetail1.Location = new System.Drawing.Point(0, 100);
+            this.userControlChumonDetail1.Name = "userControlChumonDetail1";
+            this.userControlChumonDetail1.Size = new System.Drawing.Size(1920, 979);
+            this.userControlChumonDetail1.TabIndex = 42;
+            // 
+            // buttonHidden
+            // 
+            this.buttonHidden.BackColor = System.Drawing.Color.White;
+            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHidden.FlatAppearance.BorderSize = 4;
+            this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
+            this.buttonHidden.Name = "buttonHidden";
+            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
+            this.buttonHidden.TabIndex = 44;
+            this.buttonHidden.Text = "非表示";
+            this.buttonHidden.UseVisualStyleBackColor = false;
             // 
             // FormChumon
             // 
@@ -490,8 +634,11 @@ namespace SalesManagement_SysDev
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.buttonChumonDetail);
+            this.Controls.Add(this.buttonLogout);
+            this.Controls.Add(this.panelChumon);
             this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.userControlChumonDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormChumon";
             this.Text = "FormChumon";
@@ -501,7 +648,9 @@ namespace SalesManagement_SysDev
             this.panel2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panelChumon.ResumeLayout(false);
+            this.panelChumon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -527,7 +676,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button buttonKakutei;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelChumon;
         private System.Windows.Forms.Label labelClName;
         private System.Windows.Forms.TextBox textBoxClID;
         private System.Windows.Forms.Label labelClID;
@@ -542,7 +691,19 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelChDate;
         private System.Windows.Forms.DateTimePicker DateTimePickerChDate;
         private System.Windows.Forms.CheckBox checkBoxStateFlag;
-        private System.Windows.Forms.CheckBox checkBox1Hidden;
-        private System.Windows.Forms.TextBox textBoxOrHidden;
+        private System.Windows.Forms.CheckBox checkBoxHidden;
+        private System.Windows.Forms.TextBox textBoxChHidden;
+        private System.Windows.Forms.Button buttonPageSizeChange;
+        private System.Windows.Forms.TextBox textBoxPageSize;
+        private System.Windows.Forms.DataGridView dataGridViewOrder;
+        private System.Windows.Forms.Label labelPageSize;
+        private System.Windows.Forms.TextBox textBoxPage;
+        private System.Windows.Forms.Button buttonLastPage;
+        private System.Windows.Forms.Label labelPage;
+        private System.Windows.Forms.Button buttonNextPage;
+        private System.Windows.Forms.Button buttonFirstPage;
+        private System.Windows.Forms.Button buttonPreviousPage;
+        private UserControlChumonDetail userControlChumonDetail1;
+        private System.Windows.Forms.Button buttonHidden;
     }
 }

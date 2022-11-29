@@ -113,6 +113,7 @@ namespace SalesManagement_SysDev
         private void buttonSmallClassification_Click(object sender, EventArgs e)
         {
             labelProduct.Text = "小分類管理";
+            panelProduct.Visible = false;
             userControlMaker1.Visible = false;
             userControlMajorClassification1.Visible = false;
             userControlSmallClassification1.Visible = true;
@@ -1081,6 +1082,11 @@ namespace SalesManagement_SysDev
         }
 
         private void panelProduct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelSetting_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
