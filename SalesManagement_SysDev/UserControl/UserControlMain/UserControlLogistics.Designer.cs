@@ -69,6 +69,7 @@
             this.buttonSyukko.TabIndex = 2;
             this.buttonSyukko.Text = "出庫管理";
             this.buttonSyukko.UseVisualStyleBackColor = false;
+            this.buttonSyukko.Click += new System.EventHandler(this.buttonSyukko_Click);
             // 
             // buttonHattyu
             // 
