@@ -78,6 +78,7 @@ namespace SalesManagement_SysDev
             this.panelHeader2.Name = "panelHeader2";
             this.panelHeader2.Size = new System.Drawing.Size(1670, 130);
             this.panelHeader2.TabIndex = 2;
+
             // 
             // buttonNotList
             // 
@@ -120,6 +121,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonUpdate
             // 
@@ -418,7 +420,6 @@ namespace SalesManagement_SysDev
             this.dataGridViewSalesOffice.RowTemplate.Height = 21;
             this.dataGridViewSalesOffice.Size = new System.Drawing.Size(2678, 854);
             this.dataGridViewSalesOffice.TabIndex = 45;
-            this.dataGridViewSalesOffice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMaker_CellClick);
             // 
             // UserControlSalesOffice
             // 
