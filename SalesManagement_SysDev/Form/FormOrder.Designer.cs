@@ -50,6 +50,7 @@ namespace SalesManagement_SysDev
             this.buttonRegist = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelClName = new System.Windows.Forms.Label();
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.labelExplamation = new System.Windows.Forms.Label();
@@ -80,10 +81,8 @@ namespace SalesManagement_SysDev
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelOrder = new System.Windows.Forms.Panel();
             this.userControlOrderDetail1 = new SalesManagement_SysDev.UserControlOrderDetail();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.labelStateFlag = new System.Windows.Forms.Label();
-            this.labelOrState = new System.Windows.Forms.Label();
+            this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
+            this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -352,10 +351,9 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelInput.Controls.Add(this.labelStateFlag);
-            this.panelInput.Controls.Add(this.labelOrState);
+            this.panelInput.Controls.Add(this.checkBox1Hidden);
+            this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.textBox1);
-            this.panelInput.Controls.Add(this.label1);
             this.panelInput.Controls.Add(this.labelClName);
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.labelExplamation);
@@ -377,7 +375,14 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 6;
-            //this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panelInput_Paint);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox1.Location = new System.Drawing.Point(1028, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(190, 27);
+            this.textBox1.TabIndex = 52;
             // 
             // labelClName
             // 
@@ -512,7 +517,6 @@ namespace SalesManagement_SysDev
             this.comboBoxSoID.Name = "comboBoxSoID";
             this.comboBoxSoID.Size = new System.Drawing.Size(173, 29);
             this.comboBoxSoID.TabIndex = 9;
-            //this.comboBoxSoID.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoID_SelectedIndexChanged);
             // 
             // labelSoID
             // 
@@ -523,7 +527,6 @@ namespace SalesManagement_SysDev
             this.labelSoID.Size = new System.Drawing.Size(106, 24);
             this.labelSoID.TabIndex = 8;
             this.labelSoID.Text = "営業所名";
-            //this.labelSoID.Click += new System.EventHandler(this.labelSoID_Click);
             // 
             // textBoxOrID
             // 
@@ -532,7 +535,6 @@ namespace SalesManagement_SysDev
             this.textBoxOrID.Name = "textBoxOrID";
             this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxOrID.TabIndex = 5;
-            //this.textBoxOrID.TextChanged += new System.EventHandler(this.textBoxOrID_TextChanged);
             // 
             // labelOrID
             // 
@@ -544,7 +546,6 @@ namespace SalesManagement_SysDev
             this.labelOrID.Size = new System.Drawing.Size(80, 24);
             this.labelOrID.TabIndex = 4;
             this.labelOrID.Text = "受注ID";
-            //this.labelOrID.Click += new System.EventHandler(this.labelOrID_Click);
             // 
             // dataGridViewOrder
             // 
@@ -682,46 +683,29 @@ namespace SalesManagement_SysDev
             this.userControlOrderDetail1.Size = new System.Drawing.Size(1920, 979);
             this.userControlOrderDetail1.TabIndex = 49;
             // 
-            // label1
+            // checkBoxStateFlag
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("ＭＳ ゴシック", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(353, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 24);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "非表示理由";
+            this.checkBoxStateFlag.AutoSize = true;
+            this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 127);
+            this.checkBoxStateFlag.Name = "checkBoxStateFlag";
+            this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
+            this.checkBoxStateFlag.TabIndex = 65;
+            this.checkBoxStateFlag.Text = "受注確定";
+            this.checkBoxStateFlag.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // checkBox1Hidden
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(1028, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 27);
-            this.textBox1.TabIndex = 52;
-            // 
-            // labelStateFlag
-            // 
-            this.labelStateFlag.AutoSize = true;
-            this.labelStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelStateFlag.ForeColor = System.Drawing.Color.Red;
-            this.labelStateFlag.Location = new System.Drawing.Point(124, 123);
-            this.labelStateFlag.Name = "labelStateFlag";
-            this.labelStateFlag.Size = new System.Drawing.Size(85, 24);
-            this.labelStateFlag.TabIndex = 54;
-            this.labelStateFlag.Text = "未確定";
-            // 
-            // labelOrState
-            // 
-            this.labelOrState.AutoSize = true;
-            this.labelOrState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrState.Location = new System.Drawing.Point(15, 123);
-            this.labelOrState.Name = "labelOrState";
-            this.labelOrState.Size = new System.Drawing.Size(118, 24);
-            this.labelOrState.TabIndex = 53;
-            this.labelOrState.Text = "受注状態：";
+            this.checkBox1Hidden.AutoSize = true;
+            this.checkBox1Hidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBox1Hidden.Location = new System.Drawing.Point(343, 77);
+            this.checkBox1Hidden.Name = "checkBox1Hidden";
+            this.checkBox1Hidden.Size = new System.Drawing.Size(149, 28);
+            this.checkBox1Hidden.TabIndex = 66;
+            this.checkBox1Hidden.Text = "非表示理由";
+            this.checkBox1Hidden.UseVisualStyleBackColor = true;
             // 
             // FormOrder
             // 
@@ -803,8 +787,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Panel panelOrder;
         private UserControlOrderDetail userControlOrderDetail1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelStateFlag;
-        private System.Windows.Forms.Label labelOrState;
+        private System.Windows.Forms.CheckBox checkBox1Hidden;
+        private System.Windows.Forms.CheckBox checkBoxStateFlag;
     }
 }
