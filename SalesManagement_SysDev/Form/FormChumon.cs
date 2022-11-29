@@ -40,5 +40,23 @@ namespace SalesManagement_SysDev
         {
             this.Close();
         }
+
+        private void buttonChumonDetail_Click(object sender, EventArgs e)
+        {
+            if(labelChumon.Text == "注文管理")
+            {
+                labelChumon.Text = "注文詳細管理";
+                userControlChumonDetail1.Visible = true;
+                panelChumon.Visible = false;
+                return;
+            }
+            if(labelChumon.Text == "注文詳細管理")
+            {
+                labelChumon.Text = "注文管理";
+                panelChumon.Visible = true;
+                userControlChumonDetail1.Visible = false;
+                return;
+            }
+        }
     }
 }
