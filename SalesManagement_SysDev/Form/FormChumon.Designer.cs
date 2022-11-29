@@ -64,6 +64,8 @@ namespace SalesManagement_SysDev
             this.labelChDate = new System.Windows.Forms.Label();
             this.DateTimePickerChDate = new System.Windows.Forms.DateTimePicker();
             this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
+            this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
+            this.textBoxOrHidden = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -265,6 +267,8 @@ namespace SalesManagement_SysDev
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.checkBox1Hidden);
+            this.panelInput.Controls.Add(this.textBoxOrHidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.labelChDate);
             this.panelInput.Controls.Add(this.DateTimePickerChDate);
@@ -460,6 +464,26 @@ namespace SalesManagement_SysDev
             this.checkBoxStateFlag.Text = "受注確定";
             this.checkBoxStateFlag.UseVisualStyleBackColor = false;
             // 
+            // checkBox1Hidden
+            // 
+            this.checkBox1Hidden.AutoSize = true;
+            this.checkBox1Hidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBox1Hidden.Location = new System.Drawing.Point(382, 69);
+            this.checkBox1Hidden.Name = "checkBox1Hidden";
+            this.checkBox1Hidden.Size = new System.Drawing.Size(149, 28);
+            this.checkBox1Hidden.TabIndex = 68;
+            this.checkBox1Hidden.Text = "非表示理由";
+            this.checkBox1Hidden.UseVisualStyleBackColor = true;
+            // 
+            // textBoxOrHidden
+            // 
+            this.textBoxOrHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrHidden.Location = new System.Drawing.Point(533, 68);
+            this.textBoxOrHidden.Multiline = true;
+            this.textBoxOrHidden.Name = "textBoxOrHidden";
+            this.textBoxOrHidden.Size = new System.Drawing.Size(715, 84);
+            this.textBoxOrHidden.TabIndex = 67;
+            // 
             // FormChumon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -518,5 +542,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelChDate;
         private System.Windows.Forms.DateTimePicker DateTimePickerChDate;
         private System.Windows.Forms.CheckBox checkBoxStateFlag;
+        private System.Windows.Forms.CheckBox checkBox1Hidden;
+        private System.Windows.Forms.TextBox textBoxOrHidden;
     }
 }

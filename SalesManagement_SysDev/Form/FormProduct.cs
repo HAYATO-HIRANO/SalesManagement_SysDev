@@ -72,24 +72,28 @@ namespace SalesManagement_SysDev
         private void buttonSetting_Click(object sender, EventArgs e)
         {
             panelSetting.Visible = true;
+            panelLeft.Visible = false;
         }
 
         private void buttonMaker_Click(object sender, EventArgs e)
         {
-            //labelProduct.Text = "メーカー管理";
-            //userControlMaker1.Visible = true;
-            //userControlMajorClassification1.Visible = false;
-            //userControlSmallClassification1.Visible = false;
+            labelProduct.Text = "メーカー管理";
+            panelProduct.Visible = false;
+            userControlMaker1.Visible = true;
+            userControlMajorClassification1.Visible = false;
+            userControlSmallClassification1.Visible = false;
         }
 
         private void buttonEmployee_Click(object sender, EventArgs e)
         {
             //商品管理ボタン
-            //labelProduct.Text = "商品管理";
-            //panelSetting.Visible = false;
-            //userControlMaker1.Visible = false;
-            //userControlMajorClassification1.Visible = false;
-            //userControlSmallClassification1.Visible = false;
+            labelProduct.Text = "商品管理";
+            panelProduct.Visible = true;
+            panelLeft.Visible = true;
+            panelSetting.Visible = false;
+            userControlMaker1.Visible = false;
+            userControlMajorClassification1.Visible = false;
+            userControlSmallClassification1.Visible = false;
         }
 
         private void buttonFormDel_Click(object sender, EventArgs e)
@@ -99,18 +103,19 @@ namespace SalesManagement_SysDev
 
         private void buttonMajorClassification_Click(object sender, EventArgs e)
         {
-            //    labelProduct.Text = "大分類管理";
-            //    userControlMaker1.Visible = false;
-            //    userControlMajorClassification1.Visible = true;
-            //    userControlSmallClassification1.Visible = false;
+             labelProduct.Text = "大分類管理";
+             panelProduct.Visible = false;
+             userControlMaker1.Visible = false;
+             userControlMajorClassification1.Visible = true;
+             userControlSmallClassification1.Visible = false;
         }
 
         private void buttonSmallClassification_Click(object sender, EventArgs e)
         {
-            //labelProduct.Text = "小分類管理";
-            //userControlMaker1.Visible = false;
-            //userControlMajorClassification1.Visible = false;
-            //userControlSmallClassification1.Visible = true;
+            labelProduct.Text = "小分類管理";
+            userControlMaker1.Visible = false;
+            userControlMajorClassification1.Visible = false;
+            userControlSmallClassification1.Visible = true;
         }
 
         private void comboBoxSc_SelectedIndexChanged(object sender, EventArgs e)
@@ -1070,6 +1075,15 @@ namespace SalesManagement_SysDev
             dataGridViewProduct.Refresh();
         }
 
+        private void userControlMajorClassification1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelProduct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 
