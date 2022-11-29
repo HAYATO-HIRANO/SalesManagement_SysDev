@@ -610,5 +610,30 @@ namespace SalesManagement_SysDev
             textBoxPage.Text = "1";
 
         }
+
+        private void labelOrID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxOrID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelSoID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSoID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelInput_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
