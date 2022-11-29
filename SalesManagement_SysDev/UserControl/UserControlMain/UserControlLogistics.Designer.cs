@@ -46,6 +46,7 @@
             this.buttonChumon.TabIndex = 0;
             this.buttonChumon.Text = "注文管理";
             this.buttonChumon.UseVisualStyleBackColor = false;
+            this.buttonChumon.Click += new System.EventHandler(this.buttonChumon_Click);
             // 
             // buttonWarehousing
             // 
@@ -104,7 +105,7 @@
             this.buttonStock.UseVisualStyleBackColor = false;
             this.buttonStock.Click += new System.EventHandler(this.buttonStock_Click);
             // 
-            // UserControl3
+            // UserControlLogistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,7 +116,7 @@
             this.Controls.Add(this.buttonSyukko);
             this.Controls.Add(this.buttonWarehousing);
             this.Controls.Add(this.buttonChumon);
-            this.Name = "UserControl3";
+            this.Name = "UserControlLogistics";
             this.Size = new System.Drawing.Size(1670, 980);
             this.ResumeLayout(false);
 

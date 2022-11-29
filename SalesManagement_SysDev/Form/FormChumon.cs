@@ -35,5 +35,10 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
+
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
