@@ -716,33 +716,6 @@ namespace SalesManagement_SysDev
             textBoxPage.Text = "1";
 
         }
-<<<<<<< HEAD
-
-        private void labelOrID_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxOrID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelSoID_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxSoID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelInput_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-=======
         ///////////////////////////////
         //メソッド名：ClearInput()
         //引　数   ：なし
@@ -779,6 +752,5 @@ namespace SalesManagement_SysDev
         }
 
         
->>>>>>> a605b76804cde6a94bebbfdbdc107706a02041ba
     }
 }
