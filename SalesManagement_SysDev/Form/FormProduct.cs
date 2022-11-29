@@ -120,17 +120,17 @@ namespace SalesManagement_SysDev
 
         private void comboBoxSc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (comboBoxSc.SelectedIndex == -1)
-            //{
-            //    return;
-            //}
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                return;
+            }
 
             
-            //SmallClassifications = smallClassification.GetScDspData(int.Parse(comboBoxSc.SelectedValue.ToString()));
-            //comboBoxSc.DataSource = SmallClassifications;
-            //comboBoxSc.DisplayMember = "ScName";
-            //comboBoxSc.ValueMember = "ScID";
-            //comboBoxSc.SelectedIndex = -1;
+            SmallClassifications = smallClassification.GetScDspData(int.Parse(comboBoxSc.SelectedValue.ToString()));
+            comboBoxSc.DataSource = SmallClassifications;
+            comboBoxSc.DisplayMember = "ScName";
+            comboBoxSc.ValueMember = "ScID";
+            comboBoxSc.SelectedIndex = -1;
         }
 
         private void labelSc_Click(object sender, EventArgs e)
@@ -163,7 +163,8 @@ namespace SalesManagement_SysDev
             comboBoxMc.DataSource = MajorCassifications;
             comboBoxMc.DisplayMember = "McName";
             comboBoxMc.ValueMember = "McID";
-            SmallClassifications = smallClassification.GetParentScDspData();       
+            SmallClassifications = smallClassification.GetParentScDspData();
+            
             comboBoxSc.DataSource = SmallClassifications;
             comboBoxSc.DisplayMember = "ScName" ;
             comboBoxSc.ValueMember = "ScID";
@@ -403,7 +404,13 @@ namespace SalesManagement_SysDev
 
                 }
 
-               
+                if (ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                {
+                    //入力された型番は存在していません
+                    messageDsp.DspMsg("M0441");
+                    textBoxPrModelNumber.Focus();
+                    return false;
+                }
 
             }
             else
@@ -453,16 +460,15 @@ namespace SalesManagement_SysDev
 
             return new M_Product
             {
-               // PrID = int.Parse(textBoxPrID.Text.Trim()),
+                PrID = int.Parse(textBoxPrID.Text.Trim()),
                 MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
                 PrName = textBoxPrName.Text.Trim(),
                 Price =int.Parse(textBoxPrice.Text.Trim()),
-                PrJCode=null,
                 PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
                 ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
                 PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                 PrColor = textBoxColor.Text.Trim(),
-                PrReleaseDate = DateTimePickerDateTimePickerPrReleaseDate.Value,//, DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text)
+                PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
                 PrFlag =Pdflg,
                 PrHidden=textBoxPrHidden.Text.Trim()
             };
@@ -1077,26 +1083,6 @@ namespace SalesManagement_SysDev
         private void panelProduct_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text);
-            //最終ページの計算
-            int lastNo = (int)Math.Ceiling(Product.Count / (double)pageSize) - 1;
-            //最終ページでなければ
-            if (pageNo <= lastNo)
-                dataGridViewProduct.DataSource = Product.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewProduct.Refresh();
-            //ページ番号の設定
-            int lastPage = (int)Math.Ceiling(Product.Count / (double)pageSize);
-            if (pageNo >= lastPage)
-                textBoxPage.Text = lastPage.ToString();
-            else
-                textBoxPage.Text = (pageNo + 1).ToString();
         }
     }
 
