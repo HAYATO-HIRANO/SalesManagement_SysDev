@@ -150,7 +150,7 @@ namespace SalesManagement_SysDev
             this.labelUserID.ForeColor = System.Drawing.Color.White;
             this.labelUserID.Location = new System.Drawing.Point(245, 14);
             this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.Size = new System.Drawing.Size(216, 41);
             this.labelUserID.TabIndex = 13;
             this.labelUserID.Text = "ユーザーID：";
             // 
@@ -161,7 +161,7 @@ namespace SalesManagement_SysDev
             this.labelPosition.ForeColor = System.Drawing.Color.White;
             this.labelPosition.Location = new System.Drawing.Point(12, 56);
             this.labelPosition.Name = "labelPosition";
-            this.labelPosition.Size = new System.Drawing.Size(83, 27);
+            this.labelPosition.Size = new System.Drawing.Size(124, 41);
             this.labelPosition.TabIndex = 11;
             this.labelPosition.Text = "権限：";
             // 
@@ -172,7 +172,7 @@ namespace SalesManagement_SysDev
             this.labelSalesOffice.ForeColor = System.Drawing.Color.White;
             this.labelSalesOffice.Location = new System.Drawing.Point(12, 14);
             this.labelSalesOffice.Name = "labelSalesOffice";
-            this.labelSalesOffice.Size = new System.Drawing.Size(180, 27);
+            this.labelSalesOffice.Size = new System.Drawing.Size(270, 41);
             this.labelSalesOffice.TabIndex = 12;
             this.labelSalesOffice.Text = "和歌山営業所";
             // 
@@ -183,7 +183,7 @@ namespace SalesManagement_SysDev
             this.labelUserName.ForeColor = System.Drawing.Color.White;
             this.labelUserName.Location = new System.Drawing.Point(245, 56);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(147, 27);
+            this.labelUserName.Size = new System.Drawing.Size(219, 41);
             this.labelUserName.TabIndex = 10;
             this.labelUserName.Text = "ユーザー名：";
             // 
@@ -194,7 +194,7 @@ namespace SalesManagement_SysDev
             this.labelDay.ForeColor = System.Drawing.Color.White;
             this.labelDay.Location = new System.Drawing.Point(1382, 2);
             this.labelDay.Name = "labelDay";
-            this.labelDay.Size = new System.Drawing.Size(252, 35);
+            this.labelDay.Size = new System.Drawing.Size(378, 53);
             this.labelDay.TabIndex = 9;
             this.labelDay.Text = "2022/10/10(月)";
             // 
@@ -206,7 +206,7 @@ namespace SalesManagement_SysDev
             this.labelTime.ForeColor = System.Drawing.Color.White;
             this.labelTime.Location = new System.Drawing.Point(1422, 36);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(174, 64);
+            this.labelTime.Size = new System.Drawing.Size(259, 97);
             this.labelTime.TabIndex = 8;
             this.labelTime.Text = "12:00";
             // 
@@ -217,7 +217,7 @@ namespace SalesManagement_SysDev
             this.labelProduct.ForeColor = System.Drawing.Color.White;
             this.labelProduct.Location = new System.Drawing.Point(694, 22);
             this.labelProduct.Name = "labelProduct";
-            this.labelProduct.Size = new System.Drawing.Size(235, 53);
+            this.labelProduct.Size = new System.Drawing.Size(354, 80);
             this.labelProduct.TabIndex = 1;
             this.labelProduct.Text = "商品管理";
             // 
@@ -433,7 +433,7 @@ namespace SalesManagement_SysDev
             this.comboBoxMc.FormattingEnabled = true;
             this.comboBoxMc.Location = new System.Drawing.Point(129, 80);
             this.comboBoxMc.Name = "comboBoxMc";
-            this.comboBoxMc.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxMc.Size = new System.Drawing.Size(196, 41);
             this.comboBoxMc.TabIndex = 24;
             // 
             // labelMc
@@ -442,7 +442,7 @@ namespace SalesManagement_SysDev
             this.labelMc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMc.Location = new System.Drawing.Point(17, 81);
             this.labelMc.Name = "labelMc";
-            this.labelMc.Size = new System.Drawing.Size(106, 24);
+            this.labelMc.Size = new System.Drawing.Size(159, 36);
             this.labelMc.TabIndex = 23;
             this.labelMc.Text = "大分類名";
             // 
@@ -452,7 +452,7 @@ namespace SalesManagement_SysDev
             this.labelPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPrReleaseDate.Location = new System.Drawing.Point(15, 141);
             this.labelPrReleaseDate.Name = "labelPrReleaseDate";
-            this.labelPrReleaseDate.Size = new System.Drawing.Size(82, 24);
+            this.labelPrReleaseDate.Size = new System.Drawing.Size(123, 36);
             this.labelPrReleaseDate.TabIndex = 22;
             this.labelPrReleaseDate.Text = "発売日";
             // 
@@ -462,7 +462,7 @@ namespace SalesManagement_SysDev
             this.DateTimePickerDateTimePickerPrReleaseDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.DateTimePickerDateTimePickerPrReleaseDate.Location = new System.Drawing.Point(111, 137);
             this.DateTimePickerDateTimePickerPrReleaseDate.Name = "DateTimePickerDateTimePickerPrReleaseDate";
-            this.DateTimePickerDateTimePickerPrReleaseDate.Size = new System.Drawing.Size(214, 30);
+            this.DateTimePickerDateTimePickerPrReleaseDate.Size = new System.Drawing.Size(214, 41);
             this.DateTimePickerDateTimePickerPrReleaseDate.TabIndex = 21;
             // 
             // comboBoxSc
@@ -471,7 +471,7 @@ namespace SalesManagement_SysDev
             this.comboBoxSc.FormattingEnabled = true;
             this.comboBoxSc.Location = new System.Drawing.Point(477, 77);
             this.comboBoxSc.Name = "comboBoxSc";
-            this.comboBoxSc.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxSc.Size = new System.Drawing.Size(196, 41);
             this.comboBoxSc.TabIndex = 20;
             this.comboBoxSc.SelectedIndexChanged += new System.EventHandler(this.comboBoxSc_SelectedIndexChanged);
             // 
@@ -481,7 +481,7 @@ namespace SalesManagement_SysDev
             this.labelSc.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelSc.Location = new System.Drawing.Point(365, 80);
             this.labelSc.Name = "labelSc";
-            this.labelSc.Size = new System.Drawing.Size(106, 24);
+            this.labelSc.Size = new System.Drawing.Size(159, 36);
             this.labelSc.TabIndex = 19;
             this.labelSc.Text = "小分類名";
             this.labelSc.Click += new System.EventHandler(this.labelSc_Click);
@@ -494,7 +494,7 @@ namespace SalesManagement_SysDev
             "Aメーカ"});
             this.comboBoxMaker.Location = new System.Drawing.Point(333, 21);
             this.comboBoxMaker.Name = "comboBoxMaker";
-            this.comboBoxMaker.Size = new System.Drawing.Size(196, 29);
+            this.comboBoxMaker.Size = new System.Drawing.Size(196, 41);
             this.comboBoxMaker.TabIndex = 7;
             // 
             // textBoxPrID
@@ -502,7 +502,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPrID.Location = new System.Drawing.Point(101, 21);
             this.textBoxPrID.Name = "textBoxPrID";
-            this.textBoxPrID.Size = new System.Drawing.Size(84, 28);
+            this.textBoxPrID.Size = new System.Drawing.Size(84, 39);
             this.textBoxPrID.TabIndex = 2;
             this.textBoxPrID.Text = "012345";
             // 
@@ -522,7 +522,7 @@ namespace SalesManagement_SysDev
             this.labelPrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPrID.Location = new System.Drawing.Point(15, 22);
             this.labelPrID.Name = "labelPrID";
-            this.labelPrID.Size = new System.Drawing.Size(80, 24);
+            this.labelPrID.Size = new System.Drawing.Size(119, 36);
             this.labelPrID.TabIndex = 1;
             this.labelPrID.Text = "商品ID";
             // 
@@ -532,7 +532,7 @@ namespace SalesManagement_SysDev
             this.checkBoxPrFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.checkBoxPrFlag.Location = new System.Drawing.Point(369, 140);
             this.checkBoxPrFlag.Name = "checkBoxPrFlag";
-            this.checkBoxPrFlag.Size = new System.Drawing.Size(152, 28);
+            this.checkBoxPrFlag.Size = new System.Drawing.Size(226, 40);
             this.checkBoxPrFlag.TabIndex = 16;
             this.checkBoxPrFlag.Text = "非表示フラグ";
             this.checkBoxPrFlag.UseVisualStyleBackColor = true;
@@ -543,7 +543,7 @@ namespace SalesManagement_SysDev
             this.labelMName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMName.Location = new System.Drawing.Point(223, 22);
             this.labelMName.Name = "labelMName";
-            this.labelMName.Size = new System.Drawing.Size(108, 24);
+            this.labelMName.Size = new System.Drawing.Size(160, 36);
             this.labelMName.TabIndex = 3;
             this.labelMName.Text = "メーカー名";
             // 
@@ -552,7 +552,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrSafetyStock.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPrSafetyStock.Location = new System.Drawing.Point(1221, 21);
             this.textBoxPrSafetyStock.Name = "textBoxPrSafetyStock";
-            this.textBoxPrSafetyStock.Size = new System.Drawing.Size(150, 28);
+            this.textBoxPrSafetyStock.Size = new System.Drawing.Size(150, 39);
             this.textBoxPrSafetyStock.TabIndex = 14;
             this.textBoxPrSafetyStock.Text = "0123";
             this.textBoxPrSafetyStock.TextChanged += new System.EventHandler(this.textBoxClFAX_TextChanged);
@@ -563,7 +563,7 @@ namespace SalesManagement_SysDev
             this.labelMaker.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelMaker.Location = new System.Drawing.Point(564, 22);
             this.labelMaker.Name = "labelMaker";
-            this.labelMaker.Size = new System.Drawing.Size(82, 24);
+            this.labelMaker.Size = new System.Drawing.Size(123, 36);
             this.labelMaker.TabIndex = 5;
             this.labelMaker.Text = "商品名";
             // 
@@ -573,7 +573,7 @@ namespace SalesManagement_SysDev
             this.labelPrSafetyStock.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPrSafetyStock.Location = new System.Drawing.Point(1085, 22);
             this.labelPrSafetyStock.Name = "labelPrSafetyStock";
-            this.labelPrSafetyStock.Size = new System.Drawing.Size(130, 24);
+            this.labelPrSafetyStock.Size = new System.Drawing.Size(195, 36);
             this.labelPrSafetyStock.TabIndex = 13;
             this.labelPrSafetyStock.Text = "安全在庫数";
             // 
@@ -582,7 +582,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPrName.Location = new System.Drawing.Point(652, 22);
             this.textBoxPrName.Name = "textBoxPrName";
-            this.textBoxPrName.Size = new System.Drawing.Size(199, 28);
+            this.textBoxPrName.Size = new System.Drawing.Size(199, 39);
             this.textBoxPrName.TabIndex = 6;
             // 
             // textBoxPrModelNumber
@@ -590,7 +590,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrModelNumber.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPrModelNumber.Location = new System.Drawing.Point(775, 78);
             this.textBoxPrModelNumber.Name = "textBoxPrModelNumber";
-            this.textBoxPrModelNumber.Size = new System.Drawing.Size(267, 28);
+            this.textBoxPrModelNumber.Size = new System.Drawing.Size(267, 39);
             this.textBoxPrModelNumber.TabIndex = 12;
             this.textBoxPrModelNumber.Text = "0123456";
             // 
@@ -600,7 +600,7 @@ namespace SalesManagement_SysDev
             this.labelColor.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelColor.Location = new System.Drawing.Point(1085, 80);
             this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(34, 24);
+            this.labelColor.Size = new System.Drawing.Size(51, 36);
             this.labelColor.TabIndex = 7;
             this.labelColor.Text = "色";
             // 
@@ -610,7 +610,7 @@ namespace SalesManagement_SysDev
             this.labelPrModelNumber.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPrModelNumber.Location = new System.Drawing.Point(711, 81);
             this.labelPrModelNumber.Name = "labelPrModelNumber";
-            this.labelPrModelNumber.Size = new System.Drawing.Size(58, 24);
+            this.labelPrModelNumber.Size = new System.Drawing.Size(87, 36);
             this.labelPrModelNumber.TabIndex = 11;
             this.labelPrModelNumber.Text = "型番";
             // 
@@ -619,7 +619,7 @@ namespace SalesManagement_SysDev
             this.textBoxColor.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxColor.Location = new System.Drawing.Point(1125, 80);
             this.textBoxColor.Name = "textBoxColor";
-            this.textBoxColor.Size = new System.Drawing.Size(246, 28);
+            this.textBoxColor.Size = new System.Drawing.Size(246, 39);
             this.textBoxColor.TabIndex = 8;
             // 
             // textBoxPrice
@@ -627,7 +627,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPrice.Location = new System.Drawing.Point(952, 21);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(107, 28);
+            this.textBoxPrice.Size = new System.Drawing.Size(107, 39);
             this.textBoxPrice.TabIndex = 10;
             // 
             // labelPrice
@@ -636,7 +636,7 @@ namespace SalesManagement_SysDev
             this.labelPrice.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPrice.Location = new System.Drawing.Point(888, 22);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(58, 24);
+            this.labelPrice.Size = new System.Drawing.Size(87, 36);
             this.labelPrice.TabIndex = 9;
             this.labelPrice.Text = "価格";
             // 
@@ -665,7 +665,7 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPageSize.Location = new System.Drawing.Point(1445, 270);
             this.textBoxPageSize.Name = "textBoxPageSize";
-            this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
+            this.textBoxPageSize.Size = new System.Drawing.Size(41, 36);
             this.textBoxPageSize.TabIndex = 36;
             this.textBoxPageSize.Text = "100";
             // 
@@ -675,7 +675,7 @@ namespace SalesManagement_SysDev
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPageSize.Location = new System.Drawing.Point(1334, 275);
             this.labelPageSize.Name = "labelPageSize";
-            this.labelPageSize.Size = new System.Drawing.Size(105, 19);
+            this.labelPageSize.Size = new System.Drawing.Size(158, 29);
             this.labelPageSize.TabIndex = 35;
             this.labelPageSize.Text = "1ページ行数";
             // 
@@ -698,6 +698,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 33;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -725,7 +726,7 @@ namespace SalesManagement_SysDev
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelPage.Location = new System.Drawing.Point(104, 272);
             this.labelPage.Name = "labelPage";
-            this.labelPage.Size = new System.Drawing.Size(70, 24);
+            this.labelPage.Size = new System.Drawing.Size(103, 36);
             this.labelPage.TabIndex = 30;
             this.labelPage.Text = "ページ";
             // 
@@ -734,7 +735,7 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPage.Location = new System.Drawing.Point(54, 265);
             this.textBoxPage.Name = "textBoxPage";
-            this.textBoxPage.Size = new System.Drawing.Size(45, 31);
+            this.textBoxPage.Size = new System.Drawing.Size(45, 43);
             this.textBoxPage.TabIndex = 29;
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -768,6 +769,7 @@ namespace SalesManagement_SysDev
             // 
             this.userControlMajorClassification1.BackColor = System.Drawing.Color.Honeydew;
             this.userControlMajorClassification1.Location = new System.Drawing.Point(251, 101);
+            this.userControlMajorClassification1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.userControlMajorClassification1.Name = "userControlMajorClassification1";
             this.userControlMajorClassification1.Size = new System.Drawing.Size(1670, 980);
             this.userControlMajorClassification1.TabIndex = 43;
@@ -777,6 +779,7 @@ namespace SalesManagement_SysDev
             // 
             this.userControlMaker1.BackColor = System.Drawing.Color.Honeydew;
             this.userControlMaker1.Location = new System.Drawing.Point(251, 101);
+            this.userControlMaker1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.userControlMaker1.Name = "userControlMaker1";
             this.userControlMaker1.Size = new System.Drawing.Size(1670, 980);
             this.userControlMaker1.TabIndex = 42;
@@ -785,6 +788,7 @@ namespace SalesManagement_SysDev
             // 
             this.userControlSmallClassification1.BackColor = System.Drawing.Color.Honeydew;
             this.userControlSmallClassification1.Location = new System.Drawing.Point(251, 100);
+            this.userControlSmallClassification1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.userControlSmallClassification1.Name = "userControlSmallClassification1";
             this.userControlSmallClassification1.Size = new System.Drawing.Size(1670, 980);
             this.userControlSmallClassification1.TabIndex = 0;

@@ -172,7 +172,7 @@ namespace SalesManagement_SysDev//.DbAccess
 
         public List<M_Maker> GetMakerDspData()
         {
-            List<M_Maker> maker = null;
+            List<M_Maker> maker = new List<M_Maker>();
             try
             {
                 var context = new SalesManagement_DevContext();
