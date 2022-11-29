@@ -169,16 +169,16 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="UserControlChumonDetail.cs">
+    <Compile Include="UserControl\UserControlDetail\UserControlChumonDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlChumonDetail.Designer.cs">
+    <Compile Include="UserControl\UserControlDetail\UserControlChumonDetail.Designer.cs">
       <DependentUpon>UserControlChumonDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\UserControlOrder\UserControlOrderDetail.cs">
+    <Compile Include="UserControl\UserControlDetail\UserControlOrderDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\UserControlOrder\UserControlOrderDetail.Designer.cs">
+    <Compile Include="UserControl\UserControlDetail\UserControlOrderDetail.Designer.cs">
       <DependentUpon>UserControlOrderDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\UserConrolProduct\UserControlSmallClassification.cs">
@@ -268,10 +268,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControlChumonDetail.resx">
+    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlChumonDetail.resx">
       <DependentUpon>UserControlChumonDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\UserControlOrder\UserControlOrderDetail.resx">
+    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlOrderDetail.resx">
       <DependentUpon>UserControlOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserConrolProduct\UserControlSmallClassification.resx">
