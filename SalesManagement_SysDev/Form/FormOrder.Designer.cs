@@ -377,7 +377,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 6;
-            this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panelInput_Paint);
+            //this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panelInput_Paint);
             // 
             // labelClName
             // 
@@ -512,7 +512,7 @@ namespace SalesManagement_SysDev
             this.comboBoxSoID.Name = "comboBoxSoID";
             this.comboBoxSoID.Size = new System.Drawing.Size(173, 29);
             this.comboBoxSoID.TabIndex = 9;
-            this.comboBoxSoID.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoID_SelectedIndexChanged);
+            //this.comboBoxSoID.SelectedIndexChanged += new System.EventHandler(this.comboBoxSoID_SelectedIndexChanged);
             // 
             // labelSoID
             // 
@@ -523,7 +523,7 @@ namespace SalesManagement_SysDev
             this.labelSoID.Size = new System.Drawing.Size(106, 24);
             this.labelSoID.TabIndex = 8;
             this.labelSoID.Text = "営業所名";
-            this.labelSoID.Click += new System.EventHandler(this.labelSoID_Click);
+            //this.labelSoID.Click += new System.EventHandler(this.labelSoID_Click);
             // 
             // textBoxOrID
             // 
@@ -532,7 +532,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrID.Name = "textBoxOrID";
             this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxOrID.TabIndex = 5;
-            this.textBoxOrID.TextChanged += new System.EventHandler(this.textBoxOrID_TextChanged);
+            //this.textBoxOrID.TextChanged += new System.EventHandler(this.textBoxOrID_TextChanged);
             // 
             // labelOrID
             // 
@@ -544,7 +544,7 @@ namespace SalesManagement_SysDev
             this.labelOrID.Size = new System.Drawing.Size(80, 24);
             this.labelOrID.TabIndex = 4;
             this.labelOrID.Text = "受注ID";
-            this.labelOrID.Click += new System.EventHandler(this.labelOrID_Click);
+            //this.labelOrID.Click += new System.EventHandler(this.labelOrID_Click);
             // 
             // dataGridViewOrder
             // 
