@@ -31,6 +31,8 @@ namespace SalesManagement_SysDev
         {
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonDetail = new System.Windows.Forms.Button();
+            this.buttonSetting = new System.Windows.Forms.Button();
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -64,8 +66,7 @@ namespace SalesManagement_SysDev
             this.labelTime = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
-            this.buttonSetting = new System.Windows.Forms.Button();
-            this.buttonDetail = new System.Windows.Forms.Button();
+            this.userControlMajorClassification1 = new SalesManagement_SysDev.UserControlMajorClassification();
             this.panelLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -106,6 +107,30 @@ namespace SalesManagement_SysDev
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 980);
             this.panel2.TabIndex = 27;
+            // 
+            // buttonDetail
+            // 
+            this.buttonDetail.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonDetail.Location = new System.Drawing.Point(0, 702);
+            this.buttonDetail.Name = "buttonDetail";
+            this.buttonDetail.Size = new System.Drawing.Size(250, 100);
+            this.buttonDetail.TabIndex = 41;
+            this.buttonDetail.Text = "詳細";
+            this.buttonDetail.UseVisualStyleBackColor = false;
+            // 
+            // buttonSetting
+            // 
+            this.buttonSetting.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSetting.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSetting.Location = new System.Drawing.Point(0, 801);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(250, 100);
+            this.buttonSetting.TabIndex = 40;
+            this.buttonSetting.Text = "設定";
+            this.buttonSetting.UseVisualStyleBackColor = false;
             // 
             // buttonHiddenList
             // 
@@ -481,35 +506,20 @@ namespace SalesManagement_SysDev
             this.buttonFormDel.UseVisualStyleBackColor = false;
             this.buttonFormDel.Click += new System.EventHandler(this.buttonHinaDel_Click);
             // 
-            // buttonSetting
+            // userControlMajorClassification1
             // 
-            this.buttonSetting.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSetting.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSetting.Location = new System.Drawing.Point(0, 801);
-            this.buttonSetting.Name = "buttonSetting";
-            this.buttonSetting.Size = new System.Drawing.Size(250, 100);
-            this.buttonSetting.TabIndex = 40;
-            this.buttonSetting.Text = "設定";
-            this.buttonSetting.UseVisualStyleBackColor = false;
-            // 
-            // buttonDetail
-            // 
-            this.buttonDetail.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonDetail.Location = new System.Drawing.Point(0, 702);
-            this.buttonDetail.Name = "buttonDetail";
-            this.buttonDetail.Size = new System.Drawing.Size(250, 100);
-            this.buttonDetail.TabIndex = 41;
-            this.buttonDetail.Text = "詳細";
-            this.buttonDetail.UseVisualStyleBackColor = false;
+            this.userControlMajorClassification1.BackColor = System.Drawing.Color.Honeydew;
+            this.userControlMajorClassification1.Location = new System.Drawing.Point(270, 129);
+            this.userControlMajorClassification1.Name = "userControlMajorClassification1";
+            this.userControlMajorClassification1.Size = new System.Drawing.Size(1593, 961);
+            this.userControlMajorClassification1.TabIndex = 16;
             // 
             // FormHinagata
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.userControlMajorClassification1);
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
             this.Controls.Add(this.labelPageSize);
@@ -579,5 +589,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Button buttonDetail;
         private System.Windows.Forms.Button buttonSetting;
+        private UserControlMajorClassification userControlMajorClassification1;
     }
 }

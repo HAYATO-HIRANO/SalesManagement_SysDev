@@ -12,7 +12,7 @@ namespace SalesManagement_SysDev
     public partial class FormClient : Form
     {
         //メッセージ表示用クラスのインスタンス化
-        MessageDsp messageDsp = new MessageDsp();
+        //MessageDsp messageDsp = new MessageDsp();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
@@ -87,7 +87,7 @@ namespace SalesManagement_SysDev
             var regClient = GenerateDataAtRegistration();
 
             // 顧客情報登録
-            RegistrationStaff(regClient );
+            RegistrationClient(regClient );
 
         }
         ///////////////////////////////
@@ -113,7 +113,8 @@ namespace SalesManagement_SysDev
            if(comboBoxSoID.SelectedIndex == -1)
             {
                 //営業所名が選択されていません
-                messageDsp.DspMsg("M0307");
+                MessageBox.Show("営業所名が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 comboBoxSoID.Focus();
                 return false;
             }
@@ -123,7 +124,8 @@ namespace SalesManagement_SysDev
                 if (textBoxClName.TextLength > 50)
                 {
                     //顧客名は50文字以下です
-                    messageDsp.DspMsg("M0309");
+                    MessageBox.Show("顧客名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClName.Focus();
                     return false;
                 }
@@ -131,7 +133,8 @@ namespace SalesManagement_SysDev
             else
             {
                 //顧客名が入力されていません
-                messageDsp.DspMsg("M0310");
+                MessageBox.Show("顧客名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 textBoxClName.Focus();
                 return false;
 
@@ -182,8 +185,9 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                //FAXを入力してください
-                messageDsp.DspMsg("M0324");
+                //FAXが入力されていません
+                MessageBox.Show("FAXが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 textBoxClFAX.Focus();
                 return false;
             }
@@ -194,7 +198,8 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
                     //MessageBox.Show("郵便番号は半角数値です");
-                     messageDsp.DspMsg("M0321");
+                    MessageBox.Show("郵便番号は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -202,7 +207,8 @@ namespace SalesManagement_SysDev
                 if (textBoxClPostal.TextLength !=7)
                 {
                     //MessageBox.Show("郵便番号は7文字です");
-                    messageDsp.DspMsg("M0320");
+                    MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -211,7 +217,8 @@ namespace SalesManagement_SysDev
             else
             {
                 //郵便番号が入力されていません
-                messageDsp.DspMsg("M0322");
+                MessageBox.Show("郵便番号が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 textBoxClPostal.Focus();
                 return false;
             }
@@ -221,15 +228,15 @@ namespace SalesManagement_SysDev
             {
                 if (textBoxClAddres.TextLength > 50)
                 {
-                    messageDsp.DspMsg("M0318");
+                    MessageBox.Show("住所は50文字以下ですです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClAddres.Focus();
                     return false;
                 }
             }
             else
             {
-                //MessageBox.Show("住所が入力されていません");
-                messageDsp.DspMsg("M0319");
+                MessageBox.Show("住所が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxClAddres.Focus();
                 return false;
 
@@ -238,8 +245,7 @@ namespace SalesManagement_SysDev
             //フラグの適否
             if (checkBoxClFlag.CheckState == CheckState.Indeterminate)
             {
-                //MessageBox.Show("非表示フラグが不確定の状態です");
-                messageDsp.DspMsg("M0326");
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 checkBoxClFlag.Focus();
                 return false;
@@ -271,11 +277,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Client GenerateDataAtRegistration()
         {
-            int ClFlag = 0;
-            if (checkBoxClFlag.Checked == true)
-            {
-                ClFlag = 2;
-            }
+            
 
             return new M_Client
             {
@@ -285,32 +287,30 @@ namespace SalesManagement_SysDev
                 ClPhone=textBoxClPhone.Text.Trim(),
                 ClPostal=textBoxClPostal.Text.Trim(),
                 ClFAX=textBoxClFAX.Text.Trim(),
-                ClFlag=ClFlag,
+                ClFlag=0,
                 ClHidden=textBoxClHidden.Text.Trim()
             };
         }
 
         ///////////////////////////////
         //　3.1.1.3 顧客情報登録
-        //メソッド名：RegistrationStaff()
+        //メソッド名：RegistrationClient()
         //引　数   ：顧客情報
         //戻り値   ：なし
         //機　能   ：顧客情報の登録
         ///////////////////////////////
-        private void RegistrationStaff(M_Client regClient)
+        private void RegistrationClient(M_Client regClient)
         {
             // 登録確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M0311");
+            DialogResult result = MessageBox.Show("顧客データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
             // 顧客情報の登録
             bool flg = clientDataAccess.AddClientData(regClient);
             if (flg == true)
-                //MessageBox.Show("データを登録しました。");
-                messageDsp.DspMsg("M0312");
+                MessageBox.Show("データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                //MessageBox.Show("データの登録に失敗しました。");
-                messageDsp.DspMsg("M0313");
+                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxClID.Focus();
 
@@ -543,14 +543,14 @@ namespace SalesManagement_SysDev
         ///////////////顧客情報更新//////////////////
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            // 3.2.1.1 妥当な顧客データ取得
+            // 3.1.2.1 妥当な顧客データ取得
             if (!GetValidDataAtUpdate())
                 return;
 
-            // 3.2.1.2　顧客情報作成
+            // 3.1.2.2　顧客情報作成
             var updClient = GenerateDataAtUpdate();
 
-            // 3.2.1.3 顧客情報更新
+            // 3.1..3 顧客情報更新
             UpdateClient(updClient);
         }
 
@@ -578,8 +578,8 @@ namespace SalesManagement_SysDev
                 //文字数
                 if (textBoxClID.TextLength > 6)
                 {
-                    //MessageBox.Show("顧客IDは6文字以下です");
-                    messageDsp.DspMsg("M0302");
+                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClID.Focus();
                     return false;
                 }
@@ -587,8 +587,7 @@ namespace SalesManagement_SysDev
                 // 顧客IDの存在チェック
                 if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
                 {
-                    //MessageBox.Show("入力された顧客IDは存在しません");
-                    messageDsp.DspMsg("M0314");
+                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     textBoxClID.Focus();
                     return false;
                 }
@@ -596,8 +595,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                //MessageBox.Show("顧客ID が入力されていません");
-                messageDsp.DspMsg("M0304");
+                MessageBox.Show("顧客ID が入力されていません", "入力確認",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 textBoxClID.Focus();
                 return false;
             }
@@ -606,7 +604,8 @@ namespace SalesManagement_SysDev
             if (comboBoxSoID.SelectedIndex == -1)
             {
                 //営業所名が選択されていません
-                messageDsp.DspMsg("M0307");
+                MessageBox.Show("営業所名が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 comboBoxSoID.Focus();
                 return false;
 
@@ -618,7 +617,8 @@ namespace SalesManagement_SysDev
                 if (textBoxClName.TextLength > 50)
                 {
                     //顧客名は50文字以下です
-                    messageDsp.DspMsg("M0309");
+                    MessageBox.Show("顧客名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClName.Focus();
                     return false;
                 }
@@ -626,7 +626,8 @@ namespace SalesManagement_SysDev
             else
             {
                 //顧客名が入力されていません
-                messageDsp.DspMsg("M0310");
+                MessageBox.Show("顧客名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 textBoxClName.Focus();
                 return false;
 
@@ -675,8 +676,9 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                //FAXを入力してください
-                messageDsp.DspMsg("M0324");
+                //FAXが入力されていません
+                MessageBox.Show("FAXが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 textBoxClFAX.Focus();
                 return false;
             }
@@ -688,7 +690,8 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckNumeric(textBoxClPostal.Text.Trim()))
                 {
                     //MessageBox.Show("郵便番号は半角数値入力です");
-                     messageDsp.DspMsg("M0321");
+                    MessageBox.Show("郵便番号は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -696,7 +699,7 @@ namespace SalesManagement_SysDev
                 if (textBoxClPostal.TextLength != 7)
                 {
                     //MessageBox.Show("郵便番号は7文字です");
-                    messageDsp.DspMsg("M0320");
+                    MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxClPostal.Focus();
                     return false;
@@ -706,7 +709,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //郵便番号を入力してください
-                messageDsp.DspMsg("M0322");
+                MessageBox.Show("郵便番号を入力してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxClPostal.Focus();
                 return false;
             }
@@ -716,7 +719,7 @@ namespace SalesManagement_SysDev
             {
                 if (textBoxClAddres.TextLength > 50)
                 {
-                    messageDsp.DspMsg("M0318");
+                    MessageBox.Show("住所は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClAddres.Focus();
                     return false;
                 }
@@ -724,7 +727,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //MessageBox.Show("住所が入力されていません");
-                messageDsp.DspMsg("M0319");
+                MessageBox.Show("住所が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxClAddres.Focus();
                 return false;
 
@@ -732,8 +735,7 @@ namespace SalesManagement_SysDev
             //フラグの適否
             if (checkBoxClFlag.CheckState == CheckState.Indeterminate)
             {
-                //MessageBox.Show("非表示フラグが不確定の状態です");
-                messageDsp.DspMsg("M0326");
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxClFlag.Focus();
                 return false;
             }
@@ -787,18 +789,17 @@ namespace SalesManagement_SysDev
         private void UpdateClient(M_Client updClient)
         {
             // 更新確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M0315");
+            DialogResult result = MessageBox.Show("データを更新してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
             if (result == DialogResult.Cancel)
                 return;
 
             // スタッフ情報の更新
             bool flg = clientDataAccess.UpdateClientData(updClient);
             if (flg == true)
-                //MessageBox.Show("データを更新しました。");
-                messageDsp.DspMsg("M0316");
+                MessageBox.Show("データを更新しました","追加確認",MessageBoxButtons.OK,MessageBoxIcon.Information);
             else
-                //MessageBox.Show("データの更新に失敗しました。");
-                messageDsp.DspMsg("M0317");
+                MessageBox.Show("データの更新に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxClID.Focus();
 
@@ -850,16 +851,14 @@ namespace SalesManagement_SysDev
                 //文字数
                 if (textBoxClID.TextLength > 6)
                 {
-                    //MessageBox.Show("顧客IDは6文字以下です");
-                    messageDsp.DspMsg("M0302");
+                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClID.Focus();
                     return false;
                 }
                 // 顧客IDの存在チェック
                 if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
                 {
-                    //MessageBox.Show("入力された顧客IDは存在しません");
-                    messageDsp.DspMsg("M0314");
+                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClID.Focus();
                     return false;
                 }
@@ -872,7 +871,8 @@ namespace SalesManagement_SysDev
                 if (textBoxClName.TextLength > 50)
                 {
                     //顧客名は50文字以下です
-                    messageDsp.DspMsg("M0309");
+                    MessageBox.Show("顧客名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClName.Focus();
                     return false;
                 }
@@ -939,7 +939,8 @@ namespace SalesManagement_SysDev
             {
                 if (textBoxClAddres.TextLength > 50)
                 {
-                    messageDsp.DspMsg("M0318");
+                    MessageBox.Show("住所は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     textBoxClAddres.Focus();
                     return false;
                 }

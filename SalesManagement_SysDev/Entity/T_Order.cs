@@ -50,9 +50,9 @@ namespace SalesManagement_SysDev
         public string ClCharge { get; set; }
         [DisplayName("受注年月日")]
         public DateTime? OrDate { get; set; }
-        [DisplayName("受注状態フラグ")]
+        [DisplayName("受注確定フラグ")]
         public int? OrStateFlag { get; set; }
-        [DisplayName("受注管理フラグ")]
+        [DisplayName("非表示フラグ")]
         public int OrFlag { get; set; }
         [DisplayName("非表示理由")]
         public string OrHidden { get; set; }

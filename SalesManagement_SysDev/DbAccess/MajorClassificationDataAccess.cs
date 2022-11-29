@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SalesManagement_SysDev//.DbAccess
+namespace SalesManagement_SysDev
 {
     class MajorClassificationDataAccess
     {
         ///////////////////////////////
-        //メソッド名：CheckMcCDExistence()
+        //メソッド名：CheckMcIDExistence()
         //引　数   ：大分類ID
         //戻り値   ：True or False
         //機　能   ：一致する大分類IDの有無を確認
         //          ：一致データありの場合True
         //          ：一致データなしの場合False
         ///////////////////////////////
-        public bool CheckMcCDExistence(int McID)
+        public bool CheckMcIDExistence(int McID)
         {
             bool flg = false;
             try
@@ -33,32 +33,6 @@ namespace SalesManagement_SysDev//.DbAccess
             }
             return flg;
         }
-
-        ///////////////////////////////
-        //メソッド名：SelectMcExistenceCheck()
-        //引　数   ：大分類IDと大分類名
-        //戻り値   ：True or False
-        //機　能   ：一致する大分類IDの有無を確認
-        //          ：一致データありの場合True
-        //          ：一致データなしの場合False
-        ///////////////////////////////
-        public bool SelectMcExistenceCheck(int mcID,string mcName)
-        {
-            bool flg = false;
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                flg = context.M_MajorCassifications.Any(x => x.McID == mcID && x.McName.Contains(mcName));
-                context.Dispose();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            return flg;
-        }
-
 
         ///////////////////////////////
         //メソッド名：AddMcData()
@@ -101,6 +75,7 @@ namespace SalesManagement_SysDev//.DbAccess
             {
                 var context = new SalesManagement_DevContext();
                 var MajorCassification = context.M_MajorCassifications.Single(x => x.McID == updMajorCassification.McID);
+
                 MajorCassification.McName = updMajorCassification.McName;
                 MajorCassification.McFlag = updMajorCassification.McFlag;
                 MajorCassification.McHidden = updMajorCassification.McHidden;
@@ -115,6 +90,23 @@ namespace SalesManagement_SysDev//.DbAccess
                 return false;
             }
         }
+        /////////////////////////////////
+        ////メソッド名：CheckCascadeSc()
+        ////引　数   ：大分類ID
+        ////戻り値   ：True or False
+        ////機　能   ：大分類IDが小分類マスタでの利用可否
+        ////          ：利用されているの場合True
+        ////          ：利用されていない場合False
+        /////////////////////////////////
+        public bool CheckCascadeSc(int mcID)
+        {
+            var context = new SalesManagement_DevContext();
+            //大分類IDが小分類マスタで利用されているか
+            bool flg = context.M_SmallClassifications.Any(x => x.McID == mcID&&x.ScFlag==0);
+
+            return flg;
+        }
+
         ///////////////////////////////
         //メソッド名：GetMcData()
         //引　数   ：なし
@@ -128,7 +120,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                majorCassifications = context.M_MajorCassifications.ToList();
+                majorCassifications = context.M_MajorCassifications.Where(x=>x.McFlag==0).ToList();
                 context.Dispose();
             }
             catch (Exception ex)
@@ -143,13 +135,24 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   ：表示大分類用データ
         //機　能   ：表示大分類データの取得
         ///////////////////////////////
-        public List<M_MajorCassification> GetMcData(M_MajorCassification majorCassification)
+        public List<M_MajorCassification> GetMcData(int flg,M_MajorCassification selectCondition)
         {
             List<M_MajorCassification> majorCassifications = new List<M_MajorCassification>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                majorCassifications = context.M_MajorCassifications.Where(X => X.McID == majorCassification.McID).ToList();
+                if (flg == 1)
+                {
+                    majorCassifications = context.M_MajorCassifications.Where
+                        (x => x.McID == selectCondition.McID && x.McName.Contains(selectCondition.McName) && x.McFlag == selectCondition.McFlag).ToList();
+
+                }
+                else if(flg==2)
+                {
+                    majorCassifications = context.M_MajorCassifications.Where
+                        (x => x.McName.Contains(selectCondition.McName) &&x.McFlag ==selectCondition.McFlag).ToList();
+
+                }
                 context.Dispose();
             }
             catch (Exception ex)
@@ -172,7 +175,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                majorCassifications = context.M_MajorCassifications.Where(x => x.McFlag == 0).ToList();
+                majorCassifications = context.M_MajorCassifications.Where(x =>  x.McFlag == 0).ToList();
                 context.Dispose();
 
             }
@@ -195,6 +198,29 @@ namespace SalesManagement_SysDev//.DbAccess
             bool flg = context.M_MajorCassifications.Any(x => x.McID == McID);
 
             return flg;
+        }
+        ///////////////////////////////
+        //メソッド名：GetMcHiddenData()
+        //引　数   ：なし
+        //戻り値   ：大分類データ
+        //機　能   ：大分類非表示データの取得
+        ///////////////////////////////
+        public List<M_MajorCassification> GetMcHiddenData()
+        {
+            List<M_MajorCassification> majorCassifications = new List<M_MajorCassification>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                majorCassifications = context.M_MajorCassifications.Where(x => x.McFlag == 2).ToList();
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return majorCassifications;
         }
 
 
