@@ -72,24 +72,28 @@ namespace SalesManagement_SysDev
         private void buttonSetting_Click(object sender, EventArgs e)
         {
             panelSetting.Visible = true;
+            panelLeft.Visible = false;
         }
 
         private void buttonMaker_Click(object sender, EventArgs e)
         {
-            //labelProduct.Text = "メーカー管理";
-            //userControlMaker1.Visible = true;
-            //userControlMajorClassification1.Visible = false;
-            //userControlSmallClassification1.Visible = false;
+            labelProduct.Text = "メーカー管理";
+            panelProduct.Visible = false;
+            userControlMaker1.Visible = true;
+            userControlMajorClassification1.Visible = false;
+            userControlSmallClassification1.Visible = false;
         }
 
         private void buttonEmployee_Click(object sender, EventArgs e)
         {
             //商品管理ボタン
-            //labelProduct.Text = "商品管理";
-            //panelSetting.Visible = false;
-            //userControlMaker1.Visible = false;
-            //userControlMajorClassification1.Visible = false;
-            //userControlSmallClassification1.Visible = false;
+            labelProduct.Text = "商品管理";
+            panelProduct.Visible = true;
+            panelLeft.Visible = true;
+            panelSetting.Visible = false;
+            userControlMaker1.Visible = false;
+            userControlMajorClassification1.Visible = false;
+            userControlSmallClassification1.Visible = false;
         }
 
         private void buttonFormDel_Click(object sender, EventArgs e)
@@ -99,23 +103,35 @@ namespace SalesManagement_SysDev
 
         private void buttonMajorClassification_Click(object sender, EventArgs e)
         {
-            //    labelProduct.Text = "大分類管理";
-            //    userControlMaker1.Visible = false;
-            //    userControlMajorClassification1.Visible = true;
-            //    userControlSmallClassification1.Visible = false;
+             labelProduct.Text = "大分類管理";
+             panelProduct.Visible = false;
+             userControlMaker1.Visible = false;
+             userControlMajorClassification1.Visible = true;
+             userControlSmallClassification1.Visible = false;
         }
 
         private void buttonSmallClassification_Click(object sender, EventArgs e)
         {
-            //labelProduct.Text = "小分類管理";
-            //userControlMaker1.Visible = false;
-            //userControlMajorClassification1.Visible = false;
-            //userControlSmallClassification1.Visible = true;
+            labelProduct.Text = "小分類管理";
+            panelProduct.Visible = false;
+            userControlMaker1.Visible = false;
+            userControlMajorClassification1.Visible = false;
+            userControlSmallClassification1.Visible = true;
         }
 
         private void comboBoxSc_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            
+            SmallClassifications = smallClassification.GetScDspData(int.Parse(comboBoxSc.SelectedValue.ToString()));
+            comboBoxSc.DataSource = SmallClassifications;
+            comboBoxSc.DisplayMember = "ScName";
+            comboBoxSc.ValueMember = "ScID";
+            comboBoxSc.SelectedIndex = -1;
         }
 
         private void labelSc_Click(object sender, EventArgs e)
@@ -139,16 +155,18 @@ namespace SalesManagement_SysDev
         private void SetFormComboBox()
         {
             // 商品データの取得
-            Maker = makerDataAccess.GetMakerDspData();
-            MajorCassifications = majorClassificationDataAccess.GetMcDspData();
-            SmallClassifications = smallClassification.GetParentScDspData();
+            //s
+            Maker= makerDataAccess.GetMakerDspData();       
             comboBoxMaker.DataSource = Maker;
             comboBoxMaker.DisplayMember = "MaName";
             comboBoxMaker.ValueMember = "MaID";
+            MajorCassifications = majorClassificationDataAccess.GetMcDspData();
             comboBoxMc.DataSource = MajorCassifications;
             comboBoxMc.DisplayMember = "McName";
             comboBoxMc.ValueMember = "McID";
-            comboBoxMaker.DataSource = SmallClassifications;
+            SmallClassifications = smallClassification.GetParentScDspData();
+            
+            comboBoxSc.DataSource = SmallClassifications;
             comboBoxSc.DisplayMember = "ScName" ;
             comboBoxSc.ValueMember = "ScID";
 
@@ -168,9 +186,11 @@ namespace SalesManagement_SysDev
             comboBoxMaker.SelectedIndex = -1;
             textBoxPrName.Text = "";
             textBoxPrice.Text = "";
+            textBoxPrSafetyStock.Text = "";
             comboBoxMc.SelectedIndex = -1;
             comboBoxSc.SelectedIndex = -1;
             textBoxColor.Text = "";
+            textBoxPrModelNumber.Text = "";
             DateTimePickerDateTimePickerPrReleaseDate.Checked = false;
             checkBoxPrFlag.Checked = false;
             textBoxPrHidden.Text = "";
@@ -1006,7 +1026,6 @@ namespace SalesManagement_SysDev
             // コンボボックスが未選択の場合
             string makercmb = "";
             string sccmb = "";
-
             if (comboBoxMaker.SelectedIndex != -1)
             {
                 makercmb = comboBoxMaker.SelectedValue.ToString();
@@ -1021,16 +1040,16 @@ namespace SalesManagement_SysDev
 
                 //s
                 PrID = int.Parse(textBoxPrID.Text.Trim()),
-                MaID = int.Parse(makercmb.ToString()),
-                PrName = textBoxPrName.Text.Trim(),
-                Price = int.Parse(textBoxPrice.Text.Trim()),
-                PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                PrJCode=null,
-                ScID = int.Parse(sccmb.ToString()), //int.Parse(comboBoxSc.SelectedValue.ToString()),
-                PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                PrColor = textBoxColor.Text.Trim(),
-                PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                PrHidden = textBoxPrHidden.Text.Trim()
+                MaID = int.Parse(makercmb),
+                //PrName = textBoxPrName.Text.Trim(),
+                //Price = int.Parse(textBoxPrice.Text.Trim()),
+                //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                //PrJCode=null,
+                //ScID = int.Parse(sccmb), //int.Parse(comboBoxSc.SelectedValue.ToString()),
+                //PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                //PrColor = textBoxColor.Text.Trim(),
+                ////PrReleaseDate =DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text.Trim()),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                //PrHidden = textBoxPrHidden.Text.Trim()
             };
 
             Product = ProductDataAccess.GetProductData(selectCondition);
@@ -1057,6 +1076,20 @@ namespace SalesManagement_SysDev
             dataGridViewProduct.Refresh();
         }
 
+        private void userControlMajorClassification1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelProduct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelSetting_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 

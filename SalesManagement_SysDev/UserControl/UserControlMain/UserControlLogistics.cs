@@ -28,5 +28,11 @@ namespace SalesManagement_SysDev.UserControlMain
             FormStock formStock = new FormStock();
             formStock.Show();
         }
+
+        private void buttonChumon_Click(object sender, EventArgs e)
+        {
+            FormChumon formChumon = new FormChumon();
+            formChumon.Show();
+        }
     }
 }

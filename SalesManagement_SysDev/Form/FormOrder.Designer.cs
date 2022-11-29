@@ -45,16 +45,15 @@ namespace SalesManagement_SysDev
             this.buttonHidden = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonUpdateKakutei = new System.Windows.Forms.Button();
+            this.buttonConfirm = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelClName = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
+            this.buttonClear2 = new System.Windows.Forms.Button();
             this.labelExplamation = new System.Windows.Forms.Label();
-            this.checkBoxOrFlag = new System.Windows.Forms.CheckBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxOrHidden = new System.Windows.Forms.TextBox();
             this.labelOrDate = new System.Windows.Forms.Label();
@@ -82,6 +81,8 @@ namespace SalesManagement_SysDev
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelOrder = new System.Windows.Forms.Panel();
             this.userControlOrderDetail1 = new SalesManagement_SysDev.UserControlOrderDetail();
+            this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
+            this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -217,7 +218,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.Controls.Add(this.buttonHidden);
             this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonLogout);
-            this.panelLeft.Controls.Add(this.buttonUpdateKakutei);
+            this.panelLeft.Controls.Add(this.buttonConfirm);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Controls.Add(this.buttonRegist);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -240,6 +241,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.TabIndex = 43;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
             // 
             // buttonHidden
             // 
@@ -285,21 +287,21 @@ namespace SalesManagement_SysDev
             this.buttonLogout.UseVisualStyleBackColor = false;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // buttonUpdateKakutei
+            // buttonConfirm
             // 
-            this.buttonUpdateKakutei.BackColor = System.Drawing.Color.White;
-            this.buttonUpdateKakutei.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonUpdateKakutei.FlatAppearance.BorderSize = 4;
-            this.buttonUpdateKakutei.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdateKakutei.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonUpdateKakutei.Location = new System.Drawing.Point(25, 120);
-            this.buttonUpdateKakutei.Name = "buttonUpdateKakutei";
-            this.buttonUpdateKakutei.Size = new System.Drawing.Size(200, 80);
-            this.buttonUpdateKakutei.TabIndex = 2;
-            this.buttonUpdateKakutei.Text = "更新/確定";
-            this.buttonUpdateKakutei.UseCompatibleTextRendering = true;
-            this.buttonUpdateKakutei.UseVisualStyleBackColor = false;
-            this.buttonUpdateKakutei.Click += new System.EventHandler(this.buttonUpdate_Click);
+            this.buttonConfirm.BackColor = System.Drawing.Color.White;
+            this.buttonConfirm.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonConfirm.FlatAppearance.BorderSize = 4;
+            this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirm.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonConfirm.Location = new System.Drawing.Point(25, 120);
+            this.buttonConfirm.Name = "buttonConfirm";
+            this.buttonConfirm.Size = new System.Drawing.Size(200, 80);
+            this.buttonConfirm.TabIndex = 2;
+            this.buttonConfirm.Text = "確定";
+            this.buttonConfirm.UseCompatibleTextRendering = true;
+            this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonSearch
             // 
@@ -349,11 +351,12 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelInput.Controls.Add(this.labelClName);
-            this.panelInput.Controls.Add(this.button2);
+            this.panelInput.Controls.Add(this.checkBox1Hidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
+            this.panelInput.Controls.Add(this.textBox1);
+            this.panelInput.Controls.Add(this.labelClName);
+            this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.labelExplamation);
-            this.panelInput.Controls.Add(this.checkBoxOrFlag);
             this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.textBoxOrHidden);
             this.panelInput.Controls.Add(this.labelOrDate);
@@ -373,6 +376,14 @@ namespace SalesManagement_SysDev
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 6;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox1.Location = new System.Drawing.Point(1028, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(190, 27);
+            this.textBox1.TabIndex = 52;
+            // 
             // labelClName
             // 
             this.labelClName.AutoSize = true;
@@ -383,28 +394,16 @@ namespace SalesManagement_SysDev
             this.labelClName.TabIndex = 50;
             this.labelClName.Text = "顧客名";
             // 
-            // button2
+            // buttonClear2
             // 
-            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(1447, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 30);
-            this.button2.TabIndex = 49;
-            this.button2.Text = "入力クリア";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStateFlag
-            // 
-            this.checkBoxStateFlag.AutoSize = true;
-            this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 127);
-            this.checkBoxStateFlag.Name = "checkBoxStateFlag";
-            this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
-            this.checkBoxStateFlag.TabIndex = 48;
-            this.checkBoxStateFlag.Text = "受注確定";
-            this.checkBoxStateFlag.UseVisualStyleBackColor = false;
+            this.buttonClear2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear2.Location = new System.Drawing.Point(1447, 140);
+            this.buttonClear2.Name = "buttonClear2";
+            this.buttonClear2.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear2.TabIndex = 49;
+            this.buttonClear2.Text = "入力クリア";
+            this.buttonClear2.UseVisualStyleBackColor = true;
+            this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
             // 
             // labelExplamation
             // 
@@ -415,18 +414,6 @@ namespace SalesManagement_SysDev
             this.labelExplamation.Size = new System.Drawing.Size(119, 13);
             this.labelExplamation.TabIndex = 37;
             this.labelExplamation.Text = "※登録時入力不要";
-            // 
-            // checkBoxOrFlag
-            // 
-            this.checkBoxOrFlag.AutoSize = true;
-            this.checkBoxOrFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxOrFlag.Location = new System.Drawing.Point(336, 78);
-            this.checkBoxOrFlag.Name = "checkBoxOrFlag";
-            this.checkBoxOrFlag.Size = new System.Drawing.Size(152, 28);
-            this.checkBoxOrFlag.TabIndex = 36;
-            this.checkBoxOrFlag.Text = "非表示フラグ";
-            this.checkBoxOrFlag.UseVisualStyleBackColor = true;
-            this.checkBoxOrFlag.CheckedChanged += new System.EventHandler(this.checkBoxOrFlag_CheckedChanged);
             // 
             // buttonClear
             // 
@@ -696,6 +683,30 @@ namespace SalesManagement_SysDev
             this.userControlOrderDetail1.Size = new System.Drawing.Size(1920, 979);
             this.userControlOrderDetail1.TabIndex = 49;
             // 
+            // checkBoxStateFlag
+            // 
+            this.checkBoxStateFlag.AutoSize = true;
+            this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 127);
+            this.checkBoxStateFlag.Name = "checkBoxStateFlag";
+            this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
+            this.checkBoxStateFlag.TabIndex = 65;
+            this.checkBoxStateFlag.Text = "受注確定";
+            this.checkBoxStateFlag.UseVisualStyleBackColor = false;
+            // 
+            // checkBox1Hidden
+            // 
+            this.checkBox1Hidden.AutoSize = true;
+            this.checkBox1Hidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBox1Hidden.Location = new System.Drawing.Point(343, 77);
+            this.checkBox1Hidden.Name = "checkBox1Hidden";
+            this.checkBox1Hidden.Size = new System.Drawing.Size(149, 28);
+            this.checkBox1Hidden.TabIndex = 66;
+            this.checkBox1Hidden.Text = "非表示理由";
+            this.checkBox1Hidden.UseVisualStyleBackColor = true;
+            // 
             // FormOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -729,7 +740,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Button buttonUpdateKakutei;
+        private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
         private System.Windows.Forms.Panel panelInput;
@@ -769,13 +780,14 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonHidden;
         private System.Windows.Forms.Button buttonDetail;
         private System.Windows.Forms.Button buttonHiddenList;
-        private System.Windows.Forms.CheckBox checkBoxOrFlag;
         private System.Windows.Forms.Label labelExplamation;
-        private System.Windows.Forms.CheckBox checkBoxStateFlag;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonClear2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label labelClName;
         private System.Windows.Forms.Panel panelOrder;
         private UserControlOrderDetail userControlOrderDetail1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox1Hidden;
+        private System.Windows.Forms.CheckBox checkBoxStateFlag;
     }
 }
