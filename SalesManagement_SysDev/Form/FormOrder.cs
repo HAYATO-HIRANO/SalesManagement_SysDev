@@ -211,40 +211,11 @@ namespace SalesManagement_SysDev
                　DateTimePickerOrDate.Focus();
                 return false;
             }
-            //フラグの適否
-            if (checkBoxOrFlag.CheckState == CheckState.Indeterminate)
-            {
-                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                checkBoxOrFlag.Focus();
-                return false;
-            }
-            if (checkBoxOrFlag.Checked == true)
-            {
-                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxOrFlag.Focus();
-                return false;
-            }
             //非表示理由の適否
             if (!String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
             {
                 MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxOrHidden.Focus();
-                return false;
-            }
-            //受注確定フラグの適否
-            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
-            {
-                MessageBox.Show("受注確定フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                checkBoxStateFlag.Focus();
-                return false;
-
-            }
-            if (checkBoxStateFlag.Checked == true)
-            {
-                MessageBox.Show("受注確定フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxStateFlag.Focus();
                 return false;
             }
 
@@ -290,18 +261,29 @@ namespace SalesManagement_SysDev
             // 受注情報の登録
             bool flg = orderDataAccess.AddOrderData(regOrder);
             if (flg == true)
-                MessageBox.Show("データを登録しました","追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                 result = MessageBox.Show("データを登録しました、詳細登録画面に移動してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    labelOrder.Text = "受注詳細管理";
+                    buttonDetail.Text = "受注管理";
+                    userControlOrderDetail1.Visible = true;
+                    panelOrder.Visible = false;
+                    
+                    return;
+                }
+                
+            }
             else
                 MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxOrID.Focus();
 
             //入力エリアのクリア
-            //ClearInput();
+            ClearInput();
             //データグリッドビューの表示
             GetDataGridView();
-            //受注詳細画面に移動
-
+            
         }
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
@@ -404,28 +386,167 @@ namespace SalesManagement_SysDev
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Order.Count / (double)pageSize)) + "ページ";
 
+            dataGridViewOrder.Refresh();
+        }
+        //////受注情報確定////////
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
 
+        }
+        //////受注情報検索///////
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
 
+            //8.5.1.1妥当な受注データ取得
+            if (!GetValidDataAtSelect())
+                return;
 
+            //8.5.1.2 受注情報抽出
+            GenerateDataAtSelect();
+
+            //8.5.1.3  受注抽出結果表示
+            SetSelectData();
+
+        }
+        ///////////////////////////////
+        //　8.5.1.1 妥当な受注データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtSelect()
+        {
+            //受注IDの適否
+            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxOrID.Text.Trim()))
+                {
+                    MessageBox.Show("受注IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxOrID.TextLength > 6)
+                {
+                    MessageBox.Show("受注IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                // 受注IDの存在チェック
+                if (!orderDataAccess.CheckOrIDExistence(int.Parse(textBoxOrID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された受注IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+
+            }
+            //社員IDの適否
+            if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
+                {
+                    MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxEmID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxEmID.TextLength > 6)
+                {
+                    MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxEmID.Focus();
+                    return false;
+                }
+                // 社員IDの存在チェック
+                if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxEmID.Focus();
+                    return false;
+                }
+
+            }
+            //顧客IDの適否
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+                {
+                    MessageBox.Show("顧客IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClID.TextLength > 6)
+                {
+                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                // 顧客IDの存在チェック
+                if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+
+            }
+            //顧客担当名の適否
+            if (!String.IsNullOrEmpty(textBoxClCharge.Text.Trim()))
+            {
+                if (textBoxClCharge.TextLength > 50)
+                {
+                    //顧客担当名は50文字以下です
+                    MessageBox.Show("顧客担当名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxClCharge.Focus();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　8.5.1.2 受注情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：検索データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+
+        }
+        ///////////////////////////////
+        //　8.5.1.3 受注抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：受注情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewOrder.DataSource = Order;
+            if (Order.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Order.Count / (double)pageSize)) + "ページ";
             dataGridViewOrder.Refresh();
 
         }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
-        {
-            //ボタン確定処理
-
-        }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonList_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonSaisyou_Click(object sender, EventArgs e)
         {
@@ -446,10 +567,7 @@ namespace SalesManagement_SysDev
             formMain.Close();
         }
 
-        private void textBoxPrName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttonDetail_Click(object sender, EventArgs e)
         {
@@ -578,18 +696,6 @@ namespace SalesManagement_SysDev
 
         private void checkBoxOrFlag_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxOrFlag.Checked == true)
-            {
-                textBoxOrHidden.TabStop = true;
-                textBoxOrHidden.ReadOnly = false;
-            }
-            else
-            {
-                textBoxOrHidden.Text = "";
-                textBoxOrHidden.TabStop = false;
-                textBoxOrHidden.ReadOnly = true;
-
-            }
 
         }
         ///////////////////////////////
@@ -610,6 +716,7 @@ namespace SalesManagement_SysDev
             textBoxPage.Text = "1";
 
         }
+<<<<<<< HEAD
 
         private void labelOrID_Click(object sender, EventArgs e)
         {
@@ -635,5 +742,43 @@ namespace SalesManagement_SysDev
         {
 
         }
+=======
+        ///////////////////////////////
+        //メソッド名：ClearInput()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入力エリアをクリア
+        ///////////////////////////////
+        private void ClearInput()
+        {
+            textBoxOrID.Text = "";
+            comboBoxSoID.SelectedIndex = -1;
+            textBoxEmID.Text = "";
+            textBoxClID.Text = "";
+            textBoxClCharge.Text = "";
+            DateTimePickerOrDate.Value = DateTime.Now;
+            textBoxOrHidden.Text = "";
+        }
+
+        //////入力クリア///////
+        private void buttonClear2_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+        //////一覧表示//////
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+            GetDataGridView();
+        }
+        /////非表示リスト//////
+        private void buttonHiddenList_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+            GetHiddenDataGridView();
+        }
+
+        
+>>>>>>> a605b76804cde6a94bebbfdbdc107706a02041ba
     }
 }

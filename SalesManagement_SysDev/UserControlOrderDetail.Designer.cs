@@ -36,6 +36,12 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelStateFlag = new System.Windows.Forms.Label();
+            this.labelOrState = new System.Windows.Forms.Label();
+            this.labelOrderID = new System.Windows.Forms.Label();
+            this.textBoxOrderID = new System.Windows.Forms.TextBox();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxOrDetailID = new System.Windows.Forms.TextBox();
             this.labelOrDetailID = new System.Windows.Forms.Label();
@@ -48,10 +54,6 @@ namespace SalesManagement_SysDev
             this.textBoxOrQuantity = new System.Windows.Forms.TextBox();
             this.labelOrTotalPrice = new System.Windows.Forms.Label();
             this.textBoxOrTotalPrice = new System.Windows.Forms.TextBox();
-            this.labelPrice = new System.Windows.Forms.Label();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.labelOrderID = new System.Windows.Forms.Label();
-            this.textBoxOrderID = new System.Windows.Forms.TextBox();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
             this.dataGridViewOrderDetail = new System.Windows.Forms.DataGridView();
@@ -62,8 +64,6 @@ namespace SalesManagement_SysDev
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
-            this.labelOrState = new System.Windows.Forms.Label();
-            this.labelStateFlag = new System.Windows.Forms.Label();
             this.panelLeft.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetail)).BeginInit();
@@ -127,6 +127,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseCompatibleTextRendering = true;
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -184,6 +185,72 @@ namespace SalesManagement_SysDev
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1552, 173);
             this.panel1.TabIndex = 48;
+            // 
+            // labelStateFlag
+            // 
+            this.labelStateFlag.AutoSize = true;
+            this.labelStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelStateFlag.ForeColor = System.Drawing.Color.Red;
+            this.labelStateFlag.Location = new System.Drawing.Point(126, 96);
+            this.labelStateFlag.Name = "labelStateFlag";
+            this.labelStateFlag.Size = new System.Drawing.Size(85, 24);
+            this.labelStateFlag.TabIndex = 45;
+            this.labelStateFlag.Text = "未確定";
+            // 
+            // labelOrState
+            // 
+            this.labelOrState.AutoSize = true;
+            this.labelOrState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelOrState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOrState.Location = new System.Drawing.Point(15, 96);
+            this.labelOrState.Name = "labelOrState";
+            this.labelOrState.Size = new System.Drawing.Size(118, 24);
+            this.labelOrState.TabIndex = 44;
+            this.labelOrState.Text = "受注状態：";
+            // 
+            // labelOrderID
+            // 
+            this.labelOrderID.AutoSize = true;
+            this.labelOrderID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelOrderID.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOrderID.Location = new System.Drawing.Point(13, 18);
+            this.labelOrderID.Name = "labelOrderID";
+            this.labelOrderID.Size = new System.Drawing.Size(108, 33);
+            this.labelOrderID.TabIndex = 42;
+            this.labelOrderID.Text = "受注ID";
+            // 
+            // textBoxOrderID
+            // 
+            this.textBoxOrderID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrderID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxOrderID.Name = "textBoxOrderID";
+            this.textBoxOrderID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxOrderID.TabIndex = 43;
+            this.textBoxOrderID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPrice.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrice.Location = new System.Drawing.Point(367, 96);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(58, 24);
+            this.labelPrice.TabIndex = 40;
+            this.labelPrice.Text = "価格";
+            this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
+            // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.BackColor = System.Drawing.Color.DarkGray;
+            this.textBoxPrice.Enabled = false;
+            this.textBoxPrice.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrice.Location = new System.Drawing.Point(431, 94);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
+            this.textBoxPrice.TabIndex = 41;
+            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
             // 
             // label2
             // 
@@ -312,49 +379,6 @@ namespace SalesManagement_SysDev
             this.textBoxOrTotalPrice.TabIndex = 33;
             this.textBoxOrTotalPrice.TextChanged += new System.EventHandler(this.textBoxOrTotalPrice_TextChanged);
             // 
-            // labelPrice
-            // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelPrice.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPrice.Location = new System.Drawing.Point(367, 96);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(58, 24);
-            this.labelPrice.TabIndex = 40;
-            this.labelPrice.Text = "価格";
-            this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
-            // 
-            // textBoxPrice
-            // 
-            this.textBoxPrice.BackColor = System.Drawing.Color.DarkGray;
-            this.textBoxPrice.Enabled = false;
-            this.textBoxPrice.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPrice.Location = new System.Drawing.Point(431, 94);
-            this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
-            this.textBoxPrice.TabIndex = 41;
-            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
-            // 
-            // labelOrderID
-            // 
-            this.labelOrderID.AutoSize = true;
-            this.labelOrderID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrderID.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrderID.Location = new System.Drawing.Point(13, 18);
-            this.labelOrderID.Name = "labelOrderID";
-            this.labelOrderID.Size = new System.Drawing.Size(108, 33);
-            this.labelOrderID.TabIndex = 42;
-            this.labelOrderID.Text = "受注ID";
-            // 
-            // textBoxOrderID
-            // 
-            this.textBoxOrderID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrderID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxOrderID.Name = "textBoxOrderID";
-            this.textBoxOrderID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxOrderID.TabIndex = 43;
-            this.textBoxOrderID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
-            // 
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -453,29 +477,6 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 53;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
-            // 
-            // labelOrState
-            // 
-            this.labelOrState.AutoSize = true;
-            this.labelOrState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrState.Location = new System.Drawing.Point(15, 96);
-            this.labelOrState.Name = "labelOrState";
-            this.labelOrState.Size = new System.Drawing.Size(118, 24);
-            this.labelOrState.TabIndex = 44;
-            this.labelOrState.Text = "受注状態：";
-            // 
-            // labelStateFlag
-            // 
-            this.labelStateFlag.AutoSize = true;
-            this.labelStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelStateFlag.ForeColor = System.Drawing.Color.Red;
-            this.labelStateFlag.Location = new System.Drawing.Point(126, 96);
-            this.labelStateFlag.Name = "labelStateFlag";
-            this.labelStateFlag.Size = new System.Drawing.Size(85, 24);
-            this.labelStateFlag.TabIndex = 45;
-            this.labelStateFlag.Text = "未確定";
             // 
             // UserControlOrderDetail
             // 

@@ -9,6 +9,33 @@ namespace SalesManagement_SysDev
     class OrderDataAccess
     {
         ///////////////////////////////
+        //メソッド名：CheckOrIDExistence()
+        //引　数   ：受注ID
+        //戻り値   ：True or False
+        //機　能   ：一致する受注IDの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckOrIDExistence(int orID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //受注IDで一致するデータが存在するか
+                flg = context.T_Orders.Any(x => x.OrID == orID);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddOrderData()
         //引　数   ：受注データ
         //戻り値   ：True or False
@@ -84,6 +111,33 @@ namespace SalesManagement_SysDev
                 Order.OrFlag = updOrder.OrFlag;
                 Order.OrHidden = updOrder.OrHidden;
                
+
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        ///////////////////////////////
+        //メソッド名：ConfirmOrderData()
+        //引　数   :受注データ
+        //戻り値   ：True or False
+        //機　能   ：受注データの確定(受注状態フラグの更新)
+        //          ：受注確定成功の場合True
+        //          ：受注確定失敗の場合False
+        ///////////////////////////////
+        public bool ConfirmOrderData(T_Order cfOrder)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var Order = context.T_Orders.Single(x => x.OrID == cfOrder.OrID);
+                Order.OrStateFlag = cfOrder.OrStateFlag;
 
                 context.SaveChanges();
                 context.Dispose();

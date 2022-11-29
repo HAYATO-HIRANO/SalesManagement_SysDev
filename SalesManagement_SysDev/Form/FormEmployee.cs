@@ -24,7 +24,9 @@ namespace SalesManagement_SysDev
         PasswordHash passwordHash = new PasswordHash();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
-        //データグリッドビュー用のスタッフデータ
+        //
+        private static List<M_EmployeeDsp> EmployeeDsp;
+        //データグリッドビュー用の社員データ
         private static List<M_Employee> Employee;
         //コンボボックス用の営業所データ
         private static List<M_SalesOffice> SalesOffice;
@@ -460,18 +462,92 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void ClearInput()
         {
+            // デートタイムピッカの設定
+            SetFormDateTimePiker();
             textBoxEmID.Text = "";
             textBoxEmName.Text = "";
-            textBoxEmPhone.Text = "";
+            comboBoxSoID.SelectedIndex = -1;
+            comboBoxPoID.SelectedIndex = -1;
             textBoxEmPassword.Text = "";
+            textBoxEmPhone.Text = "";
             checkBoxEmFlag.Checked = false;
             textBoxEmHidden.Text = "";
         }
         private void GetDataGridView()
         {
+            // 社員データの取得
+            EmployeeDsp = employeeDataAccess.GetEmployeeData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューへの表示
+        ///////////////////////////////
+        private void SetDataGridView()
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 1;
+            dataGridViewEmployee.DataSource = Employee.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            //各列幅の指定
+            dataGridViewEmployee.Columns[0].Width = 80;
+            dataGridViewEmployee.Columns[1].Width = 130;
+            dataGridViewEmployee.Columns[2].Width = 130;
+            dataGridViewEmployee.Columns[3].Width = 70;
+            dataGridViewEmployee.Columns[3].Visible = false;
+            dataGridViewEmployee.Columns[4].Width = 130;
+            dataGridViewEmployee.Columns[4].Visible = false;
+            dataGridViewEmployee.Columns[5].Width = 130;
+            dataGridViewEmployee.Columns[5].Visible = false;
+            dataGridViewEmployee.Columns[6].Width = 130;
+            dataGridViewEmployee.Columns[6].Visible = false;
+            dataGridViewEmployee.Columns[7].Width = 130;
+            dataGridViewEmployee.Columns[7].Visible = false;
+            dataGridViewEmployee.Columns[8].Width = 130;
+            dataGridViewEmployee.Columns[8].Visible = false;
+            dataGridViewEmployee.Columns[9].Width = 130;
+            dataGridViewEmployee.Columns[9].Visible = false;
+            dataGridViewEmployee.Columns[10].Width = 130;
+            dataGridViewEmployee.Columns[10].Visible = false;
+            dataGridViewEmployee.Columns[11].Width = 50;
+            dataGridViewEmployee.Columns[11].Visible = false;
+            dataGridViewEmployee.Columns[12].Width = 100;
+            dataGridViewEmployee.Columns[13].Width = 50;
+            dataGridViewEmployee.Columns[13].Visible = false;
+            dataGridViewEmployee.Columns[14].Width = 100;
+            dataGridViewEmployee.Columns[15].Width = 50;
+            dataGridViewEmployee.Columns[15].Visible = false;
+            dataGridViewEmployee.Columns[16].Width = 100;
+            dataGridViewEmployee.Columns[17].Width = 50;
+            dataGridViewEmployee.Columns[17].Visible = false;
+            dataGridViewEmployee.Columns[18].Width = 100;
+            dataGridViewEmployee.Columns[19].Width = 100;
+            dataGridViewEmployee.Columns[20].Width = 130;
+            dataGridViewEmployee.Columns[20].Visible = false;
+            dataGridViewEmployee.Columns[21].Width = 80;
+            dataGridViewEmployee.Columns[22].Width = 250;
+
+            //各列の文字位置の指定
+            dataGridViewEmployee.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewEmployee.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[16].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[18].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[21].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewEmployee.Columns[22].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //dataGridViewの総ページ数
+            labelPage.Text = "/" + ((int)Math.Ceiling(Employee.Count / (double)pageSize)) + "ページ";
+
+            dataGridViewEmployee.Refresh();
 
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             //日時更新
