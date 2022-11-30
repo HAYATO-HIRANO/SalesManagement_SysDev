@@ -22,5 +22,11 @@ namespace SalesManagement_SysDev.UserControlMain
             FormOrder formOrder = new FormOrder();
             formOrder.Show();
         }
+
+        private void buttonArrival_Click(object sender, EventArgs e)
+        {
+            FormArrival formArrival = new FormArrival();
+            formArrival.Show();
+        }
     }
 }

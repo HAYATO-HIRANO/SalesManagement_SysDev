@@ -55,6 +55,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonArrival.TabIndex = 4;
             this.buttonArrival.Text = "入荷管理";
             this.buttonArrival.UseVisualStyleBackColor = false;
+            this.buttonArrival.Click += new System.EventHandler(this.buttonArrival_Click);
             // 
             // buttonOrder
             // 
@@ -68,7 +69,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonOrder.UseVisualStyleBackColor = false;
             this.buttonOrder.Click += new System.EventHandler(this.buttonOrder_Click);
             // 
-            // UserControl2
+            // UserControlSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -76,7 +77,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.Controls.Add(this.buttonShipment);
             this.Controls.Add(this.buttonArrival);
             this.Controls.Add(this.buttonOrder);
-            this.Name = "UserControl2";
+            this.Name = "UserControlSales";
             this.Size = new System.Drawing.Size(1670, 980);
             this.ResumeLayout(false);
 

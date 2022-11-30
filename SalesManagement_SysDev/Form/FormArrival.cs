@@ -35,35 +35,9 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
-
-        private void labelOrID_Click(object sender, EventArgs e)
+        private void buttonFormDel_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void labelExplamation_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxOrID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelSoID_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxSoID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelEmID_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }
