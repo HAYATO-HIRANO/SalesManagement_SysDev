@@ -39,7 +39,7 @@ namespace SalesManagement_SysDev
             this.labelDay = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelArrival = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelArrival = new System.Windows.Forms.Panel();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
@@ -79,7 +79,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelArrival.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             this.panelInput.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -194,24 +194,24 @@ namespace SalesManagement_SysDev
             this.labelArrival.TabIndex = 1;
             this.labelArrival.Text = "入荷管理";
             // 
-            // panel1
+            // panelArrival
             // 
-            this.panel1.Controls.Add(this.buttonPageSizeChange);
-            this.panel1.Controls.Add(this.textBoxPageSize);
-            this.panel1.Controls.Add(this.dataGridViewOrder);
-            this.panel1.Controls.Add(this.labelPageSize);
-            this.panel1.Controls.Add(this.textBoxPage);
-            this.panel1.Controls.Add(this.buttonLastPage);
-            this.panel1.Controls.Add(this.labelPage);
-            this.panel1.Controls.Add(this.buttonNextPage);
-            this.panel1.Controls.Add(this.buttonFirstPage);
-            this.panel1.Controls.Add(this.buttonPreviousPage);
-            this.panel1.Controls.Add(this.panelInput);
-            this.panel1.Controls.Add(this.panelLeft);
-            this.panel1.Location = new System.Drawing.Point(0, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 980);
-            this.panel1.TabIndex = 15;
+            this.panelArrival.Controls.Add(this.buttonPageSizeChange);
+            this.panelArrival.Controls.Add(this.textBoxPageSize);
+            this.panelArrival.Controls.Add(this.dataGridViewOrder);
+            this.panelArrival.Controls.Add(this.labelPageSize);
+            this.panelArrival.Controls.Add(this.textBoxPage);
+            this.panelArrival.Controls.Add(this.buttonLastPage);
+            this.panelArrival.Controls.Add(this.labelPage);
+            this.panelArrival.Controls.Add(this.buttonNextPage);
+            this.panelArrival.Controls.Add(this.buttonFirstPage);
+            this.panelArrival.Controls.Add(this.buttonPreviousPage);
+            this.panelArrival.Controls.Add(this.panelInput);
+            this.panelArrival.Controls.Add(this.panelLeft);
+            this.panelArrival.Location = new System.Drawing.Point(0, 100);
+            this.panelArrival.Name = "panelArrival";
+            this.panelArrival.Size = new System.Drawing.Size(1920, 980);
+            this.panelArrival.TabIndex = 15;
             // 
             // buttonPageSizeChange
             // 
@@ -639,7 +639,7 @@ namespace SalesManagement_SysDev
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelArrival);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormArrival";
@@ -647,8 +647,8 @@ namespace SalesManagement_SysDev
             this.Load += new System.EventHandler(this.FormArrival_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelArrival.ResumeLayout(false);
+            this.panelArrival.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
@@ -668,7 +668,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelDay;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelArrival;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelArrival;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Button buttonHiddenList;
