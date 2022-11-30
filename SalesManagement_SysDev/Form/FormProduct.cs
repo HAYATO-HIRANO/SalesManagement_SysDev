@@ -156,7 +156,7 @@ namespace SalesManagement_SysDev
         {
             // 商品データの取得
             //s
-            Maker= makerDataAccess.GetMakerDspData();       
+            Maker = makerDataAccess.GetMakerDspData();
             comboBoxMaker.DataSource = Maker;
             comboBoxMaker.DisplayMember = "MaName";
             comboBoxMaker.ValueMember = "MaID";
@@ -165,9 +165,8 @@ namespace SalesManagement_SysDev
             comboBoxMc.DisplayMember = "McName";
             comboBoxMc.ValueMember = "McID";
             SmallClassifications = smallClassification.GetParentScDspData();
-            
             comboBoxSc.DataSource = SmallClassifications;
-            comboBoxSc.DisplayMember = "ScName" ;
+            comboBoxSc.DisplayMember = "ScName";
             comboBoxSc.ValueMember = "ScID";
 
 
@@ -405,13 +404,7 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
-                {
-                    //入力された型番は存在していません
-                    messageDsp.DspMsg("M0441");
-                    textBoxPrModelNumber.Focus();
-                    return false;
-                }
+                
 
             }
             else
@@ -461,7 +454,7 @@ namespace SalesManagement_SysDev
 
             return new M_Product
             {
-                PrID = int.Parse(textBoxPrID.Text.Trim()),
+               // PrID = int.Parse(textBoxPrID.Text.Trim()),
                 MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
                 PrName = textBoxPrName.Text.Trim(),
                 Price =int.Parse(textBoxPrice.Text.Trim()),
@@ -1088,6 +1081,56 @@ namespace SalesManagement_SysDev
 
         private void panelSetting_Paint_1(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Product.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewProduct.DataSource = Product.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewProduct.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Product.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewProduct.DataSource = Product.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewProduct.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+        }
+
+        private void dataGridViewProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //クリックされた行データをテキストボックスへ
+            textBoxPrID.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[0].Value.ToString();
+            comboBoxMaker.SelectedIndex = int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[1].Value.ToString());
+            textBoxPrName.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxPrice.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPrSafetyStock.Text =dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[4].Value.ToString();
+            //comboBoxMc.SelectedIndex = int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[].Value.ToString());
+            comboBoxSc.SelectedIndex =int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[5].Value.ToString());
+            textBoxPrModelNumber.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxColor.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[7].Value.ToString();
 
         }
     }
