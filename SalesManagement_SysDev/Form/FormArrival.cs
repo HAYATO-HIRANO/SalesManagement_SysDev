@@ -39,5 +39,10 @@ namespace SalesManagement_SysDev
         {
             this.Close();
         }
+
+        private void panelArrival_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
