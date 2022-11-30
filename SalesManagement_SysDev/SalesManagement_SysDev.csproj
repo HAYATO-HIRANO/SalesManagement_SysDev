@@ -81,6 +81,12 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Form\FormArrival.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormArrival.Designer.cs">
+      <DependentUpon>FormArrival.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormSyukko.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <Compile Include="UserControl\UserControlMain\UserControlLogistics.Designer.cs">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormArrival.resx">
+      <DependentUpon>FormArrival.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSyukko.resx">
       <DependentUpon>FormSyukko.cs</DependentUpon>
     </EmbeddedResource>
