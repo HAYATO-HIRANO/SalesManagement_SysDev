@@ -63,9 +63,9 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 // 営業所IDの文字数チェック
-                if (textBoxSoID.TextLength != 15)
+                if (textBoxSoID.TextLength==2)
                 {
-                    MessageBox.Show("営業所IDは15文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("営業所IDは2文字です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxSoID.Focus();
                     return false;
@@ -170,7 +170,7 @@ namespace SalesManagement_SysDev
 
                 }
                 //郵便の文字数チェック
-                if (textBoxSoPostal.TextLength == 7)
+                if (textBoxSoPostal.TextLength != 7)
                 {
                     MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -762,21 +762,21 @@ namespace SalesManagement_SysDev
                 //営業ID文字チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxSoID.Text.Trim()))
                 {
-                    MessageBox.Show("顧客IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("営業IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoID.Focus();
                     return false;
                 }
                 // 営業IDの文字数チェック
                 if (textBoxSoID.TextLength > 2)
                 {
-                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("営業IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoID.Focus();
                     return false;
                 }
                 // 営業IDの存在チェック
                 if (!salesOfficeDataAccess.CheckSalesOfficeCDExistence(int.Parse(textBoxSoID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("入力された営業IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoID.Focus();
                     return false;
                 }
