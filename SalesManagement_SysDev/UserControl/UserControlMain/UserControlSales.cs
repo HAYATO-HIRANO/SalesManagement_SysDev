@@ -28,5 +28,11 @@ namespace SalesManagement_SysDev.UserControlMain
             FormArrival formArrival = new FormArrival();
             formArrival.Show();
         }
+
+        private void buttonShipment_Click(object sender, EventArgs e)
+        {
+            FormShipment formShipment = new FormShipment();
+            formShipment.Show();
+        }
     }
 }

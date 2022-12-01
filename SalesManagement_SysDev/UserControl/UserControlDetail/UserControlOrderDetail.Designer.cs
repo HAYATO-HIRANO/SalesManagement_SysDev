@@ -219,6 +219,7 @@ namespace SalesManagement_SysDev
             this.labelOrderID.Size = new System.Drawing.Size(108, 33);
             this.labelOrderID.TabIndex = 42;
             this.labelOrderID.Text = "受注ID";
+            this.labelOrderID.Click += new System.EventHandler(this.labelOrderID_Click);
             // 
             // textBoxOrderID
             // 

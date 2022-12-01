@@ -1,7 +1,7 @@
 ﻿
 namespace SalesManagement_SysDev
 {
-    partial class UserControlChumonDetail
+    partial class UserControlArrivalDetail
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -34,13 +34,13 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.labelStateFlag = new System.Windows.Forms.Label();
-            this.labelOrState = new System.Windows.Forms.Label();
-            this.labelChID = new System.Windows.Forms.Label();
-            this.textBoxChID = new System.Windows.Forms.TextBox();
+            this.labelArState = new System.Windows.Forms.Label();
+            this.labelArID = new System.Windows.Forms.Label();
+            this.textBoxArID = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.textBoxChDetailID = new System.Windows.Forms.TextBox();
-            this.labelChDetailID = new System.Windows.Forms.Label();
+            this.textBoxArDetailID = new System.Windows.Forms.TextBox();
+            this.labelArDetailID = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelPrID = new System.Windows.Forms.Label();
             this.textBoxPrName = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
-            this.panelLeft.TabIndex = 6;
+            this.panelLeft.TabIndex = 8;
             // 
             // buttonList
             // 
@@ -104,20 +104,19 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInput.Controls.Add(this.labelStateFlag);
-            this.panelInput.Controls.Add(this.labelOrState);
-            this.panelInput.Controls.Add(this.labelChID);
-            this.panelInput.Controls.Add(this.textBoxChID);
+            this.panelInput.Controls.Add(this.labelArState);
+            this.panelInput.Controls.Add(this.labelArID);
+            this.panelInput.Controls.Add(this.textBoxArID);
             this.panelInput.Controls.Add(this.labelPrice);
             this.panelInput.Controls.Add(this.textBoxPrice);
-            this.panelInput.Controls.Add(this.textBoxChDetailID);
-            this.panelInput.Controls.Add(this.labelChDetailID);
+            this.panelInput.Controls.Add(this.textBoxArDetailID);
+            this.panelInput.Controls.Add(this.labelArDetailID);
             this.panelInput.Controls.Add(this.button1);
             this.panelInput.Controls.Add(this.labelPrID);
             this.panelInput.Controls.Add(this.textBoxPrName);
@@ -127,10 +126,10 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxOrQuantity);
             this.panelInput.Controls.Add(this.labelOrTotalPrice);
             this.panelInput.Controls.Add(this.textBoxOrTotalPrice);
-            this.panelInput.Location = new System.Drawing.Point(306, 48);
+            this.panelInput.Location = new System.Drawing.Point(293, 52);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
-            this.panelInput.TabIndex = 49;
+            this.panelInput.TabIndex = 51;
             // 
             // labelStateFlag
             // 
@@ -144,35 +143,35 @@ namespace SalesManagement_SysDev
             this.labelStateFlag.TabIndex = 45;
             this.labelStateFlag.Text = "未確定";
             // 
-            // labelOrState
+            // labelArState
             // 
-            this.labelOrState.AutoSize = true;
-            this.labelOrState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrState.Location = new System.Drawing.Point(15, 96);
-            this.labelOrState.Name = "labelOrState";
-            this.labelOrState.Size = new System.Drawing.Size(118, 24);
-            this.labelOrState.TabIndex = 44;
-            this.labelOrState.Text = "注文状態：";
+            this.labelArState.AutoSize = true;
+            this.labelArState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelArState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelArState.Location = new System.Drawing.Point(15, 96);
+            this.labelArState.Name = "labelArState";
+            this.labelArState.Size = new System.Drawing.Size(118, 24);
+            this.labelArState.TabIndex = 44;
+            this.labelArState.Text = "入荷状態：";
             // 
-            // labelChID
+            // labelArID
             // 
-            this.labelChID.AutoSize = true;
-            this.labelChID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelChID.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelChID.Location = new System.Drawing.Point(13, 18);
-            this.labelChID.Name = "labelChID";
-            this.labelChID.Size = new System.Drawing.Size(108, 33);
-            this.labelChID.TabIndex = 42;
-            this.labelChID.Text = "注文ID";
+            this.labelArID.AutoSize = true;
+            this.labelArID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelArID.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelArID.Location = new System.Drawing.Point(13, 18);
+            this.labelArID.Name = "labelArID";
+            this.labelArID.Size = new System.Drawing.Size(108, 33);
+            this.labelArID.TabIndex = 42;
+            this.labelArID.Text = "入荷ID";
             // 
-            // textBoxChID
+            // textBoxArID
             // 
-            this.textBoxChID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxChID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxChID.Name = "textBoxChID";
-            this.textBoxChID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxChID.TabIndex = 43;
+            this.textBoxArID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxArID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxArID.Name = "textBoxArID";
+            this.textBoxArID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxArID.TabIndex = 43;
             // 
             // labelPrice
             // 
@@ -195,29 +194,29 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
             this.textBoxPrice.TabIndex = 41;
             // 
-            // textBoxChDetailID
+            // textBoxArDetailID
             // 
-            this.textBoxChDetailID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxChDetailID.Location = new System.Drawing.Point(434, 21);
-            this.textBoxChDetailID.Name = "textBoxChDetailID";
-            this.textBoxChDetailID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxChDetailID.TabIndex = 37;
+            this.textBoxArDetailID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxArDetailID.Location = new System.Drawing.Point(434, 21);
+            this.textBoxArDetailID.Name = "textBoxArDetailID";
+            this.textBoxArDetailID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxArDetailID.TabIndex = 37;
             // 
-            // labelChDetailID
+            // labelArDetailID
             // 
-            this.labelChDetailID.AutoSize = true;
-            this.labelChDetailID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelChDetailID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelChDetailID.Location = new System.Drawing.Point(300, 23);
-            this.labelChDetailID.Name = "labelChDetailID";
-            this.labelChDetailID.Size = new System.Drawing.Size(128, 24);
-            this.labelChDetailID.TabIndex = 36;
-            this.labelChDetailID.Text = "注文詳細ID";
+            this.labelArDetailID.AutoSize = true;
+            this.labelArDetailID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelArDetailID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelArDetailID.Location = new System.Drawing.Point(300, 23);
+            this.labelArDetailID.Name = "labelArDetailID";
+            this.labelArDetailID.Size = new System.Drawing.Size(128, 24);
+            this.labelArDetailID.TabIndex = 36;
+            this.labelArDetailID.Text = "入荷詳細ID";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1447, 136);
+            this.button1.Location = new System.Drawing.Point(1447, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 30);
             this.button1.TabIndex = 28;
@@ -307,58 +306,58 @@ namespace SalesManagement_SysDev
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1746, 286);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1733, 266);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
-            this.buttonPageSizeChange.TabIndex = 68;
+            this.buttonPageSizeChange.TabIndex = 88;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             // 
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1707, 288);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1694, 268);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(33, 26);
-            this.textBoxPageSize.TabIndex = 67;
+            this.textBoxPageSize.TabIndex = 87;
             this.textBoxPageSize.Text = "20";
             // 
             // dataGridViewOrderDetail
             // 
             this.dataGridViewOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrderDetail.Location = new System.Drawing.Point(306, 316);
+            this.dataGridViewOrderDetail.Location = new System.Drawing.Point(293, 296);
             this.dataGridViewOrderDetail.Name = "dataGridViewOrderDetail";
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrderDetail.TabIndex = 59;
+            this.dataGridViewOrderDetail.TabIndex = 79;
             // 
             // labelPageSize
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1596, 293);
+            this.labelPageSize.Location = new System.Drawing.Point(1583, 273);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
-            this.labelPageSize.TabIndex = 66;
+            this.labelPageSize.TabIndex = 86;
             this.labelPageSize.Text = "1ページ行数";
             // 
             // textBoxPage
             // 
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(308, 283);
+            this.textBoxPage.Location = new System.Drawing.Point(295, 263);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
-            this.textBoxPage.TabIndex = 60;
+            this.textBoxPage.TabIndex = 80;
             this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(1168, 283);
+            this.buttonLastPage.Location = new System.Drawing.Point(1155, 263);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonLastPage.TabIndex = 65;
+            this.buttonLastPage.TabIndex = 85;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
             // 
@@ -366,43 +365,43 @@ namespace SalesManagement_SysDev
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(358, 290);
+            this.labelPage.Location = new System.Drawing.Point(345, 270);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
-            this.labelPage.TabIndex = 61;
+            this.labelPage.TabIndex = 81;
             this.labelPage.Text = "ページ";
             // 
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(1100, 283);
+            this.buttonNextPage.Location = new System.Drawing.Point(1087, 263);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonNextPage.TabIndex = 64;
+            this.buttonNextPage.TabIndex = 84;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
             // 
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(953, 283);
+            this.buttonFirstPage.Location = new System.Drawing.Point(940, 263);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonFirstPage.TabIndex = 62;
+            this.buttonFirstPage.TabIndex = 82;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
             // 
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(1020, 283);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1007, 263);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
-            this.buttonPreviousPage.TabIndex = 63;
+            this.buttonPreviousPage.TabIndex = 83;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
             // 
-            // UserControlChumonDetail
+            // UserControlArrivalDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -419,9 +418,8 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonPreviousPage);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.panelLeft);
-            this.Name = "UserControlChumonDetail";
+            this.Name = "UserControlArrivalDetail";
             this.Size = new System.Drawing.Size(1920, 980);
-            this.Load += new System.EventHandler(this.UserControlChumonDetail_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
@@ -438,13 +436,13 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Label labelStateFlag;
-        private System.Windows.Forms.Label labelOrState;
-        private System.Windows.Forms.Label labelChID;
-        private System.Windows.Forms.TextBox textBoxChID;
+        private System.Windows.Forms.Label labelArState;
+        private System.Windows.Forms.Label labelArID;
+        private System.Windows.Forms.TextBox textBoxArID;
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.TextBox textBoxChDetailID;
-        private System.Windows.Forms.Label labelChDetailID;
+        private System.Windows.Forms.TextBox textBoxArDetailID;
+        private System.Windows.Forms.Label labelArDetailID;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelPrID;
         private System.Windows.Forms.TextBox textBoxPrName;
