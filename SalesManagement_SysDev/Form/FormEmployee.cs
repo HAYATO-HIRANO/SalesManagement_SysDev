@@ -45,7 +45,7 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
-            panelEmployee.Visible = true;
+            panel2.Visible = true;
             panelSetting.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
@@ -117,22 +117,7 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void labelPageSize_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPage_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -159,14 +144,32 @@ namespace SalesManagement_SysDev
 
         private void buttonSetting_Click(object sender, EventArgs e)
         {
-            panelLeft.Visible = true;
-            panelSetting.Visible = true;
+            if (buttonSetting.Text == "社員管理")
+            {
+                labelEmployee.Text = "社員管理";
+                panelLeft.Visible = true;
+                panelSetting.Visible = false;
+                userControlPosition1.Visible = false;
+                userControlSalesOffice1.Visible = false;
+                panelEmployee.Visible = true;
+                buttonSetting.Text = "設定";
+                return;
+            }
+            if(buttonSetting.Text == "設定")
+            {
+                panelSetting.Visible = true;
+                panelLeft.Visible = false;
+                buttonSetting.Text = "社員管理";
+                return;
+            }
+            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             panelSetting.Visible = false;
-            panelEmployee.Visible = true;
+            panel2.Visible = true;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
             labelEmployee.Text = "社員管理";
@@ -179,9 +182,9 @@ namespace SalesManagement_SysDev
 
         private void buttonPosition_Click(object sender, EventArgs e)
         {
-            panelEmployee.Visible = false;
-            userControlSalesOffice1.Visible = false;
             userControlPosition1.Visible = true;
+            userControlSalesOffice1.Visible = false;
+            panelEmployee.Visible = false;
             labelEmployee.Text = "役職管理";
         }
 
@@ -202,9 +205,9 @@ namespace SalesManagement_SysDev
 
         private void buttonSalesOffice_Click(object sender, EventArgs e)
         {
-            panelEmployee.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = true;
+            panelEmployee.Visible = false;
             labelEmployee.Text = "営業所管理";
         }
 
@@ -458,6 +461,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            /*
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewEmployee.DataSource = Employee.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -515,7 +519,7 @@ namespace SalesManagement_SysDev
             labelPage.Text = "/" + ((int)Math.Ceiling(Employee.Count / (double)pageSize)) + "ページ";
 
             dataGridViewEmployee.Refresh();
-
+            */
         }
         private void timer_Tick(object sender, EventArgs e)
         {

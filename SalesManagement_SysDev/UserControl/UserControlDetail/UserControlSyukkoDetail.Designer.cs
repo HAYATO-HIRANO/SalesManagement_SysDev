@@ -126,7 +126,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxOrQuantity);
             this.panelInput.Controls.Add(this.labelOrTotalPrice);
             this.panelInput.Controls.Add(this.textBoxOrTotalPrice);
-            this.panelInput.Location = new System.Drawing.Point(306, 48);
+            this.panelInput.Location = new System.Drawing.Point(293, 52);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 50;
@@ -216,7 +216,7 @@ namespace SalesManagement_SysDev
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1447, 136);
+            this.button1.Location = new System.Drawing.Point(1447, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 30);
             this.button1.TabIndex = 28;
@@ -306,7 +306,7 @@ namespace SalesManagement_SysDev
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1746, 286);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1733, 266);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 78;
@@ -316,7 +316,7 @@ namespace SalesManagement_SysDev
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1707, 288);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1694, 268);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(33, 26);
             this.textBoxPageSize.TabIndex = 77;
@@ -325,7 +325,7 @@ namespace SalesManagement_SysDev
             // dataGridViewOrderDetail
             // 
             this.dataGridViewOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrderDetail.Location = new System.Drawing.Point(306, 316);
+            this.dataGridViewOrderDetail.Location = new System.Drawing.Point(293, 296);
             this.dataGridViewOrderDetail.Name = "dataGridViewOrderDetail";
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
@@ -335,7 +335,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1596, 293);
+            this.labelPageSize.Location = new System.Drawing.Point(1583, 273);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 76;
@@ -344,7 +344,7 @@ namespace SalesManagement_SysDev
             // textBoxPage
             // 
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(308, 283);
+            this.textBoxPage.Location = new System.Drawing.Point(295, 263);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 70;
@@ -354,7 +354,7 @@ namespace SalesManagement_SysDev
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(1168, 283);
+            this.buttonLastPage.Location = new System.Drawing.Point(1155, 263);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 75;
@@ -365,7 +365,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(358, 290);
+            this.labelPage.Location = new System.Drawing.Point(345, 270);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
             this.labelPage.TabIndex = 71;
@@ -374,7 +374,7 @@ namespace SalesManagement_SysDev
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(1100, 283);
+            this.buttonNextPage.Location = new System.Drawing.Point(1087, 263);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 74;
@@ -384,7 +384,7 @@ namespace SalesManagement_SysDev
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(953, 283);
+            this.buttonFirstPage.Location = new System.Drawing.Point(940, 263);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 72;
@@ -394,7 +394,7 @@ namespace SalesManagement_SysDev
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(1020, 283);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1007, 263);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 73;

@@ -78,6 +78,7 @@ namespace SalesManagement_SysDev
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
+            this.userControlArrivalDetail1 = new SalesManagement_SysDev.UserControlArrivalDetail();
             this.panelHeader.SuspendLayout();
             this.panelArrival.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -213,7 +214,6 @@ namespace SalesManagement_SysDev
             this.panelArrival.Name = "panelArrival";
             this.panelArrival.Size = new System.Drawing.Size(1920, 980);
             this.panelArrival.TabIndex = 0;
-            this.panelArrival.Paint += new System.Windows.Forms.PaintEventHandler(this.panelArrival_Paint);
             // 
             // buttonPageSizeChange
             // 
@@ -633,6 +633,15 @@ namespace SalesManagement_SysDev
             this.buttonDetail.TabIndex = 0;
             this.buttonDetail.Text = "入荷詳細";
             this.buttonDetail.UseVisualStyleBackColor = false;
+            this.buttonDetail.Click += new System.EventHandler(this.buttonDetail_Click);
+            // 
+            // userControlArrivalDetail1
+            // 
+            this.userControlArrivalDetail1.BackColor = System.Drawing.Color.Honeydew;
+            this.userControlArrivalDetail1.Location = new System.Drawing.Point(0, 100);
+            this.userControlArrivalDetail1.Name = "userControlArrivalDetail1";
+            this.userControlArrivalDetail1.Size = new System.Drawing.Size(1920, 980);
+            this.userControlArrivalDetail1.TabIndex = 2;
             // 
             // FormArrival
             // 
@@ -644,6 +653,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelArrival);
             this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.userControlArrivalDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormArrival";
             this.Text = "FormArrival";
@@ -710,5 +720,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonNextPage;
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Button buttonPreviousPage;
+        private UserControlArrivalDetail userControlArrivalDetail1;
     }
 }

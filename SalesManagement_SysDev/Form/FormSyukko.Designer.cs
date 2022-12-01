@@ -40,15 +40,17 @@ namespace SalesManagement_SysDev
             this.labelSyukko = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panelLeft = new System.Windows.Forms.Panel();
-            this.buttonHiddenList = new System.Windows.Forms.Button();
-            this.buttonHidden = new System.Windows.Forms.Button();
-            this.buttonList = new System.Windows.Forms.Button();
-            this.buttonConfirm = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonDetail = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
+            this.panelSyukko = new System.Windows.Forms.Panel();
+            this.buttonPageSizeChange = new System.Windows.Forms.Button();
+            this.textBoxPageSize = new System.Windows.Forms.TextBox();
+            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
+            this.labelPageSize = new System.Windows.Forms.Label();
+            this.textBoxPage = new System.Windows.Forms.TextBox();
+            this.buttonLastPage = new System.Windows.Forms.Button();
+            this.labelPage = new System.Windows.Forms.Label();
+            this.buttonNextPage = new System.Windows.Forms.Button();
+            this.buttonFirstPage = new System.Windows.Forms.Button();
+            this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.textBoxSyID = new System.Windows.Forms.TextBox();
             this.labelSyID = new System.Windows.Forms.Label();
@@ -68,22 +70,20 @@ namespace SalesManagement_SysDev
             this.labelSoID = new System.Windows.Forms.Label();
             this.textBoxOrID = new System.Windows.Forms.TextBox();
             this.labelOrID = new System.Windows.Forms.Label();
-            this.buttonPageSizeChange = new System.Windows.Forms.Button();
-            this.textBoxPageSize = new System.Windows.Forms.TextBox();
-            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
-            this.labelPageSize = new System.Windows.Forms.Label();
-            this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.buttonLastPage = new System.Windows.Forms.Button();
-            this.labelPage = new System.Windows.Forms.Label();
-            this.buttonNextPage = new System.Windows.Forms.Button();
-            this.buttonFirstPage = new System.Windows.Forms.Button();
-            this.buttonPreviousPage = new System.Windows.Forms.Button();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonHiddenList = new System.Windows.Forms.Button();
+            this.buttonHidden = new System.Windows.Forms.Button();
+            this.buttonList = new System.Windows.Forms.Button();
+            this.buttonConfirm = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonDetail = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.userControlSyukkoDetail1 = new SalesManagement_SysDev.UserControlSyukkoDetail();
             this.panelHeader.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panelLeft.SuspendLayout();
-            this.panelInput.SuspendLayout();
+            this.panelSyukko.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
+            this.panelInput.SuspendLayout();
+            this.panelLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -201,137 +201,122 @@ namespace SalesManagement_SysDev
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panel1
+            // panelSyukko
             // 
-            this.panel1.Controls.Add(this.buttonPageSizeChange);
-            this.panel1.Controls.Add(this.textBoxPageSize);
-            this.panel1.Controls.Add(this.dataGridViewOrder);
-            this.panel1.Controls.Add(this.labelPageSize);
-            this.panel1.Controls.Add(this.textBoxPage);
-            this.panel1.Controls.Add(this.buttonLastPage);
-            this.panel1.Controls.Add(this.labelPage);
-            this.panel1.Controls.Add(this.buttonNextPage);
-            this.panel1.Controls.Add(this.buttonFirstPage);
-            this.panel1.Controls.Add(this.buttonPreviousPage);
-            this.panel1.Controls.Add(this.panelInput);
-            this.panel1.Controls.Add(this.panelLeft);
-            this.panel1.Location = new System.Drawing.Point(514, 149);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 980);
-            this.panel1.TabIndex = 14;
+            this.panelSyukko.Controls.Add(this.buttonPageSizeChange);
+            this.panelSyukko.Controls.Add(this.textBoxPageSize);
+            this.panelSyukko.Controls.Add(this.dataGridViewOrder);
+            this.panelSyukko.Controls.Add(this.labelPageSize);
+            this.panelSyukko.Controls.Add(this.textBoxPage);
+            this.panelSyukko.Controls.Add(this.buttonLastPage);
+            this.panelSyukko.Controls.Add(this.labelPage);
+            this.panelSyukko.Controls.Add(this.buttonNextPage);
+            this.panelSyukko.Controls.Add(this.buttonFirstPage);
+            this.panelSyukko.Controls.Add(this.buttonPreviousPage);
+            this.panelSyukko.Controls.Add(this.panelInput);
+            this.panelSyukko.Controls.Add(this.panelLeft);
+            this.panelSyukko.Location = new System.Drawing.Point(0, 100);
+            this.panelSyukko.Name = "panelSyukko";
+            this.panelSyukko.Size = new System.Drawing.Size(1920, 980);
+            this.panelSyukko.TabIndex = 14;
             // 
-            // panelLeft
+            // buttonPageSizeChange
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
-            this.panelLeft.Controls.Add(this.buttonHiddenList);
-            this.panelLeft.Controls.Add(this.buttonHidden);
-            this.panelLeft.Controls.Add(this.buttonList);
-            this.panelLeft.Controls.Add(this.buttonConfirm);
-            this.panelLeft.Controls.Add(this.buttonSearch);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(250, 980);
-            this.panelLeft.TabIndex = 10;
+            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1733, 266);
+            this.buttonPageSizeChange.Name = "buttonPageSizeChange";
+            this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
+            this.buttonPageSizeChange.TabIndex = 19;
+            this.buttonPageSizeChange.Text = "行数変更";
+            this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             // 
-            // buttonHiddenList
+            // textBoxPageSize
             // 
-            this.buttonHiddenList.BackColor = System.Drawing.Color.White;
-            this.buttonHiddenList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonHiddenList.FlatAppearance.BorderSize = 4;
-            this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(25, 435);
-            this.buttonHiddenList.Name = "buttonHiddenList";
-            this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
-            this.buttonHiddenList.TabIndex = 4;
-            this.buttonHiddenList.Text = "非表示リスト";
-            this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPageSize.Location = new System.Drawing.Point(1694, 268);
+            this.textBoxPageSize.Name = "textBoxPageSize";
+            this.textBoxPageSize.Size = new System.Drawing.Size(33, 26);
+            this.textBoxPageSize.TabIndex = 18;
+            this.textBoxPageSize.Text = "20";
             // 
-            // buttonHidden
+            // dataGridViewOrder
             // 
-            this.buttonHidden.BackColor = System.Drawing.Color.White;
-            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonHidden.FlatAppearance.BorderSize = 4;
-            this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
-            this.buttonHidden.Name = "buttonHidden";
-            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
-            this.buttonHidden.TabIndex = 2;
-            this.buttonHidden.Text = "非表示";
-            this.buttonHidden.UseVisualStyleBackColor = false;
+            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrder.Location = new System.Drawing.Point(293, 296);
+            this.dataGridViewOrder.Name = "dataGridViewOrder";
+            this.dataGridViewOrder.RowTemplate.Height = 21;
+            this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
+            this.dataGridViewOrder.TabIndex = 21;
             // 
-            // buttonList
+            // labelPageSize
             // 
-            this.buttonList.BackColor = System.Drawing.Color.White;
-            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonList.FlatAppearance.BorderSize = 4;
-            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(25, 330);
-            this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(200, 80);
-            this.buttonList.TabIndex = 3;
-            this.buttonList.Text = "一覧表示";
-            this.buttonList.UseVisualStyleBackColor = false;
+            this.labelPageSize.AutoSize = true;
+            this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPageSize.Location = new System.Drawing.Point(1583, 273);
+            this.labelPageSize.Name = "labelPageSize";
+            this.labelPageSize.Size = new System.Drawing.Size(105, 19);
+            this.labelPageSize.TabIndex = 20;
+            this.labelPageSize.Text = "1ページ行数";
             // 
-            // buttonConfirm
+            // textBoxPage
             // 
-            this.buttonConfirm.BackColor = System.Drawing.Color.White;
-            this.buttonConfirm.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonConfirm.FlatAppearance.BorderSize = 4;
-            this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConfirm.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonConfirm.Location = new System.Drawing.Point(25, 15);
-            this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(200, 80);
-            this.buttonConfirm.TabIndex = 0;
-            this.buttonConfirm.Text = "確定";
-            this.buttonConfirm.UseCompatibleTextRendering = true;
-            this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPage.Location = new System.Drawing.Point(295, 263);
+            this.textBoxPage.Name = "textBoxPage";
+            this.textBoxPage.Size = new System.Drawing.Size(45, 31);
+            this.textBoxPage.TabIndex = 13;
+            this.textBoxPage.Text = "1";
+            this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // buttonSearch
+            // buttonLastPage
             // 
-            this.buttonSearch.BackColor = System.Drawing.Color.White;
-            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonSearch.FlatAppearance.BorderSize = 4;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(25, 120);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(200, 80);
-            this.buttonSearch.TabIndex = 1;
-            this.buttonSearch.Text = "検索";
-            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLastPage.Location = new System.Drawing.Point(1155, 263);
+            this.buttonLastPage.Name = "buttonLastPage";
+            this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonLastPage.TabIndex = 17;
+            this.buttonLastPage.Text = "▶l";
+            this.buttonLastPage.UseVisualStyleBackColor = true;
             // 
-            // buttonDetail
+            // labelPage
             // 
-            this.buttonDetail.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonDetail.Location = new System.Drawing.Point(0, 901);
-            this.buttonDetail.Name = "buttonDetail";
-            this.buttonDetail.Size = new System.Drawing.Size(250, 100);
-            this.buttonDetail.TabIndex = 15;
-            this.buttonDetail.Text = "出庫詳細";
-            this.buttonDetail.UseVisualStyleBackColor = false;
-            this.buttonDetail.Click += new System.EventHandler(this.buttonDetail_Click);
+            this.labelPage.AutoSize = true;
+            this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPage.Location = new System.Drawing.Point(345, 270);
+            this.labelPage.Name = "labelPage";
+            this.labelPage.Size = new System.Drawing.Size(70, 24);
+            this.labelPage.TabIndex = 12;
+            this.labelPage.Text = "ページ";
             // 
-            // buttonLogout
+            // buttonNextPage
             // 
-            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
-            this.buttonLogout.TabIndex = 16;
-            this.buttonLogout.TabStop = false;
-            this.buttonLogout.Text = "ログアウト";
-            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNextPage.Location = new System.Drawing.Point(1087, 263);
+            this.buttonNextPage.Name = "buttonNextPage";
+            this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonNextPage.TabIndex = 16;
+            this.buttonNextPage.Text = "▶";
+            this.buttonNextPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonFirstPage
+            // 
+            this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonFirstPage.Location = new System.Drawing.Point(940, 263);
+            this.buttonFirstPage.Name = "buttonFirstPage";
+            this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
+            this.buttonFirstPage.TabIndex = 14;
+            this.buttonFirstPage.Text = "l◀";
+            this.buttonFirstPage.UseVisualStyleBackColor = true;
+            // 
+            // buttonPreviousPage
+            // 
+            this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPreviousPage.Location = new System.Drawing.Point(1007, 263);
+            this.buttonPreviousPage.Name = "buttonPreviousPage";
+            this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
+            this.buttonPreviousPage.TabIndex = 15;
+            this.buttonPreviousPage.Text = "◀";
+            this.buttonPreviousPage.UseVisualStyleBackColor = true;
             // 
             // panelInput
             // 
@@ -536,103 +521,118 @@ namespace SalesManagement_SysDev
             this.labelOrID.TabIndex = 4;
             this.labelOrID.Text = "受注ID";
             // 
-            // buttonPageSizeChange
+            // panelLeft
             // 
-            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1733, 266);
-            this.buttonPageSizeChange.Name = "buttonPageSizeChange";
-            this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
-            this.buttonPageSizeChange.TabIndex = 19;
-            this.buttonPageSizeChange.Text = "行数変更";
-            this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
+            this.panelLeft.Controls.Add(this.buttonHiddenList);
+            this.panelLeft.Controls.Add(this.buttonHidden);
+            this.panelLeft.Controls.Add(this.buttonList);
+            this.panelLeft.Controls.Add(this.buttonConfirm);
+            this.panelLeft.Controls.Add(this.buttonSearch);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(250, 980);
+            this.panelLeft.TabIndex = 10;
             // 
-            // textBoxPageSize
+            // buttonHiddenList
             // 
-            this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1694, 268);
-            this.textBoxPageSize.Name = "textBoxPageSize";
-            this.textBoxPageSize.Size = new System.Drawing.Size(33, 26);
-            this.textBoxPageSize.TabIndex = 18;
-            this.textBoxPageSize.Text = "20";
+            this.buttonHiddenList.BackColor = System.Drawing.Color.White;
+            this.buttonHiddenList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHiddenList.FlatAppearance.BorderSize = 4;
+            this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHiddenList.Location = new System.Drawing.Point(25, 435);
+            this.buttonHiddenList.Name = "buttonHiddenList";
+            this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
+            this.buttonHiddenList.TabIndex = 4;
+            this.buttonHiddenList.Text = "非表示リスト";
+            this.buttonHiddenList.UseVisualStyleBackColor = false;
             // 
-            // dataGridViewOrder
+            // buttonHidden
             // 
-            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(293, 296);
-            this.dataGridViewOrder.Name = "dataGridViewOrder";
-            this.dataGridViewOrder.RowTemplate.Height = 21;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrder.TabIndex = 21;
+            this.buttonHidden.BackColor = System.Drawing.Color.White;
+            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHidden.FlatAppearance.BorderSize = 4;
+            this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
+            this.buttonHidden.Name = "buttonHidden";
+            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
+            this.buttonHidden.TabIndex = 2;
+            this.buttonHidden.Text = "非表示";
+            this.buttonHidden.UseVisualStyleBackColor = false;
             // 
-            // labelPageSize
+            // buttonList
             // 
-            this.labelPageSize.AutoSize = true;
-            this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1583, 273);
-            this.labelPageSize.Name = "labelPageSize";
-            this.labelPageSize.Size = new System.Drawing.Size(105, 19);
-            this.labelPageSize.TabIndex = 20;
-            this.labelPageSize.Text = "1ページ行数";
+            this.buttonList.BackColor = System.Drawing.Color.White;
+            this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonList.FlatAppearance.BorderSize = 4;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Location = new System.Drawing.Point(25, 330);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(200, 80);
+            this.buttonList.TabIndex = 3;
+            this.buttonList.Text = "一覧表示";
+            this.buttonList.UseVisualStyleBackColor = false;
             // 
-            // textBoxPage
+            // buttonConfirm
             // 
-            this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(295, 263);
-            this.textBoxPage.Name = "textBoxPage";
-            this.textBoxPage.Size = new System.Drawing.Size(45, 31);
-            this.textBoxPage.TabIndex = 13;
-            this.textBoxPage.Text = "1";
-            this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.buttonConfirm.BackColor = System.Drawing.Color.White;
+            this.buttonConfirm.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonConfirm.FlatAppearance.BorderSize = 4;
+            this.buttonConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirm.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonConfirm.Location = new System.Drawing.Point(25, 15);
+            this.buttonConfirm.Name = "buttonConfirm";
+            this.buttonConfirm.Size = new System.Drawing.Size(200, 80);
+            this.buttonConfirm.TabIndex = 0;
+            this.buttonConfirm.Text = "確定";
+            this.buttonConfirm.UseCompatibleTextRendering = true;
+            this.buttonConfirm.UseVisualStyleBackColor = false;
             // 
-            // buttonLastPage
+            // buttonSearch
             // 
-            this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(1155, 263);
-            this.buttonLastPage.Name = "buttonLastPage";
-            this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonLastPage.TabIndex = 17;
-            this.buttonLastPage.Text = "▶l";
-            this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonSearch.BackColor = System.Drawing.Color.White;
+            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSearch.FlatAppearance.BorderSize = 4;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Location = new System.Drawing.Point(25, 120);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(200, 80);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "検索";
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
-            // labelPage
+            // buttonDetail
             // 
-            this.labelPage.AutoSize = true;
-            this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(345, 270);
-            this.labelPage.Name = "labelPage";
-            this.labelPage.Size = new System.Drawing.Size(70, 24);
-            this.labelPage.TabIndex = 12;
-            this.labelPage.Text = "ページ";
+            this.buttonDetail.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonDetail.Location = new System.Drawing.Point(0, 901);
+            this.buttonDetail.Name = "buttonDetail";
+            this.buttonDetail.Size = new System.Drawing.Size(250, 100);
+            this.buttonDetail.TabIndex = 15;
+            this.buttonDetail.Text = "出庫詳細";
+            this.buttonDetail.UseVisualStyleBackColor = false;
+            this.buttonDetail.Click += new System.EventHandler(this.buttonDetail_Click);
             // 
-            // buttonNextPage
+            // buttonLogout
             // 
-            this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(1087, 263);
-            this.buttonNextPage.Name = "buttonNextPage";
-            this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonNextPage.TabIndex = 16;
-            this.buttonNextPage.Text = "▶";
-            this.buttonNextPage.UseVisualStyleBackColor = true;
-            // 
-            // buttonFirstPage
-            // 
-            this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(940, 263);
-            this.buttonFirstPage.Name = "buttonFirstPage";
-            this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonFirstPage.TabIndex = 14;
-            this.buttonFirstPage.Text = "l◀";
-            this.buttonFirstPage.UseVisualStyleBackColor = true;
-            // 
-            // buttonPreviousPage
-            // 
-            this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(1007, 263);
-            this.buttonPreviousPage.Name = "buttonPreviousPage";
-            this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
-            this.buttonPreviousPage.TabIndex = 15;
-            this.buttonPreviousPage.Text = "◀";
-            this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 16;
+            this.buttonLogout.TabStop = false;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
             // 
             // userControlSyukkoDetail1
             // 
@@ -650,7 +650,7 @@ namespace SalesManagement_SysDev
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelSyukko);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.userControlSyukkoDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -660,12 +660,12 @@ namespace SalesManagement_SysDev
             this.Load += new System.EventHandler(this.FormSyukko_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panelLeft.ResumeLayout(false);
+            this.panelSyukko.ResumeLayout(false);
+            this.panelSyukko.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
+            this.panelLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -682,7 +682,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelSyukko;
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelSyukko;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Button buttonHiddenList;
         private System.Windows.Forms.Button buttonHidden;
