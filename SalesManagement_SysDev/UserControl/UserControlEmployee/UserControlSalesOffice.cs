@@ -74,33 +74,26 @@ namespace SalesManagement_SysDev
                 //営業所ID重複チェック
                 if (salesOfficeDataAccess.CheckSalesOfficeCDExistence(int.Parse(textBoxSoID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された営業所IDは既に存在します");
+                    MessageBox.Show("入力された営業所IDは既に存在します", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoID.Focus();
                     return false;
                 }
             }
             else
             {
-                //MessageBox.Show("営業所IDが入力されていません");
-                messageDsp.DspMsg("M***");
+                MessageBox.Show("営業所IDが入力されていません");
+                //messageDsp.DspMsg("M***");
                 textBoxSoID.Focus();
                 return false;
             }
             //営業所名の適否
             if (!String.IsNullOrEmpty(textBoxSoName.Text.Trim()))
             {
-                //営業所名の全角チェック
-                if (!dataInputFormCheck.CheckFullWidth(textBoxSoName.Text.Trim()))
-                {
-                    MessageBox.Show("営業所名は全て全角入力です");
-                    textBoxSoName.Focus();
-                    return false;
-                }
                 // 営業所名の文字数チェック
-                if (textBoxSoName.TextLength < 50)
+                if (textBoxSoName.TextLength > 50)
                 {
-                    //MessageBox.Show("営業所名は50文字以下です");
-                    messageDsp.DspMsg("M***");
+                    MessageBox.Show("営業所名は50文字以下です");
+                    //messageDsp.DspMsg("M***");
                     textBoxSoName.Focus();
                     return false;
                 }
@@ -123,10 +116,10 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 //電話番号の文字数チェック
-                if (textBoxSoPhone.TextLength < 13)
+                if (textBoxSoPhone.TextLength > 13)
                 {
-                    //MeaaageBox.Show("電話番号は13文字以下です。")；
-                    messageDsp.DspMsg("M***");
+                    MessageBox.Show("電話番号は13文字以下です。");
+                    //messageDsp.DspMsg("M***");
                     textBoxSoPhone.Focus();
                     return false;
                 }
@@ -945,6 +938,11 @@ namespace SalesManagement_SysDev
 
             labelPage.Text = "/" + ((int)Math.Ceiling(SalesOffice.Count / (double)pageSize)) + "ページ";
             dataGridViewSalesOffice.Refresh();
+        }
+
+        private void dataGridViewSalesOffice_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

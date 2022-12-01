@@ -31,5 +31,10 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
