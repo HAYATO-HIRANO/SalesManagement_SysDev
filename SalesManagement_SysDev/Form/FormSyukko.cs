@@ -54,7 +54,7 @@ namespace SalesManagement_SysDev
             if (labelSyukko.Text == "出庫詳細管理")
             {
                 labelSyukko.Text = "出庫管理";
-                buttonDetail.Text = "出庫詳細管理";
+                buttonDetail.Text = "出庫詳細";
                 panelSyukko.Visible = true;
                 userControlSyukkoDetail1.Visible = false;
                 return;

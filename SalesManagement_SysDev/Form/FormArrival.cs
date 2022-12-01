@@ -40,9 +40,24 @@ namespace SalesManagement_SysDev
             this.Close();
         }
 
-        private void panelArrival_Paint(object sender, PaintEventArgs e)
+        private void buttonDetail_Click(object sender, EventArgs e)
         {
-
+            if (labelArrival.Text == "入荷管理")
+            {
+                labelArrival.Text = "入荷詳細管理";
+                buttonDetail.Text = "入荷管理";
+                userControlArrivalDetail1.Visible = true;
+                panelArrival.Visible = false;
+                return;
+            }
+            if (labelArrival.Text == "入荷詳細管理")
+            {
+                labelArrival.Text = "入荷管理";
+                buttonDetail.Text = "入詳細";
+                panelArrival.Visible = true;
+                userControlArrivalDetail1.Visible = false;  
+                return;
+            }
         }
     }
 }

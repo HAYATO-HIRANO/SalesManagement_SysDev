@@ -181,6 +181,12 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <Compile Include="UserControl\UserControlDetail\UserControlArrivalDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserControlDetail\UserControlArrivalDetail.Designer.cs">
+      <DependentUpon>UserControlArrivalDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UserControlDetail\UserControlSyukkoDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,6 +298,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlArrivalDetail.resx">
+      <DependentUpon>UserControlArrivalDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserControlDetail\UserControlSyukkoDetail.resx">
       <DependentUpon>UserControlSyukkoDetail.cs</DependentUpon>
     </EmbeddedResource>
