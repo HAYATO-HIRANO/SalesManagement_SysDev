@@ -186,7 +186,7 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t2.SoID
                              where
 
-                             t1.ClID == selectCondition.ClID &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString())&&
                              t1.SoID == selectCondition.SoID &&
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
@@ -233,7 +233,7 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t2.SoID
                              where
 
-                             t1.ClID == selectCondition.ClID &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
              
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
@@ -279,7 +279,7 @@ namespace SalesManagement_SysDev
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
                              where
-                             t1.SoID == selectCondition.SoID &&
+                             t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&

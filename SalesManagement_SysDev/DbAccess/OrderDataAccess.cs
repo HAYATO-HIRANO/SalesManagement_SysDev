@@ -88,29 +88,76 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：UpdateOrderData()
-        //引　数   :受注データ
-        //戻り値   ：True or False
-        //機　能   ：受注データの更新
-        //          ：更新成功の場合True
-        //          ：更新失敗の場合False
+        //メソッド名：ConfirmOrderData()
+        //引　数   :受注ID
+        //戻り値   ：確定用受注データ
+        //機　能   ：受注IDの受注情報
         ///////////////////////////////
-        public bool UpdateOrderData(T_Order updOrder)
+        public List<T_Order> ConfirmOrderData(int orID)
         {
+            List<T_Order> order = new List<T_Order>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                
+                order = context.T_Orders.Where(x => x.OrID == orID&&x.OrFlag==0).ToList();
+      
+                context.SaveChanges();
+                context.Dispose();
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            return order;
+        }
+        /////////////////////////////////////////
+        //メソッド名：ConfirmOrderDetailData()
+        //引　数   :受注ID
+        //戻り値   ：確定用受注詳細データ
+        //機　能   ：同じ受注ID全ての受注詳細情報
+        /////////////////////////////////////////
+        public List<T_OrderDetail> ConfirmOrderDetailData(int orID)
+        {
+            List<T_OrderDetail> orderDetail = new List<T_OrderDetail>();
+
             try
             {
                 var context = new SalesManagement_DevContext();
 
-                var Order = context.T_Orders.Single(x => x.OrID == updOrder.OrID);
-                Order.SoID = updOrder.SoID;
-                Order.EmID = updOrder.EmID;
-                Order.ClID = updOrder.ClID;
-                Order.ClCharge = updOrder.ClCharge;
-                Order.OrDate = updOrder.OrDate;
-                Order.OrStateFlag = updOrder.OrStateFlag;
-                Order.OrFlag = updOrder.OrFlag;
-                Order.OrHidden = updOrder.OrHidden;
-               
+                orderDetail = context.T_OrderDetails.Where(x => x.OrID == orID).ToList();
+
+                context.SaveChanges();
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return orderDetail;
+        }
+
+        ///////////////////////////////
+        //メソッド名：UpdateStateFlag()
+        //引　数   :受注ID
+        //戻り値   ：True or False
+        //機　能   ：受注状態フラグの更新(0から1)
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
+        ///////////////////////////////
+        public bool UpdateStateFlag(int orID)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var Order = context.T_Orders.Single(x => x.OrID == orID&&x.OrFlag==0);
+                Order.OrStateFlag = 1;
 
                 context.SaveChanges();
                 context.Dispose();
@@ -123,21 +170,23 @@ namespace SalesManagement_SysDev
                 return false;
             }
         }
+
         ///////////////////////////////
-        //メソッド名：ConfirmOrderData()
-        //引　数   :受注データ
+        //メソッド名：UpdateHiddenFlag()
+        //引　数   :受注情報(受注ID,非表示フラグ,非表示理由)
         //戻り値   ：True or False
-        //機　能   ：受注データの確定(受注状態フラグの更新)
-        //          ：受注確定成功の場合True
-        //          ：受注確定失敗の場合False
+        //機　能   ：受注管理フラグの更新
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool ConfirmOrderData(T_Order cfOrder)
+        public bool UpdateHiddenFlag(T_Order updOrder)
         {
             try
             {
                 var context = new SalesManagement_DevContext();
-                var Order = context.T_Orders.Single(x => x.OrID == cfOrder.OrID);
-                Order.OrStateFlag = cfOrder.OrStateFlag;
+                var Order = context.T_Orders.Single(x => x.OrID ==updOrder.OrID);
+                Order.OrFlag =updOrder.OrFlag;
+                Order.OrHidden = updOrder.OrHidden;
 
                 context.SaveChanges();
                 context.Dispose();
@@ -274,10 +323,10 @@ namespace SalesManagement_SysDev
                          join t4 in context.M_Clients
                          on t1.ClID equals t4.ClID
                          where 
-                         t1.OrID==selectCondition.OrID&&
+                         t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                          t1.SoID == selectCondition.SoID &&
-                         t1.EmID==selectCondition.EmID&&
-                         t1.ClID == selectCondition.ClID &&
+                         t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                         t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                          t1.ClCharge.Contains(selectCondition.ClCharge)&&
                          t1.OrDate==selectCondition.OrDate&&
                          t1.OrFlag != 2

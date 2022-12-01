@@ -550,7 +550,7 @@ namespace SalesManagement_SysDev
             // 3.1.2.2　顧客情報作成
             var updClient = GenerateDataAtUpdate();
 
-            // 3.1..3 顧客情報更新
+            // 3.1.2.3 顧客情報更新
             UpdateClient(updClient);
         }
 
