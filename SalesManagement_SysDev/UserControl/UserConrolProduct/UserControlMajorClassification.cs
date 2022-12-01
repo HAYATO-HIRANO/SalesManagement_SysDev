@@ -122,15 +122,10 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_MajorCassification GenerateDataAtRegistration()
         {
-            int McFlag = 0;
-            if(checkBoxMcFlag.Checked == true)
-            {
-                McFlag = 2;
-            }
             return new M_MajorCassification
             {
                 McName = textBoxMcName.Text.Trim(),
-                McFlag=McFlag,
+                McFlag=0,
                 McHidden=textBoxMcHidden.Text.Trim(),
             };
         }

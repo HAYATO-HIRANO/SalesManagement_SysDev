@@ -144,7 +144,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID && x.MaID == selectCondition.MaID).ToList();
+                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&& x.MaID == selectCondition.MaID).ToList();
                 context.Dispose();
             }
             catch (Exception ex)

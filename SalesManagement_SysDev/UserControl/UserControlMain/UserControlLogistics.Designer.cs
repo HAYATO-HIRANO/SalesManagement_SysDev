@@ -40,7 +40,7 @@
             // 
             this.buttonChumon.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonChumon.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonChumon.Location = new System.Drawing.Point(92, 68);
+            this.buttonChumon.Location = new System.Drawing.Point(175, 104);
             this.buttonChumon.Name = "buttonChumon";
             this.buttonChumon.Size = new System.Drawing.Size(590, 210);
             this.buttonChumon.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.buttonWarehousing.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonWarehousing.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonWarehousing.Location = new System.Drawing.Point(835, 363);
+            this.buttonWarehousing.Location = new System.Drawing.Point(918, 397);
             this.buttonWarehousing.Name = "buttonWarehousing";
             this.buttonWarehousing.Size = new System.Drawing.Size(590, 210);
             this.buttonWarehousing.TabIndex = 1;
@@ -63,18 +63,19 @@
             // 
             this.buttonSyukko.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonSyukko.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSyukko.Location = new System.Drawing.Point(835, 660);
+            this.buttonSyukko.Location = new System.Drawing.Point(918, 704);
             this.buttonSyukko.Name = "buttonSyukko";
             this.buttonSyukko.Size = new System.Drawing.Size(590, 210);
             this.buttonSyukko.TabIndex = 2;
             this.buttonSyukko.Text = "出庫管理";
             this.buttonSyukko.UseVisualStyleBackColor = false;
+            this.buttonSyukko.Click += new System.EventHandler(this.buttonSyukko_Click);
             // 
             // buttonHattyu
             // 
             this.buttonHattyu.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonHattyu.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHattyu.Location = new System.Drawing.Point(92, 363);
+            this.buttonHattyu.Location = new System.Drawing.Point(175, 397);
             this.buttonHattyu.Name = "buttonHattyu";
             this.buttonHattyu.Size = new System.Drawing.Size(590, 210);
             this.buttonHattyu.TabIndex = 4;
@@ -85,7 +86,7 @@
             // 
             this.buttonProduct.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonProduct.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonProduct.Location = new System.Drawing.Point(92, 660);
+            this.buttonProduct.Location = new System.Drawing.Point(175, 704);
             this.buttonProduct.Name = "buttonProduct";
             this.buttonProduct.Size = new System.Drawing.Size(590, 210);
             this.buttonProduct.TabIndex = 3;
@@ -97,7 +98,7 @@
             // 
             this.buttonStock.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonStock.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStock.Location = new System.Drawing.Point(835, 68);
+            this.buttonStock.Location = new System.Drawing.Point(918, 104);
             this.buttonStock.Name = "buttonStock";
             this.buttonStock.Size = new System.Drawing.Size(590, 210);
             this.buttonStock.TabIndex = 5;

@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -30,6 +30,7 @@ namespace SalesManagement_SysDev
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime PrReleaseDate { get; set; } //発売日		
         public int PrFlag { get; set; }             //商品管理フラグ
-        public String PrHidden { get; set; }	    //非表示理由		
+        public String PrHidden { get; set; }	    //非表示理由
+       
     }
 }
