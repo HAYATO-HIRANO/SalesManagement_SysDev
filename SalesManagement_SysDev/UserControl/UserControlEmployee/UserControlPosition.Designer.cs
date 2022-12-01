@@ -30,6 +30,7 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelHeader2 = new System.Windows.Forms.Panel();
+            this.buttonNotList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.buttonNotList = new System.Windows.Forms.Button();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -70,6 +70,20 @@ namespace SalesManagement_SysDev
             this.panelHeader2.Name = "panelHeader2";
             this.panelHeader2.Size = new System.Drawing.Size(1670, 130);
             this.panelHeader2.TabIndex = 0;
+            // 
+            // buttonNotList
+            // 
+            this.buttonNotList.BackColor = System.Drawing.Color.White;
+            this.buttonNotList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonNotList.FlatAppearance.BorderSize = 4;
+            this.buttonNotList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonNotList.Location = new System.Drawing.Point(1295, 22);
+            this.buttonNotList.Name = "buttonNotList";
+            this.buttonNotList.Size = new System.Drawing.Size(205, 80);
+            this.buttonNotList.TabIndex = 34;
+            this.buttonNotList.Text = "非表示リスト";
+            this.buttonNotList.UseVisualStyleBackColor = false;
             // 
             // buttonList
             // 
@@ -141,7 +155,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelPoName);
             this.panelInput.Controls.Add(this.textBoxPoID);
             this.panelInput.Controls.Add(this.labelPoID);
-            this.panelInput.Location = new System.Drawing.Point(317, 178);
+            this.panelInput.Location = new System.Drawing.Point(317, 150);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1019, 192);
             this.panelInput.TabIndex = 6;
@@ -222,7 +236,7 @@ namespace SalesManagement_SysDev
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(332, 453);
+            this.dataGridView1.Location = new System.Drawing.Point(317, 419);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
             this.dataGridView1.Size = new System.Drawing.Size(1019, 503);
@@ -231,7 +245,7 @@ namespace SalesManagement_SysDev
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1242, 420);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1227, 386);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 33;
@@ -241,7 +255,7 @@ namespace SalesManagement_SysDev
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1195, 422);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1180, 388);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
             this.textBoxPageSize.TabIndex = 32;
@@ -251,7 +265,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1084, 427);
+            this.labelPageSize.Location = new System.Drawing.Point(1069, 393);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 31;
@@ -260,7 +274,7 @@ namespace SalesManagement_SysDev
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(904, 416);
+            this.buttonLastPage.Location = new System.Drawing.Point(904, 382);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 30;
@@ -270,7 +284,7 @@ namespace SalesManagement_SysDev
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(836, 416);
+            this.buttonNextPage.Location = new System.Drawing.Point(836, 382);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 29;
@@ -280,7 +294,7 @@ namespace SalesManagement_SysDev
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(756, 416);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(756, 382);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 28;
@@ -290,7 +304,7 @@ namespace SalesManagement_SysDev
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(689, 416);
+            this.buttonFirstPage.Location = new System.Drawing.Point(689, 382);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 27;
@@ -301,7 +315,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(367, 422);
+            this.labelPage.Location = new System.Drawing.Point(365, 388);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
             this.labelPage.TabIndex = 26;
@@ -310,27 +324,13 @@ namespace SalesManagement_SysDev
             // textBoxPage
             // 
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(317, 415);
+            this.textBoxPage.Location = new System.Drawing.Point(315, 381);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 25;
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
-            // 
-            // buttonNotList
-            // 
-            this.buttonNotList.BackColor = System.Drawing.Color.White;
-            this.buttonNotList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonNotList.FlatAppearance.BorderSize = 4;
-            this.buttonNotList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNotList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNotList.Location = new System.Drawing.Point(1295, 22);
-            this.buttonNotList.Name = "buttonNotList";
-            this.buttonNotList.Size = new System.Drawing.Size(205, 80);
-            this.buttonNotList.TabIndex = 34;
-            this.buttonNotList.Text = "非表示リスト";
-            this.buttonNotList.UseVisualStyleBackColor = false;
             // 
             // UserControlPosition
             // 
