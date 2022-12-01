@@ -53,7 +53,7 @@ namespace SalesManagement_SysDev
             if (labelArrival.Text == "入荷詳細管理")
             {
                 labelArrival.Text = "入荷管理";
-                buttonDetail.Text = "入詳細";
+                buttonDetail.Text = "入荷詳細";
                 panelArrival.Visible = true;
                 userControlArrivalDetail1.Visible = false;  
                 return;
