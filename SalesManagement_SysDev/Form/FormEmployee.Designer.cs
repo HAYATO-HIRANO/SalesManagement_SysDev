@@ -50,8 +50,7 @@
             this.panelSetting = new System.Windows.Forms.Panel();
             this.buttonSalesOffice = new System.Windows.Forms.Button();
             this.buttonPosition = new System.Windows.Forms.Button();
-            this.buttonEmployee = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelInput = new System.Windows.Forms.Panel();
             this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
             this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
             this.comboBoxPoID = new System.Windows.Forms.ComboBox();
@@ -79,6 +78,7 @@
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.userControlSalesOffice1 = new SalesManagement_SysDev.UserControlSalesOffice();
             this.userControlPosition1 = new SalesManagement_SysDev.UserControlPosition();
@@ -86,8 +86,9 @@
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelSetting.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
+            this.panelEmployee.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -214,13 +215,10 @@
             // 
             this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
             this.panelLeft.Controls.Add(this.buttonHiddenList);
-            this.panelLeft.Controls.Add(this.buttonSetting);
             this.panelLeft.Controls.Add(this.buttonList);
-            this.panelLeft.Controls.Add(this.buttonLogout);
             this.panelLeft.Controls.Add(this.buttonUpdate);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Controls.Add(this.buttonRegist);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 100);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
@@ -247,7 +245,7 @@
             this.buttonSetting.BackColor = System.Drawing.Color.LightGreen;
             this.buttonSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSetting.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSetting.Location = new System.Drawing.Point(0, 801);
+            this.buttonSetting.Location = new System.Drawing.Point(0, 901);
             this.buttonSetting.Name = "buttonSetting";
             this.buttonSetting.Size = new System.Drawing.Size(250, 100);
             this.buttonSetting.TabIndex = 26;
@@ -275,12 +273,13 @@
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(250, 80);
             this.buttonLogout.TabIndex = 7;
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // buttonUpdate
             // 
@@ -295,6 +294,7 @@
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -330,10 +330,9 @@
             this.panelSetting.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panelSetting.Controls.Add(this.buttonSalesOffice);
             this.panelSetting.Controls.Add(this.buttonPosition);
-            this.panelSetting.Controls.Add(this.buttonEmployee);
-            this.panelSetting.Location = new System.Drawing.Point(1, 100);
+            this.panelSetting.Location = new System.Drawing.Point(0, 100);
             this.panelSetting.Name = "panelSetting";
-            this.panelSetting.Size = new System.Drawing.Size(250, 901);
+            this.panelSetting.Size = new System.Drawing.Size(250, 802);
             this.panelSetting.TabIndex = 25;
             this.panelSetting.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSetting_Paint);
             // 
@@ -342,7 +341,7 @@
             this.buttonSalesOffice.BackColor = System.Drawing.Color.LightGreen;
             this.buttonSalesOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesOffice.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSalesOffice.Location = new System.Drawing.Point(-1, 129);
+            this.buttonSalesOffice.Location = new System.Drawing.Point(0, 129);
             this.buttonSalesOffice.Name = "buttonSalesOffice";
             this.buttonSalesOffice.Size = new System.Drawing.Size(250, 130);
             this.buttonSalesOffice.TabIndex = 2;
@@ -355,7 +354,7 @@
             this.buttonPosition.BackColor = System.Drawing.Color.LightGreen;
             this.buttonPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPosition.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPosition.Location = new System.Drawing.Point(-1, 0);
+            this.buttonPosition.Location = new System.Drawing.Point(0, 0);
             this.buttonPosition.Name = "buttonPosition";
             this.buttonPosition.Size = new System.Drawing.Size(250, 130);
             this.buttonPosition.TabIndex = 1;
@@ -363,43 +362,30 @@
             this.buttonPosition.UseVisualStyleBackColor = false;
             this.buttonPosition.Click += new System.EventHandler(this.buttonPosition_Click);
             // 
-            // buttonEmployee
+            // panelInput
             // 
-            this.buttonEmployee.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEmployee.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonEmployee.Location = new System.Drawing.Point(-1, 801);
-            this.buttonEmployee.Name = "buttonEmployee";
-            this.buttonEmployee.Size = new System.Drawing.Size(250, 100);
-            this.buttonEmployee.TabIndex = 27;
-            this.buttonEmployee.Text = "社員管理";
-            this.buttonEmployee.UseVisualStyleBackColor = false;
-            this.buttonEmployee.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panel4.Controls.Add(this.checkBoxEmFlag);
-            this.panel4.Controls.Add(this.dateTimePickerHiredate);
-            this.panel4.Controls.Add(this.comboBoxPoID);
-            this.panel4.Controls.Add(this.comboBoxSoID);
-            this.panel4.Controls.Add(this.textBoxEmHidden);
-            this.panel4.Controls.Add(this.textBoxEmPhone);
-            this.panel4.Controls.Add(this.textBoxEmPassword);
-            this.panel4.Controls.Add(this.textBoxEmName);
-            this.panel4.Controls.Add(this.textBoxEmID);
-            this.panel4.Controls.Add(this.labelPhone);
-            this.panel4.Controls.Add(this.labelPassword);
-            this.panel4.Controls.Add(this.labelEmHiredate);
-            this.panel4.Controls.Add(this.labelPoID);
-            this.panel4.Controls.Add(this.labelSoID);
-            this.panel4.Controls.Add(this.labelEmName);
-            this.panel4.Controls.Add(this.labelEmID);
-            this.panel4.Location = new System.Drawing.Point(304, 121);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1552, 144);
-            this.panel4.TabIndex = 6;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.checkBoxEmFlag);
+            this.panelInput.Controls.Add(this.dateTimePickerHiredate);
+            this.panelInput.Controls.Add(this.comboBoxPoID);
+            this.panelInput.Controls.Add(this.comboBoxSoID);
+            this.panelInput.Controls.Add(this.textBoxEmHidden);
+            this.panelInput.Controls.Add(this.textBoxEmPhone);
+            this.panelInput.Controls.Add(this.textBoxEmPassword);
+            this.panelInput.Controls.Add(this.textBoxEmName);
+            this.panelInput.Controls.Add(this.textBoxEmID);
+            this.panelInput.Controls.Add(this.labelPhone);
+            this.panelInput.Controls.Add(this.labelPassword);
+            this.panelInput.Controls.Add(this.labelEmHiredate);
+            this.panelInput.Controls.Add(this.labelPoID);
+            this.panelInput.Controls.Add(this.labelSoID);
+            this.panelInput.Controls.Add(this.labelEmName);
+            this.panelInput.Controls.Add(this.labelEmID);
+            this.panelInput.Location = new System.Drawing.Point(54, 21);
+            this.panelInput.Name = "panelInput";
+            this.panelInput.Size = new System.Drawing.Size(1552, 144);
+            this.panelInput.TabIndex = 6;
+            this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // checkBoxEmFlag
             // 
@@ -561,7 +547,7 @@
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(301, 325);
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(54, 220);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.RowTemplate.Height = 21;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 707);
@@ -571,7 +557,7 @@
             // buttonPageSizeChange
             // 
             this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPageSizeChange.Location = new System.Drawing.Point(1745, 295);
+            this.buttonPageSizeChange.Location = new System.Drawing.Point(1498, 190);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
             this.buttonPageSizeChange.TabIndex = 24;
@@ -582,28 +568,27 @@
             // textBoxPageSize
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPageSize.Location = new System.Drawing.Point(1705, 297);
+            this.textBoxPageSize.Location = new System.Drawing.Point(1458, 192);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(29, 26);
             this.textBoxPageSize.TabIndex = 23;
-            this.textBoxPageSize.Text = "10";
+            this.textBoxPageSize.Text = "20";
             this.textBoxPageSize.TextChanged += new System.EventHandler(this.textBoxPageSize_TextChanged);
             // 
             // labelPageSize
             // 
             this.labelPageSize.AutoSize = true;
             this.labelPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPageSize.Location = new System.Drawing.Point(1594, 302);
+            this.labelPageSize.Location = new System.Drawing.Point(1347, 197);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
             this.labelPageSize.TabIndex = 22;
             this.labelPageSize.Text = "1ページ行数";
-            this.labelPageSize.Click += new System.EventHandler(this.labelPageSize_Click);
             // 
             // buttonLastPage
             // 
             this.buttonLastPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLastPage.Location = new System.Drawing.Point(1167, 288);
+            this.buttonLastPage.Location = new System.Drawing.Point(920, 183);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
             this.buttonLastPage.TabIndex = 21;
@@ -614,7 +599,7 @@
             // buttonNextPage
             // 
             this.buttonNextPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonNextPage.Location = new System.Drawing.Point(1099, 288);
+            this.buttonNextPage.Location = new System.Drawing.Point(852, 183);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
             this.buttonNextPage.TabIndex = 20;
@@ -625,7 +610,7 @@
             // buttonPreviousPage
             // 
             this.buttonPreviousPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonPreviousPage.Location = new System.Drawing.Point(1019, 288);
+            this.buttonPreviousPage.Location = new System.Drawing.Point(772, 183);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
             this.buttonPreviousPage.TabIndex = 19;
@@ -636,7 +621,7 @@
             // buttonFirstPage
             // 
             this.buttonFirstPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonFirstPage.Location = new System.Drawing.Point(952, 288);
+            this.buttonFirstPage.Location = new System.Drawing.Point(705, 183);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
             this.buttonFirstPage.TabIndex = 18;
@@ -648,23 +633,21 @@
             // 
             this.labelPage.AutoSize = true;
             this.labelPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPage.Location = new System.Drawing.Point(357, 295);
+            this.labelPage.Location = new System.Drawing.Point(110, 190);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
             this.labelPage.TabIndex = 17;
             this.labelPage.Text = "ページ";
-            this.labelPage.Click += new System.EventHandler(this.labelPage_Click);
             // 
             // textBoxPage
             // 
             this.textBoxPage.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPage.Location = new System.Drawing.Point(307, 288);
+            this.textBoxPage.Location = new System.Drawing.Point(60, 183);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 16;
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
             // timer
             // 
@@ -672,29 +655,47 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Honeydew;
+            this.panel2.Location = new System.Drawing.Point(250, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1670, 980);
+            this.panel2.TabIndex = 25;
+            // 
             // panelEmployee
             // 
-            this.panelEmployee.BackColor = System.Drawing.Color.Honeydew;
-            this.panelEmployee.Location = new System.Drawing.Point(250, 100);
+            this.panelEmployee.Controls.Add(this.panelInput);
+            this.panelEmployee.Controls.Add(this.buttonPageSizeChange);
+            this.panelEmployee.Controls.Add(this.textBoxPage);
+            this.panelEmployee.Controls.Add(this.dataGridViewEmployee);
+            this.panelEmployee.Controls.Add(this.textBoxPageSize);
+            this.panelEmployee.Controls.Add(this.labelPage);
+            this.panelEmployee.Controls.Add(this.buttonFirstPage);
+            this.panelEmployee.Controls.Add(this.labelPageSize);
+            this.panelEmployee.Controls.Add(this.buttonPreviousPage);
+            this.panelEmployee.Controls.Add(this.buttonLastPage);
+            this.panelEmployee.Controls.Add(this.buttonNextPage);
+            this.panelEmployee.Location = new System.Drawing.Point(251, 100);
             this.panelEmployee.Name = "panelEmployee";
             this.panelEmployee.Size = new System.Drawing.Size(1670, 980);
-            this.panelEmployee.TabIndex = 25;
+            this.panelEmployee.TabIndex = 26;
             // 
             // userControlSalesOffice1
             // 
             this.userControlSalesOffice1.BackColor = System.Drawing.Color.Honeydew;
-            this.userControlSalesOffice1.Location = new System.Drawing.Point(250, 101);
+            this.userControlSalesOffice1.Location = new System.Drawing.Point(251, 100);
             this.userControlSalesOffice1.Name = "userControlSalesOffice1";
             this.userControlSalesOffice1.Size = new System.Drawing.Size(1670, 980);
-            this.userControlSalesOffice1.TabIndex = 26;
+            this.userControlSalesOffice1.TabIndex = 27;
             // 
             // userControlPosition1
             // 
             this.userControlPosition1.BackColor = System.Drawing.Color.Honeydew;
-            this.userControlPosition1.Location = new System.Drawing.Point(250, 101);
+            this.userControlPosition1.Location = new System.Drawing.Point(251, 100);
             this.userControlPosition1.Name = "userControlPosition1";
             this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
-            this.userControlPosition1.TabIndex = 27;
+            this.userControlPosition1.TabIndex = 28;
             // 
             // FormEmployee
             // 
@@ -702,22 +703,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.buttonPageSizeChange);
-            this.Controls.Add(this.textBoxPageSize);
-            this.Controls.Add(this.labelPageSize);
-            this.Controls.Add(this.buttonLastPage);
-            this.Controls.Add(this.buttonNextPage);
-            this.Controls.Add(this.buttonPreviousPage);
-            this.Controls.Add(this.buttonFirstPage);
-            this.Controls.Add(this.labelPage);
-            this.Controls.Add(this.textBoxPage);
-            this.Controls.Add(this.dataGridViewEmployee);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.buttonLogout);
+            this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.panelLeft);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelSetting);
-            this.Controls.Add(this.userControlPosition1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelEmployee);
             this.Controls.Add(this.userControlSalesOffice1);
+            this.Controls.Add(this.userControlPosition1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployee";
             this.Text = "FormEmployee";
@@ -727,11 +720,12 @@
             this.panelHeader.PerformLayout();
             this.panelLeft.ResumeLayout(false);
             this.panelSetting.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelInput.ResumeLayout(false);
+            this.panelInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
+            this.panelEmployee.ResumeLayout(false);
+            this.panelEmployee.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -743,7 +737,7 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonRegist;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Label labelEmID;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;
         private System.Windows.Forms.Label labelPhone;
@@ -772,7 +766,6 @@
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Panel panelSetting;
-        private System.Windows.Forms.Button buttonEmployee;
         private System.Windows.Forms.Button buttonSalesOffice;
         private System.Windows.Forms.Button buttonPosition;
         private System.Windows.Forms.Button buttonSetting;
@@ -787,6 +780,7 @@
         private System.Windows.Forms.Button buttonFormDel;
         private System.Windows.Forms.Button buttonHiddenList;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelEmployee;
         private UserControlSalesOffice userControlSalesOffice1;
         private UserControlPosition userControlPosition1;
