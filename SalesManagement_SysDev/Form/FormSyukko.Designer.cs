@@ -78,6 +78,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
+            this.userControlSyukkoDetail1 = new SalesManagement_SysDev.UserControlSyukkoDetail();
             this.panelHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -214,7 +215,7 @@ namespace SalesManagement_SysDev
             this.panel1.Controls.Add(this.buttonPreviousPage);
             this.panel1.Controls.Add(this.panelInput);
             this.panel1.Controls.Add(this.panelLeft);
-            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Location = new System.Drawing.Point(514, 149);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1920, 980);
             this.panel1.TabIndex = 14;
@@ -399,7 +400,7 @@ namespace SalesManagement_SysDev
             this.checkBoxStateFlag.Name = "checkBoxStateFlag";
             this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
             this.checkBoxStateFlag.TabIndex = 6;
-            this.checkBoxStateFlag.Text = "入庫確定";
+            this.checkBoxStateFlag.Text = "出庫確定";
             this.checkBoxStateFlag.UseVisualStyleBackColor = false;
             // 
             // labelClName
@@ -633,6 +634,14 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
             // 
+            // userControlSyukkoDetail1
+            // 
+            this.userControlSyukkoDetail1.BackColor = System.Drawing.Color.Honeydew;
+            this.userControlSyukkoDetail1.Location = new System.Drawing.Point(0, 100);
+            this.userControlSyukkoDetail1.Name = "userControlSyukkoDetail1";
+            this.userControlSyukkoDetail1.Size = new System.Drawing.Size(1920, 980);
+            this.userControlSyukkoDetail1.TabIndex = 17;
+            // 
             // FormSyukko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -643,6 +652,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.userControlSyukkoDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSyukko";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -710,5 +720,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonNextPage;
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Button buttonPreviousPage;
+        private UserControlSyukkoDetail userControlSyukkoDetail1;
     }
 }

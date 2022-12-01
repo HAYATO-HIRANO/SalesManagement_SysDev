@@ -1,7 +1,7 @@
 ﻿
 namespace SalesManagement_SysDev
 {
-    partial class UserControlChumonDetail
+    partial class UserControlSyukkoDetail
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -34,13 +34,13 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.labelStateFlag = new System.Windows.Forms.Label();
-            this.labelOrState = new System.Windows.Forms.Label();
-            this.labelChID = new System.Windows.Forms.Label();
-            this.textBoxChID = new System.Windows.Forms.TextBox();
+            this.labelSyState = new System.Windows.Forms.Label();
+            this.labelSyID = new System.Windows.Forms.Label();
+            this.textBoxSyID = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.textBoxChDetailID = new System.Windows.Forms.TextBox();
-            this.labelChDetailID = new System.Windows.Forms.Label();
+            this.textBoxSyDetailID = new System.Windows.Forms.TextBox();
+            this.labelSyDetailID = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelPrID = new System.Windows.Forms.Label();
             this.textBoxPrName = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
-            this.panelLeft.TabIndex = 6;
+            this.panelLeft.TabIndex = 7;
             // 
             // buttonList
             // 
@@ -104,20 +104,19 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInput.Controls.Add(this.labelStateFlag);
-            this.panelInput.Controls.Add(this.labelOrState);
-            this.panelInput.Controls.Add(this.labelChID);
-            this.panelInput.Controls.Add(this.textBoxChID);
+            this.panelInput.Controls.Add(this.labelSyState);
+            this.panelInput.Controls.Add(this.labelSyID);
+            this.panelInput.Controls.Add(this.textBoxSyID);
             this.panelInput.Controls.Add(this.labelPrice);
             this.panelInput.Controls.Add(this.textBoxPrice);
-            this.panelInput.Controls.Add(this.textBoxChDetailID);
-            this.panelInput.Controls.Add(this.labelChDetailID);
+            this.panelInput.Controls.Add(this.textBoxSyDetailID);
+            this.panelInput.Controls.Add(this.labelSyDetailID);
             this.panelInput.Controls.Add(this.button1);
             this.panelInput.Controls.Add(this.labelPrID);
             this.panelInput.Controls.Add(this.textBoxPrName);
@@ -130,7 +129,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Location = new System.Drawing.Point(306, 48);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
-            this.panelInput.TabIndex = 49;
+            this.panelInput.TabIndex = 50;
             // 
             // labelStateFlag
             // 
@@ -144,35 +143,35 @@ namespace SalesManagement_SysDev
             this.labelStateFlag.TabIndex = 45;
             this.labelStateFlag.Text = "未確定";
             // 
-            // labelOrState
+            // labelSyState
             // 
-            this.labelOrState.AutoSize = true;
-            this.labelOrState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrState.Location = new System.Drawing.Point(15, 96);
-            this.labelOrState.Name = "labelOrState";
-            this.labelOrState.Size = new System.Drawing.Size(118, 24);
-            this.labelOrState.TabIndex = 44;
-            this.labelOrState.Text = "注文状態：";
+            this.labelSyState.AutoSize = true;
+            this.labelSyState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelSyState.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSyState.Location = new System.Drawing.Point(15, 96);
+            this.labelSyState.Name = "labelSyState";
+            this.labelSyState.Size = new System.Drawing.Size(118, 24);
+            this.labelSyState.TabIndex = 44;
+            this.labelSyState.Text = "出庫状態：";
             // 
-            // labelChID
+            // labelSyID
             // 
-            this.labelChID.AutoSize = true;
-            this.labelChID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelChID.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelChID.Location = new System.Drawing.Point(13, 18);
-            this.labelChID.Name = "labelChID";
-            this.labelChID.Size = new System.Drawing.Size(108, 33);
-            this.labelChID.TabIndex = 42;
-            this.labelChID.Text = "注文ID";
+            this.labelSyID.AutoSize = true;
+            this.labelSyID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelSyID.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSyID.Location = new System.Drawing.Point(13, 18);
+            this.labelSyID.Name = "labelSyID";
+            this.labelSyID.Size = new System.Drawing.Size(108, 33);
+            this.labelSyID.TabIndex = 42;
+            this.labelSyID.Text = "出庫ID";
             // 
-            // textBoxChID
+            // textBoxSyID
             // 
-            this.textBoxChID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxChID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxChID.Name = "textBoxChID";
-            this.textBoxChID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxChID.TabIndex = 43;
+            this.textBoxSyID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxSyID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxSyID.Name = "textBoxSyID";
+            this.textBoxSyID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxSyID.TabIndex = 43;
             // 
             // labelPrice
             // 
@@ -195,24 +194,24 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
             this.textBoxPrice.TabIndex = 41;
             // 
-            // textBoxChDetailID
+            // textBoxSyDetailID
             // 
-            this.textBoxChDetailID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxChDetailID.Location = new System.Drawing.Point(434, 21);
-            this.textBoxChDetailID.Name = "textBoxChDetailID";
-            this.textBoxChDetailID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxChDetailID.TabIndex = 37;
+            this.textBoxSyDetailID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxSyDetailID.Location = new System.Drawing.Point(434, 21);
+            this.textBoxSyDetailID.Name = "textBoxSyDetailID";
+            this.textBoxSyDetailID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxSyDetailID.TabIndex = 37;
             // 
-            // labelChDetailID
+            // labelSyDetailID
             // 
-            this.labelChDetailID.AutoSize = true;
-            this.labelChDetailID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelChDetailID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelChDetailID.Location = new System.Drawing.Point(300, 23);
-            this.labelChDetailID.Name = "labelChDetailID";
-            this.labelChDetailID.Size = new System.Drawing.Size(128, 24);
-            this.labelChDetailID.TabIndex = 36;
-            this.labelChDetailID.Text = "注文詳細ID";
+            this.labelSyDetailID.AutoSize = true;
+            this.labelSyDetailID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelSyDetailID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSyDetailID.Location = new System.Drawing.Point(300, 23);
+            this.labelSyDetailID.Name = "labelSyDetailID";
+            this.labelSyDetailID.Size = new System.Drawing.Size(128, 24);
+            this.labelSyDetailID.TabIndex = 36;
+            this.labelSyDetailID.Text = "出庫詳細ID";
             // 
             // button1
             // 
@@ -310,7 +309,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.Location = new System.Drawing.Point(1746, 286);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
-            this.buttonPageSizeChange.TabIndex = 68;
+            this.buttonPageSizeChange.TabIndex = 78;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             // 
@@ -320,7 +319,7 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Location = new System.Drawing.Point(1707, 288);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(33, 26);
-            this.textBoxPageSize.TabIndex = 67;
+            this.textBoxPageSize.TabIndex = 77;
             this.textBoxPageSize.Text = "20";
             // 
             // dataGridViewOrderDetail
@@ -330,7 +329,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrderDetail.Name = "dataGridViewOrderDetail";
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrderDetail.TabIndex = 59;
+            this.dataGridViewOrderDetail.TabIndex = 69;
             // 
             // labelPageSize
             // 
@@ -339,7 +338,7 @@ namespace SalesManagement_SysDev
             this.labelPageSize.Location = new System.Drawing.Point(1596, 293);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
-            this.labelPageSize.TabIndex = 66;
+            this.labelPageSize.TabIndex = 76;
             this.labelPageSize.Text = "1ページ行数";
             // 
             // textBoxPage
@@ -348,7 +347,7 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Location = new System.Drawing.Point(308, 283);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
-            this.textBoxPage.TabIndex = 60;
+            this.textBoxPage.TabIndex = 70;
             this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -358,7 +357,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.Location = new System.Drawing.Point(1168, 283);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonLastPage.TabIndex = 65;
+            this.buttonLastPage.TabIndex = 75;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
             // 
@@ -369,7 +368,7 @@ namespace SalesManagement_SysDev
             this.labelPage.Location = new System.Drawing.Point(358, 290);
             this.labelPage.Name = "labelPage";
             this.labelPage.Size = new System.Drawing.Size(70, 24);
-            this.labelPage.TabIndex = 61;
+            this.labelPage.TabIndex = 71;
             this.labelPage.Text = "ページ";
             // 
             // buttonNextPage
@@ -378,7 +377,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.Location = new System.Drawing.Point(1100, 283);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonNextPage.TabIndex = 64;
+            this.buttonNextPage.TabIndex = 74;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
             // 
@@ -388,7 +387,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.Location = new System.Drawing.Point(953, 283);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonFirstPage.TabIndex = 62;
+            this.buttonFirstPage.TabIndex = 72;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
             // 
@@ -398,11 +397,11 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.Location = new System.Drawing.Point(1020, 283);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
-            this.buttonPreviousPage.TabIndex = 63;
+            this.buttonPreviousPage.TabIndex = 73;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
             // 
-            // UserControlChumonDetail
+            // UserControlSyukkoDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -419,9 +418,9 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonPreviousPage);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.panelLeft);
-            this.Name = "UserControlChumonDetail";
+            this.Name = "UserControlSyukkoDetail";
             this.Size = new System.Drawing.Size(1920, 980);
-            this.Load += new System.EventHandler(this.UserControlChumonDetail_Load);
+            this.Load += new System.EventHandler(this.UserControlSyukkoDetail_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
@@ -438,13 +437,13 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Panel panelInput;
         private System.Windows.Forms.Label labelStateFlag;
-        private System.Windows.Forms.Label labelOrState;
-        private System.Windows.Forms.Label labelChID;
-        private System.Windows.Forms.TextBox textBoxChID;
+        private System.Windows.Forms.Label labelSyState;
+        private System.Windows.Forms.Label labelSyID;
+        private System.Windows.Forms.TextBox textBoxSyID;
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.TextBox textBoxChDetailID;
-        private System.Windows.Forms.Label labelChDetailID;
+        private System.Windows.Forms.TextBox textBoxSyDetailID;
+        private System.Windows.Forms.Label labelSyDetailID;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelPrID;
         private System.Windows.Forms.TextBox textBoxPrName;
