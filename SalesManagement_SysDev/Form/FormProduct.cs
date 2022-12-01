@@ -121,17 +121,17 @@ namespace SalesManagement_SysDev
 
         private void comboBoxSc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxSc.SelectedIndex == -1)
-            {
-                return;
-            }
+            //if (comboBoxSc.SelectedIndex == -1)
+            //{
+            //    return;
+            //}
 
             
-            SmallClassifications = smallClassification.GetScDspData(int.Parse(comboBoxSc.SelectedValue.ToString()));
-            comboBoxSc.DataSource = SmallClassifications;
-            comboBoxSc.DisplayMember = "ScName";
-            comboBoxSc.ValueMember = "ScID";
-            comboBoxSc.SelectedIndex = -1;
+            //SmallClassifications = smallClassification.GetScDspData(int.Parse(comboBoxSc.SelectedValue.ToString()));
+            //comboBoxSc.DataSource = SmallClassifications;
+            //comboBoxSc.DisplayMember = "ScName";
+            //comboBoxSc.ValueMember = "ScID";
+            //comboBoxSc.SelectedIndex = -1;
         }
 
         private void labelSc_Click(object sender, EventArgs e)
@@ -1037,7 +1037,6 @@ namespace SalesManagement_SysDev
                 //PrName = textBoxPrName.Text.Trim(),
                 //Price = int.Parse(textBoxPrice.Text.Trim()),
                 //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                //PrJCode=null,
                 //ScID = int.Parse(sccmb), //int.Parse(comboBoxSc.SelectedValue.ToString()),
                 //PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                 //PrColor = textBoxColor.Text.Trim(),
@@ -1123,14 +1122,51 @@ namespace SalesManagement_SysDev
         {
             //クリックされた行データをテキストボックスへ
             textBoxPrID.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[0].Value.ToString();
-            comboBoxMaker.SelectedIndex = int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[1].Value.ToString());
+            comboBoxMaker.SelectedIndex=int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[1].Value.ToString());
             textBoxPrName.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[2].Value.ToString();
             textBoxPrice.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[3].Value.ToString();
-            textBoxPrSafetyStock.Text =dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxPrSafetyStock.Text =dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[5].Value.ToString();
             //comboBoxMc.SelectedIndex = int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[].Value.ToString());
-            comboBoxSc.SelectedIndex =int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[5].Value.ToString());
-            textBoxPrModelNumber.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[6].Value.ToString();
-            textBoxColor.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[7].Value.ToString();
+            comboBoxSc.SelectedItem=dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxPrModelNumber.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[7].Value.ToString();
+            textBoxColor.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[8].Value.ToString();
+            if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[9].Value==null)
+            {
+                DateTimePickerDateTimePickerPrReleaseDate.Value = DateTime.Now;
+                DateTimePickerDateTimePickerPrReleaseDate.Checked = false;
+            }
+            else
+            {
+                DateTimePickerDateTimePickerPrReleaseDate.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[9].Value.ToString();
+            }
+
+            if( dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBoxPrFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxPrFlag.Checked = true;
+            }
+            if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[11].Value != null)
+            {
+                textBoxPrHidden.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
+        }
+
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
 
         }
     }

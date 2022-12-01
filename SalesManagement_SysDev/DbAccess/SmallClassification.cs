@@ -207,7 +207,33 @@ namespace SalesManagement_SysDev//.DbAccess
             {
                 var context = new SalesManagement_DevContext();
                 smallClassification = context.M_SmallClassifications.Where(x =>x.McID==0&&x.ScFlag == 0).ToList();
+                var tb = from t1 in context.M_Employees
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         join t3 in context.M_Positions
+                         on t1.PoID equals t3.PoID
+                         
+                         select new
+                         {
+                             t1.EmName,
+                             t1.EmID,
+                             t2.SoName,
+                             t3.PoName,
+                             t3.PoID,                   //FormMain権限分割機能で使用
+                         };
+                foreach (var p in tb)
+                {
+                    FormMain.loginName = p.EmName;
+                    FormMain.loginEmID = p.EmID;
+                    FormMain.loginSoName = p.SoName;
+                    FormMain.loginPoName = p.PoName;
+                    FormMain.loginPoID = p.PoID;
+                    //FormMenu.loginTime = DateTime.Now;
+                }
                 context.Dispose();
+                //this.Close();
+              
+                //context.Dispose();
             }
             catch (Exception ex)
             {
