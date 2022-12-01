@@ -92,6 +92,7 @@ namespace SalesManagement_SysDev
             this.buttonNotList.TabIndex = 4;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
+            this.buttonNotList.Click += new System.EventHandler(this.buttonNotList_Click);
             // 
             // buttonList
             // 
@@ -106,6 +107,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -184,7 +186,6 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 32;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxSoAddress
             // 
@@ -224,6 +225,7 @@ namespace SalesManagement_SysDev
             this.checkBoxMaFlag.TabIndex = 18;
             this.checkBoxMaFlag.Text = "非表示フラグ";
             this.checkBoxMaFlag.UseVisualStyleBackColor = true;
+            this.checkBoxMaFlag.CheckedChanged += new System.EventHandler(this.checkBoxMaFlag_CheckedChanged);
             // 
             // textBoxSoPostal
             // 
@@ -419,7 +421,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewSalesOffice.RowTemplate.Height = 21;
             this.dataGridViewSalesOffice.Size = new System.Drawing.Size(1442, 543);
             this.dataGridViewSalesOffice.TabIndex = 45;
-            this.dataGridViewSalesOffice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellClick);
+            this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
             // 
             // UserControlSalesOffice
             // 
