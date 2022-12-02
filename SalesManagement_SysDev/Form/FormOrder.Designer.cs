@@ -52,7 +52,7 @@ namespace SalesManagement_SysDev
             this.panelInput = new System.Windows.Forms.Panel();
             this.checkBoxHidden = new System.Windows.Forms.CheckBox();
             this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.labelClName = new System.Windows.Forms.Label();
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.labelExplamation = new System.Windows.Forms.Label();
@@ -353,7 +353,7 @@ namespace SalesManagement_SysDev
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInput.Controls.Add(this.checkBoxHidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
-            this.panelInput.Controls.Add(this.textBox1);
+            this.panelInput.Controls.Add(this.textBoxClName);
             this.panelInput.Controls.Add(this.labelClName);
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.labelExplamation);
@@ -401,13 +401,13 @@ namespace SalesManagement_SysDev
             this.checkBoxStateFlag.Text = "受注確定";
             this.checkBoxStateFlag.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // textBoxClName
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(1028, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 27);
-            this.textBox1.TabIndex = 52;
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.Location = new System.Drawing.Point(1028, 15);
+            this.textBoxClName.Name = "textBoxClName";
+            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.TabIndex = 52;
             // 
             // labelClName
             // 
@@ -503,6 +503,7 @@ namespace SalesManagement_SysDev
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(77, 28);
             this.textBoxClID.TabIndex = 13;
+            this.textBoxClID.TextChanged += new System.EventHandler(this.textBoxClID_TextChanged);
             // 
             // labelClID
             // 
@@ -787,7 +788,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelClName;
         private System.Windows.Forms.Panel panelOrder;
         private UserControlOrderDetail userControlOrderDetail1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxClName;
         private System.Windows.Forms.CheckBox checkBoxHidden;
         private System.Windows.Forms.CheckBox checkBoxStateFlag;
     }

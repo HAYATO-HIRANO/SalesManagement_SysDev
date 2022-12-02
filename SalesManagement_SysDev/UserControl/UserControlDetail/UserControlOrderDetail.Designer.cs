@@ -30,13 +30,16 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonRegist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.labelStateFlag = new System.Windows.Forms.Label();
             this.labelOrState = new System.Windows.Forms.Label();
             this.labelOrderID = new System.Windows.Forms.Label();
-            this.textBoxOrderID = new System.Windows.Forms.TextBox();
+            this.textBoxOrID = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,9 +64,6 @@ namespace SalesManagement_SysDev
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonRegist = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetail)).BeginInit();
@@ -84,6 +84,20 @@ namespace SalesManagement_SysDev
             this.panelLeft.Size = new System.Drawing.Size(250, 979);
             this.panelLeft.TabIndex = 5;
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.BackColor = System.Drawing.Color.White;
+            this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonDelete.FlatAppearance.BorderSize = 4;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonDelete.Location = new System.Drawing.Point(25, 330);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(200, 80);
+            this.buttonDelete.TabIndex = 9;
+            this.buttonDelete.Text = "削除";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            // 
             // buttonList
             // 
             this.buttonList.BackColor = System.Drawing.Color.White;
@@ -99,6 +113,22 @@ namespace SalesManagement_SysDev
             this.buttonList.UseVisualStyleBackColor = false;
             this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.White;
+            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonUpdate.FlatAppearance.BorderSize = 4;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Location = new System.Drawing.Point(25, 120);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(200, 80);
+            this.buttonUpdate.TabIndex = 2;
+            this.buttonUpdate.Text = "更新";
+            this.buttonUpdate.UseCompatibleTextRendering = true;
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
             // buttonSearch
             // 
             this.buttonSearch.BackColor = System.Drawing.Color.White;
@@ -113,6 +143,22 @@ namespace SalesManagement_SysDev
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
             // 
+            // buttonRegist
+            // 
+            this.buttonRegist.BackColor = System.Drawing.Color.White;
+            this.buttonRegist.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonRegist.FlatAppearance.BorderSize = 4;
+            this.buttonRegist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegist.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonRegist.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonRegist.Location = new System.Drawing.Point(25, 15);
+            this.buttonRegist.Name = "buttonRegist";
+            this.buttonRegist.Size = new System.Drawing.Size(200, 80);
+            this.buttonRegist.TabIndex = 0;
+            this.buttonRegist.Text = "登録\r\n";
+            this.buttonRegist.UseVisualStyleBackColor = false;
+            this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
+            // 
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
@@ -120,7 +166,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelStateFlag);
             this.panelInput.Controls.Add(this.labelOrState);
             this.panelInput.Controls.Add(this.labelOrderID);
-            this.panelInput.Controls.Add(this.textBoxOrderID);
+            this.panelInput.Controls.Add(this.textBoxOrID);
             this.panelInput.Controls.Add(this.labelPrice);
             this.panelInput.Controls.Add(this.textBoxPrice);
             this.panelInput.Controls.Add(this.label2);
@@ -174,14 +220,14 @@ namespace SalesManagement_SysDev
             this.labelOrderID.TabIndex = 42;
             this.labelOrderID.Text = "受注ID";
             // 
-            // textBoxOrderID
+            // textBoxOrID
             // 
-            this.textBoxOrderID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrderID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxOrderID.Name = "textBoxOrderID";
-            this.textBoxOrderID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxOrderID.TabIndex = 43;
-            this.textBoxOrderID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
+            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxOrID.Name = "textBoxOrID";
+            this.textBoxOrID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxOrID.TabIndex = 43;
+            this.textBoxOrID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
             // 
             // labelPrice
             // 
@@ -360,7 +406,6 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrderDetail.TabIndex = 49;
-            this.dataGridViewOrderDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderDetail_CellContentClick);
             // 
             // labelPageSize
             // 
@@ -432,52 +477,6 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
             // 
-            // buttonDelete
-            // 
-            this.buttonDelete.BackColor = System.Drawing.Color.White;
-            this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonDelete.FlatAppearance.BorderSize = 4;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonDelete.Location = new System.Drawing.Point(25, 330);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(200, 80);
-            this.buttonDelete.TabIndex = 9;
-            this.buttonDelete.Text = "削除";
-            this.buttonDelete.UseVisualStyleBackColor = false;
-            // 
-            // buttonRegist
-            // 
-            this.buttonRegist.BackColor = System.Drawing.Color.White;
-            this.buttonRegist.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonRegist.FlatAppearance.BorderSize = 4;
-            this.buttonRegist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegist.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonRegist.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonRegist.Location = new System.Drawing.Point(25, 15);
-            this.buttonRegist.Name = "buttonRegist";
-            this.buttonRegist.Size = new System.Drawing.Size(200, 80);
-            this.buttonRegist.TabIndex = 0;
-            this.buttonRegist.Text = "登録\r\n";
-            this.buttonRegist.UseVisualStyleBackColor = false;
-            this.buttonRegist.Click += new System.EventHandler(this.buttonRegist_Click);
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.White;
-            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonUpdate.FlatAppearance.BorderSize = 4;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonUpdate.Location = new System.Drawing.Point(25, 120);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(200, 80);
-            this.buttonUpdate.TabIndex = 2;
-            this.buttonUpdate.Text = "更新";
-            this.buttonUpdate.UseCompatibleTextRendering = true;
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
-            // 
             // UserControlOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -528,7 +527,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelOrderID;
-        private System.Windows.Forms.TextBox textBoxOrderID;
+        private System.Windows.Forms.TextBox textBoxOrID;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
         private System.Windows.Forms.DataGridView dataGridViewOrderDetail;

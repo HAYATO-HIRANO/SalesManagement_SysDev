@@ -53,6 +53,9 @@ namespace SalesManagement_SysDev
             //非表示理由タブ選択不可、入力不可
             textBoxOrHidden.TabStop = false;
             textBoxOrHidden.ReadOnly = true;
+            //顧客名選択不可、入力不可
+            textBoxClName.TabStop = false;
+            textBoxClName.ReadOnly = true;
             //コンボボックスの設定
             SetFormComboBox();
 
@@ -134,7 +137,7 @@ namespace SalesManagement_SysDev
                 //文字数
                 if (textBoxEmID.TextLength > 6)
                 {
-                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxEmID.Focus();
                     return false;
                 }
@@ -382,20 +385,19 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
-            //各列幅の指定 
-            dataGridViewOrder.Columns[0].Width = 80;
-            dataGridViewOrder.Columns[1].Width = 80;
-            dataGridViewOrder.Columns[2].Width = 150;
-            dataGridViewOrder.Columns[3].Width = 80;
-            dataGridViewOrder.Columns[4].Width = 150;
-            dataGridViewOrder.Columns[5].Width = 80;
-            dataGridViewOrder.Columns[6].Width = 150;
-            dataGridViewOrder.Columns[7].Width = 100;
-            dataGridViewOrder.Columns[8].Width = 100;
+            //各列幅の指定 //1510
+            dataGridViewOrder.Columns[0].Width = 100;
+            dataGridViewOrder.Columns[1].Width = 100;
+            dataGridViewOrder.Columns[2].Width = 175;
+            dataGridViewOrder.Columns[3].Width = 100;
+            dataGridViewOrder.Columns[4].Width = 175;
+            dataGridViewOrder.Columns[5].Width = 100;
+            dataGridViewOrder.Columns[6].Width = 175;
+            dataGridViewOrder.Columns[7].Width = 175;
+            dataGridViewOrder.Columns[8].Width = 175;
             dataGridViewOrder.Columns[9].Visible = false;
-            dataGridViewOrder.Columns[9].Width = 50;
-            dataGridViewOrder.Columns[10].Width = 50;
-            dataGridViewOrder.Columns[11].Width = 200;
+            dataGridViewOrder.Columns[10].Visible = false;
+            dataGridViewOrder.Columns[11].Width = 250;
 
             //各列の文字位置の指定
             dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -406,7 +408,7 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -465,7 +467,7 @@ namespace SalesManagement_SysDev
                 if (!orderDataAccess.CheckOrIDExistence(int.Parse(textBoxOrID.Text.Trim())))
                 {
                     MessageBox.Show("入力された受注IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxClID.Focus();
+                    textBoxOrID.Focus();
                     return false;
                 }
 
@@ -473,7 +475,7 @@ namespace SalesManagement_SysDev
             else
             {
                 MessageBox.Show("受注ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxClID.Focus();
+                textBoxOrID.Focus();
                 return false;
             }
 
@@ -521,14 +523,19 @@ namespace SalesManagement_SysDev
         //戻り値   ：受注確定情報
         //機　能   ：確定データのセット
         ///////////////////////////////
-        private T_ChumonDetail GenerateDataAtConfirmDetail()
+        private List<T_ChumonDetail> GenerateDataAtConfirmDetail()
         {
             List<T_OrderDetail> orderDetail = orderDataAccess.ConfirmOrderDetailData(int.Parse(textBoxOrID.Text.Trim()));
-            //List<T_ChumonDetail> chumonDetail=
-            return new T_ChumonDetail
+            List<T_ChumonDetail> chumonDetail = new List<T_ChumonDetail>();
+            foreach (var p in orderDetail)
             {
-
-            };
+                chumonDetail.Add(new T_ChumonDetail()
+                {
+                    PrID=p.PrID,
+                    ChQuantity=p.OrQuantity
+                });
+            }
+            return chumonDetail;
             
             
 
@@ -541,7 +548,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：受注情報の確定
         ///////////////////////////////
-        private void ConfirmOrder(T_Chumon conOrder,T_ChumonDetail conOrderDetail)
+        private void ConfirmOrder(T_Chumon conOrder,List<T_ChumonDetail> conOrderDetail)
         {
             // 確定確認メッセージ
             DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -554,12 +561,17 @@ namespace SalesManagement_SysDev
             bool addFlg = chumonDataAccess.AddChumonData(conOrder);
 
             //注文詳細テーブルにデータ登録(未完成)
-            bool addDeFlg = chumonDataAccess.AddChumonDetailData(conOrderDetail);
-
+            foreach(var p in conOrderDetail)
+            {            
+                T_ChumonDetail AddCh = new T_ChumonDetail();
+                AddCh.PrID = p.PrID;
+                AddCh.ChQuantity = p.ChQuantity;
+                chumonDataAccess.AddChumonDetailData(AddCh);
+            }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
             //全ての登録,更新が成功
-            if (addFlg==true && conFlg==true&& addDeFlg==true)
+            if (addFlg==true && conFlg==true)
             {
                
                 MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1049,7 +1061,7 @@ namespace SalesManagement_SysDev
             ClearInput();
             GetHiddenDataGridView();
         }
-
+        //非表示フラグが変わった
         private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxHidden.Checked == true)
@@ -1064,6 +1076,20 @@ namespace SalesManagement_SysDev
                 textBoxOrHidden.ReadOnly = true;
 
             }
+        }
+        //入力された顧客IDの顧客名を取得
+        private void textBoxClID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    List<M_Client> client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                    textBoxClName.Text = client[0].ClName.ToString();
+                }
+            }
+            
         }
     }
 }

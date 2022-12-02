@@ -90,8 +90,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：ConfirmOrderData()
         //引　数   :受注ID
-        //戻り値   ：確定用受注データ
-        //機　能   ：受注IDの受注情報
+        //戻り値   ：受注IDの受注データ
+        //機　能   ：受注IDの受注情報取得
         ///////////////////////////////
         public List<T_Order> ConfirmOrderData(int orID)
         {
@@ -222,6 +222,7 @@ namespace SalesManagement_SysDev
                 
 
 
+
                 context.SaveChanges();
                 context.Dispose();
 
@@ -299,6 +300,114 @@ namespace SalesManagement_SysDev
 
             }
             return order;
+        }
+        ///////////////////////////////
+        //メソッド名：GetOrDetailData()
+        //引　数   ：なし
+        //戻り値   ：全受注詳細データ
+        //機　能   ：全受注詳細データの取得
+        ///////////////////////////////
+        public List<T_OrderDetailDsp> GetOrDetailData()
+        {
+            List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.T_OrderDetails
+                         join t2 in context.T_Orders
+                         on t1.OrID equals t2.OrID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         where t2.OrFlag == 0
+                         select new
+                         {
+                             t1.OrID,
+                             t1.OrDetailID,
+                             t1.PrID,
+                             t3.PrName,
+                             t3.Price,
+                             t1.OrQuantity,
+                             t1.OrTotalPrice,
+                         };
+                foreach (var p in tb)
+                {
+                    orDetail.Add(new T_OrderDetailDsp()
+                    {
+                        OrID = p.OrID,
+                        OrDetailID=p.OrDetailID,
+                        PrID=p.PrID,
+                        PrName=p.PrName,
+                        Price=p.Price,
+                        OrQuantity=p.OrQuantity,
+                        OrTotalPrice=p.OrTotalPrice,
+
+
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return orDetail;
+        }
+        ///////////////////////////////
+        //メソッド名：GetOrIDDetailData()
+        //引　数   ：受注ID
+        //戻り値   ：受注IDのゼン詳細データ
+        //機　能   ：受注IDの詳細データの取得
+        ///////////////////////////////
+        public List<T_OrderDetailDsp> GetOrIDDetailData(int orID)
+        {
+            List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.T_OrderDetails
+                         join t2 in context.T_Orders
+                         on t1.OrID equals t2.OrID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         where t2.OrID==orID&&t2.OrFlag == 0
+                         select new
+                         {
+                             t1.OrID,
+                             t1.OrDetailID,
+                             t1.PrID,
+                             t3.PrName,
+                             t3.Price,
+                             t1.OrQuantity,
+                             t1.OrTotalPrice,
+                         };
+                foreach (var p in tb)
+                {
+                    orDetail.Add(new T_OrderDetailDsp()
+                    {
+                        OrID = p.OrID,
+                        OrDetailID = p.OrDetailID,
+                        PrID = p.PrID,
+                        PrName = p.PrName,
+                        Price = p.Price,
+                        OrQuantity = p.OrQuantity,
+                        OrTotalPrice = p.OrTotalPrice,
+
+
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return orDetail;
         }
 
         ///////////////////////////////
