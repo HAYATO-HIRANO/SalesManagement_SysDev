@@ -436,6 +436,7 @@ namespace SalesManagement_SysDev
             this.comboBoxMc.Name = "comboBoxMc";
             this.comboBoxMc.Size = new System.Drawing.Size(196, 41);
             this.comboBoxMc.TabIndex = 24;
+            this.comboBoxMc.SelectedIndexChanged += new System.EventHandler(this.comboBoxMc_SelectedIndexChanged);
             // 
             // labelMc
             // 
