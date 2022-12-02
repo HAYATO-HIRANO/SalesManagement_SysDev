@@ -54,10 +54,10 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSc = new System.Windows.Forms.DataGridView();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSc)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader2
@@ -338,14 +338,14 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "100";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // dataGridView1
+            // dataGridViewSc
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(103, 401);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1378, 503);
-            this.dataGridView1.TabIndex = 44;
+            this.dataGridViewSc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSc.Location = new System.Drawing.Point(103, 401);
+            this.dataGridViewSc.Name = "dataGridViewSc";
+            this.dataGridViewSc.RowTemplate.Height = 21;
+            this.dataGridViewSc.Size = new System.Drawing.Size(1378, 503);
+            this.dataGridViewSc.TabIndex = 44;
             // 
             // UserControlSmallClassification
             // 
@@ -361,7 +361,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonFirstPage);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewSc);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.panelHeader2);
             this.Name = "UserControlSmallClassification";
@@ -370,7 +370,7 @@ namespace SalesManagement_SysDev
             this.panelHeader2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +403,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSc;
     }
 }

@@ -22,6 +22,8 @@ namespace SalesManagement_SysDev
         MajorClassificationDataAccess majorClassification = new MajorClassificationDataAccess();
         //コンボボックス用の大分類データ
         private static List<M_MajorCassification> MajorCassifications;
+        //データグリッドビュー用の顧客データ
+        private static List<M_SmallClassification> Sc;
 
 
         public UserControlSmallClassification()
@@ -85,11 +87,11 @@ namespace SalesManagement_SysDev
             //大分類が未選択
             if (comboBoxMcID.SelectedIndex == -1)
             {
-                MessageBox.Show("大分類が選択されていません","入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("大分類が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxMcID.Focus();
                 return false;
             }
-                     
+
             //小分類IDの適否
             if (!String.IsNullOrEmpty(textBoxScID.Text.Trim()))
             {
@@ -102,7 +104,7 @@ namespace SalesManagement_SysDev
             //小分類名の適否
             if (!String.IsNullOrEmpty(textBoxScName.Text.Trim()))
             {
-                if(textBoxScName.TextLength > 50)
+                if (textBoxScName.TextLength > 50)
                 {
                     //小分類名は50文字以下です
                     MessageBox.Show("小分類名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -125,7 +127,7 @@ namespace SalesManagement_SysDev
                 checkBoxScFlag.Focus();
                 return false;
             }
-            if(checkBoxScFlag.Checked == true)
+            if (checkBoxScFlag.Checked == true)
             {
                 MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxScFlag.Focus();
@@ -153,7 +155,7 @@ namespace SalesManagement_SysDev
         private M_SmallClassification GenerateDataAtRegistration()
         {
             int ScFlag = 0;
-            if(checkBoxScFlag.Checked == true)
+            if (checkBoxScFlag.Checked == true)
             {
                 ScFlag = 2;
             }
@@ -177,7 +179,7 @@ namespace SalesManagement_SysDev
         private void RegistrationSc(M_SmallClassification regSc)
         {
             //登録確認メッセージ
-            DialogResult result = MessageBox.Show("シウ分類データを登録してよろしいですか?", "追加確認" ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("シウ分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (result == DialogResult.Cancel)
                 return;
             //顧客情報の登録
@@ -185,13 +187,87 @@ namespace SalesManagement_SysDev
             if (flg == true)
                 MessageBox.Show("データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.inf);
+                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             textBoxScID.Focus();
 
             //入力エリアのクリア
-            ClearInput()
+            ClearInput();
+
+
+            GetDataGridView();
         }
 
+        ///////////////////////////////
+        //メソッド名：ClearInput()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入力エリアをクリア
+        ///////////////////////////////
+        private void ClearInput()
+        {
+            comboBoxMcID.SelectedIndex = -1;
+            textBoxScID.Text = "";
+            textBoxScName.Text = "";
+            checkBoxScFlag.Checked = false;
+            textBoxScHidden.Text = "";
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetDataGridView()
+        {
+            // 顧客データの取得
+            Sc = smallClassification.GetScData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューへの表示
+        ///////////////////////////////
+        private void SetDataGridView()
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 1;
+            dataGridViewSc.DataSource = Sc.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+
+            //各列幅の指定 //1300
+            dataGridViewSc.Columns[0].Width = 100;
+            dataGridViewSc.Columns[1].Visible = false;
+            dataGridViewSc.Columns[2].Width = 180;
+            dataGridViewSc.Columns[3].Width = 180;
+            dataGridViewSc.Columns[4].Width = 110;
+            dataGridViewSc.Columns[5].Width = 110;
+
+
+
+
+            //各列の文字位置の指定
+            
+            dataGridViewSc.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSc.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSc.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSc.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSc.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //dataGridViewの総ページ数
+            labelPage.Text = "/" + ((int)Math.Ceiling(Client.Count / (double)pageSize)) + "ページ";
+
+
+
+
+            dataGridViewClient.Refresh();
+            
+        }
     }
 }
