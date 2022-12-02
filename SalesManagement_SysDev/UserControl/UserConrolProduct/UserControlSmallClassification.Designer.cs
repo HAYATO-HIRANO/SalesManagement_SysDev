@@ -128,6 +128,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.TabIndex = 1;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonResist
             // 
@@ -346,6 +347,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewSc.RowTemplate.Height = 21;
             this.dataGridViewSc.Size = new System.Drawing.Size(1378, 503);
             this.dataGridViewSc.TabIndex = 44;
+            this.dataGridViewSc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSc_CellClick);
             // 
             // UserControlSmallClassification
             // 
