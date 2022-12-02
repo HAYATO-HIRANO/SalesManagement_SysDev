@@ -185,12 +185,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
                 MessageBox.Show("データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.inf);
+                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             textBoxScID.Focus();
 
             //入力エリアのクリア
-            ClearInput()
+            //ClearInput();
         }
 
     }
