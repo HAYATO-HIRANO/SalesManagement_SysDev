@@ -395,24 +395,12 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void labelOrDetailID_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxOrderID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void labelOrderID_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
