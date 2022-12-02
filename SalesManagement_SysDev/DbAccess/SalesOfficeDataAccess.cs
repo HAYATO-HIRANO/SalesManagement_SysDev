@@ -98,15 +98,42 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   :営業所データ
         //機　能   :営業所データの取得
         //////////////////////////////
-        public List<M_SalesOffice> GetSalesOfficeData()
+        public List<M_SalesOfficeDsp> GetSalesOfficeData()
         {
-            List<M_SalesOffice> salesOffices = new List<M_SalesOffice>();
+            List<M_SalesOfficeDsp> salesOffices = new List<M_SalesOfficeDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.ToList();
-                context.Dispose();
-            }catch(Exception ex)
+                var tb = from t1 in context.M_SalesOffices
+                         where t1.SoFlag != 2
+                         select new
+                         {
+                             t1.SoID,
+                             t1.SoName,
+                             t1.SoPhone,
+                             t1.SoFAX,
+                             t1.SoPostal,
+                             t1.SoAddress,
+                             t1.SoFlag,
+                             t1.SoHidden
+                         };
+                foreach (var p in tb)
+                {
+                    salesOffices.Add(new M_SalesOfficeDsp()
+                    {
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        SoPhone = p.SoPhone,
+                        SoFAX = p.SoFAX,
+                        SoPostal = p.SoPostal,
+                        SoAddress = p.SoAddress,
+                        SoFlag = p.SoFlag,
+                        SoHidden = p.SoHidden
+                    });
+                    context.Dispose();
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -142,23 +169,21 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：表示用営業所データの取得
         ///////////////////////////////
 
-        public List <M_SalesOffice> GetSalesOfficeDspData()
+        public List<M_SalesOffice> GetSalesOfficeDspData()
         {
             List<M_SalesOffice> salesOffices = null;
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.Where(x=> x.SoFlag==0).ToList();
+                salesOffices = context.M_SalesOffices.Where(x => x.SoFlag == 0).ToList();
                 context.Dispose();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             return salesOffices;
-        }  
-
-
+        }
     }
 }

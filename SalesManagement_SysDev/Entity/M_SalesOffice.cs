@@ -36,19 +36,19 @@ namespace SalesManagement_SysDev
         public int SoID { get; set; }
 
         [DisplayName("営業所名")]
-        public int SoName { get; set; }
+        public string SoName { get; set; }
 
         [DisplayName("電話番号")]
-        public int SoPhone { get; set; }
+        public string SoPhone { get; set; }
 
         [DisplayName("FAX")]
-        public int SoFAX { get; set; }
+        public string SoFAX { get; set; }
 
         [DisplayName("郵便番号")]
-        public int SoPostal { get; set; }
+        public string SoPostal { get; set; }
 
         [DisplayName("住所")]
-        public int SoAddress { get; set; }
+        public string SoAddress { get; set; }
 
         [DisplayName("営業所管理フラグ")]
         public int SoFlag { get; set; }

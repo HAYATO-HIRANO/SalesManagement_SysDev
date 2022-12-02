@@ -1083,10 +1083,14 @@ namespace SalesManagement_SysDev
             textBoxClName.Text = "";
             if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
             {
-                if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                if (textBoxClID.TextLength < 6)
                 {
-                    List<M_Client> client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
-                    textBoxClName.Text = client[0].ClName.ToString();
+                    if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                    {
+                        List<M_Client> client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        textBoxClName.Text = client[0].ClName.ToString();
+                    }
+
                 }
             }
             

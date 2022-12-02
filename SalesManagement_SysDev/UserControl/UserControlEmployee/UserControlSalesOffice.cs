@@ -14,7 +14,7 @@ namespace SalesManagement_SysDev
     {
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
 
-        MessageDsp messageDsp = new MessageDsp();
+        
 
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
 
@@ -27,6 +27,8 @@ namespace SalesManagement_SysDev
         private void UserControlSalesOffice_Load(object sender, EventArgs e)
         {
 
+            //データグリッドビューの設定
+            SetFormDataGridView();
         }
 
         private void buttonResist_Click(object sender, EventArgs e)
@@ -522,7 +524,7 @@ namespace SalesManagement_SysDev
         private void UpdateSalesOffice(M_SalesOffice updSalesOffice)
         {
             //更新確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M***");
+            DialogResult result = MessageBox.Show("データを更新しますか？", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
 
@@ -583,7 +585,7 @@ namespace SalesManagement_SysDev
         {
 
             // 営業データの取得
-            //SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
+            SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();

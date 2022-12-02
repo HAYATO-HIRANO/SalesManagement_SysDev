@@ -60,6 +60,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetFormComboBox()
         {
+
             //営業所データの取得
             SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
             comboBoxSoID.DataSource = SalesOffice;
