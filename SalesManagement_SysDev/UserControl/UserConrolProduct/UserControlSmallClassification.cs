@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev
         //コンボボックス用の大分類データ
         private static List<M_MajorCassification> MajorCassifications;
         //データグリッドビュー用の顧客データ
-        private static List<M_SmallClassification> Sc;
+        private static List<M_SmallClassificationDsp> SmallClass;
 
 
         public UserControlSmallClassification()
@@ -214,7 +214,7 @@ namespace SalesManagement_SysDev
         private void GetDataGridView()
         {
             // 顧客データの取得
-            //Sc = smallClassification.GetScData();
+            SmallClass = smallClassification.GetScData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -230,28 +230,31 @@ namespace SalesManagement_SysDev
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
-            dataGridViewSc.DataSource = Sc.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
 
             //各列幅の指定 //1300
-            dataGridViewSc.Columns[1].Width = 200;
             dataGridViewSc.Columns[0].Width = 100;
-            dataGridViewSc.Columns[2].Width = 180;
-            dataGridViewSc.Columns[3].Width = 80;
-            dataGridViewSc.Columns[4].Width = 110;
+            dataGridViewSc.Columns[1].Width = 250;
+            dataGridViewSc.Columns[2].Width = 100;
+            dataGridViewSc.Columns[3].Width = 250;
+            dataGridViewSc.Columns[4].Visible = false;
+            dataGridViewSc.Columns[5].Width = 500;
 
 
 
 
             //各列の文字位置の指定
-            dataGridViewSc.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSc.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewSc.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSc.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSc.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSc.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSc.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSc.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
 
             //dataGridViewの総ページ数
-            labelPage.Text = "/" + ((int)Math.Ceiling(Sc.Count / (double)pageSize)) + "ページ";
+            labelPage.Text = "/" + ((int)Math.Ceiling(SmallClass.Count / (double)pageSize)) + "ページ";
 
 
 

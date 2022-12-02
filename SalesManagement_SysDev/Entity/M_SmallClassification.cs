@@ -28,13 +28,13 @@ namespace SalesManagement_SysDev
     }
     class M_SmallClassificationDsp
     {
-        [DisplayName("大分類ID")]
+        [DisplayName("大分類ＩＤ")]
         public int McID { get; set; }
 
         [DisplayName("大分類")]
         public string McName { get; set; }
 
-        [DisplayName("小分類ID")]
+        [DisplayName("小分類ＩＤ")]
         public int ScID { get; set; }
 
         [DisplayName("小分類名")]
