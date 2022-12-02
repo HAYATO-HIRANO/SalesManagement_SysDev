@@ -24,7 +24,7 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
                 //顧客IDで一致するデータが存在するか
-                flg = context.M_Clients.Any(x => x.ClID == clID);
+                flg = context.M_Clients.Any(x => x.ClID == clID&&x.ClFlag==0);
                 context.Dispose();
 
             }
@@ -97,6 +97,32 @@ namespace SalesManagement_SysDev
                 return false;
             }
         }
+        ///////////////////////////////
+        //メソッド名：GetClIDData()
+        //引　数   ：顧客ID
+        //戻り値   ：顧客名
+        //機　能   ：顧客名取得
+        ///////////////////////////////
+
+
+        public List<M_Client> GetClIDData(int clID)
+        {
+
+            List<M_Client> client = new List<M_Client>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                client = context.M_Clients.Where(x => x.ClID == clID && x.ClFlag == 0).ToList();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return client;
+        }
+
 
         ///////////////////////////////
         //メソッド名：GetClientData()
@@ -104,8 +130,8 @@ namespace SalesManagement_SysDev
         //戻り値   ：全顧客データ
         //機　能   ：全顧客データの取得
         ///////////////////////////////
-        
-       
+
+
         public List<M_ClientDsp> GetClientData()
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
@@ -186,7 +212,7 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t2.SoID
                              where
 
-                             t1.ClID == selectCondition.ClID &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString())&&
                              t1.SoID == selectCondition.SoID &&
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
@@ -233,7 +259,7 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t2.SoID
                              where
 
-                             t1.ClID == selectCondition.ClID &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
              
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
@@ -279,7 +305,7 @@ namespace SalesManagement_SysDev
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
                              where
-                             t1.SoID == selectCondition.SoID &&
+                             t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&

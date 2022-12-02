@@ -144,7 +144,7 @@ namespace SalesManagement_SysDev
                 if (flg == 1)
                 {
                     majorCassifications = context.M_MajorCassifications.Where
-                        (x => x.McID == selectCondition.McID && x.McName.Contains(selectCondition.McName) && x.McFlag == selectCondition.McFlag).ToList();
+                        (x => x.McID.ToString().Contains(selectCondition.McID.ToString()) && x.McName.Contains(selectCondition.McName) && x.McFlag == selectCondition.McFlag).ToList();
 
                 }
                 else if(flg==2)

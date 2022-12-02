@@ -39,7 +39,7 @@ namespace SalesManagement_SysDev
             this.labelStateFlag = new System.Windows.Forms.Label();
             this.labelOrState = new System.Windows.Forms.Label();
             this.labelOrderID = new System.Windows.Forms.Label();
-            this.textBoxOrderID = new System.Windows.Forms.TextBox();
+            this.textBoxOrID = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -166,7 +166,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelStateFlag);
             this.panelInput.Controls.Add(this.labelOrState);
             this.panelInput.Controls.Add(this.labelOrderID);
-            this.panelInput.Controls.Add(this.textBoxOrderID);
+            this.panelInput.Controls.Add(this.textBoxOrID);
             this.panelInput.Controls.Add(this.labelPrice);
             this.panelInput.Controls.Add(this.textBoxPrice);
             this.panelInput.Controls.Add(this.label2);
@@ -221,14 +221,14 @@ namespace SalesManagement_SysDev
             this.labelOrderID.Text = "受注ID";
             this.labelOrderID.Click += new System.EventHandler(this.labelOrderID_Click);
             // 
-            // textBoxOrderID
+            // textBoxOrID
             // 
-            this.textBoxOrderID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrderID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxOrderID.Name = "textBoxOrderID";
-            this.textBoxOrderID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxOrderID.TabIndex = 43;
-            this.textBoxOrderID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
+            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxOrID.Name = "textBoxOrID";
+            this.textBoxOrID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxOrID.TabIndex = 43;
+            this.textBoxOrID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
             // 
             // labelPrice
             // 
@@ -407,7 +407,6 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrderDetail.TabIndex = 49;
-            this.dataGridViewOrderDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderDetail_CellContentClick);
             // 
             // labelPageSize
             // 
@@ -529,7 +528,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelOrderID;
-        private System.Windows.Forms.TextBox textBoxOrderID;
+        private System.Windows.Forms.TextBox textBoxOrID;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
         private System.Windows.Forms.DataGridView dataGridViewOrderDetail;

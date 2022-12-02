@@ -20,6 +20,8 @@ namespace SalesManagement_SysDev
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
+        //データベース注文テーブルアクセス用クラスのインスタンス化
+        ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
 
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
@@ -51,6 +53,9 @@ namespace SalesManagement_SysDev
             //非表示理由タブ選択不可、入力不可
             textBoxOrHidden.TabStop = false;
             textBoxOrHidden.ReadOnly = true;
+            //顧客名選択不可、入力不可
+            textBoxClName.TabStop = false;
+            textBoxClName.ReadOnly = true;
             //コンボボックスの設定
             SetFormComboBox();
 
@@ -132,7 +137,7 @@ namespace SalesManagement_SysDev
                 //文字数
                 if (textBoxEmID.TextLength > 6)
                 {
-                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxEmID.Focus();
                     return false;
                 }
@@ -211,6 +216,19 @@ namespace SalesManagement_SysDev
                　DateTimePickerOrDate.Focus();
                 return false;
             }
+            //非表示フラグ
+            if (checkBoxHidden.CheckState==CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Focus();
+                return false;
+            }
+            if (checkBoxHidden.Checked==true)
+            {
+                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Focus();
+                return false;
+            }
             //非表示理由の適否
             if (!String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
             {
@@ -218,7 +236,19 @@ namespace SalesManagement_SysDev
                 textBoxOrHidden.Focus();
                 return false;
             }
-
+            //受注状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("受注確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            if (checkBoxStateFlag.Checked == true)
+            {
+                MessageBox.Show("受注確定がチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
 
             return true;
         }
@@ -355,19 +385,19 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
-            //各列幅の指定 //1500
+            //各列幅の指定 //1510
             dataGridViewOrder.Columns[0].Width = 100;
             dataGridViewOrder.Columns[1].Width = 100;
-            dataGridViewOrder.Columns[2].Width = 100;
+            dataGridViewOrder.Columns[2].Width = 175;
             dataGridViewOrder.Columns[3].Width = 100;
-            dataGridViewOrder.Columns[4].Width = 100;
+            dataGridViewOrder.Columns[4].Width = 175;
             dataGridViewOrder.Columns[5].Width = 100;
-            dataGridViewOrder.Columns[6].Width = 100;
-            dataGridViewOrder.Columns[7].Width = 100;
-            dataGridViewOrder.Columns[8].Width = 100;
-            dataGridViewOrder.Columns[9].Width = 100;
-            dataGridViewOrder.Columns[10].Width = 100;
-            dataGridViewOrder.Columns[11].Width = 100;
+            dataGridViewOrder.Columns[6].Width = 175;
+            dataGridViewOrder.Columns[7].Width = 175;
+            dataGridViewOrder.Columns[8].Width = 175;
+            dataGridViewOrder.Columns[9].Visible = false;
+            dataGridViewOrder.Columns[10].Visible = false;
+            dataGridViewOrder.Columns[11].Width = 250;
 
             //各列の文字位置の指定
             dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -378,7 +408,7 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -391,8 +421,174 @@ namespace SalesManagement_SysDev
         //////受注情報確定////////
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
+            // 8.1.4.1 妥当な受注データ取得
+            if (!GetValidDataAtConfirm())
+                return;
+            // 8.1.4.2　受注情報作成
+            var conOrder = GenerateDataAtConfirm();
+
+            var conOrderDetail = GenerateDataAtConfirmDetail();
+
+            // 8.1.4.3 受注情報確定
+            ConfirmOrder(conOrder,conOrderDetail);
 
         }
+
+        ///////////////////////////////
+        //  8.1.4.1 妥当な受注データ取得
+        //メソッド名：GetValidDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtConfirm()
+        {
+            //受注IDの適否
+            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            {
+                //受注IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxOrID.Text.Trim()))
+                {
+                    MessageBox.Show("受注IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxOrID.TextLength > 6)
+                {
+                    MessageBox.Show("受注IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+
+                // 受注IDの存在チェック
+                if (!orderDataAccess.CheckOrIDExistence(int.Parse(textBoxOrID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された受注IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("受注ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxOrID.Focus();
+                return false;
+            }
+
+            //受注状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("受注確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            if (checkBoxStateFlag.Checked ==false)
+            {
+                MessageBox.Show("受注確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　8.1.4.2 受注情報作成
+        //メソッド名：GenerateDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：受注確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private T_Chumon GenerateDataAtConfirm()
+        {
+            List<T_Order> order = orderDataAccess.ConfirmOrderData(int.Parse(textBoxOrID.Text.Trim()));
+
+            return new T_Chumon
+            {
+                OrID=int.Parse(order[0].OrID.ToString()),
+                SoID= int.Parse(order[0].SoID.ToString()),
+                EmID= int.Parse(order[0].EmID.ToString()),
+                ClID= int.Parse(order[0].ClID.ToString()),
+                ChDate= DateTime.Parse(order[0].OrDate.ToString()),
+            };
+            
+        }
+        ///////////////////////////////
+        //　8.1.4.2 受注情報作成
+        //メソッド名：GenerateDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：受注確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private List<T_ChumonDetail> GenerateDataAtConfirmDetail()
+        {
+            List<T_OrderDetail> orderDetail = orderDataAccess.ConfirmOrderDetailData(int.Parse(textBoxOrID.Text.Trim()));
+            List<T_ChumonDetail> chumonDetail = new List<T_ChumonDetail>();
+            foreach (var p in orderDetail)
+            {
+                chumonDetail.Add(new T_ChumonDetail()
+                {
+                    PrID=p.PrID,
+                    ChQuantity=p.OrQuantity
+                });
+            }
+            return chumonDetail;
+            
+            
+
+        }
+
+        ///////////////////////////////
+        //　8.1.4.3 受注情報確定
+        //メソッド名：ConfirmOrder()
+        //引　数   ：受注情報
+        //戻り値   ：なし
+        //機　能   ：受注情報の確定
+        ///////////////////////////////
+        private void ConfirmOrder(T_Chumon conOrder,List<T_ChumonDetail> conOrderDetail)
+        {
+            // 確定確認メッセージ
+            DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 受注情報の確定
+            //注文テーブルにデータ登録
+            bool addFlg = chumonDataAccess.AddChumonData(conOrder);
+
+            //注文詳細テーブルにデータ登録(未完成)
+            foreach(var p in conOrderDetail)
+            {            
+                T_ChumonDetail AddCh = new T_ChumonDetail();
+                AddCh.PrID = p.PrID;
+                AddCh.ChQuantity = p.ChQuantity;
+                chumonDataAccess.AddChumonDetailData(AddCh);
+            }
+            //受注状態フラグの更新
+            bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
+            //全ての登録,更新が成功
+            if (addFlg==true && conFlg==true)
+            {
+               
+                MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxOrID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+
+        }
+
         //////受注情報検索///////
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -521,7 +717,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-
+            
         }
         ///////////////////////////////
         //　8.5.1.3 受注抽出結果表示
@@ -680,9 +876,124 @@ namespace SalesManagement_SysDev
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
+        //////////非表示機能///////////
         private void buttonHidden_Click(object sender, EventArgs e)
         {
+            // 3.1.2.1 妥当な受注データ取得
+            if (!GetValidDataAtUpdate())
+                return;
 
+            // 3.1.2.2　受注情報作成
+            var updOrder = GenerateDataAtUpdate();
+
+            // 3.1..3 受注情報更新
+            UpdateOrder(updOrder);
+
+        }
+        ///////////////////////////////
+        //  3.2.1.1 妥当な顧客データ取得
+        //メソッド名：GetValidDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtUpdate()
+        {
+            //受注IDの適否
+            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxOrID.Text.Trim()))
+                {
+                    MessageBox.Show("受注IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxOrID.TextLength > 6)
+                {
+                    MessageBox.Show("受注IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                // 受注IDの存在チェック
+                if (!orderDataAccess.CheckOrIDExistence(int.Parse(textBoxOrID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された受注IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("受注ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxOrID.Focus();
+                return false;
+            }
+            //非表示理由の適否
+            if (checkBoxHidden.Checked == true && String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxOrHidden.Focus();
+                return false;
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　3.2.1.2 受注情報作成
+        //メソッド名：GenerateDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：受注更新情報
+        //機　能   ：更新データのセット
+        ///////////////////////////////
+        private T_Order  GenerateDataAtUpdate()
+        {
+            int OrFlag = 0;
+            if (checkBoxHidden.Checked == true)
+            {
+                OrFlag = 2;
+            }
+
+            return new T_Order
+            {
+                OrID=int.Parse(textBoxOrID.Text.Trim()),
+                OrFlag = OrFlag,
+                OrHidden = textBoxOrHidden.Text.Trim()
+            };
+        }
+        ///////////////////////////////
+        //　3.2.1.3 受注情報更新
+        //メソッド名：UpdateOrder()
+        //引　数   ：受注情報
+        //戻り値   ：なし
+        //機　能   ：受注情報の更新
+        ///////////////////////////////
+        private void UpdateOrder(T_Order updOrder)
+        {
+            // 更新確認メッセージ
+            DialogResult result = MessageBox.Show("データを非表示にしてよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 受注情報の更新(非表示)
+            bool flg = orderDataAccess.UpdateHiddenFlag(updOrder);
+            if (flg == true)
+                MessageBox.Show("データを非表示にしました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("データの非表示に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxOrID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
         }
 
 
@@ -750,7 +1061,35 @@ namespace SalesManagement_SysDev
             ClearInput();
             GetHiddenDataGridView();
         }
+        //非表示フラグが変わった
+        private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxHidden.Checked == true)
+            {
+                textBoxOrHidden.TabStop = true;
+                textBoxOrHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxOrHidden.Text = "";
+                textBoxOrHidden.TabStop = false;
+                textBoxOrHidden.ReadOnly = true;
 
-        
+            }
+        }
+        //入力された顧客IDの顧客名を取得
+        private void textBoxClID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    List<M_Client> client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                    textBoxClName.Text = client[0].ClName.ToString();
+                }
+            }
+            
+        }
     }
 }

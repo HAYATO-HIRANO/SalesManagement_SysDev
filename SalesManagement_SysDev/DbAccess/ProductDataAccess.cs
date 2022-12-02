@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                flg = context.M_Products.Any(x => x.PrID==prID);
+                flg = context.M_Products.Any(x => x.PrID==prID&&x.PrFlag==0);
                 context.Dispose();
             }catch(Exception ex)
             {
