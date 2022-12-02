@@ -142,6 +142,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonRegist
             // 
@@ -238,7 +239,7 @@ namespace SalesManagement_SysDev
             this.labelPrice.Size = new System.Drawing.Size(52, 21);
             this.labelPrice.TabIndex = 40;
             this.labelPrice.Text = "価格";
-            this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
+            //this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
             // 
             // textBoxPrice
             // 
@@ -249,7 +250,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
             this.textBoxPrice.TabIndex = 41;
-            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
+            //this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
             // 
             // label2
             // 
@@ -268,7 +269,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrDetailID.Name = "textBoxOrDetailID";
             this.textBoxOrDetailID.Size = new System.Drawing.Size(77, 28);
             this.textBoxOrDetailID.TabIndex = 37;
-            this.textBoxOrDetailID.TextChanged += new System.EventHandler(this.textBoxOrDetailID_TextChanged);
+           // this.textBoxOrDetailID.TextChanged += new System.EventHandler(this.textBoxOrDetailID_TextChanged);
             // 
             // labelOrDetailID
             // 
@@ -310,7 +311,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrName.Name = "textBoxPrName";
             this.textBoxPrName.Size = new System.Drawing.Size(348, 28);
             this.textBoxPrName.TabIndex = 35;
-            this.textBoxPrName.TextChanged += new System.EventHandler(this.textBoxPrName_TextChanged);
+            //this.textBoxPrName.TextChanged += new System.EventHandler(this.textBoxPrName_TextChanged);
             // 
             // textBoxPrID
             // 
@@ -330,7 +331,7 @@ namespace SalesManagement_SysDev
             this.labelOrQuantity.Size = new System.Drawing.Size(58, 24);
             this.labelOrQuantity.TabIndex = 30;
             this.labelOrQuantity.Text = "数量";
-            this.labelOrQuantity.Click += new System.EventHandler(this.labelOrQuantity_Click);
+           //this.labelOrQuantity.Click += new System.EventHandler(this.labelOrQuantity_Click);
             // 
             // labelPrName
             // 
@@ -351,7 +352,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrQuantity.Size = new System.Drawing.Size(57, 28);
             this.textBoxOrQuantity.TabIndex = 31;
             this.textBoxOrQuantity.Text = "1";
-            this.textBoxOrQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
+           // this.textBoxOrQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
             // 
             // labelOrTotalPrice
             // 
@@ -363,7 +364,6 @@ namespace SalesManagement_SysDev
             this.labelOrTotalPrice.Size = new System.Drawing.Size(106, 24);
             this.labelOrTotalPrice.TabIndex = 32;
             this.labelOrTotalPrice.Text = "合計金額";
-            this.labelOrTotalPrice.Click += new System.EventHandler(this.labelOrTotalPrice_Click);
             // 
             // textBoxOrTotalPrice
             // 
@@ -372,7 +372,6 @@ namespace SalesManagement_SysDev
             this.textBoxOrTotalPrice.Name = "textBoxOrTotalPrice";
             this.textBoxOrTotalPrice.Size = new System.Drawing.Size(127, 28);
             this.textBoxOrTotalPrice.TabIndex = 33;
-            this.textBoxOrTotalPrice.TextChanged += new System.EventHandler(this.textBoxOrTotalPrice_TextChanged);
             // 
             // buttonPageSizeChange
             // 
