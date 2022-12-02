@@ -340,20 +340,9 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void labelPrID_Click(object sender, EventArgs e)
-        {
+      
 
-        }
-
-        private void textBoxPrID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPrName_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void textBoxPrName_TextChanged(object sender, EventArgs e)
         {
