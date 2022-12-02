@@ -163,7 +163,13 @@ namespace SalesManagement_SysDev//.DbAccess
 
                 ValueType tb = from t1 in context.M_SmallClassifications
                                join t2 in context.M_MajorCassifications
-                               on t1.
+                               on t1.McID equals t2.McID
+                               where t1.ScFlag != 2
+                               select new
+                               {
+                                   t1.McID,
+
+                               };
             }
         }*/
 
