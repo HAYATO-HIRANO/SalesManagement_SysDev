@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class UserControlChumonDetail : UserControl
+    public partial class UserControlArrivalDetail : UserControl
     {
-        public UserControlChumonDetail()
+        public UserControlArrivalDetail()
         {
             InitializeComponent();
-        }
-
-        private void UserControlChumonDetail_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -661,6 +661,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 37;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -690,6 +691,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 34;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
@@ -722,6 +724,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 31;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
@@ -800,7 +803,7 @@ namespace SalesManagement_SysDev
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1050);
             this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.userControlMajorClassification1);
             this.Controls.Add(this.userControlMaker1);

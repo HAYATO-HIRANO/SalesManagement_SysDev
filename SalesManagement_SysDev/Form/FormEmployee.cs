@@ -24,10 +24,8 @@ namespace SalesManagement_SysDev
         PasswordHash passwordHash = new PasswordHash();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
-        //
-        private static List<M_EmployeeDsp> EmployeeDsp;
         //データグリッドビュー用の社員データ
-        private static List<M_Employee> Employee;
+        private static List<M_EmployeeDsp> Employee;
         //コンボボックス用の営業所データ
         private static List<M_SalesOffice> SalesOffice;
         //コンボボックス用の役職データ
@@ -47,7 +45,7 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
-            panelEmployee.Visible = true;
+            panel2.Visible = true;
             panelSetting.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
@@ -119,22 +117,7 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void labelPageSize_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPage_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -161,14 +144,32 @@ namespace SalesManagement_SysDev
 
         private void buttonSetting_Click(object sender, EventArgs e)
         {
-            panelLeft.Visible = true;
-            panelSetting.Visible = true;
+            if (buttonSetting.Text == "社員管理")
+            {
+                labelEmployee.Text = "社員管理";
+                panelLeft.Visible = true;
+                panelSetting.Visible = false;
+                userControlPosition1.Visible = false;
+                userControlSalesOffice1.Visible = false;
+                panelEmployee.Visible = true;
+                buttonSetting.Text = "設定";
+                return;
+            }
+            if(buttonSetting.Text == "設定")
+            {
+                panelSetting.Visible = true;
+                panelLeft.Visible = false;
+                buttonSetting.Text = "社員管理";
+                return;
+            }
+            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             panelSetting.Visible = false;
-            panelEmployee.Visible = true;
+            panel2.Visible = true;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = false;
             labelEmployee.Text = "社員管理";
@@ -181,9 +182,9 @@ namespace SalesManagement_SysDev
 
         private void buttonPosition_Click(object sender, EventArgs e)
         {
-            panelEmployee.Visible = false;
-            userControlSalesOffice1.Visible = false;
             userControlPosition1.Visible = true;
+            userControlSalesOffice1.Visible = false;
+            panelEmployee.Visible = false;
             labelEmployee.Text = "役職管理";
         }
 
@@ -204,9 +205,9 @@ namespace SalesManagement_SysDev
 
         private void buttonSalesOffice_Click(object sender, EventArgs e)
         {
-            panelEmployee.Visible = false;
             userControlPosition1.Visible = false;
             userControlSalesOffice1.Visible = true;
+            panelEmployee.Visible = false;
             labelEmployee.Text = "営業所管理";
         }
 
@@ -240,16 +241,16 @@ namespace SalesManagement_SysDev
                 // 社員IDの半角英数字チェック
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmID.Text.Trim()))
                 {
-                    //MessageBox.Show("社員IDは全て半角英数字入力です");
-                    messageDsp.DspMsg("");
+                    MessageBox.Show("社員IDは全て半角英数字入力です");
+                    //messageDsp.DspMsg("");
                     textBoxEmID.Focus();
                     return false;
                 }
                 // 社員IDの文字数チェック
                 if (textBoxEmID.TextLength > 6)
                 {
-                    //MessageBox.Show("社員IDは6文字以下です");
-                    messageDsp.DspMsg("");
+                    MessageBox.Show("社員IDは6文字以下です");
+                    //messageDsp.DspMsg("");
                     textBoxEmID.Focus();
                     return false;
                 }
@@ -257,16 +258,16 @@ namespace SalesManagement_SysDev
                 // 社員IDの重複チェック
                 if (employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
                 {
-                    //MessageBox.Show("入力された社員IDは既に存在します");
-                    messageDsp.DspMsg("");
+                    MessageBox.Show("入力された社員IDは既に存在します");
+                    //messageDsp.DspMsg("");
                     textBoxEmID.Focus();
                     return false;
                 }
             }
             else
             {
-                //MessageBox.Show("社員IDが入力されていません");
-                messageDsp.DspMsg("");
+                MessageBox.Show("社員IDが入力されていません");
+                //messageDsp.DspMsg("");
                 textBoxEmID.Focus();
                 return false;
             }
@@ -277,24 +278,24 @@ namespace SalesManagement_SysDev
                 // 社員名の全角チェック
                 if (!dataInputFormCheck.CheckFullWidth(textBoxEmName.Text.Trim()))
                 {
-                    //MessageBox.Show("社員名は全て全角入力です");
-                    messageDsp.DspMsg("");
+                    MessageBox.Show("社員名は全て全角入力です");
+                    //messageDsp.DspMsg("");
                     textBoxEmName.Focus();
                     return false;
                 }
                 // 社員名の文字数チェック
-                if (textBoxEmName.TextLength > 50)
+                if (textBoxEmName.TextLength > 15)
                 {
-                    //MessageBox.Show("社員名は50文字以下です");
-                    messageDsp.DspMsg("");
+                    MessageBox.Show("社員名は15文字以下です");
+                    //messageDsp.DspMsg("");
                     textBoxEmName.Focus();
                     return false;
                 }
             }
             else
             {
-                //MessageBox.Show("社員名が入力されていません");
-                messageDsp.DspMsg("");
+                MessageBox.Show("社員名が入力されていません");
+                //messageDsp.DspMsg("");
                 textBoxEmName.Focus();
                 return false;
             }
@@ -317,16 +318,16 @@ namespace SalesManagement_SysDev
             {
                 if (!dataInputFormCheck.CheckNumeric(textBoxEmPhone.Text.Trim()))
                 {
-                    //MessageBox.Show("電話番号は半角数値です");
-                    messageDsp.DspMsg("M3030");
+                    MessageBox.Show("電話番号は半角数値です");
+                    //messageDsp.DspMsg("M3030");
                     textBoxEmPhone.Focus();
                     return false;
                 }
                 // 電話番号の文字数チェック
                 if (textBoxEmPhone.TextLength > 12)
                 {
-                    //MessageBox.Show("電話番号は12文字以下です");
-                    messageDsp.DspMsg("M3031");
+                    MessageBox.Show("電話番号は12文字以下です");
+                    //messageDsp.DspMsg("M3031");
                     textBoxEmPhone.Focus();
                     return false;
                 }
@@ -337,24 +338,24 @@ namespace SalesManagement_SysDev
                 // パスワードの半角英数字チェック
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmPassword.Text.Trim()))
                 {
-                    //MessageBox.Show("パスワードは全て半角英数字入力です");
-                    messageDsp.DspMsg("M3044");
+                    MessageBox.Show("パスワードは全て半角英数字入力です");
+                    //messageDsp.DspMsg("M3044");
                     textBoxEmPassword.Focus();
                     return false;
                 }
                 // パスワードの文字数チェック
                 if (textBoxEmPassword.TextLength > 10)
                 {
-                    //MessageBox.Show("パスワードは10文字以下です");
-                    messageDsp.DspMsg("M3045");
+                    MessageBox.Show("パスワードは10文字以下です");
+                    //messageDsp.DspMsg("M3045");
                     textBoxEmPassword.Focus();
                     return false;
                 }
             }
             else
             {
-                //MessageBox.Show("ログインPWが入力されていません");
-                messageDsp.DspMsg("M3046");
+                MessageBox.Show("ログインPWが入力されていません");
+                //messageDsp.DspMsg("M3046");
                 textBoxEmPassword.Focus();
                 return false;
             }
@@ -362,8 +363,8 @@ namespace SalesManagement_SysDev
             // 削除フラグの適否
             if (checkBoxEmFlag.CheckState == CheckState.Indeterminate)
             {
-                //MessageBox.Show("削除フラグが不確定の状態です");
-                messageDsp.DspMsg("M3008");
+                MessageBox.Show("削除フラグが不確定の状態です");
+                //messageDsp.DspMsg("M3008");
                 checkBoxEmFlag.Focus();
                 return false;
             }
@@ -382,7 +383,7 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　8.3.1.2 スタッフ情報作成
+        //　8.3.1.2 社員情報作成
         //メソッド名：GenerateDataAtRegistration()
         //引　数   ：なし
         //戻り値   ：スタッフ登録情報
@@ -413,7 +414,7 @@ namespace SalesManagement_SysDev
             };
         }
         ///////////////////////////////
-        //　8.3.1.3 スタッフ情報登録
+        //　8.3.1.3 社員情報登録
         //メソッド名：RegistrationStaff()
         //引　数   ：スタッフ情報
         //戻り値   ：なし
@@ -429,11 +430,11 @@ namespace SalesManagement_SysDev
             // スタッフ情報の登録
             bool flg = employeeDataAccess.AddEmployeeData(regEmployee);
             if (flg == true)
-                //MessageBox.Show("データを登録しました。");
-                messageDsp.DspMsg("");
+                MessageBox.Show("データを登録しました。");
+                //messageDsp.DspMsg("");
             else
-                //MessageBox.Show("データの登録に失敗しました。");
-                messageDsp.DspMsg("");
+                MessageBox.Show("データの登録に失敗しました。");
+                //messageDsp.DspMsg("");
 
             textBoxEmID.Focus();
 
@@ -444,39 +445,10 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
-        private void dataGridViewDsp_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxEmID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxEmName.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxEmPhone.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[6].Value.ToString();
-            textBoxEmPassword.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value.ToString();
-            checkBoxEmFlag.Checked = (bool)dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[21].Value;
-            textBoxEmHidden.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[22].Value.ToString();
-        }
-        ///////////////////////////////
-        //メソッド名：ClearInput()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：入力エリアをクリア
-        ///////////////////////////////
-        private void ClearInput()
-        {
-            // デートタイムピッカの設定
-            SetFormDateTimePiker();
-            textBoxEmID.Text = "";
-            textBoxEmName.Text = "";
-            comboBoxSoID.SelectedIndex = -1;
-            comboBoxPoID.SelectedIndex = -1;
-            textBoxEmPassword.Text = "";
-            textBoxEmPhone.Text = "";
-            checkBoxEmFlag.Checked = false;
-            textBoxEmHidden.Text = "";
-        }
         private void GetDataGridView()
         {
             // 社員データの取得
-            EmployeeDsp = employeeDataAccess.GetEmployeeData();
+            Employee = employeeDataAccess.GetEmployeeData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -489,6 +461,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            /*
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewEmployee.DataSource = Employee.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -546,7 +519,7 @@ namespace SalesManagement_SysDev
             labelPage.Text = "/" + ((int)Math.Ceiling(Employee.Count / (double)pageSize)) + "ページ";
 
             dataGridViewEmployee.Refresh();
-
+            */
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -578,6 +551,420 @@ namespace SalesManagement_SysDev
         private void textBoxEmPassword_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            // 8.3.2.1 妥当な社員データ取得
+            if (!GetValidDataAtUpdate())
+                return;
+
+            // 8.3.2.2 社員情報作成
+            var updEmployee = GenerateDataAtUpdate();
+
+            // 8.3.2.3 社員情報更新
+            UpdateEmployee(updEmployee);
+        }
+        ///////////////////////////////
+        //8.3.2.1 妥当なスタッフデータ取得
+        //メソッド名：GetValidDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtUpdate()
+        {
+
+            // 社員IDの適否
+            if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            {
+                // 社員IDの半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmID.Text.Trim()))
+                {
+                    MessageBox.Show("社員IDは全て半角英数字入力です");
+                    //messageDsp.DspMsg("");
+                    textBoxEmID.Focus();
+                    return false;
+                }
+                // 社員IDの文字数チェック
+                if (textBoxEmID.TextLength > 6)
+                {
+                    MessageBox.Show("社員IDは6文字以下です");
+                    //messageDsp.DspMsg("");
+                    textBoxEmID.Focus();
+                    return false;
+                }
+
+                // 社員IDの重複チェック
+                if (employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された社員IDは既に存在します");
+                    //messageDsp.DspMsg("");
+                    textBoxEmID.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("社員IDが入力されていません");
+                //messageDsp.DspMsg("");
+                textBoxEmID.Focus();
+                return false;
+            }
+
+            // 社員名の適否
+            if (!String.IsNullOrEmpty(textBoxEmName.Text.Trim()))
+            {
+                // 社員名の全角チェック
+                if (!dataInputFormCheck.CheckFullWidth(textBoxEmName.Text.Trim()))
+                {
+                    MessageBox.Show("社員名は全て全角入力です");
+                    //messageDsp.DspMsg("");
+                    textBoxEmName.Focus();
+                    return false;
+                }
+                // 社員名の文字数チェック
+                if (textBoxEmName.TextLength > 15)
+                {
+                    MessageBox.Show("社員名は15文字以下です");
+                    //messageDsp.DspMsg("");
+                    textBoxEmName.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //MessageBox.Show("社員名が入力されていません");
+                messageDsp.DspMsg("");
+                textBoxEmName.Focus();
+                return false;
+            }
+            //営業所の選択チェック
+            if (comboBoxPoID.SelectedIndex == -1)
+            {
+                MessageBox.Show("営業所が選択されていません");
+                comboBoxPoID.Focus();
+                return false;
+            }
+            //役職の選択チェック
+            if (comboBoxSoID.SelectedIndex == -1)
+            {
+                MessageBox.Show("役職が選択されていません");
+                comboBoxSoID.Focus();
+                return false;
+            }
+            // 電話番号の半角数値チェック
+            if (!String.IsNullOrEmpty(textBoxEmPhone.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxEmPhone.Text.Trim()))
+                {
+                    MessageBox.Show("電話番号は半角数値です");
+                    //messageDsp.DspMsg("M3030");
+                    textBoxEmPhone.Focus();
+                    return false;
+                }
+                // 電話番号の文字数チェック
+                if (textBoxEmPhone.TextLength > 12)
+                {
+                    MessageBox.Show("電話番号は12文字以下です");
+                    //messageDsp.DspMsg("M3031");
+                    textBoxEmPhone.Focus();
+                    return false;
+                }
+            }
+            // パスワードの未入力チェック
+            if (!String.IsNullOrEmpty(textBoxEmPassword.Text.Trim()))
+            {
+                // パスワードの半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmPassword.Text.Trim()))
+                {
+                    MessageBox.Show("パスワードは全て半角英数字入力です");
+                    //messageDsp.DspMsg("M3044");
+                    textBoxEmPassword.Focus();
+                    return false;
+                }
+                // パスワードの文字数チェック
+                if (textBoxEmPassword.TextLength > 10)
+                {
+                    MessageBox.Show("パスワードは10文字以下です");
+                    //messageDsp.DspMsg("M3045");
+                    textBoxEmPassword.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("ログインPWが入力されていません");
+                //messageDsp.DspMsg("M3046");
+                textBoxEmPassword.Focus();
+                return false;
+            }
+
+            // 削除フラグの適否
+            if (checkBoxEmFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("削除フラグが不確定の状態です");
+                //messageDsp.DspMsg("M3008");
+                checkBoxEmFlag.Focus();
+                return false;
+            }
+
+            // 備考の適否
+            if (!String.IsNullOrEmpty(textBoxEmHidden.Text.Trim()))
+            {
+                if (textBoxEmHidden.TextLength > 100)
+                {
+                    MessageBox.Show("備考は100文字以下です");
+                    //messageDsp.DspMsg("M3009");
+                    textBoxEmHidden.Focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //　8.3.2.2 スタッフ情報作成
+        //メソッド名：GenerateDataAtUpdate()
+        //引　数   ：なし
+        //戻り値   ：スタッフ更新情報
+        //機　能   ：更新データのセット
+        ///////////////////////////////
+        private M_Employee GenerateDataAtUpdate()
+        {
+            DateTime? mHireDate;
+            if (dateTimePickerHiredate.Checked == false)
+                mHireDate = null;
+            else
+                mHireDate = DateTime.Parse(dateTimePickerHiredate.Text);
+            // パスワード入力時、パスワードハッシュ化
+            string pw = "";
+            if (!String.IsNullOrEmpty(textBoxEmPassword.Text.Trim()))
+                pw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
+
+            return new M_Employee
+            {
+                EmID = int.Parse(textBoxEmID.Text.Trim()),
+                EmName = textBoxEmName.Text.Trim(),
+                SoID = int.Parse(comboBoxSoID.SelectedValue.ToString()),
+                PoID = int.Parse(comboBoxPoID.SelectedValue.ToString()),
+                EmHiredate = (DateTime)mHireDate,
+                EmPassword = pw,
+                EmPhone = textBoxEmPhone.Text.Trim(),
+                EmFlag = Convert.ToInt32(checkBoxEmFlag.Checked),
+                EmHidden = textBoxEmHidden.Text.Trim()
+
+            };
+        }
+        ///////////////////////////////
+        //　8.3.2.3 スタッフ情報更新
+        //メソッド名：UpdateStaff()
+        //引　数   ：スタッフ情報
+        //戻り値   ：なし
+        //機　能   ：スタッフ情報の更新
+        ///////////////////////////////
+        private void UpdateEmployee(M_Employee updEmployee)
+        {
+            // 更新確認メッセージ
+            DialogResult result = messageDsp.DspMsg("M3014");
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 社員情報の更新
+            bool flg = employeeDataAccess.UpdateEmployeeData(updEmployee);
+            if (flg == true)
+                MessageBox.Show("データを更新しました。");
+                //messageDsp.DspMsg("M3015");
+            else
+                MessageBox.Show("データの更新に失敗しました。");
+                //messageDsp.DspMsg("M3016");
+
+            textBoxEmID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+
+        }
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            // 8.3.4.1 妥当なスタッフデータ取得
+            if (!GetValidDataAtSelect())
+                return;
+
+            // 8.3.4.2 スタッフ情報抽出
+            GenerateDataAtSelect();
+
+            // 8.3.4.3 スタッフ抽出結果表示
+            SetSelectData();
+
+        }
+        ///////////////////////////////
+        //　8.3.4.1 妥当なスタッフデータ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtSelect()
+        {
+
+            // 社員ID入力時チェック
+            if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            {
+                // 社員IDの半角英数字チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmID.Text.Trim()))
+                {
+                    MessageBox.Show("社員IDは全て半角英数字入力です");
+                    //messageDsp.DspMsg("M3001");
+                    textBoxEmID.Focus();
+                    return false;
+                }
+                // 社員IDの文字数チェック
+                if (textBoxEmID.TextLength > 6)
+                {
+                    MessageBox.Show("社員IDは6文字までです");
+                    //messageDsp.DspMsg("M3002");
+                    textBoxEmID.Focus();
+                    return false;
+                }
+            }
+
+            //社員名入力時のチェック
+            if (!String.IsNullOrEmpty(textBoxEmName.Text.Trim()))
+            {
+                // 社員名の全角チェック
+                if (!dataInputFormCheck.CheckFullWidth(textBoxEmName.Text.Trim()))
+                {
+                    MessageBox.Show("社員名は全て全角入力です");
+                    //messageDsp.DspMsg("M3005");
+                    textBoxEmName.Focus();
+                    return false;
+                }
+                // 社員名の文字数チェック
+                if (textBoxEmName.TextLength > 20)
+                {
+                    MessageBox.Show("社員名は15文字以下です");
+                    //messageDsp.DspMsg("M3006");
+                    textBoxEmName.Focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //　8.3.4.2 社員情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：検索データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            // コンボボックスが未選択の場合Emptyを設定
+            string cPoID = "";
+            string cSoID = "";
+
+            if (comboBoxPoID.SelectedIndex != -1)
+                cPoID = comboBoxPoID.SelectedValue.ToString();
+            if (comboBoxSoID.SelectedIndex != -1)
+                cSoID = comboBoxSoID.SelectedValue.ToString();
+
+            // 検索条件のセット
+            M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+            {
+                EmID = int.Parse(textBoxEmID.Text),
+                EmName = textBoxEmName.Text,
+                PoID = int.Parse(cPoID),
+                SoID = int.Parse(cSoID),
+            };
+            // 社員データの抽出
+            Employee = employeeDataAccess.GetEmployeeData(selectCondition);
+
+        }
+        ///////////////////////////////
+        //　8.3.4.3 スタッフ抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：スタッフ情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewEmployee.DataSource = Employee;
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Employee.Count / (double)pageSize)) + "ページ";
+            dataGridViewEmployee.Refresh();
+        }
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            // ログアウト確認メッセージ
+            DialogResult result = MessageBox.Show("ログアウトしてもよろしいですか？");
+
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                FormMain.loginName = "";
+                Dispose();
+            }
+            else
+            {
+                // キャンセルの時の処理
+            }
+        }
+        ///////////////////////////////
+        //メソッド名：dataGridViewEmpoloyee_CellClick()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューから選択された情報を各入力エリアにセット
+        ///////////////////////////////
+        private void dataGridViewEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxEmID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxEmName.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[1].Value.ToString();
+            comboBoxSoID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[15].Value.ToString();
+            comboBoxPoID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[15].Value.ToString();
+            textBoxEmPhone.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxEmPassword.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value.ToString();
+            if (dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value == null)
+            {
+                dateTimePickerHiredate.Value = DateTime.Now;
+                dateTimePickerHiredate.Checked = false;
+            }
+            else
+                dateTimePickerHiredate.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value.ToString();
+
+            checkBoxEmFlag.Checked = (bool)dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[21].Value;
+            textBoxEmHidden.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[22].Value.ToString();
+        }
+        ///////////////////////////////
+        //メソッド名：ClearInput()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入力エリアをクリア
+        ///////////////////////////////
+        private void ClearInput()
+        {
+            // デートタイムピッカの設定
+            SetFormDateTimePiker();
+            textBoxEmID.Text = "";
+            textBoxEmName.Text = "";
+            comboBoxSoID.SelectedIndex = -1;
+            comboBoxPoID.SelectedIndex = -1;
+            textBoxEmPassword.Text = "";
+            textBoxEmPhone.Text = "";
+            checkBoxEmFlag.Checked = false;
+            textBoxEmHidden.Text = "";
         }
     }
 }

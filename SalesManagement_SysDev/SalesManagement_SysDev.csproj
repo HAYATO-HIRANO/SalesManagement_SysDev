@@ -81,6 +81,12 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Form\FormShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormShipment.Designer.cs">
+      <DependentUpon>FormShipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormArrival.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,24 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <Compile Include="UserControl\UserControlDetail\UserControlShipmentDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserControlDetail\UserControlShipmentDetail.Designer.cs">
+      <DependentUpon>UserControlShipmentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UserControlDetail\UserControlArrivalDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserControlDetail\UserControlArrivalDetail.Designer.cs">
+      <DependentUpon>UserControlArrivalDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UserControlDetail\UserControlSyukkoDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UserControlDetail\UserControlSyukkoDetail.Designer.cs">
+      <DependentUpon>UserControlSyukkoDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UserControlDetail\UserControlChumonDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -241,6 +265,9 @@
     <Compile Include="UserControl\UserControlMain\UserControlLogistics.Designer.cs">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\FormShipment.resx">
+      <DependentUpon>FormShipment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormArrival.resx">
       <DependentUpon>FormArrival.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +313,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlShipmentDetail.resx">
+      <DependentUpon>UserControlShipmentDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlArrivalDetail.resx">
+      <DependentUpon>UserControlArrivalDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlSyukkoDetail.resx">
+      <DependentUpon>UserControlSyukkoDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserControlDetail\UserControlChumonDetail.resx">
       <DependentUpon>UserControlChumonDetail.cs</DependentUpon>
     </EmbeddedResource>
