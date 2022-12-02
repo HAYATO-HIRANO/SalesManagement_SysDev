@@ -39,7 +39,6 @@ namespace SalesManagement_SysDev
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxSoAddress = new System.Windows.Forms.TextBox();
             this.labelSoAdress = new System.Windows.Forms.Label();
-            this.textBoxMaHidden = new System.Windows.Forms.TextBox();
             this.checkBoxMaFlag = new System.Windows.Forms.CheckBox();
             this.textBoxSoPostal = new System.Windows.Forms.TextBox();
             this.labelSoPostal = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@ namespace SalesManagement_SysDev
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.dataGridViewSalesOffice = new System.Windows.Forms.DataGridView();
+            this.textBoxMaHidden = new System.Windows.Forms.TextBox();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesOffice)).BeginInit();
@@ -205,15 +205,6 @@ namespace SalesManagement_SysDev
             this.labelSoAdress.Size = new System.Drawing.Size(58, 24);
             this.labelSoAdress.TabIndex = 30;
             this.labelSoAdress.Text = "住所";
-            // 
-            // textBoxMaHidden
-            // 
-            this.textBoxMaHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxMaHidden.Location = new System.Drawing.Point(174, 109);
-            this.textBoxMaHidden.Multiline = true;
-            this.textBoxMaHidden.Name = "textBoxMaHidden";
-            this.textBoxMaHidden.Size = new System.Drawing.Size(703, 75);
-            this.textBoxMaHidden.TabIndex = 20;
             // 
             // checkBoxMaFlag
             // 
@@ -423,6 +414,15 @@ namespace SalesManagement_SysDev
             this.dataGridViewSalesOffice.TabIndex = 45;
             this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
             // 
+            // textBoxMaHidden
+            // 
+            this.textBoxMaHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxMaHidden.Location = new System.Drawing.Point(174, 109);
+            this.textBoxMaHidden.Multiline = true;
+            this.textBoxMaHidden.Name = "textBoxMaHidden";
+            this.textBoxMaHidden.Size = new System.Drawing.Size(703, 75);
+            this.textBoxMaHidden.TabIndex = 20;
+            // 
             // UserControlSalesOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -464,7 +464,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBoxSoAddress;
         private System.Windows.Forms.Label labelSoAdress;
-        private System.Windows.Forms.TextBox textBoxMaHidden;
         private System.Windows.Forms.CheckBox checkBoxMaFlag;
         private System.Windows.Forms.TextBox textBoxSoPostal;
         private System.Windows.Forms.Label labelSoPostal;
@@ -486,5 +485,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.DataGridView dataGridViewSalesOffice;
+        private System.Windows.Forms.TextBox textBoxMaHidden;
     }
 }

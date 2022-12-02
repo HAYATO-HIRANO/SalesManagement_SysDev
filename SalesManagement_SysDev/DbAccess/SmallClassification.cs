@@ -230,36 +230,34 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：表示用商品親カテゴリデータの取得
         ///////////////////////////////
 
-        public List<M_SmallClassification> GetParentScDspData()
+        public List<M_SmallClassification> GetParentScDspData(int McID)
         {
             List<M_SmallClassification> smallClassification = new List<M_SmallClassification>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClassification = context.M_SmallClassifications.Where(x =>x.McID==0&&x.ScFlag == 0).ToList();
-                var tb = from t1 in context.M_Employees
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
-                         join t3 in context.M_Positions
-                         on t1.PoID equals t3.PoID
-                         
-                         select new
-                         {
-                             t1.EmName,
-                             t1.EmID,
-                             t2.SoName,
-                             t3.PoName,
-                             t3.PoID,                   //FormMain権限分割機能で使用
-                         };
-                foreach (var p in tb)
-                {
-                    FormMain.loginName = p.EmName;
-                    FormMain.loginEmID = p.EmID;
-                    FormMain.loginSoName = p.SoName;
-                    FormMain.loginPoName = p.PoName;
-                    FormMain.loginPoID = p.PoID;
-                    //FormMenu.loginTime = DateTime.Now;
-                }
+                smallClassification = context.M_SmallClassifications.Where(x =>x.McID== McID).ToList();
+                //var tb = from t1 in context.M_MajorCassifications
+                //         join t2 in context.M_SmallClassifications
+                //         on t1.McID equals t2.McID
+                //         select new
+                //         {
+                //             t1.McID,
+                //             t1.McName,
+                //            // t2.ScID,
+                //             t2.ScName,
+
+                //                                //FormMain権限分割機能で使用
+                //         };
+                //foreach (var p in tb)
+                //{
+                //     smallClassification.Add(new M_SmallClassification()
+                //    {
+                //        McID = p.McID,
+                //       // ScID = p.ScID,
+                      
+                //    });
+                //}
                 context.Dispose();
                 //this.Close();
               
