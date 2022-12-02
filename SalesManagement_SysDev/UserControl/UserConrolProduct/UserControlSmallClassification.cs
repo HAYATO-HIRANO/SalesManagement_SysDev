@@ -214,7 +214,7 @@ namespace SalesManagement_SysDev
         private void GetDataGridView()
         {
             // 顧客データの取得
-            Sc = smallClassification.GetScData();
+            //Sc = smallClassification.GetScData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
