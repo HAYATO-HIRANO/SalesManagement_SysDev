@@ -46,6 +46,7 @@ namespace SalesManagement_SysDev
             if(labelChumon.Text == "注文管理")
             {
                 labelChumon.Text = "注文詳細管理";
+                buttonChumonDetail.Text = "注文管理";
                 userControlChumonDetail1.Visible = true;
                 panelChumon.Visible = false;
                 return;
@@ -53,6 +54,7 @@ namespace SalesManagement_SysDev
             if(labelChumon.Text == "注文詳細管理")
             {
                 labelChumon.Text = "注文管理";
+                buttonChumonDetail.Text = "注文詳細";
                 panelChumon.Visible = true;
                 userControlChumonDetail1.Visible = false;
                 return;

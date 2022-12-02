@@ -44,6 +44,7 @@ namespace SalesManagement_SysDev.UserControlMain
             this.buttonShipment.TabIndex = 5;
             this.buttonShipment.Text = "出荷管理";
             this.buttonShipment.UseVisualStyleBackColor = false;
+            this.buttonShipment.Click += new System.EventHandler(this.buttonShipment_Click);
             // 
             // buttonArrival
             // 

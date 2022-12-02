@@ -409,5 +409,10 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void labelOrderID_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -181,7 +181,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxOrQuantity);
             this.panelInput.Controls.Add(this.labelOrTotalPrice);
             this.panelInput.Controls.Add(this.textBoxOrTotalPrice);
-            this.panelInput.Location = new System.Drawing.Point(294, 52);
+            this.panelInput.Location = new System.Drawing.Point(293, 52);
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 48;
@@ -219,6 +219,7 @@ namespace SalesManagement_SysDev
             this.labelOrderID.Size = new System.Drawing.Size(108, 33);
             this.labelOrderID.TabIndex = 42;
             this.labelOrderID.Text = "受注ID";
+            this.labelOrderID.Click += new System.EventHandler(this.labelOrderID_Click);
             // 
             // textBoxOrID
             // 
@@ -286,7 +287,7 @@ namespace SalesManagement_SysDev
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1447, 136);
+            this.button1.Location = new System.Drawing.Point(1447, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 30);
             this.button1.TabIndex = 28;
