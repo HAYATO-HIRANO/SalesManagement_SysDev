@@ -26,4 +26,24 @@ namespace SalesManagement_SysDev
         public String ScHidden { get; set; }	//非表示理由		
 
     }
+    class M_SmallClassificationDsp
+    {
+        [DisplayName("大分類ID")]
+        public int McID { get; set; }
+
+        [DisplayName("大分類")]
+        public string McName { get; set; }
+
+        [DisplayName("小分類ID")]
+        public int ScID { get; set; }
+
+        [DisplayName("小分類名")]
+        public string ScName { get; set; }
+
+        [DisplayName("非表示フラグ")]
+        public int ScFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string ScHidden { get; set; }
+    }
 }

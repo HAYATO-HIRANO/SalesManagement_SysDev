@@ -39,7 +39,7 @@ namespace SalesManagement_SysDev
             this.labelStateFlag = new System.Windows.Forms.Label();
             this.labelOrState = new System.Windows.Forms.Label();
             this.labelOrderID = new System.Windows.Forms.Label();
-            this.textBoxOrderID = new System.Windows.Forms.TextBox();
+            this.textBoxOrID = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -142,6 +142,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonRegist
             // 
@@ -166,7 +167,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelStateFlag);
             this.panelInput.Controls.Add(this.labelOrState);
             this.panelInput.Controls.Add(this.labelOrderID);
-            this.panelInput.Controls.Add(this.textBoxOrderID);
+            this.panelInput.Controls.Add(this.textBoxOrID);
             this.panelInput.Controls.Add(this.labelPrice);
             this.panelInput.Controls.Add(this.textBoxPrice);
             this.panelInput.Controls.Add(this.label2);
@@ -219,16 +220,14 @@ namespace SalesManagement_SysDev
             this.labelOrderID.Size = new System.Drawing.Size(108, 33);
             this.labelOrderID.TabIndex = 42;
             this.labelOrderID.Text = "受注ID";
-            this.labelOrderID.Click += new System.EventHandler(this.labelOrderID_Click);
             // 
-            // textBoxOrderID
+            // textBoxOrID
             // 
-            this.textBoxOrderID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrderID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxOrderID.Name = "textBoxOrderID";
-            this.textBoxOrderID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxOrderID.TabIndex = 43;
-            this.textBoxOrderID.TextChanged += new System.EventHandler(this.textBoxOrderID_TextChanged);
+            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxOrID.Name = "textBoxOrID";
+            this.textBoxOrID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxOrID.TabIndex = 43;
             // 
             // labelPrice
             // 
@@ -240,7 +239,7 @@ namespace SalesManagement_SysDev
             this.labelPrice.Size = new System.Drawing.Size(52, 21);
             this.labelPrice.TabIndex = 40;
             this.labelPrice.Text = "価格";
-            this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
+            //this.labelPrice.Click += new System.EventHandler(this.labelPrice_Click);
             // 
             // textBoxPrice
             // 
@@ -251,7 +250,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
             this.textBoxPrice.TabIndex = 41;
-            this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
+            //this.textBoxPrice.TextChanged += new System.EventHandler(this.textBoxPrice_TextChanged);
             // 
             // label2
             // 
@@ -270,7 +269,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrDetailID.Name = "textBoxOrDetailID";
             this.textBoxOrDetailID.Size = new System.Drawing.Size(77, 28);
             this.textBoxOrDetailID.TabIndex = 37;
-            this.textBoxOrDetailID.TextChanged += new System.EventHandler(this.textBoxOrDetailID_TextChanged);
+           // this.textBoxOrDetailID.TextChanged += new System.EventHandler(this.textBoxOrDetailID_TextChanged);
             // 
             // labelOrDetailID
             // 
@@ -282,7 +281,6 @@ namespace SalesManagement_SysDev
             this.labelOrDetailID.Size = new System.Drawing.Size(128, 24);
             this.labelOrDetailID.TabIndex = 36;
             this.labelOrDetailID.Text = "受注詳細ID";
-            this.labelOrDetailID.Click += new System.EventHandler(this.labelOrDetailID_Click);
             // 
             // button1
             // 
@@ -304,7 +302,6 @@ namespace SalesManagement_SysDev
             this.labelPrID.Size = new System.Drawing.Size(80, 24);
             this.labelPrID.TabIndex = 28;
             this.labelPrID.Text = "商品ID";
-            this.labelPrID.Click += new System.EventHandler(this.labelPrID_Click);
             // 
             // textBoxPrName
             // 
@@ -314,7 +311,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrName.Name = "textBoxPrName";
             this.textBoxPrName.Size = new System.Drawing.Size(348, 28);
             this.textBoxPrName.TabIndex = 35;
-            this.textBoxPrName.TextChanged += new System.EventHandler(this.textBoxPrName_TextChanged);
+            //this.textBoxPrName.TextChanged += new System.EventHandler(this.textBoxPrName_TextChanged);
             // 
             // textBoxPrID
             // 
@@ -323,7 +320,6 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Name = "textBoxPrID";
             this.textBoxPrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxPrID.TabIndex = 29;
-            this.textBoxPrID.TextChanged += new System.EventHandler(this.textBoxPrID_TextChanged);
             // 
             // labelOrQuantity
             // 
@@ -335,7 +331,7 @@ namespace SalesManagement_SysDev
             this.labelOrQuantity.Size = new System.Drawing.Size(58, 24);
             this.labelOrQuantity.TabIndex = 30;
             this.labelOrQuantity.Text = "数量";
-            this.labelOrQuantity.Click += new System.EventHandler(this.labelOrQuantity_Click);
+           //this.labelOrQuantity.Click += new System.EventHandler(this.labelOrQuantity_Click);
             // 
             // labelPrName
             // 
@@ -347,7 +343,6 @@ namespace SalesManagement_SysDev
             this.labelPrName.Size = new System.Drawing.Size(73, 21);
             this.labelPrName.TabIndex = 34;
             this.labelPrName.Text = "商品名";
-            this.labelPrName.Click += new System.EventHandler(this.labelPrName_Click);
             // 
             // textBoxOrQuantity
             // 
@@ -357,7 +352,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrQuantity.Size = new System.Drawing.Size(57, 28);
             this.textBoxOrQuantity.TabIndex = 31;
             this.textBoxOrQuantity.Text = "1";
-            this.textBoxOrQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
+           // this.textBoxOrQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
             // 
             // labelOrTotalPrice
             // 
@@ -369,7 +364,6 @@ namespace SalesManagement_SysDev
             this.labelOrTotalPrice.Size = new System.Drawing.Size(106, 24);
             this.labelOrTotalPrice.TabIndex = 32;
             this.labelOrTotalPrice.Text = "合計金額";
-            this.labelOrTotalPrice.Click += new System.EventHandler(this.labelOrTotalPrice_Click);
             // 
             // textBoxOrTotalPrice
             // 
@@ -378,7 +372,6 @@ namespace SalesManagement_SysDev
             this.textBoxOrTotalPrice.Name = "textBoxOrTotalPrice";
             this.textBoxOrTotalPrice.Size = new System.Drawing.Size(127, 28);
             this.textBoxOrTotalPrice.TabIndex = 33;
-            this.textBoxOrTotalPrice.TextChanged += new System.EventHandler(this.textBoxOrTotalPrice_TextChanged);
             // 
             // buttonPageSizeChange
             // 
@@ -407,7 +400,6 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrderDetail.TabIndex = 49;
-            this.dataGridViewOrderDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderDetail_CellContentClick);
             // 
             // labelPageSize
             // 
@@ -529,7 +521,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelOrderID;
-        private System.Windows.Forms.TextBox textBoxOrderID;
+        private System.Windows.Forms.TextBox textBoxOrID;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
         private System.Windows.Forms.DataGridView dataGridViewOrderDetail;

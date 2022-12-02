@@ -41,7 +41,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.textBoxChDetailID = new System.Windows.Forms.TextBox();
             this.labelChDetailID = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.labelPrID = new System.Windows.Forms.Label();
             this.textBoxPrName = new System.Windows.Forms.TextBox();
             this.textBoxPrID = new System.Windows.Forms.TextBox();
@@ -118,7 +118,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxPrice);
             this.panelInput.Controls.Add(this.textBoxChDetailID);
             this.panelInput.Controls.Add(this.labelChDetailID);
-            this.panelInput.Controls.Add(this.button1);
+            this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.labelPrID);
             this.panelInput.Controls.Add(this.textBoxPrName);
             this.panelInput.Controls.Add(this.textBoxPrID);
@@ -214,15 +214,15 @@ namespace SalesManagement_SysDev
             this.labelChDetailID.TabIndex = 36;
             this.labelChDetailID.Text = "注文詳細ID";
             // 
-            // button1
+            // buttonClear
             // 
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(1447, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 30);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "入力クリア";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(1447, 136);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 28;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
             // 
             // labelPrID
             // 
@@ -445,7 +445,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.TextBox textBoxChDetailID;
         private System.Windows.Forms.Label labelChDetailID;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Label labelPrID;
         private System.Windows.Forms.TextBox textBoxPrName;
         private System.Windows.Forms.TextBox textBoxPrID;

@@ -80,7 +80,7 @@ namespace SalesManagement_SysDev//.DbAccess
                 context.SaveChanges();
                 context.Dispose();
 
-                return false;
+                return true;
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -154,21 +154,24 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：小分類データの取得
         ///////////////////////////////
 
-        public List<M_SmallClassification> GetScData()
+        /*public List<M_SmallClassificationDsp> GetScData()
         {
-            List<M_SmallClassification> smallClass = new List<M_SmallClassification>();
+            List<M_SmallClassificationDsp> smallClass = new List<M_SmallClassificationDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClass = context.M_SmallClassifications.ToList();
-                context.Dispose();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK,MessageBoxIcon.Error);
 
+                ValueType tb = from t1 in context.M_SmallClassifications
+                               join t2 in context.M_MajorCassifications
+                               on t1.McID equals t2.McID
+                               where t1.ScFlag != 2
+                               select new
+                               {
+                                   t1.McID,
+
+                               };
             }
-            return smallClass;
-        }
+        }*/
 
         ///////////////////////////////
         //メソッド名：GetScData()　オーバーロードdivision
