@@ -12,6 +12,7 @@ namespace SalesManagement_SysDev
 {
     public partial class FormProduct : Form
     {
+        private int SelectedMcID = 0;
         //メッセージ表示用クラスのインスタンス化
         MessageDsp messageDsp = new MessageDsp();
         //データベース商品テーブルアクセス用クラスのインスタンス化
@@ -133,6 +134,21 @@ namespace SalesManagement_SysDev
             //comboBoxSc.ValueMember = "ScID";
             //comboBoxSc.SelectedIndex = -1;
         }
+        private void comboBoxMc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBoxMc.SelectedItem != null)
+            {
+                SelectedMcID = ((M_MajorCassification) comboBoxMc.SelectedItem).McID;
+
+                SmallClassifications = smallClassification.GetParentScDspData(SelectedMcID);
+                comboBoxSc.DataSource = SmallClassifications;
+                comboBoxSc.DisplayMember = "ScName";
+                comboBoxSc.ValueMember = "ScID";
+
+            }
+
+        }
 
         private void labelSc_Click(object sender, EventArgs e)
         {
@@ -155,7 +171,7 @@ namespace SalesManagement_SysDev
         private void SetFormComboBox()
         {
             // 商品データの取得
-            //s
+           
             Maker = makerDataAccess.GetMakerDspData();
             comboBoxMaker.DataSource = Maker;
             comboBoxMaker.DisplayMember = "MaName";
@@ -164,10 +180,8 @@ namespace SalesManagement_SysDev
             comboBoxMc.DataSource = MajorCassifications;
             comboBoxMc.DisplayMember = "McName";
             comboBoxMc.ValueMember = "McID";
-            SmallClassifications = smallClassification.GetParentScDspData();
-            comboBoxSc.DataSource = SmallClassifications;
-            comboBoxSc.DisplayMember = "ScName";
-            comboBoxSc.ValueMember = "ScID";
+
+            
 
 
             // コンボボックスを読み取り専用
@@ -198,11 +212,16 @@ namespace SalesManagement_SysDev
         private void SetFormDataGridView()
         {
             //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "10";
+            textBoxPageSize.Text = "20";
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
             dataGridViewProduct.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewProduct.AllowUserToResizeRows = false;
+            dataGridViewProduct.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewProduct.AllowUserToAddRows = false;
             //行内をクリックすることで行を選択
             dataGridViewProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //ヘッダー位置の指定
@@ -228,26 +247,30 @@ namespace SalesManagement_SysDev
 
             //各列幅の指定
             dataGridViewProduct.Columns[0].Width = 100;
+            dataGridViewProduct.Columns[1].Width = 100;
             dataGridViewProduct.Columns[1].Visible = false;
             dataGridViewProduct.Columns[2].Width = 180;
             dataGridViewProduct.Columns[3].Width = 110;
-            dataGridViewProduct.Columns[4].Width = 110;
-            dataGridViewProduct.Columns[5].Visible = false;
-            dataGridViewProduct.Columns[6].Width = 110;
+            dataGridViewProduct.Columns[4].Visible = false;
+            dataGridViewProduct.Columns[5].Width = 110;
+            dataGridViewProduct.Columns[6].Width = 100;
             dataGridViewProduct.Columns[7].Width = 110;
             dataGridViewProduct.Columns[8].Width = 110;
-            dataGridViewProduct.Columns[9].Visible = false;
+            dataGridViewProduct.Columns[9].Width = 110;
+            //dataGridViewProduct.Columns[9].Visible = false;
             dataGridViewProduct.Columns[10].Width = 80;
             dataGridViewProduct.Columns[11].Width = 360;
 
             //各列の文字位置の指定
             dataGridViewProduct.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+           // dataGridViewProduct.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewProduct.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewProduct.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            //dataGridViewProduct.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewProduct.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
@@ -1122,12 +1145,12 @@ namespace SalesManagement_SysDev
         {
             //クリックされた行データをテキストボックスへ
             textBoxPrID.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[0].Value.ToString();
-            comboBoxMaker.SelectedIndex=int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[1].Value.ToString());
+            comboBoxMaker.SelectedItem=int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[1].Value.ToString());
             textBoxPrName.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[2].Value.ToString();
             textBoxPrice.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[3].Value.ToString();
             textBoxPrSafetyStock.Text =dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[5].Value.ToString();
             //scomboBoxMc.SelectedIndex = int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[].Value.ToString());
-            comboBoxSc.SelectedIndex=int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[6].Value.ToString());
+            comboBoxSc.SelectedItem =int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[6].Value.ToString());
             textBoxPrModelNumber.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[7].Value.ToString();
             textBoxColor.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[8].Value.ToString();
             if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[9].Value==null)
@@ -1157,18 +1180,34 @@ namespace SalesManagement_SysDev
 
         private void buttonLastPage_Click(object sender, EventArgs e)
         {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Product.Count / (double)pageSize) - 1;
+            dataGridViewProduct.DataSource = Product.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
+            // DataGridViewを更新
+            dataGridViewProduct.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
         }
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewProduct.DataSource = Product.Take(pageSize).ToList();
 
+            //DataGridViewを更新
+            dataGridViewProduct.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
         }
 
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
-
+            SetDataGridView();
         }
+
+        
     }
 
 

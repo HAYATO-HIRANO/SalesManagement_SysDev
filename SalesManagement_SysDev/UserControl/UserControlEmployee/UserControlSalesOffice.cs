@@ -18,7 +18,7 @@ namespace SalesManagement_SysDev
 
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
 
-        private static List<M_SalesOffice> SalesOffice;
+        private static List<M_SalesOfficeDsp> SalesOffice;
         public UserControlSalesOffice()
         {
             InitializeComponent();
@@ -164,7 +164,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckNumeric(textBoxSoPostal.Text.Trim()))
                 {
 
-                    MessageBox.Show("は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("郵便番号は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoPostal.Focus();
                     return false;
 
@@ -583,7 +583,7 @@ namespace SalesManagement_SysDev
         {
 
             // 営業データの取得
-            SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
+            //SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -598,7 +598,7 @@ namespace SalesManagement_SysDev
         private void GetHiddenDataGridView()
         {
             //営業データの取得
-            SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
+            //SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -639,12 +639,15 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewSalesOffice.DataSource = SalesOffice.Skip(pageSize * pageNo).Take(pageSize).ToList();
-            //各列幅の指定
+            //各列幅の指定1400
             dataGridViewSalesOffice.Columns[0].Width = 100;
-            dataGridViewSalesOffice.Columns[1].Width = 200;
-            dataGridViewSalesOffice.Columns[2].Width = 100;
-            dataGridViewSalesOffice.Columns[3].Width = 400;
-
+            dataGridViewSalesOffice.Columns[1].Width = 300;
+            dataGridViewSalesOffice.Columns[2].Width = 250;
+            dataGridViewSalesOffice.Columns[3].Width = 200;
+            dataGridViewSalesOffice.Columns[3].Width = 150;
+            dataGridViewSalesOffice.Columns[5].Width = 400;
+            dataGridViewSalesOffice.Columns[6].Visible = false;
+            dataGridViewSalesOffice.Columns[7].Visible = false;
             //各列の文字位置の指定
             dataGridViewSalesOffice.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSalesOffice.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -668,7 +671,7 @@ namespace SalesManagement_SysDev
         }
         ///////////////////////////////
         //メソッド名：buttonFirstPage_Click()
-        //引　数   ：なし
+        //引　数   ：なし——
         //戻り値   ：なし
         //機　能   ：データグリッドビューの先頭ページ表示
         ///////////////////////////////
@@ -898,7 +901,7 @@ namespace SalesManagement_SysDev
 
                 };
                 //営業データの抽出
-                SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(salesOffice);
+               // SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(salesOffice);
             }
             else
             {
@@ -913,7 +916,7 @@ namespace SalesManagement_SysDev
 
                 };
                 //営業データの抽出
-                SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(salesOffice);
+               // SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(salesOffice);
             }
         }
 
