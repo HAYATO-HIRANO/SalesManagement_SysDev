@@ -192,6 +192,7 @@ namespace SalesManagement_SysDev
             textBoxScID.Focus();
 
             //入力エリアのクリア
+<<<<<<< HEAD
             ClearInput();
 
 
@@ -226,6 +227,9 @@ namespace SalesManagement_SysDev
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
+=======
+            //ClearInput();
+>>>>>>> 6593ace272413b084540abb22a5f43724d520259
         }
 
         ///////////////////////////////
