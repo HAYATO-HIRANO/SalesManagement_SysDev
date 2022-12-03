@@ -621,9 +621,9 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 // 郵便番号の文字数チェック
-                if (textBoxSoPostal.TextLength != 7)
+                if (textBoxSoPostal.TextLength > 7)
                 {
-                    MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("郵便番号の最大文字数を超えています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoPostal.Focus();
                     return false;
                 }
@@ -661,6 +661,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
+            int soFlg = 0;
+            if (checkBoxSoFlag.Checked == true)
+            {
+                soFlg = 2;
+            }
             // 検索条件のセット
             if (!String.IsNullOrEmpty(textBoxSoID.Text.Trim()))
             {
@@ -673,7 +678,8 @@ namespace SalesManagement_SysDev
                     SoFAX = textBoxSoFAX.Text.Trim(),
                     SoPostal = textBoxSoPostal.Text.Trim(),
                     SoAddress = textBoxSoAddress.Text.Trim(),
-
+                    SoFlag = soFlg,
+                    SoHidden=textBoxSoHidden.Text.Trim(),
                 };
                 //営業データの抽出
                  SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(1,salesOffice);
@@ -687,6 +693,8 @@ namespace SalesManagement_SysDev
                     SoFAX = textBoxSoFAX.Text.Trim(),
                     SoPostal = textBoxSoPostal.Text.Trim(),
                     SoAddress = textBoxSoAddress.Text.Trim(),
+                    SoFlag = soFlg,
+                    SoHidden = textBoxSoHidden.Text.Trim(),
 
                 };
                 //営業データの抽出
@@ -783,7 +791,13 @@ namespace SalesManagement_SysDev
             dataGridViewSalesOffice.ReadOnly = true;
             //行内をクリックすることで行を選択
             dataGridViewSalesOffice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+            //直接のサイズの変更を不可
+            dataGridViewSalesOffice.AllowUserToResizeRows = false;
+            dataGridViewSalesOffice.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewSalesOffice.AllowUserToAddRows = false;
+            //奇数行の色を変更
+            dataGridViewSalesOffice.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
             dataGridViewSalesOffice.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -804,18 +818,18 @@ namespace SalesManagement_SysDev
             //各列幅の指定1400
             dataGridViewSalesOffice.Columns[0].Width = 100;
             dataGridViewSalesOffice.Columns[1].Width = 250;
-            dataGridViewSalesOffice.Columns[2].Width = 200;
-            dataGridViewSalesOffice.Columns[3].Width = 200;
-            dataGridViewSalesOffice.Columns[4].Width = 150;
+            dataGridViewSalesOffice.Columns[2].Width = 175;
+            dataGridViewSalesOffice.Columns[3].Width = 175;
+            dataGridViewSalesOffice.Columns[4].Width = 130;
             dataGridViewSalesOffice.Columns[5].Width = 300;
             dataGridViewSalesOffice.Columns[6].Visible = false;
-            dataGridViewSalesOffice.Columns[7].Width=300;
+            dataGridViewSalesOffice.Columns[7].Width = 250;
             //各列の文字位置の指定
             dataGridViewSalesOffice.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSalesOffice.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewSalesOffice.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewSalesOffice.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewSalesOffice.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSalesOffice.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSalesOffice.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSalesOffice.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSalesOffice.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSalesOffice.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
@@ -943,8 +957,29 @@ namespace SalesManagement_SysDev
         }
 
 
+       
+        //入力クリア
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        private void checkBoxSoFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSoFlag.Checked == true)
+            {
+                textBoxSoHidden.TabStop = true;
+                textBoxSoHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxSoHidden.Text = "";
+                textBoxSoHidden.TabStop = false;
+                textBoxSoHidden.ReadOnly = true;
+            }
+        }
         //データグリッドビュー セルクリック
-        private void dataGridViewSalesOffice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewSalesOffice_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
             textBoxSoID.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[0].Value.ToString();
@@ -968,26 +1003,7 @@ namespace SalesManagement_SysDev
             {
                 textBoxSoHidden.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[7].Value.ToString();
             }
-        }
-        //入力クリア
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            ClearInput();
-        }
 
-        private void checkBoxSoFlag_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxSoFlag.Checked == true)
-            {
-                textBoxSoHidden.TabStop = true;
-                textBoxSoHidden.ReadOnly = false;
-            }
-            else
-            {
-                textBoxSoHidden.Text = "";
-                textBoxSoHidden.TabStop = false;
-                textBoxSoHidden.ReadOnly = true;
-            }
         }
     }
 }

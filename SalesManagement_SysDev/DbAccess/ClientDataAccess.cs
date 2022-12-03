@@ -219,7 +219,8 @@ namespace SalesManagement_SysDev
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                             t1.ClFlag ==selectCondition.ClFlag&&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -266,7 +267,8 @@ namespace SalesManagement_SysDev
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                             t1.ClFlag == selectCondition.ClFlag &&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -311,7 +313,8 @@ namespace SalesManagement_SysDev
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                             t1.ClFlag == selectCondition.ClFlag &&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -355,7 +358,8 @@ namespace SalesManagement_SysDev
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                              t1.ClFlag == selectCondition.ClFlag &&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {

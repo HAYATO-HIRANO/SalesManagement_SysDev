@@ -108,9 +108,8 @@ namespace SalesManagement_SysDev
             {
 
                 var context = new SalesManagement_DevContext();
-                var tb = from t1 in context.M_SalesOffices
-                         join t2 in context.M_Clients on t1.SoID equals t2.SoID
-                         where t1.SoFlag == 0
+                var tb = from t1 in context.M_SalesOffices                        
+                         where t1.SoFlag !=2
                          select new
                          {
                              t1.SoID,
@@ -135,8 +134,9 @@ namespace SalesManagement_SysDev
                         SoFlag = p.SoFlag,
                         SoHidden = p.SoHidden
                     });
-                    context.Dispose();
+                    
                 }
+                context.Dispose();
             }
             catch (Exception ex)
             {
@@ -182,8 +182,9 @@ namespace SalesManagement_SysDev
                         SoFlag = p.SoFlag,
                         SoHidden = p.SoHidden
                     });
-                    context.Dispose();
+                    
                 }
+                context.Dispose();
             }
             catch (Exception ex)
             {
@@ -214,7 +215,9 @@ namespace SalesManagement_SysDev
                                     t1.SoFAX.Contains(selectCondition.SoFAX) &&
                                     t1.SoPostal.Contains(selectCondition.SoPostal) &&
                                     t1.SoAddress.Contains(selectCondition.SoAddress) &&
-                                    t1.SoFlag == selectCondition.SoFlag
+                                    t1.SoFlag == selectCondition.SoFlag&&
+                                    t1.SoHidden.Contains(selectCondition.SoHidden)
+
                              select new
                              {
                                  t1.SoID,
@@ -239,9 +242,9 @@ namespace SalesManagement_SysDev
                             SoFlag = p.SoFlag,
                             SoHidden = p.SoHidden
                         });
-                        context.Dispose();
+                        
                     }
-
+                    context.Dispose();
                 }
                 else if (flg == 2)
                 {
@@ -252,7 +255,9 @@ namespace SalesManagement_SysDev
                                     t1.SoFAX.Contains(selectCondition.SoFAX) &&
                                     t1.SoPostal.Contains(selectCondition.SoPostal) &&
                                     t1.SoAddress.Contains(selectCondition.SoAddress) &&
-                                    t1.SoFlag==selectCondition.SoFlag
+                                    t1.SoFlag==selectCondition.SoFlag&&
+                                    t1.SoHidden.Contains(selectCondition.SoHidden)
+
                              select new
                              {
                                  t1.SoID,
@@ -277,9 +282,9 @@ namespace SalesManagement_SysDev
                             SoFlag = p.SoFlag,
                             SoHidden = p.SoHidden
                         });
-                        context.Dispose();
+                       
                     }
-
+                    context.Dispose();
                 }
 
             }

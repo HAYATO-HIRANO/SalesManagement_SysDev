@@ -422,7 +422,8 @@ namespace SalesManagement_SysDev
             this.dataGridViewSalesOffice.RowTemplate.Height = 21;
             this.dataGridViewSalesOffice.Size = new System.Drawing.Size(1442, 543);
             this.dataGridViewSalesOffice.TabIndex = 45;
-            this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
+            this.dataGridViewSalesOffice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellClick);
+            //this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
             // 
             // UserControlSalesOffice
             // 
