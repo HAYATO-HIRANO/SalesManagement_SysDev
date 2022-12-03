@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SalesManagement_SysDev//.DbAccess
+namespace SalesManagement_SysDev
 {
     class SalesOfficeDataAccess
     {
@@ -26,7 +26,8 @@ namespace SalesManagement_SysDev//.DbAccess
                 var context = new SalesManagement_DevContext();
                 flg = context.M_SalesOffices.Any(x => x.SoID == soID);
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -51,12 +52,13 @@ namespace SalesManagement_SysDev//.DbAccess
                 context.Dispose();
 
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            
+
         }
 
         ///////////////////////////////
@@ -85,7 +87,8 @@ namespace SalesManagement_SysDev//.DbAccess
                 context.Dispose();
 
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -103,9 +106,58 @@ namespace SalesManagement_SysDev//.DbAccess
             List<M_SalesOfficeDsp> salesOffices = new List<M_SalesOfficeDsp>();
             try
             {
+
                 var context = new SalesManagement_DevContext();
                 var tb = from t1 in context.M_SalesOffices
-                         where t1.SoFlag != 2
+                         join t2 in context.M_Clients on t1.SoID equals t2.SoID
+                         where t1.SoFlag == 0
+                         select new
+                         {
+                             t1.SoID,
+                             t1.SoName,
+                             t1.SoPhone,
+                             t1.SoFAX,
+                             t1.SoPostal,
+                             t1.SoAddress,
+                             t1.SoFlag,
+                             t1.SoHidden
+                         };
+                foreach (var p in tb)
+                {
+                    salesOffices.Add(new M_SalesOfficeDsp()
+                    {
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        SoPhone = p.SoPhone,
+                        SoFAX = p.SoFAX,
+                        SoPostal = p.SoPostal,
+                        SoAddress = p.SoAddress,
+                        SoFlag = p.SoFlag,
+                        SoHidden = p.SoHidden
+                    });
+                    context.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return salesOffices;
+        }
+        ///////////////////////////////
+        //メソッド名： GetSalesOfficeHiddenData()
+        //引　数   :なし
+        //戻り値   :非表示営業所データ
+        //機　能   :非表示営業所データの取得
+        //////////////////////////////
+        public List<M_SalesOfficeDsp> GetSalesOfficeHiddenData()
+        {
+            List<M_SalesOfficeDsp> salesOffices = new List<M_SalesOfficeDsp>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.M_SalesOffices
+                         where t1.SoFlag == 2
                          select new
                          {
                              t1.SoID,
@@ -146,14 +198,90 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   ：条件一致営業所データ
         //機　能   ：条件一致営業所データの取得
         ///////////////////////////////
-        public List<M_SalesOffice> GetSalesOfficeData(M_SalesOffice salesOffice)
+        public List<M_SalesOfficeDsp> GetSalesOfficeData(int flg, M_SalesOfficeDsp selectCondition)
         {
-            List<M_SalesOffice> salesOffices = new List<M_SalesOffice>();
+            List<M_SalesOfficeDsp> salesOffices = new List<M_SalesOfficeDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.Where(x => x.SoID==salesOffice.SoID).ToList();
-                context.Dispose();
+                if (flg == 1)
+                {
+                    var tb = from t1 in context.M_SalesOffices
+
+                             where  t1.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
+                                    t1.SoName.Contains(selectCondition.SoName) &&
+                                    t1.SoPhone.Contains(selectCondition.SoPhone) &&
+                                    t1.SoFAX.Contains(selectCondition.SoFAX) &&
+                                    t1.SoPostal.Contains(selectCondition.SoPostal) &&
+                                    t1.SoAddress.Contains(selectCondition.SoAddress) &&
+                                    t1.SoFlag == selectCondition.SoFlag
+                             select new
+                             {
+                                 t1.SoID,
+                                 t1.SoName,
+                                 t1.SoPhone,
+                                 t1.SoFAX,
+                                 t1.SoPostal,
+                                 t1.SoAddress,
+                                 t1.SoFlag,
+                                 t1.SoHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        salesOffices.Add(new M_SalesOfficeDsp()
+                        {
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            SoPhone = p.SoPhone,
+                            SoFAX = p.SoFAX,
+                            SoPostal = p.SoPostal,
+                            SoAddress = p.SoAddress,
+                            SoFlag = p.SoFlag,
+                            SoHidden = p.SoHidden
+                        });
+                        context.Dispose();
+                    }
+
+                }
+                else if (flg == 2)
+                {
+                    var tb = from t1 in context.M_SalesOffices
+                             where  
+                                    t1.SoName.Contains(selectCondition.SoName) &&
+                                    t1.SoPhone.Contains(selectCondition.SoPhone) &&
+                                    t1.SoFAX.Contains(selectCondition.SoFAX) &&
+                                    t1.SoPostal.Contains(selectCondition.SoPostal) &&
+                                    t1.SoAddress.Contains(selectCondition.SoAddress) &&
+                                    t1.SoFlag==selectCondition.SoFlag
+                             select new
+                             {
+                                 t1.SoID,
+                                 t1.SoName,
+                                 t1.SoPhone,
+                                 t1.SoFAX,
+                                 t1.SoPostal,
+                                 t1.SoAddress,
+                                 t1.SoFlag,
+                                 t1.SoHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        salesOffices.Add(new M_SalesOfficeDsp()
+                        {
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            SoPhone = p.SoPhone,
+                            SoFAX = p.SoFAX,
+                            SoPostal = p.SoPostal,
+                            SoAddress = p.SoAddress,
+                            SoFlag = p.SoFlag,
+                            SoHidden = p.SoHidden
+                        });
+                        context.Dispose();
+                    }
+
+                }
+
             }
             catch (Exception ex)
             {

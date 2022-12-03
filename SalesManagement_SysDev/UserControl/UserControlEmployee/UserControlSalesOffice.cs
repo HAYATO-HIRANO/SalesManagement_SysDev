@@ -12,12 +12,11 @@ namespace SalesManagement_SysDev
 {
     public partial class UserControlSalesOffice : UserControl
     {
+        //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
-
-        
-
+        //データベース大分類テーブルアクセス用クラスのインスタンス化
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
-
+        //データグリッドビュー用の大分類データ
         private static List<M_SalesOfficeDsp> SalesOffice;
         public UserControlSalesOffice()
         {
@@ -26,6 +25,9 @@ namespace SalesManagement_SysDev
 
         private void UserControlSalesOffice_Load(object sender, EventArgs e)
         {
+            //非表示理由タブ選択不可、入力不可
+            textBoxSoHidden.TabStop = false;
+            textBoxSoHidden.ReadOnly = true;
 
             //データグリッドビューの設定
             SetFormDataGridView();
@@ -49,7 +51,7 @@ namespace SalesManagement_SysDev
         //引　数   ：なし
         //戻り値   ：true or false
         //機　能   ：入力データの形式チェック
-        //          ：エラーがなbbbbbbbい場合True
+        //          ：エラーがない場合True
         //          ：エラーがある場合False
         ///////////////////////////////
         private bool GetValidDataAtRegistration()
@@ -57,35 +59,10 @@ namespace SalesManagement_SysDev
             //営業所IDの適否
             if (!String.IsNullOrEmpty(textBoxSoID.Text.Trim()))
             {
-                //営業所IDの半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxSoID.Text.Trim()))
-                {
-                    MessageBox.Show("営業所IDは全て半角英数字入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoID.Focus();
-                    return false;
-                }
-                // 営業所IDの文字数チェック
-                if (textBoxSoID.TextLength==2)
-                {
-                    MessageBox.Show("営業所IDは2文字です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    textBoxSoID.Focus();
-                    return false;
-                }
-                //営業所ID重複チェック
-                if (salesOfficeDataAccess.CheckSalesOfficeCDExistence(int.Parse(textBoxSoID.Text.Trim())))
-                {
-                    MessageBox.Show("入力された営業所IDは既に存在します", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoID.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("営業所IDが入力されていません");
-
+                MessageBox.Show("営業所IDは入力不要です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxSoID.Focus();
                 return false;
+
             }
             //営業所名の適否
             if (!String.IsNullOrEmpty(textBoxSoName.Text.Trim()))
@@ -101,7 +78,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                MessageBox.Show("営業所名が入力されていません");
+                MessageBox.Show("営業所名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxSoName.Focus();
                 return false;
 
@@ -162,7 +139,7 @@ namespace SalesManagement_SysDev
             //郵便番号の適否
             if (!String.IsNullOrEmpty(textBoxSoPostal.Text.Trim()))
             {
-                //郵便番号半角英数字チェック
+                //郵便番号半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxSoPostal.Text.Trim()))
                 {
 
@@ -194,8 +171,7 @@ namespace SalesManagement_SysDev
                 //住所の文字数チェック
                 if (textBoxSoAddress.TextLength > 50)
                 {
-                    MessageBox.Show("住所は５０文字です。");
-
+                    MessageBox.Show("住所は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoAddress.Focus();
                     return false;
                 }
@@ -208,24 +184,24 @@ namespace SalesManagement_SysDev
             }
 
             // フラグの適否
-            if (checkBoxMaFlag.CheckState == CheckState.Indeterminate)
+            if (checkBoxSoFlag.CheckState == CheckState.Indeterminate)
             {
                 MessageBox.Show(" 非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxMaFlag.Focus();
+                checkBoxSoFlag.Focus();
                 return false;
             }
-            if (checkBoxMaFlag.Checked == true)
+            if (checkBoxSoFlag.Checked == true)
             {
                 MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxMaFlag.Focus();
+                checkBoxSoFlag.Focus();
                 return false;
             }
 
             //非表示理由の適否
-            if (!String.IsNullOrEmpty(textBoxMaHidden.Text.Trim()))
+            if (!String.IsNullOrEmpty(textBoxSoHidden.Text.Trim()))
             {
                 MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxMaHidden.Focus();
+                textBoxSoHidden.Focus();
                 return false;
             }
             return true;
@@ -243,14 +219,13 @@ namespace SalesManagement_SysDev
         {
             return new M_SalesOffice
             {
-                SoID = int.Parse(textBoxSoID.Text.Trim()),
                 SoName = textBoxSoName.Text.Trim(),
                 SoPhone = textBoxSoPhone.Text.Trim(),
                 SoFAX = textBoxSoFAX.Text.Trim(),
                 SoPostal = textBoxSoPostal.Text.Trim(),
                 SoAddress = textBoxSoAddress.Text.Trim(),
                 SoFlag = 0,
-                SoHidden = textBoxMaHidden.Text.Trim(),
+                SoHidden = textBoxSoHidden.Text.Trim(),
             };
         }
 
@@ -271,9 +246,9 @@ namespace SalesManagement_SysDev
             // 営業所情報の登録
             bool flg = salesOfficeDataAccess.AddSalesOfficeData(regSalesOffice);
             if (flg == true)
-                MessageBox.Show("データを登録しました。");
+                MessageBox.Show("データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("データの登録に失敗しました。");
+                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxSoID.Focus();
 
@@ -314,15 +289,14 @@ namespace SalesManagement_SysDev
                 // 営業所IDの半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxSoID.Text.Trim()))
                 {
-                    MessageBox.Show("営業所IDは全て半角英数字入力です");
-
+                    MessageBox.Show("営業所IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoID.Focus();
                     return false;
                 }
                 // 営業所IDの文字数チェック
-                if (textBoxSoID.TextLength != 2)
+                if (textBoxSoID.TextLength > 2)
                 {
-                    MessageBox.Show("営業所IDは2文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("営業所IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxSoID.Focus();
                     return false;
                 }
@@ -345,13 +319,6 @@ namespace SalesManagement_SysDev
             // 営業所名の適否
             if (!String.IsNullOrEmpty(textBoxSoName.Text.Trim()))
             {
-                // 営業所名の全角チェック
-                if (!dataInputFormCheck.CheckFullWidth(textBoxSoName.Text.Trim()))
-                {
-                    MessageBox.Show("営業所名は全て全角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoName.Focus();
-                    return false;
-                }
                 // 営業所名の文字数チェック
                 if (textBoxSoName.TextLength > 50)
                 {
@@ -430,9 +397,8 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 // 郵便番号の文字数チェック
-                if (textBoxSoPostal.TextLength == 7)
+                if (textBoxSoPostal.TextLength != 7)
                 {
-                    //MessageBox.Show("郵便番号は7文字です");
                     MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxSoPostal.Focus();
@@ -469,18 +435,18 @@ namespace SalesManagement_SysDev
             }
 
             // フラグの適否
-            if (checkBoxMaFlag.CheckState == CheckState.Indeterminate)
+            if (checkBoxSoFlag.CheckState == CheckState.Indeterminate)
             {
                 MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxMaFlag.Focus();
+                checkBoxSoFlag.Focus();
                 return false;
             }
 
             // 非表示理由の適否
-            if (checkBoxMaFlag.Checked == true && String.IsNullOrEmpty(textBoxMaHidden.Text.Trim()))
+            if (checkBoxSoFlag.Checked == true && String.IsNullOrEmpty(textBoxSoHidden.Text.Trim()))
             {
                 MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxMaFlag.Focus();
+                checkBoxSoFlag.Focus();
                 return false;
             }
 
@@ -496,10 +462,10 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_SalesOffice GenerateDataAtUpdate()
         {
-            int ClFlag = 0;
-            if (checkBoxMaFlag.Checked == true)
+            int SoFlag = 0;
+            if (checkBoxSoFlag.Checked == true)
             {
-                ClFlag = 2;
+                SoFlag = 2;
             }
             return new M_SalesOffice
             {
@@ -509,8 +475,8 @@ namespace SalesManagement_SysDev
                 SoFAX = textBoxSoFAX.Text.Trim(),
                 SoPostal = textBoxSoPostal.Text.Trim(),
                 SoAddress = textBoxSoAddress.Text.Trim(),
-                SoFlag = ClFlag,
-                SoHidden = textBoxMaHidden.Text.Trim(),
+                SoFlag = SoFlag,
+                SoHidden = textBoxSoHidden.Text.Trim(),
             };
         }
 
@@ -544,7 +510,7 @@ namespace SalesManagement_SysDev
             GetDataGridView();
         }
 
-
+        //////検索/////
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             //6.3.4.1 妥当な営業データ取得
@@ -557,6 +523,201 @@ namespace SalesManagement_SysDev
             SetSelectData();
         }
 
+        ///////////////////////////////
+        //　6.3.4.1 妥当な営業データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtSelect()
+        {
+            //営業ID入力時チェック
+            if (!String.IsNullOrEmpty(textBoxSoID.Text.Trim()))
+            {
+                //営業ID文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxSoID.Text.Trim()))
+                {
+                    MessageBox.Show("営業IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoID.Focus();
+                    return false;
+                }
+                // 営業IDの文字数チェック
+                if (textBoxSoID.TextLength > 2)
+                {
+                    MessageBox.Show("営業IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoID.Focus();
+                    return false;
+                }
+                // 営業IDの存在チェック
+                if (!salesOfficeDataAccess.CheckSalesOfficeCDExistence(int.Parse(textBoxSoID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された営業IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoID.Focus();
+                    return false;
+                }
+            }
+
+            //営業所名の適否
+            if (!String.IsNullOrEmpty(textBoxSoName.Text.Trim()))
+            {
+
+                // 営業所名の文字数チェック
+                if (textBoxSoName.TextLength > 50)
+                {
+                    MessageBox.Show("営業所名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoName.Focus();
+                    return false;
+                }
+            }
+            //電話番号の適否
+            if (!String.IsNullOrEmpty(textBoxSoPhone.Text.Trim()))
+            {
+                //電話番号の半角数値ハイフンチェック
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxSoPhone.Text.Trim()))
+                {
+                    MessageBox.Show("電話番号の入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoPhone.Focus();
+                    return false;
+                }
+                // 電話番号の文字数チェック
+                if (textBoxSoPhone.TextLength > 13)
+                {
+                    MessageBox.Show("電話番号は13文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoPhone.Focus();
+                    return false;
+                }
+            }
+
+            //FAXの適否
+            if (!String.IsNullOrEmpty(textBoxSoFAX.Text.Trim()))
+            {
+                //FAXの半角英数字チェック
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxSoFAX.Text.Trim()))
+                {
+                    MessageBox.Show("FAXの入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoFAX.Focus();
+                    return false;
+                }
+                // FAXの文字数チェック
+                if (textBoxSoFAX.TextLength > 13)
+                {
+                    MessageBox.Show("FAXは13文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoFAX.Focus();
+                    return false;
+                }
+            }
+
+            //郵便番号の適否
+            if (!String.IsNullOrEmpty(textBoxSoPostal.Text.Trim()))
+            {
+                //郵便番号の半角数値チェック
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxSoPostal.Text.Trim()))
+                {
+                    MessageBox.Show("郵便番号は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoPostal.Focus();
+                    return false;
+                }
+                // 郵便番号の文字数チェック
+                if (textBoxSoPostal.TextLength != 7)
+                {
+                    MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSoPostal.Focus();
+                    return false;
+                }
+            }
+
+            //住所の適否
+            if (!String.IsNullOrEmpty(textBoxSoAddress.Text.Trim()))
+            {
+                // 住所の文字数チェック
+                if (textBoxSoAddress.TextLength > 50)
+                {
+                    MessageBox.Show("住所は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxSoAddress.Focus();
+                    return false;
+                }
+            }
+
+            //フラグの適否
+            if (checkBoxSoFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示フラグが不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxSoFlag.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        ///////////////////////////////
+        //　6.3.4.2 営業情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：営業情報の取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            // 検索条件のセット
+            if (!String.IsNullOrEmpty(textBoxSoID.Text.Trim()))
+            {
+
+                M_SalesOfficeDsp salesOffice = new M_SalesOfficeDsp()
+                {
+                    SoID = int.Parse(textBoxSoID.Text.Trim()),
+                    SoName = textBoxSoName.Text.Trim(),
+                    SoPhone = textBoxSoPhone.Text.Trim(),
+                    SoFAX = textBoxSoFAX.Text.Trim(),
+                    SoPostal = textBoxSoPostal.Text.Trim(),
+                    SoAddress = textBoxSoAddress.Text.Trim(),
+
+                };
+                //営業データの抽出
+                 SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(1,salesOffice);
+            }
+            else
+            {
+                M_SalesOfficeDsp salesOffice = new M_SalesOfficeDsp()
+                {
+                    SoName = textBoxSoName.Text.Trim(),
+                    SoPhone = textBoxSoPhone.Text.Trim(),
+                    SoFAX = textBoxSoFAX.Text.Trim(),
+                    SoPostal = textBoxSoPostal.Text.Trim(),
+                    SoAddress = textBoxSoAddress.Text.Trim(),
+
+                };
+                //営業データの抽出
+                 SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(2,salesOffice);
+            }
+        }
+
+
+
+        ///////////////////////////////
+        //　6.3.4.3 営業抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：営業情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewSalesOffice.DataSource = SalesOffice;
+            if (SalesOffice.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(SalesOffice.Count / (double)pageSize)) + "ページ";
+            dataGridViewSalesOffice.Refresh();
+        }
         ///////////////////////////////
         //メソッド名：ClearInput()
         //引　数   ：なし
@@ -571,9 +732,8 @@ namespace SalesManagement_SysDev
             textBoxSoFAX.Text = "";
             textBoxSoPostal.Text = "";
             textBoxSoAddress.Text = "";
-
-
-            checkBoxMaFlag.Checked = false;
+            checkBoxSoFlag.Checked = false;
+            textBoxSoHidden.Text = "";
         }
         ///////////////////////////////
         //メソッド名：GetDataGridView()
@@ -600,23 +760,23 @@ namespace SalesManagement_SysDev
         private void GetHiddenDataGridView()
         {
             //営業データの取得
-            //SalesOffice = salesOfficeDataAccess.GetSalesOfficeData();
+            SalesOffice = salesOfficeDataAccess.GetSalesOfficeHiddenData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
         }
 
-            ///////////////////////////////
-            //メソッド名：SetFormDataGridView()
-            //引　数   ：なし
-            //戻り値   ：なし
-            //機　能   ：データグリッドビューの設定
-            ///////////////////////////////
-            private void SetFormDataGridView()
+        ///////////////////////////////
+        //メソッド名：SetFormDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定
+        ///////////////////////////////
+        private void SetFormDataGridView()
         {
 
             //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "10";
+            textBoxPageSize.Text = "20";
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
@@ -643,18 +803,21 @@ namespace SalesManagement_SysDev
             dataGridViewSalesOffice.DataSource = SalesOffice.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定1400
             dataGridViewSalesOffice.Columns[0].Width = 100;
-            dataGridViewSalesOffice.Columns[1].Width = 300;
-            dataGridViewSalesOffice.Columns[2].Width = 250;
+            dataGridViewSalesOffice.Columns[1].Width = 250;
+            dataGridViewSalesOffice.Columns[2].Width = 200;
             dataGridViewSalesOffice.Columns[3].Width = 200;
-            dataGridViewSalesOffice.Columns[3].Width = 150;
-            dataGridViewSalesOffice.Columns[5].Width = 400;
+            dataGridViewSalesOffice.Columns[4].Width = 150;
+            dataGridViewSalesOffice.Columns[5].Width = 300;
             dataGridViewSalesOffice.Columns[6].Visible = false;
-            dataGridViewSalesOffice.Columns[7].Visible = false;
+            dataGridViewSalesOffice.Columns[7].Width=300;
             //各列の文字位置の指定
             dataGridViewSalesOffice.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSalesOffice.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSalesOffice.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewSalesOffice.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSalesOffice.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSalesOffice.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSalesOffice.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSalesOffice.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(SalesOffice.Count / (double)pageSize)) + "ページ";
@@ -750,202 +913,6 @@ namespace SalesManagement_SysDev
             //ページ番号の設定
             textBoxPage.Text = (pageNo + 1).ToString();
         }
-        ///////////////////////////////
-        //　6.3.4.1 妥当な営業データ取得
-        //メソッド名：GetValidDataAtSlect()
-        //引　数   ：なし
-        //戻り値   ：true or false
-        //機　能   ：入力データの形式チェック
-        //          ：エラーがない場合True
-        //          ：エラーがある場合False
-        ///////////////////////////////
-        private bool GetValidDataAtSelect()
-        {
-            //営業ID入力時チェック
-            if (!String.IsNullOrEmpty(textBoxSoID.Text.Trim()))
-            {
-                //営業ID文字チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxSoID.Text.Trim()))
-                {
-                    MessageBox.Show("営業IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoID.Focus();
-                    return false;
-                }
-                // 営業IDの文字数チェック
-                if (textBoxSoID.TextLength > 2)
-                {
-                    MessageBox.Show("営業IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoID.Focus();
-                    return false;
-                }
-                // 営業IDの存在チェック
-                if (!salesOfficeDataAccess.CheckSalesOfficeCDExistence(int.Parse(textBoxSoID.Text.Trim())))
-                {
-                    MessageBox.Show("入力された営業IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoID.Focus();
-                    return false;
-                }
-            }
-
-            //営業所名の適否
-            if (!String.IsNullOrEmpty(textBoxSoName.Text.Trim()))
-            {
-
-                // 営業所名の文字数チェック
-                if (textBoxSoName.TextLength > 50)
-                {
-                    MessageBox.Show("営業所名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoName.Focus();
-                    return false;
-                }
-            }
-            //電話番号の適否
-            if (!String.IsNullOrEmpty(textBoxSoPhone.Text.Trim()))
-            {
-                //電話番号の半角数値ハイフンチェック
-                if (!dataInputFormCheck.CheckNumericHyphen(textBoxSoPhone.Text.Trim()))
-                {
-                    MessageBox.Show("電話番号の入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoPhone.Focus();
-                    return false;
-                }
-                // 電話番号の文字数チェック
-                if (textBoxSoPhone.TextLength > 13)
-                {
-                    MessageBox.Show("電話番号は13文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoPhone.Focus();
-                    return false;
-                }
-            }
-
-            //FAXの適否
-            if (!String.IsNullOrEmpty(textBoxSoFAX.Text.Trim()))
-            {
-                //FAXの半角英数字チェック
-                if (!dataInputFormCheck.CheckNumericHyphen(textBoxSoFAX.Text.Trim()))
-                {
-                    MessageBox.Show("FAXの入力形式が正しくありません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoFAX.Focus();
-                    return false;
-                }
-                // FAXの文字数チェック
-                if (textBoxSoFAX.TextLength > 13)
-                {
-                    MessageBox.Show("FAXは13文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoFAX.Focus();
-                    return false;
-                }
-            }
-
-            //郵便番号の適否
-            if (!String.IsNullOrEmpty(textBoxSoPostal.Text.Trim()))
-            {
-                //郵便番号の半角数値チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxSoPostal.Text.Trim()))
-                {
-                    MessageBox.Show("郵便番号は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoPostal.Focus();
-                    return false;
-                }
-                // 郵便番号の文字数チェック
-                if (textBoxSoPostal.TextLength == 7)
-                {
-                    MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSoPostal.Focus();
-                    return false;
-                }
-            }
-
-            //住所の適否
-            if (!String.IsNullOrEmpty(textBoxSoAddress.Text.Trim()))
-            {
-                // 住所の文字数チェック
-                if (textBoxSoAddress.TextLength > 50)
-                {
-                    MessageBox.Show("住所は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    textBoxSoAddress.Focus();
-                    return false;
-                }
-            }
-
-            //フラグの適否
-            if (checkBoxMaFlag.CheckState == CheckState.Indeterminate)
-            {
-                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checkBoxMaFlag.Focus();
-                return false;
-            }
-            return true;
-        }
-
-        ///////////////////////////////
-        //　6.3.4.2 営業情報抽出
-        //メソッド名：GenerateDataAtSelect()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：営業情報の取得
-        ///////////////////////////////
-        private void GenerateDataAtSelect()
-        {
-            // 検索条件のセット
-            if (!String.IsNullOrEmpty(textBoxSoID.Text.Trim()))
-            {
-
-                M_SalesOffice salesOffice = new M_SalesOffice()
-                {
-                    SoID = int.Parse(textBoxSoID.Text.Trim()),
-                    SoName = textBoxSoName.Text.Trim(),
-                    SoPhone = textBoxSoPhone.Text.Trim(),
-                    SoFAX = textBoxSoFAX.Text.Trim(),
-                    SoPostal = textBoxSoPostal.Text.Trim(),
-                    SoAddress = textBoxSoAddress.Text.Trim(),
-
-                };
-                //営業データの抽出
-               // SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(salesOffice);
-            }
-            else
-            {
-                M_SalesOffice salesOffice = new M_SalesOffice()
-                {
-
-                    SoName = textBoxSoName.Text.Trim(),
-                    SoPhone = textBoxSoPhone.Text.Trim(),
-                    SoFAX = textBoxSoFAX.Text.Trim(),
-                    SoPostal = textBoxSoPostal.Text.Trim(),
-                    SoAddress = textBoxSoAddress.Text.Trim(),
-
-                };
-                //営業データの抽出
-               // SalesOffice = salesOfficeDataAccess.GetSalesOfficeData(salesOffice);
-            }
-        }
-
-
-
-        ///////////////////////////////
-        //　6.3.4.3 営業抽出結果表示
-        //メソッド名：SetSelectData()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：営業情報の表示
-        ///////////////////////////////
-        private void SetSelectData()
-        {
-            textBoxPage.Text = "1";
-
-            int pageSize = int.Parse(textBoxPageSize.Text);
-
-            dataGridViewSalesOffice.DataSource = SalesOffice;
-            if (SalesOffice.Count == 0)
-            {
-                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            labelPage.Text = "/" + ((int)Math.Ceiling(SalesOffice.Count / (double)pageSize)) + "ページ";
-            dataGridViewSalesOffice.Refresh();
-        }
 
         ///////////////////////////////
         //メソッド名：buttonList_Click()
@@ -975,20 +942,6 @@ namespace SalesManagement_SysDev
             GetHiddenDataGridView();
         }
 
-        private void checkBoxMaFlag_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkBoxMaFlag.Checked==true)
-            {
-                textBoxMaHidden.TabStop = true;
-                textBoxMaHidden.ReadOnly = false;
-            }
-            else 
-            {
-                textBoxMaHidden.Text = "";
-                textBoxMaHidden.TabStop = false;
-                textBoxMaHidden.ReadOnly = true;
-            }
-        }
 
         //データグリッドビュー セルクリック
         private void dataGridViewSalesOffice_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -996,23 +949,46 @@ namespace SalesManagement_SysDev
             //データグリッドビューからクリックされたデータを各入力エリアへ
             textBoxSoID.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[0].Value.ToString();
             textBoxSoName.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxSoPhone.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxSoFAX.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxSoPostal.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxSoAddress.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[5].Value.ToString();
+
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if(dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[2].Value.ToString() != 2.ToString())
+            if (dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[6].Value.ToString() != 2.ToString())
             {
-                checkBoxMaFlag.Checked = false;
+                checkBoxSoFlag.Checked = false;
             }
             else
             {
-                checkBoxMaFlag.Checked = true;
+                checkBoxSoFlag.Checked = true;
             }
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if(dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[3].Value != null)
-            { 
-                textBoxMaHidden.Text=dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[3].Value.ToString();
+            if (dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[7].Value != null)
+            {
+                textBoxSoHidden.Text = dataGridViewSalesOffice.Rows[dataGridViewSalesOffice.CurrentRow.Index].Cells[7].Value.ToString();
             }
-             }
+        }
+        //入力クリア
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
 
-
+        private void checkBoxSoFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSoFlag.Checked == true)
+            {
+                textBoxSoHidden.TabStop = true;
+                textBoxSoHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxSoHidden.Text = "";
+                textBoxSoHidden.TabStop = false;
+                textBoxSoHidden.ReadOnly = true;
+            }
+        }
     }
 }
 
