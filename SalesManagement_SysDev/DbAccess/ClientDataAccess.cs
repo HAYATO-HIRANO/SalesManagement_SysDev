@@ -100,20 +100,20 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：GetClIDData()
         //引　数   ：顧客ID
-        //戻り値   ：顧客名
-        //機　能   ：顧客名取得
+        //戻り値   ：顧客データ
+        //機　能   ：顧客IDの顧客データ取得
         ///////////////////////////////
 
 
-        public List<M_Client> GetClIDData(int clID)
+        public M_Client GetClIDData(int clID)
         {
 
-            List<M_Client> client = new List<M_Client>();
+            M_Client client = new M_Client();
 
             try
             {
                 var context = new SalesManagement_DevContext();
-                client = context.M_Clients.Where(x => x.ClID == clID && x.ClFlag == 0).ToList();
+                client = context.M_Clients.Single(x => x.ClID == clID && x.ClFlag == 0);
                 context.Dispose();
             }
             catch (Exception ex)

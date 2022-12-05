@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
@@ -427,7 +423,7 @@ namespace SalesManagement_SysDev
             // 8.1.4.2　受注情報作成
             var conOrder = GenerateDataAtConfirm();
 
-            var conOrderDetail = GenerateDataAtConfirmDetail();
+            var conOrderDetail = GenerateDetailDataAtConfirm();
 
             // 8.1.4.3 受注情報確定
             ConfirmOrder(conOrder,conOrderDetail);
@@ -504,26 +500,29 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private T_Chumon GenerateDataAtConfirm()
         {
-            List<T_Order> order = orderDataAccess.ConfirmOrderData(int.Parse(textBoxOrID.Text.Trim()));
+           T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
 
-            return new T_Chumon
+             return new T_Chumon
             {
-                OrID=int.Parse(order[0].OrID.ToString()),
-                SoID= int.Parse(order[0].SoID.ToString()),
-                EmID= int.Parse(order[0].EmID.ToString()),
-                ClID= int.Parse(order[0].ClID.ToString()),
-                ChDate= DateTime.Parse(order[0].OrDate.ToString()),
+                OrID= int.Parse(order.OrID.ToString()),
+                EmID= int.Parse(order.EmID.ToString()),
+                SoID= int.Parse(order.SoID.ToString()),
+                ClID= int.Parse(order.ClID.ToString()),
+                ChDate= DateTime.Now,
+                ChStateFlag=0,
+                ChFlag=0,             
             };
-            
+
+
         }
         ///////////////////////////////
-        //　8.1.4.2 受注情報作成
-        //メソッド名：GenerateDataAtConfirm()
+        //　8.1.4.3 受注情報作成
+        //メソッド名：GenerateDetailDataAtConfirm()
         //引　数   ：なし
-        //戻り値   ：受注確定情報
+        //戻り値   ：受注詳細確定情報
         //機　能   ：確定データのセット
         ///////////////////////////////
-        private List<T_ChumonDetail> GenerateDataAtConfirmDetail()
+        private List<T_ChumonDetail> GenerateDetailDataAtConfirm()
         {
             List<T_OrderDetail> orderDetail = orderDataAccess.ConfirmOrderDetailData(int.Parse(textBoxOrID.Text.Trim()));
             List<T_ChumonDetail> chumonDetail = new List<T_ChumonDetail>();
@@ -559,11 +558,13 @@ namespace SalesManagement_SysDev
             // 受注情報の確定
             //注文テーブルにデータ登録
             bool addFlg = chumonDataAccess.AddChumonData(conOrder);
-
+            //注文IDの取得
+            T_Chumon chumon= chumonDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));           
             //注文詳細テーブルにデータ登録(未完成)
             foreach(var p in conOrderDetail)
             {            
                 T_ChumonDetail AddCh = new T_ChumonDetail();
+                AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
                 chumonDataAccess.AddChumonDetailData(AddCh);
@@ -1087,8 +1088,8 @@ namespace SalesManagement_SysDev
                 {
                     if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
                     {
-                        List<M_Client> client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
-                        textBoxClName.Text = client[0].ClName.ToString();
+                       M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        textBoxClName.Text = client.ClName.ToString();
                     }
 
                 }
