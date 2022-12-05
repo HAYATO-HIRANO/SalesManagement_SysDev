@@ -289,7 +289,7 @@ namespace SalesManagement_SysDev
                 ClPostal=textBoxClPostal.Text.Trim(),
                 ClFAX=textBoxClFAX.Text.Trim(),
                 ClFlag=0,
-                ClHidden=textBoxClHidden.Text.Trim()
+                ClHidden=String.Empty
             };
         }
 

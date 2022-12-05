@@ -225,7 +225,7 @@ namespace SalesManagement_SysDev
                 SoPostal = textBoxSoPostal.Text.Trim(),
                 SoAddress = textBoxSoAddress.Text.Trim(),
                 SoFlag = 0,
-                SoHidden = textBoxSoHidden.Text.Trim(),
+                SoHidden = String.Empty,
             };
         }
 
