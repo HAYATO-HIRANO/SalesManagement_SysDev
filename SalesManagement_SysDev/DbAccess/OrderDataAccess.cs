@@ -34,6 +34,32 @@ namespace SalesManagement_SysDev
             }
             return flg;
         }
+        ///////////////////////////////
+        //メソッド名：CheckOrDetailIDExistence()
+        //引　数   ：受注詳細ID
+        //戻り値   ：True or False
+        //機　能   ：一致する受注詳細IDの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckOrDetailIDExistence(int orDetailID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //受注詳細IDで一致するデータが存在するか
+                flg = context.T_OrderDetails.Any(x => x.OrDetailID == orDetailID);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
 
         ///////////////////////////////
         //メソッド名：AddOrderData()
@@ -234,6 +260,33 @@ namespace SalesManagement_SysDev
                 return false;
             }
         }
+        ///////////////////////////////
+        //メソッド名：DeleteDetailData()
+        //引　数   ：受注詳細データ
+        //戻り値   ：True or False
+        //機　能   ：受注詳細データの削除
+        //          ：削除成功の場合True
+        //          ：削除失敗の場合False
+        ///////////////////////////////
+        public bool DeleteOrDetailData(int delOrDetailID)
+        {
+            try
+            {
+
+                var context = new SalesManagement_DevContext();
+                var OrDetail = context.T_OrderDetails.Single(x => x.OrDetailID == delOrDetailID);
+                context.T_OrderDetails.Remove(OrDetail);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
         ///////////////////////////////
         //メソッド名：GetOrderData()
@@ -358,7 +411,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：GetOrIDDetailData()
         //引　数   ：受注ID
-        //戻り値   ：受注IDのゼン詳細データ
+        //戻り値   ：受注IDの全詳細データ
         //機　能   ：受注IDの詳細データの取得
         ///////////////////////////////
         public List<T_OrderDetailDsp> GetOrIDDetailData(int orID)

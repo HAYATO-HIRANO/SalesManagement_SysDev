@@ -27,7 +27,7 @@ namespace SalesManagement_SysDev
         public int OrDetailID { get; set; }
         [DisplayName("商品ID")]
         public int PrID { get; set; }
-        [DisplayName("商品ID")]
+        [DisplayName("商品名")]
         public string PrName { get; set; }
         [DisplayName("価格")]
         public int Price { get; set; }
