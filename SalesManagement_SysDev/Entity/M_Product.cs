@@ -59,20 +59,23 @@ namespace SalesManagement_SysDev
         [DisplayName("安全在庫数")]
         public int PrSafetyStock { get; set; }
 
+        [DisplayName("大分類ID")]
+        public int McID { get; set; }
+
+        [DisplayName("大分類名")]
+        public String McName { get; set; }
+
         [DisplayName("小分類ID")]
         public int ScID { get; set; }
+
+        [DisplayName("小分類名")]
+        public String ScName  { get; set; }
 
         [DisplayName("型番")]
         public String PrModelNumber { get; set; }
 
         [DisplayName("色")]
         public String PrColor { get; set; }
-
-        [DisplayName("メーカ名")]
-        public string MakerName { get; set; }
-
-        [DisplayName("型番")]
-        public string ModelNo { get; set; }
 
         [DisplayName("発売日")]
         public DateTime PrReleaseDate { get; set; }

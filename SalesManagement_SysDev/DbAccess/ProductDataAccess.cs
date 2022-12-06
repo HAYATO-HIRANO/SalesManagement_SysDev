@@ -121,32 +121,103 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   ：条件一致商品データ
         //機　能   ：条件一致商品データの取得
         ///////////////////////////////
+       
         //public List<M_Product> GetProductData(M_Product selectCondition)
         //{
         //    List<M_Product> product = new List<M_Product>();
         //    try
         //    {
         //        var context = new SalesManagement_DevContext();
-        //        product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&&x.MaID==selectCondition.MaID&&
-                                                   //x.PrName.Contains(selectCondition.PrName)&&x.PrModelNumber.Contains(selectCondition.PrModelNumber)&&x.PrColor.Contains(selectCondition.PrColor)&&
-                                                   //x.ScID==selectCondition.ScID&&x.PrColor.Contains(selectCondition.PrColor)).ToList();
+        //        product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&& x.MaID == selectCondition.MaID).ToList();
         //        context.Dispose();
-        //    }catch(Exception ex)
+        //    }
+        //    catch (Exception ex)
         //    {
         //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         //    }
         //    return product;
         //}
-        public List<M_Product> GetProductData(M_Product selectCondition)
+
+        public List<M_ProductDsp> GetProductData(int flg, M_Product selectCondition)
         {
-            List<M_Product> product = new List<M_Product>();
+          
+
+            List<M_ProductDsp> product = new List<M_ProductDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&& x.MaID == selectCondition.MaID).ToList();
-                context.Dispose();
+                if (flg==1)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID==selectCondition.MaID&&
+                             t1.PrName.Contains(selectCondition.PrName)&&
+                             t1.Price==selectCondition.Price&&
+                             t1.PrSafetyStock==selectCondition.PrSafetyStock&&
+                             t1.ScID==selectCondition.ScID&&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber)&&
+                             t1.PrColor.Contains(selectCondition.PrColor)
+                             
+
+                             
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+
+
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+
+
+                }
             }
+               
+                
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -162,7 +233,7 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：商品データの取得
         ///////////////////////////////
 
-        public List<M_Product> GetProductData()
+        public List<M_ProductDsp> GetProductData()
         {
             List<M_ProductDsp> product = new List<M_ProductDsp>();
             try
@@ -174,42 +245,51 @@ namespace SalesManagement_SysDev//.DbAccess
                          on t1.MaID equals t2.MaID
                          join t3 in context.M_SmallClassifications
                          on t1.ScID equals t3.ScID
+                         //join t4 in context.M_MajorCassifications
+                         // on t3.McID equals t4.McID
+                         
 //
                          select new
                          {
                              t1.PrID,
+                             t2.MaID,
                              t2.MaName,
                              t1.PrName,
                              t1.Price,
                              t1.PrSafetyStock,
+                             t3.McID,
+                             McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID== t3.McID)).McName,
+                             t3.ScID,
                              t3.ScName,
                              t1.PrModelNumber ,
                              t1.PrColor,
                              t1.PrReleaseDate,
-                             
+                             t1.PrFlag,
+                             t1.PrHidden,
+
 
                          };
 
                 // IEnumerable型のデータをList型へ
                 foreach (var p in tb)
                 {
-                    item.Add(new M_ItemDsp()
+                    product.Add(new M_ProductDsp()
                     {
-                        ItemCD = p.ItemCD,
-                        ItemName = p.ItemName,
-                        ItemKana = p.ItemKana,
-                        ParentCategoryCD = p.ParentCategory,
-                        PanrentCategoryName = p.ParentCategoryName,
-                        CategoryCD = p.CategoryCD,
-                        CategoryName = p.CategoryName,
-                        JanCD = p.JanCD,
-                        MakerCD = p.MakerCD,
-                        MakerName = p.MakerName,
-                        ModelNo = p.ModelNo,
-                        ListPrice = p.ListPrice,
-                        SellingPrice = p.SellingPrice,
-                        DeleteFlg = p.DeleteFlg,
-                        Comments = p.Comments
+                       PrID=p.PrID,
+                       MaID=p.MaID,
+                       MaName=p.MaName,
+                       PrName=p.PrName,
+                       Price=p.Price,
+                       PrSafetyStock=p.PrSafetyStock,
+                       McID=p.McID,
+                       McName=p.McName,
+                       ScID=p.ScID,
+                       ScName=p.ScName,
+                       PrModelNumber=p.PrModelNumber,
+                       PrColor=p.PrColor,
+                       PrReleaseDate=p.PrReleaseDate,
+                       PrFlag=p.PrFlag,
+                       PrHidden=p.PrHidden,
                     });
                 }
                 context.Dispose();
