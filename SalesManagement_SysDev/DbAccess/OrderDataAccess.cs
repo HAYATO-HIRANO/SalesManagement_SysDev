@@ -603,6 +603,296 @@ namespace SalesManagement_SysDev
             }
             return order;
         }
+        ///////////////////////////////
+        //メソッド名：GetOrDetailData() オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：条件一致受注詳細データ
+        //機　能   ：条件一致受注詳細データの取得
+        ///////////////////////////////
+        public List<T_OrderDetailDsp> GetOrDetailData(int flg,T_OrderDetailDsp selectCondition)
+        {
+            List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+           
+            try
+            {
+                
+                var context = new SalesManagement_DevContext();
+                if (flg == 1)
+                {
+                  var  tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                           
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+                if (flg == 5)
+                {
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+                if (flg == 6)
+                {
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+                if (flg == 7)
+                {
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+
+                             where
+                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
+                             t2.PrName.Contains(selectCondition.PrName)
+
+                             select new
+                             {
+                                 t1.OrID,
+                                 t1.OrDetailID,
+                                 t1.PrID,
+                                 t2.PrName,
+                                 t2.Price,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        orDetail.Add(new T_OrderDetailDsp()
+                        {
+                            OrID = p.OrID,
+                            OrDetailID = p.OrDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+
+                        });
+                    }
+
+                }
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return orDetail;
+
+        }
 
 
 
