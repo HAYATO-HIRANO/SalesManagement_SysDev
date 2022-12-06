@@ -168,7 +168,7 @@ namespace SalesManagement_SysDev
             // textBoxScName
             // 
             this.textBoxScName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxScName.Location = new System.Drawing.Point(753, 17);
+            this.textBoxScName.Location = new System.Drawing.Point(928, 20);
             this.textBoxScName.Name = "textBoxScName";
             this.textBoxScName.Size = new System.Drawing.Size(250, 34);
             this.textBoxScName.TabIndex = 36;
@@ -178,7 +178,7 @@ namespace SalesManagement_SysDev
             this.labelScName.AutoSize = true;
             this.labelScName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelScName.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelScName.Location = new System.Drawing.Point(621, 18);
+            this.labelScName.Location = new System.Drawing.Point(796, 21);
             this.labelScName.Name = "labelScName";
             this.labelScName.Size = new System.Drawing.Size(129, 29);
             this.labelScName.TabIndex = 35;
@@ -190,7 +190,7 @@ namespace SalesManagement_SysDev
             this.comboBoxMcID.FormattingEnabled = true;
             this.comboBoxMcID.Location = new System.Drawing.Point(145, 18);
             this.comboBoxMcID.Name = "comboBoxMcID";
-            this.comboBoxMcID.Size = new System.Drawing.Size(212, 32);
+            this.comboBoxMcID.Size = new System.Drawing.Size(363, 32);
             this.comboBoxMcID.TabIndex = 34;
             // 
             // buttonClear
@@ -206,12 +206,15 @@ namespace SalesManagement_SysDev
             // 
             // textBoxScHidden
             // 
+            this.textBoxScHidden.Enabled = false;
             this.textBoxScHidden.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxScHidden.Location = new System.Drawing.Point(191, 79);
             this.textBoxScHidden.Multiline = true;
             this.textBoxScHidden.Name = "textBoxScHidden";
+            this.textBoxScHidden.ReadOnly = true;
             this.textBoxScHidden.Size = new System.Drawing.Size(812, 94);
             this.textBoxScHidden.TabIndex = 20;
+            this.textBoxScHidden.TabStop = false;
             // 
             // checkBoxScFlag
             // 
@@ -228,7 +231,7 @@ namespace SalesManagement_SysDev
             // textBoxScID
             // 
             this.textBoxScID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxScID.Location = new System.Drawing.Point(514, 17);
+            this.textBoxScID.Location = new System.Drawing.Point(689, 20);
             this.textBoxScID.Name = "textBoxScID";
             this.textBoxScID.Size = new System.Drawing.Size(46, 34);
             this.textBoxScID.TabIndex = 17;
@@ -238,7 +241,7 @@ namespace SalesManagement_SysDev
             this.labelScID.AutoSize = true;
             this.labelScID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelScID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelScID.Location = new System.Drawing.Point(382, 18);
+            this.labelScID.Location = new System.Drawing.Point(557, 21);
             this.labelScID.Name = "labelScID";
             this.labelScID.Size = new System.Drawing.Size(126, 29);
             this.labelScID.TabIndex = 16;
@@ -272,7 +275,8 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(26, 26);
             this.textBoxPageSize.TabIndex = 52;
-            this.textBoxPageSize.Text = "10";
+            this.textBoxPageSize.Text = "20";
+            this.textBoxPageSize.TextChanged += new System.EventHandler(this.textBoxPageSize_TextChanged);
             // 
             // labelPageSize
             // 
@@ -341,7 +345,7 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 45;
-            this.textBoxPage.Text = "100";
+            this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dataGridViewSc

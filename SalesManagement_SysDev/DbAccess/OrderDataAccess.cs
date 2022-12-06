@@ -469,7 +469,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：条件一致受注データ
         //機　能   ：条件一致受注データの取得
         ///////////////////////////////
-        public List<T_OrderDsp> GetOrderData(T_OrderDsp selectCondition)
+        public List<T_OrderDsp> GetOrderData(int flg,T_OrderDsp selectCondition)
         {
             List<T_OrderDsp> order = new List<T_OrderDsp>();
 
