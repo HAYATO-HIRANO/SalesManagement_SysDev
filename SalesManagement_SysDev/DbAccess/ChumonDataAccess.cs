@@ -95,6 +95,34 @@ namespace SalesManagement_SysDev
                 return false;
             }
         }
+        ///////////////////////////////
+        //メソッド名：GetOrIDData()
+        //引　数   :注文ID
+        //戻り値   ：受注IDの注文データ
+        //機　能   ：受注IDの注文情報取得
+        ///////////////////////////////
+        public T_Chumon GetOrIDData(int orID)
+        {
+            T_Chumon chumon = new T_Chumon();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                chumon = context.T_Chumons.Single(x => x.OrID == orID && x.ChFlag == 0);
+
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return chumon;
+        }
 
         ///////////////////////////////
         //メソッド名：GetChumonData()

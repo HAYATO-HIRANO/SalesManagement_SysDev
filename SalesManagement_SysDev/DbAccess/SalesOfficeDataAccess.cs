@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SalesManagement_SysDev//.DbAccess
+namespace SalesManagement_SysDev
 {
     class SalesOfficeDataAccess
     {
@@ -26,7 +26,8 @@ namespace SalesManagement_SysDev//.DbAccess
                 var context = new SalesManagement_DevContext();
                 flg = context.M_SalesOffices.Any(x => x.SoID == soID);
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -51,12 +52,13 @@ namespace SalesManagement_SysDev//.DbAccess
                 context.Dispose();
 
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            
+
         }
 
         ///////////////////////////////
@@ -85,7 +87,8 @@ namespace SalesManagement_SysDev//.DbAccess
                 context.Dispose();
 
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -98,34 +101,65 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   :営業所データ
         //機　能   :営業所データの取得
         //////////////////////////////
-        public List<M_SalesOffice> GetSalesOfficeData()
+        public List<M_SalesOfficeDsp> GetSalesOfficeData()
         {
-            List<M_SalesOffice> salesOffices = new List<M_SalesOffice>();
+            List<M_SalesOfficeDsp> salesOffices = new List<M_SalesOfficeDsp>();
             try
             {
-                var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.ToList();
+               var context = new SalesManagement_DevContext();
+               var tb = context.M_SalesOffices.Where(x => x.SoFlag != 2).ToList();
+                foreach (var p in tb)
+                {
+                    salesOffices.Add(new M_SalesOfficeDsp()
+                    {
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        SoPhone = p.SoPhone,
+                        SoFAX = p.SoFAX,
+                        SoPostal = p.SoPostal,
+                        SoAddress = p.SoAddress,
+                        SoFlag = p.SoFlag,
+                        SoHidden = p.SoHidden
+                    });
+
+                }
                 context.Dispose();
-            }catch(Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return salesOffices;
         }
-
         ///////////////////////////////
-        //メソッド名：GetSalesOfficeData()　オーバーロード
-        //引　数   ：検索条件
-        //戻り値   ：条件一致営業所データ
-        //機　能   ：条件一致営業所データの取得
-        ///////////////////////////////
-        public List<M_SalesOffice> GetSalesOfficeData(M_SalesOffice salesOffice)
+        //メソッド名： GetSalesOfficeHiddenData()
+        //引　数   :なし
+        //戻り値   :非表示営業所データ
+        //機　能   :非表示営業所データの取得
+        //////////////////////////////
+        public List<M_SalesOfficeDsp> GetSalesOfficeHiddenData()
         {
-            List<M_SalesOffice> salesOffices = new List<M_SalesOffice>();
+            List<M_SalesOfficeDsp> salesOffices = new List<M_SalesOfficeDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.Where(x => x.SoID==salesOffice.SoID).ToList();
+                var tb = context.M_SalesOffices.Where(x => x.SoFlag == 2).ToList();
+                foreach (var p in tb)
+                {
+                    salesOffices.Add(new M_SalesOfficeDsp()
+                    {
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        SoPhone = p.SoPhone,
+                        SoFAX = p.SoFAX,
+                        SoPostal = p.SoPostal,
+                        SoAddress = p.SoAddress,
+                        SoFlag = p.SoFlag,
+                        SoHidden = p.SoHidden
+                    });
+
+                }
                 context.Dispose();
             }
             catch (Exception ex)
@@ -136,29 +170,103 @@ namespace SalesManagement_SysDev//.DbAccess
         }
 
         ///////////////////////////////
+        //メソッド名：GetSalesOfficeData()　オーバーロード
+        //引　数   ：フラグ,検索条件
+        //戻り値   ：条件一致営業所データ
+        //機　能   ：条件一致営業所データの取得
+        ///////////////////////////////
+        public List<M_SalesOfficeDsp> GetSalesOfficeData(int flg, M_SalesOfficeDsp selectCondition)
+        {
+            List<M_SalesOfficeDsp> salesOffice = new List<M_SalesOfficeDsp>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                if (flg == 1)
+                {
+                    var tb = context.M_SalesOffices.Where
+                        (x => x.SoID.ToString().Contains(selectCondition.SoID.ToString()) &&
+                                     x.SoName.Contains(selectCondition.SoName) &&
+                                     x.SoPhone.Contains(selectCondition.SoPhone) &&
+                                     x.SoFAX.Contains(selectCondition.SoFAX) &&
+                                     x.SoPostal.Contains(selectCondition.SoPostal) &&
+                                     x.SoAddress.Contains(selectCondition.SoAddress) &&
+                                     x.SoFlag == selectCondition.SoFlag &&                                     
+                                     x.SoHidden.Contains(selectCondition.SoHidden)).ToList();                       
+                    foreach (var p in tb)
+                    {
+                        salesOffice.Add(new M_SalesOfficeDsp()
+                        {
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            SoPhone = p.SoPhone,
+                            SoFAX = p.SoFAX,
+                            SoPostal = p.SoPostal,
+                            SoAddress = p.SoAddress,
+                            SoFlag = p.SoFlag,
+                            SoHidden = p.SoHidden
+                        });
+                        
+                    }
+                    
+                }
+                else if (flg == 2)
+                {
+                    var tb = context.M_SalesOffices.Where
+                               (x => x.SoName.Contains(selectCondition.SoName) &&
+                                     x.SoPhone.Contains(selectCondition.SoPhone) &&
+                                     x.SoFAX.Contains(selectCondition.SoFAX) &&
+                                     x.SoPostal.Contains(selectCondition.SoPostal) &&
+                                     x.SoAddress.Contains(selectCondition.SoAddress) &&
+                                     x.SoFlag == selectCondition.SoFlag&&                    
+                                     x.SoHidden.Contains(selectCondition.SoHidden)).ToList();                       
+                    foreach (var p in tb)
+                    {
+                        salesOffice.Add(new M_SalesOfficeDsp()
+                        {
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            SoPhone = p.SoPhone,
+                            SoFAX = p.SoFAX,
+                            SoPostal = p.SoPostal,
+                            SoAddress = p.SoAddress,
+                            SoFlag = p.SoFlag,
+                            SoHidden = p.SoHidden
+                        });
+                       
+                    }
+                    
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return salesOffice;
+        }
+
+        ///////////////////////////////
         //メソッド名：GetSalesOfficeDspData()　
-        //引　数   ：検索条件
+        //引　数   ：なし
         //戻り値   ：表示用営業所データ
         //機　能   ：表示用営業所データの取得
         ///////////////////////////////
 
-        public List <M_SalesOffice> GetSalesOfficeDspData()
+        public List<M_SalesOffice> GetSalesOfficeDspData()
         {
             List<M_SalesOffice> salesOffices = null;
             try
             {
                 var context = new SalesManagement_DevContext();
-                salesOffices = context.M_SalesOffices.Where(x=> x.SoFlag==0).ToList();
+                salesOffices = context.M_SalesOffices.Where(x => x.SoFlag == 0).ToList();
                 context.Dispose();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             return salesOffices;
-        }  
-
-
+        }
     }
 }

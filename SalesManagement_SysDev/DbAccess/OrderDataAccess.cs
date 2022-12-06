@@ -88,20 +88,20 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：ConfirmOrderData()
+        //メソッド名：GetOrIDData()
         //引　数   :受注ID
         //戻り値   ：受注IDの受注データ
         //機　能   ：受注IDの受注情報取得
         ///////////////////////////////
-        public List<T_Order> ConfirmOrderData(int orID)
+        public T_Order GetOrIDData(int orID)
         {
-            List<T_Order> order = new List<T_Order>();
+            T_Order order = new T_Order();
 
             try
             {
                 var context = new SalesManagement_DevContext();
                 
-                order = context.T_Orders.Where(x => x.OrID == orID&&x.OrFlag==0).ToList();
+                order = context.T_Orders.Single(x => x.OrID == orID&&x.OrFlag==0);
       
                 context.SaveChanges();
                 context.Dispose();
@@ -374,7 +374,7 @@ namespace SalesManagement_SysDev
                          on t1.OrID equals t2.OrID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         where t2.OrID==orID&&t2.OrFlag == 0
+                         where t1.OrID==orID&&t2.OrFlag == 0
                          select new
                          {
                              t1.OrID,

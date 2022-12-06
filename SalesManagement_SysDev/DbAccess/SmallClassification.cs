@@ -26,7 +26,8 @@ namespace SalesManagement_SysDev//.DbAccess
                 var context = new SalesManagement_DevContext();
                 flg = context.M_SmallClassifications.Any(x => x.ScID == scID);
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
       
@@ -154,24 +155,50 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：小分類データの取得
         ///////////////////////////////
 
-        /*public List<M_SmallClassificationDsp> GetScData()
+        public List<M_SmallClassificationDsp> GetScData()
         {
             List<M_SmallClassificationDsp> smallClass = new List<M_SmallClassificationDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
 
-                ValueType tb = from t1 in context.M_SmallClassifications
+                var tb = from t1 in context.M_SmallClassifications
                                join t2 in context.M_MajorCassifications
                                on t1.McID equals t2.McID
                                where t1.ScFlag != 2
                                select new
                                {
-                                   t1.McID,
+                                   t2.McID,
+                                   t2.McName,
+                                   t1.ScID,
+                                   t1.ScName,
+                                   t1.ScFlag,
+                                   t1.ScHidden
 
                                };
+                foreach(var p in tb)
+                {
+                    smallClass.Add(new M_SmallClassificationDsp()
+                    {
+                        McID = p.McID,
+                        McName = p.McName,
+                        ScID = p.ScID,
+                        ScName = p.ScName,
+                        ScFlag = p.ScFlag,
+                        ScHidden = p.ScHidden
+                    });
+                        
+                }
+
+                context.Dispose();
+
             }
-        }*/
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return smallClass;
+        }
 
         ///////////////////////////////
         //メソッド名：GetScData()　オーバーロードdivision
@@ -180,9 +207,9 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：条件一致小分類データの取得
         ///////////////////////////////
 
-        public List<M_SmallClassification> GetScData(M_SmallClassification selectCondition)
+        /*public List<M_SmallClassificationDsp> GetScData(M_SmallClassificationDsp selectCondition)
         {
-            List<M_SmallClassification> smallClassification = new List<M_SmallClassification>();
+            List<M_SmallClassificationDsp> smallClassification = new List<M_SmallClassificationDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
@@ -194,7 +221,7 @@ namespace SalesManagement_SysDev//.DbAccess
 
             }
             return smallClassification;
-        }
+        }*/
 
         ///////////////////////////////
         //メソッド名：GetParentScDspData()
@@ -287,6 +314,45 @@ namespace SalesManagement_SysDev//.DbAccess
             return cmbText;
         }
 
+        public List<M_SmallClassificationDsp> GetScHiddenData()
+        {
+            List<M_SmallClassificationDsp> Sc = new List<M_SmallClassificationDsp>();
 
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.M_SmallClassifications
+                         join t2 in context.M_MajorCassifications
+                         on t1.McID equals t2.McID
+                         where t1.ScFlag == 2
+                         select new
+                         {
+                             t2.McID,
+                             t1.ScID,
+                             t1.ScName,
+                             t1.ScFlag,
+                             t1.ScHidden
+                         };
+
+                foreach(var p in tb)
+                {
+                    Sc.Add(new M_SmallClassificationDsp()
+                    {
+                        ScID = p.ScID,
+                        McID = p.McID,
+                        ScName = p.ScName,
+                        ScFlag = p.ScFlag,
+                        ScHidden = p.ScHidden
+                    });
+                }
+                context.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return Sc;
+        }
     }
 }

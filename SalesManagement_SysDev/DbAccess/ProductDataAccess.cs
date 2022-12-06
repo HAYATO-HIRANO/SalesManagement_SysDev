@@ -222,5 +222,31 @@ namespace SalesManagement_SysDev//.DbAccess
             }
             return product;
         }
+        ///////////////////////////////
+        //メソッド名：GetPrIDData()
+        //引　数   ：商品ID
+        //戻り値   ：商品データ
+        //機　能   ：商品データ取得
+        ///////////////////////////////
+
+
+        public M_Product GetPrIDData(int prID)
+        {
+
+            M_Product product = new M_Product();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                product = context.M_Products.Single(x => x.PrID == prID && x.PrFlag == 0);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return product;
+        }
+
     }
 }

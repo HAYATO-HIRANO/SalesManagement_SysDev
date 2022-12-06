@@ -60,6 +60,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetFormComboBox()
         {
+
             //営業所データの取得
             SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
             comboBoxSoID.DataSource = SalesOffice;
@@ -288,7 +289,7 @@ namespace SalesManagement_SysDev
                 ClPostal=textBoxClPostal.Text.Trim(),
                 ClFAX=textBoxClFAX.Text.Trim(),
                 ClFlag=0,
-                ClHidden=textBoxClHidden.Text.Trim()
+                ClHidden=String.Empty
             };
         }
 
@@ -925,9 +926,9 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 //文字数
-                if (textBoxClPostal.TextLength != 7)
+                if (textBoxClPostal.TextLength > 7)
                 {
-                    MessageBox.Show("郵便番号は7文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("郵便番号の最大文字数を超えています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxClPostal.Focus();
                     return false;
                 }
@@ -946,12 +947,14 @@ namespace SalesManagement_SysDev
                 }
             }
             //フラグの適否
-            if (checkBoxClFlag.Checked == true)
+            if (checkBoxClFlag.CheckState==CheckState.Indeterminate)
             {
-                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                 MessageBox.Show("非表示フラグが不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxClFlag.Focus();
                 return false;
             }
+
             return true;
         }
 
@@ -964,6 +967,12 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
+            //フラグ情報
+            int clFlg = 0;
+            if (checkBoxClFlag.Checked == true)
+            {
+                clFlg = 2;
+            }
             // コンボボックスが未選択の場合Emptyを設定
             string cSalesOffice = "";
             if (comboBoxSoID.SelectedIndex != -1)
@@ -982,6 +991,8 @@ namespace SalesManagement_SysDev
                     ClPhone = textBoxClPhone.Text,
                     ClPostal = textBoxClPostal.Text,
                     ClFAX = textBoxClFAX.Text,
+                    ClFlag=clFlg,
+                    ClHidden=textBoxClHidden.Text.Trim()
                 };
 
                 //顧客データの抽出
@@ -999,6 +1010,8 @@ namespace SalesManagement_SysDev
                     ClPhone = textBoxClPhone.Text,
                     ClPostal = textBoxClPostal.Text,
                     ClFAX = textBoxClFAX.Text,
+                    ClFlag = clFlg,
+                    ClHidden = textBoxClHidden.Text.Trim()
                 };
 
                 //顧客データの抽出
@@ -1016,6 +1029,8 @@ namespace SalesManagement_SysDev
                     ClPhone = textBoxClPhone.Text,
                     ClPostal = textBoxClPostal.Text,
                     ClFAX = textBoxClFAX.Text,
+                    ClFlag = clFlg,
+                    ClHidden = textBoxClHidden.Text.Trim()
                 };
 
                 //顧客データの抽出
@@ -1032,6 +1047,8 @@ namespace SalesManagement_SysDev
                     ClPhone = textBoxClPhone.Text,
                     ClPostal = textBoxClPostal.Text,
                     ClFAX = textBoxClFAX.Text,
+                    ClFlag = clFlg,
+                    ClHidden = textBoxClHidden.Text.Trim()
                 };
 
                 //顧客データの抽出

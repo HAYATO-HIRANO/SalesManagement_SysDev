@@ -33,19 +33,19 @@ namespace SalesManagement_SysDev
             //データグリッドビューの設定
             SetFormDataGridView();
         }
-        
+
         ///////////////大分類情報登録////////////////////
 
         private void buttonResist_Click(object sender, EventArgs e)
         {
-            //  妥当な妥当なデータ取得
+            // 4.3.1.1 妥当な妥当なデータ取得
             if (!GetValidDataAtRegistration())
                 return;
 
-            //  大分類情報作成
+            // 4.3.1.2大分類情報作成
             var regMc = GenerateDataAtRegistration();
 
-            // 大分類情報登録
+            // 4.3.1.3大分類情報登録
             RegistrationMc(regMc);
 
         }
@@ -74,7 +74,7 @@ namespace SalesManagement_SysDev
             {
                 if (textBoxMcName.TextLength > 50)
                 {
-                    
+
                     MessageBox.Show("大分類名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxMcName.Focus();
@@ -83,7 +83,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                
+
                 MessageBox.Show("大分類名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxMcName.Focus();
                 return false;
@@ -125,8 +125,8 @@ namespace SalesManagement_SysDev
             return new M_MajorCassification
             {
                 McName = textBoxMcName.Text.Trim(),
-                McFlag=0,
-                McHidden=textBoxMcHidden.Text.Trim(),
+                McFlag = 0,
+                McHidden = textBoxMcHidden.Text.Trim(),
             };
         }
         ///////////////////////////////
@@ -137,7 +137,7 @@ namespace SalesManagement_SysDev
         //機　能   ：大分類情報の登録
         ///////////////////////////////
         private void RegistrationMc(M_MajorCassification regMc)
-        {            
+        {
             // 登録確認メッセージ
             DialogResult result = MessageBox.Show("大分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
@@ -146,10 +146,10 @@ namespace SalesManagement_SysDev
             bool flg = majorClassificationDataAccess.AddMcData(regMc);
             if (flg == true)
                 MessageBox.Show("データを登録しました。", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                
+
             else
                 MessageBox.Show("データの登録に失敗しました。", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
 
             textBoxMcID.Focus();
 
@@ -336,7 +336,7 @@ namespace SalesManagement_SysDev
         {
             ClearInput();
 
-            
+
         }
         ///////////////大分類情報更新//////////////////
 
@@ -365,7 +365,7 @@ namespace SalesManagement_SysDev
         private bool GetValidDataAtUpdate()
         {
             //大分類IDの適否
-            
+
             if (!String.IsNullOrEmpty(textBoxMcID.Text.Trim()))
             {
                 //大分類IDの半角数値チェック
@@ -379,7 +379,7 @@ namespace SalesManagement_SysDev
                 if (textBoxMcID.TextLength > 2)
                 {
                     MessageBox.Show("大分類IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+
                     textBoxMcID.Focus();
                     return false;
                 }
@@ -388,7 +388,7 @@ namespace SalesManagement_SysDev
                 if (!majorClassificationDataAccess.CheckMcIDExistence(int.Parse(textBoxMcID.Text.Trim())))
                 {
                     MessageBox.Show("入力された大分類IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+
                     textBoxMcID.Focus();
                     return false;
                 }
@@ -397,7 +397,7 @@ namespace SalesManagement_SysDev
             else
             {
                 MessageBox.Show("大分類ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               
+
                 textBoxMcID.Focus();
                 return false;
             }
@@ -491,10 +491,10 @@ namespace SalesManagement_SysDev
             bool flg = majorClassificationDataAccess.UpdateMcData(updMc);
             if (flg == true)
                 MessageBox.Show("データを更新しました。", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-               
+
             else
                 MessageBox.Show("データの更新に失敗しました。", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             textBoxMcID.Focus();
 
             // 入力エリアのクリア
@@ -596,27 +596,27 @@ namespace SalesManagement_SysDev
             //大分類IDが入力されている場合
             if (!String.IsNullOrEmpty(textBoxMcID.Text.Trim()))
             {
-               
+
                 M_MajorCassification selectCondition = new M_MajorCassification()
                 {
                     McID = int.Parse(textBoxMcID.Text.Trim()),
                     McName = textBoxMcName.Text.Trim(),
-                    McFlag=Mcflag,
+                    McFlag = Mcflag,
                 };
-                MajorCassification = majorClassificationDataAccess.GetMcData(1,selectCondition);
+                MajorCassification = majorClassificationDataAccess.GetMcData(1, selectCondition);
             }
             //大分類IDが入力されていない場合
             else
             {
                 M_MajorCassification selectCondition = new M_MajorCassification()
                 {
-                    
+
                     McName = textBoxMcName.Text.Trim(),
-                    McFlag=Mcflag,
+                    McFlag = Mcflag,
                 };
-                MajorCassification = majorClassificationDataAccess.GetMcData(2,selectCondition);
+                MajorCassification = majorClassificationDataAccess.GetMcData(2, selectCondition);
             }
-                
+
         }
         ///////////////////////////////
         //　4.3.3.3 大分類抽出結果表示

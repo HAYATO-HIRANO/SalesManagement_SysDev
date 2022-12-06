@@ -24,14 +24,14 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
                 //顧客IDで一致するデータが存在するか
-                flg = context.M_Clients.Any(x => x.ClID == clID&&x.ClFlag==0);
+                flg = context.M_Clients.Any(x => x.ClID == clID && x.ClFlag == 0);
                 context.Dispose();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               
+
             }
             return flg;
         }
@@ -91,7 +91,7 @@ namespace SalesManagement_SysDev
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -100,20 +100,20 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：GetClIDData()
         //引　数   ：顧客ID
-        //戻り値   ：顧客名
-        //機　能   ：顧客名取得
+        //戻り値   ：顧客データ
+        //機　能   ：顧客IDの顧客データ取得
         ///////////////////////////////
 
 
-        public List<M_Client> GetClIDData(int clID)
+        public M_Client GetClIDData(int clID)
         {
 
-            List<M_Client> client = new List<M_Client>();
+            M_Client client = new M_Client();
 
             try
             {
                 var context = new SalesManagement_DevContext();
-                client = context.M_Clients.Where(x => x.ClID == clID && x.ClFlag == 0).ToList();
+                client = context.M_Clients.Single(x => x.ClID == clID && x.ClFlag == 0);
                 context.Dispose();
             }
             catch (Exception ex)
@@ -144,7 +144,7 @@ namespace SalesManagement_SysDev
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
-                         where t1.ClFlag!=2
+                         where t1.ClFlag != 2
                          select new
                          {
                              t1.ClID,
@@ -159,32 +159,32 @@ namespace SalesManagement_SysDev
                              t1.ClHidden
                          };
 
-                foreach(var p in tb)
+                foreach (var p in tb)
                 {
                     client.Add(new M_ClientDsp()
                     {
-                        ClID=p.ClID,
-                        ClName=p.ClName,
-                        SoID=p.SoID,
-                        SoName=p.SoName,
-                        ClPhone=p.ClPhone,
-                        ClAddress=p.ClAddress,
-                        ClPostal=p.ClPostal,
-                        ClFAX=p.ClFAX,
-                        ClFlag=p.ClFlag,
-                        ClHidden=p.ClHidden
+                        ClID = p.ClID,
+                        ClName = p.ClName,
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        ClPhone = p.ClPhone,
+                        ClAddress = p.ClAddress,
+                        ClPostal = p.ClPostal,
+                        ClFAX = p.ClFAX,
+                        ClFlag = p.ClFlag,
+                        ClHidden = p.ClHidden
                     });
-                    
+
                 }
-                
+
                 context.Dispose();
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
             return client;
         }
@@ -195,7 +195,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：条件一致顧客データ
         //機　能   ：条件一致顧客データの取得
         ///////////////////////////////
-        public List<M_ClientDsp> GetClientData(int flg,M_ClientDsp selectCondition)
+        public List<M_ClientDsp> GetClientData(int flg, M_ClientDsp selectCondition)
         {
             List<M_ClientDsp> client = new List<M_ClientDsp>();
 
@@ -212,14 +212,15 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t2.SoID
                              where
 
-                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString())&&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.SoID == selectCondition.SoID &&
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                             t1.ClFlag ==selectCondition.ClFlag&&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -260,13 +261,14 @@ namespace SalesManagement_SysDev
                              where
 
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-             
+
                              t1.ClName.Contains(selectCondition.ClName) &&
                              t1.ClPhone.Contains(selectCondition.ClPhone) &&
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                             t1.ClFlag == selectCondition.ClFlag &&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -311,7 +313,8 @@ namespace SalesManagement_SysDev
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                             t1.ClFlag == selectCondition.ClFlag &&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -355,7 +358,8 @@ namespace SalesManagement_SysDev
                              t1.ClPostal.Contains(selectCondition.ClPostal) &&
                              t1.ClFAX.Contains(selectCondition.ClFAX) &&
                              t1.ClAddress.Contains(selectCondition.ClAddress) &&
-                             t1.ClFlag != 2
+                              t1.ClFlag == selectCondition.ClFlag &&
+                             t1.ClHidden.Contains(selectCondition.ClHidden)
 
                              select new
                              {
@@ -389,9 +393,9 @@ namespace SalesManagement_SysDev
                     }
                 }
 
-                    context.Dispose();
+                context.Dispose();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

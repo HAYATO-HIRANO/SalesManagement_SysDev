@@ -39,7 +39,8 @@ namespace SalesManagement_SysDev
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxSoAddress = new System.Windows.Forms.TextBox();
             this.labelSoAdress = new System.Windows.Forms.Label();
-            this.checkBoxMaFlag = new System.Windows.Forms.CheckBox();
+            this.textBoxSoHidden = new System.Windows.Forms.TextBox();
+            this.checkBoxSoFlag = new System.Windows.Forms.CheckBox();
             this.textBoxSoPostal = new System.Windows.Forms.TextBox();
             this.labelSoPostal = new System.Windows.Forms.Label();
             this.textBoxSoFAX = new System.Windows.Forms.TextBox();
@@ -60,7 +61,6 @@ namespace SalesManagement_SysDev
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.dataGridViewSalesOffice = new System.Windows.Forms.DataGridView();
-            this.textBoxMaHidden = new System.Windows.Forms.TextBox();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesOffice)).BeginInit();
@@ -160,8 +160,8 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.textBoxSoAddress);
             this.panelInput.Controls.Add(this.labelSoAdress);
-            this.panelInput.Controls.Add(this.textBoxMaHidden);
-            this.panelInput.Controls.Add(this.checkBoxMaFlag);
+            this.panelInput.Controls.Add(this.textBoxSoHidden);
+            this.panelInput.Controls.Add(this.checkBoxSoFlag);
             this.panelInput.Controls.Add(this.textBoxSoPostal);
             this.panelInput.Controls.Add(this.labelSoPostal);
             this.panelInput.Controls.Add(this.textBoxSoFAX);
@@ -186,6 +186,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 32;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxSoAddress
             // 
@@ -206,17 +207,26 @@ namespace SalesManagement_SysDev
             this.labelSoAdress.TabIndex = 30;
             this.labelSoAdress.Text = "住所";
             // 
-            // checkBoxMaFlag
+            // textBoxSoHidden
             // 
-            this.checkBoxMaFlag.AutoSize = true;
-            this.checkBoxMaFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxMaFlag.Location = new System.Drawing.Point(16, 113);
-            this.checkBoxMaFlag.Name = "checkBoxMaFlag";
-            this.checkBoxMaFlag.Size = new System.Drawing.Size(152, 28);
-            this.checkBoxMaFlag.TabIndex = 18;
-            this.checkBoxMaFlag.Text = "非表示フラグ";
-            this.checkBoxMaFlag.UseVisualStyleBackColor = true;
-            this.checkBoxMaFlag.CheckedChanged += new System.EventHandler(this.checkBoxMaFlag_CheckedChanged);
+            this.textBoxSoHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxSoHidden.Location = new System.Drawing.Point(174, 109);
+            this.textBoxSoHidden.Multiline = true;
+            this.textBoxSoHidden.Name = "textBoxSoHidden";
+            this.textBoxSoHidden.Size = new System.Drawing.Size(703, 75);
+            this.textBoxSoHidden.TabIndex = 20;
+            // 
+            // checkBoxSoFlag
+            // 
+            this.checkBoxSoFlag.AutoSize = true;
+            this.checkBoxSoFlag.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxSoFlag.Location = new System.Drawing.Point(16, 113);
+            this.checkBoxSoFlag.Name = "checkBoxSoFlag";
+            this.checkBoxSoFlag.Size = new System.Drawing.Size(152, 28);
+            this.checkBoxSoFlag.TabIndex = 18;
+            this.checkBoxSoFlag.Text = "非表示フラグ";
+            this.checkBoxSoFlag.UseVisualStyleBackColor = true;
+            this.checkBoxSoFlag.CheckedChanged += new System.EventHandler(this.checkBoxSoFlag_CheckedChanged);
             // 
             // textBoxSoPostal
             // 
@@ -412,16 +422,8 @@ namespace SalesManagement_SysDev
             this.dataGridViewSalesOffice.RowTemplate.Height = 21;
             this.dataGridViewSalesOffice.Size = new System.Drawing.Size(1442, 543);
             this.dataGridViewSalesOffice.TabIndex = 45;
-            this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
-            // 
-            // textBoxMaHidden
-            // 
-            this.textBoxMaHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxMaHidden.Location = new System.Drawing.Point(174, 109);
-            this.textBoxMaHidden.Multiline = true;
-            this.textBoxMaHidden.Name = "textBoxMaHidden";
-            this.textBoxMaHidden.Size = new System.Drawing.Size(703, 75);
-            this.textBoxMaHidden.TabIndex = 20;
+            this.dataGridViewSalesOffice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellClick);
+            //this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
             // 
             // UserControlSalesOffice
             // 
@@ -464,7 +466,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBoxSoAddress;
         private System.Windows.Forms.Label labelSoAdress;
-        private System.Windows.Forms.CheckBox checkBoxMaFlag;
+        private System.Windows.Forms.CheckBox checkBoxSoFlag;
         private System.Windows.Forms.TextBox textBoxSoPostal;
         private System.Windows.Forms.Label labelSoPostal;
         private System.Windows.Forms.TextBox textBoxSoFAX;
@@ -485,6 +487,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.DataGridView dataGridViewSalesOffice;
-        private System.Windows.Forms.TextBox textBoxMaHidden;
+        private System.Windows.Forms.TextBox textBoxSoHidden;
     }
 }

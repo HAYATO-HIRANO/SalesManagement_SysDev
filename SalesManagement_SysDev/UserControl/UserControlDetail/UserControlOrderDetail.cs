@@ -37,9 +37,48 @@ namespace SalesManagement_SysDev
 
             //データグリッドビューの設定
             SetFormDataGridView();
+            
+        }
+        //入力された商品IDの商品名、価格を表示
+        private void textBoxPrID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxPrName.Text = "";
+            textBoxPrice.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
+            {
+                if (textBoxPrID.TextLength < 6)
+                {
+                    if (productDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                    {
+                        M_Product product = productDataAccess.GetPrIDData(int.Parse(textBoxPrID.Text.Trim()));
+                        textBoxPrName.Text = product.PrName.ToString();
+                        textBoxPrice.Text = product.Price.ToString();
+                    }
+
+
+                }
+            }
 
         }
 
+        //価格×数量の結果を合計金額に表示
+        private void textBoxOrQuantity_TextChanged(object sender, EventArgs e)
+        {
+            textBoxOrTotalPrice.Text = "";
+            if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
+            {
+                if (dataInputFormCheck.CheckNumeric(textBoxOrQuantity.Text.Trim()))
+                {
+                    if (textBoxOrQuantity.TextLength < 4)
+                    {
+                        textBoxOrTotalPrice.Text = (int.Parse(textBoxPrice.Text.Trim()) * int.Parse(textBoxOrQuantity.Text.Trim())).ToString();
+                    }
+
+                }
+            }
+
+        }
+        ///////一覧表示////////
         private void buttonList_Click(object sender, EventArgs e)
         {
 
@@ -196,9 +235,6 @@ namespace SalesManagement_SysDev
                 PrID = int.Parse(textBoxPrID.Text.Trim()),
                 OrQuantity= int.Parse(textBoxOrQuantity.Text.Trim()),
                 OrTotalPrice = int.Parse(textBoxOrTotalPrice.Text.Trim()),
-
-
-
             };
         }
         ///////////////////////////////
@@ -226,11 +262,28 @@ namespace SalesManagement_SysDev
             textBoxPrID.Focus();
 
             //入力エリアのクリア
-            //ClearInput();
+            ClearInput();
             //データグリッドビューの表示
             GetOrIDDataGridView();
 
         }
+        ///////////////////////////////
+        //メソッド名：ClearInput()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入力エリアをクリア
+        ///////////////////////////////
+        private void ClearInput()
+        {
+            textBoxOrID.Text = "";
+            textBoxOrDetailID.Text = "";
+            textBoxPrID.Text = "";
+            textBoxPrName.Text = "";
+            textBoxOrQuantity.Text = "";
+            textBoxPrice.Text = "";
+            textBoxOrTotalPrice.Text = "";
+        }
+
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
         //引　数   ：なし
@@ -338,5 +391,7 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        
     }
 }
