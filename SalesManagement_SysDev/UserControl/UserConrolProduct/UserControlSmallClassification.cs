@@ -228,6 +228,30 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return;
+
+            }
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -239,7 +263,7 @@ namespace SalesManagement_SysDev
             dataGridViewSc.Columns[2].Width = 100;
             dataGridViewSc.Columns[3].Width = 250;
             dataGridViewSc.Columns[4].Visible = false;
-            dataGridViewSc.Columns[5].Width = 500;
+            dataGridViewSc.Columns[5].Width = 635;
 
 
 
@@ -454,12 +478,12 @@ namespace SalesManagement_SysDev
 
         private void dataGridViewSc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxScID.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxScID.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[2].Value.ToString();
             comboBoxMcID.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxScName.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxScName.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[3].Value.ToString();
 
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[3].Value.ToString() != 2.ToString())
+            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[4].Value.ToString() != 2.ToString())
             {
                 checkBoxScFlag.Checked = false;
             }
@@ -469,10 +493,330 @@ namespace SalesManagement_SysDev
             }
 
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[4].Value != null)
+            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[5].Value != null)
             {
-                textBoxScHidden.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[4].Value.ToString();
+                textBoxScHidden.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[5].Value.ToString();
             }
+        }
+
+        ///////////小分類情報検索/////////////
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            //妥当な顧客データを取得
+            if (!GetValidAtSelect())
+            return;
+
+            //小分類情報抽出
+            GenerateDataAtSelect();
+
+            //顧客抽出結果表示
+            SetSelectData();
+        }
+
+        ///////////////////////////////
+        //　4.4.4.1 妥当な小分類データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidAtSelect()
+        {
+            //小分類IDの適否
+            if (!String.IsNullOrEmpty(textBoxScID.Text.Trim()))
+            {
+                //小分類IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxScID.Text.Trim()))
+                {
+                    MessageBox.Show("小分類IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxScID.TextLength > 2)
+                {
+                    MessageBox.Show("小分類IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScID.Focus();
+                    return false;
+                }
+
+                // 小分類IDの存在チェック
+                if (!smallClassification.CheckScIDExistence(int.Parse(textBoxScID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された小分類IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScID.Focus();
+                    return false;
+                }
+            }
+
+            //小分類名の適否
+            if (!String.IsNullOrEmpty(textBoxScName.Text.Trim()))
+            {
+                if (textBoxScName.TextLength > 50)
+                {
+                    //小分類名は50文字以下です
+                    MessageBox.Show("小分類名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScName.Focus();
+                    return false;
+                }
+            }
+
+            //フラグの適否
+            if (checkBoxScFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxScFlag.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //　4.4.4.2 小分類情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：検索データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            //フラグ情報
+            int scFlg = 0;
+            if (checkBoxScFlag.Checked == true)
+            {
+                scFlg = 2;
+            }
+            //コンボボックスが未選択の場合Emptyを設定
+            string cMajorClass = "";
+            if (comboBoxMcID.SelectedIndex != -1)
+                cMajorClass = comboBoxMcID.SelectedValue.ToString();
+
+            //検索条件のセット
+            //小分類IDが入力されていて、営業所も選択されている場合
+            if (!String.IsNullOrEmpty(textBoxScID.Text.Trim()) && cMajorClass != "")
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    ScID = int.Parse(textBoxScID.Text.Trim()),
+                    McID = int.Parse(cMajorClass),
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(1, selectCondition);
+            }
+            //小分類IDが入力されていて、大分類が未選択の場合
+            else if(!String.IsNullOrEmpty(textBoxScID.Text.Trim())&&cMajorClass == "")
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    ScID = int.Parse(textBoxScID.Text.Trim()),
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(2, selectCondition);
+            }
+            //小分類IDが未入力で、大分類が選択されている場合
+            else if(cMajorClass != "")
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    McID = int.Parse(cMajorClass),
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(3, selectCondition);
+            }
+            //顧客IDが未入力で、大分類も未選択の場合
+            else
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(4, selectCondition);
+            }
+        }
+
+        ///////////////////////////////
+        //　3.4.1.3 顧客抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：顧客情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewSc.DataSource = SmallClass;
+            if (SmallClass.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(SmallClass.Count / (double)pageSize)) + "ページ";
+            dataGridViewSc.Refresh();
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            //入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            GetDataGridView();
+        }
+
+        private void buttonNotList_Click(object sender, EventArgs e)
+        {
+            //入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            GetHiddenDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            // 顧客データの取得
+            SmallClass = smallClassification.GetSmallClassHiddenData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        private void checkBoxScFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxScFlag.Checked == true)
+            {
+                textBoxScHidden.TabStop = true;
+                textBoxScHidden.ReadOnly = false;
+                textBoxScHidden.Enabled = true;
+            }
+            else
+            {
+                textBoxScHidden.Text = "";
+                textBoxScHidden.TabStop = false;
+                textBoxScHidden.ReadOnly = true;
+                textBoxScHidden.Enabled = false;
+            }
+        }
+
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            SetDataGridView();
+        }
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewSc.DataSource = SmallClass.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSc.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+        }
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSc.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+        }
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(SmallClass.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSc.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(SmallClass.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(SmallClass.Count / (double)pageSize) - 1;
+            dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSc.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
         }
     }
 }

@@ -40,13 +40,15 @@ namespace SalesManagement_SysDev
             this.labelChumon = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonHidden = new System.Windows.Forms.Button();
             this.buttonKakutei = new System.Windows.Forms.Button();
-            this.buttonChumonDetail = new System.Windows.Forms.Button();
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonChumonDetail = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.checkBoxHidden = new System.Windows.Forms.CheckBox();
             this.textBoxChHidden = new System.Windows.Forms.TextBox();
             this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
@@ -77,7 +79,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.userControlChumonDetail1 = new SalesManagement_SysDev.UserControlChumonDetail();
-            this.buttonHidden = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -209,6 +210,20 @@ namespace SalesManagement_SysDev
             this.panel2.Size = new System.Drawing.Size(250, 980);
             this.panel2.TabIndex = 28;
             // 
+            // buttonHidden
+            // 
+            this.buttonHidden.BackColor = System.Drawing.Color.White;
+            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonHidden.FlatAppearance.BorderSize = 4;
+            this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
+            this.buttonHidden.Name = "buttonHidden";
+            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
+            this.buttonHidden.TabIndex = 44;
+            this.buttonHidden.Text = "非表示";
+            this.buttonHidden.UseVisualStyleBackColor = false;
+            // 
             // buttonKakutei
             // 
             this.buttonKakutei.BackColor = System.Drawing.Color.White;
@@ -222,19 +237,6 @@ namespace SalesManagement_SysDev
             this.buttonKakutei.TabIndex = 43;
             this.buttonKakutei.Text = "確定";
             this.buttonKakutei.UseVisualStyleBackColor = false;
-            // 
-            // buttonChumonDetail
-            // 
-            this.buttonChumonDetail.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonChumonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChumonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonChumonDetail.Location = new System.Drawing.Point(0, 901);
-            this.buttonChumonDetail.Name = "buttonChumonDetail";
-            this.buttonChumonDetail.Size = new System.Drawing.Size(250, 100);
-            this.buttonChumonDetail.TabIndex = 41;
-            this.buttonChumonDetail.Text = "注文詳細";
-            this.buttonChumonDetail.UseVisualStyleBackColor = false;
-            this.buttonChumonDetail.Click += new System.EventHandler(this.buttonChumonDetail_Click);
             // 
             // buttonHiddenList
             // 
@@ -263,19 +265,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 38;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
-            // 
-            // buttonLogout
-            // 
-            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
-            this.buttonLogout.TabIndex = 5;
-            this.buttonLogout.Text = "ログアウト";
-            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -290,11 +280,39 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // buttonChumonDetail
+            // 
+            this.buttonChumonDetail.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonChumonDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChumonDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonChumonDetail.Location = new System.Drawing.Point(0, 901);
+            this.buttonChumonDetail.Name = "buttonChumonDetail";
+            this.buttonChumonDetail.Size = new System.Drawing.Size(250, 100);
+            this.buttonChumonDetail.TabIndex = 41;
+            this.buttonChumonDetail.Text = "注文詳細";
+            this.buttonChumonDetail.UseVisualStyleBackColor = false;
+            this.buttonChumonDetail.Click += new System.EventHandler(this.buttonChumonDetail_Click);
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 5;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
             // 
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.textBoxClName);
             this.panelInput.Controls.Add(this.checkBoxHidden);
             this.panelInput.Controls.Add(this.textBoxChHidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
@@ -316,6 +334,17 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 169);
             this.panelInput.TabIndex = 29;
+            // 
+            // textBoxClName
+            // 
+            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
+            this.textBoxClName.Enabled = false;
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxClName.Location = new System.Drawing.Point(1275, 17);
+            this.textBoxClName.Name = "textBoxClName";
+            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.TabIndex = 69;
             // 
             // checkBoxHidden
             // 
@@ -614,20 +643,6 @@ namespace SalesManagement_SysDev
             this.userControlChumonDetail1.Size = new System.Drawing.Size(1920, 979);
             this.userControlChumonDetail1.TabIndex = 42;
             // 
-            // buttonHidden
-            // 
-            this.buttonHidden.BackColor = System.Drawing.Color.White;
-            this.buttonHidden.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonHidden.FlatAppearance.BorderSize = 4;
-            this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
-            this.buttonHidden.Name = "buttonHidden";
-            this.buttonHidden.Size = new System.Drawing.Size(200, 80);
-            this.buttonHidden.TabIndex = 44;
-            this.buttonHidden.Text = "非表示";
-            this.buttonHidden.UseVisualStyleBackColor = false;
-            // 
             // FormChumon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -705,5 +720,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonPreviousPage;
         private UserControlChumonDetail userControlChumonDetail1;
         private System.Windows.Forms.Button buttonHidden;
+        private System.Windows.Forms.TextBox textBoxClName;
     }
 }

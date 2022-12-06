@@ -86,6 +86,7 @@ namespace SalesManagement_SysDev
             this.buttonNotList.TabIndex = 4;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
+            this.buttonNotList.Click += new System.EventHandler(this.buttonNotList_Click);
             // 
             // buttonList
             // 
@@ -100,6 +101,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -114,6 +116,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonUpdate
             // 
@@ -165,7 +168,7 @@ namespace SalesManagement_SysDev
             // textBoxScName
             // 
             this.textBoxScName.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxScName.Location = new System.Drawing.Point(753, 17);
+            this.textBoxScName.Location = new System.Drawing.Point(928, 20);
             this.textBoxScName.Name = "textBoxScName";
             this.textBoxScName.Size = new System.Drawing.Size(250, 34);
             this.textBoxScName.TabIndex = 36;
@@ -175,7 +178,7 @@ namespace SalesManagement_SysDev
             this.labelScName.AutoSize = true;
             this.labelScName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelScName.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelScName.Location = new System.Drawing.Point(621, 18);
+            this.labelScName.Location = new System.Drawing.Point(796, 21);
             this.labelScName.Name = "labelScName";
             this.labelScName.Size = new System.Drawing.Size(129, 29);
             this.labelScName.TabIndex = 35;
@@ -187,7 +190,7 @@ namespace SalesManagement_SysDev
             this.comboBoxMcID.FormattingEnabled = true;
             this.comboBoxMcID.Location = new System.Drawing.Point(145, 18);
             this.comboBoxMcID.Name = "comboBoxMcID";
-            this.comboBoxMcID.Size = new System.Drawing.Size(212, 32);
+            this.comboBoxMcID.Size = new System.Drawing.Size(363, 32);
             this.comboBoxMcID.TabIndex = 34;
             // 
             // buttonClear
@@ -199,15 +202,19 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 33;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxScHidden
             // 
+            this.textBoxScHidden.Enabled = false;
             this.textBoxScHidden.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxScHidden.Location = new System.Drawing.Point(191, 79);
             this.textBoxScHidden.Multiline = true;
             this.textBoxScHidden.Name = "textBoxScHidden";
+            this.textBoxScHidden.ReadOnly = true;
             this.textBoxScHidden.Size = new System.Drawing.Size(812, 94);
             this.textBoxScHidden.TabIndex = 20;
+            this.textBoxScHidden.TabStop = false;
             // 
             // checkBoxScFlag
             // 
@@ -219,11 +226,12 @@ namespace SalesManagement_SysDev
             this.checkBoxScFlag.TabIndex = 18;
             this.checkBoxScFlag.Text = "非表示フラグ";
             this.checkBoxScFlag.UseVisualStyleBackColor = true;
+            this.checkBoxScFlag.CheckedChanged += new System.EventHandler(this.checkBoxScFlag_CheckedChanged);
             // 
             // textBoxScID
             // 
             this.textBoxScID.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxScID.Location = new System.Drawing.Point(514, 17);
+            this.textBoxScID.Location = new System.Drawing.Point(689, 20);
             this.textBoxScID.Name = "textBoxScID";
             this.textBoxScID.Size = new System.Drawing.Size(46, 34);
             this.textBoxScID.TabIndex = 17;
@@ -233,7 +241,7 @@ namespace SalesManagement_SysDev
             this.labelScID.AutoSize = true;
             this.labelScID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelScID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelScID.Location = new System.Drawing.Point(382, 18);
+            this.labelScID.Location = new System.Drawing.Point(557, 21);
             this.labelScID.Name = "labelScID";
             this.labelScID.Size = new System.Drawing.Size(126, 29);
             this.labelScID.TabIndex = 16;
@@ -259,6 +267,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 53;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -267,7 +276,7 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(26, 26);
             this.textBoxPageSize.TabIndex = 52;
-            this.textBoxPageSize.Text = "10";
+            this.textBoxPageSize.Text = "20";
             // 
             // labelPageSize
             // 
@@ -288,6 +297,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 50;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
@@ -298,6 +308,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 49;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -308,6 +319,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 48;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -318,6 +330,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 47;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
@@ -336,7 +349,7 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 45;
-            this.textBoxPage.Text = "100";
+            this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dataGridViewSc
