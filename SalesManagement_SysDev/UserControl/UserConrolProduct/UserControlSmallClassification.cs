@@ -483,7 +483,7 @@ namespace SalesManagement_SysDev
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             //妥当な顧客データを取得
-            if (GetValidAtSelect())
+            if (!GetValidAtSelect())
             return;
 
             //小分類情報抽出
