@@ -48,6 +48,7 @@ namespace SalesManagement_SysDev
             this.buttonChumonDetail = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.checkBoxHidden = new System.Windows.Forms.CheckBox();
             this.textBoxChHidden = new System.Windows.Forms.TextBox();
             this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
@@ -78,7 +79,6 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.userControlChumonDetail1 = new SalesManagement_SysDev.UserControlChumonDetail();
-            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
@@ -265,6 +265,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 38;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -279,6 +280,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonChumonDetail
             // 
@@ -332,6 +334,17 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 169);
             this.panelInput.TabIndex = 29;
+            // 
+            // textBoxClName
+            // 
+            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
+            this.textBoxClName.Enabled = false;
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxClName.Location = new System.Drawing.Point(1275, 17);
+            this.textBoxClName.Name = "textBoxClName";
+            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.TabIndex = 69;
             // 
             // checkBoxHidden
             // 
@@ -629,17 +642,6 @@ namespace SalesManagement_SysDev
             this.userControlChumonDetail1.Name = "userControlChumonDetail1";
             this.userControlChumonDetail1.Size = new System.Drawing.Size(1920, 979);
             this.userControlChumonDetail1.TabIndex = 42;
-            // 
-            // textBoxClName
-            // 
-            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
-            this.textBoxClName.Enabled = false;
-            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxClName.Location = new System.Drawing.Point(1275, 17);
-            this.textBoxClName.Name = "textBoxClName";
-            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
-            this.textBoxClName.TabIndex = 69;
             // 
             // FormChumon
             // 
