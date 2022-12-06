@@ -136,10 +136,11 @@ namespace SalesManagement_SysDev
         }
         private void comboBoxMc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            object selectedItem = comboBoxMc.SelectedItem;
 
-            if (comboBoxMc.SelectedItem != null)
+            if (selectedItem != null && selectedItem is M_MajorCassification)
             {
-                SelectedMcID = ((M_MajorCassification) comboBoxMc.SelectedItem).McID;
+                SelectedMcID = ((M_MajorCassification) selectedItem).McID;
 
                 SmallClassifications = smallClassification.GetParentScDspData(SelectedMcID);
                 comboBoxSc.DataSource = SmallClassifications;

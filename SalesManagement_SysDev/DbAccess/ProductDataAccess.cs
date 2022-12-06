@@ -164,12 +164,57 @@ namespace SalesManagement_SysDev//.DbAccess
 
         public List<M_Product> GetProductData()
         {
-            List<M_Product> product = new List<M_Product>();
+            List<M_ProductDsp> product = new List<M_ProductDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                product = context.M_Products.ToList();
+                //product = context.M_Products.ToList();
+                var tb = from t1 in context.M_Products
+                         join t2 in context.M_Makers
+                         on t1.MaID equals t2.MaID
+                         join t3 in context.M_SmallClassifications
+                         on t1.ScID equals t3.ScID
+//
+                         select new
+                         {
+                             t1.PrID,
+                             t2.MaName,
+                             t1.PrName,
+                             t1.Price,
+                             t1.PrSafetyStock,
+                             t3.ScName,
+                             t1.PrModelNumber ,
+                             t1.PrColor,
+                             t1.PrReleaseDate,
+                             
+
+                         };
+
+                // IEnumerable型のデータをList型へ
+                foreach (var p in tb)
+                {
+                    item.Add(new M_ItemDsp()
+                    {
+                        ItemCD = p.ItemCD,
+                        ItemName = p.ItemName,
+                        ItemKana = p.ItemKana,
+                        ParentCategoryCD = p.ParentCategory,
+                        PanrentCategoryName = p.ParentCategoryName,
+                        CategoryCD = p.CategoryCD,
+                        CategoryName = p.CategoryName,
+                        JanCD = p.JanCD,
+                        MakerCD = p.MakerCD,
+                        MakerName = p.MakerName,
+                        ModelNo = p.ModelNo,
+                        ListPrice = p.ListPrice,
+                        SellingPrice = p.SellingPrice,
+                        DeleteFlg = p.DeleteFlg,
+                        Comments = p.Comments
+                    });
+                }
                 context.Dispose();
+            
+               
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
