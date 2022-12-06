@@ -354,5 +354,58 @@ namespace SalesManagement_SysDev//.DbAccess
             }
             return Sc;
         }
+
+        ///////////////////////////////
+        //メソッド名：GetSmallClassHiddenData()
+        //引　数   ：なし
+        //戻り値   ：非表示データ
+        //機　能   ：非表示データの取得
+        ///////////////////////////////
+
+        public List<M_SmallClassificationDsp> GetSmallClassHiddenData()
+        {
+            List<M_SmallClassificationDsp> smallClass = new List<M_SmallClassificationDsp>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.M_SmallClassifications
+                         join t2 in context.M_MajorCassifications
+                         on t1.McID equals t2.McID
+                         where t1.ScFlag == 2
+                         select new
+                         {
+                             t2.McID,
+                             t2.McName,
+                             t1.ScID,
+                             t1.ScName,
+                             t1.ScFlag,
+                             t1.ScHidden
+
+                         };
+                foreach (var p in tb)
+                {
+                    smallClass.Add(new M_SmallClassificationDsp()
+                    {
+                        McID = p.McID,
+                        McName = p.McName,
+                        ScID = p.ScID,
+                        ScName = p.ScName,
+                        ScFlag = p.ScFlag,
+                        ScHidden = p.ScHidden
+                    });
+
+                }
+
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return smallClass;
+        }
+        
     }
 }
