@@ -228,7 +228,10 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            if(dataInputFormCheck.CheckNumeric(textBoxPageSize.Text)
+            if (dataInputFormCheck.CheckNumeric(textBoxPageSize.Text))
+            {
+
+            }
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
