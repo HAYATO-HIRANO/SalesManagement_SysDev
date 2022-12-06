@@ -701,10 +701,23 @@ namespace SalesManagement_SysDev
                 {
                     //顧客担当名は50文字以下です
                     MessageBox.Show("顧客担当名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                     textBoxClCharge.Focus();
                     return false;
                 }
+            }
+            //非表示フラグ
+            if (checkBoxHidden.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Focus();
+                return false;
+            }
+            //受注状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("受注確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
             }
 
             return true;
@@ -718,7 +731,39 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-            
+            //フラグ情報
+            int orFlg = 0;
+            if (checkBoxHidden.Checked == true)
+            {
+                orFlg = 2;
+            }
+            int stateFlg = 0;
+            if (checkBoxStateFlag.Checked == true)
+            {
+                stateFlg = 1;
+            }
+            // コンボボックスが未選択の場合Emptyを設定
+            string cSalesOffice = "";
+            if (comboBoxSoID.SelectedIndex != -1)
+                cSalesOffice = comboBoxSoID.SelectedValue.ToString();
+            //検索条件のセット
+            if(String.IsNullOrEmpty(textBoxOrID.Text.Trim())&& cSalesOffice!=""&& String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+                T_OrderDsp selectCondition = new T_OrderDsp()
+                {
+                    OrID=  int.Parse(textBoxOrID.Text.Trim()),
+                    ClID = int.Parse(textBoxClID.Text.Trim()),
+                    SoID = int.Parse(cSalesOffice),  
+                    EmID= int.Parse(textBoxEmID.Text.Trim()),
+                    ClName = textBoxClName.Text,
+                    
+                };
+
+                //データの抽出
+                Order = orderDataAccess.GetOrderData(1, selectCondition);
+
+            }
+
         }
         ///////////////////////////////
         //　8.5.1.3 受注抽出結果表示
@@ -743,7 +788,6 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.Refresh();
 
         }
-
 
         private void buttonSaisyou_Click(object sender, EventArgs e)
         {
