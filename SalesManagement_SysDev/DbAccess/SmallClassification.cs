@@ -201,27 +201,172 @@ namespace SalesManagement_SysDev//.DbAccess
         }
 
         ///////////////////////////////
-        //メソッド名：GetScData()　オーバーロードdivision
+        //メソッド名：GetScData()　オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致小分類データ
         //機　能   ：条件一致小分類データの取得
         ///////////////////////////////
 
-        /*public List<M_SmallClassificationDsp> GetScData(M_SmallClassificationDsp selectCondition)
+        public List<M_SmallClassificationDsp> GetScData(int flg, M_SmallClassificationDsp selectCondition)
         {
-            List<M_SmallClassificationDsp> smallClassification = new List<M_SmallClassificationDsp>();
+            List<M_SmallClassificationDsp> sc = new List<M_SmallClassificationDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                smallClassification = context.M_SmallClassifications.Where(x => x.McID== selectCondition.McID&&x.ScID==selectCondition.ScID&&x.ScName==selectCondition.ScName).ToList();
+                
+                //小分類ID:○ 大分類:○
+                if(flg == 1)
+                {
+                    var tb = from t1 in context.M_SmallClassifications
+                             join t2 in context.M_MajorCassifications
+                             on t1.McID equals t2.McID
+                             where
+
+                             t1.ScID.ToString().Contains(selectCondition.ScID.ToString()) &&
+                             t1.McID == selectCondition.McID &&
+                             t1.ScName.Contains(selectCondition.ScName) &&
+                             t1.ScFlag == selectCondition.ScFlag &&
+                             t1.ScHidden.Contains(selectCondition.ScHidden)
+
+                             select new
+                             {
+                                 t1.ScID,
+                                 t1.McID,
+                                 t2.McName,
+                                 t1.ScName,
+                                 t1.ScFlag,
+                                 t1.ScHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        sc.Add(new M_SmallClassificationDsp()
+                        {
+                            ScID = p.ScID,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScName = p.ScName,
+                            ScFlag = p.ScFlag,
+                            ScHidden = p.ScHidden
+                        });   
+                    }
+                }
+
+                //小分類ID:○ 大分類:☓
+                if(flg == 2)
+                {
+                    var tb = from t1 in context.M_SmallClassifications
+                             join t2 in context.M_MajorCassifications
+                             on t1.McID equals t2.McID
+                             where
+
+                             t1.ScID.ToString().Contains(selectCondition.ScID.ToString()) &&
+                             
+                             t1.ScName.Contains(selectCondition.ScName) &&
+                             t1.ScFlag == selectCondition.ScFlag &&
+                             t1.ScHidden.Contains(selectCondition.ScHidden)
+
+                             select new
+                             {
+                                 t1.ScID,
+                                 t1.McID,
+                                 t2.McName,
+                                 t1.ScName,
+                                 t1.ScFlag,
+                                 t1.ScHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        sc.Add(new M_SmallClassificationDsp()
+                        {
+                            ScID = p.ScID,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScName = p.ScName,
+                            ScFlag = p.ScFlag,
+                            ScHidden = p.ScHidden
+                        });
+                    }
+                }
+
+                //小分類ID:☓ 大分類:○
+                if(flg == 3)
+                {
+                    var tb = from t1 in context.M_SmallClassifications
+                             join t2 in context.M_MajorCassifications
+                             on t1.McID equals t2.McID
+                             where
+
+                             t1.McID == selectCondition.McID &&
+                             t1.ScName.Contains(selectCondition.ScName) &&
+                             t1.ScFlag == selectCondition.ScFlag &&
+                             t1.ScHidden.Contains(selectCondition.ScHidden)
+
+                             select new
+                             {
+                                 t1.ScID,
+                                 t1.McID,
+                                 t2.McName,
+                                 t1.ScName,
+                                 t1.ScFlag,
+                                 t1.ScHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        sc.Add(new M_SmallClassificationDsp()
+                        {
+                            ScID = p.ScID,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScName = p.ScName,
+                            ScFlag = p.ScFlag,
+                            ScHidden = p.ScHidden
+                        });
+                    }
+                }
+
+                //小分類ID:☓ 大分類:☓
+                if(flg == 4)
+                {
+                    var tb = from t1 in context.M_SmallClassifications
+                             join t2 in context.M_MajorCassifications
+                             on t1.McID equals t2.McID
+                             where
+
+                             t1.ScName.Contains(selectCondition.ScName) &&
+                             t1.ScFlag == selectCondition.ScFlag &&
+                             t1.ScHidden.Contains(selectCondition.ScHidden)
+
+                             select new
+                             {
+                                 t1.ScID,
+                                 t1.McID,
+                                 t2.McName,
+                                 t1.ScName,
+                                 t1.ScFlag,
+                                 t1.ScHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        sc.Add(new M_SmallClassificationDsp()
+                        {
+                            ScID = p.ScID,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScName = p.ScName,
+                            ScFlag = p.ScFlag,
+                            ScHidden = p.ScHidden
+                        });
+                    }
+                }
+
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
-            return smallClassification;
-        }*/
+            return sc;
+        }
 
         ///////////////////////////////
         //メソッド名：GetParentScDspData()

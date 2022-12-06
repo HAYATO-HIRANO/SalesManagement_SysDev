@@ -228,6 +228,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            if(dataInputFormCheck.CheckNumeric(textBoxPageSize.Text)
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -475,12 +476,211 @@ namespace SalesManagement_SysDev
             }
         }
 
+        ///////////小分類情報検索/////////////
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            //妥当な顧客データを取得
+            if (GetValidAtSelect())
+            return;
+
+            //小分類情報抽出
+            GenerateDataAtSelect();
+
+            //顧客抽出結果表示
+            SetSelectData();
+        }
+
+        ///////////////////////////////
+        //　4.4.4.1 妥当な小分類データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidAtSelect()
+        {
+            //小分類IDの適否
+            if (!String.IsNullOrEmpty(textBoxScID.Text.Trim()))
+            {
+                //小分類IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxScID.Text.Trim()))
+                {
+                    MessageBox.Show("小分類IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxScID.TextLength > 2)
+                {
+                    MessageBox.Show("小分類IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScID.Focus();
+                    return false;
+                }
+
+                // 小分類IDの存在チェック
+                if (!smallClassification.CheckScIDExistence(int.Parse(textBoxScID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された小分類IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScID.Focus();
+                    return false;
+                }
+            }
+
+            //小分類名の適否
+            if (!String.IsNullOrEmpty(textBoxScName.Text.Trim()))
+            {
+                if (textBoxScName.TextLength > 50)
+                {
+                    //小分類名は50文字以下です
+                    MessageBox.Show("小分類名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxScName.Focus();
+                    return false;
+                }
+            }
+
+            //フラグの適否
+            if (checkBoxScFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxScFlag.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //　4.4.4.2 小分類情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：検索データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            //フラグ情報
+            int scFlg = 0;
+            if (checkBoxScFlag.Checked == true)
+            {
+                scFlg = 2;
+            }
+            //コンボボックスが未選択の場合Emptyを設定
+            string cMajorClass = "";
+            if (comboBoxMcID.SelectedIndex != -1)
+                cMajorClass = comboBoxMcID.SelectedValue.ToString();
+
+            //検索条件のセット
+            //小分類IDが入力されていて、営業所も選択されている場合
+            if (!String.IsNullOrEmpty(textBoxScID.Text.Trim()) && cMajorClass != "")
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    ScID = int.Parse(textBoxScID.Text.Trim()),
+                    McID = int.Parse(cMajorClass),
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(1, selectCondition);
+            }
+            //小分類IDが入力されていて、大分類が未選択の場合
+            else if(!String.IsNullOrEmpty(textBoxScID.Text.Trim())&&cMajorClass == "")
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    ScID = int.Parse(textBoxScID.Text.Trim()),
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(2, selectCondition);
+            }
+            //小分類IDが未入力で、大分類が選択されている場合
+            else if(cMajorClass != "")
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    McID = int.Parse(cMajorClass),
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(3, selectCondition);
+            }
+            //顧客IDが未入力で、大分類も未選択の場合
+            else
+            {
+                M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
+                {
+                    ScName = textBoxScName.Text.Trim(),
+                    ScFlag = scFlg,
+                    ScHidden = textBoxScHidden.Text.Trim()
+                };
+
+                //小分類データの抽出
+                SmallClass = smallClassification.GetScData(4, selectCondition);
+            }
+        }
+
+        ///////////////////////////////
+        //　3.4.1.3 顧客抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：顧客情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewSc.DataSource = SmallClass;
+            if (SmallClass.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(SmallClass.Count / (double)pageSize)) + "ページ";
+            dataGridViewSc.Refresh();
 
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearInput();
         }
@@ -530,6 +730,11 @@ namespace SalesManagement_SysDev
                 textBoxScHidden.ReadOnly = true;
                 textBoxScHidden.Enabled = false;
             }
+        }
+
+        private void textBoxPageSize_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
