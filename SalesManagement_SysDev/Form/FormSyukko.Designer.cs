@@ -79,6 +79,7 @@ namespace SalesManagement_SysDev
             this.buttonDetail = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.userControlSyukkoDetail1 = new SalesManagement_SysDev.UserControlSyukkoDetail();
+            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panelSyukko.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -322,6 +323,7 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.textBoxClName);
             this.panelInput.Controls.Add(this.textBoxSyID);
             this.panelInput.Controls.Add(this.labelSyID);
             this.panelInput.Controls.Add(this.checkBox1Hidden);
@@ -642,6 +644,17 @@ namespace SalesManagement_SysDev
             this.userControlSyukkoDetail1.Size = new System.Drawing.Size(1920, 980);
             this.userControlSyukkoDetail1.TabIndex = 17;
             // 
+            // textBoxClName
+            // 
+            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
+            this.textBoxClName.Enabled = false;
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
+            this.textBoxClName.Name = "textBoxClName";
+            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.TabIndex = 69;
+            // 
             // FormSyukko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -721,5 +734,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Button buttonPreviousPage;
         private UserControlSyukkoDetail userControlSyukkoDetail1;
+        private System.Windows.Forms.TextBox textBoxClName;
     }
 }
