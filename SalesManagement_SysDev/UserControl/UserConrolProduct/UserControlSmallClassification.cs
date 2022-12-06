@@ -239,7 +239,7 @@ namespace SalesManagement_SysDev
             dataGridViewSc.Columns[2].Width = 100;
             dataGridViewSc.Columns[3].Width = 250;
             dataGridViewSc.Columns[4].Visible = false;
-            dataGridViewSc.Columns[5].Width = 500;
+            dataGridViewSc.Columns[5].Width = 635;
 
 
 
@@ -454,12 +454,12 @@ namespace SalesManagement_SysDev
 
         private void dataGridViewSc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxScID.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxScID.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[2].Value.ToString();
             comboBoxMcID.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxScName.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxScName.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[3].Value.ToString();
 
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[3].Value.ToString() != 2.ToString())
+            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[4].Value.ToString() != 2.ToString())
             {
                 checkBoxScFlag.Checked = false;
             }
@@ -469,9 +469,66 @@ namespace SalesManagement_SysDev
             }
 
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[4].Value != null)
+            if (dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[5].Value != null)
             {
-                textBoxScHidden.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[4].Value.ToString();
+                textBoxScHidden.Text = dataGridViewSc.Rows[dataGridViewSc.CurrentRow.Index].Cells[5].Value.ToString();
+            }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            //入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            GetDataGridView();
+        }
+
+        private void buttonNotList_Click(object sender, EventArgs e)
+        {
+            //入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            GetHiddenDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            // 顧客データの取得
+            SmallClass = smallClassification.GetSmallClassHiddenData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        private void checkBoxScFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxScFlag.Checked == true)
+            {
+                textBoxScHidden.TabStop = true;
+                textBoxScHidden.ReadOnly = false;
+                textBoxScHidden.Enabled = true;
+            }
+            else
+            {
+                textBoxScHidden.Text = "";
+                textBoxScHidden.TabStop = false;
+                textBoxScHidden.ReadOnly = true;
+                textBoxScHidden.Enabled = false;
             }
         }
     }

@@ -86,6 +86,7 @@ namespace SalesManagement_SysDev
             this.buttonNotList.TabIndex = 4;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
+            this.buttonNotList.Click += new System.EventHandler(this.buttonNotList_Click);
             // 
             // buttonList
             // 
@@ -100,6 +101,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -114,6 +116,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 2;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonUpdate
             // 
@@ -199,6 +202,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 33;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBoxScHidden
             // 
@@ -219,6 +223,7 @@ namespace SalesManagement_SysDev
             this.checkBoxScFlag.TabIndex = 18;
             this.checkBoxScFlag.Text = "非表示フラグ";
             this.checkBoxScFlag.UseVisualStyleBackColor = true;
+            this.checkBoxScFlag.CheckedChanged += new System.EventHandler(this.checkBoxScFlag_CheckedChanged);
             // 
             // textBoxScID
             // 
