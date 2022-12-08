@@ -26,7 +26,7 @@ namespace SalesManagement_SysDev
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の商品データ
-        private static List<M_Product> Product;
+        private static List<M_ProductDsp> Product;
         //コンボボックス用のメーカーデータ
         private static List<M_Maker> Maker;
         //コンボボックス用のメーカーデータ
@@ -136,10 +136,11 @@ namespace SalesManagement_SysDev
         }
         private void comboBoxMc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            object selectedItem = comboBoxMc.SelectedItem;
 
-            if (comboBoxMc.SelectedItem != null)
+            if (selectedItem != null && selectedItem is M_MajorCassification)
             {
-                SelectedMcID = ((M_MajorCassification) comboBoxMc.SelectedItem).McID;
+                SelectedMcID = ((M_MajorCassification) selectedItem).McID;
 
                 SmallClassifications = smallClassification.GetParentScDspData(SelectedMcID);
                 comboBoxSc.DataSource = SmallClassifications;
@@ -249,32 +250,36 @@ namespace SalesManagement_SysDev
             dataGridViewProduct.Columns[0].Width = 100;
             dataGridViewProduct.Columns[1].Width = 100;
             dataGridViewProduct.Columns[1].Visible = false;
-            dataGridViewProduct.Columns[2].Width = 180;
-            dataGridViewProduct.Columns[3].Width = 110;
-            dataGridViewProduct.Columns[4].Visible = false;
-            dataGridViewProduct.Columns[5].Width = 110;
-            dataGridViewProduct.Columns[6].Width = 100;
-            dataGridViewProduct.Columns[7].Width = 110;
-            dataGridViewProduct.Columns[8].Width = 110;
-            dataGridViewProduct.Columns[9].Width = 110;
+            dataGridViewProduct.Columns[2].Width = 110;
+            dataGridViewProduct.Columns[3].Width = 170;
+            dataGridViewProduct.Columns[4].Width = 90;
+            dataGridViewProduct.Columns[5].Width = 70;
+            dataGridViewProduct.Columns[6].Visible = false;
+            dataGridViewProduct.Columns[7].Width = 170;
+            dataGridViewProduct.Columns[8].Visible = false;
+            dataGridViewProduct.Columns[9].Width = 100;
             //dataGridViewProduct.Columns[9].Visible = false;
-            dataGridViewProduct.Columns[10].Width = 80;
-            dataGridViewProduct.Columns[11].Width = 360;
+            dataGridViewProduct.Columns[10].Width = 70;
+            dataGridViewProduct.Columns[11].Width = 80;
+            dataGridViewProduct.Columns[12].Width = 120;
+            dataGridViewProduct.Columns[13].Visible=false;
+            dataGridViewProduct.Columns[14].Width = 405;
 
             //各列の文字位置の指定
             dataGridViewProduct.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-           // dataGridViewProduct.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewProduct.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewProduct.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            //dataGridViewProduct.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewProduct.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewProduct.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewProduct.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-
+            dataGridViewProduct.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewProduct.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewProduct.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             labelPage.Text = "/" + ((int)Math.Ceiling(Product.Count / (double)pageSize)) + "ページ";
 
@@ -721,7 +726,7 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
                 {
                     //入力された型番は存在していません
                     messageDsp.DspMsg("M0441");
@@ -807,14 +812,14 @@ namespace SalesManagement_SysDev
                 PrID = int.Parse(textBoxPrID.Text.Trim()),
                 MaID = int.Parse(comboBoxMaker.SelectedValue.ToString()),
                 PrName = textBoxPrName.Text.Trim(),
-                Price = int.Parse(textBoxPrice.Text.Trim()),
+                Price =int.Parse(textBoxPrice.Text.Trim()),
                 PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
                 ScID = int.Parse(comboBoxSc.SelectedValue.ToString()),
                 PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                 PrColor = textBoxColor.Text.Trim(),
                 PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                PrFlag = Pdflg,
-                PrHidden = textBoxPrHidden.Text.Trim()
+                PrFlag =Pdflg,
+                PrHidden=textBoxPrHidden.Text.Trim()
             };
         }
 
@@ -1067,7 +1072,7 @@ namespace SalesManagement_SysDev
                 //PrHidden = textBoxPrHidden.Text.Trim()
             };
 
-            Product = ProductDataAccess.GetProductData(selectCondition);
+           // Product = ProductDataAccess.GetProductData(selectCondition);
 
         }
 
@@ -1143,27 +1148,28 @@ namespace SalesManagement_SysDev
 
         private void dataGridViewProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             //クリックされた行データをテキストボックスへ
             textBoxPrID.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[0].Value.ToString();
-            comboBoxMaker.SelectedItem=int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[1].Value.ToString());
-            textBoxPrName.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[2].Value.ToString();
-            textBoxPrice.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[3].Value.ToString();
+            comboBoxMaker.Text=dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxPrName.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPrice.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[4].Value.ToString();
             textBoxPrSafetyStock.Text =dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[5].Value.ToString();
-            //scomboBoxMc.SelectedIndex = int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[].Value.ToString());
-            comboBoxSc.SelectedItem =int.Parse(dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[6].Value.ToString());
-            textBoxPrModelNumber.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[7].Value.ToString();
-            textBoxColor.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[8].Value.ToString();
-            if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[9].Value==null)
+            comboBoxMc.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[7].Value.ToString();
+            comboBoxSc.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[9].Value.ToString();
+            textBoxPrModelNumber.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[10].Value.ToString();
+            textBoxColor.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[11].Value.ToString();
+            if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[12].Value==null)
             {
                 DateTimePickerDateTimePickerPrReleaseDate.Value = DateTime.Now;
                 DateTimePickerDateTimePickerPrReleaseDate.Checked = false;
             }
             else
             {
-                DateTimePickerDateTimePickerPrReleaseDate.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[9].Value.ToString();
+                DateTimePickerDateTimePickerPrReleaseDate.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[12].Value.ToString();
             }
 
-            if( dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            if( dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[13].Value.ToString() != 2.ToString())
             {
                 checkBoxPrFlag.Checked = false;
             }
@@ -1171,9 +1177,9 @@ namespace SalesManagement_SysDev
             {
                 checkBoxPrFlag.Checked = true;
             }
-            if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[11].Value != null)
+            if (dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[14].Value != null)
             {
-                textBoxPrHidden.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[11].Value.ToString();
+                textBoxPrHidden.Text = dataGridViewProduct.Rows[dataGridViewProduct.CurrentRow.Index].Cells[14].Value.ToString();
             }
 
         }
@@ -1207,7 +1213,10 @@ namespace SalesManagement_SysDev
             SetDataGridView();
         }
 
-        
+        private void buttonHiddenList_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

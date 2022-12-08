@@ -267,6 +267,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 53;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -276,7 +277,6 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Size = new System.Drawing.Size(26, 26);
             this.textBoxPageSize.TabIndex = 52;
             this.textBoxPageSize.Text = "20";
-            this.textBoxPageSize.TextChanged += new System.EventHandler(this.textBoxPageSize_TextChanged);
             // 
             // labelPageSize
             // 
@@ -297,6 +297,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 50;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
@@ -307,6 +308,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 49;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -317,6 +319,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 48;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -327,6 +330,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 47;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
