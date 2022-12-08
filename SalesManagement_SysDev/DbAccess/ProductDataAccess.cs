@@ -165,9 +165,6 @@ namespace SalesManagement_SysDev//.DbAccess
                              t1.PrModelNumber.Contains(selectCondition.PrModelNumber)&&
                              t1.PrColor.Contains(selectCondition.PrColor)
                              
-
-                             
-
                              select new
                              {
                                  t1.PrID,

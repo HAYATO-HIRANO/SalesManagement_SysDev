@@ -30,6 +30,7 @@ namespace SalesManagement_SysDev
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Button button1;
             this.panel = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.buttonFormDel = new System.Windows.Forms.Button();
@@ -91,6 +92,7 @@ namespace SalesManagement_SysDev
             this.userControlMajorClassification1 = new SalesManagement_SysDev.UserControlMajorClassification();
             this.userControlMaker1 = new SalesManagement_SysDev.UserControlMaker();
             this.userControlSmallClassification1 = new SalesManagement_SysDev.UserControlSmallClassification();
+            button1 = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -224,6 +226,7 @@ namespace SalesManagement_SysDev
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
+            this.panelLeft.Controls.Add(button1);
             this.panelLeft.Controls.Add(this.buttonSetting);
             this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonLogout);
@@ -799,6 +802,20 @@ namespace SalesManagement_SysDev
             this.userControlSmallClassification1.Name = "userControlSmallClassification1";
             this.userControlSmallClassification1.Size = new System.Drawing.Size(1670, 980);
             this.userControlSmallClassification1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.BackColor = System.Drawing.Color.White;
+            button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            button1.FlatAppearance.BorderSize = 4;
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            button1.Location = new System.Drawing.Point(25, 450);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(200, 80);
+            button1.TabIndex = 40;
+            button1.Text = "非表示リスト";
+            button1.UseVisualStyleBackColor = false;
             // 
             // FormProduct
             // 
