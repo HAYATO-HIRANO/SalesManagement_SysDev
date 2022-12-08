@@ -526,7 +526,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private List<T_ChumonDetail> GenerateDetailDataAtConfirm()
         {
-            List<T_OrderDetail> orderDetail = orderDataAccess.ConfirmOrderDetailData(int.Parse(textBoxOrID.Text.Trim()));
+            List<T_OrderDetail> orderDetail = orderDataAccess.GetOrIDDetailData(int.Parse(textBoxOrID.Text.Trim()));
             List<T_ChumonDetail> chumonDetail = new List<T_ChumonDetail>();
             foreach (var p in orderDetail)
             {

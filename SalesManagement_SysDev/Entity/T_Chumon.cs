@@ -31,6 +31,8 @@ namespace SalesManagement_SysDev
     {
         [DisplayName("注文ID")]
         public int ChID { get; set; }
+        [DisplayName("受注ID")]
+        public int OrID { get; set; }
         [DisplayName("営業所ID")]
         public int SoID { get; set; }
         [DisplayName("営業所名")]
@@ -43,8 +45,6 @@ namespace SalesManagement_SysDev
         public int ClID { get; set; }
         [DisplayName("顧客名")]
         public string ClName { get; set; }
-        [DisplayName("受注ID")]
-        public int OrID { get; set; }
         [DisplayName("注文年月日")]
         public DateTime? ChDate { get; set; }
         [DisplayName("注文状態フラグ")]

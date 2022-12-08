@@ -1044,6 +1044,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
+            int Pdflg = 0;
+            if (checkBoxPrFlag.Checked == true)
+            {
+                Pdflg = 2;
+            }
             // コンボボックスが未選択の場合
             string makercmb = "";
             string sccmb = "";
@@ -1053,27 +1058,168 @@ namespace SalesManagement_SysDev
             }
             if (comboBoxSc.SelectedIndex != -1)
             {
-                sccmb = comboBoxSc.SelectedIndex.ToString();
+                sccmb = comboBoxSc.SelectedValue.ToString();
+            }
+            //商品IDが入力されていて、なおかつメーカー名が選択されて、なおかつ小分類IDが入力されている状態  
+            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != ""&&sccmb!="")
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    MaID = int.Parse(makercmb),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(sccmb),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+                Product = ProductDataAccess.GetProductData(1,selectCondition);
+            }
+            //商品IDが入力されていて、なおかつメーカー名が選択されていて、小分類ID選択されていない状態
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != ""&&sccmb == "")
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    MaID = int.Parse(makercmb),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+                Product = ProductDataAccess.GetProductData(2, selectCondition);
+
+            }
+            //商品IDが入力されていて、メーカー名と小分類IDが選択されていない状態
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+
+                Product = ProductDataAccess.GetProductData(3, selectCondition);
+
+
+            }
+            //商品IDが入力されていなくて、メーカーIDと小分類IDが入力されている状態
+            else if(makercmb!=""&&sccmb!="")
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+                    MaID=int.Parse(makercmb),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(sccmb),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+
+                Product = ProductDataAccess.GetProductData(4, selectCondition);
+            }
+            //商品IDとメーカーID入力されていなくて、小分類IDが入力されている状態
+            else if (makercmb==""&&sccmb != "")
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+                    PrName = textBoxPrName.Text.Trim(),
+                   
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID = int.Parse(sccmb),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+
+                Product = ProductDataAccess.GetProductData(5, selectCondition);
+            }
+            //商品IDと小分類ID入力されていて、メーカーIDが入力されていない状態
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb == "" && sccmb != "")
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    ScID=int.Parse(sccmb),
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+                Product = ProductDataAccess.GetProductData(6, selectCondition);
+
+            }
+            //商品IDと小分類IDが入力されていなくて、メーカーIDが入力されている状態
+            else if ( makercmb != "" && sccmb == "")
+            {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
+
+                    
+                    MaID=int.Parse(makercmb),
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+                Product = ProductDataAccess.GetProductData(7, selectCondition);
+
             }
 
-            M_Product selectCondition = new M_Product()
+            else
             {
+                M_ProductDsp selectCondition = new M_ProductDsp()
+                {
 
-                //s
-                PrID = int.Parse(textBoxPrID.Text.Trim()),
-                MaID = int.Parse(makercmb),
-                //PrName = textBoxPrName.Text.Trim(),
-                //Price = int.Parse(textBoxPrice.Text.Trim()),
-                //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                //ScID = int.Parse(sccmb), //int.Parse(comboBoxSc.SelectedValue.ToString()),
-                //PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                //PrColor = textBoxColor.Text.Trim(),
-                ////PrReleaseDate =DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text.Trim()),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                //PrHidden = textBoxPrHidden.Text.Trim()
-            };
 
-           // Product = ProductDataAccess.GetProductData(selectCondition);
+                   
+                    PrName = textBoxPrName.Text.Trim(),
+                    Price = int.Parse(textBoxPrice.Text.Trim()),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
 
+                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                    PrColor = textBoxColor.Text.Trim(),
+                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                    PrFlag = Pdflg,
+                    PrHidden = textBoxPrHidden.Text.Trim()
+                };
+                Product = ProductDataAccess.GetProductData(8, selectCondition);
+            }
         }
 
         ///////////////////////////////
@@ -1213,7 +1359,10 @@ namespace SalesManagement_SysDev
             SetDataGridView();
         }
 
-        
+        private void buttonHiddenList_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
