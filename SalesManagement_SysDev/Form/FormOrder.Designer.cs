@@ -403,9 +403,9 @@ namespace SalesManagement_SysDev
             // 
             // textBoxClName
             // 
-            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
+            this.textBoxClName.BackColor = System.Drawing.Color.LightGray;
             this.textBoxClName.Enabled = false;
-            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.textBoxClName.Location = new System.Drawing.Point(1028, 15);
             this.textBoxClName.Name = "textBoxClName";
@@ -477,6 +477,7 @@ namespace SalesManagement_SysDev
             this.DateTimePickerOrDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.DateTimePickerOrDate.Location = new System.Drawing.Point(101, 75);
             this.DateTimePickerOrDate.Name = "DateTimePickerOrDate";
+            this.DateTimePickerOrDate.ShowCheckBox = true;
             this.DateTimePickerOrDate.Size = new System.Drawing.Size(220, 30);
             this.DateTimePickerOrDate.TabIndex = 22;
             // 
@@ -584,6 +585,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrder.RowTemplate.Height = 21;
             this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrder.TabIndex = 7;
+            //this.dataGridViewOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
             // 
             // buttonPageSizeChange
             // 
@@ -716,7 +718,7 @@ namespace SalesManagement_SysDev
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.panelOrder);
