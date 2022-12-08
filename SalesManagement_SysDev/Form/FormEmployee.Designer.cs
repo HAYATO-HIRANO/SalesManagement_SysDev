@@ -253,6 +253,7 @@
             this.buttonList.TabIndex = 25;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonUpdate
             // 
@@ -703,7 +704,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.panelLeft);

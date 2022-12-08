@@ -7,24 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace SalesManagement_SysDev
 {
     public partial class FormChumon : Form
     {
         //メッセージ表示用クラスのインスタンス化
-        //MessageDsp messageDsp = new MessageDsp();
-        //データベース顧客テーブルアクセス用クラスのインスタンス化
+        MessageDsp messageDsp = new MessageDsp();
+        //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
+        //データベース受注テーブルアクセス用クラスのインスタンス化
+        OrderDataAccess orderDataAccess = new OrderDataAccess();
+        //データベース社員テーブルアクセス用クラスのインスタンス化
+        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
-        //データグリッドビュー用の顧客データ
-        private static List<M_ClientDsp> Client;
+        //データグリッドビュー用の注文データ
+        private static List<T_ChumonDsp> Chumon;
+        //データグリッドビュー用の社員データ
+        private static List<M_EmployeeDsp> Employee;
         //コンボボックス用の営業所データ
         private static List<M_SalesOffice> SalesOffice;
-        //データグリッドビュー用の受注データ
-        private static List<T_ChumonDsp> Chumon;
+
 
         public FormChumon()
         {
@@ -96,21 +102,7 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
-        ///////////////////////////////
-        //メソッド名：GetDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示するデータの取得
-        ///////////////////////////////
-        private void GetDataGridView()
-        {
-            // 受注データの取得
-            Chumon = chumonDataAccess.GetChumonData();
-
-            // DataGridViewに表示するデータを指定
-            SetDataGridView();
-
-        }
+   
 
         private void SetDataGridView()
         {
@@ -165,7 +157,7 @@ namespace SalesManagement_SysDev
 
         private void buttonChumonDetail_Click(object sender, EventArgs e)
         {
-            if(labelChumon.Text == "注文管理")
+            if (labelChumon.Text == "注文管理")
             {
                 labelChumon.Text = "注文詳細管理";
                 buttonChumonDetail.Text = "注文管理";
@@ -173,7 +165,7 @@ namespace SalesManagement_SysDev
                 panelChumon.Visible = false;
                 return;
             }
-            if(labelChumon.Text == "注文詳細管理")
+            if (labelChumon.Text == "注文詳細管理")
             {
                 labelChumon.Text = "注文管理";
                 buttonChumonDetail.Text = "注文詳細";
@@ -184,7 +176,7 @@ namespace SalesManagement_SysDev
         }
 
 
-        
+
         ////////注文情報検索///////////
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -222,36 +214,228 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
-                //受注IDの適否
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            //受注IDの適否
+            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxOrID.Text.Trim()))
                 {
-                    //文字チェック
-                    if (!dataInputFormCheck.CheckNumeric(textBoxOrID.Text.Trim()))
-                    {
-                        MessageBox.Show("受注IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        textBoxOrID.Focus();
-                        return false;
-                    }
-                    //文字数
-                    if (textBoxOrID.TextLength > 6)
-                    {
-                        MessageBox.Show("受注IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        textBoxOrID.Focus();
-                        return false;
-                    }
+                    MessageBox.Show("受注IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
                 }
+                //文字数
+                if (textBoxOrID.TextLength > 6)
+                {
+                    MessageBox.Show("受注IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+            }
             return false;
         }
 
+        ///////////////////////////////
+        //メソッド名：buttonList_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：営業データの一覧表示機能
+        ///////////////////////////////
 
         private void buttonList_Click(object sender, EventArgs e)
         {
+            // 入力エリアのクリア
+            ClearInput();
+
+            GetDataGridView();
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：buttonNotList_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：営業データの非表示一覧表示機能
+        ///////////////////////////////
+        private void buttonHiddenList_Click(object sender, EventArgs e)
+        {
+            // 入力エリアのクリア
+            ClearInput();
+
+            GetHiddenDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：ClearInput()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入力エリアをクリア
+        ///////////////////////////////
+        private void ClearInput()
+        {
+            // デートタイムピッカの設定
+            DateTimePickerChDate.Checked = false;
+            textBoxChID.Text = "";
+            textBoxOrID.Text = "";
+            comboBoxSoID.SelectedIndex = -1;
+            textBoxEmID.Text = "";
+            textBoxClID.Text = "";
+            textBoxClName.Text = "";
+            DateTimePickerChDate.Text = "";
+            checkBoxStateFlag.Checked = false;
+            textBoxChHidden.Text = "";
+            checkBoxStateFlag.Checked = false;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetDataGridView()
+        {
+            //注文データの取得
+            Chumon = chumonDataAccess.GetChumonData();
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            //注文データの取得
+            Chumon = chumonDataAccess.GetChumonData();
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし——
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewOrder.DataSource = SalesOffice.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+        }
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(SalesOffice.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewOrder.DataSource = SalesOffice.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(SalesOffice.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(SalesOffice.Count / (double)pageSize) - 1;
+            dataGridViewOrder.DataSource = SalesOffice.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+        }
+
+
+        //入力クリア
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxHidden.Checked==true)
+            {
+                textBoxChHidden.TabStop = true;
+                textBoxChHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxChHidden.Text="";
+                textBoxChHidden.TabStop = false;
+                textBoxChHidden.ReadOnly = true;
+            }
+        }
+
+
+        //データグリッドビュー セルクリック
+        private void dataGridViewOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxChID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxOrID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[1].Value.ToString();
+            comboBoxSoID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxEmID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxClID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxClName.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[5].Value.ToString();
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
+            {
+                checkBoxHidden.Checked = false;
+            }
+            else
+            {
+                checkBoxHidden.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value != null)
+            {
+                checkBoxHidden.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value.ToString();
+            }
+
 
         }
+
+
     }
-
-
-
-
-
 }
+

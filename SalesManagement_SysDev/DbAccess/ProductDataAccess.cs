@@ -139,7 +139,7 @@ namespace SalesManagement_SysDev//.DbAccess
         //    return product;
         //}
 
-        public List<M_ProductDsp> GetProductData(int flg, M_Product selectCondition)
+        public List<M_ProductDsp> GetProductData(int flg, M_ProductDsp selectCondition)
         {
           
 
