@@ -875,16 +875,105 @@ namespace SalesManagement_SysDev
             if (comboBoxSoID.SelectedIndex != -1)
                 cSoID = comboBoxSoID.SelectedValue.ToString();
 
-            // 検索条件のセット
-            M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+            if(!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
             {
-                EmID = int.Parse(textBoxEmID.Text),
-                EmName = textBoxEmName.Text,
-                PoID = int.Parse(cPoID),
-                SoID = int.Parse(cSoID),
-            };
-            // 社員データの抽出
-            Employee = employeeDataAccess.GetEmployeeData(selectCondition);
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    PoID = int.Parse(cPoID),
+                    SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(1,selectCondition);
+            }
+
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    PoID = int.Parse(cPoID),
+                    //SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(2,selectCondition);
+            }
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    //PoID = int.Parse(cPoID),
+                    SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(3, selectCondition);
+            }
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    //PoID = int.Parse(cPoID),
+                    //SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(4, selectCondition);
+            }
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    //EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    PoID = int.Parse(cPoID),
+                    SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(5, selectCondition);
+            }
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    //EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    PoID = int.Parse(cPoID),
+                    //SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(6, selectCondition);
+            }
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    //EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    //PoID = int.Parse(cPoID),
+                    SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(7, selectCondition);
+            }
+            else if (!string.IsNullOrEmpty(textBoxEmID.Text.Trim()) && cPoID != "" && cSoID != "")
+            {
+                M_EmployeeDsp selectCondition = new M_EmployeeDsp()
+                {
+                    //EmID = int.Parse(textBoxEmID.Text),
+                    EmName = textBoxEmName.Text,
+                    //PoID = int.Parse(cPoID),
+                    //SoID = int.Parse(cSoID),
+                };
+                // 社員データの抽出
+                Employee = employeeDataAccess.GetEmployeeData(8, selectCondition);
+            }
+
+
 
         }
         ///////////////////////////////

@@ -142,12 +142,12 @@ namespace SalesManagement_SysDev
             return order;
         }
         /////////////////////////////////////////
-        //メソッド名：ConfirmOrderDetailData()
+        //メソッド名：GetOrIDDetailData()
         //引　数   :受注ID
         //戻り値   ：確定用受注詳細データ
         //機　能   ：同じ受注ID全ての受注詳細情報
         /////////////////////////////////////////
-        public List<T_OrderDetail> ConfirmOrderDetailData(int orID)
+        public List<T_OrderDetail> GetOrIDDetailData(int orID)
         {
             List<T_OrderDetail> orderDetail = new List<T_OrderDetail>();
 
@@ -409,12 +409,12 @@ namespace SalesManagement_SysDev
             return orDetail;
         }
         ///////////////////////////////
-        //メソッド名：GetOrIDDetailData()
+        //メソッド名：GetOrIDDetailDspData()
         //引　数   ：受注ID
-        //戻り値   ：受注IDの全詳細データ
-        //機　能   ：受注IDの詳細データの取得
+        //戻り値   ：受注IDの全データグリッド詳細用データ
+        //機　能   ：受注IDのデータグリッド表示用詳細データの取得
         ///////////////////////////////
-        public List<T_OrderDetailDsp> GetOrIDDetailData(int orID)
+        public List<T_OrderDetailDsp> GetOrIDDetailDspData(int orID)
         {
             List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
 
