@@ -57,7 +57,6 @@ namespace SalesManagement_SysDev
 
             //データグリッドビューの設定
             SetFormDataGridView();
-
         }
         ///////////////////////////////
         //メソッド名：SetFormComboBox()
@@ -239,6 +238,7 @@ namespace SalesManagement_SysDev
                 checkBoxStateFlag.Focus();
                 return false;
             }
+
             if (checkBoxStateFlag.Checked == true)
             {
                 MessageBox.Show("受注確定がチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -265,7 +265,7 @@ namespace SalesManagement_SysDev
                 EmID =int.Parse(textBoxEmID.Text.Trim()),
                 ClID= int.Parse(textBoxClID.Text.Trim()),
                 ClCharge=textBoxClCharge.Text.Trim(),
-                OrDate=DateTimePickerOrDate.Value,
+                OrDate=DateTime.Parse(DateTimePickerOrDate.Text),
                 OrFlag=0,
                 OrHidden=textBoxOrHidden.Text.Trim(),
                 OrStateFlag=0
@@ -291,6 +291,11 @@ namespace SalesManagement_SysDev
                  result = MessageBox.Show("データを登録しました、詳細登録画面に移動してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
+                    //入力エリアのクリア
+                    ClearInput();
+                    //データグリッドビューの表示
+                    GetDataGridView();
+
                     labelOrder.Text = "受注詳細管理";
                     buttonDetail.Text = "受注管理";
                     userControlOrderDetail1.Visible = true;
@@ -383,21 +388,20 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 //1510
             dataGridViewOrder.Columns[0].Width = 100;
-            dataGridViewOrder.Columns[1].Width = 100;
-            dataGridViewOrder.Columns[2].Width = 175;
+            dataGridViewOrder.Columns[1].Visible = false;
+            dataGridViewOrder.Columns[2].Width = 200;
             dataGridViewOrder.Columns[3].Width = 100;
-            dataGridViewOrder.Columns[4].Width = 175;
+            dataGridViewOrder.Columns[4].Width = 200;
             dataGridViewOrder.Columns[5].Width = 100;
-            dataGridViewOrder.Columns[6].Width = 175;
+            dataGridViewOrder.Columns[6].Width = 200;
             dataGridViewOrder.Columns[7].Width = 175;
-            dataGridViewOrder.Columns[8].Width = 175;
+            dataGridViewOrder.Columns[8].Width = 200;
             dataGridViewOrder.Columns[9].Visible = false;
             dataGridViewOrder.Columns[10].Visible = false;
             dataGridViewOrder.Columns[11].Width = 250;
 
             //各列の文字位置の指定
             dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewOrder.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -405,8 +409,6 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewOrder.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
@@ -508,7 +510,7 @@ namespace SalesManagement_SysDev
                 EmID= int.Parse(order.EmID.ToString()),
                 SoID= int.Parse(order.SoID.ToString()),
                 ClID= int.Parse(order.ClID.ToString()),
-                ChDate= DateTime.Now,
+                ChDate= DateTime.Today,
                 ChStateFlag=0,
                 ChFlag=0,             
             };
@@ -746,23 +748,301 @@ namespace SalesManagement_SysDev
             string cSalesOffice = "";
             if (comboBoxSoID.SelectedIndex != -1)
                 cSalesOffice = comboBoxSoID.SelectedValue.ToString();
-            //検索条件のセット
-            if(String.IsNullOrEmpty(textBoxOrID.Text.Trim())&& cSalesOffice!=""&& String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
             {
-                T_OrderDsp selectCondition = new T_OrderDsp()
+                //検索条件のセット
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
                 {
-                    OrID=  int.Parse(textBoxOrID.Text.Trim()),
-                    ClID = int.Parse(textBoxClID.Text.Trim()),
-                    SoID = int.Parse(cSalesOffice),  
-                    EmID= int.Parse(textBoxEmID.Text.Trim()),
-                    ClName = textBoxClName.Text,
-                    
-                };
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        SoID = int.Parse(cSalesOffice),
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate =DateTime.Parse(DateTimePickerOrDate.Text),
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
 
-                //データの抽出
-                Order = orderDataAccess.GetOrderData(1, selectCondition);
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(1, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        SoID = int.Parse(cSalesOffice),
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(2, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        SoID = int.Parse(cSalesOffice),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(3, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        SoID = int.Parse(cSalesOffice),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(4, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(5, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(6, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(7, selectCondition);
+
+                }
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        OrID = int.Parse(textBoxOrID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(8, selectCondition);
+
+                }
 
             }
+            else
+            {
+
+
+
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        SoID = int.Parse(cSalesOffice),
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(9, selectCondition);
+
+                }
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        SoID = int.Parse(cSalesOffice),
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(10, selectCondition);
+
+                }
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        SoID = int.Parse(cSalesOffice),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(11, selectCondition);
+
+                }
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        SoID = int.Parse(cSalesOffice),
+                       
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(12, selectCondition);
+
+                }
+
+
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(13, selectCondition);
+
+                }
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        
+                        EmID = int.Parse(textBoxEmID.Text.Trim()),
+                        
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(14, selectCondition);
+
+                }
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        
+                        ClID = int.Parse(textBoxClID.Text.Trim()),
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate = DateTimePickerOrDate.Value,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(15, selectCondition);
+
+                }
+                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                {
+                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    {
+                        
+                        ClCharge = textBoxClCharge.Text.Trim(),
+                        OrDate =DateTime.Parse(DateTimePickerOrDate.Text).Date,
+                        OrFlag = orFlg,
+                        OrStateFlag = stateFlg,
+                        OrHidden = textBoxOrHidden.Text.Trim()
+
+                    };
+                    //データの抽出
+                    Order = orderDataAccess.GetOrderData(16, selectCondition);
+
+                }
+            }
+            
+            
+
+
 
         }
         ///////////////////////////////
@@ -1049,11 +1329,6 @@ namespace SalesManagement_SysDev
 
         }
 
-
-        private void checkBoxOrFlag_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
         ///////////////////////////////
         //メソッド名：buttonFirstPage_Click()
         //引　数   ：なし
@@ -1086,6 +1361,7 @@ namespace SalesManagement_SysDev
             textBoxClID.Text = "";
             textBoxClCharge.Text = "";
             DateTimePickerOrDate.Value = DateTime.Now;
+            DateTimePickerOrDate.Checked = false;
             textBoxOrHidden.Text = "";
         }
 
@@ -1140,5 +1416,7 @@ namespace SalesManagement_SysDev
             }
             
         }
+
+        
     }
 }

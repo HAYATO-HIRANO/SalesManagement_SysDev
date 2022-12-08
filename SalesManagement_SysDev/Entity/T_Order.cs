@@ -49,7 +49,7 @@ namespace SalesManagement_SysDev
         [DisplayName("顧客担当者名")]
         public string ClCharge { get; set; }
         [DisplayName("受注年月日")]
-        public DateTime? OrDate { get; set; }
+        public DateTime OrDate { get; set; }
         [DisplayName("受注確定フラグ")]
         public int? OrStateFlag { get; set; }
         [DisplayName("非表示フラグ")]
