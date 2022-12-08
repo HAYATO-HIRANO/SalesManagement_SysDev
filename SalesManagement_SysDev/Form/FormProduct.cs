@@ -1213,7 +1213,10 @@ namespace SalesManagement_SysDev
             SetDataGridView();
         }
 
-        
+        private void buttonHiddenList_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
