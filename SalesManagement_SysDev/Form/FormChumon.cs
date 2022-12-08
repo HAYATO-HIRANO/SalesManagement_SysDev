@@ -30,8 +30,6 @@ namespace SalesManagement_SysDev
         private static List<M_EmployeeDsp> Employee;
         //コンボボックス用の営業所データ
         private static List<M_SalesOffice> SalesOffice;
-        //データグリッドビュー用の受注データ
-        private static List<T_ChumonDsp> Chumon;
 
 
         public FormChumon()
@@ -104,21 +102,7 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
-        ///////////////////////////////
-        //メソッド名：GetDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示するデータの取得
-        ///////////////////////////////
-        private void GetDataGridView()
-        {
-            // 受注データの取得
-            Chumon = chumonDataAccess.GetChumonData();
-
-            // DataGridViewに表示するデータを指定
-            SetDataGridView();
-
-        }
+   
 
         private void SetDataGridView()
         {
@@ -329,42 +313,6 @@ namespace SalesManagement_SysDev
             Chumon = chumonDataAccess.GetChumonData();
             // DataGridViewに表示するデータを指定
             SetDataGridView();
-        }
-        ///////////////////////////////
-        //メソッド名：SetDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューへの表示
-        ///////////////////////////////
-        private void SetDataGridView()
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text) - 1;
-            dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
-            //各列幅の指定1400
-            dataGridViewOrder.Columns[0].Width = 100;
-            dataGridViewOrder.Columns[1].Width = 100;
-            dataGridViewOrder.Columns[2].Width = 100;
-            dataGridViewOrder.Columns[3].Width = 100;
-            dataGridViewOrder.Columns[4].Width = 100;
-            dataGridViewOrder.Columns[5].Width = 100;
-            dataGridViewOrder.Columns[6].Width = 100;
-            dataGridViewOrder.Columns[7].Visible = false;
-            dataGridViewOrder.Columns[8].Width = 100;
-            //各列の文字位置の指定
-            dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            //dataGridViewの総ページ数
-            labelPage.Text = "/" + ((int)Math.Ceiling(SalesOffice.Count / (double)pageSize)) + "ページ";
-
-            dataGridViewOrder.Refresh();
         }
         ///////////////////////////////
         //メソッド名：buttonPageSizeChange_Click()
