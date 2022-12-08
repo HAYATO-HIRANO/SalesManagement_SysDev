@@ -12,6 +12,17 @@ namespace SalesManagement_SysDev
 {
     public partial class FormArrival : Form
     {
+        //データベース顧客テーブルアクセス用クラスのインスタンス化
+        ClientDataAccess clientDataAccess = new ClientDataAccess();
+        //データベース営業所テーブルアクセス用クラスのインスタンス化
+        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
+        //入力形式チェック用クラスのインスタンス化
+        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+        //データグリッドビュー用の出庫データ
+        private static List<T_SyukkoDsp> Syukko;
+        //コンボボックス用の営業所データ
+        private static List<M_SalesOffice> SalesOffice;
+
         public FormArrival()
         {
             InitializeComponent();
@@ -27,6 +38,65 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+
+            //非表示理由タブ選択不可、入力不可
+            textBoxArHidden.TabStop = false;
+            textBoxArHidden.ReadOnly = true;
+
+            //コンボボックスの設定
+            SetFormComboBox();
+
+            //データグリッドビューの設定
+            SetFormDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：SetFormComboBox()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コンボボックスのデータ設定
+        ///////////////////////////////
+        private void SetFormComboBox()
+        {
+
+            //営業所データの取得
+            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
+            comboBoxSoID.DataSource = SalesOffice;
+            comboBoxSoID.DisplayMember = "SoName";
+            comboBoxSoID.ValueMember = "SoID";
+            //コンボボックスを読み取り専用
+            comboBoxSoID.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSoID.SelectedIndex = -1;
+        }
+        ///////////////////////////////
+        //メソッド名：SetFormDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定 
+        ///////////////////////////////
+        private void SetFormDataGridView()
+        {
+            //dataGridViewのページサイズ指定
+            textBoxPageSize.Text = "20";
+            //dataGridViewのページ番号指定
+            textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewAr.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewAr.AllowUserToResizeRows = false;
+            dataGridViewAr.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewAr.AllowUserToAddRows = false;
+            //行内をクリックすることで行を選択
+            dataGridViewAr.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //奇数行の色を変更
+            dataGridViewAr.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
+            //ヘッダー位置の指定
+            dataGridViewAr.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            //GetDataGridView();
+
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

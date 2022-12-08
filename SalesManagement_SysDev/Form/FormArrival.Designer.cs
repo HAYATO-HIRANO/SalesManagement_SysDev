@@ -42,7 +42,7 @@ namespace SalesManagement_SysDev
             this.panelArrival = new System.Windows.Forms.Panel();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
-            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
+            this.dataGridViewAr = new System.Windows.Forms.DataGridView();
             this.labelPageSize = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.buttonLastPage = new System.Windows.Forms.Button();
@@ -51,14 +51,15 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.textBoxArID = new System.Windows.Forms.TextBox();
             this.labelArID = new System.Windows.Forms.Label();
-            this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
+            this.checkBoxHidden = new System.Windows.Forms.CheckBox();
             this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
             this.labelClName = new System.Windows.Forms.Label();
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.textBoxOrHidden = new System.Windows.Forms.TextBox();
+            this.textBoxArHidden = new System.Windows.Forms.TextBox();
             this.labelArDate = new System.Windows.Forms.Label();
             this.DateTimePickerOrDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxClID = new System.Windows.Forms.TextBox();
@@ -79,10 +80,9 @@ namespace SalesManagement_SysDev
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
             this.userControlArrivalDetail1 = new SalesManagement_SysDev.UserControlArrivalDetail();
-            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panelArrival.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAr)).BeginInit();
             this.panelInput.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.SuspendLayout();
@@ -201,7 +201,7 @@ namespace SalesManagement_SysDev
             // 
             this.panelArrival.Controls.Add(this.buttonPageSizeChange);
             this.panelArrival.Controls.Add(this.textBoxPageSize);
-            this.panelArrival.Controls.Add(this.dataGridViewOrder);
+            this.panelArrival.Controls.Add(this.dataGridViewAr);
             this.panelArrival.Controls.Add(this.labelPageSize);
             this.panelArrival.Controls.Add(this.textBoxPage);
             this.panelArrival.Controls.Add(this.buttonLastPage);
@@ -235,14 +235,14 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.TabIndex = 6;
             this.textBoxPageSize.Text = "20";
             // 
-            // dataGridViewOrder
+            // dataGridViewAr
             // 
-            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(293, 296);
-            this.dataGridViewOrder.Name = "dataGridViewOrder";
-            this.dataGridViewOrder.RowTemplate.Height = 21;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrder.TabIndex = 8;
+            this.dataGridViewAr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAr.Location = new System.Drawing.Point(293, 296);
+            this.dataGridViewAr.Name = "dataGridViewAr";
+            this.dataGridViewAr.RowTemplate.Height = 21;
+            this.dataGridViewAr.Size = new System.Drawing.Size(1552, 605);
+            this.dataGridViewAr.TabIndex = 8;
             // 
             // labelPageSize
             // 
@@ -321,12 +321,12 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxClName);
             this.panelInput.Controls.Add(this.textBoxArID);
             this.panelInput.Controls.Add(this.labelArID);
-            this.panelInput.Controls.Add(this.checkBox1Hidden);
+            this.panelInput.Controls.Add(this.checkBoxHidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.labelClName);
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.buttonClear);
-            this.panelInput.Controls.Add(this.textBoxOrHidden);
+            this.panelInput.Controls.Add(this.textBoxArHidden);
             this.panelInput.Controls.Add(this.labelArDate);
             this.panelInput.Controls.Add(this.DateTimePickerOrDate);
             this.panelInput.Controls.Add(this.textBoxClID);
@@ -341,6 +341,17 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 0;
+            // 
+            // textBoxClName
+            // 
+            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
+            this.textBoxClName.Enabled = false;
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
+            this.textBoxClName.Name = "textBoxClName";
+            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.TabIndex = 69;
             // 
             // textBoxArID
             // 
@@ -361,16 +372,16 @@ namespace SalesManagement_SysDev
             this.labelArID.TabIndex = 67;
             this.labelArID.Text = "入荷ID";
             // 
-            // checkBox1Hidden
+            // checkBoxHidden
             // 
-            this.checkBox1Hidden.AutoSize = true;
-            this.checkBox1Hidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBox1Hidden.Location = new System.Drawing.Point(364, 76);
-            this.checkBox1Hidden.Name = "checkBox1Hidden";
-            this.checkBox1Hidden.Size = new System.Drawing.Size(149, 28);
-            this.checkBox1Hidden.TabIndex = 7;
-            this.checkBox1Hidden.Text = "非表示理由";
-            this.checkBox1Hidden.UseVisualStyleBackColor = true;
+            this.checkBoxHidden.AutoSize = true;
+            this.checkBoxHidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxHidden.Location = new System.Drawing.Point(364, 76);
+            this.checkBoxHidden.Name = "checkBoxHidden";
+            this.checkBoxHidden.Size = new System.Drawing.Size(149, 28);
+            this.checkBoxHidden.TabIndex = 7;
+            this.checkBoxHidden.Text = "非表示理由";
+            this.checkBoxHidden.UseVisualStyleBackColor = true;
             // 
             // checkBoxStateFlag
             // 
@@ -415,14 +426,14 @@ namespace SalesManagement_SysDev
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // textBoxOrHidden
+            // textBoxArHidden
             // 
-            this.textBoxOrHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrHidden.Location = new System.Drawing.Point(515, 75);
-            this.textBoxOrHidden.Multiline = true;
-            this.textBoxOrHidden.Name = "textBoxOrHidden";
-            this.textBoxOrHidden.Size = new System.Drawing.Size(715, 84);
-            this.textBoxOrHidden.TabIndex = 8;
+            this.textBoxArHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxArHidden.Location = new System.Drawing.Point(515, 75);
+            this.textBoxArHidden.Multiline = true;
+            this.textBoxArHidden.Name = "textBoxArHidden";
+            this.textBoxArHidden.Size = new System.Drawing.Size(715, 84);
+            this.textBoxArHidden.TabIndex = 8;
             // 
             // labelArDate
             // 
@@ -645,17 +656,6 @@ namespace SalesManagement_SysDev
             this.userControlArrivalDetail1.Size = new System.Drawing.Size(1920, 980);
             this.userControlArrivalDetail1.TabIndex = 2;
             // 
-            // textBoxClName
-            // 
-            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
-            this.textBoxClName.Enabled = false;
-            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
-            this.textBoxClName.Name = "textBoxClName";
-            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
-            this.textBoxClName.TabIndex = 69;
-            // 
             // FormArrival
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -675,7 +675,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.PerformLayout();
             this.panelArrival.ResumeLayout(false);
             this.panelArrival.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAr)).EndInit();
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
             this.panelLeft.ResumeLayout(false);
@@ -705,12 +705,12 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonDetail;
         private System.Windows.Forms.Panel panelInput;
-        private System.Windows.Forms.CheckBox checkBox1Hidden;
+        private System.Windows.Forms.CheckBox checkBoxHidden;
         private System.Windows.Forms.CheckBox checkBoxStateFlag;
         private System.Windows.Forms.Label labelClName;
         private System.Windows.Forms.Button buttonClear2;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.TextBox textBoxOrHidden;
+        private System.Windows.Forms.TextBox textBoxArHidden;
         private System.Windows.Forms.Label labelArDate;
         private System.Windows.Forms.DateTimePicker DateTimePickerOrDate;
         private System.Windows.Forms.TextBox textBoxClID;
@@ -725,7 +725,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelArID;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
-        private System.Windows.Forms.DataGridView dataGridViewOrder;
+        private System.Windows.Forms.DataGridView dataGridViewAr;
         private System.Windows.Forms.Label labelPageSize;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonLastPage;
