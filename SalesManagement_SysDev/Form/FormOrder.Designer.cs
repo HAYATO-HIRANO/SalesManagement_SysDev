@@ -83,6 +83,10 @@ namespace SalesManagement_SysDev
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelOrder = new System.Windows.Forms.Panel();
             this.userControlOrderDetail1 = new SalesManagement_SysDev.UserControlOrderDetail();
+            this.dateTimePickerOutEnd = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelOut = new System.Windows.Forms.Label();
+            this.dateTimePickerOutStart = new System.Windows.Forms.DateTimePicker();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -351,6 +355,10 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.dateTimePickerOutEnd);
+            this.panelInput.Controls.Add(this.label1);
+            this.panelInput.Controls.Add(this.labelOut);
+            this.panelInput.Controls.Add(this.dateTimePickerOutStart);
             this.panelInput.Controls.Add(this.checkBoxHidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.textBoxClName);
@@ -459,7 +467,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrHidden.Location = new System.Drawing.Point(494, 76);
             this.textBoxOrHidden.Multiline = true;
             this.textBoxOrHidden.Name = "textBoxOrHidden";
-            this.textBoxOrHidden.Size = new System.Drawing.Size(715, 84);
+            this.textBoxOrHidden.Size = new System.Drawing.Size(520, 70);
             this.textBoxOrHidden.TabIndex = 26;
             // 
             // labelOrDate
@@ -712,6 +720,48 @@ namespace SalesManagement_SysDev
             this.userControlOrderDetail1.Size = new System.Drawing.Size(1920, 979);
             this.userControlOrderDetail1.TabIndex = 49;
             // 
+            // dateTimePickerOutEnd
+            // 
+            this.dateTimePickerOutEnd.Checked = false;
+            this.dateTimePickerOutEnd.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerOutEnd.Location = new System.Drawing.Point(1258, 93);
+            this.dateTimePickerOutEnd.Name = "dateTimePickerOutEnd";
+            this.dateTimePickerOutEnd.ShowCheckBox = true;
+            this.dateTimePickerOutEnd.Size = new System.Drawing.Size(198, 26);
+            this.dateTimePickerOutEnd.TabIndex = 80;
+            this.dateTimePickerOutEnd.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(1025, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 13);
+            this.label1.TabIndex = 79;
+            this.label1.Text = "※検索用(範囲指定)";
+            // 
+            // labelOut
+            // 
+            this.labelOut.AutoSize = true;
+            this.labelOut.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOut.Location = new System.Drawing.Point(1228, 97);
+            this.labelOut.Name = "labelOut";
+            this.labelOut.Size = new System.Drawing.Size(32, 21);
+            this.labelOut.TabIndex = 78;
+            this.labelOut.Text = "～";
+            // 
+            // dateTimePickerOutStart
+            // 
+            this.dateTimePickerOutStart.Checked = false;
+            this.dateTimePickerOutStart.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerOutStart.Location = new System.Drawing.Point(1027, 93);
+            this.dateTimePickerOutStart.Name = "dateTimePickerOutStart";
+            this.dateTimePickerOutStart.ShowCheckBox = true;
+            this.dateTimePickerOutStart.Size = new System.Drawing.Size(198, 26);
+            this.dateTimePickerOutStart.TabIndex = 77;
+            this.dateTimePickerOutStart.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
+            // 
             // FormOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -794,5 +844,9 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.TextBox textBoxClName;
         private System.Windows.Forms.CheckBox checkBoxHidden;
         private System.Windows.Forms.CheckBox checkBoxStateFlag;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOutEnd;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelOut;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOutStart;
     }
 }
