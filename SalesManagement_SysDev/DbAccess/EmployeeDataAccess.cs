@@ -114,7 +114,7 @@ namespace SalesManagement_SysDev
             try
             {
                 var context = new SalesManagement_DevContext();
-                //tbはIEnumerable型
+
                 var tb = from t1 in context.M_Employees
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
@@ -130,12 +130,11 @@ namespace SalesManagement_SysDev
                              t1.PoID,
                              t3.PoName,
                              t1.EmHiredate,
-                             t1.EmPassword,
                              t1.EmPhone,
                              t1.EmFlag,
                              t1.EmHidden
                          };
-                foreach(var p in tb)
+                foreach (var p in tb)
                 {
                     employee.Add(new M_EmployeeDsp()
                     {
@@ -146,11 +145,417 @@ namespace SalesManagement_SysDev
                         PoID = p.PoID,
                         PoName = p.PoName,
                         EmHiredate = p.EmHiredate,
-                        EmPassword = p.EmPassword,
                         EmPhone = p.EmPhone,
                         EmFlag = p.EmFlag,
                         EmHidden = p.EmHidden
                     });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return employee;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetEmployeeData()
+        //引　数   ：なし
+        //戻り値   ：全社員データ
+        //機　能   ：全社員データの取得
+        ///////////////////////////////
+        public List<M_EmployeeDsp> GetEmployeeData(int flg,M_EmployeeDsp selectCondition)
+        {
+            List<M_EmployeeDsp> employee = new List<M_EmployeeDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                if (flg == 1)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString())&&
+                             t1.EmName.Contains(selectCondition.EmName)&&
+                             t1.SoID == selectCondition.SoID&&
+                             t1.PoID == selectCondition.PoID&&
+                             t1.EmHiredate == selectCondition.EmHiredate&&
+                             t1.EmPhone == selectCondition.EmPhone&&
+                             t1.EmFlag == selectCondition.EmFlag&&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             t1.SoID == selectCondition.SoID &&
+                             //t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             //t1.SoID == selectCondition.SoID &&
+                             t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             //t1.SoID == selectCondition.SoID &&
+                             //t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 5)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             //t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             t1.SoID == selectCondition.SoID &&
+                             t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 6)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             //t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             t1.SoID == selectCondition.SoID &&
+                             //t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 7)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             //t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             //t1.SoID == selectCondition.SoID &&
+                             t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                }
+                if (flg == 8)
+                {
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Positions
+                             on t1.PoID equals t3.PoID
+                             where
+
+                             //t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                             t1.EmName.Contains(selectCondition.EmName) &&
+                             //t1.SoID == selectCondition.SoID &&
+                             //t1.PoID == selectCondition.PoID &&
+                             t1.EmHiredate == selectCondition.EmHiredate &&
+                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.EmFlag == selectCondition.EmFlag &&
+                             t1.EmHidden == selectCondition.EmHidden
+
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t1.SoID,
+                                 t2.SoName,
+                                 t1.PoID,
+                                 t3.PoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+                    foreach (var p in tb)
+                    {
+                        employee.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            SoID = p.SoID,
+                            SoName = p.SoName,
+                            PoID = p.PoID,
+                            PoName = p.PoName,
+                            EmHiredate = p.EmHiredate,
+                            EmPhone = p.EmPhone,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
                 }
                 context.Dispose(); 
             }
