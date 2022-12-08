@@ -41,7 +41,9 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
-
+            //非表示理由タブ選択不可、入力不可
+            textBoxChHidden.TabStop = false;
+            textBoxChHidden.ReadOnly = true;
             SetFormComboBox();
 
             SetFormDataGridView();
@@ -120,14 +122,14 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.Columns[1].Width = 100;
             dataGridViewOrder.Columns[2].Visible = false;
             dataGridViewOrder.Columns[3].Width = 100;
-            dataGridViewOrder.Columns[4].Width = 175;
+            dataGridViewOrder.Columns[4].Width = 100;
             dataGridViewOrder.Columns[5].Width = 100;
-            dataGridViewOrder.Columns[6].Width = 175;
-            dataGridViewOrder.Columns[7].Width = 175;
+            dataGridViewOrder.Columns[6].Width = 100;
+            dataGridViewOrder.Columns[7].Width = 250;
             dataGridViewOrder.Columns[8].Width = 175;
             dataGridViewOrder.Columns[9].Visible = false;
             dataGridViewOrder.Columns[10].Visible = false;
-            dataGridViewOrder.Columns[11].Width = 250;
+            dataGridViewOrder.Columns[11].Width = 450;
 
             //各列の文字位置の指定
             dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
