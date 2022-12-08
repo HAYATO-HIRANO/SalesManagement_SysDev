@@ -251,6 +251,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.TabIndex = 39;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
             // 
             // buttonList
             // 
@@ -356,6 +357,7 @@ namespace SalesManagement_SysDev
             this.checkBoxHidden.TabIndex = 68;
             this.checkBoxHidden.Text = "非表示理由";
             this.checkBoxHidden.UseVisualStyleBackColor = true;
+            this.checkBoxHidden.CheckedChanged += new System.EventHandler(this.checkBoxHidden_CheckedChanged);
             // 
             // textBoxChHidden
             // 
@@ -394,6 +396,7 @@ namespace SalesManagement_SysDev
             this.DateTimePickerChDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.DateTimePickerChDate.Location = new System.Drawing.Point(101, 68);
             this.DateTimePickerChDate.Name = "DateTimePickerChDate";
+            this.DateTimePickerChDate.ShowCheckBox = true;
             this.DateTimePickerChDate.Size = new System.Drawing.Size(220, 30);
             this.DateTimePickerChDate.TabIndex = 62;
             // 
@@ -511,6 +514,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 28;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // timer
             // 
@@ -564,6 +568,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrder.RowTemplate.Height = 21;
             this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrder.TabIndex = 47;
+            this.dataGridViewOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
             // 
             // labelPageSize
             // 
