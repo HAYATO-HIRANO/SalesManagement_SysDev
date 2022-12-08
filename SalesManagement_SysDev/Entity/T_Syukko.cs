@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel;
 
 namespace SalesManagement_SysDev
 {
@@ -24,4 +24,40 @@ namespace SalesManagement_SysDev
         public String SyHidden { get; set; }	    //非表示理由	
 
     }
+    //データグリッド表示用
+    class T_SyukkoDsp
+    {
+        [DisplayName("出庫ID")]
+        public int SyID { get; set; }
+        [DisplayName("受注ID")]
+        public int OrID { get; set; }
+        [DisplayName("営業所ID")]
+        public int SoID { get; set; }
+        [DisplayName("営業所名")]
+        public string SoName { get; set; }
+        [DisplayName("社員ID")]
+        public int EmID { get; set; }
+        [DisplayName("社員名")]
+        public string EmName { get; set; }
+        [DisplayName("顧客ID")]
+        public int ClID { get; set; }
+        [DisplayName("顧客名")]
+        public string ClName { get; set; }
+        [DisplayName("出庫年月日")]
+        public DateTime? SyDate { get; set; }
+        [DisplayName("出庫確定フラグ")]
+        public int? SyStateFlag { get; set; }
+        [DisplayName("非表示フラグ")]
+        public int SyFlag { get; set; }
+        [DisplayName("非表示理由")]
+        public string SyHidden { get; set; }
+
+
+
+
+
+
+
+    }
+
 }

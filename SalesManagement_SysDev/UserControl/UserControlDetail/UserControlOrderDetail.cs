@@ -364,7 +364,7 @@ namespace SalesManagement_SysDev
         private void GetOrIDDataGridView()
         {
             // 受注データの取得
-            OrderDetail = orderDataAccess.GetOrIDDetailData(int.Parse(textBoxOrID.Text.Trim()));
+            OrderDetail = orderDataAccess.GetOrIDDetailDspData(int.Parse(textBoxOrID.Text.Trim()));
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();

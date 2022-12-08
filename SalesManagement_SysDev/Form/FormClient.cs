@@ -11,8 +11,6 @@ namespace SalesManagement_SysDev
 {
     public partial class FormClient : Form
     {
-        //メッセージ表示用クラスのインスタンス化
-        //MessageDsp messageDsp = new MessageDsp();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
