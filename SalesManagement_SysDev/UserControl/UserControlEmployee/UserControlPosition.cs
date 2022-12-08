@@ -12,12 +12,13 @@ namespace SalesManagement_SysDev
 {
     public partial class UserControlPosition : UserControl
     {
+        //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
-
+        //メッセージ表示用クラスのインスタンス化
         MessageDsp messageDsp = new MessageDsp();
-
+        //データベース大分類テーブルアクセス用クラスのインスタンス化
         PositionDataAccess positionDataAccess = new PositionDataAccess();
-
+        //データグリッドビュー用の役職データ
         private static List<M_Position> Position;
         public UserControlPosition()
         {
@@ -26,18 +27,10 @@ namespace SalesManagement_SysDev
 
         private void UserControlPosition_Load(object sender, EventArgs e)
         {
-
+            //データグリッドビューの設定
+            SetFormDataGridView();
         }
 
-        private void textBoxEmID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPoID_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonResist_Click(object sender, EventArgs e)
         {
@@ -193,10 +186,10 @@ namespace SalesManagement_SysDev
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //クリックされた行データをテキストボックスへ
-            textBoxPoID.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxPoName.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
-            checkBoxPoFlag.Checked = bool.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[2].Value.ToString());
-            textBoxPoHidden.Text = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPoID.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxPoName.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[1].Value.ToString();
+            checkBoxPoFlag.Checked = bool.Parse(dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[2].Value.ToString());
+            textBoxPoHidden.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[3].Value.ToString();
         }
 
         private void textBoxPoName_TextChanged(object sender, EventArgs e)
@@ -436,19 +429,26 @@ namespace SalesManagement_SysDev
         private void SetFormDataGridView()
         {
             //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "10";
+            textBoxPageSize.Text = "20";
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
-            dataGridView1.ReadOnly = true;
+            dataGridViewPo.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewPo.AllowUserToResizeRows = false;
+            dataGridViewPo.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewPo.AllowUserToAddRows = false;
             //行内をクリックすることで行を選択
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+            dataGridViewPo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //奇数行の色を変更
+            dataGridViewPo.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
-            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //データグリッドビューのデータ取得
             GetDataGridView();
+
         }
         ///////////////////////////////
         //メソッド名：SetDataGridView()
@@ -460,23 +460,23 @@ namespace SalesManagement_SysDev
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
-            dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定
-            dataGridView1.Columns[0].Width = 100;
-            dataGridView1.Columns[1].Width = 200;
-            dataGridView1.Columns[2].Width = 100;
-            dataGridView1.Columns[3].Width = 400;
+            dataGridViewPo.Columns[0].Width = 100;
+            dataGridViewPo.Columns[1].Width = 200;
+            dataGridViewPo.Columns[2].Width = 100;
+            dataGridViewPo.Columns[3].Width = 400;
 
             //各列の文字位置の指定
-            dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewPo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPo.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewPo.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPo.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Position.Count / (double)pageSize)) + "ページ";
 
-            dataGridView1.Refresh();
+            dataGridViewPo.Refresh();
         }
         ///////////////////////////////
         //メソッド名：buttonPageSizeChange_Click()
@@ -497,10 +497,10 @@ namespace SalesManagement_SysDev
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridView1.DataSource = Position.Take(pageSize).ToList();
+            dataGridViewPo.DataSource = Position.Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridView1.Refresh();
+            dataGridViewPo.Refresh();
             //ページ番号の設定
             textBoxPage.Text = "1";
         }
@@ -514,10 +514,10 @@ namespace SalesManagement_SysDev
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 2;
-            dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridView1.Refresh();
+            dataGridViewPo.Refresh();
             //ページ番号の設定
             if (pageNo + 1 > 1)
                 textBoxPage.Text = (pageNo + 1).ToString();
@@ -538,10 +538,10 @@ namespace SalesManagement_SysDev
             int lastNo = (int)Math.Ceiling(Position.Count / (double)pageSize) - 1;
             //最終ページでなければ
             if (pageNo <= lastNo)
-                dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+                dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridView1.Refresh();
+            dataGridViewPo.Refresh();
             //ページ番号の設定
             int lastPage = (int)Math.Ceiling(Position.Count / (double)pageSize);
             if (pageNo >= lastPage)
@@ -560,10 +560,10 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
             int pageNo = (int)Math.Ceiling(Position.Count / (double)pageSize) - 1;
-            dataGridView1.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridView1.Refresh();
+            dataGridViewPo.Refresh();
             //ページ番号の設定
             textBoxPage.Text = (pageNo + 1).ToString();
         }
@@ -655,10 +655,10 @@ namespace SalesManagement_SysDev
 
             int pageSize = int.Parse(textBoxPageSize.Text);
 
-            dataGridView1.DataSource = Position;
+            dataGridViewPo.DataSource = Position;
 
             labelPage.Text = "/" + ((int)Math.Ceiling(Position.Count / (double)pageSize)) + "ページ";
-            dataGridView1.Refresh();
+            dataGridViewPo.Refresh();
         }
     }
 }

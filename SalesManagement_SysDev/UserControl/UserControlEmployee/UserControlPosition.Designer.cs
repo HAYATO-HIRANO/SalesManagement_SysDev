@@ -43,7 +43,7 @@ namespace SalesManagement_SysDev
             this.labelPoName = new System.Windows.Forms.Label();
             this.textBoxPoID = new System.Windows.Forms.TextBox();
             this.labelPoID = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPo = new System.Windows.Forms.DataGridView();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
             this.labelPageSize = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@ namespace SalesManagement_SysDev
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.panelHeader2.SuspendLayout();
             this.panelInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader2
@@ -198,7 +198,6 @@ namespace SalesManagement_SysDev
             this.textBoxPoName.Name = "textBoxPoName";
             this.textBoxPoName.Size = new System.Drawing.Size(642, 34);
             this.textBoxPoName.TabIndex = 17;
-            this.textBoxPoName.TextChanged += new System.EventHandler(this.textBoxPoName_TextChanged);
             // 
             // labelPoName
             // 
@@ -219,7 +218,6 @@ namespace SalesManagement_SysDev
             this.textBoxPoID.Size = new System.Drawing.Size(41, 34);
             this.textBoxPoID.TabIndex = 15;
             this.textBoxPoID.Text = "99";
-            this.textBoxPoID.TextChanged += new System.EventHandler(this.textBoxEmID_TextChanged);
             // 
             // labelPoID
             // 
@@ -231,16 +229,15 @@ namespace SalesManagement_SysDev
             this.labelPoID.Size = new System.Drawing.Size(97, 29);
             this.labelPoID.TabIndex = 4;
             this.labelPoID.Text = "役職ID";
-            this.labelPoID.Click += new System.EventHandler(this.labelPoID_Click);
             // 
-            // dataGridView1
+            // dataGridViewPo
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(317, 419);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1019, 503);
-            this.dataGridView1.TabIndex = 7;
+            this.dataGridViewPo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPo.Location = new System.Drawing.Point(317, 419);
+            this.dataGridViewPo.Name = "dataGridViewPo";
+            this.dataGridViewPo.RowTemplate.Height = 21;
+            this.dataGridViewPo.Size = new System.Drawing.Size(1019, 503);
+            this.dataGridViewPo.TabIndex = 7;
             // 
             // buttonPageSizeChange
             // 
@@ -346,7 +343,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonFirstPage);
             this.Controls.Add(this.labelPage);
             this.Controls.Add(this.textBoxPage);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewPo);
             this.Controls.Add(this.panelInput);
             this.Controls.Add(this.panelHeader2);
             this.Name = "UserControlPosition";
@@ -355,7 +352,7 @@ namespace SalesManagement_SysDev
             this.panelHeader2.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,7 +372,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelPoName;
         private System.Windows.Forms.CheckBox checkBoxPoFlag;
         private System.Windows.Forms.TextBox textBoxPoHidden;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewPo;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
         private System.Windows.Forms.Label labelPageSize;

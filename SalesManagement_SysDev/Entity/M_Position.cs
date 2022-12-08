@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 
 namespace SalesManagement_SysDev
@@ -19,5 +20,16 @@ namespace SalesManagement_SysDev
         public int PoFlag { get; set; }         //役職管理フラグ
         public String PoHidden { get; set; }    //非表示理由		
  
+    }
+    class M_PositionDsp
+    {
+        [DisplayName("役職ＩＤ")]
+        public int PoID { get; set; }
+        [DisplayName("役職名")]
+        public int PoName { get; set; }
+        [DisplayName("非表示フラグ")]
+        public int PoFlag { get; set; }
+        [DisplayName("非表示理由")]
+        public int PoHidden { get; set; }
     }
 }
