@@ -163,11 +163,11 @@ namespace SalesManagement_SysDev//.DbAccess
                              t1.PrSafetyStock==selectCondition.PrSafetyStock&&
                              t1.ScID==selectCondition.ScID&&
                              t1.PrModelNumber.Contains(selectCondition.PrModelNumber)&&
-                             t1.PrColor.Contains(selectCondition.PrColor)
+                             t1.PrColor.Contains(selectCondition.PrColor)&&
+                             t1.PrReleaseDate==selectCondition.PrReleaseDate&&
+                             t1.PrFlag==selectCondition.PrFlag&&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
                              
-
-                             
-
                              select new
                              {
                                  t1.PrID,
@@ -185,8 +185,6 @@ namespace SalesManagement_SysDev//.DbAccess
                                  t1.PrReleaseDate,
                                  t1.PrFlag,
                                  t1.PrHidden,
-
-
                              };
 
                     // IEnumerable型のデータをList型へ
@@ -214,6 +212,454 @@ namespace SalesManagement_SysDev//.DbAccess
                     context.Dispose();
 
 
+                }
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+                }
+                if (flg == 5)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+                }
+                if (flg == 6)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+                }
+                if (flg == 7)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
+                }
+                if (flg == 8)
+                {
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             //join t4 in context.M_MajorCassifications
+                             // on t3.McID equals t4.McID
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t1.MaID == selectCondition.MaID &&
+                             t1.PrName.Contains(selectCondition.PrName) &&
+                             t1.Price == selectCondition.Price &&
+                             t1.PrSafetyStock == selectCondition.PrSafetyStock &&
+                             t1.ScID == selectCondition.ScID &&
+                             t1.PrModelNumber.Contains(selectCondition.PrModelNumber) &&
+                             t1.PrColor.Contains(selectCondition.PrColor) &&
+                             t1.PrReleaseDate == selectCondition.PrReleaseDate &&
+                             t1.PrFlag == selectCondition.PrFlag &&
+                             t1.PrHidden.Contains(selectCondition.PrHidden)
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t3.McID,
+                                 McName = (context.M_MajorCassifications.FirstOrDefault(x => x.McID == t3.McID)).McName,
+                                 t3.ScID,
+                                 t3.ScName,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        product.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McID = p.McID,
+                            McName = p.McName,
+                            ScID = p.ScID,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden,
+                        });
+                    }
+                    context.Dispose();
                 }
             }
                
