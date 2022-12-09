@@ -1060,7 +1060,7 @@ namespace SalesManagement_SysDev
             {
                 sccmb = comboBoxSc.SelectedValue.ToString();
             }
-           
+            
             //商品IDが入力されていて、なおかつメーカー名が選択されて、なおかつ小分類IDが入力されている状態  
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != ""&&sccmb!="")
             {
@@ -1111,7 +1111,7 @@ namespace SalesManagement_SysDev
                     //MaID=int.Parse(makercmb),
                     Price = int.Parse(textBoxPrice.Text),
                     PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
-                    McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
+                    //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
                     //ScID=int.Parse(sccmb),
                     PrModelNumber = textBoxPrModelNumber.Text,
                     PrColor = textBoxColor.Text,
@@ -1206,10 +1206,11 @@ namespace SalesManagement_SysDev
 
             else
             {
+                
                 M_ProductDsp selectCondition = new M_ProductDsp()
                 {
 
-
+                    
                    
                     PrName = textBoxPrName.Text,
                     Price = int.Parse(textBoxPrice.Text.Trim()),

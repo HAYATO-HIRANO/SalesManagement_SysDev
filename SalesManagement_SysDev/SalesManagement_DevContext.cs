@@ -11,6 +11,11 @@ namespace SalesManagement_SysDev
 {
     class SalesManagement_DevContext : DbContext
     {
+        public SalesManagement_DevContext():base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SalesManagement_SysDev.SalesManagement_DevContext;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        {
+
+        }
+
         public DbSet<M_Client> M_Clients { get; set; }
         public DbSet<M_Employee> M_Employees { get; set; }
         public DbSet<M_MajorCassification> M_MajorCassifications { get; set; }
