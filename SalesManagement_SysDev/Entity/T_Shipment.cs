@@ -23,4 +23,8 @@ namespace SalesManagement_SysDev
         public String ShHidden { get; set; }	    //非表示理由		
 
     }
+    class T_ShipmentDsp
+    {
+
+    }
 }
