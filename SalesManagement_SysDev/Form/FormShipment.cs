@@ -12,6 +12,10 @@ namespace SalesManagement_SysDev
 {
     public partial class FormShipment : Form
     {
+        
+
+
+
         public FormShipment()
         {
             InitializeComponent();
@@ -59,6 +63,11 @@ namespace SalesManagement_SysDev
                 userControlShipmentDetail1.Visible = false;
                 return;
             }
+        }
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
