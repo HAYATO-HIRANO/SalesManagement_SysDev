@@ -757,6 +757,7 @@ namespace SalesManagement_SysDev
 
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
+            textBoxPage.Text = "1";
             SetDataGridView();
         }
 
