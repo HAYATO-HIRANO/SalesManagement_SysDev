@@ -1060,6 +1060,7 @@ namespace SalesManagement_SysDev
             {
                 sccmb = comboBoxSc.SelectedValue.ToString();
             }
+           
             //商品IDが入力されていて、なおかつメーカー名が選択されて、なおかつ小分類IDが入力されている状態  
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != ""&&sccmb!="")
             {
@@ -1101,20 +1102,22 @@ namespace SalesManagement_SysDev
 
             }
             //商品IDが入力されていて、メーカー名と小分類IDが選択されていない状態
-            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text))
             {
                 M_ProductDsp selectCondition = new M_ProductDsp()
                 {
-                    PrID = int.Parse(textBoxPrID.Text.Trim()),
-                    PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                    
-                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                    PrColor = textBoxColor.Text.Trim(),
-                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
-                    PrFlag = Pdflg,
-                    PrHidden = textBoxPrHidden.Text.Trim()
+                    PrID = int.Parse(textBoxPrID.Text),
+                    PrName = textBoxPrName.Text,
+                    //MaID=int.Parse(makercmb),
+                    Price = int.Parse(textBoxPrice.Text),
+                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
+                    McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
+                    //ScID=int.Parse(sccmb),
+                    PrModelNumber = textBoxPrModelNumber.Text,
+                    PrColor = textBoxColor.Text,
+                    //PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
+                    //PrFlag = Pdflg,
+                    //PrHidden = textBoxPrHidden.Text
                 };
 
                 Product = ProductDataAccess.GetProductData(3, selectCondition);
@@ -1208,10 +1211,10 @@ namespace SalesManagement_SysDev
 
 
                    
-                    PrName = textBoxPrName.Text.Trim(),
+                    PrName = textBoxPrName.Text,
                     Price = int.Parse(textBoxPrice.Text.Trim()),
                     PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-
+                    McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
                     PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
