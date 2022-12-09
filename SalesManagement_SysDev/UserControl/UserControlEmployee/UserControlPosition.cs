@@ -192,16 +192,6 @@ namespace SalesManagement_SysDev
             textBoxPoHidden.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[3].Value.ToString();
         }
 
-        private void textBoxPoName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPage_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             // 8.2.2.1 妥当な役職データ取得
@@ -656,9 +646,29 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
 
             dataGridViewPo.DataSource = Position;
-
+            if (Position.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             labelPage.Text = "/" + ((int)Math.Ceiling(Position.Count / (double)pageSize)) + "ページ";
             dataGridViewPo.Refresh();
+        }
+
+        private void checkBoxPoFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPoFlag.Checked == true)
+            {
+                textBoxPoHidden.TabStop = true;
+                textBoxPoHidden.ReadOnly = false;
+                textBoxPoHidden.Enabled = true;
+            }
+            else
+            {
+                textBoxPoHidden.Text = "";
+                textBoxPoHidden.TabStop = false;
+                textBoxPoHidden.ReadOnly = true;
+                textBoxPoHidden.Enabled = false;
+            }
         }
     }
 }

@@ -173,12 +173,14 @@ namespace SalesManagement_SysDev
             // 
             // textBoxPoHidden
             // 
+            this.textBoxPoHidden.Enabled = false;
             this.textBoxPoHidden.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPoHidden.Location = new System.Drawing.Point(347, 80);
             this.textBoxPoHidden.Multiline = true;
             this.textBoxPoHidden.Name = "textBoxPoHidden";
             this.textBoxPoHidden.Size = new System.Drawing.Size(564, 94);
             this.textBoxPoHidden.TabIndex = 20;
+            this.textBoxPoHidden.Visible = false;
             // 
             // checkBoxPoFlag
             // 
@@ -190,6 +192,7 @@ namespace SalesManagement_SysDev
             this.checkBoxPoFlag.TabIndex = 18;
             this.checkBoxPoFlag.Text = "非表示フラグ";
             this.checkBoxPoFlag.UseVisualStyleBackColor = true;
+            this.checkBoxPoFlag.CheckedChanged += new System.EventHandler(this.checkBoxPoFlag_CheckedChanged);
             // 
             // textBoxPoName
             // 
@@ -253,10 +256,11 @@ namespace SalesManagement_SysDev
             // 
             this.textBoxPageSize.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxPageSize.Location = new System.Drawing.Point(1180, 388);
+            this.textBoxPageSize.MaxLength = 2;
             this.textBoxPageSize.Name = "textBoxPageSize";
-            this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
+            this.textBoxPageSize.Size = new System.Drawing.Size(28, 26);
             this.textBoxPageSize.TabIndex = 32;
-            this.textBoxPageSize.Text = "100";
+            this.textBoxPageSize.Text = "20";
             // 
             // labelPageSize
             // 
@@ -325,9 +329,8 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 25;
-            this.textBoxPage.Text = "100";
+            this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxPage.TextChanged += new System.EventHandler(this.textBoxPage_TextChanged);
             // 
             // UserControlPosition
             // 
