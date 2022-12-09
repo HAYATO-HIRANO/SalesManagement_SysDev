@@ -1055,5 +1055,10 @@ namespace SalesManagement_SysDev
             checkBoxEmFlag.Checked = false;
             textBoxEmHidden.Text = "";
         }
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

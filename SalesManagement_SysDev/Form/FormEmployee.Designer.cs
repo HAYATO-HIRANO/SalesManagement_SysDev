@@ -253,6 +253,7 @@
             this.buttonList.TabIndex = 25;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonUpdate
             // 
