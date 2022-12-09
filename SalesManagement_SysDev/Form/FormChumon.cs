@@ -109,19 +109,19 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
-            //各列幅の指定 //1510
+            //各列幅の指定 //1475
             dataGridViewOrder.Columns[0].Width = 100;
             dataGridViewOrder.Columns[1].Width = 100;
             dataGridViewOrder.Columns[2].Visible = false;
             dataGridViewOrder.Columns[3].Width = 100;
             dataGridViewOrder.Columns[4].Width = 100;
-            dataGridViewOrder.Columns[5].Width = 100;
+            dataGridViewOrder.Columns[5].Width = 150;
             dataGridViewOrder.Columns[6].Width = 100;
-            dataGridViewOrder.Columns[7].Width = 250;
-            dataGridViewOrder.Columns[8].Width = 175;
+            dataGridViewOrder.Columns[7].Width = 200;
+            dataGridViewOrder.Columns[8].Width = 200;
             dataGridViewOrder.Columns[9].Visible = false;
             dataGridViewOrder.Columns[10].Visible = false;
-            dataGridViewOrder.Columns[11].Width = 450;
+            dataGridViewOrder.Columns[11].Width = 460;
 
             //各列の文字位置の指定
             dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -239,7 +239,7 @@ namespace SalesManagement_SysDev
         //メソッド名：buttonList_Click()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：営業データの一覧表示機能
+        //機　能   ：注文データの一覧表示機能
         ///////////////////////////////
 
         private void buttonList_Click(object sender, EventArgs e)
@@ -255,7 +255,7 @@ namespace SalesManagement_SysDev
         //メソッド名：buttonNotList_Click()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：営業データの非表示一覧表示機能
+        //機　能   ：注文データの非表示一覧表示機能
         ///////////////////////////////
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
@@ -333,7 +333,7 @@ namespace SalesManagement_SysDev
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewOrder.DataSource = SalesOffice.Take(pageSize).ToList();
+            dataGridViewOrder.DataSource = Chumon.Take(pageSize).ToList();
 
             // DataGridViewを更新
             dataGridViewOrder.Refresh();
@@ -351,15 +351,15 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text);
             //最終ページの計算
-            int lastNo = (int)Math.Ceiling(SalesOffice.Count / (double)pageSize) - 1;
+            int lastNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
             //最終ページでなければ
             if (pageNo <= lastNo)
-                dataGridViewOrder.DataSource = SalesOffice.Skip(pageSize * pageNo).Take(pageSize).ToList();
+                dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
             dataGridViewOrder.Refresh();
             //ページ番号の設定
-            int lastPage = (int)Math.Ceiling(SalesOffice.Count / (double)pageSize);
+            int lastPage = (int)Math.Ceiling(Chumon.Count / (double)pageSize);
             if (pageNo >= lastPage)
                 textBoxPage.Text = lastPage.ToString();
             else
@@ -375,8 +375,8 @@ namespace SalesManagement_SysDev
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
-            int pageNo = (int)Math.Ceiling(SalesOffice.Count / (double)pageSize) - 1;
-            dataGridViewOrder.DataSource = SalesOffice.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            int pageNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
+            dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
             dataGridViewOrder.Refresh();
@@ -417,6 +417,7 @@ namespace SalesManagement_SysDev
             textBoxEmID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[3].Value.ToString();
             textBoxClID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[4].Value.ToString();
             textBoxClName.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[5].Value.ToString();
+            DateTimePickerChDate.Text= dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[6].Value.ToString();
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
             {
