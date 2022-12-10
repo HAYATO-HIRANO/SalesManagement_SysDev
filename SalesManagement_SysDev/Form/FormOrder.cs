@@ -10,6 +10,9 @@ namespace SalesManagement_SysDev
     {
         //データベース受注テーブルアクセス用クラスのインスタンス化
         OrderDataAccess orderDataAccess = new OrderDataAccess();
+        //データベース受注テーブルアクセス用クラスのインスタンス化
+        OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
+
         //データベース営業所テーブルアクセス用クラスのインスタンス化
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
@@ -25,7 +28,7 @@ namespace SalesManagement_SysDev
         private static List<T_OrderDsp> Order;
         //コンボボックス用の営業所データ
         private static List<M_SalesOffice> SalesOffice;
-
+        UserControlOrderDetail usDetail;
         public FormOrder()
         {
             InitializeComponent();
@@ -33,6 +36,7 @@ namespace SalesManagement_SysDev
 
         private void FormOrder_Load(object sender, EventArgs e)
         {
+            usDetail = new UserControlOrderDetail();
             userControlOrderDetail1.Visible = false;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
@@ -110,48 +114,48 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //営業所名の選択チェック
-            if (comboBoxSoID.SelectedIndex == -1)
-            {
-                //営業所名が選択されていません
-                MessageBox.Show("営業所名が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ////営業所名の選択チェック
+            //if (comboBoxSoID.SelectedIndex == -1)
+            //{
+            //    //営業所名が選択されていません
+            //    MessageBox.Show("営業所名が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                comboBoxSoID.Focus();
-                return false;
-            }
-            //社員IDの適否
-            if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
-            {
-                //社員IDの半角数値チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
-                {
-                    MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmID.Focus();
-                    return false;
-                }
-                //文字数
-                if (textBoxEmID.TextLength > 6)
-                {
-                    MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmID.Focus();
-                    return false;
-                }
+            //    comboBoxSoID.Focus();
+            //    return false;
+            //}
+            ////社員IDの適否
+            //if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            //{
+            //    //社員IDの半角数値チェック
+            //    if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
+            //    {
+            //        MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        textBoxEmID.Focus();
+            //        return false;
+            //    }
+            //    //文字数
+            //    if (textBoxEmID.TextLength > 6)
+            //    {
+            //        MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        textBoxEmID.Focus();
+            //        return false;
+            //    }
 
-                // 社員IDの存在チェック
-                if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
-                {
-                    MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmID.Focus();
-                    return false;
-                }
+            //    // 社員IDの存在チェック
+            //    if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
+            //    {
+            //        MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        textBoxEmID.Focus();
+            //        return false;
+            //    }
 
-            }
-            else
-            {
-                MessageBox.Show("社員ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxEmID.Focus();
-                return false;
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("社員ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    textBoxEmID.Focus();
+            //    return false;
+            //}
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
@@ -202,16 +206,17 @@ namespace SalesManagement_SysDev
                 return false;
 
             }
-            //受注日の選択チェック
-            if (DateTimePickerOrDate.Checked == false)
-            {
-                //受注日が選択されていません
-                MessageBox.Show("受注日が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ////受注日の選択チェック
+            //if (DateTimePickerOrDate.Checked == false)
+            //{
+            //    //受注日が選択されていません
+            //    MessageBox.Show("受注日が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-               　DateTimePickerOrDate.Focus();
-                return false;
-            }
-            //非表示フラグ
+            //   　DateTimePickerOrDate.Focus();
+            //    return false;
+            //}
+
+            //非表示フラグの適否
             if (checkBoxHidden.CheckState==CheckState.Indeterminate)
             {
                 MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -224,13 +229,15 @@ namespace SalesManagement_SysDev
                 checkBoxHidden.Focus();
                 return false;
             }
-            //非表示理由の適否
-            if (!String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
-            {
-                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxOrHidden.Focus();
-                return false;
-            }
+
+            ////非表示理由の適否　必要なし
+            //if (!String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
+            //{
+            //    MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    textBoxOrHidden.Focus();
+            //    return false;
+            //}
+
             //受注状態フラグ
             if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
             {
@@ -257,18 +264,23 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private T_Order GenerateDataAtRegistration()
         {
-            
+            //ログインしている社員IDの社員情報を取得する
+            M_Employee employee = orderDataAccess.GetEmIDData(FormMain.loginEmID);
+
             return new T_Order
             {
                 
-                SoID= int.Parse(comboBoxSoID.SelectedValue.ToString()),
-                EmID =int.Parse(textBoxEmID.Text.Trim()),
+                //SoID= int.Parse(comboBoxSoID.SelectedValue.ToString()),
+                //EmID =int.Parse(textBoxEmID.Text.Trim()),
+                SoID=employee.SoID,
+                EmID=employee.EmID,
                 ClID= int.Parse(textBoxClID.Text.Trim()),
                 ClCharge=textBoxClCharge.Text.Trim(),
-                OrDate=DateTime.Parse(DateTimePickerOrDate.Text),
-                OrFlag=0,
-                OrHidden=textBoxOrHidden.Text.Trim(),
-                OrStateFlag=0
+                OrDate =DateTime.Now,//現在の時刻を入れる
+                OrStateFlag = 0,
+                OrFlag = 0,
+                OrHidden=String.Empty//空文字を入れる
+                
             };
         }
         ///////////////////////////////
@@ -292,15 +304,15 @@ namespace SalesManagement_SysDev
                 if (result == DialogResult.OK)
                 {
                     //入力エリアのクリア
-                    ClearInput();
+                    //ClearInput();
+
                     //データグリッドビューの表示
                     GetDataGridView();
-
+                    
                     labelOrder.Text = "受注詳細管理";
                     buttonDetail.Text = "受注管理";
                     userControlOrderDetail1.Visible = true;
                     panelOrder.Visible = false;
-                    
                     return;
                 }
                 
@@ -383,6 +395,30 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return;
+
+            }
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -476,7 +512,15 @@ namespace SalesManagement_SysDev
                 textBoxOrID.Focus();
                 return false;
             }
+            //受注確定状態の判定
+            var order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+            if (order.OrStateFlag == 1)
+            {
+                MessageBox.Show("入力された受注IDはすでに確定されています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxOrID.Focus();
+                return false;
 
+            }
             //受注状態フラグ
             if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
             {
@@ -490,7 +534,14 @@ namespace SalesManagement_SysDev
                 checkBoxStateFlag.Focus();
                 return false;
             }
+            //詳細情報の件数チェック
+            var orderDetail = orderDetailDataAccess.GetOrIDDetailData(int.Parse(textBoxOrID.Text.Trim()));
+            if (orderDetail.Count == 0)
+            {
+                MessageBox.Show("詳細情報が登録されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
 
+            }
             return true;
         }
         ///////////////////////////////
@@ -504,15 +555,16 @@ namespace SalesManagement_SysDev
         {
            T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
 
-             return new T_Chumon
+            return new T_Chumon
             {
-                OrID= int.Parse(order.OrID.ToString()),
-                EmID= int.Parse(order.EmID.ToString()),
-                SoID= int.Parse(order.SoID.ToString()),
-                ClID= int.Parse(order.ClID.ToString()),
-                ChDate= DateTime.Today,
-                ChStateFlag=0,
-                ChFlag=0,             
+                OrID = int.Parse(order.OrID.ToString()),
+                EmID = int.Parse(order.EmID.ToString()),
+                SoID = int.Parse(order.SoID.ToString()),
+                ClID = int.Parse(order.ClID.ToString()),
+                ChDate = DateTime.Today,
+                ChStateFlag = 0,
+                ChFlag = 0,
+                ChHidden = String.Empty
             };
 
 
@@ -526,12 +578,13 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private List<T_ChumonDetail> GenerateDetailDataAtConfirm()
         {
-            List<T_OrderDetail> orderDetail = orderDataAccess.GetOrIDDetailData(int.Parse(textBoxOrID.Text.Trim()));
+            List<T_OrderDetail> orderDetail = orderDetailDataAccess.GetOrIDDetailData(int.Parse(textBoxOrID.Text.Trim()));
+            
             List<T_ChumonDetail> chumonDetail = new List<T_ChumonDetail>();
             foreach (var p in orderDetail)
             {
                 chumonDetail.Add(new T_ChumonDetail()
-                {
+                {                     
                     PrID=p.PrID,
                     ChQuantity=p.OrQuantity
                 });
@@ -644,32 +697,32 @@ namespace SalesManagement_SysDev
                 }
 
             }
-            //社員IDの適否
-            if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
-            {
-                //文字チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
-                {
-                    MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmID.Focus();
-                    return false;
-                }
-                //文字数
-                if (textBoxEmID.TextLength > 6)
-                {
-                    MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmID.Focus();
-                    return false;
-                }
-                // 社員IDの存在チェック
-                if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
-                {
-                    MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxEmID.Focus();
-                    return false;
-                }
+            ////社員IDの適否
+            //if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            //{
+            //    //文字チェック
+            //    if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
+            //    {
+            //        MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        textBoxEmID.Focus();
+            //        return false;
+            //    }
+            //    //文字数
+            //    if (textBoxEmID.TextLength > 6)
+            //    {
+            //        MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        textBoxEmID.Focus();
+            //        return false;
+            //    }
+            //    // 社員IDの存在チェック
+            //    if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
+            //    {
+            //        MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        textBoxEmID.Focus();
+            //        return false;
+            //    }
 
-            }
+            //}
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
@@ -714,6 +767,23 @@ namespace SalesManagement_SysDev
                 checkBoxHidden.Focus();
                 return false;
             }
+            //受注日範囲のチェック
+            if (dateTimePickerDateStart.Checked == true && dateTimePickerDateEnd.Checked == true)
+            {
+                if (DateTime.Parse(dateTimePickerDateStart.Text) > DateTime.Parse(dateTimePickerDateEnd.Text))
+                {
+                    MessageBox.Show("日付の範囲が不正です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dateTimePickerDateStart.Focus();
+                    return false;
+                }
+            }
+            else if (dateTimePickerDateStart.Checked == true && dateTimePickerDateEnd.Checked == false ||
+                dateTimePickerDateStart.Checked == false && dateTimePickerDateEnd.Checked == true)
+            {
+                MessageBox.Show("日付の範囲が不正です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateTimePickerDateStart.Focus();
+                return false;
+            }
             //受注状態フラグ
             if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
             {
@@ -733,314 +803,171 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-            //フラグ情報
+            //日付範囲
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+            if (dateTimePickerDateStart.Checked)
+                startDay = DateTime.Parse(dateTimePickerDateStart.Text);
+            if (dateTimePickerDateEnd.Checked)
+                endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
+
+            //非表示フラグ変換
             int orFlg = 0;
             if (checkBoxHidden.Checked == true)
             {
                 orFlg = 2;
             }
+            //受注確定フラグ変換
             int stateFlg = 0;
             if (checkBoxStateFlag.Checked == true)
             {
                 stateFlg = 1;
             }
-            // コンボボックスが未選択の場合Emptyを設定
-            string cSalesOffice = "";
-            if (comboBoxSoID.SelectedIndex != -1)
-                cSalesOffice = comboBoxSoID.SelectedValue.ToString();
-            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+
+            //// コンボボックスが未選択の場合Emptyを設定
+            //string cSalesOffice = "";
+            //if (comboBoxSoID.SelectedIndex != -1)
+            //    cSalesOffice = comboBoxSoID.SelectedValue.ToString();
+
+            //日付範囲が選択されていない
+            if (startDay == null && endDay == null)
             {
-                //検索条件のセット
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
                 {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
                     {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        SoID = int.Parse(cSalesOffice),
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate =DateTime.Parse(DateTimePickerOrDate.Text),
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            OrID = int.Parse(textBoxOrID.Text.Trim()),
+                            ClID = int.Parse(textBoxClID.Text.Trim()),
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderData(1, selectCondition);
 
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(1, selectCondition);
+                    }
+                    else
+                    {
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            OrID = int.Parse(textBoxOrID.Text.Trim()),
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderData(2, selectCondition);
+
+                    }
 
                 }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                else
                 {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
                     {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        SoID = int.Parse(cSalesOffice),
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            ClID = int.Parse(textBoxClID.Text.Trim()),
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderData(3, selectCondition);
 
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(2, selectCondition);
+                    }
+                    else
+                    {
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderData(4, selectCondition);
+
+                    }
+
 
                 }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            }
+            //日付範囲が選択されている
+            else if (startDay != null && endDay != null)
+            {
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
                 {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
                     {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        SoID = int.Parse(cSalesOffice),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            OrID = int.Parse(textBoxOrID.Text.Trim()),
+                            ClID = int.Parse(textBoxClID.Text.Trim()),
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderDateData(1, selectCondition,startDay,endDay);
 
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(3, selectCondition);
+                    }
+                    else
+                    {
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            OrID = int.Parse(textBoxOrID.Text.Trim()),
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderDateData(2, selectCondition, startDay, endDay);
+
+                    }
 
                 }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                else
                 {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
                     {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        SoID = int.Parse(cSalesOffice),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            ClID = int.Parse(textBoxClID.Text.Trim()),
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderDateData(3, selectCondition, startDay, endDay);
 
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(4, selectCondition);
-
-                }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
+                    }
+                    else
                     {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
+                        T_OrderDsp selectCondition = new T_OrderDsp()
+                        {
+                            ClCharge = textBoxClCharge.Text.Trim(),
+                            OrFlag = orFlg,
+                            OrStateFlag = stateFlg,
+                            OrHidden = textBoxOrHidden.Text.Trim()
+                        };
+                        //データの抽出
+                        Order = orderDataAccess.GetOrderDateData(4, selectCondition, startDay, endDay);
 
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(5, selectCondition);
+                    }
 
-                }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(6, selectCondition);
-
-                }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(7, selectCondition);
-
-                }
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(8, selectCondition);
 
                 }
 
             }
-            else
-            {
-
-
-
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        SoID = int.Parse(cSalesOffice),
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(9, selectCondition);
-
-                }
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        SoID = int.Parse(cSalesOffice),
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(10, selectCondition);
-
-                }
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        SoID = int.Parse(cSalesOffice),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(11, selectCondition);
-
-                }
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice != "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        SoID = int.Parse(cSalesOffice),
-                       
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(12, selectCondition);
-
-                }
-
-
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(13, selectCondition);
-
-                }
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && !String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        
-                        EmID = int.Parse(textBoxEmID.Text.Trim()),
-                        
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(14, selectCondition);
-
-                }
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && !String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        
-                        ClID = int.Parse(textBoxClID.Text.Trim()),
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate = DateTimePickerOrDate.Value,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(15, selectCondition);
-
-                }
-                if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && cSalesOffice == "" && String.IsNullOrEmpty(textBoxEmID.Text.Trim()) && String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                {
-                    T_OrderDsp selectCondition = new T_OrderDsp()
-                    {
-                        
-                        ClCharge = textBoxClCharge.Text.Trim(),
-                        OrDate =DateTime.Parse(DateTimePickerOrDate.Text).Date,
-                        OrFlag = orFlg,
-                        OrStateFlag = stateFlg,
-                        OrHidden = textBoxOrHidden.Text.Trim()
-
-                    };
-                    //データの抽出
-                    Order = orderDataAccess.GetOrderData(16, selectCondition);
-
-                }
-            }
-            
-            
 
 
 
@@ -1258,6 +1185,15 @@ namespace SalesManagement_SysDev
                 textBoxOrID.Focus();
                 return false;
             }
+            //非表示フラグの適否
+            if (checkBoxHidden.Checked == false)
+            {
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Checked = true;
+                textBoxOrHidden.Focus();
+                return false;
+
+            }
             //非表示理由の適否
             if (checkBoxHidden.Checked == true && String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
             {
@@ -1324,10 +1260,6 @@ namespace SalesManagement_SysDev
 
 
 
-        private void userControlOrderDetail1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         ///////////////////////////////
         //メソッド名：buttonFirstPage_Click()
@@ -1382,7 +1314,7 @@ namespace SalesManagement_SysDev
             ClearInput();
             GetHiddenDataGridView();
         }
-        //非表示フラグが変わった
+        //非表示フラグが変わった時
         private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxHidden.Checked == true)
@@ -1417,6 +1349,38 @@ namespace SalesManagement_SysDev
             
         }
 
-        
+        private void dataGridViewOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxOrID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxClID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxClName.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxClCharge.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[7].Value.ToString();
+            //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
+
+            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
+            {
+                checkBoxStateFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxStateFlag.Checked = true;
+            }
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBoxHidden.Checked = false;
+            }
+            else
+            {
+                checkBoxHidden.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[11].Value != null)
+            {
+                textBoxOrHidden.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
+        }
     }
 }

@@ -14,10 +14,10 @@ namespace SalesManagement_SysDev
     {
         //データベース受注テーブルアクセス用クラスのインスタンス化
         OrderDataAccess orderDataAccess = new OrderDataAccess();
+        //データベース受注テーブルアクセス用クラスのインスタンス化
+        OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
         //データベース商品テーブルアクセス用クラスのインスタンス化
         ProductDataAccess productDataAccess = new ProductDataAccess();
-        //データベース注文テーブルアクセス用クラスのインスタンス化
-        ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
@@ -33,8 +33,11 @@ namespace SalesManagement_SysDev
             //商品名名選択不可、入力不可
             textBoxPrName.TabStop = false;
             textBoxPrName.ReadOnly = true;
+            //最新の受注ID表示
+            int order=orderDataAccess.GetOrIDMaxData();
             
-
+            textBoxOrID.Text = order.ToString();
+            
             //データグリッドビューの設定
             SetFormDataGridView();
             
@@ -276,7 +279,7 @@ namespace SalesManagement_SysDev
             if (result == DialogResult.Cancel)
                 return;
             // 受注詳細情報の登録
-            bool flg = orderDataAccess.AddOrderDetailData(regOrDetail);
+            bool flg = orderDetailDataAccess.AddOrderDetailData(regOrDetail);
             if (flg == true)
             
                 MessageBox.Show("データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -284,10 +287,11 @@ namespace SalesManagement_SysDev
             else
                 MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            textBoxPrID.Text = "";
+            textBoxOrQuantity.Text = "";
             textBoxPrID.Focus();
 
-            //入力エリアのクリア
-            ClearInput();
+            
             //データグリッドビューの表示
             GetOrIDDataGridView();
 
@@ -349,7 +353,7 @@ namespace SalesManagement_SysDev
         private void GetDataGridView()
         {
             // 受注データの取得
-            OrderDetail = orderDataAccess.GetOrDetailData();
+            OrderDetail = orderDetailDataAccess.GetOrDetailData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -364,7 +368,7 @@ namespace SalesManagement_SysDev
         private void GetOrIDDataGridView()
         {
             // 受注データの取得
-            OrderDetail = orderDataAccess.GetOrIDDetailDspData(int.Parse(textBoxOrID.Text.Trim()));
+            OrderDetail = orderDetailDataAccess.GetOrIDDetailDspData(int.Parse(textBoxOrID.Text.Trim()));
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -379,6 +383,30 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return;
+
+            }
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewOrderDetail.DataSource = OrderDetail.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -493,7 +521,7 @@ namespace SalesManagement_SysDev
                 }
 
                 // 受注IDの存在チェック
-                if (!orderDataAccess.CheckOrDetailIDExistence(int.Parse(textBoxOrDetailID.Text.Trim())))
+                if (!orderDetailDataAccess.CheckOrDetailIDExistence(int.Parse(textBoxOrDetailID.Text.Trim())))
                 {
                     MessageBox.Show("入力された受注詳細IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxOrDetailID.Focus();
@@ -608,7 +636,7 @@ namespace SalesManagement_SysDev
                 return;
 
             //営業所情報の更新
-            bool flg = orderDataAccess.UpdateOrderDetailData(updOrDetail);
+            bool flg = orderDetailDataAccess.UpdateOrderDetailData(updOrDetail);
             if (flg == true)
                 MessageBox.Show("データを更新しました", "更新確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
@@ -701,8 +729,8 @@ namespace SalesManagement_SysDev
                     return false;
                 }
 
-                // 受注IDの存在チェック
-                if (!orderDataAccess.CheckOrDetailIDExistence(int.Parse(textBoxOrDetailID.Text.Trim())))
+                // 受注詳細IDの存在チェック
+                if (!orderDetailDataAccess.CheckOrDetailIDExistence(int.Parse(textBoxOrDetailID.Text.Trim())))
                 {
                     MessageBox.Show("入力された受注詳細IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxOrDetailID.Focus();
@@ -758,7 +786,8 @@ namespace SalesManagement_SysDev
         private void GenerateDataAtSelect()
         {
 
-            //検索条件のセット 全部
+            //検索条件のセット
+            //全部
             if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && !String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim())&& !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
                 T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
@@ -766,89 +795,88 @@ namespace SalesManagement_SysDev
                     OrID=int.Parse(textBoxOrID.Text.Trim()),
                     OrDetailID = int.Parse(textBoxOrDetailID.Text.Trim()),
                     PrID = int.Parse(textBoxPrID.Text.Trim()),
-                    PrName=textBoxPrName.Text.Trim()
                 };
-                OrderDetail = orderDataAccess.GetOrDetailData(1,selectCondition);
+                OrderDetail = orderDetailDataAccess.GetOrDetailData(1,selectCondition);
 
             }
+            //受注ID≠空白
             if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
             {
 
-                //受注　詳細　
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && !String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+                //詳細ID≠空白,商品ID=空白　
+                if (!String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
                 {
                     T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
                     {
                         OrID = int.Parse(textBoxOrID.Text.Trim()),
                         OrDetailID = int.Parse(textBoxOrDetailID.Text.Trim()),
-                        PrName = textBoxPrName.Text.Trim()
 
                     };
-                    OrderDetail = orderDataAccess.GetOrDetailData(2, selectCondition);
+                    OrderDetail = orderDetailDataAccess.GetOrDetailData(2, selectCondition);
 
                 }
-                //受注　商品
-                else if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+                //詳細ID=空白,商品ID≠空白　
+                else if (String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
                 {
                     T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
                     {
                         OrID = int.Parse(textBoxOrID.Text.Trim()),
                         PrID = int.Parse(textBoxPrID.Text.Trim()),
-                        PrName = textBoxPrName.Text.Trim()
 
                     };
-                    OrderDetail = orderDataAccess.GetOrDetailData(3, selectCondition);
+                    OrderDetail = orderDetailDataAccess.GetOrDetailData(3, selectCondition);
 
                 }
-                //受注　
-                else if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+                //詳細ID=空白,商品ID=空白　
+                else if (String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
                 {
                     T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
                     {
                         OrID = int.Parse(textBoxOrID.Text.Trim()),
-                        PrName = textBoxPrName.Text.Trim()
 
                     };
-                    OrderDetail = orderDataAccess.GetOrDetailData(4, selectCondition);
+                    OrderDetail = orderDetailDataAccess.GetOrDetailData(4, selectCondition);
 
                 }
-
-            }            
-                //詳細 商品
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
-                {
-                    T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
-                    {
-                        OrDetailID = int.Parse(textBoxOrDetailID.Text.Trim()),
-                        PrID = int.Parse(textBoxPrID.Text.Trim()),
-                        PrName = textBoxPrName.Text.Trim()
-
-                    };
-                OrderDetail = orderDataAccess.GetOrDetailData(5, selectCondition);
 
             }
-            //商品
-            else if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
-                {
-                    T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
-                    {
-                        PrID = int.Parse(textBoxPrID.Text.Trim()),
-                        PrName = textBoxPrName.Text.Trim()
-
-                    };
-                OrderDetail = orderDataAccess.GetOrDetailData(6, selectCondition);
-
-            }
-            //詳細
-            else if (String.IsNullOrEmpty(textBoxOrID.Text.Trim()) && !String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()) && String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            //受注=空白
+            //詳細ID≠空白
+            else if (!String.IsNullOrEmpty(textBoxOrDetailID.Text.Trim()))
+            {
+                //商品ID≠空白
+                if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
                 {
                     T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
                     {
                         OrDetailID = int.Parse(textBoxOrDetailID.Text.Trim()),
-                        PrName = textBoxPrName.Text.Trim()
+                        PrID = int.Parse(textBoxPrID.Text.Trim()),
 
                     };
-                OrderDetail = orderDataAccess.GetOrDetailData(7, selectCondition);
+                    OrderDetail = orderDetailDataAccess.GetOrDetailData(5, selectCondition);
+
+                }
+                //商品=空白
+                else if (String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+                {
+                    T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
+                    {
+                        OrDetailID = int.Parse(textBoxOrDetailID.Text.Trim()),
+
+                    };
+                    OrderDetail = orderDetailDataAccess.GetOrDetailData(6, selectCondition);
+
+                }
+            }
+            //受注ID=空白,詳細ID=空白
+            //商品ID≠空白
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+                {
+                    T_OrderDetailDsp selectCondition = new T_OrderDetailDsp()
+                    {
+                        PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    };
+                OrderDetail = orderDetailDataAccess.GetOrDetailData(7, selectCondition);
 
             }
         }
@@ -1015,7 +1043,7 @@ namespace SalesManagement_SysDev
                 }
 
                 // 受注IDの存在チェック
-                if (!orderDataAccess.CheckOrDetailIDExistence(int.Parse(textBoxOrDetailID.Text.Trim())))
+                if (!orderDetailDataAccess.CheckOrDetailIDExistence(int.Parse(textBoxOrDetailID.Text.Trim())))
                 {
                     MessageBox.Show("入力された受注詳細IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxOrDetailID.Focus();
@@ -1048,7 +1076,7 @@ namespace SalesManagement_SysDev
                 return;
 
             // 受注詳細情報の削除
-            bool flg = orderDataAccess.DeleteOrDetailData(int.Parse(textBoxOrDetailID.Text.Trim()));
+            bool flg = orderDetailDataAccess.DeleteOrDetailData(int.Parse(textBoxOrDetailID.Text.Trim()));
             if (flg == true)
                 MessageBox.Show("データを削除しました", "削除確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
@@ -1074,11 +1102,12 @@ namespace SalesManagement_SysDev
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
             textBoxOrID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxOrDetailID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[2].Value.ToString();
-            textBoxPrID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[3].Value.ToString();
-            textBoxPrName.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[4].Value.ToString();
-            textBoxPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[5].Value.ToString();
-            textBoxOrQuantity.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxOrDetailID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxPrID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxPrName.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxOrQuantity.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxOrTotalPrice.Text=dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[6].Value.ToString();
         }
     }
 }

@@ -42,24 +42,24 @@ namespace SalesManagement_SysDev
         //          ：一致データありの場合True
         //          ：一致データなしの場合False
         ///////////////////////////////
-        public bool CheckOrDetailIDExistence(int orDetailID)
-        {
-            bool flg = false;
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                //受注詳細IDで一致するデータが存在するか
-                flg = context.T_OrderDetails.Any(x => x.OrDetailID == orDetailID);
-                context.Dispose();
+        //public bool CheckOrDetailIDExistence(int orDetailID)
+        //{
+        //    bool flg = false;
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
+        //        //受注詳細IDで一致するデータが存在するか
+        //        flg = context.T_OrderDetails.Any(x => x.OrDetailID == orDetailID);
+        //        context.Dispose();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            return flg;
-        }
+        //    }
+        //    return flg;
+        //}
 
         ///////////////////////////////
         //メソッド名：AddOrderData()
@@ -95,23 +95,23 @@ namespace SalesManagement_SysDev
         //          ：登録成功の場合True
         //          ：登録失敗の場合False
         ///////////////////////////////
-        public bool AddOrderDetailData(T_OrderDetail regOrderDetail)
-        {
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                context.T_OrderDetails.Add(regOrderDetail);
-                context.SaveChanges();
-                context.Dispose();
+        //public bool AddOrderDetailData(T_OrderDetail regOrderDetail)
+        //{
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
+        //        context.T_OrderDetails.Add(regOrderDetail);
+        //        context.SaveChanges();
+        //        context.Dispose();
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
 
         ///////////////////////////////
         //メソッド名：GetOrIDData()
@@ -147,27 +147,27 @@ namespace SalesManagement_SysDev
         //戻り値   ：確定用受注詳細データ
         //機　能   ：同じ受注ID全ての受注詳細情報
         /////////////////////////////////////////
-        public List<T_OrderDetail> GetOrIDDetailData(int orID)
-        {
-            List<T_OrderDetail> orderDetail = new List<T_OrderDetail>();
+        //public List<T_OrderDetail> GetOrIDDetailData(int orID)
+        //{
+        //    List<T_OrderDetail> orderDetail = new List<T_OrderDetail>();
 
-            try
-            {
-                var context = new SalesManagement_DevContext();
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
 
-                orderDetail = context.T_OrderDetails.Where(x => x.OrID == orID).ToList();
+        //        orderDetail = context.T_OrderDetails.Where(x => x.OrID == orID).ToList();
 
-                context.SaveChanges();
-                context.Dispose();
+        //        context.SaveChanges();
+        //        context.Dispose();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            return orderDetail;
-        }
+        //    }
+        //    return orderDetail;
+        //}
 
         ///////////////////////////////
         //メソッド名：UpdateStateFlag()
@@ -234,32 +234,32 @@ namespace SalesManagement_SysDev
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool UpdateOrderDetailData(T_OrderDetail updOrderDetail)
-        {
-            try
-            {
-                var context = new SalesManagement_DevContext();
+        //public bool UpdateOrderDetailData(T_OrderDetail updOrderDetail)
+        //{
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
 
-                var OrderDetail = context.T_OrderDetails.Single(x => x.OrDetailID == updOrderDetail.OrDetailID);
-                OrderDetail.OrID = updOrderDetail.OrID;
-                OrderDetail.PrID = updOrderDetail.PrID;
-                OrderDetail.OrQuantity = updOrderDetail.OrQuantity;
-                OrderDetail.OrTotalPrice = updOrderDetail.OrTotalPrice;
-
-
+        //        var OrderDetail = context.T_OrderDetails.Single(x => x.OrDetailID == updOrderDetail.OrDetailID);
+        //        OrderDetail.OrID = updOrderDetail.OrID;
+        //        OrderDetail.PrID = updOrderDetail.PrID;
+        //        OrderDetail.OrQuantity = updOrderDetail.OrQuantity;
+        //        OrderDetail.OrTotalPrice = updOrderDetail.OrTotalPrice;
 
 
-                context.SaveChanges();
-                context.Dispose();
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
+
+        //        context.SaveChanges();
+        //        context.Dispose();
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
         ///////////////////////////////
         //メソッド名：DeleteDetailData()
         //引　数   ：受注詳細データ
@@ -268,24 +268,51 @@ namespace SalesManagement_SysDev
         //          ：削除成功の場合True
         //          ：削除失敗の場合False
         ///////////////////////////////
-        public bool DeleteOrDetailData(int delOrDetailID)
+        //public bool DeleteOrDetailData(int delOrDetailID)
+        //{
+        //    try
+        //    {
+
+        //        var context = new SalesManagement_DevContext();
+        //        var OrDetail = context.T_OrderDetails.Single(x => x.OrDetailID == delOrDetailID);
+        //        context.T_OrderDetails.Remove(OrDetail);
+        //        context.SaveChanges();
+        //        context.Dispose();
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false;
+        //    }
+        //}
+        ///////////////////////////////
+        //メソッド名：GetOrIDMaxData()
+        //引　数   :なし
+        //戻り値   ：受注ID
+        //機　能   ：最後の受注IDの取得
+        ///////////////////////////////
+        public int GetOrIDMaxData()
         {
+            int orID=new int();
+
             try
             {
-
                 var context = new SalesManagement_DevContext();
-                var OrDetail = context.T_OrderDetails.Single(x => x.OrDetailID == delOrDetailID);
-                context.T_OrderDetails.Remove(OrDetail);
-                context.SaveChanges();
+
+               var order = context.T_Orders.ToList();
+                orID = order[order.Count-1].OrID;
                 context.Dispose();
 
-                return true;
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+
             }
+            return orID;
         }
 
         ///////////////////////////////
@@ -360,108 +387,108 @@ namespace SalesManagement_SysDev
         //戻り値   ：全受注詳細データ
         //機　能   ：全受注詳細データの取得
         ///////////////////////////////
-        public List<T_OrderDetailDsp> GetOrDetailData()
-        {
-            List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+        //public List<T_OrderDetailDsp> GetOrDetailData()
+        //{
+        //    List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
 
-            try
-            {
-                var context = new SalesManagement_DevContext();
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
 
-                var tb = from t1 in context.T_OrderDetails
-                         join t2 in context.T_Orders
-                         on t1.OrID equals t2.OrID
-                         join t3 in context.M_Products
-                         on t1.PrID equals t3.PrID
-                         where t2.OrFlag == 0
-                         select new
-                         {
-                             t1.OrID,
-                             t1.OrDetailID,
-                             t1.PrID,
-                             t3.PrName,
-                             t3.Price,
-                             t1.OrQuantity,
-                             t1.OrTotalPrice,
-                         };
-                foreach (var p in tb)
-                {
-                    orDetail.Add(new T_OrderDetailDsp()
-                    {
-                        OrID = p.OrID,
-                        OrDetailID = p.OrDetailID,
-                        PrID = p.PrID,
-                        PrName = p.PrName,
-                        Price = p.Price,
-                        OrQuantity = p.OrQuantity,
-                        OrTotalPrice = p.OrTotalPrice,
+        //        var tb = from t1 in context.T_OrderDetails
+        //                 join t2 in context.T_Orders
+        //                 on t1.OrID equals t2.OrID
+        //                 join t3 in context.M_Products
+        //                 on t1.PrID equals t3.PrID
+        //                 where t2.OrFlag == 0
+        //                 select new
+        //                 {
+        //                     t1.OrID,
+        //                     t1.OrDetailID,
+        //                     t1.PrID,
+        //                     t3.PrName,
+        //                     t3.Price,
+        //                     t1.OrQuantity,
+        //                     t1.OrTotalPrice,
+        //                 };
+        //        foreach (var p in tb)
+        //        {
+        //            orDetail.Add(new T_OrderDetailDsp()
+        //            {
+        //                OrID = p.OrID,
+        //                OrDetailID = p.OrDetailID,
+        //                PrID = p.PrID,
+        //                PrName = p.PrName,
+        //                Price = p.Price,
+        //                OrQuantity = p.OrQuantity,
+        //                OrTotalPrice = p.OrTotalPrice,
 
 
-                    });
-                }
-                context.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            });
+        //        }
+        //        context.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            return orDetail;
-        }
+        //    }
+        //    return orDetail;
+        //}
         ///////////////////////////////
         //メソッド名：GetOrIDDetailDspData()
         //引　数   ：受注ID
         //戻り値   ：受注IDの全データグリッド詳細用データ
         //機　能   ：受注IDのデータグリッド表示用詳細データの取得
         ///////////////////////////////
-        public List<T_OrderDetailDsp> GetOrIDDetailDspData(int orID)
-        {
-            List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+        //public List<T_OrderDetailDsp> GetOrIDDetailDspData(int orID)
+        //{
+        //    List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
 
-            try
-            {
-                var context = new SalesManagement_DevContext();
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
 
-                var tb = from t1 in context.T_OrderDetails
-                         join t2 in context.T_Orders
-                         on t1.OrID equals t2.OrID
-                         join t3 in context.M_Products
-                         on t1.PrID equals t3.PrID
-                         where t1.OrID == orID && t2.OrFlag == 0
-                         select new
-                         {
-                             t1.OrID,
-                             t1.OrDetailID,
-                             t1.PrID,
-                             t3.PrName,
-                             t3.Price,
-                             t1.OrQuantity,
-                             t1.OrTotalPrice,
-                         };
-                foreach (var p in tb)
-                {
-                    orDetail.Add(new T_OrderDetailDsp()
-                    {
-                        OrID = p.OrID,
-                        OrDetailID = p.OrDetailID,
-                        PrID = p.PrID,
-                        PrName = p.PrName,
-                        Price = p.Price,
-                        OrQuantity = p.OrQuantity,
-                        OrTotalPrice = p.OrTotalPrice,
+        //        var tb = from t1 in context.T_OrderDetails
+        //                 join t2 in context.T_Orders
+        //                 on t1.OrID equals t2.OrID
+        //                 join t3 in context.M_Products
+        //                 on t1.PrID equals t3.PrID
+        //                 where t1.OrID == orID && t2.OrFlag == 0
+        //                 select new
+        //                 {
+        //                     t1.OrID,
+        //                     t1.OrDetailID,
+        //                     t1.PrID,
+        //                     t3.PrName,
+        //                     t3.Price,
+        //                     t1.OrQuantity,
+        //                     t1.OrTotalPrice,
+        //                 };
+        //        foreach (var p in tb)
+        //        {
+        //            orDetail.Add(new T_OrderDetailDsp()
+        //            {
+        //                OrID = p.OrID,
+        //                OrDetailID = p.OrDetailID,
+        //                PrID = p.PrID,
+        //                PrName = p.PrName,
+        //                Price = p.Price,
+        //                OrQuantity = p.OrQuantity,
+        //                OrTotalPrice = p.OrTotalPrice,
 
 
-                    });
-                }
-                context.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            });
+        //        }
+        //        context.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            return orDetail;
-        }
+        //    }
+        //    return orDetail;
+        //}
 
         ///////////////////////////////
         //メソッド名：GetOrderData() オーバーロード
@@ -487,11 +514,8 @@ namespace SalesManagement_SysDev
                              on t1.ClID equals t4.ClID
                              where
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.SoID == selectCondition.SoID &&
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
                              t1.OrHidden.Contains(selectCondition.OrHidden)
@@ -542,11 +566,7 @@ namespace SalesManagement_SysDev
                              on t1.ClID equals t4.ClID
                              where
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.SoID == selectCondition.SoID &&
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
-
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
                              t1.OrHidden.Contains(selectCondition.OrHidden)
@@ -596,11 +616,8 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.SoID == selectCondition.SoID &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
                              t1.OrHidden.Contains(selectCondition.OrHidden)
@@ -650,11 +667,7 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.SoID == selectCondition.SoID &&
-
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
                              t1.OrHidden.Contains(selectCondition.OrHidden)
@@ -694,115 +707,31 @@ namespace SalesManagement_SysDev
                         });
                     }
                 }
-                if (flg == 5)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
-                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
 
 
-                        });
-                    }
-                }
-                if (flg == 6)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
+            }
+            return order;
+        }
+        ///////////////////////////////
+        //メソッド名：GetOrderDateData() オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：条件一致受注データ
+        //機　能   ：条件一致受注データの取得
+        ///////////////////////////////
+        public List<T_OrderDsp> GetOrderDateData(int flg, T_OrderDsp selectCondition,DateTime? startDay, DateTime? endDay)
+        {
+            List<T_OrderDsp> order = new List<T_OrderDsp>();
 
-
-                        });
-                    }
-                }
-                if (flg == 7)
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                if (flg == 1)
                 {
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
@@ -815,10 +744,13 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
+                             t1.OrHidden.Contains(selectCondition.OrHidden)&&
+                             t1.OrDate >=startDay&&
+                             t1.OrDate <= endDay 
+
+
                              select new
                              {
                                  t1.OrID,
@@ -855,7 +787,7 @@ namespace SalesManagement_SysDev
                         });
                     }
                 }
-                if (flg == 8)
+                if (flg == 2)
                 {
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
@@ -866,65 +798,13 @@ namespace SalesManagement_SysDev
                              on t1.ClID equals t4.ClID
                              where
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
+                             t1.OrHidden.Contains(selectCondition.OrHidden)&&
+                             t1.OrDate >= startDay &&
+                             t1.OrDate <= endDay
 
-                        });
-                    }
-                }
-                if (flg == 9)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.SoID == selectCondition.SoID &&
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
-                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
                              select new
                              {
                                  t1.OrID,
@@ -961,273 +841,7 @@ namespace SalesManagement_SysDev
                         });
                     }
                 }
-                if (flg == 10)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-
-                             where
-
-                             t1.SoID == selectCondition.SoID &&
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
-
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-
-
-                        });
-                    }
-                }
-                if (flg == 11)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.SoID == selectCondition.SoID &&
-                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-
-
-                        });
-                    }
-                }
-                if (flg == 12)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.SoID == selectCondition.SoID &&
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-
-
-                        });
-                    }
-                }
-                if (flg == 13)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
-                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-
-
-                        });
-                    }
-                }
-                if (flg == 14)
-                {
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             join t3 in context.M_Employees
-                             on t1.EmID equals t3.EmID
-                             join t4 in context.M_Clients
-                             on t1.ClID equals t4.ClID
-                             where
-                             t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
-                             t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
-                             t1.OrFlag == selectCondition.OrFlag &&
-                             t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.SoID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t3.EmName,
-                                 t1.ClID,
-                                 t4.ClName,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-                    foreach (var p in tb)
-                    {
-                        order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoID = p.SoID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            ClID = p.ClID,
-                            ClName = p.ClName,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-
-
-                        });
-                    }
-                }
-                if (flg == 15)
+                if (flg == 3)
                 {
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
@@ -1239,10 +853,12 @@ namespace SalesManagement_SysDev
                              where
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate == selectCondition.OrDate &&
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
+                             t1.OrHidden.Contains(selectCondition.OrHidden) && 
+                             t1.OrDate >= startDay &&
+                             t1.OrDate <= endDay
+
                              select new
                              {
                                  t1.OrID,
@@ -1279,7 +895,7 @@ namespace SalesManagement_SysDev
                         });
                     }
                 }
-                if (flg == 16)
+                if (flg == 4)
                 {
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
@@ -1290,10 +906,12 @@ namespace SalesManagement_SysDev
                              on t1.ClID equals t4.ClID
                              where
                              t1.ClCharge.Contains(selectCondition.ClCharge) &&
-                             t1.OrDate.Date==selectCondition.OrDate&&                          
                              t1.OrFlag == selectCondition.OrFlag &&
                              t1.OrStateFlag == selectCondition.OrStateFlag &&
-                             t1.OrHidden.Contains(selectCondition.OrHidden)
+                             t1.OrHidden.Contains(selectCondition.OrHidden) && 
+                             t1.OrDate >= startDay &&
+                             t1.OrDate <= endDay
+
                              select new
                              {
                                  t1.OrID,
@@ -1330,6 +948,7 @@ namespace SalesManagement_SysDev
                         });
                     }
                 }
+
 
                 context.Dispose();
             }
@@ -1413,289 +1032,311 @@ namespace SalesManagement_SysDev
         //戻り値   ：条件一致受注詳細データ
         //機　能   ：条件一致受注詳細データの取得
         ///////////////////////////////
-        public List<T_OrderDetailDsp> GetOrDetailData(int flg, T_OrderDetailDsp selectCondition)
+        //public List<T_OrderDetailDsp> GetOrDetailData(int flg, T_OrderDetailDsp selectCondition)
+        //{
+        //    List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+
+        //    try
+        //    {
+
+        //        var context = new SalesManagement_DevContext();
+        //        if (flg == 1)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+        //                     t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
+        //                     t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) 
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+        //        if (flg == 2)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+        //                     t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) 
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+        //        if (flg == 3)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+        //                     t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) 
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+        //        if (flg == 4)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) 
+
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+        //        if (flg == 5)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
+        //                     t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) 
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+        //        if (flg == 6)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) 
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+        //        if (flg == 7)
+        //        {
+        //            var tb = from t1 in context.T_OrderDetails
+        //                     join t2 in context.M_Products
+        //                     on t1.PrID equals t2.PrID
+
+        //                     where
+        //                     t1.PrID.ToString().Contains(selectCondition.PrID.ToString())
+
+        //                     select new
+        //                     {
+        //                         t1.OrID,
+        //                         t1.OrDetailID,
+        //                         t1.PrID,
+        //                         t2.PrName,
+        //                         t2.Price,
+        //                         t1.OrQuantity,
+        //                         t1.OrTotalPrice
+
+        //                     };
+        //            foreach (var p in tb)
+        //            {
+        //                orDetail.Add(new T_OrderDetailDsp()
+        //                {
+        //                    OrID = p.OrID,
+        //                    OrDetailID = p.OrDetailID,
+        //                    PrID = p.PrID,
+        //                    PrName = p.PrName,
+        //                    Price = p.Price,
+        //                    OrQuantity = p.OrQuantity,
+        //                    OrTotalPrice = p.OrTotalPrice
+
+        //                });
+        //            }
+
+        //        }
+
+        //        context.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        //    }
+        //    return orDetail;
+
+        //}
+        //＊EmployeeDataAccessに移す
+        ///////////////////////////////
+        //メソッド名：GetEmIDData()
+        //引　数   :社員ID
+        //戻り値   ：社員IDの受注データ
+        //機　能   ：社員IDの社員情報取得
+        ///////////////////////////////
+        public M_Employee GetEmIDData(int emID)
         {
-            List<T_OrderDetailDsp> orDetail = new List<T_OrderDetailDsp>();
+            M_Employee employee = new M_Employee();
 
             try
             {
-
                 var context = new SalesManagement_DevContext();
-                if (flg == 1)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
 
-                             where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
-                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.PrName.Contains(selectCondition.PrName)
+                employee = context.M_Employees.Single(x => x.EmID == emID && x.EmFlag == 0);
 
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-                if (flg == 2)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
-
-                             where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
-                             t2.PrName.Contains(selectCondition.PrName)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-                if (flg == 3)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
-
-                             where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.PrName.Contains(selectCondition.PrName)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-                if (flg == 4)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
-
-                             where
-                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-
-                             t2.PrName.Contains(selectCondition.PrName)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-                if (flg == 5)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
-
-                             where
-                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
-                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.PrName.Contains(selectCondition.PrName)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-                if (flg == 6)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
-
-                             where
-                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.PrName.Contains(selectCondition.PrName)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-                if (flg == 7)
-                {
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.M_Products
-                             on t1.PrID equals t2.PrID
-
-                             where
-                             t1.OrDetailID.ToString().Contains(selectCondition.OrDetailID.ToString()) &&
-                             t2.PrName.Contains(selectCondition.PrName)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t1.OrDetailID,
-                                 t1.PrID,
-                                 t2.PrName,
-                                 t2.Price,
-                                 t1.OrQuantity,
-                                 t1.OrTotalPrice
-
-                             };
-                    foreach (var p in tb)
-                    {
-                        orDetail.Add(new T_OrderDetailDsp()
-                        {
-                            OrID = p.OrID,
-                            OrDetailID = p.OrDetailID,
-                            PrID = p.PrID,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            OrQuantity = p.OrQuantity,
-                            OrTotalPrice = p.OrTotalPrice
-
-                        });
-                    }
-
-                }
-
+                context.SaveChanges();
                 context.Dispose();
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            return orDetail;
-
+            return employee;
         }
 
 
