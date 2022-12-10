@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                flg = context.M_Products.Any(x => x.PrID==prID&&x.PrFlag==0);
+                flg = context.M_Products.Any(x => x.PrID==prID);//
                 context.Dispose();
             }catch(Exception ex)
             {
@@ -159,8 +159,8 @@ namespace SalesManagement_SysDev//.DbAccess
                              where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
                              t1.MaID==selectCondition.MaID&&
                              t1.PrName.Contains(selectCondition.PrName)&&
-                             t1.Price==selectCondition.Price&&
-                             t1.PrSafetyStock==selectCondition.PrSafetyStock&&
+                             //t1.Price==selectCondition.Price&&
+                             //t1.PrSafetyStock==selectCondition.PrSafetyStock&&
                              t1.ScID==selectCondition.ScID&&
                              t1.PrModelNumber.Contains(selectCondition.PrModelNumber)&&
                              t1.PrColor.Contains(selectCondition.PrColor)&&

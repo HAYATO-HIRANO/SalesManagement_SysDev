@@ -946,6 +946,12 @@ namespace SalesManagement_SysDev
                     textBoxPrice.Focus();
                     return false;
                 }
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+                    messageDsp.DspMsg("M0413");
+                    textBoxPrice.Focus();
+                    return false;
+                }
             }
             
 
@@ -1061,6 +1067,8 @@ namespace SalesManagement_SysDev
                 sccmb = comboBoxSc.SelectedValue.ToString();
             }
             
+
+
             //商品IDが入力されていて、なおかつメーカー名が選択されて、なおかつ小分類IDが入力されている状態  
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != ""&&sccmb!="")
             {
@@ -1104,21 +1112,64 @@ namespace SalesManagement_SysDev
             //商品IDが入力されていて、メーカー名と小分類IDが選択されていない状態
             else if (!String.IsNullOrEmpty(textBoxPrID.Text))
             {
-                M_ProductDsp selectCondition = new M_ProductDsp()
+                M_ProductDsp selectCondition; //= new M_ProductDsp()
+                
+                if (String.IsNullOrEmpty(textBoxPrice.Text))
                 {
-                    PrID = int.Parse(textBoxPrID.Text),
-                    PrName = textBoxPrName.Text,
-                    //MaID=int.Parse(makercmb),
-                    Price = int.Parse(textBoxPrice.Text),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
-                    //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
-                    //ScID=int.Parse(sccmb),
-                    PrModelNumber = textBoxPrModelNumber.Text,
-                    PrColor = textBoxColor.Text,
-                    //PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
-                    //PrFlag = Pdflg,
-                    //PrHidden = textBoxPrHidden.Text
-                };
+                    selectCondition = new M_ProductDsp()
+                    {
+                        PrID = int.Parse(textBoxPrID.Text),
+                        PrName = textBoxPrName.Text,
+                        //MaID=int.Parse(makercmb),
+                        //Price = int.Parse(textBoxPrice.Text),
+                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
+                        //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        //ScID=int.Parse(sccmb),
+                        PrModelNumber = textBoxPrModelNumber.Text,
+                        PrColor = textBoxColor.Text,
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
+                        PrFlag = Pdflg,
+                        PrHidden = textBoxPrHidden.Text
+                    };
+                }
+                else if (String.IsNullOrEmpty(textBoxPrSafetyStock.Text))
+                {
+                    selectCondition = new M_ProductDsp()
+                    {
+                        PrID = int.Parse(textBoxPrID.Text),
+                        PrName = textBoxPrName.Text,
+                        //MaID=int.Parse(makercmb),
+                        Price = int.Parse(textBoxPrice.Text),
+                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
+                        //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        //ScID=int.Parse(sccmb),
+                        PrModelNumber = textBoxPrModelNumber.Text,
+                        PrColor = textBoxColor.Text,
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
+                        PrFlag = Pdflg,
+                        PrHidden = textBoxPrHidden.Text
+                    };
+                }
+
+                else
+                {
+                    selectCondition = new M_ProductDsp()
+                    {
+
+
+                        PrID=int.Parse(textBoxPrID.Text),
+                        PrName = textBoxPrName.Text,
+                        Price = int.Parse(textBoxPrice.Text.Trim()),
+                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                       // McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                        PrColor = textBoxColor.Text.Trim(),
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                        PrFlag = Pdflg,
+                        PrHidden = textBoxPrHidden.Text.Trim()
+                    };
+                }
+                
 
                 Product = ProductDataAccess.GetProductData(3, selectCondition);
 
@@ -1206,22 +1257,65 @@ namespace SalesManagement_SysDev
 
             else
             {
-                
-                M_ProductDsp selectCondition = new M_ProductDsp()
+
+                M_ProductDsp selectCondition;
+                if (String.IsNullOrEmpty(textBoxPrice.Text))
                 {
 
-                    
-                   
-                    PrName = textBoxPrName.Text,
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                    McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
-                    PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                    PrColor = textBoxColor.Text.Trim(),
-                    PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                    PrFlag = Pdflg,
-                    PrHidden = textBoxPrHidden.Text.Trim()
-                };
+                    selectCondition = new M_ProductDsp()
+                    {
+
+
+
+                        PrName = textBoxPrName.Text,
+                        //Price = int.Parse(textBoxPrice.Text.Trim()),
+                        //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                        //McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                        PrColor = textBoxColor.Text.Trim(),
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                        PrFlag = Pdflg,
+                        PrHidden = textBoxPrHidden.Text.Trim()
+                    };
+
+                }
+                else if (String.IsNullOrEmpty(textBoxPrSafetyStock.Text))
+                {
+                    selectCondition = new M_ProductDsp()
+                    {
+
+
+
+                        PrName = textBoxPrName.Text,
+                        Price = int.Parse(textBoxPrice.Text.Trim()),
+                        //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                        McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                        PrColor = textBoxColor.Text.Trim(),
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                        PrFlag = Pdflg,
+                        PrHidden = textBoxPrHidden.Text.Trim()
+                    };
+                }
+                else
+                {
+
+                    selectCondition = new M_ProductDsp()
+                    {
+
+
+
+                        PrName = textBoxPrName.Text,
+                        Price = int.Parse(textBoxPrice.Text.Trim()),
+                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                        McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        PrModelNumber = textBoxPrModelNumber.Text.Trim(),
+                        PrColor = textBoxColor.Text.Trim(),
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                        PrFlag = Pdflg,
+                        PrHidden = textBoxPrHidden.Text.Trim()
+                    };
+                }
                 Product = ProductDataAccess.GetProductData(8, selectCondition);
             }
         }

@@ -52,6 +52,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.textBoxSyID = new System.Windows.Forms.TextBox();
             this.labelShID = new System.Windows.Forms.Label();
             this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
@@ -79,7 +80,6 @@ namespace SalesManagement_SysDev
             this.buttonDetail = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.userControlShipmentDetail1 = new SalesManagement_SysDev.UserControlShipmentDetail();
-            this.textBoxClName = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
             this.panelShipment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -347,6 +347,17 @@ namespace SalesManagement_SysDev
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 11;
             // 
+            // textBoxClName
+            // 
+            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
+            this.textBoxClName.Enabled = false;
+            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
+            this.textBoxClName.Name = "textBoxClName";
+            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.TabIndex = 68;
+            // 
             // textBoxSyID
             // 
             this.textBoxSyID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -579,6 +590,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonConfirm
             // 
@@ -643,17 +655,6 @@ namespace SalesManagement_SysDev
             this.userControlShipmentDetail1.Name = "userControlShipmentDetail1";
             this.userControlShipmentDetail1.Size = new System.Drawing.Size(1920, 980);
             this.userControlShipmentDetail1.TabIndex = 19;
-            // 
-            // textBoxClName
-            // 
-            this.textBoxClName.BackColor = System.Drawing.Color.Silver;
-            this.textBoxClName.Enabled = false;
-            this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
-            this.textBoxClName.Name = "textBoxClName";
-            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
-            this.textBoxClName.TabIndex = 68;
             // 
             // FormShipment
             // 
