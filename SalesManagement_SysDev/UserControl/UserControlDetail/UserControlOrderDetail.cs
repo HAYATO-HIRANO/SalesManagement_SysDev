@@ -106,12 +106,7 @@ namespace SalesManagement_SysDev
 
         }
 
-        ///////一覧表示////////
-        private void buttonList_Click(object sender, EventArgs e)
-        {
-
-            GetDataGridView();
-        }
+        
         ///////////////受注詳細情報登録////////////////////
 
         private void buttonRegist_Click(object sender, EventArgs e)
@@ -654,19 +649,19 @@ namespace SalesManagement_SysDev
         //検索機能
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            //妥当な受注詳細データ取得
+            //8.2.3.1妥当な受注詳細データ取得
             if (!GetValidDataAtSelect())
                 return;
 
-            // 受注詳細情報抽出
+            //8.2.3.2受注詳細情報抽出
             GenerateDataAtSelect();
 
-            //  受注詳細抽出結果表示
+            // 8.2.3.3 受注詳細抽出結果表示
             SetSelectData();
 
         }
         ///////////////////////////////
-        //　3.4.1.1 妥当な受注詳細データ取得
+        //　8.2.3.1 妥当な受注詳細データ取得
         //メソッド名：GetValidDataAtSlect()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -777,7 +772,7 @@ namespace SalesManagement_SysDev
 
         }
         ///////////////////////////////
-        //　3.4.1.2 顧客情報抽出
+        //　8.2.3.2 顧客情報抽出
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
         //戻り値   ：なし
@@ -881,7 +876,7 @@ namespace SalesManagement_SysDev
             }
         }
         ///////////////////////////////
-        //　3.4.1.3 受注詳細抽出結果表示
+        //　8.2.3.3 受注詳細抽出結果表示
         //メソッド名：SetSelectData()
         //引　数   ：なし
         //戻り値   ：なし
@@ -1006,15 +1001,15 @@ namespace SalesManagement_SysDev
         //詳細情報削除
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
+            //8.3.4.1 妥当な受注詳細データ取得
             if (!GetValidDataAtDelete())
                 return;
-
+            //8.3.4.2 受注詳細情報削除
             DeleteOrDetail();
 
         }
         ///////////////////////////////
-        //　 妥当な受注詳細データ取得
+        //  8.3.4.1 妥当な受注詳細データ取得
         //メソッド名：GetValidDataAtDelete()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -1061,7 +1056,7 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　 受注詳細情報削除
+        //　8.3.4.2  受注詳細情報削除
         //メソッド名：DeleteOrDetail()
         //引　数   ：なし
         //戻り値   ：なし
@@ -1090,6 +1085,12 @@ namespace SalesManagement_SysDev
             // データグリッドビューの表示
             GetDataGridView();
 
+        }
+        ///////8.2.5.1 一覧表示////////
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+            GetDataGridView();
         }
         //入力クリア
         private void buttonClear_Click(object sender, EventArgs e)

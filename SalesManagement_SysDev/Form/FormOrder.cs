@@ -28,7 +28,6 @@ namespace SalesManagement_SysDev
         private static List<T_OrderDsp> Order;
         //コンボボックス用の営業所データ
         private static List<M_SalesOffice> SalesOffice;
-        UserControlOrderDetail usDetail;
         public FormOrder()
         {
             InitializeComponent();
@@ -36,7 +35,6 @@ namespace SalesManagement_SysDev
 
         private void FormOrder_Load(object sender, EventArgs e)
         {
-            usDetail = new UserControlOrderDetail();
             userControlOrderDetail1.Visible = false;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
@@ -156,6 +154,7 @@ namespace SalesManagement_SysDev
             //    textBoxEmID.Focus();
             //    return false;
             //}
+
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
@@ -276,10 +275,10 @@ namespace SalesManagement_SysDev
                 EmID=employee.EmID,
                 ClID= int.Parse(textBoxClID.Text.Trim()),
                 ClCharge=textBoxClCharge.Text.Trim(),
-                OrDate =DateTime.Now,//現在の時刻を入れる
+                OrDate =DateTime.Now,//現在の時刻
                 OrStateFlag = 0,
                 OrFlag = 0,
-                OrHidden=String.Empty//空文字を入れる
+                OrHidden=String.Empty//空文字
                 
             };
         }
@@ -381,6 +380,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GetHiddenDataGridView()
         {
+            // 受注データの取得
             Order = orderDataAccess.GetOrderHiddenData();
 
             // DataGridViewに表示するデータを指定
@@ -458,13 +458,13 @@ namespace SalesManagement_SysDev
             // 8.1.4.1 妥当な受注データ取得
             if (!GetValidDataAtConfirm())
                 return;
-            // 8.1.4.2　受注情報作成
-            var conOrder = GenerateDataAtConfirm();
+            // 8.1.4.2　注文情報作成
+            var conChumon = GenerateDataAtConfirm();
+            //8.1.4.3 注文詳細情報作成
+            var conChumonDetail = GenerateDetailDataAtConfirm();
 
-            var conOrderDetail = GenerateDetailDataAtConfirm();
-
-            // 8.1.4.3 受注情報確定
-            ConfirmOrder(conOrder,conOrderDetail);
+            // 8.1.4.4 受注情報確定
+            ConfirmOrder(conChumon,conChumonDetail);
 
         }
 
@@ -545,7 +545,7 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　8.1.4.2 受注情報作成
+        //　8.1.4.2 注文情報作成
         //メソッド名：GenerateDataAtConfirm()
         //引　数   ：なし
         //戻り値   ：受注確定情報
@@ -561,7 +561,7 @@ namespace SalesManagement_SysDev
                 EmID = int.Parse(order.EmID.ToString()),
                 SoID = int.Parse(order.SoID.ToString()),
                 ClID = int.Parse(order.ClID.ToString()),
-                ChDate = DateTime.Today,
+                ChDate = DateTime.Now,
                 ChStateFlag = 0,
                 ChFlag = 0,
                 ChHidden = String.Empty
@@ -591,18 +591,17 @@ namespace SalesManagement_SysDev
             }
             return chumonDetail;
             
-            
-
+           
         }
 
         ///////////////////////////////
-        //　8.1.4.3 受注情報確定
+        //　8.1.4.4 受注情報確定
         //メソッド名：ConfirmOrder()
-        //引　数   ：受注情報
+        //引　数   ：注文情報,注文詳細情報
         //戻り値   ：なし
         //機　能   ：受注情報の確定
         ///////////////////////////////
-        private void ConfirmOrder(T_Chumon conOrder,List<T_ChumonDetail> conOrderDetail)
+        private void ConfirmOrder(T_Chumon conChumon,List<T_ChumonDetail> conChumonDetail)
         {
             // 確定確認メッセージ
             DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -612,17 +611,18 @@ namespace SalesManagement_SysDev
 
             // 受注情報の確定
             //注文テーブルにデータ登録
-            bool addFlg = chumonDataAccess.AddChumonData(conOrder);
+            bool addFlg = chumonDataAccess.AddChumonData(conChumon);
             //注文IDの取得
             T_Chumon chumon= chumonDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));           
-            //注文詳細テーブルにデータ登録(未完成)
-            foreach(var p in conOrderDetail)
+            //注文詳細テーブルにデータ登録/
+            ///成功か失敗の判定は未完成
+            foreach(var p in conChumonDetail)
             {            
                 T_ChumonDetail AddCh = new T_ChumonDetail();
                 AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
-                chumonDataAccess.AddChumonDetailData(AddCh);
+               chumonDataAccess.AddChumonDetailData(AddCh);
             }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
@@ -1131,27 +1131,27 @@ namespace SalesManagement_SysDev
         //////////非表示機能///////////
         private void buttonHidden_Click(object sender, EventArgs e)
         {
-            // 3.1.2.1 妥当な受注データ取得
-            if (!GetValidDataAtUpdate())
+            // 8.1.2.1 妥当な受注データ取得
+            if (!GetValidDataAtHidden())
                 return;
 
-            // 3.1.2.2　受注情報作成
-            var updOrder = GenerateDataAtUpdate();
+            // 8.1.2.2　受注情報作成
+            var hidOrder = GenerateDataAtHidden();
 
-            // 3.1..3 受注情報更新
-            UpdateOrder(updOrder);
+            // 8.1.2.3 受注情報更新
+            HiddenOrder(hidOrder);
 
         }
         ///////////////////////////////
-        //  3.2.1.1 妥当な顧客データ取得
-        //メソッド名：GetValidDataAtUpdate()
+        //  8.1.2.1 妥当な受注データ取得
+        //メソッド名：GetValidDataAtHidden()
         //引　数   ：なし
         //戻り値   ：true or false
         //機　能   ：入力データの形式チェック
         //          ：エラーがない場合True
         //          ：エラーがある場合False
         ///////////////////////////////
-        private bool GetValidDataAtUpdate()
+        private bool GetValidDataAtHidden()
         {
             //受注IDの適否
             if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
@@ -1205,13 +1205,13 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　3.2.1.2 受注情報作成
+        //　8.1.2.2 受注情報作成
         //メソッド名：GenerateDataAtUpdate()
         //引　数   ：なし
         //戻り値   ：受注更新情報
         //機　能   ：更新データのセット
         ///////////////////////////////
-        private T_Order  GenerateDataAtUpdate()
+        private T_Order  GenerateDataAtHidden()
         {
             int OrFlag = 0;
             if (checkBoxHidden.Checked == true)
@@ -1227,13 +1227,13 @@ namespace SalesManagement_SysDev
             };
         }
         ///////////////////////////////
-        //　3.2.1.3 受注情報更新
-        //メソッド名：UpdateOrder()
+        //　8.1.2.3 受注情報非表示
+        //メソッド名：HiddenOrder()
         //引　数   ：受注情報
         //戻り値   ：なし
-        //機　能   ：受注情報の更新
+        //機　能   ：受注情報の非表示
         ///////////////////////////////
-        private void UpdateOrder(T_Order updOrder)
+        private void HiddenOrder(T_Order updOrder)
         {
             // 更新確認メッセージ
             DialogResult result = MessageBox.Show("データを非表示にしてよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -1241,7 +1241,7 @@ namespace SalesManagement_SysDev
             if (result == DialogResult.Cancel)
                 return;
 
-            // 受注情報の更新(非表示)
+            // 受注情報の非表示(フラグの更新)
             bool flg = orderDataAccess.UpdateHiddenFlag(updOrder);
             if (flg == true)
                 MessageBox.Show("データを非表示にしました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1302,13 +1302,13 @@ namespace SalesManagement_SysDev
         {
             ClearInput();
         }
-        //////一覧表示//////
+        //////8.1.3.1 一覧表示//////
         private void buttonList_Click(object sender, EventArgs e)
         {
             ClearInput();
             GetDataGridView();
         }
-        /////非表示リスト//////
+        /////8.1.6.1 非表示リスト//////
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
             ClearInput();

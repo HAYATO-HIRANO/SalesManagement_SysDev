@@ -205,8 +205,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：GetOrIDDetailDspData()
         //引　数   ：受注ID
-        //戻り値   ：受注IDの全データグリッド詳細用データ
-        //機　能   ：受注IDのデータグリッド表示用詳細データの取得
+        //戻り値   ：同じ受注IDの全データグリッド詳細用データ
+        //機　能   ：同じ受注IDのデータグリッド表示用詳細データの取得
         ///////////////////////////////
         public List<T_OrderDetailDsp> GetOrIDDetailDspData(int orID)
         {
