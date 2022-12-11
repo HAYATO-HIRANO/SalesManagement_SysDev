@@ -12,15 +12,14 @@ namespace SalesManagement_SysDev
         OrderDataAccess orderDataAccess = new OrderDataAccess();
         //データベース受注テーブルアクセス用クラスのインスタンス化
         OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
-
+        //データベース注文テーブルアクセス用クラスのインスタンス化
+        ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
-        //データベース注文テーブルアクセス用クラスのインスタンス化
-        ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
 
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
@@ -1138,7 +1137,7 @@ namespace SalesManagement_SysDev
             // 8.1.2.2　受注情報作成
             var hidOrder = GenerateDataAtHidden();
 
-            // 8.1.2.3 受注情報更新
+            // 8.1.2.3 受注情報非表示
             HiddenOrder(hidOrder);
 
         }
@@ -1206,23 +1205,23 @@ namespace SalesManagement_SysDev
         }
         ///////////////////////////////
         //　8.1.2.2 受注情報作成
-        //メソッド名：GenerateDataAtUpdate()
+        //メソッド名：GenerateDataAtHidden()
         //引　数   ：なし
-        //戻り値   ：受注更新情報
-        //機　能   ：更新データのセット
+        //戻り値   ：受注非表示情報
+        //機　能   ：非表示データのセット
         ///////////////////////////////
         private T_Order  GenerateDataAtHidden()
         {
-            int OrFlag = 0;
+            int hidFlag = 0;
             if (checkBoxHidden.Checked == true)
             {
-                OrFlag = 2;
+                hidFlag = 2;
             }
 
             return new T_Order
             {
                 OrID=int.Parse(textBoxOrID.Text.Trim()),
-                OrFlag = OrFlag,
+                OrFlag = hidFlag,
                 OrHidden = textBoxOrHidden.Text.Trim()
             };
         }
@@ -1233,20 +1232,20 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：受注情報の非表示
         ///////////////////////////////
-        private void HiddenOrder(T_Order updOrder)
+        private void HiddenOrder(T_Order hidOrder)
         {
-            // 更新確認メッセージ
-            DialogResult result = MessageBox.Show("データを非表示にしてよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            // 非表示確認メッセージ
+            DialogResult result = MessageBox.Show("データを非表示にしてよろしいですか?", "非表示確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (result == DialogResult.Cancel)
                 return;
 
             // 受注情報の非表示(フラグの更新)
-            bool flg = orderDataAccess.UpdateHiddenFlag(updOrder);
+            bool flg = orderDataAccess.UpdateHiddenFlag(hidOrder);
             if (flg == true)
-                MessageBox.Show("データを非表示にしました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("データを非表示にしました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("データの非表示に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("データの非表示に失敗しました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxOrID.Focus();
 
@@ -1294,6 +1293,8 @@ namespace SalesManagement_SysDev
             textBoxClCharge.Text = "";
             DateTimePickerOrDate.Value = DateTime.Now;
             DateTimePickerOrDate.Checked = false;
+            checkBoxStateFlag.Checked = false;
+            checkBoxHidden.Checked = false;
             textBoxOrHidden.Text = "";
         }
 

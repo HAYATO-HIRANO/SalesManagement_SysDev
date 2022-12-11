@@ -230,6 +230,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 19;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -278,6 +279,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 17;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -298,6 +300,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 16;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -308,6 +311,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 14;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -318,6 +322,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 15;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // panelInput
             // 
@@ -420,6 +425,7 @@ namespace SalesManagement_SysDev
             this.buttonClear2.TabIndex = 9;
             this.buttonClear2.Text = "入力クリア";
             this.buttonClear2.UseVisualStyleBackColor = true;
+            this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
             // 
             // buttonClear
             // 
@@ -562,6 +568,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.TabIndex = 4;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
             // 
             // buttonHidden
             // 
@@ -576,6 +583,7 @@ namespace SalesManagement_SysDev
             this.buttonHidden.TabIndex = 2;
             this.buttonHidden.Text = "非表示";
             this.buttonHidden.UseVisualStyleBackColor = false;
+            this.buttonHidden.Click += new System.EventHandler(this.buttonHidden_Click);
             // 
             // buttonList
             // 
@@ -590,6 +598,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonConfirm
             // 
@@ -605,6 +614,7 @@ namespace SalesManagement_SysDev
             this.buttonConfirm.Text = "確定";
             this.buttonConfirm.UseCompatibleTextRendering = true;
             this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonSearch
             // 

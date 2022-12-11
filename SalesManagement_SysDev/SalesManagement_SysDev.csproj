@@ -60,6 +60,7 @@
     <Compile Include="Common\MessageDsp.cs" />
     <Compile Include="Common\PasswordHash.cs" />
     <Compile Include="DbAccess\ArrivalDataAccess.cs" />
+    <Compile Include="DbAccess\ArrivalDetailDataAccess.cs" />
     <Compile Include="DbAccess\ChumonDataAccess.cs" />
     <Compile Include="DbAccess\ClientDataAccess.cs" />
     <Compile Include="DbAccess\DataGridViewPrinter.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="DbAccess\SmallClassification.cs" />
     <Compile Include="DbAccess\StockDataAccess.cs" />
     <Compile Include="DbAccess\SyukkoDataAccess.cs" />
+    <Compile Include="DbAccess\SyukkoDetailDataAccess.cs" />
     <Compile Include="DbAccess\WarehousingDataAccess.cs" />
     <Compile Include="Entity\Message.cs" />
     <Compile Include="Entity\M_Message.cs" />
