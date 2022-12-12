@@ -579,7 +579,7 @@ namespace SalesManagement_SysDev
                     textBoxPrID.Focus();
                     return false;
                 }
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
                     messageDsp.DspMsg("M0402");
@@ -899,7 +899,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
 
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
                     messageDsp.DspMsg("M0402");
@@ -1048,8 +1048,25 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：商品情報の取得
         ///////////////////////////////
+        //private int proID=0;
+        private int price=0;
+        private int PrSS=0 ;
+
         private void GenerateDataAtSelect()
         {
+            object ProID = textBoxPrID.Text;
+
+
+            
+            
+            if ( ProID is M_ProductDsp)
+            {
+                price = ((M_ProductDsp)ProID).Price;
+                PrSS = ((M_ProductDsp)ProID).PrSafetyStock;
+                
+            }
+
+
             int Pdflg = 0;
             if (checkBoxPrFlag.Checked == true)
             {
@@ -1066,19 +1083,21 @@ namespace SalesManagement_SysDev
             {
                 sccmb = comboBoxSc.SelectedValue.ToString();
             }
-            
-
+          
+           
 
             //商品IDが入力されていて、なおかつメーカー名が選択されて、なおかつ小分類IDが入力されている状態  
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()) && makercmb != ""&&sccmb!="")
             {
+                 
+
                 M_ProductDsp selectCondition = new M_ProductDsp()
                 {
                     PrID = int.Parse(textBoxPrID.Text.Trim()),
                     MaID = int.Parse(makercmb),
                     PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    Price =price,
+                    PrSafetyStock = PrSS,
                     ScID = int.Parse(sccmb),
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
@@ -1097,8 +1116,8 @@ namespace SalesManagement_SysDev
                     PrID = int.Parse(textBoxPrID.Text.Trim()),
                     MaID = int.Parse(makercmb),
                     PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    Price = price,
+                    PrSafetyStock = PrSS,
                     
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
@@ -1112,64 +1131,21 @@ namespace SalesManagement_SysDev
             //商品IDが入力されていて、メーカー名と小分類IDが選択されていない状態
             else if (!String.IsNullOrEmpty(textBoxPrID.Text))
             {
-                M_ProductDsp selectCondition; //= new M_ProductDsp()
-                
-                if (String.IsNullOrEmpty(textBoxPrice.Text))
+                M_ProductDsp selectCondition = new M_ProductDsp()
                 {
-                    selectCondition = new M_ProductDsp()
-                    {
-                        PrID = int.Parse(textBoxPrID.Text),
-                        PrName = textBoxPrName.Text,
+                        PrID = int.Parse(textBoxPrID.Text.Trim()),
+                        PrName = textBoxPrName.Text.Trim(),
                         //MaID=int.Parse(makercmb),
-                        //Price = int.Parse(textBoxPrice.Text),
-                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
+                        Price = price ,
+                        PrSafetyStock = PrSS,
                         //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
                         //ScID=int.Parse(sccmb),
-                        PrModelNumber = textBoxPrModelNumber.Text,
-                        PrColor = textBoxColor.Text,
-                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
-                        PrFlag = Pdflg,
-                        PrHidden = textBoxPrHidden.Text
-                    };
-                }
-                else if (String.IsNullOrEmpty(textBoxPrSafetyStock.Text))
-                {
-                    selectCondition = new M_ProductDsp()
-                    {
-                        PrID = int.Parse(textBoxPrID.Text),
-                        PrName = textBoxPrName.Text,
-                        //MaID=int.Parse(makercmb),
-                        Price = int.Parse(textBoxPrice.Text),
-                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text),
-                        //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
-                        //ScID=int.Parse(sccmb),
-                        PrModelNumber = textBoxPrModelNumber.Text,
-                        PrColor = textBoxColor.Text,
-                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
-                        PrFlag = Pdflg,
-                        PrHidden = textBoxPrHidden.Text
-                    };
-                }
-
-                else
-                {
-                    selectCondition = new M_ProductDsp()
-                    {
-
-
-                        PrID=int.Parse(textBoxPrID.Text),
-                        PrName = textBoxPrName.Text,
-                        Price = int.Parse(textBoxPrice.Text.Trim()),
-                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                       // McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
                         PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                         PrColor = textBoxColor.Text.Trim(),
-                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
                         PrFlag = Pdflg,
                         PrHidden = textBoxPrHidden.Text.Trim()
-                    };
-                }
-                
+                };
 
                 Product = ProductDataAccess.GetProductData(3, selectCondition);
 
@@ -1182,8 +1158,8 @@ namespace SalesManagement_SysDev
                 {
                     MaID=int.Parse(makercmb),
                     PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    Price = price,
+                    PrSafetyStock = PrSS,
                     ScID = int.Parse(sccmb),
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
@@ -1200,8 +1176,8 @@ namespace SalesManagement_SysDev
                 M_ProductDsp selectCondition = new M_ProductDsp()
                 {
                     PrName = textBoxPrName.Text.Trim(),
-                   
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    Price=price,
+                    PrSafetyStock = PrSS,
                     ScID = int.Parse(sccmb),
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
@@ -1221,8 +1197,8 @@ namespace SalesManagement_SysDev
                     PrID = int.Parse(textBoxPrID.Text.Trim()),
                     
                     PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    Price = price,
+                    PrSafetyStock = PrSS,
                     ScID=int.Parse(sccmb),
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
@@ -1242,8 +1218,8 @@ namespace SalesManagement_SysDev
                     
                     MaID=int.Parse(makercmb),
                     PrName = textBoxPrName.Text.Trim(),
-                    Price = int.Parse(textBoxPrice.Text.Trim()),
-                    PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
+                    Price = price,
+                    PrSafetyStock = PrSS,
                     
                     PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                     PrColor = textBoxColor.Text.Trim(),
@@ -1254,70 +1230,27 @@ namespace SalesManagement_SysDev
                 Product = ProductDataAccess.GetProductData(7, selectCondition);
 
             }
-
             else
             {
 
-                M_ProductDsp selectCondition;
-                if (String.IsNullOrEmpty(textBoxPrice.Text))
+                M_ProductDsp selectCondition = new M_ProductDsp()
                 {
-
-                    selectCondition = new M_ProductDsp()
-                    {
-
-
-
-                        PrName = textBoxPrName.Text,
-                        //Price = int.Parse(textBoxPrice.Text.Trim()),
-                        //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                        //McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        
+                        PrName = textBoxPrName.Text.Trim(),
+                        //MaID=int.Parse(makercmb),
+                        Price = price ,
+                        PrSafetyStock = PrSS,
+                        //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
+                        //ScID=int.Parse(sccmb),
                         PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                         PrColor = textBoxColor.Text.Trim(),
-                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
+                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
                         PrFlag = Pdflg,
                         PrHidden = textBoxPrHidden.Text.Trim()
-                    };
-
-                }
-                else if (String.IsNullOrEmpty(textBoxPrSafetyStock.Text))
-                {
-                    selectCondition = new M_ProductDsp()
-                    {
-
-
-
-                        PrName = textBoxPrName.Text,
-                        Price = int.Parse(textBoxPrice.Text.Trim()),
-                        //PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                        McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
-                        PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                        PrColor = textBoxColor.Text.Trim(),
-                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                        PrFlag = Pdflg,
-                        PrHidden = textBoxPrHidden.Text.Trim()
-                    };
-                }
-                else
-                {
-
-                    selectCondition = new M_ProductDsp()
-                    {
-
-
-
-                        PrName = textBoxPrName.Text,
-                        Price = int.Parse(textBoxPrice.Text.Trim()),
-                        PrSafetyStock = int.Parse(textBoxPrSafetyStock.Text.Trim()),
-                        McID = int.Parse(comboBoxMc.SelectedValue.ToString()),
-                        PrModelNumber = textBoxPrModelNumber.Text.Trim(),
-                        PrColor = textBoxColor.Text.Trim(),
-                        PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                        PrFlag = Pdflg,
-                        PrHidden = textBoxPrHidden.Text.Trim()
-                    };
-                }
+                };
                 Product = ProductDataAccess.GetProductData(8, selectCondition);
             }
+
         }
 
         ///////////////////////////////
@@ -1457,9 +1390,29 @@ namespace SalesManagement_SysDev
             SetDataGridView();
         }
 
+       
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            // 入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            GetDataGridView();
+        }
+
+        private void GetHiddenListData()
+        {
+            Product = ProductDataAccess.GetHiddenData();
+
+            SetDataGridView();
+        }
+
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            // 入力エリアのクリア
+            ClearInput();
 
+            GetHiddenListData();
         }
     }
 
