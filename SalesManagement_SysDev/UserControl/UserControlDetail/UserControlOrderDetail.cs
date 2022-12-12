@@ -772,7 +772,7 @@ namespace SalesManagement_SysDev
 
         }
         ///////////////////////////////
-        //　8.2.3.2 顧客情報抽出
+        //　8.2.3.2 受注情報抽出
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
         //戻り値   ：なし

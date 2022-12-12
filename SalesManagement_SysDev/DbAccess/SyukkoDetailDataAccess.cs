@@ -106,6 +106,8 @@ namespace SalesManagement_SysDev
                          on t1.SyID equals t2.SyID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
+                         join t4 in  context.T_OrderDetails
+                         on t2.OrID equals t4.OrID
                          where t2.SyFlag == 0
                          select new
                          {
@@ -115,6 +117,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.SyQuantity,
+                             t4.OrTotalPrice
 
                          };
                 foreach (var p in tb)
@@ -127,8 +130,303 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         SyQuantity = p.SyQuantity,
+                        TotalPrice=p.OrTotalPrice
                     });
                 }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return syDetail;
+        }
+        ///////////////////////////////
+        //メソッド名：GetOrDetailData() オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：条件一致受注詳細データ
+        //機　能   ：条件一致受注詳細データの取得
+        ///////////////////////////////
+        public List<T_SyukkoDetailDsp> GetSyDetailData(int flg, T_SyukkoDetailDsp selectCondition)
+        {
+            List<T_SyukkoDetailDsp> syDetail = new List<T_SyukkoDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                if (flg == 1)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
+                             t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString())&&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
+                             t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+                if (flg == 5)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+                if (flg == 6)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+                if (flg == 7)
+                {
+                    var tb = from t1 in context.T_SyukkoDetails
+                             join t2 in context.T_Syukkos
+                             on t1.SyID equals t2.SyID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             join t4 in context.T_OrderDetails
+                             on t2.OrID equals t4.OrID
+                             where
+                             t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
+                             t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
+                             select new
+                             {
+                                 t1.SyID,
+                                 t1.SyDetailID,
+                                 t1.PrID,
+                                 t3.PrName,
+                                 t3.Price,
+                                 t1.SyQuantity,
+                                 t4.OrTotalPrice
+
+                             };
+                    foreach (var p in tb)
+                    {
+                        syDetail.Add(new T_SyukkoDetailDsp()
+                        {
+                            SyID = p.SyID,
+                            SyDetailID = p.SyDetailID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            SyQuantity = p.SyQuantity,
+                            TotalPrice = p.OrTotalPrice
+                        });
+                    }
+
+                }
+
                 context.Dispose();
             }
             catch (Exception ex)

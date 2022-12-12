@@ -47,12 +47,12 @@ namespace SalesManagement_SysDev
             this.textBoxPrID = new System.Windows.Forms.TextBox();
             this.labelOrQuantity = new System.Windows.Forms.Label();
             this.labelPrName = new System.Windows.Forms.Label();
-            this.textBoxOrQuantity = new System.Windows.Forms.TextBox();
+            this.textBoxSyQuantity = new System.Windows.Forms.TextBox();
             this.labelOrTotalPrice = new System.Windows.Forms.Label();
             this.textBoxOrTotalPrice = new System.Windows.Forms.TextBox();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
-            this.dataGridViewOrderDetail = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSyukkoDetail = new System.Windows.Forms.DataGridView();
             this.labelPageSize = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.buttonLastPage = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSyukkoDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -90,6 +90,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -104,6 +105,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // panelInput
             // 
@@ -123,7 +125,7 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.textBoxPrID);
             this.panelInput.Controls.Add(this.labelOrQuantity);
             this.panelInput.Controls.Add(this.labelPrName);
-            this.panelInput.Controls.Add(this.textBoxOrQuantity);
+            this.panelInput.Controls.Add(this.textBoxSyQuantity);
             this.panelInput.Controls.Add(this.labelOrTotalPrice);
             this.panelInput.Controls.Add(this.textBoxOrTotalPrice);
             this.panelInput.Location = new System.Drawing.Point(293, 52);
@@ -139,9 +141,8 @@ namespace SalesManagement_SysDev
             this.labelStateFlag.ForeColor = System.Drawing.Color.Red;
             this.labelStateFlag.Location = new System.Drawing.Point(126, 96);
             this.labelStateFlag.Name = "labelStateFlag";
-            this.labelStateFlag.Size = new System.Drawing.Size(85, 24);
+            this.labelStateFlag.Size = new System.Drawing.Size(0, 24);
             this.labelStateFlag.TabIndex = 45;
-            this.labelStateFlag.Text = "未確定";
             // 
             // labelSyState
             // 
@@ -172,6 +173,7 @@ namespace SalesManagement_SysDev
             this.textBoxSyID.Name = "textBoxSyID";
             this.textBoxSyID.Size = new System.Drawing.Size(102, 36);
             this.textBoxSyID.TabIndex = 43;
+            this.textBoxSyID.TextChanged += new System.EventHandler(this.textBoxSyID_TextChanged);
             // 
             // labelPrice
             // 
@@ -222,6 +224,7 @@ namespace SalesManagement_SysDev
             this.button1.TabIndex = 28;
             this.button1.Text = "入力クリア";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelPrID
             // 
@@ -251,6 +254,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Name = "textBoxPrID";
             this.textBoxPrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxPrID.TabIndex = 29;
+            this.textBoxPrID.TextChanged += new System.EventHandler(this.textBoxPrID_TextChanged);
             // 
             // labelOrQuantity
             // 
@@ -274,13 +278,14 @@ namespace SalesManagement_SysDev
             this.labelPrName.TabIndex = 34;
             this.labelPrName.Text = "商品名";
             // 
-            // textBoxOrQuantity
+            // textBoxSyQuantity
             // 
-            this.textBoxOrQuantity.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrQuantity.Location = new System.Drawing.Point(690, 94);
-            this.textBoxOrQuantity.Name = "textBoxOrQuantity";
-            this.textBoxOrQuantity.Size = new System.Drawing.Size(57, 28);
-            this.textBoxOrQuantity.TabIndex = 31;
+            this.textBoxSyQuantity.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxSyQuantity.Location = new System.Drawing.Point(690, 94);
+            this.textBoxSyQuantity.Name = "textBoxSyQuantity";
+            this.textBoxSyQuantity.Size = new System.Drawing.Size(57, 28);
+            this.textBoxSyQuantity.TabIndex = 31;
+            this.textBoxSyQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
             // 
             // labelOrTotalPrice
             // 
@@ -312,6 +317,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 78;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -322,14 +328,14 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.TabIndex = 77;
             this.textBoxPageSize.Text = "20";
             // 
-            // dataGridViewOrderDetail
+            // dataGridViewSyukkoDetail
             // 
-            this.dataGridViewOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrderDetail.Location = new System.Drawing.Point(293, 296);
-            this.dataGridViewOrderDetail.Name = "dataGridViewOrderDetail";
-            this.dataGridViewOrderDetail.RowTemplate.Height = 21;
-            this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrderDetail.TabIndex = 69;
+            this.dataGridViewSyukkoDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSyukkoDetail.Location = new System.Drawing.Point(293, 296);
+            this.dataGridViewSyukkoDetail.Name = "dataGridViewSyukkoDetail";
+            this.dataGridViewSyukkoDetail.RowTemplate.Height = 21;
+            this.dataGridViewSyukkoDetail.Size = new System.Drawing.Size(1552, 605);
+            this.dataGridViewSyukkoDetail.TabIndex = 69;
             // 
             // labelPageSize
             // 
@@ -360,6 +366,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 75;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -380,6 +387,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 74;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -390,6 +398,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 72;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -400,6 +409,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 73;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // UserControlSyukkoDetail
             // 
@@ -408,7 +418,7 @@ namespace SalesManagement_SysDev
             this.BackColor = System.Drawing.Color.Honeydew;
             this.Controls.Add(this.buttonPageSizeChange);
             this.Controls.Add(this.textBoxPageSize);
-            this.Controls.Add(this.dataGridViewOrderDetail);
+            this.Controls.Add(this.dataGridViewSyukkoDetail);
             this.Controls.Add(this.labelPageSize);
             this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.buttonLastPage);
@@ -424,7 +434,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSyukkoDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,12 +460,12 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.TextBox textBoxPrID;
         private System.Windows.Forms.Label labelOrQuantity;
         private System.Windows.Forms.Label labelPrName;
-        private System.Windows.Forms.TextBox textBoxOrQuantity;
+        private System.Windows.Forms.TextBox textBoxSyQuantity;
         private System.Windows.Forms.Label labelOrTotalPrice;
         private System.Windows.Forms.TextBox textBoxOrTotalPrice;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
-        private System.Windows.Forms.DataGridView dataGridViewOrderDetail;
+        private System.Windows.Forms.DataGridView dataGridViewSyukkoDetail;
         private System.Windows.Forms.Label labelPageSize;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonLastPage;
