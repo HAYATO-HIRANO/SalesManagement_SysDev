@@ -674,32 +674,6 @@ namespace SalesManagement_SysDev
                 }
 
             }
-            ////社員idの適否
-            //if (!string.isnullorempty(textboxemid.text.trim()))
-            //{
-            //    //文字チェック
-            //    if (!datainputformcheck.checknumeric(textboxemid.text.trim()))
-            //    {
-            //        messagebox.show("社員idは半角数値入力です", "入力確認", messageboxbuttons.ok, messageboxicon.error);
-            //        textboxemid.focus();
-            //        return false;
-            //    }
-            //    //文字数
-            //    if (textboxemid.textlength > 6)
-            //    {
-            //        messagebox.show("社員idは6文字以下です", "入力確認", messageboxbuttons.ok, messageboxicon.error);
-            //        textboxemid.focus();
-            //        return false;
-            //    }
-            //    // 社員idの存在チェック
-            //    if (!employeedataaccess.checkemidexistence(int.parse(textboxemid.text.trim())))
-            //    {
-            //        messagebox.show("入力された社員idは存在しません", "入力確認", messageboxbuttons.ok, messageboxicon.error);
-            //        textboxemid.focus();
-            //        return false;
-            //    }
-
-            //}
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {

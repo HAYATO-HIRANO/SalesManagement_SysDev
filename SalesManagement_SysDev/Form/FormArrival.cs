@@ -207,6 +207,7 @@ namespace SalesManagement_SysDev
 
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
+            textBoxPage.Text=1.ToString();
             SetDataGridView();
 
         }
@@ -537,11 +538,174 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
-
+        //13.1.3 入荷検索機能
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            //13.1.3.1妥当な入荷データ取得
+            if (!GetValidDataAtSelect())
+                return;
+
+            //13.1.3.2 入荷情報抽出
+            GenerateDataAtSelect();
+
+            //13.1.3.3　入荷抽出結果表示
+            //SetSelectData();
 
         }
+        ///////////////////////////////
+        //　13.1.3.1 妥当な入荷データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtSelect()
+        {
+            //入荷IDの適否
+            if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxArID.Text.Trim()))
+                {
+                    MessageBox.Show("入荷IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxArID.TextLength > 6)
+                {
+                    MessageBox.Show("入荷IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
+                    return false;
+                }
+                // 入荷IDの存在チェック
+                if (!arrivalDataAccess.CheckArIDExistence(int.Parse(textBoxArID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された入荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
+                    return false;
+                }
+
+            }
+            //顧客IDの適否
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+                {
+                    MessageBox.Show("顧客IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClID.TextLength > 6)
+                {
+                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                // 顧客IDの存在チェック
+                if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+
+            }
+            //非表示フラグ
+            if (checkBoxHidden.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Focus();
+                return false;
+            }
+            //入荷日範囲のチェック
+            if (dateTimePickerDateStart.Checked == true && dateTimePickerDateEnd.Checked == true)
+            {
+                if (DateTime.Parse(dateTimePickerDateStart.Text) > DateTime.Parse(dateTimePickerDateEnd.Text))
+                {
+                    MessageBox.Show("日付の範囲が不正です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dateTimePickerDateStart.Focus();
+                    return false;
+                }
+            }
+            else if (dateTimePickerDateStart.Checked == true && dateTimePickerDateEnd.Checked == false ||
+                dateTimePickerDateStart.Checked == false && dateTimePickerDateEnd.Checked == true)
+            {
+                MessageBox.Show("日付の範囲が不正です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateTimePickerDateStart.Focus();
+                return false;
+            }
+            //入荷状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("入荷確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　13.1.2.2 受注情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：検索データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            //日付範囲
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+            if (dateTimePickerDateStart.Checked)
+                startDay = DateTime.Parse(dateTimePickerDateStart.Text);
+            if (dateTimePickerDateEnd.Checked)
+                endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
+
+            //非表示フラグ変換
+            int hidFlg = 0;
+            if (checkBoxHidden.Checked == true)
+            {
+                hidFlg = 2;
+            }
+            //入荷確定フラグ変換
+            int stateFlg = 0;
+            if (checkBoxStateFlag.Checked == true)
+            {
+                stateFlg = 1;
+            }
+            //日付範囲が選択されていない
+            if (startDay == null && endDay == null)
+            {
+                //入荷=null
+                if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
+                {
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+
+                        }
+
+                    }
+                }
+            }
+            //日付範囲が選択されている
+            else if (startDay != null && endDay != null)
+            {
+                //入荷ID
+            }
+
+
+
+
+
+        }
+
         //13.1.4　入荷非表示機能
         private void buttonHidden_Click(object sender, EventArgs e)
         {
@@ -662,7 +826,7 @@ namespace SalesManagement_SysDev
             else
                 MessageBox.Show("データの非表示に失敗しました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            textBoxOrID.Focus();
+            textBoxArID.Focus();
 
             // 入力エリアのクリア
             ClearInput();
