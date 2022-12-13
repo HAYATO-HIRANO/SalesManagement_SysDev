@@ -637,5 +637,34 @@ namespace SalesManagement_SysDev
             }
             return employee;
         }
+        ///////////////////////////////
+        //メソッド名：GetEmIDData()
+        //引　数   :社員ID
+        //戻り値   ：社員IDの受注データ
+        //機　能   ：社員IDの社員情報取得
+        ///////////////////////////////
+        public M_Employee GetEmIDData(int emID)
+        {
+            M_Employee employee = new M_Employee();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                employee = context.M_Employees.Single(x => x.EmID == emID && x.EmFlag == 0);
+
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return employee;
+        }
+
     }
 }

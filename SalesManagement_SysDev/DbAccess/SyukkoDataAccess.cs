@@ -215,8 +215,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：GetSyukkoHiddenData()
         //引　数   ：なし
-        //戻り値   ：全出庫データ
-        //機　能   ：全出庫データの取得
+        //戻り値   ：全非表示データ
+        //機　能   :非表示データの取得
         ///////////////////////////////
         public List<T_SyukkoDsp> GetSyukkoHiddenData()
         {
