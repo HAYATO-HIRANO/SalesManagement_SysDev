@@ -44,37 +44,15 @@ namespace SalesManagement_SysDev
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
 
-            //入力項目に営業所と社員IDを入力
-            comboBoxSoID.Text = FormMain.loginSoName;
-            textBoxEmID.Text = FormMain.loginEmID.ToString();
             //非表示理由タブ選択不可、入力不可
             textBoxOrHidden.TabStop = false;
             textBoxOrHidden.ReadOnly = true;
             //顧客名選択不可、入力不可
             textBoxClName.TabStop = false;
             textBoxClName.ReadOnly = true;
-            //コンボボックスの設定
-            SetFormComboBox();
 
             //データグリッドビューの設定
             SetFormDataGridView();
-        }
-        ///////////////////////////////
-        //メソッド名：SetFormComboBox()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：コンボボックスのデータ設定
-        ///////////////////////////////
-        private void SetFormComboBox()
-        {
-            //営業所データの取得
-            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
-            comboBoxSoID.DataSource = SalesOffice;
-            comboBoxSoID.DisplayMember = "SoName";
-            comboBoxSoID.ValueMember = "SoID";
-            //コンボボックスを読み取り専用
-            comboBoxSoID.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxSoID.SelectedIndex = -1;
         }
         ///////////////受注情報登録////////////////////
 
@@ -1287,12 +1265,8 @@ namespace SalesManagement_SysDev
         private void ClearInput()
         {
             textBoxOrID.Text = "";
-            comboBoxSoID.SelectedIndex = -1;
-            textBoxEmID.Text = "";
             textBoxClID.Text = "";
             textBoxClCharge.Text = "";
-            DateTimePickerOrDate.Value = DateTime.Now;
-            DateTimePickerOrDate.Checked = false;
             checkBoxStateFlag.Checked = false;
             checkBoxHidden.Checked = false;
             textBoxOrHidden.Text = "";
