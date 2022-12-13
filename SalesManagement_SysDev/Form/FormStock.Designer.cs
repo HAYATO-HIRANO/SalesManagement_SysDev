@@ -47,6 +47,9 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.dataGridViewStock = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.textBoxPrName = new System.Windows.Forms.TextBox();
+            this.labelPrName = new System.Windows.Forms.Label();
             this.textBoxStQuantity = new System.Windows.Forms.TextBox();
             this.textBoxPrID = new System.Windows.Forms.TextBox();
             this.textBoxStID = new System.Windows.Forms.TextBox();
@@ -63,9 +66,6 @@ namespace SalesManagement_SysDev
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.textBoxPrName = new System.Windows.Forms.TextBox();
-            this.labelPrName = new System.Windows.Forms.Label();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -247,6 +247,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "更新";
             this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -288,6 +289,38 @@ namespace SalesManagement_SysDev
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1298, 66);
             this.panel4.TabIndex = 30;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear.Location = new System.Drawing.Point(1193, 33);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear.TabIndex = 38;
+            this.buttonClear.Text = "入力クリア";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPrName
+            // 
+            this.textBoxPrName.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrName.Enabled = false;
+            this.textBoxPrName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxPrName.Location = new System.Drawing.Point(538, 16);
+            this.textBoxPrName.Name = "textBoxPrName";
+            this.textBoxPrName.ReadOnly = true;
+            this.textBoxPrName.Size = new System.Drawing.Size(348, 28);
+            this.textBoxPrName.TabIndex = 37;
+            // 
+            // labelPrName
+            // 
+            this.labelPrName.AutoSize = true;
+            this.labelPrName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelPrName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelPrName.Location = new System.Drawing.Point(450, 19);
+            this.labelPrName.Name = "labelPrName";
+            this.labelPrName.Size = new System.Drawing.Size(82, 24);
+            this.labelPrName.TabIndex = 36;
+            this.labelPrName.Text = "商品名";
             // 
             // textBoxStQuantity
             // 
@@ -438,38 +471,6 @@ namespace SalesManagement_SysDev
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // textBoxPrName
-            // 
-            this.textBoxPrName.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrName.Enabled = false;
-            this.textBoxPrName.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxPrName.Location = new System.Drawing.Point(538, 16);
-            this.textBoxPrName.Name = "textBoxPrName";
-            this.textBoxPrName.ReadOnly = true;
-            this.textBoxPrName.Size = new System.Drawing.Size(348, 28);
-            this.textBoxPrName.TabIndex = 37;
-            // 
-            // labelPrName
-            // 
-            this.labelPrName.AutoSize = true;
-            this.labelPrName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelPrName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPrName.Location = new System.Drawing.Point(450, 19);
-            this.labelPrName.Name = "labelPrName";
-            this.labelPrName.Size = new System.Drawing.Size(82, 24);
-            this.labelPrName.TabIndex = 36;
-            this.labelPrName.Text = "商品名";
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClear.Location = new System.Drawing.Point(1193, 33);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear.TabIndex = 38;
-            this.buttonClear.Text = "入力クリア";
-            this.buttonClear.UseVisualStyleBackColor = true;
             // 
             // FormStock
             // 

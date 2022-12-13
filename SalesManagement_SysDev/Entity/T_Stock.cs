@@ -33,7 +33,6 @@ namespace SalesManagement_SysDev
         [DisplayName("在庫数")]
         public int StQuantity { get; set; }
 
-        [DisplayName("非表示管理フラグ")]
-        public int StFlag { get; set; }
+        
     }
 }

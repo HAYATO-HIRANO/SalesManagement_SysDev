@@ -836,7 +836,7 @@ namespace SalesManagement_SysDev
 
         private void UpdateProduct(M_Product upProduct)
         {
-            //在庫データを更新してよろしいですか？
+            //商品データを更新してよろしいですか？
             DialogResult result = messageDsp.DspMsg("M0512");
             if(result == DialogResult.Cancel)
             {
@@ -846,12 +846,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //在庫データを更新しました
-                messageDsp.DspMsg("M0513");
+                messageDsp.DspMsg("M0413");
             }
             else
             {
                 //在庫データ更新に失敗しました
-                messageDsp.DspMsg("M0514");
+                messageDsp.DspMsg("M0414");
             }
             textBoxPrID.Focus();
             //入力エリアのクリア
