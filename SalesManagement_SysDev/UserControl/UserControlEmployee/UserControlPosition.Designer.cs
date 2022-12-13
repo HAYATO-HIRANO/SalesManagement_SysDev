@@ -84,6 +84,7 @@ namespace SalesManagement_SysDev
             this.buttonNotList.TabIndex = 34;
             this.buttonNotList.Text = "非表示リスト";
             this.buttonNotList.UseVisualStyleBackColor = false;
+            this.buttonNotList.Click += new System.EventHandler(this.buttonNotList_Click);
             // 
             // buttonList
             // 
@@ -180,7 +181,6 @@ namespace SalesManagement_SysDev
             this.textBoxPoHidden.Name = "textBoxPoHidden";
             this.textBoxPoHidden.Size = new System.Drawing.Size(564, 94);
             this.textBoxPoHidden.TabIndex = 20;
-            this.textBoxPoHidden.Visible = false;
             // 
             // checkBoxPoFlag
             // 
@@ -241,6 +241,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewPo.RowTemplate.Height = 21;
             this.dataGridViewPo.Size = new System.Drawing.Size(1019, 503);
             this.dataGridViewPo.TabIndex = 7;
+            this.dataGridViewPo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPo_CellClick);
             // 
             // buttonPageSizeChange
             // 

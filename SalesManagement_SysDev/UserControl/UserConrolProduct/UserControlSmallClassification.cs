@@ -172,7 +172,7 @@ namespace SalesManagement_SysDev
         private void RegistrationSc(M_SmallClassification regSc)
         {
             //登録確認メッセージ
-            DialogResult result = MessageBox.Show("小分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("小分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.Cancel)
                 return;
             //顧客情報の登録

@@ -19,7 +19,7 @@ namespace SalesManagement_SysDev
         //データベース大分類テーブルアクセス用クラスのインスタンス化
         PositionDataAccess positionDataAccess = new PositionDataAccess();
         //データグリッドビュー用の役職データ
-        private static List<M_Position> Position;
+        private static List<M_PositionDsp> Position;
         public UserControlPosition()
         {
             InitializeComponent();
@@ -55,64 +55,31 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool GetValidDataAtRegistration()
         {
-
             // 役職IDの適否
             if (!String.IsNullOrEmpty(textBoxPoID.Text.Trim()))
             {
-                // 役職IDの半角英数字チェック
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
-                {
-                    //MessageBox.Show("役職IDは全て半角英数字入力です");
-                    messageDsp.DspMsg("M0617");
-                    textBoxPoID.Focus();
-                    return false;
-                }
-                // 役職IDの文字数チェック
-                if (textBoxPoID.TextLength != 2)
-                {
-                    //MessageBox.Show("役職IDは2文字です");
-                    messageDsp.DspMsg("M0618");
-                    textBoxPoID.Focus();
-                    return false;
-                }
-                // 役職IDの重複チェック
-                if (positionDataAccess.CheckPoIDExistence(int.Parse(textBoxPoID.Text.Trim())))
-                {
-                    MessageBox.Show("入力された役職IDは既に存在します");
-                    textBoxPoID.Focus();
-                    return false;
-                }
-            }
-            else
-            {
-                //MessageBox.Show("役職IDが入力されていません");
-                messageDsp.DspMsg("M0619");
+                //役職IDは入力不要です
+                MessageBox.Show("役職IDは入力不要です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPoID.Focus();
                 return false;
             }
 
+
             // 役職名の適否
             if (!String.IsNullOrEmpty(textBoxPoName.Text.Trim()))
             {
-                // 役職名の全角チェック
-                if (!dataInputFormCheck.CheckFullWidth(textBoxPoName.Text.Trim()))
-                {
-                    MessageBox.Show("役職名は全て全角入力です");
-                    textBoxPoName.Focus();
-                    return false;
-                }
                 // 役職名の文字数チェック
                 if (textBoxPoName.TextLength > 50)
                 {
                     //MessageBox.Show("役職名は50文字以下です");
-                    messageDsp.DspMsg("M0621");
+                    MessageBox.Show("役職名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPoName.Focus();
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("役職名が入力されていません");
+                MessageBox.Show("役職名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPoName.Focus();
                 return false;
             }
@@ -123,16 +90,19 @@ namespace SalesManagement_SysDev
                 checkBoxPoFlag.Focus();
                 return false;
             }
+            if (checkBoxPoFlag.Checked == true)
+            {
+                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxPoFlag.Focus();
+                return false;
+            }
 
-            // 備考の適否
+            // 非表示の適否
             if (!String.IsNullOrEmpty(textBoxPoHidden.Text.Trim()))
             {
-                if (textBoxPoHidden.TextLength > 100)
-                {
-                    MessageBox.Show("備考は80文字以下です");
-                    textBoxPoHidden.Focus();
-                    return false;
-                }
+                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPoHidden.Focus();
+                return false;
             }
             return true;
         }
@@ -163,16 +133,16 @@ namespace SalesManagement_SysDev
         private void RegistrationPosition(M_Position regPosition)
         {
             // 登録確認メッセージ
-            DialogResult result = MessageBox.Show("役職データを登録してよろしいですか?");
+            DialogResult result = MessageBox.Show("役職データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.Cancel)
                 return;
 
             // 役職情報の登録
             bool flg = positionDataAccess.AddPositionData(regPosition);
             if (flg == true)
-                MessageBox.Show("データを登録しました。");
+                MessageBox.Show("データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("データの登録に失敗しました。");
+                MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             textBoxPoID.Focus();
 
@@ -312,9 +282,9 @@ namespace SalesManagement_SysDev
         //戻り値   ：役職更新情報
         //機　能   ：更新データのセット
         ///////////////////////////////
-        private M_Position GenerateDataAtUpdate()
+        private M_PositionDsp GenerateDataAtUpdate()
         {
-            return new M_Position
+            return new M_PositionDsp
             {
                 PoID = int.Parse(textBoxPoID.Text.Trim()),
                 PoName = textBoxPoName.Text.Trim(),
@@ -329,7 +299,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：役職情報の更新
         ///////////////////////////////
-        private void UpdatePosition(M_Position updPosition)
+        private void UpdatePosition(M_PositionDsp updPosition)
         {
             // 更新確認メッセージ
             DialogResult result = messageDsp.DspMsg("M2014");
@@ -371,6 +341,9 @@ namespace SalesManagement_SysDev
 
         private void buttonList_Click(object sender, EventArgs e)
         {
+            //入力エリアのクリア
+            ClearInput();
+
             SetDataGridView();
         }
 
@@ -622,14 +595,25 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-            // 検索条件のセット
-            M_Position position = new M_Position()
+            int poFlg = 0;
+            if(checkBoxPoFlag.Checked == true)
             {
-                PoID =int.Parse(textBoxPoID.Text.Trim()),
-                PoName = textBoxPoName.Text.Trim()
-            };
-            // 役職データの抽出
-            Position = positionDataAccess.GetPositionData(position);
+                poFlg = 2;
+            }
+            // 検索条件のセット
+            if (!String.IsNullOrEmpty(textBoxPoID.Text.Trim()))
+            {
+                M_PositionDsp position = new M_PositionDsp()
+                {
+                    PoID = int.Parse(textBoxPoID.Text.Trim()),
+                    PoName = textBoxPoName.Text.Trim(),
+                    PoFlag = poFlg,
+                    PoHidden = textBoxPoHidden.Text.Trim()
+                };
+                // 役職データの抽出
+                Position = positionDataAccess.GetPositionData(1,position);
+            }
+            
 
         }
         ///////////////////////////////
@@ -669,6 +653,50 @@ namespace SalesManagement_SysDev
                 textBoxPoHidden.ReadOnly = true;
                 textBoxPoHidden.Enabled = false;
             }
+        }
+
+        private void buttonNotList_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+
+            GetHiddenDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            //営業データの取得
+            Position = positionDataAccess.GetPositionHiddenData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        private void dataGridViewPo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxPoID.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxPoName.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[1].Value.ToString();
+
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[2].Value.ToString() != 2.ToString())
+            {
+                checkBoxPoFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxPoFlag.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[3].Value != null)
+            {
+                textBoxPoHidden.Text = dataGridViewPo.Rows[dataGridViewPo.CurrentRow.Index].Cells[3].Value.ToString();
+            }
+
+
         }
     }
 }
