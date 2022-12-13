@@ -241,7 +241,7 @@ namespace SalesManagement_SysDev
         private T_Order GenerateDataAtRegistration()
         {
             //ログインしている社員IDの社員情報を取得する
-            M_Employee employee = orderDataAccess.GetEmIDData(FormMain.loginEmID);
+            M_Employee employee = employeeDataAccess.GetEmIDData(FormMain.loginEmID);
 
             return new T_Order
             {
