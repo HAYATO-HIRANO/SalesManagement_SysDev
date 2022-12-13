@@ -728,13 +728,13 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
-                {
-                    //入力された型番は存在していません
-                    messageDsp.DspMsg("M0441");
-                    textBoxPrModelNumber.Focus();
-                    return false;
-                }
+                //if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                //{
+                //    //入力された型番は存在していません
+                //    messageDsp.DspMsg("M0441");
+                //    textBoxPrModelNumber.Focus();
+                //    return false;
+                //}
 
             }
             else
