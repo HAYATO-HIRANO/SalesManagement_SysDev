@@ -35,31 +35,6 @@ namespace SalesManagement_SysDev
             }
         }
 
-        ///////////////////////////////
-        //メソッド名：AddShipmentDetailData()
-        //引　数   ：出荷詳細データ
-        //戻り値   ：True or False
-        //機　能   ：出荷詳細データの登録
-        //          ：登録成功の場合True
-        //          ：登録失敗の場合False
-        ///////////////////////////////
-        public bool AddShipmentDetailData(T_ShipmentDetail regShipmentDetail)
-        {
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                context.T_ShipmentDetails.Add(regShipmentDetail);
-                context.SaveChanges();
-                context.Dispose();
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
 
         ///////////////////////////////
         //メソッド名：UpdateShipmentData()
@@ -99,12 +74,40 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：GetArIDData()
+        //メソッド名：GetShIDData()
         //引　数   :出荷ID
         //戻り値   ：入荷IDの出荷データ
         //機　能   ：入荷IDの出荷情報取得
         ///////////////////////////////
-        public T_Shipment GetArIDdata(int orID)
+        public T_Shipment GetShIDData(int ShID)
+        {
+            T_Shipment shipment = new T_Shipment();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                shipment = context.T_Shipments.Single(x => x.ShID == ShID && x.ShFlag == 0);
+
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return shipment;
+        }
+        ///////////////////////////////
+        //メソッド名：GetOrIDData()
+        //引　数   :受注ID
+        //戻り値   ：受注IDの出荷データ
+        //機　能   ：受注IDの出荷情報取得
+        ///////////////////////////////
+        public T_Shipment GetOrIDData(int orID)
         {
             T_Shipment shipment = new T_Shipment();
 

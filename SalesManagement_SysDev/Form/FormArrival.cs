@@ -13,9 +13,15 @@ namespace SalesManagement_SysDev
     public partial class FormArrival : Form
     {
         //データベース入荷テーブルアクセス用クラスのインスタンス化
-        ArrivalDataAccess arrivalDataAccess = new ArrivalDataAccess();        
+        ArrivalDataAccess arrivalDataAccess = new ArrivalDataAccess();
+        //データベース入荷詳細テーブルアクセス用クラスのインスタンス化
+        ArrivalDetailDataAccess arrivalDetailDataAccess = new ArrivalDetailDataAccess();
+
         //データベース出荷テーブルアクセス用クラスのインスタンス化
         ShipmentDataAccess shipmentDataAccess = new ShipmentDataAccess();
+        //データベース出荷詳細テーブルアクセス用クラスのインスタンス化
+        ShipmentDetailDataAccess shipmentDetailDataAccess = new ShipmentDetailDataAccess();
+
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //入力形式チェック用クラスのインスタンス化
@@ -354,7 +360,7 @@ namespace SalesManagement_SysDev
 
         }
         ///////////////////////////////
-        //  12.1.2.1 妥当な出庫データ取得
+        //  13.1.3.1 妥当な入荷データ取得
         //メソッド名：GetValidDataAtConfirm()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -364,63 +370,63 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool GetValidDataAtConfirm()
         {
-            //出庫IDの適否
-            if (!String.IsNullOrEmpty(textBoxSyID.Text.Trim()))
+            //入荷IDの適否
+            if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
             {
                 //文字チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxSyID.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumeric(textBoxArID.Text.Trim()))
                 {
-                    MessageBox.Show("出庫IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSyID.Focus();
+                    MessageBox.Show("入荷IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
                     return false;
                 }
                 //文字数
-                if (textBoxSyID.TextLength > 6)
+                if (textBoxArID.TextLength > 6)
                 {
-                    MessageBox.Show("出庫IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSyID.Focus();
+                    MessageBox.Show("入荷IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
                     return false;
                 }
-                // 出庫IDの存在チェック
-                if (!syukkoDataAccess.CheckSyIDExistence(int.Parse(textBoxSyID.Text.Trim())))
+                // 入荷IDの存在チェック
+                if (!arrivalDataAccess.CheckArIDExistence(int.Parse(textBoxArID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された出庫IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSyID.Focus();
+                    MessageBox.Show("入力された入荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
                     return false;
                 }
 
             }
             else
             {
-                MessageBox.Show("出庫ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxSyID.Focus();
+                MessageBox.Show("入荷ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxArID.Focus();
                 return false;
             }
-            //出庫確定状態の判定
-            var syukko = syukkoDataAccess.GetSyIDData(int.Parse(textBoxSyID.Text.Trim()));
-            if (syukko.SyStateFlag == 1)
+            //入荷確定状態の判定
+            var arrival = arrivalDataAccess.GetArIDData(int.Parse(textBoxArID.Text.Trim()));
+            if (arrival.ArStateFlag == 1)
             {
-                MessageBox.Show("入力された出庫IDはすでに確定されています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxSyID.Focus();
+                MessageBox.Show("入力された入荷IDはすでに確定されています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxArID.Focus();
                 return false;
 
             }
-            //出庫状態フラグ
+            //入荷状態フラグ
             if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
             {
-                MessageBox.Show("出庫確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("入荷確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxStateFlag.Focus();
                 return false;
             }
             if (checkBoxStateFlag.Checked == false)
             {
-                MessageBox.Show("出庫確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("入荷確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxStateFlag.Focus();
                 return false;
             }
             //詳細情報の件数チェック
-            var syukkoDetail = syukkoDetailDataAccess.GetSyIDDetailData(int.Parse(textBoxSyID.Text.Trim()));
-            if (syukkoDetail.Count == 0)
+            var arrivalDetail = arrivalDetailDataAccess.GetArIDDetailData(int.Parse(textBoxArID.Text.Trim()));
+            if (arrivalDetail.Count == 0)
             {
                 MessageBox.Show("詳細情報が登録されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -429,65 +435,65 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　12.1.2.2　入荷情報作成
+        //　13.1.3.2　入荷情報作成
         //メソッド名：GenerateDataAtConfirm()
         //引　数   ：なし
-        //戻り値   ：出庫確定情報
+        //戻り値   ：入荷確定情報
         //機　能   ：確定データのセット
         ///////////////////////////////
-        private T_Arrival GenerateDataAtConfirm()
+        private T_Shipment GenerateDataAtConfirm()
         {
-            T_Syukko syukko = syukkoDataAccess.GetSyIDData(int.Parse(textBoxSyID.Text.Trim()));
+            T_Arrival arrival = arrivalDataAccess.GetArIDData(int.Parse(textBoxArID.Text.Trim()));
 
-            return new T_Arrival
+            return new T_Shipment
             {
 
-                OrID = int.Parse(syukko.OrID.ToString()),
-                EmID = int.Parse(syukko.EmID.ToString()),
-                SoID = int.Parse(syukko.SoID.ToString()),
-                ClID = int.Parse(syukko.ClID.ToString()),
-                ArDate = null,
-                ArStateFlag = 0,
-                ArFlag = 0,
-                ArHidden = String.Empty
+                OrID = int.Parse(arrival.OrID.ToString()),
+                EmID = 0,
+                SoID = int.Parse(arrival.SoID.ToString()),
+                ClID = int.Parse(arrival.ClID.ToString()),
+                ShFinishDate=null,
+                ShStateFlag = 0,
+                ShFlag = 0,
+                ShHidden = String.Empty
             };
 
 
         }
         ///////////////////////////////
-        //　12.1.2.3 入庫詳細情報作成
+        //　13.1.3.3 入庫詳細情報作成
         //メソッド名：GenerateDetailDataAtConfirm()
         //引　数   ：なし
-        //戻り値   ：出庫詳細確定情報
+        //戻り値   ：出荷詳細確定情報
         //機　能   ：確定データのセット
         ///////////////////////////////
-        private List<T_ArrivalDetail> GenerateDetailDataAtConfirm()
+        private List<T_ShipmentDetail> GenerateDetailDataAtConfirm()
         {
-            List<T_SyukkoDetail> syukkoDetail = syukkoDetailDataAccess.GetSyIDDetailData(int.Parse(textBoxSyID.Text.Trim()));
+            List<T_ArrivalDetail> arrivalDetail = arrivalDetailDataAccess.GetArIDDetailData(int.Parse(textBoxArID.Text.Trim()));
 
-            List<T_ArrivalDetail> arrivalDetail = new List<T_ArrivalDetail>();
-            foreach (var p in syukkoDetail)
+            List<T_ShipmentDetail> shipmentDetail = new List<T_ShipmentDetail>();
+            foreach (var p in arrivalDetail)
             {
-                arrivalDetail.Add(new T_ArrivalDetail()
+                shipmentDetail.Add(new T_ShipmentDetail()
                 {
 
                     PrID = p.PrID,
-                    ArQuantity = p.SyQuantity
+                     ShDquantity = p.ArQuantity
                 });
             }
-            return arrivalDetail;
+            return shipmentDetail;
 
 
         }
 
         ///////////////////////////////
-        //　12.1.2.4 出庫情報確定
+        //　13.1.3.4 入荷情報確定
         //メソッド名：ConfirmSyukko()
-        //引　数   ：入荷情報,入荷詳細情報
+        //引　数   ：出荷情報,出荷詳細情報
         //戻り値   ：なし
-        //機　能   ：出庫情報の確定
+        //機　能   ：入荷情報の確定
         ///////////////////////////////
-        private void ConfirmSyukko(T_Arrival conArrival, List<T_ArrivalDetail> conArrivalDetail)
+        private void ConfirmArrival(T_Shipment conShipment, List<T_ShipmentDetail> conShipmentDetail)
         {
             // 確定確認メッセージ
             DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "確定確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -495,24 +501,24 @@ namespace SalesManagement_SysDev
             if (result == DialogResult.Cancel)
                 return;
 
-            // 出庫情報の確定
-            //入荷テーブルにデータ登録
-            bool addFlg = arrivalDataAccess.AddArrivalData(conArrival);
-            //入荷IDの取得
-            T_Syukko syukko = syukkoDataAccess.GetSyIDData(int.Parse(textBoxSyID.Text.Trim()));
-            T_Arrival arrival = arrivalDataAccess.GetOrIDData(syukko.OrID);
-            //入荷詳細テーブルにデータ登録/
+            // 入荷情報の確定
+            //出荷テーブルにデータ登録
+            bool addFlg = shipmentDataAccess.AddShipmentData(conShipment);
+            //出荷IDの取得
+            T_Arrival arrival = arrivalDataAccess.GetArIDData(int.Parse(textBoxArID.Text.Trim()));
+            T_Shipment shipment = shipmentDataAccess.GetOrIDData(arrival.OrID);
+            //出荷詳細テーブルにデータ登録/
             ///成功か失敗の判定は未完成
-            foreach (var p in conArrivalDetail)
+            foreach (var p in conShipmentDetail)
             {
-                T_ArrivalDetail AddAr = new T_ArrivalDetail();
-                AddAr.ArID = arrival.ArID;
-                AddAr.PrID = p.PrID;
-                AddAr.ArQuantity = p.ArQuantity;
-                arrival.AddArrivalDetailData(AddAr);
+                T_ShipmentDetail AddSh = new T_ShipmentDetail();
+                AddSh.ShID = shipment.ShID;
+                AddSh.PrID = p.PrID;
+                AddSh.ShDquantity = p.ShDquantity;
+                shipmentDetailDataAccess.AddShipmentDetailData(AddSh);
             }
-            //出庫状態フラグの更新
-            bool conFlg = syukkoDataAccess.UpdateStateFlag(int.Parse(textBoxSyID.Text.Trim()));
+            //入荷状態フラグの更新
+            bool conFlg = arrivalDataAccess.UpdateStateFlag(int.Parse(textBoxArID.Text.Trim()));
             //全ての登録,更新が成功
             if (addFlg == true && conFlg == true)
             {
@@ -522,7 +528,7 @@ namespace SalesManagement_SysDev
             else
                 MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            textBoxSyID.Focus();
+            textBoxArID.Focus();
 
             // 入力エリアのクリア
             ClearInput();
@@ -536,22 +542,22 @@ namespace SalesManagement_SysDev
         {
 
         }
-
+        //13.1.4　入荷非表示機能
         private void buttonHidden_Click(object sender, EventArgs e)
         {
-            // 8.1.2.1 妥当な入荷データ取得
+            // 13.1.4.1 妥当な入荷データ取得
             if (!GetValidDataAtHidden())
                 return;
 
-            // 8.1.2.2　入荷情報作成
+            // 13.1.4.2　入荷情報作成
             var hidArrival = GenerateDataAtHidden();
 
-            // 8.1.2.3 入荷情報非表示
+            // 13.1.4.3 入荷情報非表示
             HiddenArrival(hidArrival);
 
         }
         ///////////////////////////////
-        //  8.1.2.1 妥当な入荷データ取得
+        //  13.1.4.1 妥当な入荷データ取得
         //メソッド名：GetValidDataAtHidden()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -613,7 +619,7 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　8.1.2.2 入荷情報作成
+        //　13.1.4.2 入荷情報作成
         //メソッド名：GenerateDataAtHidden()
         //引　数   ：なし
         //戻り値   ：入荷非表示情報
@@ -635,7 +641,7 @@ namespace SalesManagement_SysDev
             };
         }
         ///////////////////////////////
-        //　8.1.2.3 入荷情報非表示
+        //　13.1.4.3 入荷情報非表示
         //メソッド名：HiddenArrival()
         //引　数   ：入荷情報
         //戻り値   ：なし
@@ -664,13 +670,13 @@ namespace SalesManagement_SysDev
             // データグリッドビューの表示
             GetDataGridView();
         }
-
+        //13.1.1 一覧表示機能
         private void buttonList_Click(object sender, EventArgs e)
         {
             ClearInput();
             GetDataGridView();
         }
-
+        //13.1.5 非表示リスト機能
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
             ClearInput();

@@ -397,30 +397,30 @@ namespace SalesManagement_SysDev
 
             // 出庫情報の確定
             //入荷テーブルにデータ登録
-            //bool addFlg = arrivalDataAccess.AddArrivalData(conArrival);
+            bool addFlg = arrivalDataAccess.AddArrivalData(conArrival);
             //入荷IDの取得
             T_Syukko  syukko = syukkoDataAccess.GetSyIDData(int.Parse(textBoxSyID.Text.Trim()));
-            //T_Arrival arrival = arrivalDataAccess.GetOrIDData(syukko.OrID);
+            T_Arrival arrival = arrivalDataAccess.GetOrIDData(syukko.OrID);
             //入荷詳細テーブルにデータ登録/
             ///成功か失敗の判定は未完成
-            //foreach (var p in conArrivalDetail)
-            //{
-            //    T_ArrivalDetail AddAr = new T_ArrivalDetail();
-            //    AddAr.ArID = arrival.ArID;
-            //    AddAr.PrID = p.PrID;
-            //    AddAr.ArQuantity = p.ArQuantity;
-            //    arrival.AddArrivalDetailData(AddAr);
-            //}
+            foreach (var p in conArrivalDetail)
+            {
+                T_ArrivalDetail AddAr = new T_ArrivalDetail();
+                AddAr.ArID = arrival.ArID;
+                AddAr.PrID = p.PrID;
+                AddAr.ArQuantity = p.ArQuantity;
+                arrivalDetailDataAccess.AddArDetailData(AddAr);
+            }
             //出庫状態フラグの更新
             bool conFlg = syukkoDataAccess.UpdateStateFlag(int.Parse(textBoxSyID.Text.Trim()));
             //全ての登録,更新が成功
-            //if (addFlg == true && conFlg == true)
-            //{
+            if (addFlg == true && conFlg == true)
+            {
 
-            //    MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //else
-            //    MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxSyID.Focus();
 

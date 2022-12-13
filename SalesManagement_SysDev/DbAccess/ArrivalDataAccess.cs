@@ -89,6 +89,35 @@ namespace SalesManagement_SysDev
             return arrival;
         }
         ///////////////////////////////
+        //メソッド名：GetOrIDData()
+        //引　数   :受注ID
+        //戻り値   ：受注IDの入荷データ
+        //機　能   ：受注IDの入荷情報取得
+        ///////////////////////////////
+        public T_Arrival GetOrIDData(int orID)
+        {
+            T_Arrival arrival = new T_Arrival();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                arrival = context.T_Arrivals.Single(x => x.OrID == orID && x.ArFlag == 0);
+
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return arrival;
+        }
+
+        ///////////////////////////////
         //メソッド名：UpdateStateFlag()
         //引　数   :入荷ID
         //戻り値   ：True or False

@@ -535,7 +535,7 @@ namespace SalesManagement_SysDev
             return new T_Chumon
             {
                 OrID = int.Parse(order.OrID.ToString()),
-                EmID = int.Parse(order.EmID.ToString()),
+                EmID = 0,
                 SoID = int.Parse(order.SoID.ToString()),
                 ClID = int.Parse(order.ClID.ToString()),
                 ChDate = DateTime.Now,
