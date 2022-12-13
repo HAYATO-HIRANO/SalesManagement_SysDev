@@ -52,15 +52,149 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：条件一致在庫データの取得
         ///////////////////////////////
 
-        public List<T_Stock> GetStockData(T_Stock selectCondition)
+        public List<T_StockDsp> GetStockData(int flg, T_StockDsp selectCondition)
         {
-            List<T_Stock> stock = new List<T_Stock>();
+            List<T_StockDsp> stock = new List<T_StockDsp>();
+
             try
             {
                 var context = new SalesManagement_DevContext();
-                stock = context.T_Stocks.Where(x => x.StID == selectCondition.StID&&x.PrID==selectCondition.PrID).ToList();
+                //stock = context.T_Stocks.Where(x => x.StID == selectCondition.StID && x.PrID == selectCondition.PrID).ToList();
+                if (flg == 1)
+                {
+
+                    var tb = from t1 in context.T_Stocks
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+                             where t1.StID.ToString().Contains(selectCondition.StID.ToString()) &&
+                             t2.PrID == selectCondition.PrID&&
+                             t1.StFlag==selectCondition.StFlag
+
+                             select new
+                             {
+                                 t1.StID,
+                                 t2.PrID,
+                                 t2.PrName,
+                                 t1.StQuantity,
+                                 t1.StFlag
+
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        stock.Add(new T_StockDsp()
+                        {
+                            StID = p.StID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            StQuantity = p.StQuantity,
+                            StFlag = p.StFlag
+                        });
+                    }
+                }
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.T_Stocks
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+                             where t1.StID.ToString().Contains(selectCondition.StID.ToString()) &&
+                             //t2.PrID == selectCondition.PrID &&
+                             t1.StFlag == selectCondition.StFlag
+
+                             select new
+                             {
+                                 t1.StID,
+                                 t2.PrID,
+                                 t2.PrName,
+                                 t1.StQuantity,
+                                 t1.StFlag
+
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        stock.Add(new T_StockDsp()
+                        {
+                            StID = p.StID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            StQuantity = p.StQuantity,
+                            StFlag = p.StFlag
+                        });
+                    }
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.T_Stocks
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+                             where //t1.StID.ToString().Contains(selectCondition.StID.ToString()) &&
+                             t2.PrID == selectCondition.PrID &&
+                             t1.StFlag == selectCondition.StFlag
+
+
+                             select new
+                             {
+                                 t1.StID,
+                                 t2.PrID,
+                                 t2.PrName,
+                                 t1.StQuantity,
+                                 t1.StFlag
+
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        stock.Add(new T_StockDsp()
+                        {
+                            StID = p.StID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            StQuantity = p.StQuantity,
+                            StFlag = p.StFlag
+                        });
+                    }
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.T_Stocks
+                             join t2 in context.M_Products
+                             on t1.PrID equals t2.PrID
+                             where //t1.StID.ToString().Contains(selectCondition.StID.ToString()) &&
+                             //t2.PrID == selectCondition.PrID &&
+                             t1.StFlag == selectCondition.StFlag
+
+                             select new
+                             {
+                                 t1.StID,
+                                 t2.PrID,
+                                 t2.PrName,
+                                 t1.StQuantity,
+                                 t1.StFlag
+
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        stock.Add(new T_StockDsp()
+                        {
+                            StID = p.StID,
+                            PrID = p.PrID,
+                            PrName = p.PrName,
+                            StQuantity = p.StQuantity,
+                            StFlag = p.StFlag
+                        });
+                    }
+               
+                }
+
                 context.Dispose();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -74,14 +208,40 @@ namespace SalesManagement_SysDev//.DbAccess
         //戻り値   :在庫データ
         //機　能   :在庫データの取得
         //////////////////////////////
-        
-        public List<T_Stock> GetStockData()
+
+        public List<T_StockDsp> GetStockData()
         {
-            List<T_Stock> stock = new List<T_Stock>();
+            List<T_StockDsp> stock = new List<T_StockDsp>();
             try
             {
                 var context = new SalesManagement_DevContext();
-                stock = context.T_Stocks.ToList();
+                //stock = context.T_Stocks.ToList();
+                var tb = from t1 in context.T_Stocks
+                         join t2 in context.M_Products
+                         on t1.PrID equals t2.PrID
+                        
+                         select new
+                         {
+                             t1.StID,
+                             t2.PrID,
+                             t2.PrName,
+                             t1.StQuantity,
+                             t1.StFlag
+
+                         };
+
+                // IEnumerable型のデータをList型へ
+                foreach (var p in tb)
+                {
+                    stock.Add(new T_StockDsp()
+                    {
+                        StID=p.StID,
+                        PrID=p.PrID,
+                        PrName=p.PrName,
+                        StQuantity=p.StQuantity,
+                        StFlag=p.StFlag
+                    });
+                }
                 context.Dispose();
             }catch(Exception ex)
             {

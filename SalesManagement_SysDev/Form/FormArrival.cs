@@ -43,29 +43,9 @@ namespace SalesManagement_SysDev
             textBoxArHidden.TabStop = false;
             textBoxArHidden.ReadOnly = true;
 
-            //コンボボックスの設定
-            SetFormComboBox();
 
             //データグリッドビューの設定
             SetFormDataGridView();
-        }
-        ///////////////////////////////
-        //メソッド名：SetFormComboBox()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：コンボボックスのデータ設定
-        ///////////////////////////////
-        private void SetFormComboBox()
-        {
-
-            //営業所データの取得
-            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
-            comboBoxSoID.DataSource = SalesOffice;
-            comboBoxSoID.DisplayMember = "SoName";
-            comboBoxSoID.ValueMember = "SoID";
-            //コンボボックスを読み取り専用
-            comboBoxSoID.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxSoID.SelectedIndex = -1;
         }
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()

@@ -26,10 +26,10 @@ namespace SalesManagement_SysDev
         [DisplayName("役職ＩＤ")]
         public int PoID { get; set; }
         [DisplayName("役職名")]
-        public int PoName { get; set; }
+        public String PoName { get; set; }
         [DisplayName("非表示フラグ")]
         public int PoFlag { get; set; }
         [DisplayName("非表示理由")]
-        public int PoHidden { get; set; }
+        public String PoHidden { get; set; }
     }
 }
