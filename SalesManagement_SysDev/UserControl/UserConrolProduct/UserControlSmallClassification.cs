@@ -172,7 +172,7 @@ namespace SalesManagement_SysDev
         private void RegistrationSc(M_SmallClassification regSc)
         {
             //登録確認メッセージ
-            DialogResult result = MessageBox.Show("小分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("小分類データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.Cancel)
                 return;
             //顧客情報の登録
@@ -379,7 +379,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //小分類IDが入力されていません
-                MessageBox.Show("入力された小分類IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("小分類IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxScID.Focus();
                 return false;
             }
@@ -455,7 +455,7 @@ namespace SalesManagement_SysDev
         private void UpdateSc(M_SmallClassification updSc)
         {
             // 更新確認メッセージ
-            DialogResult result = MessageBox.Show("データを更新してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("データを更新してよろしいですか?", "更新確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (result == DialogResult.Cancel)
                 return;
@@ -463,9 +463,9 @@ namespace SalesManagement_SysDev
             // スタッフ情報の更新
             bool flg = smallClassification.UpdateSmallClassData(updSc);
             if (flg == true)
-                MessageBox.Show("データを更新しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("データを更新しました", "更新確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("データの更新に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("データの更新に失敗しました", "更新確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxScID.Focus();
 
