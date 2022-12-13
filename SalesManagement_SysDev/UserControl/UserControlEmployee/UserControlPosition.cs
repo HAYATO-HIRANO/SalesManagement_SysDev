@@ -136,7 +136,6 @@ namespace SalesManagement_SysDev
             DialogResult result = MessageBox.Show("役職データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.Cancel)
                 return;
-
             // 役職情報の登録
             bool flg = positionDataAccess.AddPositionData(regPosition);
             if (flg == true)
@@ -193,15 +192,15 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPoID.Text.Trim()))
                 {
                     //MessageBox.Show("役職IDは全て半角英数字入力です");
-                    messageDsp.DspMsg("M2001");
+                    MessageBox.Show("役職IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPoID.Focus();
                     return false;
                 }
                 // 役職IDの文字数チェック
-                if (textBoxPoID.TextLength != 2)
+                if (textBoxPoID.TextLength > 2)
                 {
                     //MessageBox.Show("役職IDは2文字です");
-                    messageDsp.DspMsg("M2002");
+                    MessageBox.Show("役職IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPoID.Focus();
                     return false;
                 }
@@ -209,7 +208,7 @@ namespace SalesManagement_SysDev
                 if (!positionDataAccess.CheckPoIDExistence(int.Parse(textBoxPoID.Text.Trim())))
                 {
                     //MessageBox.Show("入力された役職IDは存在しません");
-                    messageDsp.DspMsg("M2013");
+                    MessageBox.Show("入力された役職IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPoID.Focus();
                     return false;
                 }
@@ -217,7 +216,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //MessageBox.Show("役職IDが入力されていません");
-                messageDsp.DspMsg("M2004");
+                MessageBox.Show("役職IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPoID.Focus();
                 return false;
             }
@@ -225,20 +224,12 @@ namespace SalesManagement_SysDev
 
             // 役職名の適否
             if (!String.IsNullOrEmpty(textBoxPoName.Text.Trim()))
-            {
-                // 役職名の全角チェック
-                if (!dataInputFormCheck.CheckFullWidth(textBoxPoName.Text.Trim()))
-                {
-                    //MessageBox.Show("役職名は全て全角入力です");
-                    messageDsp.DspMsg("M2005");
-                    textBoxPoName.Focus();
-                    return false;
-                }
+            {   
                 // 役職名の文字数チェック
                 if (textBoxPoName.TextLength > 50)
                 {
                     //MessageBox.Show("役職名は50文字以下です");
-                    messageDsp.DspMsg("M2006");
+                    MessageBox.Show("役職名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPoName.Focus();
                     return false;
                 }
@@ -246,7 +237,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //MessageBox.Show("役職名が入力されていません");
-                messageDsp.DspMsg("M2007");
+                MessageBox.Show("役職名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPoName.Focus();
                 return false;
             }
@@ -257,21 +248,17 @@ namespace SalesManagement_SysDev
             if (checkBoxPoFlag.CheckState == CheckState.Indeterminate)
             {
                 //MessageBox.Show("非表示フラグが不確定の状態です");
-                messageDsp.DspMsg("M2008");
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxPoFlag.Focus();
                 return false;
             }
 
             // 備考の適否
-            if (!String.IsNullOrEmpty(textBoxPoHidden.Text.Trim()))
+            if (checkBoxPoFlag.Checked == true && string.IsNullOrEmpty(textBoxPoHidden.Text.Trim()))
             {
-                if (textBoxPoHidden.TextLength > 100)
-                {
-                    //MessageBox.Show("備考は100文字以下です");
-                    messageDsp.DspMsg("M2009");
-                    textBoxPoHidden.Focus();
-                    return false;
-                }
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPoHidden.Focus();
+                return false;
             }
             return true;
         }
@@ -284,11 +271,14 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_PositionDsp GenerateDataAtUpdate()
         {
+            int poFlag = 0;
+            if (checkBoxPoFlag.Checked == true)
+                poFlag = 2;
             return new M_PositionDsp
             {
                 PoID = int.Parse(textBoxPoID.Text.Trim()),
                 PoName = textBoxPoName.Text.Trim(),
-                PoFlag = Convert.ToInt32(checkBoxPoFlag.Checked),
+                PoFlag = poFlag,
                 PoHidden = textBoxPoHidden.Text.Trim()
             };
         }
@@ -302,18 +292,16 @@ namespace SalesManagement_SysDev
         private void UpdatePosition(M_PositionDsp updPosition)
         {
             // 更新確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M2014");
+            DialogResult result = MessageBox.Show("データを更新してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
 
             // 役職情報の更新
             bool flg = positionDataAccess.UpdatePositionData(updPosition);
             if (flg == true)
-                //MessageBox.Show("データを更新しました。");
-                messageDsp.DspMsg("M2015");
+                MessageBox.Show("データを更新しました", "更新確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                //MessageBox.Show("データの更新に失敗しました。");
-                messageDsp.DspMsg("M2016");
+                MessageBox.Show("データの更新に失敗しました", "更新確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             textBoxPoID.Focus();
 

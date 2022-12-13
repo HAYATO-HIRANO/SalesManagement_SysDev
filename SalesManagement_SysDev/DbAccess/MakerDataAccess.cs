@@ -122,14 +122,76 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：商品メーカデータの取得
         ///////////////////////////////
 
-        public List<M_Maker> GetMakerData()
+        public M_Maker GetMakerIDData(int maID)
         {
-            List<M_Maker> maker = new List<M_Maker>();
+            M_Maker maker = new M_Maker();
             try
             {
                 var context = new SalesManagement_DevContext();
-                maker = context.M_Makers.ToList();
+                maker = context.M_Makers.Single(x => x.MaID == maID && x.MaFlag == 0);
                 context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return maker;
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：GetMakerData()
+        //引　数   ：なし
+        //戻り値   ：全メーカデータ
+        //機　能   ：全メーカデータの取得
+        ///////////////////////////////
+
+
+        public List<M_MakerDsp> GetMakerData()
+        {
+            List<M_MakerDsp> maker = new List<M_MakerDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                // tbはIEnumerable型
+
+                var tb = from t1 in context.M_Makers
+                         //join t2 in context.M_SalesOffices
+                         //on t1.MaID equals t2.MaID
+                         where t1.MaFlag != 2
+                         select new
+                         {
+                             t1.MaID,
+                             t1.MaName,
+                             t1.MaAdress,
+                             t1.MaFAX,
+                             t1.MaPhone,
+                             t1.MaPostal,
+                             t1.MaFlag,
+                             t1.MaHidden
+                         };
+
+                foreach (var p in tb)
+                {
+                    maker.Add(new M_MakerDsp()
+                    {
+                        MaID = p.MaID,
+                        MaName = p.MaName,
+                        MaPhone = p.MaPhone,
+                        MaAdress = p.MaAdress,
+                        MaPostal = p.MaPostal,
+                        MaFAX = p.MaFAX,
+                        MaFlag = p.MaFlag,
+                        MaHidden = p.MaHidden
+                    });
+
+                }
+
+                context.Dispose();
+
+
             }
             catch (Exception ex)
             {
@@ -146,13 +208,102 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：条件一致商品メーカデータの取得
         ///////////////////////////////
 
-        public List<M_Maker> GetMakerData(M_Maker selectCondition)
+        public List<M_MakerDsp> GetMakerData(int flg, M_MakerDsp selectCondition)
         {
-            List<M_Maker> maker = new List<M_Maker>();
+            List<M_MakerDsp> maker = new List<M_MakerDsp>();
+
             try
             {
                 var context = new SalesManagement_DevContext();
-                maker = context.M_Makers.Where(x => x.MaID == selectCondition.MaID && x.MaName.Contains(selectCondition.MaName)).ToList();
+                // tbはIEnumerable型
+
+                if (flg == 1)
+                {
+                    var tb = from t1 in context.M_Makers
+                                 //join t2 in context.M_SalesOffices
+                                 //on t1.MaID equals t2.MaID
+                             where
+
+                             t1.MaID.ToString().Contains(selectCondition.MaID.ToString()) &&
+                             t1.MaName.Contains(selectCondition.MaName) &&
+                             t1.MaPhone.Contains(selectCondition.MaPhone) &&
+                             t1.MaPostal.Contains(selectCondition.MaPostal) &&
+                             t1.MaFAX.Contains(selectCondition.MaFAX) &&
+                             t1.MaAdress.Contains(selectCondition.MaAdress) &&
+                             t1.MaFlag == selectCondition.MaFlag &&
+                             t1.MaHidden.Contains(selectCondition.MaHidden)
+
+                             select new
+                             {
+                                 t1.MaID,
+                                 t1.MaName,
+                                 t1.MaAdress,
+                                 t1.MaFAX,
+                                 t1.MaPhone,
+                                 t1.MaPostal,
+                                 t1.MaFlag,
+                                 t1.MaHidden
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        maker.Add(new M_MakerDsp()
+                        {
+                            MaID = p.MaID,
+                            MaName = p.MaName,
+                            MaPhone = p.MaPhone,
+                            MaAdress = p.MaAdress,
+                            MaPostal = p.MaPostal,
+                            MaFAX = p.MaFAX,
+                            MaFlag = p.MaFlag,
+                            MaHidden = p.MaHidden
+                        });
+
+                    }
+                }
+                    if (flg == 2)
+                    {
+                        var tb = from t1 in context.M_Makers
+                                     //join t2 in context.M_SalesOffices
+                                     //on t1.MaID equals t2.MaID
+                                 where 
+                             t1.MaID.ToString().Contains(selectCondition.MaID.ToString()) &&
+                             t1.MaName.Contains(selectCondition.MaName) &&
+                             t1.MaPhone.Contains(selectCondition.MaPhone) &&
+                             t1.MaPostal.Contains(selectCondition.MaPostal) &&
+                             t1.MaFAX.Contains(selectCondition.MaFAX) &&
+                             t1.MaAdress.Contains(selectCondition.MaAdress) &&
+                             t1.MaFlag == selectCondition.MaFlag &&
+                             t1.MaHidden.Contains(selectCondition.MaHidden)
+                                 select new
+                                 {
+                                     t1.MaID,
+                                     t1.MaName,
+                                     t1.MaAdress,
+                                     t1.MaFAX,
+                                     t1.MaPhone,
+                                     t1.MaPostal,
+                                     t1.MaFlag,
+                                     t1.MaHidden
+                                 };
+
+                        foreach (var p in tb)
+                        {
+                            maker.Add(new M_MakerDsp()
+                            {
+                                MaID = p.MaID,
+                                MaName = p.MaName,
+                                MaPhone = p.MaPhone,
+                                MaAdress = p.MaAdress,
+                                MaPostal = p.MaPostal,
+                                MaFAX = p.MaFAX,
+                                MaFlag = p.MaFlag,
+                                MaHidden = p.MaHidden
+                            });
+
+                        }
+                    }
+
                 context.Dispose();
             }
             catch (Exception ex)
@@ -187,6 +338,63 @@ namespace SalesManagement_SysDev//.DbAccess
             return maker;
 
         }
+        ///////////////////////////////
+        //メソッド名：GetClientHiddenData()
+        //引　数   ：なし
+        //戻り値   ：非表示データ
+        //機　能   ：非表示データの取得
+        ///////////////////////////////
 
+
+        public List<M_MakerDsp> GetMakerHiddenData()
+        {
+            List<M_MakerDsp> maker = new List<M_MakerDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                // tbはIEnumerable型
+
+                var tb = from t1 in context.M_Makers
+                         where t1.MaFlag == 2
+                         select new
+                         {
+                             t1.MaID,
+                             t1.MaName,
+                             t1.MaAdress,
+                             t1.MaFAX,
+                             t1.MaPhone,
+                             t1.MaPostal,
+                             t1.MaFlag,
+                             t1.MaHidden
+                         };
+
+                foreach (var p in tb)
+                {
+                    maker.Add(new M_MakerDsp()
+                    {
+                        MaID = p.MaID,
+                        MaName = p.MaName,
+                        MaPhone = p.MaPhone,
+                        MaAdress = p.MaAdress,
+                        MaPostal = p.MaPostal,
+                        MaFAX = p.MaFAX,
+                        MaFlag = p.MaFlag,
+                        MaHidden = p.MaHidden
+                    });
+
+                }
+
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return maker;
+        }
     }
 }
