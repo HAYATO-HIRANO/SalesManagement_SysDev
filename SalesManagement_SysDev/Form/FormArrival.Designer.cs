@@ -60,16 +60,8 @@ namespace SalesManagement_SysDev
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxArHidden = new System.Windows.Forms.TextBox();
-            this.labelArDate = new System.Windows.Forms.Label();
-            this.DateTimePickerOrDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxClID = new System.Windows.Forms.TextBox();
             this.labelClID = new System.Windows.Forms.Label();
-            this.textBoxEmID = new System.Windows.Forms.TextBox();
-            this.labelEmID = new System.Windows.Forms.Label();
-            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
-            this.labelSoID = new System.Windows.Forms.Label();
-            this.textBoxOrID = new System.Windows.Forms.TextBox();
-            this.labelOrID = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonHidden = new System.Windows.Forms.Button();
@@ -80,6 +72,12 @@ namespace SalesManagement_SysDev
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
             this.userControlArrivalDetail1 = new SalesManagement_SysDev.UserControlArrivalDetail();
+            this.labelOrID = new System.Windows.Forms.Label();
+            this.textBoxOrID = new System.Windows.Forms.TextBox();
+            this.dateTimePickerDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelOut = new System.Windows.Forms.Label();
+            this.dateTimePickerDateStart = new System.Windows.Forms.DateTimePicker();
             this.panelHeader.SuspendLayout();
             this.panelArrival.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAr)).BeginInit();
@@ -318,6 +316,10 @@ namespace SalesManagement_SysDev
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panelInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelInput.Controls.Add(this.dateTimePickerDateEnd);
+            this.panelInput.Controls.Add(this.label1);
+            this.panelInput.Controls.Add(this.labelOut);
+            this.panelInput.Controls.Add(this.dateTimePickerDateStart);
             this.panelInput.Controls.Add(this.textBoxClName);
             this.panelInput.Controls.Add(this.textBoxArID);
             this.panelInput.Controls.Add(this.labelArID);
@@ -327,14 +329,8 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.textBoxArHidden);
-            this.panelInput.Controls.Add(this.labelArDate);
-            this.panelInput.Controls.Add(this.DateTimePickerOrDate);
             this.panelInput.Controls.Add(this.textBoxClID);
             this.panelInput.Controls.Add(this.labelClID);
-            this.panelInput.Controls.Add(this.textBoxEmID);
-            this.panelInput.Controls.Add(this.labelEmID);
-            this.panelInput.Controls.Add(this.comboBoxSoID);
-            this.panelInput.Controls.Add(this.labelSoID);
             this.panelInput.Controls.Add(this.textBoxOrID);
             this.panelInput.Controls.Add(this.labelOrID);
             this.panelInput.Location = new System.Drawing.Point(293, 52);
@@ -348,7 +344,7 @@ namespace SalesManagement_SysDev
             this.textBoxClName.Enabled = false;
             this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
+            this.textBoxClName.Location = new System.Drawing.Point(735, 19);
             this.textBoxClName.Name = "textBoxClName";
             this.textBoxClName.Size = new System.Drawing.Size(190, 27);
             this.textBoxClName.TabIndex = 69;
@@ -376,7 +372,7 @@ namespace SalesManagement_SysDev
             // 
             this.checkBoxHidden.AutoSize = true;
             this.checkBoxHidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBoxHidden.Location = new System.Drawing.Point(364, 76);
+            this.checkBoxHidden.Location = new System.Drawing.Point(219, 81);
             this.checkBoxHidden.Name = "checkBoxHidden";
             this.checkBoxHidden.Size = new System.Drawing.Size(149, 28);
             this.checkBoxHidden.TabIndex = 7;
@@ -389,7 +385,7 @@ namespace SalesManagement_SysDev
             this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 127);
+            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 93);
             this.checkBoxStateFlag.Name = "checkBoxStateFlag";
             this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
             this.checkBoxStateFlag.TabIndex = 6;
@@ -400,7 +396,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelClName.AutoSize = true;
             this.labelClName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClName.Location = new System.Drawing.Point(1142, 18);
+            this.labelClName.Location = new System.Drawing.Point(647, 20);
             this.labelClName.Name = "labelClName";
             this.labelClName.Size = new System.Drawing.Size(82, 24);
             this.labelClName.TabIndex = 50;
@@ -429,34 +425,16 @@ namespace SalesManagement_SysDev
             // textBoxArHidden
             // 
             this.textBoxArHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxArHidden.Location = new System.Drawing.Point(515, 75);
+            this.textBoxArHidden.Location = new System.Drawing.Point(370, 80);
             this.textBoxArHidden.Multiline = true;
             this.textBoxArHidden.Name = "textBoxArHidden";
-            this.textBoxArHidden.Size = new System.Drawing.Size(715, 84);
+            this.textBoxArHidden.Size = new System.Drawing.Size(517, 76);
             this.textBoxArHidden.TabIndex = 8;
-            // 
-            // labelArDate
-            // 
-            this.labelArDate.AutoSize = true;
-            this.labelArDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelArDate.Location = new System.Drawing.Point(13, 76);
-            this.labelArDate.Name = "labelArDate";
-            this.labelArDate.Size = new System.Drawing.Size(82, 24);
-            this.labelArDate.TabIndex = 23;
-            this.labelArDate.Text = "入荷日";
-            // 
-            // DateTimePickerOrDate
-            // 
-            this.DateTimePickerOrDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateTimePickerOrDate.Location = new System.Drawing.Point(101, 75);
-            this.DateTimePickerOrDate.Name = "DateTimePickerOrDate";
-            this.DateTimePickerOrDate.Size = new System.Drawing.Size(220, 30);
-            this.DateTimePickerOrDate.TabIndex = 5;
             // 
             // textBoxClID
             // 
             this.textBoxClID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClID.Location = new System.Drawing.Point(1014, 16);
+            this.textBoxClID.Location = new System.Drawing.Point(519, 18);
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(77, 28);
             this.textBoxClID.TabIndex = 4;
@@ -466,68 +444,11 @@ namespace SalesManagement_SysDev
             this.labelClID.AutoSize = true;
             this.labelClID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelClID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClID.Location = new System.Drawing.Point(928, 18);
+            this.labelClID.Location = new System.Drawing.Point(433, 20);
             this.labelClID.Name = "labelClID";
             this.labelClID.Size = new System.Drawing.Size(80, 24);
             this.labelClID.TabIndex = 12;
             this.labelClID.Text = "顧客ID";
-            // 
-            // textBoxEmID
-            // 
-            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmID.Location = new System.Drawing.Point(811, 16);
-            this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxEmID.TabIndex = 3;
-            // 
-            // labelEmID
-            // 
-            this.labelEmID.AutoSize = true;
-            this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmID.Location = new System.Drawing.Point(725, 18);
-            this.labelEmID.Name = "labelEmID";
-            this.labelEmID.Size = new System.Drawing.Size(80, 24);
-            this.labelEmID.TabIndex = 10;
-            this.labelEmID.Text = "社員ID";
-            // 
-            // comboBoxSoID
-            // 
-            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxSoID.FormattingEnabled = true;
-            this.comboBoxSoID.Location = new System.Drawing.Point(517, 17);
-            this.comboBoxSoID.Name = "comboBoxSoID";
-            this.comboBoxSoID.Size = new System.Drawing.Size(173, 29);
-            this.comboBoxSoID.TabIndex = 2;
-            // 
-            // labelSoID
-            // 
-            this.labelSoID.AutoSize = true;
-            this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSoID.Location = new System.Drawing.Point(407, 18);
-            this.labelSoID.Name = "labelSoID";
-            this.labelSoID.Size = new System.Drawing.Size(106, 24);
-            this.labelSoID.TabIndex = 8;
-            this.labelSoID.Text = "営業所名";
-            // 
-            // textBoxOrID
-            // 
-            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrID.Location = new System.Drawing.Point(301, 16);
-            this.textBoxOrID.Name = "textBoxOrID";
-            this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxOrID.TabIndex = 1;
-            // 
-            // labelOrID
-            // 
-            this.labelOrID.AutoSize = true;
-            this.labelOrID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelOrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrID.Location = new System.Drawing.Point(215, 18);
-            this.labelOrID.Name = "labelOrID";
-            this.labelOrID.Size = new System.Drawing.Size(80, 24);
-            this.labelOrID.TabIndex = 4;
-            this.labelOrID.Text = "受注ID";
             // 
             // panelLeft
             // 
@@ -656,6 +577,67 @@ namespace SalesManagement_SysDev
             this.userControlArrivalDetail1.Size = new System.Drawing.Size(1920, 980);
             this.userControlArrivalDetail1.TabIndex = 2;
             // 
+            // labelOrID
+            // 
+            this.labelOrID.AutoSize = true;
+            this.labelOrID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.labelOrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOrID.Location = new System.Drawing.Point(215, 18);
+            this.labelOrID.Name = "labelOrID";
+            this.labelOrID.Size = new System.Drawing.Size(80, 24);
+            this.labelOrID.TabIndex = 4;
+            this.labelOrID.Text = "受注ID";
+            // 
+            // textBoxOrID
+            // 
+            this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxOrID.Location = new System.Drawing.Point(301, 16);
+            this.textBoxOrID.Name = "textBoxOrID";
+            this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxOrID.TabIndex = 1;
+            // 
+            // dateTimePickerDateEnd
+            // 
+            this.dateTimePickerDateEnd.Checked = false;
+            this.dateTimePickerDateEnd.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerDateEnd.Location = new System.Drawing.Point(1196, 93);
+            this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
+            this.dateTimePickerDateEnd.ShowCheckBox = true;
+            this.dateTimePickerDateEnd.Size = new System.Drawing.Size(198, 26);
+            this.dateTimePickerDateEnd.TabIndex = 84;
+            this.dateTimePickerDateEnd.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(963, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 13);
+            this.label1.TabIndex = 83;
+            this.label1.Text = "※検索用(範囲指定)";
+            // 
+            // labelOut
+            // 
+            this.labelOut.AutoSize = true;
+            this.labelOut.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOut.Location = new System.Drawing.Point(1166, 97);
+            this.labelOut.Name = "labelOut";
+            this.labelOut.Size = new System.Drawing.Size(32, 21);
+            this.labelOut.TabIndex = 82;
+            this.labelOut.Text = "～";
+            // 
+            // dateTimePickerDateStart
+            // 
+            this.dateTimePickerDateStart.Checked = false;
+            this.dateTimePickerDateStart.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerDateStart.Location = new System.Drawing.Point(965, 93);
+            this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
+            this.dateTimePickerDateStart.ShowCheckBox = true;
+            this.dateTimePickerDateStart.Size = new System.Drawing.Size(198, 26);
+            this.dateTimePickerDateStart.TabIndex = 81;
+            this.dateTimePickerDateStart.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
+            // 
             // FormArrival
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -711,16 +693,8 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonClear2;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBoxArHidden;
-        private System.Windows.Forms.Label labelArDate;
-        private System.Windows.Forms.DateTimePicker DateTimePickerOrDate;
         private System.Windows.Forms.TextBox textBoxClID;
         private System.Windows.Forms.Label labelClID;
-        private System.Windows.Forms.TextBox textBoxEmID;
-        private System.Windows.Forms.Label labelEmID;
-        private System.Windows.Forms.ComboBox comboBoxSoID;
-        private System.Windows.Forms.Label labelSoID;
-        private System.Windows.Forms.TextBox textBoxOrID;
-        private System.Windows.Forms.Label labelOrID;
         private System.Windows.Forms.TextBox textBoxArID;
         private System.Windows.Forms.Label labelArID;
         private System.Windows.Forms.Button buttonPageSizeChange;
@@ -735,5 +709,11 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonPreviousPage;
         private UserControlArrivalDetail userControlArrivalDetail1;
         private System.Windows.Forms.TextBox textBoxClName;
+        private System.Windows.Forms.TextBox textBoxOrID;
+        private System.Windows.Forms.Label labelOrID;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateEnd;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelOut;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateStart;
     }
 }

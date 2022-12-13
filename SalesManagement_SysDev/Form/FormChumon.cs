@@ -24,6 +24,8 @@ namespace SalesManagement_SysDev
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+        //データベース顧客テーブルアクセス用クラスのインスタンス化
+        ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データグリッドビュー用の注文データ
         private static List<T_ChumonDsp> Chumon;
         //データグリッドビュー用の社員データ
@@ -50,28 +52,10 @@ namespace SalesManagement_SysDev
             //非表示理由タブ選択不可、入力不可
             textBoxChHidden.TabStop = false;
             textBoxChHidden.ReadOnly = true;
-            SetFormComboBox();
 
             SetFormDataGridView();
         }
 
-        ///////////////////////////////
-        //メソッド名：SetFormComboBox()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：コンボボックスのデータ設定
-        ///////////////////////////////
-        private void SetFormComboBox()
-        {
-            //営業所データの取得
-            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
-            comboBoxSoID.DataSource = SalesOffice;
-            comboBoxSoID.DisplayMember = "SoName";
-            comboBoxSoID.ValueMember = "SoID";
-            //コンボボックスを読み取り専用
-            comboBoxSoID.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxSoID.SelectedIndex = -1;
-        }
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
         //引　数   ：なし
@@ -183,6 +167,12 @@ namespace SalesManagement_SysDev
             //妥当な注文データ取得
             if (!GetValidDataAtSelect())
                 return;
+
+            // 8.3.4.2 注文情報抽出
+            GenerateDataAtSelect();
+
+            // 8.3.4.3 注文抽出結果表示
+            SetSelectData();
         }
 
         ///////////////////////////////
@@ -232,9 +222,64 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
-            return false;
-        }
+            //顧客IDの適否
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+                {
+                    MessageBox.Show("顧客IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClID.TextLength > 6)
+                {
+                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                // 顧客IDの存在チェック
+                if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
 
+            }
+            //非表示フラグ
+            if (checkBoxHidden.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Focus();
+                return false;
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　8.3.4.2 注文情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：注文データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+
+        }
+        ///////////////////////////////
+        //　8.3.4.3 注文抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：注文情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+
+        }
         ///////////////////////////////
         //メソッド名：buttonList_Click()
         //引　数   ：なし
@@ -277,7 +322,6 @@ namespace SalesManagement_SysDev
             DateTimePickerChDate.Checked = false;
             textBoxChID.Text = "";
             textBoxOrID.Text = "";
-            comboBoxSoID.SelectedIndex = -1;
             textBoxEmID.Text = "";
             textBoxClID.Text = "";
             textBoxClName.Text = "";
