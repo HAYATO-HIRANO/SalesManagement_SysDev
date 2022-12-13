@@ -222,7 +222,7 @@ namespace SalesManagement_SysDev//.DbAccess
                              on t1.ScID equals t3.ScID
                              //join t4 in context.M_MajorCassifications
                              // on t3.McID equals t4.McID
-                             where t1.PrID==selectCondition.PrID &&
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString())&&
                              t1.MaID == selectCondition.MaID &&
                              t1.PrName.Contains(selectCondition.PrName) &&
                              //t1.Price == selectCondition.Price &&
@@ -286,7 +286,7 @@ namespace SalesManagement_SysDev//.DbAccess
                              on t1.ScID equals t3.ScID
                              //join t4 in context.M_MajorCassifications
                              // on t3.McID equals t4.McID
-                             where t1.PrID==selectCondition.PrID &&
+                             where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
                              //t1.MaID == selectCondition.MaID &&
                              t1.PrName.Contains(selectCondition.PrName) &&
                              //t1.Price == selectCondition.Price &&
@@ -297,6 +297,7 @@ namespace SalesManagement_SysDev//.DbAccess
                              //t1.PrReleaseDate == selectCondition.PrReleaseDate &&
                              t1.PrFlag == selectCondition.PrFlag &&
                              t1.PrHidden.Contains(selectCondition.PrHidden)
+                             
 
                              select new
                              {

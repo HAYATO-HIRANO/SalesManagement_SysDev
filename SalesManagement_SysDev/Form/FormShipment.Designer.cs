@@ -52,15 +52,19 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.buttonPreviousPage = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.dateTimePickerDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelOut = new System.Windows.Forms.Label();
+            this.dateTimePickerDateStart = new System.Windows.Forms.DateTimePicker();
             this.textBoxClName = new System.Windows.Forms.TextBox();
-            this.textBoxSyID = new System.Windows.Forms.TextBox();
+            this.textBoxShID = new System.Windows.Forms.TextBox();
             this.labelShID = new System.Windows.Forms.Label();
             this.checkBox1Hidden = new System.Windows.Forms.CheckBox();
             this.checkBoxStateFlag = new System.Windows.Forms.CheckBox();
             this.labelClName = new System.Windows.Forms.Label();
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.textBoxOrHidden = new System.Windows.Forms.TextBox();
+            this.textBoxShHidden = new System.Windows.Forms.TextBox();
             this.textBoxClID = new System.Windows.Forms.TextBox();
             this.labelClID = new System.Windows.Forms.Label();
             this.textBoxOrID = new System.Windows.Forms.TextBox();
@@ -74,10 +78,6 @@ namespace SalesManagement_SysDev
             this.buttonDetail = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.userControlShipmentDetail1 = new SalesManagement_SysDev.UserControlShipmentDetail();
-            this.dateTimePickerDateEnd = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelOut = new System.Windows.Forms.Label();
-            this.dateTimePickerDateStart = new System.Windows.Forms.DateTimePicker();
             this.panelHeader.SuspendLayout();
             this.panelShipment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -246,6 +246,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrder.RowTemplate.Height = 21;
             this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrder.TabIndex = 21;
+            this.dataGridViewOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
             // 
             // labelPageSize
             // 
@@ -276,6 +277,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 17;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -296,6 +298,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 16;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -306,6 +309,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 14;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -326,14 +330,14 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelOut);
             this.panelInput.Controls.Add(this.dateTimePickerDateStart);
             this.panelInput.Controls.Add(this.textBoxClName);
-            this.panelInput.Controls.Add(this.textBoxSyID);
+            this.panelInput.Controls.Add(this.textBoxShID);
             this.panelInput.Controls.Add(this.labelShID);
             this.panelInput.Controls.Add(this.checkBox1Hidden);
             this.panelInput.Controls.Add(this.checkBoxStateFlag);
             this.panelInput.Controls.Add(this.labelClName);
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.buttonClear);
-            this.panelInput.Controls.Add(this.textBoxOrHidden);
+            this.panelInput.Controls.Add(this.textBoxShHidden);
             this.panelInput.Controls.Add(this.textBoxClID);
             this.panelInput.Controls.Add(this.labelClID);
             this.panelInput.Controls.Add(this.textBoxOrID);
@@ -342,6 +346,48 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 173);
             this.panelInput.TabIndex = 11;
+            // 
+            // dateTimePickerDateEnd
+            // 
+            this.dateTimePickerDateEnd.Checked = false;
+            this.dateTimePickerDateEnd.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerDateEnd.Location = new System.Drawing.Point(1271, 97);
+            this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
+            this.dateTimePickerDateEnd.ShowCheckBox = true;
+            this.dateTimePickerDateEnd.Size = new System.Drawing.Size(198, 26);
+            this.dateTimePickerDateEnd.TabIndex = 84;
+            this.dateTimePickerDateEnd.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(1038, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(119, 13);
+            this.label1.TabIndex = 83;
+            this.label1.Text = "※検索用(範囲指定)";
+            // 
+            // labelOut
+            // 
+            this.labelOut.AutoSize = true;
+            this.labelOut.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelOut.Location = new System.Drawing.Point(1241, 101);
+            this.labelOut.Name = "labelOut";
+            this.labelOut.Size = new System.Drawing.Size(32, 21);
+            this.labelOut.TabIndex = 82;
+            this.labelOut.Text = "～";
+            // 
+            // dateTimePickerDateStart
+            // 
+            this.dateTimePickerDateStart.Checked = false;
+            this.dateTimePickerDateStart.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.dateTimePickerDateStart.Location = new System.Drawing.Point(1040, 97);
+            this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
+            this.dateTimePickerDateStart.ShowCheckBox = true;
+            this.dateTimePickerDateStart.Size = new System.Drawing.Size(198, 26);
+            this.dateTimePickerDateStart.TabIndex = 81;
+            this.dateTimePickerDateStart.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
             // 
             // textBoxClName
             // 
@@ -354,13 +400,13 @@ namespace SalesManagement_SysDev
             this.textBoxClName.Size = new System.Drawing.Size(246, 27);
             this.textBoxClName.TabIndex = 68;
             // 
-            // textBoxSyID
+            // textBoxShID
             // 
-            this.textBoxSyID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxSyID.Location = new System.Drawing.Point(99, 16);
-            this.textBoxSyID.Name = "textBoxSyID";
-            this.textBoxSyID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxSyID.TabIndex = 0;
+            this.textBoxShID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxShID.Location = new System.Drawing.Point(99, 16);
+            this.textBoxShID.Name = "textBoxShID";
+            this.textBoxShID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxShID.TabIndex = 0;
             // 
             // labelShID
             // 
@@ -383,6 +429,7 @@ namespace SalesManagement_SysDev
             this.checkBox1Hidden.TabIndex = 7;
             this.checkBox1Hidden.Text = "非表示理由";
             this.checkBox1Hidden.UseVisualStyleBackColor = true;
+            this.checkBox1Hidden.CheckedChanged += new System.EventHandler(this.checkBox1Hidden_CheckedChanged);
             // 
             // checkBoxStateFlag
             // 
@@ -416,6 +463,7 @@ namespace SalesManagement_SysDev
             this.buttonClear2.TabIndex = 9;
             this.buttonClear2.Text = "入力クリア";
             this.buttonClear2.UseVisualStyleBackColor = true;
+            this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
             // 
             // buttonClear
             // 
@@ -427,14 +475,14 @@ namespace SalesManagement_SysDev
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
             // 
-            // textBoxOrHidden
+            // textBoxShHidden
             // 
-            this.textBoxOrHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrHidden.Location = new System.Drawing.Point(381, 79);
-            this.textBoxOrHidden.Multiline = true;
-            this.textBoxOrHidden.Name = "textBoxOrHidden";
-            this.textBoxOrHidden.Size = new System.Drawing.Size(622, 84);
-            this.textBoxOrHidden.TabIndex = 8;
+            this.textBoxShHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxShHidden.Location = new System.Drawing.Point(381, 79);
+            this.textBoxShHidden.Multiline = true;
+            this.textBoxShHidden.Name = "textBoxShHidden";
+            this.textBoxShHidden.Size = new System.Drawing.Size(622, 84);
+            this.textBoxShHidden.TabIndex = 8;
             // 
             // textBoxClID
             // 
@@ -502,6 +550,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.TabIndex = 4;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
             // 
             // buttonHidden
             // 
@@ -596,48 +645,6 @@ namespace SalesManagement_SysDev
             this.userControlShipmentDetail1.Size = new System.Drawing.Size(1920, 980);
             this.userControlShipmentDetail1.TabIndex = 19;
             // 
-            // dateTimePickerDateEnd
-            // 
-            this.dateTimePickerDateEnd.Checked = false;
-            this.dateTimePickerDateEnd.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePickerDateEnd.Location = new System.Drawing.Point(1271, 97);
-            this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
-            this.dateTimePickerDateEnd.ShowCheckBox = true;
-            this.dateTimePickerDateEnd.Size = new System.Drawing.Size(198, 26);
-            this.dateTimePickerDateEnd.TabIndex = 84;
-            this.dateTimePickerDateEnd.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(1038, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 13);
-            this.label1.TabIndex = 83;
-            this.label1.Text = "※検索用(範囲指定)";
-            // 
-            // labelOut
-            // 
-            this.labelOut.AutoSize = true;
-            this.labelOut.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOut.Location = new System.Drawing.Point(1241, 101);
-            this.labelOut.Name = "labelOut";
-            this.labelOut.Size = new System.Drawing.Size(32, 21);
-            this.labelOut.TabIndex = 82;
-            this.labelOut.Text = "～";
-            // 
-            // dateTimePickerDateStart
-            // 
-            this.dateTimePickerDateStart.Checked = false;
-            this.dateTimePickerDateStart.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePickerDateStart.Location = new System.Drawing.Point(1040, 97);
-            this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
-            this.dateTimePickerDateStart.ShowCheckBox = true;
-            this.dateTimePickerDateStart.Size = new System.Drawing.Size(198, 26);
-            this.dateTimePickerDateStart.TabIndex = 81;
-            this.dateTimePickerDateStart.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
-            // 
             // FormShipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -690,14 +697,14 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Button buttonPreviousPage;
         private System.Windows.Forms.Panel panelInput;
-        private System.Windows.Forms.TextBox textBoxSyID;
+        private System.Windows.Forms.TextBox textBoxShID;
         private System.Windows.Forms.Label labelShID;
         private System.Windows.Forms.CheckBox checkBox1Hidden;
         private System.Windows.Forms.CheckBox checkBoxStateFlag;
         private System.Windows.Forms.Label labelClName;
         private System.Windows.Forms.Button buttonClear2;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.TextBox textBoxOrHidden;
+        private System.Windows.Forms.TextBox textBoxShHidden;
         private System.Windows.Forms.TextBox textBoxClID;
         private System.Windows.Forms.Label labelClID;
         private System.Windows.Forms.TextBox textBoxOrID;

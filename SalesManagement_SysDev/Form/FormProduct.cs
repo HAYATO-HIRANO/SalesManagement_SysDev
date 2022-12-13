@@ -58,6 +58,7 @@ namespace SalesManagement_SysDev
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
 
+            
             // コンボボックスの設定
             SetFormComboBox();
 
@@ -161,8 +162,7 @@ namespace SalesManagement_SysDev
             // 入力エリアのクリア
             ClearInput();
 
-            // データグリッドビューの表示
-            SetFormDataGridView();
+           
         }
 
         private void panel_Paint(object sender, PaintEventArgs e)
@@ -172,7 +172,7 @@ namespace SalesManagement_SysDev
         private void SetFormComboBox()
         {
             // 商品データの取得
-           
+           ;
             Maker = makerDataAccess.GetMakerDspData();
             comboBoxMaker.DataSource = Maker;
             comboBoxMaker.DisplayMember = "MaName";
@@ -223,6 +223,8 @@ namespace SalesManagement_SysDev
             dataGridViewProduct.AllowUserToResizeColumns = false;
             //直接の登録を不可にする
             dataGridViewProduct.AllowUserToAddRows = false;
+            //奇数行の色を変更
+            dataGridViewProduct.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //行内をクリックすることで行を選択
             dataGridViewProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //ヘッダー位置の指定
@@ -997,13 +999,13 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
-                {
-                    //入力された型番は存在していません
-                    messageDsp.DspMsg("M0441");
-                    textBoxPrModelNumber.Focus();
-                    return false;
-                }
+                //if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                //{
+                //    //入力された型番は存在していません
+                //    messageDsp.DspMsg("M0441");
+                //    textBoxPrModelNumber.Focus();
+                //    return false;
+                //}
 
             }
            
@@ -1048,7 +1050,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：商品情報の取得
         ///////////////////////////////
-        //private int proID=0;
+        
         private int price=0;
         private int PrSS=0 ;
 
@@ -1237,11 +1239,8 @@ namespace SalesManagement_SysDev
                 {
                         
                         PrName = textBoxPrName.Text.Trim(),
-                        //MaID=int.Parse(makercmb),
                         Price = price ,
                         PrSafetyStock = PrSS,
-                        //McID=int.Parse(comboBoxMc.SelectedValue.ToString()),
-                        //ScID=int.Parse(sccmb),
                         PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                         PrColor = textBoxColor.Text.Trim(),
                         PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),
