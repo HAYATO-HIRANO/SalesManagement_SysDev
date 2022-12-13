@@ -19,7 +19,7 @@ namespace SalesManagement_SysDev
     }
     class T_SyukkoDetailDsp
     {
-        [DisplayName("注文ID")]
+        [DisplayName("出庫ID")]
         public int SyID { get; set; }
         [DisplayName("出庫詳細ID")]
         public int SyDetailID { get; set; }
@@ -31,6 +31,8 @@ namespace SalesManagement_SysDev
         public int Price { get; set; }
         [DisplayName("数量")]
         public int SyQuantity { get; set; }
+        [DisplayName("合計金額")]
+        public int TotalPrice { get; set; }
 
 
     }

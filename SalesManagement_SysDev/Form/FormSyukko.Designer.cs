@@ -61,14 +61,8 @@ namespace SalesManagement_SysDev
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxSyHidden = new System.Windows.Forms.TextBox();
-            this.labelSyDate = new System.Windows.Forms.Label();
-            this.DateTimePickerSyDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxClID = new System.Windows.Forms.TextBox();
             this.labelClID = new System.Windows.Forms.Label();
-            this.textBoxEmID = new System.Windows.Forms.TextBox();
-            this.labelEmID = new System.Windows.Forms.Label();
-            this.comboBoxSoID = new System.Windows.Forms.ComboBox();
-            this.labelSoID = new System.Windows.Forms.Label();
             this.textBoxOrID = new System.Windows.Forms.TextBox();
             this.labelOrID = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
@@ -230,6 +224,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 19;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -278,6 +273,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 17;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -298,6 +294,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 16;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -308,6 +305,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 14;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -318,6 +316,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 15;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // panelInput
             // 
@@ -332,14 +331,8 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.textBoxSyHidden);
-            this.panelInput.Controls.Add(this.labelSyDate);
-            this.panelInput.Controls.Add(this.DateTimePickerSyDate);
             this.panelInput.Controls.Add(this.textBoxClID);
             this.panelInput.Controls.Add(this.labelClID);
-            this.panelInput.Controls.Add(this.textBoxEmID);
-            this.panelInput.Controls.Add(this.labelEmID);
-            this.panelInput.Controls.Add(this.comboBoxSoID);
-            this.panelInput.Controls.Add(this.labelSoID);
             this.panelInput.Controls.Add(this.textBoxOrID);
             this.panelInput.Controls.Add(this.labelOrID);
             this.panelInput.Location = new System.Drawing.Point(293, 52);
@@ -353,9 +346,9 @@ namespace SalesManagement_SysDev
             this.textBoxClName.Enabled = false;
             this.textBoxClName.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxClName.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxClName.Location = new System.Drawing.Point(1230, 17);
+            this.textBoxClName.Location = new System.Drawing.Point(758, 19);
             this.textBoxClName.Name = "textBoxClName";
-            this.textBoxClName.Size = new System.Drawing.Size(190, 27);
+            this.textBoxClName.Size = new System.Drawing.Size(228, 27);
             this.textBoxClName.TabIndex = 69;
             // 
             // textBoxSyID
@@ -381,7 +374,7 @@ namespace SalesManagement_SysDev
             // 
             this.checkBox1Hidden.AutoSize = true;
             this.checkBox1Hidden.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.checkBox1Hidden.Location = new System.Drawing.Point(364, 76);
+            this.checkBox1Hidden.Location = new System.Drawing.Point(247, 80);
             this.checkBox1Hidden.Name = "checkBox1Hidden";
             this.checkBox1Hidden.Size = new System.Drawing.Size(149, 28);
             this.checkBox1Hidden.TabIndex = 7;
@@ -394,7 +387,7 @@ namespace SalesManagement_SysDev
             this.checkBoxStateFlag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.checkBoxStateFlag.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.checkBoxStateFlag.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 127);
+            this.checkBoxStateFlag.Location = new System.Drawing.Point(17, 76);
             this.checkBoxStateFlag.Name = "checkBoxStateFlag";
             this.checkBoxStateFlag.Size = new System.Drawing.Size(152, 33);
             this.checkBoxStateFlag.TabIndex = 6;
@@ -405,7 +398,7 @@ namespace SalesManagement_SysDev
             // 
             this.labelClName.AutoSize = true;
             this.labelClName.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClName.Location = new System.Drawing.Point(1142, 18);
+            this.labelClName.Location = new System.Drawing.Point(670, 20);
             this.labelClName.Name = "labelClName";
             this.labelClName.Size = new System.Drawing.Size(82, 24);
             this.labelClName.TabIndex = 50;
@@ -420,6 +413,7 @@ namespace SalesManagement_SysDev
             this.buttonClear2.TabIndex = 9;
             this.buttonClear2.Text = "入力クリア";
             this.buttonClear2.UseVisualStyleBackColor = true;
+            this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
             // 
             // buttonClear
             // 
@@ -434,36 +428,18 @@ namespace SalesManagement_SysDev
             // textBoxSyHidden
             // 
             this.textBoxSyHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxSyHidden.Location = new System.Drawing.Point(515, 75);
+            this.textBoxSyHidden.Location = new System.Drawing.Point(398, 79);
             this.textBoxSyHidden.Multiline = true;
             this.textBoxSyHidden.Name = "textBoxSyHidden";
             this.textBoxSyHidden.Size = new System.Drawing.Size(715, 84);
             this.textBoxSyHidden.TabIndex = 8;
             // 
-            // labelSyDate
-            // 
-            this.labelSyDate.AutoSize = true;
-            this.labelSyDate.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSyDate.Location = new System.Drawing.Point(13, 76);
-            this.labelSyDate.Name = "labelSyDate";
-            this.labelSyDate.Size = new System.Drawing.Size(82, 24);
-            this.labelSyDate.TabIndex = 23;
-            this.labelSyDate.Text = "出庫日";
-            // 
-            // DateTimePickerSyDate
-            // 
-            this.DateTimePickerSyDate.Font = new System.Drawing.Font("MS UI Gothic", 16.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.DateTimePickerSyDate.Location = new System.Drawing.Point(101, 75);
-            this.DateTimePickerSyDate.Name = "DateTimePickerSyDate";
-            this.DateTimePickerSyDate.Size = new System.Drawing.Size(220, 30);
-            this.DateTimePickerSyDate.TabIndex = 5;
-            // 
             // textBoxClID
             // 
             this.textBoxClID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxClID.Location = new System.Drawing.Point(1014, 16);
+            this.textBoxClID.Location = new System.Drawing.Point(542, 18);
             this.textBoxClID.Name = "textBoxClID";
-            this.textBoxClID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxClID.Size = new System.Drawing.Size(115, 28);
             this.textBoxClID.TabIndex = 4;
             // 
             // labelClID
@@ -471,54 +447,16 @@ namespace SalesManagement_SysDev
             this.labelClID.AutoSize = true;
             this.labelClID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelClID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelClID.Location = new System.Drawing.Point(928, 18);
+            this.labelClID.Location = new System.Drawing.Point(456, 20);
             this.labelClID.Name = "labelClID";
             this.labelClID.Size = new System.Drawing.Size(80, 24);
             this.labelClID.TabIndex = 12;
             this.labelClID.Text = "顧客ID";
             // 
-            // textBoxEmID
-            // 
-            this.textBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmID.Location = new System.Drawing.Point(811, 16);
-            this.textBoxEmID.Name = "textBoxEmID";
-            this.textBoxEmID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxEmID.TabIndex = 3;
-            // 
-            // labelEmID
-            // 
-            this.labelEmID.AutoSize = true;
-            this.labelEmID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.labelEmID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelEmID.Location = new System.Drawing.Point(725, 18);
-            this.labelEmID.Name = "labelEmID";
-            this.labelEmID.Size = new System.Drawing.Size(80, 24);
-            this.labelEmID.TabIndex = 10;
-            this.labelEmID.Text = "社員ID";
-            // 
-            // comboBoxSoID
-            // 
-            this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxSoID.FormattingEnabled = true;
-            this.comboBoxSoID.Location = new System.Drawing.Point(517, 17);
-            this.comboBoxSoID.Name = "comboBoxSoID";
-            this.comboBoxSoID.Size = new System.Drawing.Size(173, 29);
-            this.comboBoxSoID.TabIndex = 2;
-            // 
-            // labelSoID
-            // 
-            this.labelSoID.AutoSize = true;
-            this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSoID.Location = new System.Drawing.Point(407, 18);
-            this.labelSoID.Name = "labelSoID";
-            this.labelSoID.Size = new System.Drawing.Size(106, 24);
-            this.labelSoID.TabIndex = 8;
-            this.labelSoID.Text = "営業所名";
-            // 
             // textBoxOrID
             // 
             this.textBoxOrID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxOrID.Location = new System.Drawing.Point(301, 16);
+            this.textBoxOrID.Location = new System.Drawing.Point(329, 16);
             this.textBoxOrID.Name = "textBoxOrID";
             this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxOrID.TabIndex = 1;
@@ -528,7 +466,7 @@ namespace SalesManagement_SysDev
             this.labelOrID.AutoSize = true;
             this.labelOrID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelOrID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelOrID.Location = new System.Drawing.Point(215, 18);
+            this.labelOrID.Location = new System.Drawing.Point(243, 18);
             this.labelOrID.Name = "labelOrID";
             this.labelOrID.Size = new System.Drawing.Size(80, 24);
             this.labelOrID.TabIndex = 4;
@@ -562,6 +500,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.TabIndex = 4;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
             // 
             // buttonHidden
             // 
@@ -576,6 +515,7 @@ namespace SalesManagement_SysDev
             this.buttonHidden.TabIndex = 2;
             this.buttonHidden.Text = "非表示";
             this.buttonHidden.UseVisualStyleBackColor = false;
+            this.buttonHidden.Click += new System.EventHandler(this.buttonHidden_Click);
             // 
             // buttonList
             // 
@@ -590,6 +530,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 3;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonConfirm
             // 
@@ -605,6 +546,7 @@ namespace SalesManagement_SysDev
             this.buttonConfirm.Text = "確定";
             this.buttonConfirm.UseCompatibleTextRendering = true;
             this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonSearch
             // 
@@ -660,7 +602,7 @@ namespace SalesManagement_SysDev
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelSyukko);
@@ -713,14 +655,8 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonClear2;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBoxSyHidden;
-        private System.Windows.Forms.Label labelSyDate;
-        private System.Windows.Forms.DateTimePicker DateTimePickerSyDate;
         private System.Windows.Forms.TextBox textBoxClID;
         private System.Windows.Forms.Label labelClID;
-        private System.Windows.Forms.TextBox textBoxEmID;
-        private System.Windows.Forms.Label labelEmID;
-        private System.Windows.Forms.ComboBox comboBoxSoID;
-        private System.Windows.Forms.Label labelSoID;
         private System.Windows.Forms.TextBox textBoxOrID;
         private System.Windows.Forms.Label labelOrID;
         private System.Windows.Forms.Button buttonPageSizeChange;
