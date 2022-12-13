@@ -267,7 +267,26 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
+            //日付範囲
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+            if (dateTimePickerDateStart.Checked)
+                startDay = DateTime.Parse(dateTimePickerDateStart.Text);
+            if (dateTimePickerDateEnd.Checked)
+                endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
 
+            //非表示フラグ変換
+            int orFlg = 0;
+            if (checkBoxHidden.Checked == true)
+            {
+                orFlg = 2;
+            }
+            //受注確定フラグ変換
+            int stateFlg = 0;
+            if (checkBoxStateFlag.Checked == true)
+            {
+                stateFlg = 1;
+            }
         }
         ///////////////////////////////
         //　8.3.4.3 注文抽出結果表示
@@ -319,16 +338,15 @@ namespace SalesManagement_SysDev
         private void ClearInput()
         {
             // デートタイムピッカの設定
-            DateTimePickerChDate.Checked = false;
+            dateTimePickerDateStart.Checked = false;
+            dateTimePickerDateEnd.Checked = false;
             textBoxChID.Text = "";
             textBoxOrID.Text = "";
-            textBoxEmID.Text = "";
             textBoxClID.Text = "";
             textBoxClName.Text = "";
-            DateTimePickerChDate.Text = "";
             checkBoxStateFlag.Checked = false;
             textBoxChHidden.Text = "";
-            checkBoxStateFlag.Checked = false;
+            checkBoxHidden.Checked = false;
         }
 
         ///////////////////////////////
@@ -457,11 +475,8 @@ namespace SalesManagement_SysDev
             //データグリッドビューからクリックされたデータを各入力エリアへ
             textBoxChID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[0].Value.ToString();
             textBoxOrID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[1].Value.ToString();
-            comboBoxSoID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[2].Value.ToString();
-            textBoxEmID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[3].Value.ToString();
             textBoxClID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[4].Value.ToString();
             textBoxClName.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[5].Value.ToString();
-            DateTimePickerChDate.Text= dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[6].Value.ToString();
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
             {

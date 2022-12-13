@@ -280,7 +280,7 @@ namespace SalesManagement_SysDev
                 if (result == DialogResult.OK)
                 {
                     //入力エリアのクリア
-                    //ClearInput();
+                    ClearInput();
 
                     //データグリッドビューの表示
                     GetDataGridView();
@@ -435,9 +435,9 @@ namespace SalesManagement_SysDev
             // 8.1.4.1 妥当な受注データ取得
             if (!GetValidDataAtConfirm())
                 return;
-            // 8.1.4.2　注文情報作成
+            // 8.1.4.2　受注情報作成
             var conChumon = GenerateDataAtConfirm();
-            //8.1.4.3 注文詳細情報作成
+            //8.1.4.3 受注詳細情報作成
             var conChumonDetail = GenerateDetailDataAtConfirm();
 
             // 8.1.4.4 受注情報確定
@@ -1358,5 +1358,9 @@ namespace SalesManagement_SysDev
 
         }
 
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
