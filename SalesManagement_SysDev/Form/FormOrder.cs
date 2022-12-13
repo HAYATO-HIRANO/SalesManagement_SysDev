@@ -19,7 +19,7 @@ namespace SalesManagement_SysDev
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
-       EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
+        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
 
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
@@ -193,13 +193,13 @@ namespace SalesManagement_SysDev
             //}
 
             //非表示フラグの適否
-            if (checkBoxHidden.CheckState==CheckState.Indeterminate)
+            if (checkBoxHidden.CheckState == CheckState.Indeterminate)
             {
                 MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxHidden.Focus();
                 return false;
             }
-            if (checkBoxHidden.Checked==true)
+            if (checkBoxHidden.Checked == true)
             {
                 MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxHidden.Focus();
@@ -245,18 +245,18 @@ namespace SalesManagement_SysDev
 
             return new T_Order
             {
-                
+
                 //SoID= int.Parse(comboBoxSoID.SelectedValue.ToString()),
                 //EmID =int.Parse(textBoxEmID.Text.Trim()),
-                SoID=employee.SoID,
-                EmID=employee.EmID,
-                ClID= int.Parse(textBoxClID.Text.Trim()),
-                ClCharge=textBoxClCharge.Text.Trim(),
-                OrDate =DateTime.Now,//現在の時刻
+                SoID = employee.SoID,
+                EmID = employee.EmID,
+                ClID = int.Parse(textBoxClID.Text.Trim()),
+                ClCharge = textBoxClCharge.Text.Trim(),
+                OrDate = DateTime.Now,//現在の時刻
                 OrStateFlag = 0,
                 OrFlag = 0,
-                OrHidden=String.Empty//空文字
-                
+                OrHidden = String.Empty//空文字
+
             };
         }
         ///////////////////////////////
@@ -276,7 +276,7 @@ namespace SalesManagement_SysDev
             bool flg = orderDataAccess.AddOrderData(regOrder);
             if (flg == true)
             {
-                 result = MessageBox.Show("データを登録しました、詳細登録画面に移動してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                result = MessageBox.Show("データを登録しました、詳細登録画面に移動してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     //入力エリアのクリア
@@ -284,14 +284,14 @@ namespace SalesManagement_SysDev
 
                     //データグリッドビューの表示
                     GetDataGridView();
-                    
+
                     labelOrder.Text = "受注詳細管理";
                     buttonDetail.Text = "受注管理";
                     userControlOrderDetail1.Visible = true;
                     panelOrder.Visible = false;
                     return;
                 }
-                
+
             }
             else
                 MessageBox.Show("データの登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -302,7 +302,7 @@ namespace SalesManagement_SysDev
             ClearInput();
             //データグリッドビューの表示
             GetDataGridView();
-            
+
         }
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
@@ -441,7 +441,7 @@ namespace SalesManagement_SysDev
             var conChumonDetail = GenerateDetailDataAtConfirm();
 
             // 8.1.4.4 受注情報確定
-            ConfirmOrder(conChumon,conChumonDetail);
+            ConfirmOrder(conChumon, conChumonDetail);
 
         }
 
@@ -505,7 +505,7 @@ namespace SalesManagement_SysDev
                 checkBoxStateFlag.Focus();
                 return false;
             }
-            if (checkBoxStateFlag.Checked ==false)
+            if (checkBoxStateFlag.Checked == false)
             {
                 MessageBox.Show("受注確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxStateFlag.Focus();
@@ -530,7 +530,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private T_Chumon GenerateDataAtConfirm()
         {
-           T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+            T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
 
             return new T_Chumon
             {
@@ -556,19 +556,19 @@ namespace SalesManagement_SysDev
         private List<T_ChumonDetail> GenerateDetailDataAtConfirm()
         {
             List<T_OrderDetail> orderDetail = orderDetailDataAccess.GetOrIDDetailData(int.Parse(textBoxOrID.Text.Trim()));
-            
+
             List<T_ChumonDetail> chumonDetail = new List<T_ChumonDetail>();
             foreach (var p in orderDetail)
             {
                 chumonDetail.Add(new T_ChumonDetail()
-                {                     
-                    PrID=p.PrID,
-                    ChQuantity=p.OrQuantity
+                {
+                    PrID = p.PrID,
+                    ChQuantity = p.OrQuantity
                 });
             }
             return chumonDetail;
-            
-           
+
+
         }
 
         ///////////////////////////////
@@ -578,7 +578,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：受注情報の確定
         ///////////////////////////////
-        private void ConfirmOrder(T_Chumon conChumon,List<T_ChumonDetail> conChumonDetail)
+        private void ConfirmOrder(T_Chumon conChumon, List<T_ChumonDetail> conChumonDetail)
         {
             // 確定確認メッセージ
             DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -590,23 +590,23 @@ namespace SalesManagement_SysDev
             //注文テーブルにデータ登録
             bool addFlg = chumonDataAccess.AddChumonData(conChumon);
             //注文IDの取得
-            T_Chumon chumon= chumonDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));           
+            T_Chumon chumon = chumonDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
             //注文詳細テーブルにデータ登録/
             ///成功か失敗の判定は未完成
-            foreach(var p in conChumonDetail)
-            {            
+            foreach (var p in conChumonDetail)
+            {
                 T_ChumonDetail AddCh = new T_ChumonDetail();
                 AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
-               chumonDataAccess.AddChumonDetailData(AddCh);
+                chumonDataAccess.AddChumonDetailData(AddCh);
             }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
             //全ての登録,更新が成功
-            if (addFlg==true && conFlg==true)
+            if (addFlg == true && conFlg == true)
             {
-               
+
                 MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -674,28 +674,28 @@ namespace SalesManagement_SysDev
                 }
 
             }
-            ////社員IDの適否
-            //if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
+            ////社員idの適否
+            //if (!string.isnullorempty(textboxemid.text.trim()))
             //{
             //    //文字チェック
-            //    if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
+            //    if (!datainputformcheck.checknumeric(textboxemid.text.trim()))
             //    {
-            //        MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
+            //        messagebox.show("社員idは半角数値入力です", "入力確認", messageboxbuttons.ok, messageboxicon.error);
+            //        textboxemid.focus();
             //        return false;
             //    }
             //    //文字数
-            //    if (textBoxEmID.TextLength > 6)
+            //    if (textboxemid.textlength > 6)
             //    {
-            //        MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
+            //        messagebox.show("社員idは6文字以下です", "入力確認", messageboxbuttons.ok, messageboxicon.error);
+            //        textboxemid.focus();
             //        return false;
             //    }
-            //    // 社員IDの存在チェック
-            //    if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
+            //    // 社員idの存在チェック
+            //    if (!employeedataaccess.checkemidexistence(int.parse(textboxemid.text.trim())))
             //    {
-            //        MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
+            //        messagebox.show("入力された社員idは存在しません", "入力確認", messageboxbuttons.ok, messageboxicon.error);
+            //        textboxemid.focus();
             //        return false;
             //    }
 
@@ -892,7 +892,7 @@ namespace SalesManagement_SysDev
                             OrHidden = textBoxOrHidden.Text.Trim()
                         };
                         //データの抽出
-                        Order = orderDataAccess.GetOrderDateData(1, selectCondition,startDay,endDay);
+                        Order = orderDataAccess.GetOrderDateData(1, selectCondition, startDay, endDay);
 
                     }
                     else
@@ -992,11 +992,11 @@ namespace SalesManagement_SysDev
             formMain.Close();
         }
 
-        
+
 
         private void buttonDetail_Click(object sender, EventArgs e)
         {
-            if(labelOrder.Text == "受注管理")
+            if (labelOrder.Text == "受注管理")
             {
                 labelOrder.Text = "受注詳細管理";
                 buttonDetail.Text = "受注管理";
@@ -1188,7 +1188,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：受注非表示情報
         //機　能   ：非表示データのセット
         ///////////////////////////////
-        private T_Order  GenerateDataAtHidden()
+        private T_Order GenerateDataAtHidden()
         {
             int hidFlag = 0;
             if (checkBoxHidden.Checked == true)
@@ -1198,7 +1198,7 @@ namespace SalesManagement_SysDev
 
             return new T_Order
             {
-                OrID=int.Parse(textBoxOrID.Text.Trim()),
+                OrID = int.Parse(textBoxOrID.Text.Trim()),
                 OrFlag = hidFlag,
                 OrHidden = textBoxOrHidden.Text.Trim()
             };
@@ -1315,13 +1315,13 @@ namespace SalesManagement_SysDev
                 {
                     if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
                     {
-                       M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
                         textBoxClName.Text = client.ClName.ToString();
                     }
 
                 }
             }
-            
+
         }
 
         private void dataGridViewOrder_CellClick(object sender, DataGridViewCellEventArgs e)

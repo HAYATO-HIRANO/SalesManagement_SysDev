@@ -791,14 +791,14 @@ namespace SalesManagement_SysDev
         }
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            // 8.3.4.1 妥当なスタッフデータ取得
+            // 8.3.4.1 妥当な社員データ取得
             if (!GetValidDataAtSelect())
                 return;
 
-            // 8.3.4.2 スタッフ情報抽出
+            // 8.3.4.2 社員情報抽出
             GenerateDataAtSelect();
 
-            // 8.3.4.3 スタッフ抽出結果表示
+            // 8.3.4.3 社員抽出結果表示
             SetSelectData();
 
         }

@@ -183,6 +183,12 @@ namespace SalesManagement_SysDev
             //妥当な注文データ取得
             if (!GetValidDataAtSelect())
                 return;
+
+            // 8.3.4.2 注文情報抽出
+            GenerateDataAtSelect();
+
+            // 8.3.4.3 注文抽出結果表示
+            SetSelectData();
         }
 
         ///////////////////////////////
@@ -234,7 +240,28 @@ namespace SalesManagement_SysDev
             }
             return false;
         }
+        ///////////////////////////////
+        //　8.3.4.2 注文情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：注文データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
 
+        }
+        ///////////////////////////////
+        //　8.3.4.3 注文抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：注文情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+
+        }
         ///////////////////////////////
         //メソッド名：buttonList_Click()
         //引　数   ：なし
