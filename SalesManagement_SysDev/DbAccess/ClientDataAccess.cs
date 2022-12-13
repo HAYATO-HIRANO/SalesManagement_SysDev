@@ -24,7 +24,7 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
                 //顧客IDで一致するデータが存在するか
-                flg = context.M_Clients.Any(x => x.ClID == clID && x.ClFlag == 0);
+                flg = context.M_Clients.Any(x => x.ClID == clID);
                 context.Dispose();
 
             }

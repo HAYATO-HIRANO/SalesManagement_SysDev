@@ -399,6 +399,7 @@
             this.checkBoxEmFlag.TabIndex = 17;
             this.checkBoxEmFlag.Text = "非表示フラグ";
             this.checkBoxEmFlag.UseVisualStyleBackColor = true;
+            this.checkBoxEmFlag.CheckedChanged += new System.EventHandler(this.checkBoxEmFlag_CheckedChanged);
             // 
             // dateTimePickerHiredate
             // 
@@ -428,10 +429,12 @@
             // 
             // textBoxEmHidden
             // 
+            this.textBoxEmHidden.Enabled = false;
             this.textBoxEmHidden.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxEmHidden.Location = new System.Drawing.Point(816, 71);
             this.textBoxEmHidden.Multiline = true;
             this.textBoxEmHidden.Name = "textBoxEmHidden";
+            this.textBoxEmHidden.ReadOnly = true;
             this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
             this.textBoxEmHidden.TabIndex = 19;
             // 
@@ -648,7 +651,7 @@
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
             this.textBoxPage.TabIndex = 16;
-            this.textBoxPage.Text = "100";
+            this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // timer
