@@ -39,4 +39,31 @@ namespace SalesManagement_SysDev
         public String MaHidden { get; set; }	//非表示理由		
 
     }
+    // データグリッド表示用
+    class M_MakerDsp
+    {
+        [DisplayName("メーカID")]
+        public int MaID { get; set; }
+
+        [DisplayName("メーカ名")]
+        public string MaName { get; set; }
+
+        [DisplayName("住所")]
+        public string MaAdress { get; set; }
+
+        [DisplayName("電話番号")]
+        public string MaPhone { get; set; }
+
+        [DisplayName("郵便番号")]
+        public string MaPostal { get; set; }
+
+        [DisplayName("FAX")]
+        public string MaFAX { get; set; }
+
+        [DisplayName("非表示フラグ")]
+        public int MaFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string MaHidden { get; set; }
+    }
 }
