@@ -309,12 +309,12 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：GetOrderData() オーバーロード
+        //メソッド名：GetArrivalData() オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致入荷データ
         //機　能   ：条件一致入荷データの取得
         ///////////////////////////////
-        public List<T_ArrivalDsp> GetOrderData(int flg, T_ArrivalDsp selectCondition)
+        public List<T_ArrivalDsp> GetArrivalData(int flg, T_ArrivalDsp selectCondition)
         {
             List<T_ArrivalDsp> arrival = new List<T_ArrivalDsp>();
 
@@ -746,12 +746,12 @@ namespace SalesManagement_SysDev
             return arrival;
         }
         ///////////////////////////////
-        //メソッド名：GetOrderDateData() オーバーロード
+        //メソッド名：GetArrivalDateData() オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致入荷データ
         //機　能   ：条件一致入荷データの取得
         ///////////////////////////////
-        public List<T_ArrivalDsp> GetOrderDateData(int flg, T_ArrivalDsp selectCondition, DateTime? startDay, DateTime? endDay)
+        public List<T_ArrivalDsp> GetArrivalDateData(int flg, T_ArrivalDsp selectCondition, DateTime? startDay, DateTime? endDay)
         {
             List<T_ArrivalDsp> arrival = new List<T_ArrivalDsp>();
 

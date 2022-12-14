@@ -681,23 +681,293 @@ namespace SalesManagement_SysDev
             //日付範囲が選択されていない
             if (startDay == null && endDay == null)
             {
-                //入荷=null
+                //入荷!=null
                 if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
                 {
+                    //受注ID!=null
                     if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
                     {
+                        //顧客!=null
                         if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
                         {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID= int.Parse(textBoxArID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(1, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(2, selectCondition);
 
                         }
 
                     }
+                    else
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(3, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(4, selectCondition);
+
+                        }
+
+
+                    }
+
+                }
+                else
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(5, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(6, selectCondition);
+
+                        }
+
+                    }
+                    else
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(7, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalData(8, selectCondition);
+
+                        }
+
+
+                    }
+
                 }
             }
             //日付範囲が選択されている
             else if (startDay != null && endDay != null)
             {
-                //入荷ID
+                //入荷!=null
+                if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(1, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(2, selectCondition, startDay, endDay);
+
+                        }
+
+                    }
+                    else//受注ID未入力
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(3, selectCondition, startDay, endDay);
+
+                        }
+                        else
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArID = int.Parse(textBoxArID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(4, selectCondition, startDay, endDay);
+
+                        }
+
+
+                    }
+
+                }
+                else//入荷ID未入力
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(5, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(6, selectCondition, startDay, endDay);
+
+                        }
+
+                    }
+                    else//受注ID未入力
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(7, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ArrivalDsp selectCondition = new T_ArrivalDsp()
+                            {
+                                ArFlag = hidFlg,
+                                ArStateFlag = stateFlg,
+                                ArHidden = textBoxArHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Arrival = arrivalDataAccess.GetArrivalDateData(8, selectCondition, startDay, endDay);
+
+                        }
+
+
+                    }
+
+                }
+
             }
 
 

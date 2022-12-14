@@ -286,7 +286,7 @@ namespace SalesManagement_SysDev
                          on t1.EmID equals t3.EmID
                          join t4 in context.M_Clients
                          on t1.ClID equals t4.ClID
-                         where t1.ShFlag != 2
+                         where t1.ShFlag == 2
                          select new
                          {
                              t1.ShID,
