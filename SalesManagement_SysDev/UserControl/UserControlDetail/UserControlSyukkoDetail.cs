@@ -65,10 +65,10 @@ namespace SalesManagement_SysDev
 
             }
 
-            //受注IDの適否
+            //出庫IDの適否
             if (!String.IsNullOrEmpty(textBoxSyID.Text.Trim()))
             {
-                //受注IDの半角数値チェック
+                //出庫IDの半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxSyID.Text.Trim()))
                 {
                     MessageBox.Show("出庫IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -584,5 +584,9 @@ namespace SalesManagement_SysDev
         {
             ClearInput();
         }
+
+        
+
+        
     }
 }

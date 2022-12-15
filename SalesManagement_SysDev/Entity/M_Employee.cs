@@ -37,27 +37,27 @@ namespace SalesManagement_SysDev
     //データグリッド表示用
     class M_EmployeeDsp
     {
-        [DisplayName("社員ID")]
+        [DisplayName("社員ID")]                            //0
         public int EmID { get; set; }
-        [DisplayName("社員名")]
+        [DisplayName("社員名")]                            //1
         public string EmName { get; set; }
-        [DisplayName("営業所ID")]
+        [DisplayName("営業所ID")]                          //2
         public int SoID { get; set; }
-        [DisplayName("営業所名")]
+        [DisplayName("営業所名")]                          //3
         public string SoName { get; set; }
-        [DisplayName("役職ID")]
+        [DisplayName("役職ID")]                            //4
         public int PoID { get; set; }
-        [DisplayName("役職名")]
+        [DisplayName("役職名")]                            //5
         public string PoName { get; set; }
-        [DisplayName("入社年月日")]
+        [DisplayName("入社年月日")]                        //6
         public DateTime? EmHiredate { get; set; }
-        [DisplayName("パスワード")]
+        [DisplayName("パスワード")]                        //7
         public string EmPassword { get; set; }   
-        [DisplayName("電話番号")]
+        [DisplayName("電話番号")]                          //8
         public string EmPhone { get; set; }
-        [DisplayName("社員管理フラグ")]
+        [DisplayName("社員管理フラグ")]                    //9
         public int EmFlag { get; set; }
-        [DisplayName("非表示理由")]
+        [DisplayName("非表示理由")]                        //10
         public string EmHidden { get; set; }
 
 

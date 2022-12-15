@@ -90,6 +90,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -173,6 +174,7 @@ namespace SalesManagement_SysDev
             this.textBoxArID.Name = "textBoxArID";
             this.textBoxArID.Size = new System.Drawing.Size(102, 36);
             this.textBoxArID.TabIndex = 43;
+            this.textBoxArID.TextChanged += new System.EventHandler(this.textBoxArID_TextChanged);
             // 
             // labelPrice
             // 
@@ -223,6 +225,7 @@ namespace SalesManagement_SysDev
             this.button1.TabIndex = 28;
             this.button1.Text = "入力クリア";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelPrID
             // 
@@ -252,6 +255,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Name = "textBoxPrID";
             this.textBoxPrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxPrID.TabIndex = 29;
+            this.textBoxPrID.TextChanged += new System.EventHandler(this.textBoxPrID_TextChanged);
             // 
             // labelOrQuantity
             // 
@@ -282,6 +286,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrQuantity.Name = "textBoxOrQuantity";
             this.textBoxOrQuantity.Size = new System.Drawing.Size(57, 28);
             this.textBoxOrQuantity.TabIndex = 31;
+            this.textBoxOrQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
             // 
             // labelOrTotalPrice
             // 
@@ -313,6 +318,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 88;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -361,6 +367,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 85;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -381,6 +388,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 84;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -391,6 +399,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 82;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -401,6 +410,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 83;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // UserControlArrivalDetail
             // 
@@ -421,6 +431,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.panelLeft);
             this.Name = "UserControlArrivalDetail";
             this.Size = new System.Drawing.Size(1920, 980);
+            this.Load += new System.EventHandler(this.UserControlArrivalDetail_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();

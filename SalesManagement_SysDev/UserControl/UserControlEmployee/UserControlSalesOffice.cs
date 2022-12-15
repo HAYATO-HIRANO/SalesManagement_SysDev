@@ -70,7 +70,7 @@ namespace SalesManagement_SysDev
                 // 営業所名の文字数チェック
                 if (textBoxSoName.TextLength > 50)
                 {
-                    MessageBox.Show("営業所名は50文字以下です");
+                    MessageBox.Show("営業所名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxSoName.Focus();
                     return false;

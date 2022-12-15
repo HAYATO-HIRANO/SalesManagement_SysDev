@@ -85,7 +85,7 @@ namespace SalesManagement_SysDev
             else
             {
                 // メーカ名は入力不要です
-                MessageBox.Show("メーカ名は入力不要です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("メーカ名を入力してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxMaName.Focus();
                 return false;
             }
@@ -318,13 +318,14 @@ namespace SalesManagement_SysDev
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewMaker.DataSource = Maker.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定
-            dataGridViewMaker.Columns[0].Width = 50;
-            dataGridViewMaker.Columns[1].Width = 300;
-            dataGridViewMaker.Columns[2].Width = 400;
-            dataGridViewMaker.Columns[3].Width = 100;
-            dataGridViewMaker.Columns[4].Width = 100;
-            dataGridViewMaker.Columns[6].Visible = false;
-            dataGridViewMaker.Columns[7].Width = 514;
+            dataGridViewMaker.Columns[0].Width = 50;//ID
+            dataGridViewMaker.Columns[1].Width = 300;//name
+            dataGridViewMaker.Columns[2].Width = 100;//juusyo
+            dataGridViewMaker.Columns[3].Width = 100;//denwa
+            dataGridViewMaker.Columns[4].Width = 100;//yuubinn
+            dataGridViewMaker.Columns[5].Width = 400;//fax
+            dataGridViewMaker.Columns[6].Visible = false;//huragu
+            dataGridViewMaker.Columns[7].Width = 514;//riyuu
 
             //各列の文字位置の指定
             dataGridViewMaker.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

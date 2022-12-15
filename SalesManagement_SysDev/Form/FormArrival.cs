@@ -16,7 +16,6 @@ namespace SalesManagement_SysDev
         ArrivalDataAccess arrivalDataAccess = new ArrivalDataAccess();
         //データベース入荷詳細テーブルアクセス用クラスのインスタンス化
         ArrivalDetailDataAccess arrivalDetailDataAccess = new ArrivalDetailDataAccess();
-
         //データベース出荷テーブルアクセス用クラスのインスタンス化
         ShipmentDataAccess shipmentDataAccess = new ShipmentDataAccess();
         //データベース出荷詳細テーブルアクセス用クラスのインスタンス化
@@ -549,7 +548,7 @@ namespace SalesManagement_SysDev
             GenerateDataAtSelect();
 
             //13.1.3.3　入荷抽出結果表示
-            //SetSelectData();
+            SetSelectData();
 
         }
         ///////////////////////////////
@@ -970,11 +969,31 @@ namespace SalesManagement_SysDev
 
             }
 
+        }
+        ///////////////////////////////
+        //　13.1.3.3 入荷抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入荷情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
 
+            int pageSize = int.Parse(textBoxPageSize.Text);
 
+            dataGridViewAr.DataSource = Arrival;
+            if (Arrival.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+            labelPage.Text = "/" + ((int)Math.Ceiling(Arrival.Count / (double)pageSize)) + "ページ";
+            dataGridViewAr.Refresh();
 
         }
+
 
         //13.1.4　入荷非表示機能
         private void buttonHidden_Click(object sender, EventArgs e)

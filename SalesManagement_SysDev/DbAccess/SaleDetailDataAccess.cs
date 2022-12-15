@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace SalesManagement_SysDev
 {
-    class SaleDataAccess
+    class SaleDetailDataAccess
     {
         ///////////////////////////////
-        //メソッド名：CheckSaIDExistence()
-        //引　数   ：売上ID
+        //メソッド名：CheckSaDetailIDExistence()
+        //引　数   ：売上詳細ID
         //戻り値   ：True or False
-        //機　能   ：一致する売上IDの有無を確認
+        //機　能   ：一致する売上詳細IDの有無を確認
         //          ：一致データありの場合True
         //          ：一致データなしの場合False
         ///////////////////////////////
-        public bool CheckSaIDExistence(int saID)
+        public bool CheckSaDetailIDExistence(int SaDetailID)
         {
             bool flg = false;
             try
             {
                 var context = new SalesManagement_DevContext();
-                //売上IDで一致するデータが存在するか
-                flg = context.T_Sale.Any(x => x.SaID == saID);
+                //売上詳細IDで一致するデータが存在するか
+                flg = context.T_SaleDetails.Any(x => x.SaDetailID == SaDetailID);
                 context.Dispose();
 
             }
@@ -37,18 +37,18 @@ namespace SalesManagement_SysDev
 
         ///////////////////////////////
         //メソッド名：AddSaleData()
-        //引　数   ：売上データ
+        //引　数   ：売上詳細データ
         //戻り値   ：True or False
-        //機　能   ：売上データの登録
+        //機　能   ：売上詳細データの登録
         //          ：登録成功の場合True
         //          ：登録失敗の場合False
         ///////////////////////////////
-        public bool AddSaleData(T_Sale regSale)
+        public bool AddSaleDetailData(T_SaleDetail regSaleDetail)
         {
             try
             {
                 var context = new SalesManagement_DevContext();
-                context.T_Sale.Add(regSale);
+                context.T_SaleDetails.Add(regSaleDetail);
                 context.SaveChanges();
                 context.Dispose();
 
@@ -63,20 +63,20 @@ namespace SalesManagement_SysDev
 
 
         ///////////////////////////////
-        //メソッド名：GetSaIDData()
-        //引　数   :売上ID
-        //戻り値   ：売上IDの売上データ
-        //機　能   ：売上IDの売上情報取得
+        //メソッド名：GetSaDetailIDData()
+        //引　数   :売上詳細ID
+        //戻り値   ：売上詳細IDの売上詳細データ
+        //機　能   ：売上詳細IDの売上詳細情報取得
         ///////////////////////////////
-        public T_Sale GetSaIDData(int SaID)
+        public List<T_SaleDetail> GetSaDetailIDData(int SaID)
         {
-            T_Sale Sale = new T_Sale();
+            List<T_SaleDetail> saleDetail = new List<T_SaleDetail>();
 
             try
             {
                 var context = new SalesManagement_DevContext();
 
-                Sale = context.T_Sale.Single(x => x.SaID == SaID && x.SaFlag == 0);
+                saleDetail = context.T_SaleDetails.Where(x => x.SaID == SaID ).ToList();
 
                 context.SaveChanges();
                 context.Dispose();
@@ -88,7 +88,7 @@ namespace SalesManagement_SysDev
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            return Sale;
+            return saleDetail;
         }
 
     }

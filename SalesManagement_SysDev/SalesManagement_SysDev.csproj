@@ -75,6 +75,7 @@
     <Compile Include="DbAccess\PositionDataAccess.cs" />
     <Compile Include="DbAccess\ProductDataAccess.cs" />
     <Compile Include="DbAccess\SaleDataAccess.cs" />
+    <Compile Include="DbAccess\SaleDetailDataAccess.cs" />
     <Compile Include="DbAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDataAccess.cs" />
     <Compile Include="DbAccess\ShipmentDetailDataAccess.cs" />
