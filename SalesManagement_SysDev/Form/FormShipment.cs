@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
@@ -201,6 +197,28 @@ namespace SalesManagement_SysDev
             dataGridViewSh.Refresh();
             //ページ番号の設定
             textBoxPage.Text = "1";
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSh.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+
         }
 
         ///////////////////////////////
@@ -562,7 +580,591 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
+        //14.1.3 出荷検索機能
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            //14.1.3.1妥当な出荷データ取得
+            if (!GetValidDataAtSelect())
+                return;
 
+            //14.1.3.2 出荷情報抽出
+            GenerateDataAtSelect();
+
+            //14.1.3.3　出荷抽出結果表示
+            SetSelectData();
+
+        }
+        ///////////////////////////////
+        //　14.1.3.1 妥当な出荷データ取得
+        //メソッド名：GetValidDataAtSlect()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtSelect()
+        {
+            //出荷IDの適否
+            if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxShID.Text.Trim()))
+                {
+                    MessageBox.Show("出荷IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxShID.TextLength > 6)
+                {
+                    MessageBox.Show("出荷IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+                // 出荷IDの存在チェック
+                if (!shipmentDataAccess.CheckShIDExistence(int.Parse(textBoxShID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された出荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+
+            }
+            //顧客IDの適否
+            if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+                {
+                    MessageBox.Show("顧客IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxClID.TextLength > 6)
+                {
+                    MessageBox.Show("顧客IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+                // 顧客IDの存在チェック
+                if (!clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された顧客IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxClID.Focus();
+                    return false;
+                }
+
+            }
+            //非表示フラグ
+            if (checkBox1Hidden.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("非表示理由が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBox1Hidden.Focus();
+                return false;
+            }
+            //出荷日範囲のチェック
+            if (dateTimePickerDateStart.Checked == true && dateTimePickerDateEnd.Checked == true)
+            {
+                if (DateTime.Parse(dateTimePickerDateStart.Text) > DateTime.Parse(dateTimePickerDateEnd.Text))
+                {
+                    MessageBox.Show("日付の範囲が不正です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dateTimePickerDateStart.Focus();
+                    return false;
+                }
+            }
+            else if (dateTimePickerDateStart.Checked == true && dateTimePickerDateEnd.Checked == false ||
+                dateTimePickerDateStart.Checked == false && dateTimePickerDateEnd.Checked == true)
+            {
+                MessageBox.Show("日付の範囲が不正です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateTimePickerDateStart.Focus();
+                return false;
+            }
+            //出荷状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("出荷確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　14.1.3.2 出荷情報抽出
+        //メソッド名：GenerateDataAtSelect()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：検索データの取得
+        ///////////////////////////////
+        private void GenerateDataAtSelect()
+        {
+            //日付範囲
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+            if (dateTimePickerDateStart.Checked)
+                startDay = DateTime.Parse(dateTimePickerDateStart.Text);
+            if (dateTimePickerDateEnd.Checked)
+                endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
+
+            //非表示フラグ変換
+            int hidFlg = 0;
+            if (checkBox1Hidden.Checked == true)
+            {
+                hidFlg = 2;
+            }
+            //出荷確定フラグ変換
+            int stateFlg = 0;
+            if (checkBoxStateFlag.Checked == true)
+            {
+                stateFlg = 1;
+            }
+            //日付範囲が選択されていない
+            if (startDay == null && endDay == null)
+            {
+                //出荷!=null
+                if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()))
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(1, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(2, selectCondition);
+
+                        }
+
+                    }
+                    else
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(3, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(4, selectCondition);
+
+                        }
+
+
+                    }
+
+                }
+                else
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(5, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(6, selectCondition);
+
+                        }
+
+                    }
+                    else
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(7, selectCondition);
+
+                        }
+                        else
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentData(8, selectCondition);
+
+                        }
+
+
+                    }
+
+                }
+
+            }
+            //日付範囲が選択されている
+            else if (startDay != null && endDay != null)
+            {
+                //出荷!=null
+                if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()))
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(1, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(2, selectCondition, startDay, endDay);
+
+                        }
+
+                    }
+                    else//受注ID未入力
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(3, selectCondition, startDay, endDay);
+
+                        }
+                        else
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShID = int.Parse(textBoxShID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(4, selectCondition, startDay, endDay);
+
+                        }
+
+
+                    }
+
+                }
+                else//出荷ID未入力
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(5, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(6, selectCondition, startDay, endDay);
+
+                        }
+
+                    }
+                    else//受注ID未入力
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(7, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ShipmentDsp selectCondition = new T_ShipmentDsp()
+                            {
+                                ShFlag = hidFlg,
+                                ShStateFlag = stateFlg,
+                                ShHidden = textBoxShHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Shipment = shipmentDataAccess.GetShipmentDateData(8, selectCondition, startDay, endDay);
+
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+        ///////////////////////////////
+        //　14.1.3.3 出荷抽出結果表示
+        //メソッド名：SetSelectData()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：出荷情報の表示
+        ///////////////////////////////
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewSh.DataSource = Shipment;
+            if (Shipment.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Shipment.Count / (double)pageSize)) + "ページ";
+            dataGridViewSh.Refresh();
+
+        }
+        //14.1.4 出荷非表示機能
+        private void buttonHidden_Click(object sender, EventArgs e)
+        {
+            // 14.1.4.1 妥当な出荷データ取得
+            if (!GetValidDataAtHidden())
+                return;
+
+            // 14.1.4.2　出荷情報作成
+            var hidShipment = GenerateDataAtHidden();
+
+            // 14.1.4.3 出荷情報非表示
+            HiddenShipment(hidShipment);
+
+        }
+        ///////////////////////////////
+        //  14.1.4.1 妥当な出荷データ取得
+        //メソッド名：GetValidDataAtHidden()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtHidden()
+        {
+            //出荷IDの適否
+            if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxShID.Text.Trim()))
+                {
+                    MessageBox.Show("出荷IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxShID.TextLength > 6)
+                {
+                    MessageBox.Show("出荷IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+                // 出荷IDの存在チェック
+                if (!shipmentDataAccess.CheckShIDExistence(int.Parse(textBoxShID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された出荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("出荷ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxShID.Focus();
+                return false;
+            }
+            //非表示フラグの適否
+            if (checkBox1Hidden.Checked == false)
+            {
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBox1Hidden.Checked = true;
+                textBoxShHidden.Focus();
+                return false;
+
+            }
+            //非表示理由の適否
+            if (checkBox1Hidden.Checked == true && String.IsNullOrEmpty(textBoxShHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxShHidden.Focus();
+                return false;
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　14.1.4.2 出荷情報作成
+        //メソッド名：GenerateDataAtHidden()
+        //引　数   ：なし
+        //戻り値   ：出荷非表示情報
+        //機　能   ：非表示データのセット
+        ///////////////////////////////
+        private T_Shipment GenerateDataAtHidden()
+        {
+            int hidFlag = 0;
+            if (checkBox1Hidden.Checked == true)
+            {
+                hidFlag = 2;
+            }
+
+            return new T_Shipment
+            {
+                ShID = int.Parse(textBoxShID.Text.Trim()),
+                ShFlag = hidFlag,
+                ShHidden = textBoxShHidden.Text.Trim()
+            };
+        }
+        ///////////////////////////////
+        //　13.1.4.3 出荷情報非表示
+        //メソッド名：HiddenArrival()
+        //引　数   ：出荷情報
+        //戻り値   ：なし
+        //機　能   ：出荷情報の非表示
+        ///////////////////////////////
+        private void HiddenShipment(T_Shipment hidShipment)
+        {
+            // 非表示確認メッセージ
+            DialogResult result = MessageBox.Show("データを非表示にしてよろしいですか?", "非表示確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 出荷情報の非表示(フラグの更新)
+            bool flg = shipmentDataAccess.UpdateHiddenFlag(hidShipment);
+            if (flg == true)
+                MessageBox.Show("データを非表示にしました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("データの非表示に失敗しました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxShID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+        }
     }
 
 }

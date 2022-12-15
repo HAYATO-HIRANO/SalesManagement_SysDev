@@ -22,14 +22,10 @@ namespace SalesManagement_SysDev
         ArrivalDetailDataAccess arrivalDetailDataAccess = new ArrivalDetailDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
-        //データベース営業所テーブルアクセス用クラスのインスタンス化
-        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出庫データ
         private static List<T_SyukkoDsp> Syukko;
-        //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffice;
 
         public FormSyukko()
         {
@@ -676,6 +672,25 @@ namespace SalesManagement_SysDev
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+
+        }
+        //入力された顧客IDの顧客名を取得
+
+        private void textBoxClID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (textBoxClID.TextLength < 6)
+                {
+                    if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                    {
+                        M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        textBoxClName.Text = client.ClName.ToString();
+                    }
+
+                }
+            }
 
         }
     }

@@ -14,8 +14,6 @@ namespace SalesManagement_SysDev
         OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
-        //データベース営業所テーブルアクセス用クラスのインスタンス化
-        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
@@ -25,8 +23,6 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
         private static List<T_OrderDsp> Order;
-        //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffice;
         public FormOrder()
         {
             InitializeComponent();

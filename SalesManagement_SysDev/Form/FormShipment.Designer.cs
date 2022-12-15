@@ -228,6 +228,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 19;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -320,6 +321,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 15;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // panelInput
             // 
@@ -565,6 +567,7 @@ namespace SalesManagement_SysDev
             this.buttonHidden.TabIndex = 2;
             this.buttonHidden.Text = "非表示";
             this.buttonHidden.UseVisualStyleBackColor = false;
+            this.buttonHidden.Click += new System.EventHandler(this.buttonHidden_Click);
             // 
             // buttonList
             // 
@@ -610,6 +613,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonDetail
             // 
