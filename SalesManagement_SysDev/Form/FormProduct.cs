@@ -399,6 +399,33 @@ namespace SalesManagement_SysDev
                 textBoxPrice.Focus();
                 return false;
             }
+            //安全在庫数入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
+            {
+                //安全在庫数の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
+                {
+
+                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
+                    return false;
+                }
+                if (textBoxPrSafetyStock.TextLength > 4)
+                {
+                    //安全在庫数は4桁以下です
+                    messageDsp.DspMsg("M0415");
+                    textBoxPrice.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //安全在庫数が入力されていません
+                messageDsp.DspMsg("M0416");
+                textBoxPrSafetyStock.Focus();
+                return false;
+            }
             //色の入力チェック
             if (!String.IsNullOrEmpty(textBoxColor.Text.Trim()))
             {
@@ -456,22 +483,28 @@ namespace SalesManagement_SysDev
                 return false;
             }
             //非表示フラグのチェック
+            //フラグの適否
             if (checkBoxPrFlag.CheckState == CheckState.Indeterminate)
             {
-                //非表示フラグが未確定な状態です
-                messageDsp.DspMsg("M0433");
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 checkBoxPrFlag.Focus();
                 return false;
             }
-
-            //非表示理由の入力チェック
-            if (checkBoxPrFlag.Checked==true&& String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            if (checkBoxPrFlag.Checked == true)
             {
-                //非表示理由が入力されていません
-                messageDsp.DspMsg("M0440");
+                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxPrFlag.Focus();
+                return false;
+            }
+            //非表示理由の適否
+            if (!String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrHidden.Focus();
                 return false;
             }
+
 
 
             return true;
@@ -704,22 +737,22 @@ namespace SalesManagement_SysDev
             //安全在庫数入力チェック
             if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
             {
-                //安全在庫数は半角英数値入力です
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrSafetyStock.Text.Trim()))
+                //安全在庫数の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
-                    messageDsp.DspMsg("M0414");
-                    textBoxPrSafetyStock.Focus();
+
+                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
                     return false;
                 }
-
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
                     messageDsp.DspMsg("M0415");
-                    textBoxPrSafetyStock.Focus();
+                    textBoxPrice.Focus();
                     return false;
                 }
-                
             }
             else
             {
@@ -976,29 +1009,30 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
-            
+
 
             //安全在庫数入力チェック
             if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
             {
-                //安全在庫数は半角英数値入力です
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrSafetyStock.Text.Trim()))
+                //安全在庫数の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
-                    messageDsp.DspMsg("M0414");
-                    textBoxPrSafetyStock.Focus();
+
+                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
                     return false;
                 }
-
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
                     messageDsp.DspMsg("M0415");
-                    textBoxPrSafetyStock.Focus();
+                    textBoxPrice.Focus();
                     return false;
                 }
-
             }
             
+
 
             //型番の適否
             if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
