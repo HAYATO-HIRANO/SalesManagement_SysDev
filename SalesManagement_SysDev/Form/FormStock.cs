@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の商品データ
         private static List<T_StockDsp> Stock;
-        
+
 
         public FormStock()
         {
@@ -32,7 +32,7 @@ namespace SalesManagement_SysDev
 
         private void labelClient_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -79,17 +79,17 @@ namespace SalesManagement_SysDev
             //各列幅の指定
             dataGridViewStock.Columns[0].Width = 100;
             dataGridViewStock.Columns[1].Width = 100;
-           // dataGridViewStock.Columns[1].Visible = false;
+            // dataGridViewStock.Columns[1].Visible = false;
             dataGridViewStock.Columns[2].Width = 110;
             dataGridViewStock.Columns[3].Width = 170;
-       
+
 
             //各列の文字位置の指定
             dataGridViewStock.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewStock.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewStock.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewStock.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            
+
 
             labelPage.Text = "/" + ((int)Math.Ceiling(Stock.Count / (double)pageSize)) + "ページ";
 
@@ -264,9 +264,9 @@ namespace SalesManagement_SysDev
         {
             return new T_Stock
             {
-                StID=int.Parse(textBoxStID.Text.Trim()),
-                PrID=int.Parse(textBoxPrID.Text.Trim()),
-                StQuantity=int.Parse(textBoxStQuantity.Text.Trim())
+                StID = int.Parse(textBoxStID.Text.Trim()),
+                PrID = int.Parse(textBoxPrID.Text.Trim()),
+                StQuantity = int.Parse(textBoxStQuantity.Text.Trim())
             };
         }
 
@@ -292,7 +292,7 @@ namespace SalesManagement_SysDev
             textBoxStID.Focus();
             //入力エリアのクリア
             ClearInput();
-            
+
             // データグリッドビューの表示
             GetDataGridView();
         }
@@ -338,14 +338,14 @@ namespace SalesManagement_SysDev
                     //在庫IDは半角英数値入力です
                     messageDsp.DspMsg("M0501");
                     textBoxStID.Focus();
-                    
+
                 }
                 if (textBoxStID.TextLength > 6)
                 {
                     //在庫IDは6文字です
                     messageDsp.DspMsg("M0502");
                     textBoxStID.Focus();
-                    
+
                 }
 
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxStID.Text.Trim())))
@@ -353,11 +353,11 @@ namespace SalesManagement_SysDev
                     //入力された在庫IDは存在していません
                     messageDsp.DspMsg("M0503");
                     textBoxStID.Focus();
-                    
+
                 }
 
             }
-            
+
             //商品IDの適否
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
@@ -366,14 +366,14 @@ namespace SalesManagement_SysDev
                     //商品IDは半角英数字入力です
                     messageDsp.DspMsg("M0505");
                     textBoxPrID.Focus();
-                    
+
                 }
                 if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
                     messageDsp.DspMsg("M0506");
                     textBoxPrID.Focus();
-                    
+
                 }
 
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
@@ -381,10 +381,10 @@ namespace SalesManagement_SysDev
                     //入力された商品IDは存在していません
                     messageDsp.DspMsg("M0507");
                     textBoxPrID.Focus();
-                    
+
                 }
             }
-            
+
 
             // 商品名の適否
             if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
@@ -395,11 +395,11 @@ namespace SalesManagement_SysDev
                     //商品名は50文字以下です
                     messageDsp.DspMsg("M0409");
                     textBoxPrName.Focus();
-                    
+
                 }
 
             }
-           
+
 
             if (!String.IsNullOrEmpty(textBoxStQuantity.Text.Trim()))
             {
@@ -408,19 +408,19 @@ namespace SalesManagement_SysDev
                     //在庫数は半角英数字入力です
                     messageDsp.DspMsg("M0508");
                     textBoxStQuantity.Focus();
-                    
+
                 }
                 if (textBoxStQuantity.TextLength > 4)
                 {
                     //在庫数は4桁以下です
                     messageDsp.DspMsg("M0509");
                     textBoxStQuantity.Focus();
-                    
+
                 }
 
             }
-            
-            
+
+
 
             return true;
         }
@@ -429,22 +429,22 @@ namespace SalesManagement_SysDev
         {
             int StQ = 0;
 
-            if (!String.IsNullOrEmpty(textBoxStID.Text.Trim()) &&!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
-            {
-                T_StockDsp selectCondition = new T_StockDsp()
-                {
-                    StID=int.Parse(textBoxStID.Text.Trim()),
-                    PrID=int.Parse(textBoxPrID.Text.Trim()),
-                    StQuantity=StQ
-                };
-                Stock = StockDataAccess.GetStockData(1, selectCondition);
-            }
-            else if(!String.IsNullOrEmpty(textBoxStID.Text.Trim()))
+            if (!String.IsNullOrEmpty(textBoxStID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
                 T_StockDsp selectCondition = new T_StockDsp()
                 {
                     StID = int.Parse(textBoxStID.Text.Trim()),
-                   //PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    StQuantity = StQ
+                };
+                Stock = StockDataAccess.GetStockData(1, selectCondition);
+            }
+            else if (!String.IsNullOrEmpty(textBoxStID.Text.Trim()))
+            {
+                T_StockDsp selectCondition = new T_StockDsp()
+                {
+                    StID = int.Parse(textBoxStID.Text.Trim()),
+                    //PrID = int.Parse(textBoxPrID.Text.Trim()),
                     StQuantity = StQ
                 };
                 Stock = StockDataAccess.GetStockData(2, selectCondition);
@@ -478,7 +478,7 @@ namespace SalesManagement_SysDev
 
             int pageSize = int.Parse(textBoxPageSize.Text);
 
-            dataGridViewStock.DataSource =Stock;
+            dataGridViewStock.DataSource = Stock;
 
             labelPage.Text = "/" + ((int)Math.Ceiling(Stock.Count / (double)pageSize)) + "ページ";
             dataGridViewStock.Refresh();
