@@ -493,5 +493,14 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void dataGridViewStock_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxStID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxPrID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxPrName.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxStQuantity.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[3].Value.ToString();
+            
+        }
     }
 }

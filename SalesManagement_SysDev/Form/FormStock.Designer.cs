@@ -281,8 +281,9 @@ namespace SalesManagement_SysDev
             this.dataGridViewStock.Name = "dataGridViewStock";
             this.dataGridViewStock.RowHeadersWidth = 62;
             this.dataGridViewStock.RowTemplate.Height = 21;
-            this.dataGridViewStock.Size = new System.Drawing.Size(2163, 945);
+            this.dataGridViewStock.Size = new System.Drawing.Size(2880, 1620);
             this.dataGridViewStock.TabIndex = 29;
+            this.dataGridViewStock.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStock_CellClick);
             // 
             // panel4
             // 
