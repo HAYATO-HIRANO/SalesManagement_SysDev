@@ -295,7 +295,7 @@ namespace SalesManagement_SysDev
             // 電話番号の半角数値チェック
             if (!String.IsNullOrEmpty(textBoxEmPhone.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckNumeric(textBoxEmPhone.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxEmPhone.Text.Trim()))
                 {
                     MessageBox.Show("電話番号は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3030");
@@ -507,11 +507,6 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void dataGridViewEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void labelPassword_Click(object sender, EventArgs e)
         {
 
@@ -552,7 +547,7 @@ namespace SalesManagement_SysDev
                 // 社員IDの半角英数字チェック
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmID.Text.Trim()))
                 {
-                    MessageBox.Show("社員IDは全て半角英数字入力です");
+                    MessageBox.Show("社員IDは全て半角英数字入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmID.Focus();
                     return false;
@@ -560,7 +555,7 @@ namespace SalesManagement_SysDev
                 // 社員IDの文字数チェック
                 if (textBoxEmID.TextLength > 6)
                 {
-                    MessageBox.Show("社員IDは6文字以下です");
+                    MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmID.Focus();
                     return false;
@@ -569,7 +564,7 @@ namespace SalesManagement_SysDev
                 // 社員IDの重複チェック
                 if (employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された社員IDは既に存在します");
+                    MessageBox.Show("入力された社員IDは既に存在します", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmID.Focus();
                     return false;
@@ -577,7 +572,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                MessageBox.Show("社員IDが入力されていません");
+                MessageBox.Show("社員IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //messageDsp.DspMsg("");
                 textBoxEmID.Focus();
                 return false;
@@ -589,7 +584,7 @@ namespace SalesManagement_SysDev
                 // 社員名の全角チェック
                 if (!dataInputFormCheck.CheckFullWidth(textBoxEmName.Text.Trim()))
                 {
-                    MessageBox.Show("社員名は全て全角入力です");
+                    MessageBox.Show("社員名は全て全角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmName.Focus();
                     return false;
@@ -597,7 +592,7 @@ namespace SalesManagement_SysDev
                 // 社員名の文字数チェック
                 if (textBoxEmName.TextLength > 15)
                 {
-                    MessageBox.Show("社員名は15文字以下です");
+                    MessageBox.Show("社員名は15文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmName.Focus();
                     return false;
@@ -605,7 +600,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                //MessageBox.Show("社員名が入力されていません");
+                MessageBox.Show("社員名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 messageDsp.DspMsg("");
                 textBoxEmName.Focus();
                 return false;
@@ -613,31 +608,31 @@ namespace SalesManagement_SysDev
             //営業所の選択チェック
             if (comboBoxPoID.SelectedIndex == -1)
             {
-                MessageBox.Show("営業所が選択されていません");
+                MessageBox.Show("営業所が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxPoID.Focus();
                 return false;
             }
             //役職の選択チェック
             if (comboBoxSoID.SelectedIndex == -1)
             {
-                MessageBox.Show("役職が選択されていません");
+                MessageBox.Show("役職が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxSoID.Focus();
                 return false;
             }
             // 電話番号の半角数値チェック
             if (!String.IsNullOrEmpty(textBoxEmPhone.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckNumeric(textBoxEmPhone.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumericHyphen(textBoxEmPhone.Text.Trim()))
                 {
-                    MessageBox.Show("電話番号は半角数値です");
+                    MessageBox.Show("電話番号は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3030");
                     textBoxEmPhone.Focus();
                     return false;
                 }
                 // 電話番号の文字数チェック
-                if (textBoxEmPhone.TextLength > 12)
+                if (textBoxEmPhone.TextLength > 13)
                 {
-                    MessageBox.Show("電話番号は12文字以下です");
+                    MessageBox.Show("電話番号は13文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3031");
                     textBoxEmPhone.Focus();
                     return false;
@@ -649,7 +644,7 @@ namespace SalesManagement_SysDev
                 // パスワードの半角英数字チェック
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmPassword.Text.Trim()))
                 {
-                    MessageBox.Show("パスワードは全て半角英数字入力です");
+                    MessageBox.Show("パスワードは全て半角英数字入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3044");
                     textBoxEmPassword.Focus();
                     return false;
@@ -657,7 +652,7 @@ namespace SalesManagement_SysDev
                 // パスワードの文字数チェック
                 if (textBoxEmPassword.TextLength > 10)
                 {
-                    MessageBox.Show("パスワードは10文字以下です");
+                    MessageBox.Show("パスワードは10文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3045");
                     textBoxEmPassword.Focus();
                     return false;
@@ -665,7 +660,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                MessageBox.Show("ログインPWが入力されていません");
+                MessageBox.Show("ログインPWが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //messageDsp.DspMsg("M3046");
                 textBoxEmPassword.Focus();
                 return false;
@@ -674,7 +669,7 @@ namespace SalesManagement_SysDev
             // 削除フラグの適否
             if (checkBoxEmFlag.CheckState == CheckState.Indeterminate)
             {
-                MessageBox.Show("削除フラグが不確定の状態です");
+                MessageBox.Show("削除フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //messageDsp.DspMsg("M3008");
                 checkBoxEmFlag.Focus();
                 return false;
@@ -685,7 +680,7 @@ namespace SalesManagement_SysDev
             {
                 if (textBoxEmHidden.TextLength > 100)
                 {
-                    MessageBox.Show("備考は100文字以下です");
+                    MessageBox.Show("備考は100文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3009");
                     textBoxEmHidden.Focus();
                     return false;
@@ -1043,6 +1038,31 @@ namespace SalesManagement_SysDev
                 textBoxEmHidden.TabStop = false;
                 textBoxEmHidden.ReadOnly = true;
 
+            }
+        }
+
+        private void dataGridViewEmployee_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxEmID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxEmName.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[1].Value.ToString();
+            comboBoxSoID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[3].Value.ToString();
+            comboBoxPoID.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[5].Value.ToString();
+            dateTimePickerHiredate.Value = DateTime.Parse(dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[6].Value.ToString());
+            textBoxEmPhone.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[8].Value.ToString();
+
+
+            if (dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[9].Value.ToString() != 2.ToString())
+            {
+                checkBoxEmFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxEmFlag.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value != null)
+            {
+                textBoxEmHidden.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value.ToString();
             }
         }
     }

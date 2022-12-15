@@ -557,7 +557,7 @@
             this.dataGridViewEmployee.RowTemplate.Height = 21;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(1552, 707);
             this.dataGridViewEmployee.TabIndex = 7;
-            this.dataGridViewEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellContentClick);
+            this.dataGridViewEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployee_CellClick_1);
             // 
             // buttonPageSizeChange
             // 
@@ -707,7 +707,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.panelLeft);
