@@ -252,12 +252,329 @@ namespace SalesManagement_SysDev
             }
             return chumon;
         }
+        ///////////////////////////////
+        //メソッド名：GetChumonData() オーバーロード
+        //引　数   ：検索条件
+        //戻り値   ：条件一致注文データ
+        //機　能   ：条件一致注文データの取得
+        ///////////////////////////////
+        public List<T_ChumonDsp> GetChumonData(int flg, T_ChumonDsp selectCondition)
+        {
+            List<T_ChumonDsp> chumon = new List<T_ChumonDsp>();
 
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                if (flg == 1)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             t1.ChID == selectCondition.ChID &&
+                             t1.ClID == selectCondition.ClID &&
+                             t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 2)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             t1.ChID == selectCondition.ChID &&
+                             t1.ClID == selectCondition.ClID &&
+                             //t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 3)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             t1.ChID == selectCondition.ChID &&
+                             //t1.ClID == selectCondition.ClID &&
+                             t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 4)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             t1.ChID == selectCondition.ChID &&
+                             //t1.ClID == selectCondition.ClID &&
+                             //t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 5)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             //t1.ChID == selectCondition.ChID &&
+                             t1.ClID == selectCondition.ClID &&
+                             t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 6)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             //t1.ChID == selectCondition.ChID &&
+                             t1.ClID == selectCondition.ClID &&
+                             //t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 7)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             //t1.ChID == selectCondition.ChID &&
+                             //t1.ClID == selectCondition.ClID &&
+                             t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                if (flg == 8)
+                {
+                    var tb = from t1 in context.T_Chumons
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where
+                             //t1.ChID == selectCondition.ChID &&
+                             //t1.ClID == selectCondition.ClID &&
+                             //t1.OrID == selectCondition.OrID &&
+                             t1.ChDate == selectCondition.ChDate &&
+                             t1.ChFlag != 2
+                             select new
+                             {
+                                 t1.ChID,
+                                 t1.ClID,
+                                 t4.ClName,
+                                 t1.OrID,
+                                 t1.ChDate,
+                                 t1.ChStateFlag,
+                                 t1.ChFlag,
+                                 t1.ChHidden,
+                             };
+                    foreach (var p in tb)
+                    {
+                        chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChStateFlag = p.ChStateFlag,
+                            ChFlag = p.ChFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return chumon;
+        }
         ///////////////////////////////
         //メソッド名：GetOrderDateData() オーバーロード
         //引　数   ：検索条件
-        //戻り値   ：条件一致受注データ
-        //機　能   ：条件一致受注データの取得
+        //戻り値   ：条件一致注文データ
+        //機　能   ：条件一致注文データの取得
         ///////////////////////////////
         public List<T_ChumonDsp> GetChumonDateData(int flg, T_ChumonDsp selectCondition, DateTime? startDay, DateTime? endDay)
         {
