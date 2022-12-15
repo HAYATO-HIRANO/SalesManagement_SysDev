@@ -23,6 +23,7 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の商品データ
         private static List<T_StockDsp> Stock;
+        private static List<M_Product>Products ;
 
 
         public FormStock()
@@ -304,13 +305,28 @@ namespace SalesManagement_SysDev
 
         private void textBoxPrID_TextChanged(object sender, EventArgs e)
         {
-            object selectedItem = textBoxPrID.Text;
+            //object selectedItem = textBoxPrID.Text;
 
-            if (selectedItem != null && selectedItem is M_Product)
+            //if (selectedItem != null && selectedItem is M_Product)
+            //{
+            //    SelectedPrID = ((M_Product)selectedItem).PrID;
+
+
+            //}
+            //M_Product product = ProductDataAccess.GetPrIDData(SelectedPrID);
+            //textBoxPrName.Text = product.PrName.ToString();
+            textBoxPrName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
             {
-                SelectedPrID = int.Parse(((M_Product)selectedItem).PrName);
+                if (textBoxPrID.TextLength < 6)
+                {
+                    if (ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                    {
+                        M_Product product = ProductDataAccess.GetPrIDData(int.Parse(textBoxPrID.Text.Trim()));
+                        textBoxPrName.Text = product.PrName.ToString();
+                    }
 
-                textBoxPrName.Text = SelectedPrID.ToString();
+                }
             }
         }
 
@@ -492,6 +508,15 @@ namespace SalesManagement_SysDev
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridViewStock_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxStID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxPrID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxPrName.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxStQuantity.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[3].Value.ToString();
+            
         }
     }
 }
