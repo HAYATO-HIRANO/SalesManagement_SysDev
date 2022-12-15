@@ -69,7 +69,7 @@ namespace SalesManagement_SysDev
             this.panelChumon = new System.Windows.Forms.Panel();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
-            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
+            this.dataGridViewChumon = new System.Windows.Forms.DataGridView();
             this.labelPageSize = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.buttonLastPage = new System.Windows.Forms.Button();
@@ -82,7 +82,7 @@ namespace SalesManagement_SysDev
             this.panel2.SuspendLayout();
             this.panelInput.SuspendLayout();
             this.panelChumon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChumon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -519,7 +519,7 @@ namespace SalesManagement_SysDev
             // 
             this.panelChumon.Controls.Add(this.buttonPageSizeChange);
             this.panelChumon.Controls.Add(this.textBoxPageSize);
-            this.panelChumon.Controls.Add(this.dataGridViewOrder);
+            this.panelChumon.Controls.Add(this.dataGridViewChumon);
             this.panelChumon.Controls.Add(this.labelPageSize);
             this.panelChumon.Controls.Add(this.textBoxPage);
             this.panelChumon.Controls.Add(this.buttonLastPage);
@@ -553,15 +553,15 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.TabIndex = 55;
             this.textBoxPageSize.Text = "20";
             // 
-            // dataGridViewOrder
+            // dataGridViewChumon
             // 
-            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(306, 316);
-            this.dataGridViewOrder.Name = "dataGridViewOrder";
-            this.dataGridViewOrder.RowTemplate.Height = 21;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrder.TabIndex = 47;
-            this.dataGridViewOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
+            this.dataGridViewChumon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewChumon.Location = new System.Drawing.Point(306, 316);
+            this.dataGridViewChumon.Name = "dataGridViewChumon";
+            this.dataGridViewChumon.RowTemplate.Height = 21;
+            this.dataGridViewChumon.Size = new System.Drawing.Size(1552, 605);
+            this.dataGridViewChumon.TabIndex = 47;
+            this.dataGridViewChumon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewChumon_CellContentClick);
             // 
             // labelPageSize
             // 
@@ -663,7 +663,7 @@ namespace SalesManagement_SysDev
             this.panelInput.PerformLayout();
             this.panelChumon.ResumeLayout(false);
             this.panelChumon.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChumon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -702,7 +702,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.TextBox textBoxChHidden;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
-        private System.Windows.Forms.DataGridView dataGridViewOrder;
+        private System.Windows.Forms.DataGridView dataGridViewChumon;
         private System.Windows.Forms.Label labelPageSize;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonLastPage;
