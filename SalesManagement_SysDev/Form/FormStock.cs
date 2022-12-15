@@ -12,7 +12,7 @@ namespace SalesManagement_SysDev
 {
     public partial class FormStock : Form
     {
-        private int SelectedPrID = 0;
+        //private int SelectedPrID = 0;
         //メッセージ表示用クラスのインスタンス化
         MessageDsp messageDsp = new MessageDsp();
         //データベース在庫テーブルアクセス用クラスのインスタンス化
@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の商品データ
         private static List<T_StockDsp> Stock;
-        private static List<M_Product>Products ;
+        
 
 
         public FormStock()
@@ -81,8 +81,9 @@ namespace SalesManagement_SysDev
             dataGridViewStock.Columns[0].Width = 100;
             dataGridViewStock.Columns[1].Width = 100;
             // dataGridViewStock.Columns[1].Visible = false;
-            dataGridViewStock.Columns[2].Width = 110;
+            dataGridViewStock.Columns[2].Width = 200;
             dataGridViewStock.Columns[3].Width = 170;
+            dataGridViewStock.Columns[4].Visible = false;
 
 
             //各列の文字位置の指定
@@ -146,10 +147,10 @@ namespace SalesManagement_SysDev
             //在庫IDの適否
             if (!String.IsNullOrEmpty(textBoxStID.Text.Trim()))
             {
+                //在庫IDの半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxStID.Text.Trim()))
                 {
-                    //在庫IDは半角英数値入力です
-                    messageDsp.DspMsg("M0501");
+                    MessageBox.Show("在庫IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStID.Focus();
                     return false;
                 }
@@ -180,10 +181,10 @@ namespace SalesManagement_SysDev
             //商品IDの適否
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                //商品IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
                 {
-                    //商品IDは半角英数字入力です
-                    messageDsp.DspMsg("M0505");
+                    MessageBox.Show("商品IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -305,15 +306,29 @@ namespace SalesManagement_SysDev
 
         private void textBoxPrID_TextChanged(object sender, EventArgs e)
         {
-            object selectedItem = textBoxPrID.Text;
+            //object selectedItem = textBoxPrID.Text;
 
-            if (selectedItem != null && selectedItem is M_Product)
+            //if (selectedItem != null && selectedItem is M_Product)
+            //{
+            //    SelectedPrID = ((M_Product)selectedItem).PrID;
+
+
+            //}
+            //M_Product product = ProductDataAccess.GetPrIDData(SelectedPrID);
+            //textBoxPrName.Text = product.PrName.ToString();
+            textBoxPrName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
             {
-                SelectedPrID = ((M_Product)selectedItem).PrID;
+                if (textBoxPrID.TextLength < 6)
+                {
+                    if (ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                    {
+                        M_Product product = ProductDataAccess.GetPrIDData(int.Parse(textBoxPrID.Text.Trim()));
+                        textBoxPrName.Text = product.PrName.ToString();
+                    }
 
-                textBoxPrName.Text = ProductDataAccess.GetPrIDData(SelectedPrID).ToString();
+                }
             }
-            
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -498,11 +513,13 @@ namespace SalesManagement_SysDev
 
         private void dataGridViewStock_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxStID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxPrID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxPrName.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[2].Value.ToString();
-            textBoxStQuantity.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[3].Value.ToString();
             
+              textBoxStID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[0].Value.ToString();
+              textBoxPrID.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[1].Value.ToString();
+              textBoxPrName.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[2].Value.ToString();
+              textBoxStQuantity.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[3].Value.ToString();
+
+           
         }
     }
 }

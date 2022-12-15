@@ -70,7 +70,6 @@ namespace SalesManagement_SysDev
             this.buttonHidden = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonConfirm = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonDetail = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.userControlSyukkoDetail1 = new SalesManagement_SysDev.UserControlSyukkoDetail();
@@ -441,6 +440,7 @@ namespace SalesManagement_SysDev
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(115, 28);
             this.textBoxClID.TabIndex = 4;
+            this.textBoxClID.TextChanged += new System.EventHandler(this.textBoxClID_TextChanged);
             // 
             // labelClID
             // 
@@ -479,7 +479,6 @@ namespace SalesManagement_SysDev
             this.panelLeft.Controls.Add(this.buttonHidden);
             this.panelLeft.Controls.Add(this.buttonList);
             this.panelLeft.Controls.Add(this.buttonConfirm);
-            this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
@@ -494,7 +493,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.FlatAppearance.BorderSize = 4;
             this.buttonHiddenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHiddenList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHiddenList.Location = new System.Drawing.Point(25, 435);
+            this.buttonHiddenList.Location = new System.Drawing.Point(25, 329);
             this.buttonHiddenList.Name = "buttonHiddenList";
             this.buttonHiddenList.Size = new System.Drawing.Size(200, 80);
             this.buttonHiddenList.TabIndex = 4;
@@ -509,7 +508,7 @@ namespace SalesManagement_SysDev
             this.buttonHidden.FlatAppearance.BorderSize = 4;
             this.buttonHidden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHidden.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonHidden.Location = new System.Drawing.Point(25, 225);
+            this.buttonHidden.Location = new System.Drawing.Point(25, 119);
             this.buttonHidden.Name = "buttonHidden";
             this.buttonHidden.Size = new System.Drawing.Size(200, 80);
             this.buttonHidden.TabIndex = 2;
@@ -524,7 +523,7 @@ namespace SalesManagement_SysDev
             this.buttonList.FlatAppearance.BorderSize = 4;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonList.Location = new System.Drawing.Point(25, 330);
+            this.buttonList.Location = new System.Drawing.Point(25, 224);
             this.buttonList.Name = "buttonList";
             this.buttonList.Size = new System.Drawing.Size(200, 80);
             this.buttonList.TabIndex = 3;
@@ -547,21 +546,6 @@ namespace SalesManagement_SysDev
             this.buttonConfirm.UseCompatibleTextRendering = true;
             this.buttonConfirm.UseVisualStyleBackColor = false;
             this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.BackColor = System.Drawing.Color.White;
-            this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonSearch.FlatAppearance.BorderSize = 4;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSearch.Location = new System.Drawing.Point(25, 120);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(200, 80);
-            this.buttonSearch.TabIndex = 1;
-            this.buttonSearch.Text = "検索";
-            this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonDetail
             // 
@@ -644,7 +628,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonHidden;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Button buttonConfirm;
-        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonDetail;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Panel panelInput;
