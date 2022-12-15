@@ -267,161 +267,161 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-            //日付範囲
-            DateTime? startDay = null;
-            DateTime? endDay = null;
-            if (dateTimePickerDateStart.Checked)
-                startDay = DateTime.Parse(dateTimePickerDateStart.Text);
-            if (dateTimePickerDateEnd.Checked)
-                endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
+            ////日付範囲
+            //DateTime? startDay = null;
+            //DateTime? endDay = null;
+            //if (dateTimePickerDateStart.Checked)
+            //    startDay = DateTime.Parse(dateTimePickerDateStart.Text);
+            //if (dateTimePickerDateEnd.Checked)
+            //    endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
 
-            //非表示フラグ変換
-            int chFlg = 0;
-            if (checkBoxHidden.Checked == true)
-            {
-                chFlg = 2;
-            }
-            //注文確定フラグ変換
-            int stateFlg = 0;
-            if (checkBoxStateFlag.Checked == true)
-            {
-                stateFlg = 1;
-            }
-            if (startDay == null && endDay == null)
-            {
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
-                {
-                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                    {
-                        T_ChumonDsp selectCondition = new T_ChumonDsp()
-                        {
-                            ChID = int.Parse(textBoxChID.Text.Trim()),
-                            OrID = int.Parse(textBoxOrID.Text.Trim()),
-                            ClID = int.Parse(textBoxClID.Text.Trim()),
-                            ChFlag = chFlg,
-                            ChStateFlag = stateFlg,
-                            ChHidden = textBoxChHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Chumon = ChumonDataAccess.GetChumonData(1, selectCondition);
+            ////非表示フラグ変換
+            //int chFlg = 0;
+            //if (checkBoxHidden.Checked == true)
+            //{
+            //    chFlg = 2;
+            //}
+            ////注文確定フラグ変換
+            //int stateFlg = 0;
+            //if (checkBoxStateFlag.Checked == true)
+            //{
+            //    stateFlg = 1;
+            //}
+            //if (startDay == null && endDay == null)
+            //{
+            //    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            //    {
+            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            //        {
+            //            T_ChumonDsp selectCondition = new T_ChumonDsp()
+            //            {
+            //                ChID = int.Parse(textBoxChID.Text.Trim()),
+            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
+            //                ClID = int.Parse(textBoxClID.Text.Trim()),
+            //                ChFlag = chFlg,
+            //                ChStateFlag = stateFlg,
+            //                ChHidden = textBoxChHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Chumon = ChumonDataAccess.GetChumonData(1, selectCondition);
 
-                    }
-                    else
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            OrID = int.Parse(textBoxOrID.Text.Trim()),
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderData(2, selectCondition);
+            //        }
+            //        else
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderData(2, selectCondition);
 
-                    }
+            //        }
 
-                }
-                else
-                {
-                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            ClID = int.Parse(textBoxClID.Text.Trim()),
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderData(3, selectCondition);
+            //    }
+            //    else
+            //    {
+            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                ClID = int.Parse(textBoxClID.Text.Trim()),
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderData(3, selectCondition);
 
-                    }
-                    else
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderData(4, selectCondition);
+            //        }
+            //        else
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderData(4, selectCondition);
 
-                    }
+            //        }
 
 
-                }
-            }
-            //日付範囲が選択されている
-            else if (startDay != null && endDay != null)
-            {
-                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
-                {
-                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            OrID = int.Parse(textBoxOrID.Text.Trim()),
-                            ClID = int.Parse(textBoxClID.Text.Trim()),
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderDateData(1, selectCondition, startDay, endDay);
+            //    }
+            //}
+            ////日付範囲が選択されている
+            //else if (startDay != null && endDay != null)
+            //{
+            //    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            //    {
+            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
+            //                ClID = int.Parse(textBoxClID.Text.Trim()),
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderDateData(1, selectCondition, startDay, endDay);
 
-                    }
-                    else
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            OrID = int.Parse(textBoxOrID.Text.Trim()),
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderDateData(2, selectCondition, startDay, endDay);
+            //        }
+            //        else
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderDateData(2, selectCondition, startDay, endDay);
 
-                    }
+            //        }
 
-                }
-                else
-                {
-                    if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            ClID = int.Parse(textBoxClID.Text.Trim()),
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderDateData(3, selectCondition, startDay, endDay);
+            //    }
+            //    else
+            //    {
+            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                ClID = int.Parse(textBoxClID.Text.Trim()),
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderDateData(3, selectCondition, startDay, endDay);
 
-                    }
-                    else
-                    {
-                        T_OrderDsp selectCondition = new T_OrderDsp()
-                        {
-                            ClCharge = textBoxClCharge.Text.Trim(),
-                            OrFlag = orFlg,
-                            OrStateFlag = stateFlg,
-                            OrHidden = textBoxOrHidden.Text.Trim()
-                        };
-                        //データの抽出
-                        Order = orderDataAccess.GetOrderDateData(4, selectCondition, startDay, endDay);
+            //        }
+            //        else
+            //        {
+            //            T_OrderDsp selectCondition = new T_OrderDsp()
+            //            {
+            //                ClCharge = textBoxClCharge.Text.Trim(),
+            //                OrFlag = orFlg,
+            //                OrStateFlag = stateFlg,
+            //                OrHidden = textBoxOrHidden.Text.Trim()
+            //            };
+            //            //データの抽出
+            //            Order = orderDataAccess.GetOrderDateData(4, selectCondition, startDay, endDay);
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
         }
         ///////////////////////////////
         //　8.3.4.3 注文抽出結果表示
