@@ -23,6 +23,7 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の商品データ
         private static List<T_StockDsp> Stock;
+        private static List<M_Product>Products ;
 
 
         public FormStock()
@@ -308,10 +309,11 @@ namespace SalesManagement_SysDev
 
             if (selectedItem != null && selectedItem is M_Product)
             {
-                SelectedPrID = int.Parse(((M_Product)selectedItem).PrName);
+                SelectedPrID = ((M_Product)selectedItem).PrID;
 
-                textBoxPrName.Text = SelectedPrID.ToString();
+                textBoxPrName.Text = ProductDataAccess.GetPrIDData(SelectedPrID).ToString();
             }
+            
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

@@ -45,6 +45,11 @@ namespace SalesManagement_SysDev//.DbAccess
 
 
         }
+
+        
+
+
+
         ///////////////////////////////
         //メソッド名：GetStockData()　オーバーロード
         //引　数   ：検索条件
