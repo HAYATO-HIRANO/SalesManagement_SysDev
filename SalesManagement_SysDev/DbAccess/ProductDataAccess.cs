@@ -23,7 +23,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                flg = context.M_Products.Any(x => x.PrID==prID&&x.PrFlag==0);//
+                flg = context.M_Products.Any(x => x.PrID==prID&&x.PrFlag==0);
                 context.Dispose();
             }catch(Exception ex)
             {
@@ -33,22 +33,22 @@ namespace SalesManagement_SysDev//.DbAccess
             return flg;
         }
 
-        public bool CheckPrModelNumberExistence( string prMB)
-        {
-            bool flg = false;
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                flg = context.M_Products.Any(x => x.PrModelNumber == prMB); 
-                context.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //public bool CheckPrModelNumberExistence( string prMB)
+        //{
+        //    bool flg = false;
+        //    try
+        //    {
+        //        var context = new SalesManagement_DevContext();
+        //        flg = context.M_Products.Any(x => x.PrModelNumber == prMB); 
+        //        context.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            return flg;
-        }
+        //    }
+        //    return flg;
+        //}
     
 
 
@@ -122,23 +122,6 @@ namespace SalesManagement_SysDev//.DbAccess
         //機　能   ：条件一致商品データの取得
         ///////////////////////////////
        
-        //public List<M_Product> GetProductData(M_Product selectCondition)
-        //{
-        //    List<M_Product> product = new List<M_Product>();
-        //    try
-        //    {
-        //        var context = new SalesManagement_DevContext();
-        //        product = context.M_Products.Where(x => x.PrID == selectCondition.PrID&& x.MaID == selectCondition.MaID).ToList();
-        //        context.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        //    }
-        //    return product;
-        //}
-
         public List<M_ProductDsp> GetProductData(int flg, M_ProductDsp selectCondition)
         {
           
@@ -154,8 +137,6 @@ namespace SalesManagement_SysDev//.DbAccess
                              on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications
                              on t1.ScID equals t3.ScID
-                             //join t4 in context.M_MajorCassifications
-                             // on t3.McID equals t4.McID
                              where t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
                              t1.MaID==selectCondition.MaID&&
                              t1.PrName.Contains(selectCondition.PrName)&&

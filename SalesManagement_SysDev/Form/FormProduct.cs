@@ -319,7 +319,8 @@ namespace SalesManagement_SysDev
             if (comboBoxMaker.SelectedIndex == -1)
             {
                 //メーカーIDが選択されていません
-                messageDsp.DspMsg("M0407");
+                //messageDsp.DspMsg("M0407");
+                MessageBox.Show("メーカー名が選択されていません。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxMaker.Focus();
                 return false;
             }
@@ -327,6 +328,7 @@ namespace SalesManagement_SysDev
             // 商品名の適否
             if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
             {
+               
 
                 if (textBoxPrName.TextLength > 50)
                 {
@@ -373,6 +375,15 @@ namespace SalesManagement_SysDev
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
+                //価格の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+                  
+                    MessageBox.Show("価格は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
+                    return false;
+                }
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
@@ -386,6 +397,33 @@ namespace SalesManagement_SysDev
                 //価格が入力されていません
                 messageDsp.DspMsg("M0413");
                 textBoxPrice.Focus();
+                return false;
+            }
+            //安全在庫数入力チェック
+            if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
+            {
+                //安全在庫数の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
+                {
+
+                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
+                    return false;
+                }
+                if (textBoxPrSafetyStock.TextLength > 4)
+                {
+                    //安全在庫数は4桁以下です
+                    messageDsp.DspMsg("M0415");
+                    textBoxPrice.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                //安全在庫数が入力されていません
+                messageDsp.DspMsg("M0416");
+                textBoxPrSafetyStock.Focus();
                 return false;
             }
             //色の入力チェック
@@ -445,22 +483,28 @@ namespace SalesManagement_SysDev
                 return false;
             }
             //非表示フラグのチェック
+            //フラグの適否
             if (checkBoxPrFlag.CheckState == CheckState.Indeterminate)
             {
-                //非表示フラグが未確定な状態です
-                messageDsp.DspMsg("M0433");
+                MessageBox.Show("非表示フラグが不確定の状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 checkBoxPrFlag.Focus();
                 return false;
             }
-
-            //非表示理由の入力チェック
-            if (checkBoxPrFlag.Checked==true&& String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            if (checkBoxPrFlag.Checked == true)
             {
-                //非表示理由が入力されていません
-                messageDsp.DspMsg("M0440");
+                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxPrFlag.Focus();
+                return false;
+            }
+            //非表示理由の適否
+            if (!String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrHidden.Focus();
                 return false;
             }
+
 
 
             return true;
@@ -476,11 +520,11 @@ namespace SalesManagement_SysDev
 
         private M_Product GenerateDataAtRegistration()
         {
-            int Pdflg = 0;
-            if (checkBoxPrFlag.Checked == true)
-            {
-                Pdflg = 2;
-            }
+            //int Pdflg = 0;
+            //if (checkBoxPrFlag.Checked == true)
+            //{
+            //    Pdflg = 2;
+            //}
 
             return new M_Product
             {
@@ -493,7 +537,7 @@ namespace SalesManagement_SysDev
                 PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                 PrColor = textBoxColor.Text.Trim(),
                 PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                PrFlag =Pdflg,
+                PrFlag =0,
                 PrHidden=textBoxPrHidden.Text.Trim()
             };
         }
@@ -610,7 +654,8 @@ namespace SalesManagement_SysDev
             if (comboBoxMaker.SelectedIndex == -1)
             {
                 //メーカーIDが選択されていません
-                messageDsp.DspMsg("M0407");
+                //messageDsp.DspMsg("M0407");
+                MessageBox.Show("メーカー名が選択されていません。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxMaker.Focus();
                 return false;
             }
@@ -664,6 +709,15 @@ namespace SalesManagement_SysDev
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
+                //価格の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+
+                    MessageBox.Show("価格は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
+                    return false;
+                }
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
@@ -683,22 +737,22 @@ namespace SalesManagement_SysDev
             //安全在庫数入力チェック
             if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
             {
-                //安全在庫数は半角英数値入力です
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrSafetyStock.Text.Trim()))
+                //安全在庫数の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
-                    messageDsp.DspMsg("M0414");
-                    textBoxPrSafetyStock.Focus();
+
+                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
                     return false;
                 }
-
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
                     messageDsp.DspMsg("M0415");
-                    textBoxPrSafetyStock.Focus();
+                    textBoxPrice.Focus();
                     return false;
                 }
-                
             }
             else
             {
@@ -728,13 +782,13 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
-                {
-                    //入力された型番は存在していません
-                    messageDsp.DspMsg("M0441");
-                    textBoxPrModelNumber.Focus();
-                    return false;
-                }
+                //if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                //{
+                //    //入力された型番は存在していません
+                //    messageDsp.DspMsg("M0441");
+                //    textBoxPrModelNumber.Focus();
+                //    return false;
+                //}
 
             }
             else
@@ -836,7 +890,7 @@ namespace SalesManagement_SysDev
 
         private void UpdateProduct(M_Product upProduct)
         {
-            //在庫データを更新してよろしいですか？
+            //商品データを更新してよろしいですか？
             DialogResult result = messageDsp.DspMsg("M0512");
             if(result == DialogResult.Cancel)
             {
@@ -846,12 +900,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //在庫データを更新しました
-                messageDsp.DspMsg("M0513");
+                messageDsp.DspMsg("M0413");
             }
             else
             {
                 //在庫データ更新に失敗しました
-                messageDsp.DspMsg("M0514");
+                messageDsp.DspMsg("M0414");
             }
             textBoxPrID.Focus();
             //入力エリアのクリア
@@ -955,29 +1009,30 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
-            
+
 
             //安全在庫数入力チェック
             if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
             {
-                //安全在庫数は半角英数値入力です
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrSafetyStock.Text.Trim()))
+                //安全在庫数の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
-                    messageDsp.DspMsg("M0414");
-                    textBoxPrSafetyStock.Focus();
+
+                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
                     return false;
                 }
-
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
                     messageDsp.DspMsg("M0415");
-                    textBoxPrSafetyStock.Focus();
+                    textBoxPrice.Focus();
                     return false;
                 }
-
             }
             
+
 
             //型番の適否
             if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))

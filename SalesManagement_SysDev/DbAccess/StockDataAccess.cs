@@ -59,7 +59,6 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                //stock = context.T_Stocks.Where(x => x.StID == selectCondition.StID && x.PrID == selectCondition.PrID).ToList();
                 if (flg == 1)
                 {
 
