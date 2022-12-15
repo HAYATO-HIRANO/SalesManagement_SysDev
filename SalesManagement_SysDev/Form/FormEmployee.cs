@@ -99,13 +99,20 @@ namespace SalesManagement_SysDev
         private void SetFormDataGridView()
         {
             //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "10";
+            textBoxPageSize.Text = "20";
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
             dataGridViewEmployee.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewEmployee.AllowUserToResizeRows = false;
+            dataGridViewEmployee.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewEmployee.AllowUserToAddRows = false;
             //行内をクリックすることで行を選択
             dataGridViewEmployee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //奇数行の色を変更
+            dataGridViewEmployee.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
             dataGridViewEmployee.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //データグリッドビューのデータ取得
@@ -326,7 +333,7 @@ namespace SalesManagement_SysDev
             }
             else
             {
-                MessageBox.Show("ログインPWが入力されていません");
+                MessageBox.Show("ログインPWが入力されていません","入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //messageDsp.DspMsg("M3046");
                 textBoxEmPassword.Focus();
                 return false;
@@ -375,7 +382,7 @@ namespace SalesManagement_SysDev
                 EmHiredate = (DateTime)mHireDate,
                 EmPassword = pw,
                 EmPhone = textBoxEmPhone.Text.Trim(),               
-                EmFlag = Convert.ToInt32(checkBoxEmFlag.Checked),
+                EmFlag = 0,
                 EmHidden = String.Empty
 
             };
@@ -390,18 +397,18 @@ namespace SalesManagement_SysDev
         private void RegistrationStaff(M_Employee regEmployee)
         {
             // 登録確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M3010");
+            DialogResult result = MessageBox.Show("社員データを登録してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
 
             // スタッフ情報の登録
             bool flg = employeeDataAccess.AddEmployeeData(regEmployee);
             if (flg == true)
-                MessageBox.Show("データを登録しました。");
-                //messageDsp.DspMsg("");
+                MessageBox.Show("データを登録しました。","追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //messageDsp.DspMsg("");
             else
-                MessageBox.Show("データの登録に失敗しました。");
-                //messageDsp.DspMsg("");
+                MessageBox.Show("データの登録に失敗しました。", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //messageDsp.DspMsg("");
 
             textBoxEmID.Focus();
 
@@ -428,65 +435,60 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            /*
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return;
+
+            }
+            
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewEmployee.DataSource = Employee.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定
-            dataGridViewEmployee.Columns[0].Width = 80;
-            dataGridViewEmployee.Columns[1].Width = 130;
-            dataGridViewEmployee.Columns[2].Width = 130;
-            dataGridViewEmployee.Columns[3].Width = 70;
-            dataGridViewEmployee.Columns[3].Visible = false;
-            dataGridViewEmployee.Columns[4].Width = 130;
+            dataGridViewEmployee.Columns[0].Width = 100;
+            dataGridViewEmployee.Columns[1].Width = 180;
+            dataGridViewEmployee.Columns[2].Visible = false;
+            dataGridViewEmployee.Columns[3].Width = 150;
             dataGridViewEmployee.Columns[4].Visible = false;
-            dataGridViewEmployee.Columns[5].Width = 130;
-            dataGridViewEmployee.Columns[5].Visible = false;
-            dataGridViewEmployee.Columns[6].Width = 130;
-            dataGridViewEmployee.Columns[6].Visible = false;
-            dataGridViewEmployee.Columns[7].Width = 130;
+            dataGridViewEmployee.Columns[5].Width = 150;
+            dataGridViewEmployee.Columns[6].Width = 180;
             dataGridViewEmployee.Columns[7].Visible = false;
-            dataGridViewEmployee.Columns[8].Width = 130;
-            dataGridViewEmployee.Columns[8].Visible = false;
-            dataGridViewEmployee.Columns[9].Width = 130;
+            dataGridViewEmployee.Columns[8].Width = 180;
             dataGridViewEmployee.Columns[9].Visible = false;
-            dataGridViewEmployee.Columns[10].Width = 130;
-            dataGridViewEmployee.Columns[10].Visible = false;
-            dataGridViewEmployee.Columns[11].Width = 50;
-            dataGridViewEmployee.Columns[11].Visible = false;
-            dataGridViewEmployee.Columns[12].Width = 100;
-            dataGridViewEmployee.Columns[13].Width = 50;
-            dataGridViewEmployee.Columns[13].Visible = false;
-            dataGridViewEmployee.Columns[14].Width = 100;
-            dataGridViewEmployee.Columns[15].Width = 50;
-            dataGridViewEmployee.Columns[15].Visible = false;
-            dataGridViewEmployee.Columns[16].Width = 100;
-            dataGridViewEmployee.Columns[17].Width = 50;
-            dataGridViewEmployee.Columns[17].Visible = false;
-            dataGridViewEmployee.Columns[18].Width = 100;
-            dataGridViewEmployee.Columns[19].Width = 100;
-            dataGridViewEmployee.Columns[20].Width = 130;
-            dataGridViewEmployee.Columns[20].Visible = false;
-            dataGridViewEmployee.Columns[21].Width = 80;
-            dataGridViewEmployee.Columns[22].Width = 250;
+            dataGridViewEmployee.Columns[10].Width = 569;
 
             //各列の文字位置の指定
             dataGridViewEmployee.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewEmployee.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[14].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[16].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[18].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewEmployee.Columns[21].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewEmployee.Columns[22].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewEmployee.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewEmployee.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewEmployee.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Employee.Count / (double)pageSize)) + "ページ";
 
             dataGridViewEmployee.Refresh();
-            */
+            
         }
         private void timer_Tick(object sender, EventArgs e)
         {

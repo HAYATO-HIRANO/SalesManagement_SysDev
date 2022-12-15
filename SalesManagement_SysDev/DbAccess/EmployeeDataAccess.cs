@@ -120,7 +120,7 @@ namespace SalesManagement_SysDev
                          on t1.SoID equals t2.SoID
                          join t3 in context.M_Positions
                          on t1.PoID equals t3.PoID
-
+                         where t1.EmFlag !=2
                          select new
                          {
                              t1.EmID,
