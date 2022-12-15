@@ -43,7 +43,7 @@ namespace SalesManagement_SysDev
             this.panelShipment = new System.Windows.Forms.Panel();
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.textBoxPageSize = new System.Windows.Forms.TextBox();
-            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSh = new System.Windows.Forms.DataGridView();
             this.labelPageSize = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
             this.buttonLastPage = new System.Windows.Forms.Button();
@@ -80,7 +80,7 @@ namespace SalesManagement_SysDev
             this.userControlShipmentDetail1 = new SalesManagement_SysDev.UserControlShipmentDetail();
             this.panelHeader.SuspendLayout();
             this.panelShipment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSh)).BeginInit();
             this.panelInput.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.SuspendLayout();
@@ -204,7 +204,7 @@ namespace SalesManagement_SysDev
             // 
             this.panelShipment.Controls.Add(this.buttonPageSizeChange);
             this.panelShipment.Controls.Add(this.textBoxPageSize);
-            this.panelShipment.Controls.Add(this.dataGridViewOrder);
+            this.panelShipment.Controls.Add(this.dataGridViewSh);
             this.panelShipment.Controls.Add(this.labelPageSize);
             this.panelShipment.Controls.Add(this.textBoxPage);
             this.panelShipment.Controls.Add(this.buttonLastPage);
@@ -238,15 +238,15 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.TabIndex = 18;
             this.textBoxPageSize.Text = "20";
             // 
-            // dataGridViewOrder
+            // dataGridViewSh
             // 
-            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(293, 296);
-            this.dataGridViewOrder.Name = "dataGridViewOrder";
-            this.dataGridViewOrder.RowTemplate.Height = 21;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(1552, 605);
-            this.dataGridViewOrder.TabIndex = 21;
-            this.dataGridViewOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
+            this.dataGridViewSh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSh.Location = new System.Drawing.Point(293, 296);
+            this.dataGridViewSh.Name = "dataGridViewSh";
+            this.dataGridViewSh.RowTemplate.Height = 21;
+            this.dataGridViewSh.Size = new System.Drawing.Size(1552, 605);
+            this.dataGridViewSh.TabIndex = 21;
+            this.dataGridViewSh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
             // 
             // labelPageSize
             // 
@@ -595,6 +595,7 @@ namespace SalesManagement_SysDev
             this.buttonConfirm.Text = "確定";
             this.buttonConfirm.UseCompatibleTextRendering = true;
             this.buttonConfirm.UseVisualStyleBackColor = false;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonSearch
             // 
@@ -665,7 +666,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.PerformLayout();
             this.panelShipment.ResumeLayout(false);
             this.panelShipment.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSh)).EndInit();
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
             this.panelLeft.ResumeLayout(false);
@@ -688,7 +689,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Panel panelShipment;
         private System.Windows.Forms.Button buttonPageSizeChange;
         private System.Windows.Forms.TextBox textBoxPageSize;
-        private System.Windows.Forms.DataGridView dataGridViewOrder;
+        private System.Windows.Forms.DataGridView dataGridViewSh;
         private System.Windows.Forms.Label labelPageSize;
         private System.Windows.Forms.TextBox textBoxPage;
         private System.Windows.Forms.Button buttonLastPage;

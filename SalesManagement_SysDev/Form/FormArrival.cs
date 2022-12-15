@@ -16,7 +16,6 @@ namespace SalesManagement_SysDev
         ArrivalDataAccess arrivalDataAccess = new ArrivalDataAccess();
         //データベース入荷詳細テーブルアクセス用クラスのインスタンス化
         ArrivalDetailDataAccess arrivalDetailDataAccess = new ArrivalDetailDataAccess();
-
         //データベース出荷テーブルアクセス用クラスのインスタンス化
         ShipmentDataAccess shipmentDataAccess = new ShipmentDataAccess();
         //データベース出荷詳細テーブルアクセス用クラスのインスタンス化

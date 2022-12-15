@@ -12,26 +12,25 @@ namespace SalesManagement_SysDev
 {
     public partial class FormShipment : Form
     {
-        //メッセージ表示用クラスのインスタンス化
-        MessageDsp messageDsp = new MessageDsp();
-        //データベース注文テーブルアクセス用クラスのインスタンス化
+        //データベース出荷テーブルアクセス用クラスのインスタンス化
         ShipmentDataAccess shipmentDataAccess = new ShipmentDataAccess();
-        //データベース受注テーブルアクセス用クラスのインスタンス化
-        OrderDataAccess orderDataAccess = new OrderDataAccess();
-        //データベース社員テーブルアクセス用クラスのインスタンス化
-        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
-        //データベース営業所テーブルアクセス用クラスのインスタンス化
-        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
-        //入力形式チェック用クラスのインスタンス化
-        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
+        //データベース出荷詳細テーブルアクセス用クラスのインスタンス化
+        ShipmentDetailDataAccess shipmentDetailDataAccess = new ShipmentDetailDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
+        //データベース社員テーブルアクセス用クラスのインスタンス化
+        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
+        //データベース商品テーブルアクセス用クラスのインスタンス化
+        ProductDataAccess productDataAccess = new ProductDataAccess();
+        //データベース売上テーブルアクセス用クラスのインスタンス化
+        SaleDataAccess saleDataAccess = new SaleDataAccess();
+        //データベース売上テーブルアクセス用クラスのインスタンス化
+        SaleDetailDataAccess saleDetailDataAccess = new SaleDetailDataAccess();
+
+        //入力形式チェック用クラスのインスタンス化
+        DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出荷データ
         private static List<T_ShipmentDsp> Shipment;
-        //データグリッドビュー用の社員データ
-        private static List<M_EmployeeDsp> Employee;
-        //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffice;
 
 
         public FormShipment()
@@ -49,6 +48,27 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+            //データグリッドビューの設定
+            SetFormDataGridView();
+
+        }
+        //入力された顧客IDの顧客名を取得
+        private void textBoxClID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (textBoxClID.TextLength < 6)
+                {
+                    if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                    {
+                        M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        textBoxClName.Text = client.ClName.ToString();
+                    }
+
+                }
+            }
+
         }
 
         private void buttonFormDel_Click(object sender, EventArgs e)
@@ -175,10 +195,10 @@ namespace SalesManagement_SysDev
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewOrder.DataSource = Shipment.Take(pageSize).ToList();
+            dataGridViewSh.DataSource = Shipment.Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridViewOrder.Refresh();
+            dataGridViewSh.Refresh();
             //ページ番号の設定
             textBoxPage.Text = "1";
         }
@@ -197,10 +217,10 @@ namespace SalesManagement_SysDev
             int lastNo = (int)Math.Ceiling(Shipment.Count / (double)pageSize) - 1;
             //最終ページでなければ
             if (pageNo <= lastNo)
-                dataGridViewOrder.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+                dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridViewOrder.Refresh();
+            dataGridViewSh.Refresh();
             //ページ番号の設定
             int lastPage = (int)Math.Ceiling(Shipment.Count / (double)pageSize);
             if (pageNo >= lastPage)
@@ -220,10 +240,10 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
             int pageNo = (int)Math.Ceiling(Shipment.Count / (double)pageSize) - 1;
-            dataGridViewOrder.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridViewOrder.Refresh();
+            dataGridViewSh.Refresh();
             //ページ番号の設定
             textBoxPage.Text = (pageNo + 1).ToString();
         }
@@ -254,13 +274,13 @@ namespace SalesManagement_SysDev
         private void dataGridViewOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxShID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[0].ToString();
-            textBoxOrID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[1].ToString();
-            textBoxClID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[2].ToString();
-            textBoxClName.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[3].ToString();
+            textBoxShID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[0].ToString();
+            textBoxOrID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[1].ToString();
+            textBoxClID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[2].ToString();
+            textBoxClName.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[3].ToString();
 
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
+            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
             {
                  checkBox1Hidden.Checked = false;
             }
@@ -269,9 +289,9 @@ namespace SalesManagement_SysDev
                 checkBox1Hidden.Checked = true;
             }
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value != null)
+            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[9].Value != null)
             {
-                checkBox1Hidden.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value.ToString();
+                checkBox1Hidden.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[9].Value.ToString();
             }
         }
         ///////////////////////////////
@@ -287,18 +307,18 @@ namespace SalesManagement_SysDev
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
-            dataGridViewOrder.ReadOnly = true;
+            dataGridViewSh.ReadOnly = true;
             //直接のサイズの変更を不可
-            dataGridViewOrder.AllowUserToResizeRows = false;
-            dataGridViewOrder.AllowUserToResizeColumns = false;
+            dataGridViewSh.AllowUserToResizeRows = false;
+            dataGridViewSh.AllowUserToResizeColumns = false;
             //直接の登録を不可にする
-            dataGridViewOrder.AllowUserToAddRows = false;
+            dataGridViewSh.AllowUserToAddRows = false;
             //行内をクリックすることで行を選択
-            dataGridViewOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewSh.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //奇数行の色を変更
-            dataGridViewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
+            dataGridViewSh.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
-            dataGridViewOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //データグリッドビューのデータ取得
             GetDataGridView();
@@ -308,40 +328,241 @@ namespace SalesManagement_SysDev
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
-            dataGridViewOrder.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 //1475
-            dataGridViewOrder.Columns[0].Width = 100;
-            dataGridViewOrder.Columns[1].Width = 100;
-            dataGridViewOrder.Columns[2].Visible = false;
-            dataGridViewOrder.Columns[3].Width = 100;
-            dataGridViewOrder.Columns[4].Width = 100;
-            dataGridViewOrder.Columns[5].Width = 150;
-            dataGridViewOrder.Columns[6].Width = 100;
-            dataGridViewOrder.Columns[7].Width = 200;
-            dataGridViewOrder.Columns[8].Width = 200;
-            dataGridViewOrder.Columns[9].Visible = false;
-            dataGridViewOrder.Columns[10].Visible = false;
-            dataGridViewOrder.Columns[11].Width = 460;
+            dataGridViewSh.Columns[0].Width = 100;
+            dataGridViewSh.Columns[1].Width = 100;
+            dataGridViewSh.Columns[2].Visible = false;
+            dataGridViewSh.Columns[3].Width = 100;
+            dataGridViewSh.Columns[4].Width = 100;
+            dataGridViewSh.Columns[5].Width = 150;
+            dataGridViewSh.Columns[6].Width = 100;
+            dataGridViewSh.Columns[7].Width = 200;
+            dataGridViewSh.Columns[8].Width = 200;
+            dataGridViewSh.Columns[9].Visible = false;
+            dataGridViewSh.Columns[10].Visible = false;
+            dataGridViewSh.Columns[11].Width = 460;
 
             //各列の文字位置の指定
-            dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSh.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSh.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSh.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSh.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSh.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSh.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Shipment.Count / (double)pageSize)) + "ページ";
 
-            dataGridViewOrder.Refresh();
+            dataGridViewSh.Refresh();
         }
+        //14.1.2 出荷情報確定機能
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            // 14.1.2.1 妥当な出荷データ取得
+            if (!GetValidDataAtConfirm())
+                return;
+            // 14.1.2.2　売上情報作成
+            var conSale = GenerateDataAtConfirm();
+            // 14.1.2.3　売上詳細情報作成
+            var consaleDetail = GenerateDetailDataAtConfirm();
+
+            // 14.1.2.4 出荷情報確定
+            ConfirmShipment(conSale, consaleDetail);
+
+        }
+        ///////////////////////////////
+        //  14.1.2.1 妥当な出荷データ取得
+        //メソッド名：GetValidDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtConfirm()
+        {
+            //出荷IDの適否
+            if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxShID.Text.Trim()))
+                {
+                    MessageBox.Show("出荷IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxShID.TextLength > 6)
+                {
+                    MessageBox.Show("出荷IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+                // 出荷IDの存在チェック
+                if (!shipmentDataAccess.CheckShIDExistence(int.Parse(textBoxShID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された出荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("出荷ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxShID.Focus();
+                return false;
+            }
+            //出荷確定状態の判定
+            var shipment = shipmentDataAccess.GetShIDData(int.Parse(textBoxShID.Text.Trim()));
+            if (shipment.ShStateFlag == 1)
+            {
+                MessageBox.Show("入力された出荷IDはすでに確定されています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxShID.Focus();
+                return false;
+
+            }
+            //出荷状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("出荷確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            if (checkBoxStateFlag.Checked == false)
+            {
+                MessageBox.Show("出荷確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            //詳細情報の件数チェック
+            var shipmentDetail = shipmentDetailDataAccess.GetShIDDetailData(int.Parse(textBoxShID.Text.Trim()));
+            if (shipmentDetail.Count == 0)
+            {
+                MessageBox.Show("詳細情報が登録されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //　14.1.2.2　売上情報作成
+        //メソッド名：GenerateDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：出荷確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private T_Sale GenerateDataAtConfirm()
+        {
+            T_Shipment shipment = shipmentDataAccess.GetShIDData(int.Parse(textBoxShID.Text.Trim()));
+            //ログインしている社員IDの社員情報を取得する
+            M_Employee employee = employeeDataAccess.GetEmIDData(FormMain.loginEmID);
+
+            return new T_Sale
+            {
+
+               
+                ClID = int.Parse(shipment.ClID.ToString()),
+                EmID = employee.EmID,
+                SoID = int.Parse(shipment.SoID.ToString()),
+                ChID = int.Parse(shipment.OrID.ToString()),
+                SaDate=DateTime.Now,
+                SaFlag = 0,
+                SaHidden = String.Empty
+            };
+
+
+        }
+        ///////////////////////////////
+        //　14.1.2.3 売上詳細情報作成
+        //メソッド名：GenerateDetailDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：出荷詳細確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private List<T_SaleDetail> GenerateDetailDataAtConfirm()
+        {
+            List<T_ShipmentDetail> shipmentDetail = shipmentDetailDataAccess.GetShIDDetailData(int.Parse(textBoxShID.Text.Trim()));
+
+            List<T_SaleDetail> saleDetail = new List<T_SaleDetail>();
+            foreach (var p in shipmentDetail)
+            {
+
+               var product = productDataAccess.GetPrIDData(p.PrID);
+                int totalPrice = product.Price * p.ShDquantity;
+                saleDetail.Add(new T_SaleDetail()
+                {
+
+                    PrID = p.PrID,
+                    SaQuantity = p.ShDquantity,
+                    SaPrTotalPrice=totalPrice,
+                });
+            }
+            return saleDetail;
+
+
+        }
+
+        ///////////////////////////////
+        //　14.1.2.4 出荷情報確定
+        //メソッド名：ConfirmShipment()
+        //引　数   ：売上情報,売上詳細情報
+        //戻り値   ：なし
+        //機　能   ：出荷情報の確定
+        ///////////////////////////////
+        private void ConfirmShipment(T_Sale conSale, List<T_SaleDetail> conSaleDetail)
+        {
+            // 確定確認メッセージ
+            DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "確定確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 出荷情報の確定
+            //売上テーブルにデータ登録
+            bool addFlg = saleDataAccess.AddSaleData(conSale);
+            //売上IDの取得
+            T_Shipment shipment = shipmentDataAccess.GetShIDData(int.Parse(textBoxShID.Text.Trim()));
+            T_Sale sale = saleDataAccess.GetSaIDData(shipment.OrID);
+            //売上詳細テーブルにデータ登録/
+            ///成功か失敗の判定は未完成
+            foreach (var p in conSaleDetail)
+            {
+                T_SaleDetail AddSh = new T_SaleDetail();
+                AddSh.SaID = sale.SaID;
+                AddSh.PrID = p.PrID;
+                AddSh.SaQuantity = p.SaQuantity;
+                AddSh.SaPrTotalPrice = p.SaPrTotalPrice;
+                saleDetailDataAccess.AddSaleDetailData(AddSh);
+            }
+            //出荷状態フラグの更新
+            bool conFlg = shipmentDataAccess.UpdateStateFlag(int.Parse(textBoxShID.Text.Trim()));
+            //全ての登録,更新が成功
+            if (addFlg == true && conFlg == true)
+            {
+
+                MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxShID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+
+        }
+
     }
 
 }
