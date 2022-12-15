@@ -315,6 +315,14 @@ namespace SalesManagement_SysDev
 
         private bool GetValidDataAtRegistration()
         {
+            //商品IDの適否
+            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                //商品IDは入力不要です
+                MessageBox.Show("商品IDは入力不要です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPrID.Focus();
+                return false;
+            }
             //メーカー名の選択チェック
             if (comboBoxMaker.SelectedIndex == -1)
             {
@@ -618,10 +626,10 @@ namespace SalesManagement_SysDev
             //商品IDの適否
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                //商品IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
                 {
-                    //商品IDは半角英数値入力です
-                    messageDsp.DspMsg("M0401");
+                    MessageBox.Show("商品IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -947,10 +955,10 @@ namespace SalesManagement_SysDev
             //商品IDの適否
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                //商品IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
                 {
-                    //商品IDは半角英数値入力です
-                    messageDsp.DspMsg("M0401");
+                    MessageBox.Show("商品IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
