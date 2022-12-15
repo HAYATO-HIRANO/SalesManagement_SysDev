@@ -319,7 +319,8 @@ namespace SalesManagement_SysDev
             if (comboBoxMaker.SelectedIndex == -1)
             {
                 //メーカーIDが選択されていません
-                messageDsp.DspMsg("M0407");
+                //messageDsp.DspMsg("M0407");
+                MessageBox.Show("メーカー名が選択されていません。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxMaker.Focus();
                 return false;
             }
@@ -327,6 +328,7 @@ namespace SalesManagement_SysDev
             // 商品名の適否
             if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
             {
+               
 
                 if (textBoxPrName.TextLength > 50)
                 {
@@ -373,6 +375,15 @@ namespace SalesManagement_SysDev
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
+                //価格の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+                  
+                    MessageBox.Show("価格は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
+                    return false;
+                }
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
@@ -476,11 +487,11 @@ namespace SalesManagement_SysDev
 
         private M_Product GenerateDataAtRegistration()
         {
-            int Pdflg = 0;
-            if (checkBoxPrFlag.Checked == true)
-            {
-                Pdflg = 2;
-            }
+            //int Pdflg = 0;
+            //if (checkBoxPrFlag.Checked == true)
+            //{
+            //    Pdflg = 2;
+            //}
 
             return new M_Product
             {
@@ -493,7 +504,7 @@ namespace SalesManagement_SysDev
                 PrModelNumber = textBoxPrModelNumber.Text.Trim(),
                 PrColor = textBoxColor.Text.Trim(),
                 PrReleaseDate = DateTime.Parse(DateTimePickerDateTimePickerPrReleaseDate.Text),//DateTimePickerDateTimePickerPrReleaseDate.Value,
-                PrFlag =Pdflg,
+                PrFlag =0,
                 PrHidden=textBoxPrHidden.Text.Trim()
             };
         }
@@ -610,7 +621,8 @@ namespace SalesManagement_SysDev
             if (comboBoxMaker.SelectedIndex == -1)
             {
                 //メーカーIDが選択されていません
-                messageDsp.DspMsg("M0407");
+                //messageDsp.DspMsg("M0407");
+                MessageBox.Show("メーカー名が選択されていません。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBoxMaker.Focus();
                 return false;
             }
@@ -664,6 +676,15 @@ namespace SalesManagement_SysDev
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
+                //価格の半角英数字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+
+                    MessageBox.Show("価格は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    textBoxPrice.Focus();
+                    return false;
+                }
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
