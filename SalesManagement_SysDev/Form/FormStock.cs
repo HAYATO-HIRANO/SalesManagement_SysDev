@@ -12,7 +12,7 @@ namespace SalesManagement_SysDev
 {
     public partial class FormStock : Form
     {
-        private int SelectedMcID = 0;
+        private int SelectedPrID = 0;
         //メッセージ表示用クラスのインスタンス化
         MessageDsp messageDsp = new MessageDsp();
         //データベース在庫テーブルアクセス用クラスのインスタンス化
@@ -57,6 +57,10 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+
+            // データグリッドビューの表示
+            SetFormDataGridView();
+
         }
         private void GetDataGridView()
         {
@@ -90,6 +94,28 @@ namespace SalesManagement_SysDev
             labelPage.Text = "/" + ((int)Math.Ceiling(Stock.Count / (double)pageSize)) + "ページ";
 
             dataGridViewStock.Refresh();
+        }
+        private void SetFormDataGridView()
+        {
+            //dataGridViewのページサイズ指定
+            textBoxPageSize.Text = "20";
+            //dataGridViewのページ番号指定
+            textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewStock.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewStock.AllowUserToResizeRows = false;
+            dataGridViewStock.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewStock.AllowUserToAddRows = false;
+            //奇数行の色を変更
+            dataGridViewStock.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
+            //行内をクリックすることで行を選択
+            dataGridViewStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //ヘッダー位置の指定
+            dataGridViewStock.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //データグリッドビューのデータ取得
+            GetDataGridView();
         }
         private void ClearInput()
         {
@@ -271,5 +297,201 @@ namespace SalesManagement_SysDev
             GetDataGridView();
         }
 
+
+
+
+
+
+        private void textBoxPrID_TextChanged(object sender, EventArgs e)
+        {
+            object selectedItem = textBoxPrID.Text;
+
+            if (selectedItem != null && selectedItem is M_Product)
+            {
+                SelectedPrID = int.Parse(((M_Product)selectedItem).PrName);
+
+                textBoxPrName.Text = SelectedPrID.ToString();
+            }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            // 妥当な在庫カテゴリデータ取得
+            if (!GetValidDataAtSelect())
+            {
+                return;
+            }
+
+            //  在庫カテゴリ情報抽出
+            GenerateDataAtSelect();
+
+            // 在庫カテゴリ抽出結果表示
+            SetSelectData();
+        }
+        private bool GetValidDataAtSelect()
+        {
+            //在庫IDの適否
+            if (!String.IsNullOrEmpty(textBoxStID.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxStID.Text.Trim()))
+                {
+                    //在庫IDは半角英数値入力です
+                    messageDsp.DspMsg("M0501");
+                    textBoxStID.Focus();
+                    
+                }
+                if (textBoxStID.TextLength > 6)
+                {
+                    //在庫IDは6文字です
+                    messageDsp.DspMsg("M0502");
+                    textBoxStID.Focus();
+                    
+                }
+
+                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxStID.Text.Trim())))
+                {
+                    //入力された在庫IDは存在していません
+                    messageDsp.DspMsg("M0503");
+                    textBoxStID.Focus();
+                    
+                }
+
+            }
+            
+            //商品IDの適否
+            if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                {
+                    //商品IDは半角英数字入力です
+                    messageDsp.DspMsg("M0505");
+                    textBoxPrID.Focus();
+                    
+                }
+                if (textBoxPrID.TextLength > 6)
+                {
+                    //商品IDは6文字です
+                    messageDsp.DspMsg("M0506");
+                    textBoxPrID.Focus();
+                    
+                }
+
+                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                {
+                    //入力された商品IDは存在していません
+                    messageDsp.DspMsg("M0507");
+                    textBoxPrID.Focus();
+                    
+                }
+            }
+            
+
+            // 商品名の適否
+            if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
+            {
+
+                if (textBoxPrName.TextLength > 50)
+                {
+                    //商品名は50文字以下です
+                    messageDsp.DspMsg("M0409");
+                    textBoxPrName.Focus();
+                    
+                }
+
+            }
+           
+
+            if (!String.IsNullOrEmpty(textBoxStQuantity.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxStQuantity.Text.Trim()))
+                {
+                    //在庫数は半角英数字入力です
+                    messageDsp.DspMsg("M0508");
+                    textBoxStQuantity.Focus();
+                    
+                }
+                if (textBoxStQuantity.TextLength > 4)
+                {
+                    //在庫数は4桁以下です
+                    messageDsp.DspMsg("M0509");
+                    textBoxStQuantity.Focus();
+                    
+                }
+
+            }
+            
+            
+
+            return true;
+        }
+
+        private void GenerateDataAtSelect()
+        {
+            int StQ = 0;
+
+            if (!String.IsNullOrEmpty(textBoxStID.Text.Trim()) &&!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                T_StockDsp selectCondition = new T_StockDsp()
+                {
+                    StID=int.Parse(textBoxStID.Text.Trim()),
+                    PrID=int.Parse(textBoxPrID.Text.Trim()),
+                    StQuantity=StQ
+                };
+                Stock = StockDataAccess.GetStockData(1, selectCondition);
+            }
+            else if(!String.IsNullOrEmpty(textBoxStID.Text.Trim()))
+            {
+                T_StockDsp selectCondition = new T_StockDsp()
+                {
+                    StID = int.Parse(textBoxStID.Text.Trim()),
+                   //PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    StQuantity = StQ
+                };
+                Stock = StockDataAccess.GetStockData(2, selectCondition);
+            }
+            else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            {
+                T_StockDsp selectCondition = new T_StockDsp()
+                {
+                    //StID = int.Parse(textBoxStID.Text.Trim()),
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    StQuantity = StQ
+                };
+                Stock = StockDataAccess.GetStockData(3, selectCondition);
+            }
+            else
+            {
+                T_StockDsp selectCondition = new T_StockDsp()
+                {
+                    //StID = int.Parse(textBoxStID.Text.Trim()),
+                    //PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    StQuantity = StQ
+                };
+                Stock = StockDataAccess.GetStockData(4, selectCondition);
+            }
+
+
+        }
+        private void SetSelectData()
+        {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewStock.DataSource =Stock;
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Stock.Count / (double)pageSize)) + "ページ";
+            dataGridViewStock.Refresh();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
