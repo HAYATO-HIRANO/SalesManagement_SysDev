@@ -673,5 +673,10 @@ namespace SalesManagement_SysDev
 
             GetHiddenDataGridView();
         }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

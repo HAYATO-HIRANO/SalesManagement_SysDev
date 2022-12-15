@@ -143,7 +143,7 @@ namespace SalesManagement_SysDev
             return syDetail;
         }
         ///////////////////////////////
-        //メソッド名：GetOrDetailData() オーバーロード
+        //メソッド名：GetSyDetailData() オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致受注詳細データ
         //機　能   ：条件一致受注詳細データの取得
