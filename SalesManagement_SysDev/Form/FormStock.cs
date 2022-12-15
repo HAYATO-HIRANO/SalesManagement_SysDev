@@ -305,15 +305,29 @@ namespace SalesManagement_SysDev
 
         private void textBoxPrID_TextChanged(object sender, EventArgs e)
         {
-            object selectedItem = textBoxPrID.Text;
+            //object selectedItem = textBoxPrID.Text;
 
-            if (selectedItem != null && selectedItem is M_Product)
+            //if (selectedItem != null && selectedItem is M_Product)
+            //{
+            //    SelectedPrID = ((M_Product)selectedItem).PrID;
+
+
+            //}
+            //M_Product product = ProductDataAccess.GetPrIDData(SelectedPrID);
+            //textBoxPrName.Text = product.PrName.ToString();
+            textBoxPrName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
             {
-                SelectedPrID = ((M_Product)selectedItem).PrID;
+                if (textBoxPrID.TextLength < 6)
+                {
+                    if (ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
+                    {
+                        M_Product product = ProductDataAccess.GetPrIDData(int.Parse(textBoxPrID.Text.Trim()));
+                        textBoxPrName.Text = product.PrName.ToString();
+                    }
 
-                textBoxPrName.Text = ProductDataAccess.GetPrIDData(SelectedPrID).ToString();
+                }
             }
-            
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
