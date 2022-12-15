@@ -139,16 +139,12 @@ namespace SalesManagement_SysDev
                 var context = new SalesManagement_DevContext();
 
                 var tb = from t1 in context.T_Chumons
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
                          join t4 in context.M_Clients
                          on t1.ClID equals t4.ClID
-                         where t1.ChFlag != 2
+                         where t1.ChFlag == 0
                          select new
                          {
                              t1.ChID,
-                             t1.SoID,
-                             t2.SoName,
                              t1.ClID,
                              t4.ClName,
                              t1.OrID,
@@ -162,76 +158,6 @@ namespace SalesManagement_SysDev
                     chumon.Add(new T_ChumonDsp()
                     {
                         ChID=p.ChID,
-                        SoID = p.SoID,
-                        SoName = p.SoName,
-                        ClID = p.ClID,
-                        ClName = p.ClName,
-                        OrID = p.OrID,
-                        ChDate = p.ChDate,
-                        ChStateFlag = p.ChStateFlag,
-                        ChFlag = p.ChFlag,
-                        ChHidden = p.ChHidden
-
-
-                    });
-                }
-                context.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            return chumon;
-        }
-
-        ///////////////////////////////
-        //メソッド名：GetChumonData()
-        //引　数   ：検索条件
-        //戻り値   ：条件一致注文データ
-        //機　能   ：条件一致注文データの取得
-        ///////////////////////////////
-        public List<T_ChumonDsp> GetChumonData(T_ChumonDsp selectCondition)
-        {
-            List<T_ChumonDsp> chumon = new List<T_ChumonDsp>();
-
-            try
-            {
-                var context = new SalesManagement_DevContext();
-
-                var tb = from t1 in context.T_Chumons
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
-                         join t4 in context.M_Clients
-                         on t1.ClID equals t4.ClID
-                         where
-                         t1.ChID==selectCondition.ChID &&
-                         t1.SoID == selectCondition.SoID &&
-                         t1.EmID == selectCondition.EmID &&
-                         t1.ClID == selectCondition.ClID &&
-                         t1.OrID == selectCondition.OrID &&
-                         t1.ChDate == selectCondition.ChDate &&
-                         t1.ChFlag != 2
-                         select new
-                         {
-                             t1.ChID,
-                             t1.SoID,
-                             t2.SoName,
-                             t1.ClID,
-                             t4.ClName,
-                             t1.OrID,
-                             t1.ChDate,
-                             t1.ChStateFlag,
-                             t1.ChFlag,
-                             t1.ChHidden,
-                         };
-                foreach (var p in tb)
-                {
-                    chumon.Add(new T_ChumonDsp()
-                    {
-                        ChID = p.ChID,
-                        SoID = p.SoID,
-                        SoName = p.SoName,
                         ClID = p.ClID,
                         ClName = p.ClName,
                         OrID = p.OrID,
@@ -271,11 +197,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -308,11 +236,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -345,11 +275,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -382,11 +314,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -419,11 +353,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             //t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -456,11 +392,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             //t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -493,11 +431,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -530,11 +470,13 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             //t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden)
+
                              select new
                              {
                                  t1.ChID,
@@ -589,11 +531,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -626,11 +572,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -663,11 +613,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -700,11 +654,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -737,11 +695,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             //t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -774,11 +736,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             //t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -811,11 +777,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,
@@ -848,11 +818,15 @@ namespace SalesManagement_SysDev
                              join t4 in context.M_Clients
                              on t1.ClID equals t4.ClID
                              where
-                             //t1.ChID == selectCondition.ChID &&
-                             //t1.ClID == selectCondition.ClID &&
-                             //t1.OrID == selectCondition.OrID &&
-                             t1.ChDate == selectCondition.ChDate &&
-                             t1.ChFlag != 2
+                             //t1.ChID.ToString().Contains(selectCondition.ChID.ToString()) &&
+                             //t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
+                             //t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
+                             t1.ChFlag == selectCondition.ChFlag &&
+                             t1.ChStateFlag == selectCondition.ChStateFlag &&
+                             t1.ChHidden.Contains(selectCondition.ChHidden) &&
+                             t1.ChDate >= startDay &&
+                             t1.ChDate <= endDay
+
                              select new
                              {
                                  t1.ChID,

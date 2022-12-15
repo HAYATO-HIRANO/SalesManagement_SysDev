@@ -17,7 +17,7 @@ namespace SalesManagement_SysDev
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
         //データベース受注テーブルアクセス用クラスのインスタンス化
-        OrderDataAccess orderDataAccess = new OrderDataAccess();
+        ChumonDataAccess ChumonDataAccess = new ChumonDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
         EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
@@ -69,18 +69,18 @@ namespace SalesManagement_SysDev
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定
-            dataGridViewOrder.ReadOnly = true;
+            dataGridViewChumon.ReadOnly = true;
             //直接のサイズの変更を不可
-            dataGridViewOrder.AllowUserToResizeRows = false;
-            dataGridViewOrder.AllowUserToResizeColumns = false;
+            dataGridViewChumon.AllowUserToResizeRows = false;
+            dataGridViewChumon.AllowUserToResizeColumns = false;
             //直接の登録を不可にする
-            dataGridViewOrder.AllowUserToAddRows = false;
+            dataGridViewChumon.AllowUserToAddRows = false;
             //行内をクリックすることで行を選択
-            dataGridViewOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewChumon.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //奇数行の色を変更
-            dataGridViewOrder.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
+            dataGridViewChumon.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
             //ヘッダー位置の指定
-            dataGridViewOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //データグリッドビューのデータ取得
             GetDataGridView();
@@ -92,39 +92,39 @@ namespace SalesManagement_SysDev
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
-            dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 //1475
-            dataGridViewOrder.Columns[0].Width = 100;
-            dataGridViewOrder.Columns[1].Width = 100;
-            dataGridViewOrder.Columns[2].Visible = false;
-            dataGridViewOrder.Columns[3].Width = 100;
-            dataGridViewOrder.Columns[4].Width = 100;
-            dataGridViewOrder.Columns[5].Width = 150;
-            dataGridViewOrder.Columns[6].Width = 100;
-            dataGridViewOrder.Columns[7].Width = 200;
-            dataGridViewOrder.Columns[8].Width = 200;
-            dataGridViewOrder.Columns[9].Visible = false;
-            dataGridViewOrder.Columns[10].Visible = false;
-            dataGridViewOrder.Columns[11].Width = 460;
+            dataGridViewChumon.Columns[0].Width = 100;
+            dataGridViewChumon.Columns[1].Width = 100;
+            dataGridViewChumon.Columns[2].Visible = false;
+            dataGridViewChumon.Columns[3].Width = 100;
+            dataGridViewChumon.Columns[4].Width = 100;
+            dataGridViewChumon.Columns[5].Width = 150;
+            dataGridViewChumon.Columns[6].Width = 100;
+            dataGridViewChumon.Columns[7].Width = 200;
+            dataGridViewChumon.Columns[8].Width = 200;
+            dataGridViewChumon.Columns[9].Visible = false;
+            dataGridViewChumon.Columns[10].Visible = false;
+            dataGridViewChumon.Columns[11].Width = 460;
 
             //各列の文字位置の指定
-            dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewOrder.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewOrder.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewChumon.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewChumon.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewChumon.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewChumon.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewChumon.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewChumon.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Chumon.Count / (double)pageSize)) + "ページ";
 
-            dataGridViewOrder.Refresh();
+            dataGridViewChumon.Refresh();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -267,161 +267,310 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GenerateDataAtSelect()
         {
-            ////日付範囲
-            //DateTime? startDay = null;
-            //DateTime? endDay = null;
-            //if (dateTimePickerDateStart.Checked)
-            //    startDay = DateTime.Parse(dateTimePickerDateStart.Text);
-            //if (dateTimePickerDateEnd.Checked)
-            //    endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
+            //日付範囲
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+            if (dateTimePickerDateStart.Checked)
+                startDay = DateTime.Parse(dateTimePickerDateStart.Text);
+            if (dateTimePickerDateEnd.Checked)
+                endDay = DateTime.Parse(dateTimePickerDateEnd.Text);
 
-            ////非表示フラグ変換
-            //int chFlg = 0;
-            //if (checkBoxHidden.Checked == true)
-            //{
-            //    chFlg = 2;
-            //}
-            ////注文確定フラグ変換
-            //int stateFlg = 0;
-            //if (checkBoxStateFlag.Checked == true)
-            //{
-            //    stateFlg = 1;
-            //}
-            //if (startDay == null && endDay == null)
-            //{
-            //    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
-            //    {
-            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-            //        {
-            //            T_ChumonDsp selectCondition = new T_ChumonDsp()
-            //            {
-            //                ChID = int.Parse(textBoxChID.Text.Trim()),
-            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
-            //                ClID = int.Parse(textBoxClID.Text.Trim()),
-            //                ChFlag = chFlg,
-            //                ChStateFlag = stateFlg,
-            //                ChHidden = textBoxChHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Chumon = ChumonDataAccess.GetChumonData(1, selectCondition);
+            //非表示フラグ変換
+            int chFlg = 0;
+            if (checkBoxHidden.Checked == true)
+            {
+                chFlg = 2;
+            }
+            //注文確定フラグ変換
+            int stateFlg = 0;
+            if (checkBoxStateFlag.Checked == true)
+            {
+                stateFlg = 1;
+            }
+            //日付範囲が選択されていない
+            if (startDay == null && endDay == null)
+            {
+                //入荷!=null
+                if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(1, selectCondition);
 
-            //        }
-            //        else
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderData(2, selectCondition);
+                        }
+                        else
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(2, selectCondition);
 
-            //        }
+                        }
 
-            //    }
-            //    else
-            //    {
-            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                ClID = int.Parse(textBoxClID.Text.Trim()),
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderData(3, selectCondition);
+                    }
+                    else
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(3, selectCondition);
 
-            //        }
-            //        else
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderData(4, selectCondition);
+                        }
+                        else
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(4, selectCondition);
 
-            //        }
+                        }
 
 
-            //    }
-            //}
-            ////日付範囲が選択されている
-            //else if (startDay != null && endDay != null)
-            //{
-            //    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
-            //    {
-            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
-            //                ClID = int.Parse(textBoxClID.Text.Trim()),
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderDateData(1, selectCondition, startDay, endDay);
+                    }
 
-            //        }
-            //        else
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                OrID = int.Parse(textBoxOrID.Text.Trim()),
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderDateData(2, selectCondition, startDay, endDay);
+                }
+                else
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(5, selectCondition);
 
-            //        }
+                        }
+                        else
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(6, selectCondition);
 
-            //    }
-            //    else
-            //    {
-            //        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                ClID = int.Parse(textBoxClID.Text.Trim()),
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderDateData(3, selectCondition, startDay, endDay);
+                        }
 
-            //        }
-            //        else
-            //        {
-            //            T_OrderDsp selectCondition = new T_OrderDsp()
-            //            {
-            //                ClCharge = textBoxClCharge.Text.Trim(),
-            //                OrFlag = orFlg,
-            //                OrStateFlag = stateFlg,
-            //                OrHidden = textBoxOrHidden.Text.Trim()
-            //            };
-            //            //データの抽出
-            //            Order = orderDataAccess.GetOrderDateData(4, selectCondition, startDay, endDay);
+                    }
+                    else
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(7, selectCondition);
 
-            //        }
-            //    }
-            //}
+                        }
+                        else
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonData(8, selectCondition);
+
+                        }
+
+
+                    }
+
+                }
+            }
+            //日付範囲が選択されている
+            else if (startDay != null && endDay != null)
+            {
+                //入荷!=null
+                if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(1, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(2, selectCondition, startDay, endDay);
+
+                        }
+
+                    }
+                    else//受注ID未入力
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(3, selectCondition, startDay, endDay);
+
+                        }
+                        else
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChID = int.Parse(textBoxChID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(4, selectCondition, startDay, endDay);
+
+                        }
+                    }
+                }
+                else//入荷ID未入力
+                {
+                    //受注ID!=null
+                    if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(5, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                OrID = int.Parse(textBoxOrID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(6, selectCondition, startDay, endDay);
+
+                        }
+
+                    }
+                    else//受注ID未入力
+                    {
+                        //顧客!=null
+                        if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ClID = int.Parse(textBoxClID.Text.Trim()),
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(7, selectCondition, startDay, endDay);
+
+                        }
+                        else//顧客ID未入力
+                        {
+                            T_ChumonDsp selectCondition = new T_ChumonDsp()
+                            {
+                                ChFlag = chFlg,
+                                ChStateFlag = stateFlg,
+                                ChHidden = textBoxChHidden.Text.Trim()
+                            };
+                            //データの抽出
+                            Chumon = ChumonDataAccess.GetChumonDateData(8, selectCondition, startDay, endDay);
+
+                        }
+                    }
+                }
+            }
         }
         ///////////////////////////////
         //　8.3.4.3 注文抽出結果表示
@@ -530,10 +679,10 @@ namespace SalesManagement_SysDev
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
             int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewOrder.DataSource = Chumon.Take(pageSize).ToList();
+            dataGridViewChumon.DataSource = Chumon.Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridViewOrder.Refresh();
+            dataGridViewChumon.Refresh();
             //ページ番号の設定
             textBoxPage.Text = "1";
         }
@@ -551,10 +700,10 @@ namespace SalesManagement_SysDev
             int lastNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
             //最終ページでなければ
             if (pageNo <= lastNo)
-                dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
+                dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridViewOrder.Refresh();
+            dataGridViewChumon.Refresh();
             //ページ番号の設定
             int lastPage = (int)Math.Ceiling(Chumon.Count / (double)pageSize);
             if (pageNo >= lastPage)
@@ -573,10 +722,10 @@ namespace SalesManagement_SysDev
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
             int pageNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
-            dataGridViewOrder.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
+            dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             // DataGridViewを更新
-            dataGridViewOrder.Refresh();
+            dataGridViewChumon.Refresh();
             //ページ番号の設定
             textBoxPage.Text = (pageNo + 1).ToString();
         }
@@ -605,15 +754,15 @@ namespace SalesManagement_SysDev
 
 
         //データグリッドビュー セルクリック
-        private void dataGridViewOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewChumon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxChID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxOrID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxClID.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[4].Value.ToString();
-            textBoxClName.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxChID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxOrID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxClID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxClName.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[5].Value.ToString();
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
+            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
             {
                 checkBoxHidden.Checked = false;
             }
@@ -622,9 +771,9 @@ namespace SalesManagement_SysDev
                 checkBoxHidden.Checked = true;
             }
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value != null)
+            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value != null)
             {
-                checkBoxHidden.Text = dataGridViewOrder.Rows[dataGridViewOrder.CurrentRow.Index].Cells[9].Value.ToString();
+                checkBoxHidden.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value.ToString();
             }
 
 
