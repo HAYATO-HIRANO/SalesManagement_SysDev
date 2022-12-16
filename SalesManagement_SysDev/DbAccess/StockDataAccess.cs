@@ -253,6 +253,34 @@ namespace SalesManagement_SysDev//.DbAccess
             }
             return stock;
         }
+        ///////////////////////////////
+        //メソッド名：GetPrIDStockData()
+        //引　数   :商品ID
+        //戻り値   ：商品IDの在庫数
+        //機　能   ：商品IDの在庫数取得
+        ///////////////////////////////
+        public int GetPrIDStockData(int prID)
+        {
+           int quantity = new int();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var stock = context.T_Stocks.Single(x => x.PrID == prID );
+                quantity = stock.StQuantity;
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return quantity;
+        }
 
 
 
