@@ -976,6 +976,7 @@ namespace SalesManagement_SysDev
         {
             if (labelOrder.Text == "受注管理")
             {
+                
                 labelOrder.Text = "受注詳細管理";
                 buttonDetail.Text = "受注管理";
                 userControlOrderDetail1.Visible = true;
@@ -984,6 +985,11 @@ namespace SalesManagement_SysDev
             }
             if (labelOrder.Text == "受注詳細管理")
             {
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                {
+                    tOrder.OrID = int.Parse(textBoxOrID.Text.Trim());
+                }
+                
                 labelOrder.Text = "受注管理";
                 buttonDetail.Text = "受注詳細";
                 panelOrder.Visible = true;
