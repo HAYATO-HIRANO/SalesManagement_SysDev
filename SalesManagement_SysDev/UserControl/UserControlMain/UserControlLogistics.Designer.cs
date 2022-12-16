@@ -81,6 +81,7 @@
             this.buttonHattyu.TabIndex = 4;
             this.buttonHattyu.Text = "発注管理";
             this.buttonHattyu.UseVisualStyleBackColor = false;
+            this.buttonHattyu.Click += new System.EventHandler(this.buttonHattyu_Click);
             // 
             // buttonProduct
             // 
