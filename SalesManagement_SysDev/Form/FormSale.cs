@@ -45,5 +45,24 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
+
+        private void buttonSalesDetail_Click(object sender, EventArgs e)
+        {
+            if (labelSale.Text == "売上管理")
+            {
+                labelSale.Text = "売上詳細管理";
+                buttonSalesDetail.Text = "売上管理";
+                userControlSaleDetail1.Visible = true;
+                panelSale.Visible = false;
+                return;
+            }
+            if (labelSale.Text == "売上詳細管理")
+            {
+                labelSale.Text = "売上管理";
+                buttonSalesDetail.Text = "売上詳細";
+                panelSale.Visible = true;
+                userControlSaleDetail1.Visible = false;
+            }
+        }
     }
 }

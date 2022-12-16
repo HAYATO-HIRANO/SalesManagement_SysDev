@@ -195,6 +195,12 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
+    <Compile Include="UserControlSaleDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSaleDetail.Designer.cs">
+      <DependentUpon>UserControlSaleDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UserControlDetail\UserControlShipmentDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -321,6 +327,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlSaleDetail.resx">
+      <DependentUpon>UserControlSaleDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserControlDetail\UserControlShipmentDetail.resx">
       <DependentUpon>UserControlShipmentDetail.cs</DependentUpon>
     </EmbeddedResource>
