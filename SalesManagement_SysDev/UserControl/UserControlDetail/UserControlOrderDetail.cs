@@ -34,7 +34,11 @@ namespace SalesManagement_SysDev
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
-            textBoxOrID.Text = tOrder.OrID.ToString();
+            if (tOrder != null)
+            {
+                textBoxOrID.Text = tOrder.OrID.ToString();
+            }
+           
         }
 
         private void UserControlOrderDetail_Load(object sender, EventArgs e)
