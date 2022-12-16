@@ -89,6 +89,12 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="FormWarehousing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWarehousing.Designer.cs">
+      <DependentUpon>FormWarehousing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FormHattyu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     <Compile Include="UserControl\UserControlMain\UserControlLogistics.Designer.cs">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormWarehousing.resx">
+      <DependentUpon>FormWarehousing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormHattyu.resx">
       <DependentUpon>FormHattyu.cs</DependentUpon>
     </EmbeddedResource>
