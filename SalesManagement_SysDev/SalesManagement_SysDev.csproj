@@ -89,6 +89,7 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Entity\TOrder.cs" />
     <Compile Include="FormHattyu.cs">
       <SubType>Form</SubType>
     </Compile>
