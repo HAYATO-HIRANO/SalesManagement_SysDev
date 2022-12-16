@@ -14,7 +14,6 @@ namespace SalesManagement_SysDev
         OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
-        ChumonDetailDataAccess chumonDetailDataAccess = new ChumonDetailDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
@@ -597,7 +596,7 @@ namespace SalesManagement_SysDev
                 AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
-                chumonDetailDataAccess.AddChDetailData(AddCh);
+                chumonDataAccess.AddChDetailData(AddCh);
             }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
