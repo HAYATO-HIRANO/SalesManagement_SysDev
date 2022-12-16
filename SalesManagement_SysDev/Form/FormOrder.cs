@@ -597,7 +597,7 @@ namespace SalesManagement_SysDev
                 AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
-                //chumonDetailDataAccess.AddChDetailData(AddCh);
+                chumonDetailDataAccess.AddChDetailData(AddCh);
             }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
