@@ -79,7 +79,7 @@ namespace SalesManagement_SysDev
             this.panel.Controls.Add(this.panelHeader);
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel.Location = new System.Drawing.Point(0, 0);
-            this.panel.Margin = new System.Windows.Forms.Padding(2);
+            this.panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1920, 100);
             this.panel.TabIndex = 26;
@@ -97,7 +97,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.Controls.Add(this.buttonFormDel);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
             this.panelHeader.TabIndex = 2;
@@ -202,7 +202,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 100);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(250, 980);
             this.panelLeft.TabIndex = 27;
@@ -220,6 +220,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 40;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonLogout
             // 
@@ -333,7 +334,6 @@ namespace SalesManagement_SysDev
             this.textBoxStQuantity.Name = "textBoxStQuantity";
             this.textBoxStQuantity.Size = new System.Drawing.Size(60, 28);
             this.textBoxStQuantity.TabIndex = 6;
-            this.textBoxStQuantity.Text = "0123";
             // 
             // textBoxPrID
             // 
@@ -342,7 +342,6 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Name = "textBoxPrID";
             this.textBoxPrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxPrID.TabIndex = 5;
-            this.textBoxPrID.Text = "012345";
             this.textBoxPrID.TextChanged += new System.EventHandler(this.textBoxPrID_TextChanged);
             // 
             // textBoxStID
@@ -352,7 +351,6 @@ namespace SalesManagement_SysDev
             this.textBoxStID.Name = "textBoxStID";
             this.textBoxStID.Size = new System.Drawing.Size(77, 28);
             this.textBoxStID.TabIndex = 4;
-            this.textBoxStID.Text = "012345";
             // 
             // labelStQuantity
             // 
@@ -502,7 +500,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormStock";
             this.Text = "FormStock";
             this.Load += new System.EventHandler(this.FormStock_Load);

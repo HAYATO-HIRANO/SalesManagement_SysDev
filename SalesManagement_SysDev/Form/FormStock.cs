@@ -580,5 +580,13 @@ namespace SalesManagement_SysDev
             //ページ番号の設定
             textBoxPage.Text = "1";
         }
+
+        private void buttonList_Click(object sender, EventArgs e)
+        {
+            // 入力エリアのクリア
+            ClearInput();
+            //データグリッドビューの表示
+            GetDataGridView();
+        }
     }
 }
