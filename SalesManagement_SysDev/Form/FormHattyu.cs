@@ -19,6 +19,7 @@ namespace SalesManagement_SysDev
 
         private void FormHattyu_Load(object sender, EventArgs e)
         {
+            //発注更新
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
