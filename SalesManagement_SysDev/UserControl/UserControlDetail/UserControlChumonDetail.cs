@@ -345,7 +345,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void ClearInput()
         {
-            textBoxChID.Text="";
+            textBoxChID.Text = "";
             textBoxChDetailID.Text = "";
             textBoxPrID.Text = "";
             textBoxPrName.Text = "";
@@ -550,3 +550,4 @@ namespace SalesManagement_SysDev
             ClearInput();
         }
     }
+}
