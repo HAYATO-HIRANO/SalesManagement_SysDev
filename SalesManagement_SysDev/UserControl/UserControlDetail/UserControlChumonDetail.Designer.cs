@@ -90,6 +90,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -173,6 +174,7 @@ namespace SalesManagement_SysDev
             this.textBoxChID.Name = "textBoxChID";
             this.textBoxChID.Size = new System.Drawing.Size(102, 36);
             this.textBoxChID.TabIndex = 43;
+            this.textBoxChID.TextChanged += new System.EventHandler(this.textBoxChID_TextChanged);
             // 
             // labelPrice
             // 
@@ -223,6 +225,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.TabIndex = 28;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // labelPrID
             // 
@@ -252,6 +255,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Name = "textBoxPrID";
             this.textBoxPrID.Size = new System.Drawing.Size(77, 28);
             this.textBoxPrID.TabIndex = 29;
+            this.textBoxPrID.TextChanged += new System.EventHandler(this.textBoxPrID_TextChanged);
             // 
             // labelOrQuantity
             // 
@@ -282,6 +286,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrQuantity.Name = "textBoxOrQuantity";
             this.textBoxOrQuantity.Size = new System.Drawing.Size(57, 28);
             this.textBoxOrQuantity.TabIndex = 31;
+            this.textBoxOrQuantity.TextChanged += new System.EventHandler(this.textBoxOrQuantity_TextChanged);
             // 
             // labelOrTotalPrice
             // 
@@ -313,6 +318,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 68;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -361,6 +367,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 65;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -381,6 +388,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 64;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -391,6 +399,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 62;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -401,6 +410,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 63;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // UserControlChumonDetail
             // 
