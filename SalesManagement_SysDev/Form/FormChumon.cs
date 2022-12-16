@@ -16,10 +16,14 @@ namespace SalesManagement_SysDev
         MessageDsp messageDsp = new MessageDsp();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
+        //データベース注文ーブルアクセス用クラスのインスタンス化
+        ChumonDetailDataAccess chumonDetailDataAccess = new ChumonDetailDataAccess();
         //データベース受注テーブルアクセス用クラスのインスタンス化
-        ChumonDataAccess ChumonDataAccess = new ChumonDataAccess();
+        OrderDataAccess orderDataAccess = new OrderDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
         EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
+        //データベース出庫テーブルアクセス用クラスのインスタンス化
+        SyukkoDataAccess syukkoDataAccess = new SyukkoDataAccess();
         //データベース営業所テーブルアクセス用クラスのインスタンス化
         SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
@@ -309,7 +313,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(1, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(1, selectCondition);
 
                         }
                         else
@@ -323,7 +327,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(2, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(2, selectCondition);
 
                         }
 
@@ -342,7 +346,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(3, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(3, selectCondition);
 
                         }
                         else
@@ -355,7 +359,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(4, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(4, selectCondition);
 
                         }
 
@@ -380,7 +384,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(5, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(5, selectCondition);
 
                         }
                         else
@@ -393,7 +397,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(6, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(6, selectCondition);
 
                         }
 
@@ -411,7 +415,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(7, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(7, selectCondition);
 
                         }
                         else
@@ -423,7 +427,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(8, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(8, selectCondition);
 
                         }
 
@@ -454,7 +458,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(1, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(1, selectCondition, startDay, endDay);
 
                         }
                         else//顧客ID未入力
@@ -468,7 +472,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(2, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(2, selectCondition, startDay, endDay);
 
                         }
 
@@ -487,7 +491,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(3, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(3, selectCondition, startDay, endDay);
 
                         }
                         else
@@ -500,7 +504,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(4, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(4, selectCondition, startDay, endDay);
 
                         }
                     }
@@ -522,7 +526,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(5, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(5, selectCondition, startDay, endDay);
 
                         }
                         else//顧客ID未入力
@@ -535,7 +539,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(6, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(6, selectCondition, startDay, endDay);
 
                         }
 
@@ -553,7 +557,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(7, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(7, selectCondition, startDay, endDay);
 
                         }
                         else//顧客ID未入力
@@ -565,7 +569,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(8, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(8, selectCondition, startDay, endDay);
 
                         }
                     }
@@ -779,7 +783,194 @@ namespace SalesManagement_SysDev
 
         }
 
+        private void buttonKakutei_Click(object sender, EventArgs e)
+        {
+            // 8.1.4.1 妥当な注文データ取得
+            if (!GetValidDataAtConfirm())
+                return;
+            // 8.1.4.2　注文情報作成
+            var conSyukko = GenerateDataAtConfirm();
+            //8.1.4.3 注文詳細情報作成
+            var conSyukkoDetail = GenerateDetailDataAtConfirm();
 
+            // 8.1.4.4 出庫情報確定
+            ConfirmChumon(conSyukko, conSyukkoDetail);
+        }
+        ///////////////////////////////
+        //  8.1.4.1 妥当な受注データ取得
+        //メソッド名：GetValidDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtConfirm()
+        {
+            //注文IDの適否
+            if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+            {
+                //注文IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxChID.Text.Trim()))
+                {
+                    MessageBox.Show("注文IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxChID.TextLength > 6)
+                {
+                    MessageBox.Show("注文IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+
+                // 注文IDの存在チェック
+                if (!orderDataAccess.CheckOrIDExistence(int.Parse(textBoxChID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された注文IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("注文ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxChID.Focus();
+                return false;
+            }
+            //注文確定状態の判定
+            var order = orderDataAccess.GetOrIDData(int.Parse(textBoxChID.Text.Trim()));
+            if (order.OrStateFlag == 1)
+            {
+                MessageBox.Show("入力された注文IDはすでに確定されています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxChID.Focus();
+                return false;
+
+            }
+            //注文状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("注文確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            if (checkBoxStateFlag.Checked == false)
+            {
+                MessageBox.Show("注文確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            //詳細情報の件数チェック
+            var chumonDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+            if (chumonDetail.Count == 0)
+            {
+                MessageBox.Show("詳細情報が登録されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　8.1.4.2 出庫情報作成
+        //メソッド名：GenerateDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：注文確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private T_Syukko GenerateDataAtConfirm()
+        {
+            T_Chumon chumon = chumonDataAccess.GetChIDData(int.Parse(textBoxChID.Text.Trim()));
+
+            return new T_Syukko
+            {
+                OrID = int.Parse(chumon.OrID.ToString()),
+                EmID = 0,
+                SoID = int.Parse(chumon.SoID.ToString()),
+                ClID = int.Parse(chumon.ClID.ToString()),
+                SyDate = DateTime.Now,
+                SyStateFlag = 0,
+                SyFlag = 0,
+                SyHidden = String.Empty
+            };
+
+
+        }
+        ///////////////////////////////
+        //　8.1.4.3 出庫情報作成
+        //メソッド名：GenerateDetailDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：出庫詳細確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private List<T_SyukkoDetail> GenerateDetailDataAtConfirm()
+        {
+            List<T_ChumonDetail> chumonDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+
+            List<T_SyukkoDetail> syukkoDetail = new List<T_SyukkoDetail>();
+            foreach (var p in chumonDetail)
+            {
+                syukkoDetail.Add(new T_SyukkoDetail()
+                {
+                    PrID = p.PrID,
+                    SyQuantity = p.ChQuantity
+                });
+            }
+            return syukkoDetail;
+
+
+        }
+        ///////////////////////////////
+        //　8.1.4.4 注文情報確定
+        //メソッド名：ConfirmChumon()
+        //引　数   ：在庫情報,在庫詳細情報
+        //戻り値   ：なし
+        //機　能   ：受注情報の確定
+        ///////////////////////////////
+        private void ConfirmChumon(T_Syukko conSyukko, List<T_SyukkoDetail> conSyukkoDetail)
+        {
+            // 確定確認メッセージ
+            DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 注文情報の確定
+            //出庫テーブルにデータ登録
+            bool addFlg = syukkoDataAccess.AddSyukkoData(conSyukko);
+            //出庫IDの取得
+            T_Chumon chumon = chumonDataAccess.GetChIDData(int.Parse(textBoxChID.Text.Trim()));
+            //注文詳細テーブルにデータ登録/
+            ///成功か失敗の判定は未完成
+            foreach (var p in conChumonDetail)
+            {
+                T_ChumonDetail AddCh = new T_ChumonDetail();
+                AddCh.ChID = chumon.ChID;
+                AddCh.PrID = p.PrID;
+                AddCh.ChQuantity = p.ChQuantity;
+                chumonDataAccess.AddChumonDetailData(AddCh);
+            }
+            //受注状態フラグの更新
+            bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
+            //全ての登録,更新が成功
+            if (addFlg == true && conFlg == true)
+            {
+
+                MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxOrID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+
+        }
     }
 }
 
