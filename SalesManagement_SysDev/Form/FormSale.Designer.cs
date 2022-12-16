@@ -50,7 +50,6 @@ namespace SalesManagement_SysDev
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBoxChID = new System.Windows.Forms.TextBox();
             this.textBoxClID = new System.Windows.Forms.TextBox();
-            this.comboBoxEmID = new System.Windows.Forms.ComboBox();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.textBoxSaID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -285,7 +284,6 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.textBoxChID);
             this.panelInput.Controls.Add(this.textBoxClID);
-            this.panelInput.Controls.Add(this.comboBoxEmID);
             this.panelInput.Controls.Add(this.comboBoxSoID);
             this.panelInput.Controls.Add(this.textBoxSaID);
             this.panelInput.Controls.Add(this.label8);
@@ -323,15 +321,6 @@ namespace SalesManagement_SysDev
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(196, 28);
             this.textBoxClID.TabIndex = 20;
-            // 
-            // comboBoxEmID
-            // 
-            this.comboBoxEmID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.comboBoxEmID.FormattingEnabled = true;
-            this.comboBoxEmID.Location = new System.Drawing.Point(110, 73);
-            this.comboBoxEmID.Name = "comboBoxEmID";
-            this.comboBoxEmID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxEmID.TabIndex = 19;
             // 
             // comboBoxSoID
             // 
@@ -565,7 +554,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.TextBox textBoxSaID;
-        private System.Windows.Forms.ComboBox comboBoxEmID;
         private System.Windows.Forms.ComboBox comboBoxSoID;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;

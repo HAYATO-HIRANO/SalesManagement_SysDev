@@ -78,11 +78,11 @@ namespace SalesManagement_SysDev
             dataGridViewStock.DataSource = Stock.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
             //各列幅の指定
-            dataGridViewStock.Columns[0].Width = 100;
-            dataGridViewStock.Columns[1].Width = 100;
+            dataGridViewStock.Columns[0].Width = 170;
+            dataGridViewStock.Columns[1].Width = 170;
             // dataGridViewStock.Columns[1].Visible = false;
-            dataGridViewStock.Columns[2].Width = 200;
-            dataGridViewStock.Columns[3].Width = 170;
+            dataGridViewStock.Columns[2].Width = 474;
+            dataGridViewStock.Columns[3].Width = 420;
             dataGridViewStock.Columns[4].Visible = false;
 
 
@@ -508,7 +508,7 @@ namespace SalesManagement_SysDev
 
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
-
+            SetDataGridView();
         }
 
         private void dataGridViewStock_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -520,6 +520,65 @@ namespace SalesManagement_SysDev
               textBoxStQuantity.Text = dataGridViewStock.Rows[dataGridViewStock.CurrentRow.Index].Cells[3].Value.ToString();
 
            
+        }
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewStock.DataSource = Stock.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewStock.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+        }
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Stock.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewStock.DataSource = Stock.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewStock.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Stock.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Stock.Count / (double)pageSize) - 1;
+            dataGridViewStock.DataSource = Stock.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewStock.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+        }
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewStock.DataSource = Stock.Take(pageSize).ToList();
+
+            //DataGridViewを更新
+            dataGridViewStock.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
         }
     }
 }
