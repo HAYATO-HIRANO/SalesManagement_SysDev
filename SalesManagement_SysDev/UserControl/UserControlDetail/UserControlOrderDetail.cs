@@ -34,9 +34,9 @@ namespace SalesManagement_SysDev
             textBoxPrName.TabStop = false;
             textBoxPrName.ReadOnly = true;
             //最新の受注ID表示
-            int order=orderDataAccess.GetOrIDMaxData();
+            //int order=orderDataAccess.GetOrIDMaxData();
             
-            textBoxOrID.Text = order.ToString();
+            //textBoxOrID.Text = order.ToString();
             
             //データグリッドビューの設定
             SetFormDataGridView();
