@@ -826,7 +826,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
-                                                          t1.ArDate >= startDay &&
+                             t1.ArDate >= startDay &&
                              t1.ArDate <= endDay &&
 
                              t1.ArFlag == selectCondition.ArFlag &&
