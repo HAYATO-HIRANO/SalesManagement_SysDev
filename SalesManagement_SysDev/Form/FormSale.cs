@@ -64,10 +64,5 @@ namespace SalesManagement_SysDev
                 userControlSaleDetail1.Visible = false;
             }
         }
-
-        private void panelSale_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
