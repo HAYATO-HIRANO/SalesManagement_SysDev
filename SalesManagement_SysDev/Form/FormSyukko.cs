@@ -166,8 +166,8 @@ namespace SalesManagement_SysDev
             dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 //1510
             dataGridViewSyukko.Columns[0].Width = 100;
-            dataGridViewSyukko.Columns[1].Visible = false;
-            dataGridViewSyukko.Columns[2].Width = 200;
+            dataGridViewSyukko.Columns[1].Width = 100;
+            dataGridViewSyukko.Columns[2].Width = 100;
             dataGridViewSyukko.Columns[3].Width = 100;
             dataGridViewSyukko.Columns[4].Width = 200;
             dataGridViewSyukko.Columns[5].Width = 100;

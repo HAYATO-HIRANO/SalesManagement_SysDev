@@ -700,7 +700,7 @@ namespace SalesManagement_SysDev
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.panelOrder);
