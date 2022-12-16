@@ -732,7 +732,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：条件一致入荷データ
         //機　能   ：条件一致入荷データの取得
         /////////////////////////////// 
-        public List<T_ChumonDsp> GetChumonDataData(int flg, T_ChumonDsp selectCondition, DateTime? startDay, DateTime? endDay)
+        public List<T_ChumonDsp> GetChumonDateData(int flg, T_ChumonDsp selectCondition, DateTime? startDay, DateTime? endDay)
         {
             List<T_ChumonDsp> chumon = new List<T_ChumonDsp>();
 
