@@ -236,7 +236,6 @@ namespace SalesManagement_SysDev
             this.buttonKakutei.TabIndex = 43;
             this.buttonKakutei.Text = "確定";
             this.buttonKakutei.UseVisualStyleBackColor = false;
-            this.buttonKakutei.Click += new System.EventHandler(this.buttonKakutei_Click);
             // 
             // buttonHiddenList
             // 
