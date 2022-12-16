@@ -45,8 +45,45 @@ namespace SalesManagement_SysDev//.DbAccess
 
 
         }
+        ///////////////////////////////
+        //メソッド名：UpdateQuantity()
+        //引　数   ：商品ID,数量
+        //戻り値   ：True or False
+        //機　能   ：在庫数の更新
+        //          ：更新成功の場合True
+        //          ：更新失敗の場合False
+        ///////////////////////////////
 
-        
+        public bool UpdateQuantity(int prID,int quantity)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var stock = context.T_Stocks.Single(x => x.PrID == prID);
+                
+                stock.StQuantity =stock.StQuantity-quantity;
+               
+
+
+
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+
+        }
+
+
+
 
 
 
