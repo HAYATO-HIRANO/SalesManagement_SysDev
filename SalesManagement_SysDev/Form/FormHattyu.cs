@@ -43,7 +43,7 @@ namespace SalesManagement_SysDev
             {
                 labelHattyu.Text = "発注詳細管理";
                 buttonDetail.Text = "発注管理";
-                userControlHattyuDetail1.Visible = true;
+                //userControlHattyuDetail1.Visible = true;
                 panelHattyu.Visible = false;
                 return;
             }
@@ -52,7 +52,7 @@ namespace SalesManagement_SysDev
                 labelHattyu.Text = "発注管理";
                 buttonDetail.Text = "発注詳細";
                 panelHattyu.Visible = true;
-                userControlHattyuDetail1.Visible = false;
+                //userControlHattyuDetail1.Visible = false;
             }
         }
 

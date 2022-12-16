@@ -77,7 +77,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonDetail = new System.Windows.Forms.Button();
-            this.userControlHattyuDetail1 = new SalesManagement_SysDev.UserControlHattyuDetail();
+            //this.userControlHattyuDetail1 = new SalesManagement_SysDev.UserControlHattyuDetail();
             this.panelHeader.SuspendLayout();
             this.panelHattyu.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -636,11 +636,11 @@ namespace SalesManagement_SysDev
             // 
             // userControlHattyuDetail1
             // 
-            this.userControlHattyuDetail1.BackColor = System.Drawing.Color.Honeydew;
-            this.userControlHattyuDetail1.Location = new System.Drawing.Point(0, 100);
-            this.userControlHattyuDetail1.Name = "userControlHattyuDetail1";
-            this.userControlHattyuDetail1.Size = new System.Drawing.Size(1920, 980);
-            this.userControlHattyuDetail1.TabIndex = 52;
+            //this.userControlHattyuDetail1.BackColor = System.Drawing.Color.Honeydew;
+            //this.userControlHattyuDetail1.Location = new System.Drawing.Point(0, 100);
+            //this.userControlHattyuDetail1.Name = "userControlHattyuDetail1";
+            //this.userControlHattyuDetail1.Size = new System.Drawing.Size(1920, 980);
+            //this.userControlHattyuDetail1.TabIndex = 52;
             // 
             // FormHattyu
             // 
@@ -652,7 +652,7 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelHattyu);
             this.Controls.Add(this.panelHeader);
-            this.Controls.Add(this.userControlHattyuDetail1);
+            //this.Controls.Add(this.userControlHattyuDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHattyu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -719,6 +719,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonPreviousPage;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonDetail;
-        private UserControlHattyuDetail userControlHattyuDetail1;
+        //private UserControlHattyuDetail userControlHattyuDetail1;
     }
 }

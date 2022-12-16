@@ -23,23 +23,23 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
         private static List<T_OrderDetailDsp> OrderDetail;
-        private TOrder tOrder;
+        //private TOrder tOrder;
         public UserControlOrderDetail()
         {
             InitializeComponent();
         }
-        public void addTOrder(TOrder tOrder) 
-        {
-            this.tOrder = tOrder;
-        }
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            if (tOrder != null)
-            {
-                textBoxOrID.Text = tOrder.OrID.ToString();
-            }
+        //public void addTOrder(TOrder tOrder) 
+        //{
+        //    this.tOrder = tOrder;
+        //}
+        //protected override void OnVisibleChanged(EventArgs e)
+        //{
+        //    if (tOrder != null)
+        //    {
+        //        textBoxOrID.Text = tOrder.OrID.ToString();
+        //    }
            
-        }
+        //}
 
         private void UserControlOrderDetail_Load(object sender, EventArgs e)
         {
