@@ -668,7 +668,6 @@ namespace SalesManagement_SysDev
             this.panelSale.Name = "panelSale";
             this.panelSale.Size = new System.Drawing.Size(1920, 980);
             this.panelSale.TabIndex = 87;
-            this.panelSale.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSale_Paint);
             // 
             // userControlSaleDetail1
             // 
