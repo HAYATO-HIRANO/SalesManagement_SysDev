@@ -779,7 +779,10 @@ namespace SalesManagement_SysDev
 
         }
 
+        private void buttonKakutei_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
 
