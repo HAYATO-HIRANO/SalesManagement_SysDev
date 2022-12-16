@@ -89,10 +89,11 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
-    <Compile Include="Form\FormHattyu.cs">
+    <Compile Include="Entity\TOrder.cs" />
+    <Compile Include="FormHattyu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\FormHattyu.Designer.cs">
+    <Compile Include="FormHattyu.Designer.cs">
       <DependentUpon>FormHattyu.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\FormShipment.cs">
@@ -201,12 +202,6 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="UserControl\UserControlDetail\UserControlHattyuDetail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\UserControlDetail\UserControlHattyuDetail.Designer.cs">
-      <DependentUpon>UserControlHattyuDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\UserControlDetail\UserControlSaleDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -291,7 +286,7 @@
     <Compile Include="UserControl\UserControlMain\UserControlLogistics.Designer.cs">
       <DependentUpon>UserControlLogistics.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form\FormHattyu.resx">
+    <EmbeddedResource Include="FormHattyu.resx">
       <DependentUpon>FormHattyu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormShipment.resx">
@@ -342,9 +337,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControl\UserControlDetail\UserControlHattyuDetail.resx">
-      <DependentUpon>UserControlHattyuDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\UserControlDetail\UserControlSaleDetail.resx">
       <DependentUpon>UserControlSaleDetail.cs</DependentUpon>
     </EmbeddedResource>
