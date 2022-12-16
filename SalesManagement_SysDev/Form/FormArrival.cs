@@ -98,7 +98,7 @@ namespace SalesManagement_SysDev
             dataGridViewAr.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //データグリッドビューのデータ取得
-            //GetDataGridView();
+            GetDataGridView();
 
 
         }

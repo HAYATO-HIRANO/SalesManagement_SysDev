@@ -14,6 +14,8 @@ namespace SalesManagement_SysDev
         OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
+        //データベース注文テーブルアクセス用クラスのインスタンス化
+        ChumonDetailDataAccess chumonDetailDataAccess = new ChumonDetailDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
@@ -23,9 +25,11 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
         private static List<T_OrderDsp> Order;
+        private TOrder tOrder = new TOrder();
         public FormOrder()
         {
             InitializeComponent();
+            userControlOrderDetail1.addTOrder(tOrder);
         }
 
         private void FormOrder_Load(object sender, EventArgs e)
@@ -270,6 +274,7 @@ namespace SalesManagement_SysDev
                 return;
             // 受注情報の登録
             bool flg = orderDataAccess.AddOrderData(regOrder);
+            tOrder.OrID = regOrder.OrID;
             if (flg == true)
             {
                 result = MessageBox.Show("データを登録しました、詳細登録画面に移動してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -596,7 +601,7 @@ namespace SalesManagement_SysDev
                 AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
-                chumonDataAccess.AddChDetailData(AddCh);
+                chumonDetailDataAccess.AddChDetailData(AddCh);
             }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
@@ -969,10 +974,16 @@ namespace SalesManagement_SysDev
         {
             if (labelOrder.Text == "受注管理")
             {
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                {
+                    tOrder.OrID = int.Parse(textBoxOrID.Text.Trim());
+                    userControlOrderDetail1.addTOrder(tOrder);
+                }
                 labelOrder.Text = "受注詳細管理";
                 buttonDetail.Text = "受注管理";
                 userControlOrderDetail1.Visible = true;
                 panelOrder.Visible = false;
+                
                 return;
             }
             if (labelOrder.Text == "受注詳細管理")
