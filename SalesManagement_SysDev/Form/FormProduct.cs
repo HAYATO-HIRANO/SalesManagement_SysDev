@@ -843,7 +843,7 @@ namespace SalesManagement_SysDev
             }
 
             //非表示理由の入力チェック
-            if (checkBoxPrFlag.Checked == true && String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            if (checkBoxPrFlag.Checked == false && !String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
             {
                 //非表示理由が入力されていません
                 messageDsp.DspMsg("M0440");
@@ -899,7 +899,7 @@ namespace SalesManagement_SysDev
         private void UpdateProduct(M_Product upProduct)
         {
             //商品データを更新してよろしいですか？
-            DialogResult result = messageDsp.DspMsg("M0512");
+            DialogResult result = messageDsp.DspMsg("M0428");
             if(result == DialogResult.Cancel)
             {
                 return;
@@ -908,12 +908,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //在庫データを更新しました
-                messageDsp.DspMsg("M0413");
+                messageDsp.DspMsg("M0429");
             }
             else
             {
                 //在庫データ更新に失敗しました
-                messageDsp.DspMsg("M0414");
+                messageDsp.DspMsg("M0430");
             }
             textBoxPrID.Focus();
             //入力エリアのクリア
@@ -1475,6 +1475,22 @@ namespace SalesManagement_SysDev
             ClearInput();
 
             GetHiddenListData();
+        }
+
+        private void checkBoxPrFlag_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPrFlag.Checked == true)
+            {
+                textBoxPrHidden.TabStop = true;
+                textBoxPrHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxPrHidden.Text = "";
+                textBoxPrHidden.TabStop = false;
+                textBoxPrHidden.ReadOnly = true;
+
+            }
         }
     }
 
