@@ -9,6 +9,22 @@ namespace SalesManagement_SysDev//.DbAccess
 {
     class StockDataAccess
     {
+
+        public bool CheckStIDExistence (int stID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                flg = context.T_Stocks.Any(x => x.StID == stID);
+                context.Dispose();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
         ///////////////////////////////
         //メソッド名：UpdateSmallClassData()
         //引　数   ：在庫データ
