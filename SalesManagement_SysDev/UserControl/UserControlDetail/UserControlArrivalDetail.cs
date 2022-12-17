@@ -22,11 +22,26 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の入荷データ
         private static List<T_ArrivalDetailDsp> ArrivalDetail;
+        //入荷ID参照用クラス
+        private TArrival tArrival;
 
 
         public UserControlArrivalDetail()
         {
             InitializeComponent();
+        }
+        public void addTArrival(TArrival tArrival)
+        {
+            this.tArrival = tArrival;
+        }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (tArrival != null)
+            {
+                textBoxArID.Text = tArrival.ArID.ToString();
+                GetArIDDataGridView();
+            }
+
         }
 
         private void UserControlArrivalDetail_Load(object sender, EventArgs e)
@@ -399,6 +414,21 @@ namespace SalesManagement_SysDev
 
             //DataGridViewに表示するデータを指定
             SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：GetArIDDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetArIDDataGridView()
+        {
+            // 入荷詳細データの取得
+            ArrivalDetail = arrivalDetailDataAccess.GetArIDDetailDspData(int.Parse(textBoxArID.Text.Trim()));
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+
         }
 
         ///////////////////////////////

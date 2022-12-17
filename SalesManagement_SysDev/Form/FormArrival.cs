@@ -27,10 +27,13 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出庫データ
         private static List<T_ArrivalDsp> Arrival;
+        //入荷ID参照用クラス
+        private TArrival tArrival = new TArrival();
 
         public FormArrival()
         {
             InitializeComponent();
+            userControlArrivalDetail1.addTArrival(tArrival);
         }
 
         private void FormArrival_Load(object sender, EventArgs e)
@@ -329,6 +332,12 @@ namespace SalesManagement_SysDev
         {
             if (labelArrival.Text == "入荷管理")
             {
+                if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
+                {
+                    tArrival.ArID = int.Parse(textBoxArID.Text.Trim());
+                    userControlArrivalDetail1.addTArrival(tArrival);
+                }
+
                 labelArrival.Text = "入荷詳細管理";
                 buttonDetail.Text = "入荷管理";
                 userControlArrivalDetail1.Visible = true;
