@@ -89,49 +89,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            ////営業所名の選択チェック
-            //if (comboBoxSoID.SelectedIndex == -1)
-            //{
-            //    //営業所名が選択されていません
-            //    MessageBox.Show("営業所名が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //    comboBoxSoID.Focus();
-            //    return false;
-            //}
-            ////社員IDの適否
-            //if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
-            //{
-            //    //社員IDの半角数値チェック
-            //    if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
-            //    {
-            //        MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
-            //        return false;
-            //    }
-            //    //文字数
-            //    if (textBoxEmID.TextLength > 6)
-            //    {
-            //        MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
-            //        return false;
-            //    }
-
-            //    // 社員IDの存在チェック
-            //    if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
-            //    {
-            //        MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
-            //        return false;
-            //    }
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("社員ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    textBoxEmID.Focus();
-            //    return false;
-            //}
-
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
@@ -182,15 +139,6 @@ namespace SalesManagement_SysDev
                 return false;
 
             }
-            ////受注日の選択チェック
-            //if (DateTimePickerOrDate.Checked == false)
-            //{
-            //    //受注日が選択されていません
-            //    MessageBox.Show("受注日が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //   　DateTimePickerOrDate.Focus();
-            //    return false;
-            //}
 
             //非表示フラグの適否
             if (checkBoxHidden.CheckState == CheckState.Indeterminate)
@@ -205,14 +153,6 @@ namespace SalesManagement_SysDev
                 checkBoxHidden.Focus();
                 return false;
             }
-
-            ////非表示理由の適否　必要なし
-            //if (!String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
-            //{
-            //    MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    textBoxOrHidden.Focus();
-            //    return false;
-            //}
 
             //受注状態フラグ
             if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
@@ -246,8 +186,6 @@ namespace SalesManagement_SysDev
             return new T_Order
             {
 
-                //SoID= int.Parse(comboBoxSoID.SelectedValue.ToString()),
-                //EmID =int.Parse(textBoxEmID.Text.Trim()),
                 SoID = employee.SoID,
                 EmID = employee.EmID,
                 ClID = int.Parse(textBoxClID.Text.Trim()),
@@ -983,7 +921,7 @@ namespace SalesManagement_SysDev
                 buttonDetail.Text = "受注管理";
                 userControlOrderDetail1.Visible = true;
                 panelOrder.Visible = false;
-                
+
                 return;
             }
             if (labelOrder.Text == "受注詳細管理")

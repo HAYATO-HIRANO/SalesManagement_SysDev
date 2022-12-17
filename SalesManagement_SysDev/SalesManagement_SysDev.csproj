@@ -89,6 +89,10 @@
     <Compile Include="Entity\M_Message.cs" />
     <Compile Include="Entity\M_MajorCassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Entity\TArrival.cs" />
+    <Compile Include="Entity\TChumon.cs" />
+    <Compile Include="Entity\TShipment.cs" />
+    <Compile Include="Entity\TSyukko.cs" />
     <Compile Include="Form\FormHattyu.cs">
       <SubType>Form</SubType>
     </Compile>
