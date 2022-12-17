@@ -34,7 +34,7 @@ namespace SalesManagement_SysDev
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
-            if (tOrder != null)
+            if (tOrder != null&&tOrder.OrID!=0)
             {
                 textBoxOrID.Text = tOrder.OrID.ToString();
                 GetOrIDDataGridView();

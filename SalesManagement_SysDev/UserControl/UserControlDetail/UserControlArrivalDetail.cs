@@ -36,7 +36,7 @@ namespace SalesManagement_SysDev
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
-            if (tArrival != null)
+            if (tArrival != null&&tArrival.ArID!=0)
             {
                 textBoxArID.Text = tArrival.ArID.ToString();
                 GetArIDDataGridView();
@@ -63,7 +63,7 @@ namespace SalesManagement_SysDev
             SetSelectData();
         }
         ///////////////////////////////
-        //　12.2.2.1 妥当な入荷詳細データ取得
+        //　13.2.1.1 妥当な入荷詳細データ取得
         //メソッド名：GetValidDataAtSlect()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -170,7 +170,7 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　12.2.2.3 入荷情報抽出
+        //　13.2.1.2 入荷情報抽出
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
         //戻り値   ：なし
@@ -269,7 +269,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //　13.2.2.3 入荷詳細抽出結果表示
+        //　13.2.1.3 入荷詳細抽出結果表示
         //メソッド名：SetSelectData()
         //引　数   ：なし
         //戻り値   ：なし
@@ -581,7 +581,7 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearInput();
         }

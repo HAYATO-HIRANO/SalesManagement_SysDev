@@ -33,7 +33,7 @@ namespace SalesManagement_SysDev
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
-            if (tSyukko != null)
+            if (tSyukko != null&&tSyukko.SyID!=0)
             {
                 textBoxSyID.Text = tSyukko.SyID.ToString();
                 GetSyIDDataGridView();
