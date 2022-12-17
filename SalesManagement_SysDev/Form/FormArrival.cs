@@ -301,6 +301,41 @@ namespace SalesManagement_SysDev
                 textBoxPage.Text = "1";
 
         }
+        private void dataGridViewAr_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxArID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[0].ToString();
+            textBoxOrID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[1].ToString();
+            textBoxClID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[6].ToString();
+            textBoxClName.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[7].ToString();
+
+            //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
+            {
+                checkBoxStateFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxStateFlag.Checked = true;
+            }
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBoxHidden.Checked = false;
+            }
+            else
+            {
+                checkBoxHidden.Checked = true;
+            }
+
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value != null)
+            {
+                checkBoxHidden.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
+        }
+
         ///////////////////////////////
         //メソッド名：ClearInput()
         //引　数   ：なし
@@ -1149,5 +1184,6 @@ namespace SalesManagement_SysDev
         {
             ClearInput();
         }
+
     }
 }

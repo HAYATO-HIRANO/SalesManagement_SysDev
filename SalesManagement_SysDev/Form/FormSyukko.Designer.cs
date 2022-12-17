@@ -242,6 +242,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewSyukko.RowTemplate.Height = 21;
             this.dataGridViewSyukko.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewSyukko.TabIndex = 21;
+            this.dataGridViewSyukko.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSyukko_CellClick);
             // 
             // labelPageSize
             // 

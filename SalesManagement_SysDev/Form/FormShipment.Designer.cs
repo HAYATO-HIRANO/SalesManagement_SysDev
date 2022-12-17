@@ -247,7 +247,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewSh.RowTemplate.Height = 21;
             this.dataGridViewSh.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewSh.TabIndex = 21;
-            this.dataGridViewSh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
+            this.dataGridViewSh.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSh_CellClick);
             // 
             // labelPageSize
             // 
