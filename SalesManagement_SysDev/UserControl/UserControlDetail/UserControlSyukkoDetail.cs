@@ -22,12 +22,24 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
         private static List<T_SyukkoDetailDsp> SyukkoDetail;
-
+        private TSyukko tSyukko;
         public UserControlSyukkoDetail()
         {
             InitializeComponent();
         }
+        public void addTSyukko(TSyukko tSyukko)
+        {
+            this.tSyukko = tSyukko;
+        }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (tSyukko != null)
+            {
+                textBoxSyID.Text = tSyukko.SyID.ToString();
+                GetSyIDDataGridView();
+            }
 
+        }
         private void UserControlSyukkoDetail_Load(object sender, EventArgs e)
         {
             SetFormDataGridView();
@@ -420,6 +432,22 @@ namespace SalesManagement_SysDev
             SetDataGridView();
 
         }
+        ///////////////////////////////
+        //メソッド名：GetSyIDDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetSyIDDataGridView()
+        {
+            // 出庫データの取得
+            SyukkoDetail = syukkoDetaiDataAccess.GetSyIDDetailDspData(int.Parse(textBoxSyID.Text.Trim()));
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+
+        }
+
 
         ///////////////////////////////
         //メソッド名：SetDataGridView()

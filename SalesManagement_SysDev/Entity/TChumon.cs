@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagement_SysDev
 {
-    class TChumon
+   public class TChumon
     {
         public int ChID { get; set; }               //注文ID	
         public int SoID { get; set; }               //営業所ID	

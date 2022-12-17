@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagement_SysDev
 {
-    class TSyukko
+    public class TSyukko
     {
         public int SyID { get; set; }               //出庫ID	
         public int EmID { get; set; }               //社員ID	

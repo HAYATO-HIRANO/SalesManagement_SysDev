@@ -26,10 +26,12 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出庫データ
         private static List<T_SyukkoDsp> Syukko;
+        private TSyukko tSyukko = new TSyukko();
 
         public FormSyukko()
         {
             InitializeComponent();
+            userControlSyukkoDetail1.addTSyukko(tSyukko);
         }
 
         private void FormSyukko_Load(object sender, EventArgs e)
@@ -212,6 +214,12 @@ namespace SalesManagement_SysDev
         {
             if (labelSyukko.Text == "出庫管理")
             {
+                if (!String.IsNullOrEmpty(textBoxSyID.Text.Trim()))
+                {
+                    tSyukko.SyID = int.Parse(textBoxSyID.Text.Trim());
+                    userControlSyukkoDetail1.addTSyukko(tSyukko);
+                }
+
                 labelSyukko.Text = "出庫詳細管理";
                 buttonDetail.Text = "出庫管理";
                 userControlSyukkoDetail1.Visible = true;

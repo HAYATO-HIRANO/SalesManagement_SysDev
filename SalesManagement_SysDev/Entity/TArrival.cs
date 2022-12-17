@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagement_SysDev
 {
-    class TArrival
+   public class TArrival
     {
         public int ArID { get; set; }               //入荷ID	
         public int SoID { get; set; }               //営業所ID	

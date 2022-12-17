@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagement_SysDev
 {
-    class TShipment
+   public class TShipment
     {
         public int ShID { get; set; }               //出荷ID		
         public int ClID { get; set; }               //顧客ID		
