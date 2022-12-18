@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormHattyu : Form
+    public partial class UserControlHattyuDetail : UserControl
     {
-        public FormHattyu()
+        public UserControlHattyuDetail()
         {
             InitializeComponent();
         }
 
-        private void buttonConfirm_Click(object sender, EventArgs e)
+        private void UserControlHattyuDetail_Load(object sender, EventArgs e)
         {
 
         }

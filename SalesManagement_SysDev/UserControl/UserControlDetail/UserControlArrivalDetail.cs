@@ -20,13 +20,28 @@ namespace SalesManagement_SysDev
         ProductDataAccess productDataAccess = new ProductDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
-        //データグリッドビュー用の受注データ
+        //データグリッドビュー用の入荷データ
         private static List<T_ArrivalDetailDsp> ArrivalDetail;
+        //入荷ID参照用クラス
+        private TArrival tArrival;
 
 
         public UserControlArrivalDetail()
         {
             InitializeComponent();
+        }
+        public void addTArrival(TArrival tArrival)
+        {
+            this.tArrival = tArrival;
+        }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (tArrival != null&&tArrival.ArID!=0)
+            {
+                textBoxArID.Text = tArrival.ArID.ToString();
+                GetArIDDataGridView();
+            }
+
         }
 
         private void UserControlArrivalDetail_Load(object sender, EventArgs e)
@@ -48,7 +63,7 @@ namespace SalesManagement_SysDev
             SetSelectData();
         }
         ///////////////////////////////
-        //　12.2.2.1 妥当な入荷詳細データ取得
+        //　13.2.1.1 妥当な入荷詳細データ取得
         //メソッド名：GetValidDataAtSlect()
         //引　数   ：なし
         //戻り値   ：true or false
@@ -84,7 +99,7 @@ namespace SalesManagement_SysDev
                 // 入荷IDの存在チェック
                 if (!arrivalDataAccess.CheckArIDExistence(int.Parse(textBoxArID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された出庫IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("入力された入荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxArID.Focus();
                     return false;
                 }
@@ -97,14 +112,14 @@ namespace SalesManagement_SysDev
                 //入荷詳細IDの半角数値チェック
                 if (!dataInputFormCheck.CheckNumeric(textBoxArDetailID.Text.Trim()))
                 {
-                    MessageBox.Show("出庫詳細IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("入荷詳細IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxArDetailID.Focus();
                     return false;
                 }
                 //文字数
                 if (textBoxArDetailID.TextLength > 6)
                 {
-                    MessageBox.Show("出庫詳細IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("入荷詳細IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxArDetailID.Focus();
                     return false;
                 }
@@ -112,7 +127,7 @@ namespace SalesManagement_SysDev
                 // 入荷詳細IDの存在チェック
                 if (!arrivalDetailDataAccess.CheckArDetailIDExistence(int.Parse(textBoxArDetailID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された出庫詳細IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("入力された入荷詳細IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxArDetailID.Focus();
                     return false;
                 }
@@ -155,7 +170,7 @@ namespace SalesManagement_SysDev
             return true;
         }
         ///////////////////////////////
-        //　12.2.2.3 入荷情報抽出
+        //　13.2.1.2 入荷情報抽出
         //メソッド名：GenerateDataAtSelect()
         //引　数   ：なし
         //戻り値   ：なし
@@ -177,7 +192,7 @@ namespace SalesManagement_SysDev
                 ArrivalDetail = arrivalDetailDataAccess.GetArDetailData(1, selectCondition);
 
             }
-            //出庫ID≠空白
+            //入荷ID≠空白
             if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
             {
                 //詳細ID≠空白,商品ID=空白　
@@ -214,7 +229,7 @@ namespace SalesManagement_SysDev
                     ArrivalDetail = arrivalDetailDataAccess.GetArDetailData(4, selectCondition);
 
                 }
-                //出庫ID=空白
+                //入荷ID=空白
                 //詳細ID≠空白
                 else if (!String.IsNullOrEmpty(textBoxArDetailID.Text.Trim()))
                 {
@@ -240,7 +255,7 @@ namespace SalesManagement_SysDev
                     }
                 }
             }
-            //出庫ID=空白,詳細ID=空白
+            //入荷ID=空白,詳細ID=空白
             //商品ID≠空白
             else if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
@@ -254,7 +269,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //　13.2.2.3 入荷詳細抽出結果表示
+        //　13.2.1.3 入荷詳細抽出結果表示
         //メソッド名：SetSelectData()
         //引　数   ：なし
         //戻り値   ：なし
@@ -399,6 +414,21 @@ namespace SalesManagement_SysDev
 
             //DataGridViewに表示するデータを指定
             SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：GetArIDDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetArIDDataGridView()
+        {
+            // 入荷詳細データの取得
+            ArrivalDetail = arrivalDetailDataAccess.GetArIDDetailDspData(int.Parse(textBoxArID.Text.Trim()));
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+
         }
 
         ///////////////////////////////
@@ -551,12 +581,9 @@ namespace SalesManagement_SysDev
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearInput();
         }
     }
 }
-
-
-

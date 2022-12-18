@@ -143,6 +143,62 @@ namespace SalesManagement_SysDev
             return ArDetail;
         }
         ///////////////////////////////
+        //メソッド名：GetArIDDetailDspData()
+        //引　数   ：なし
+        //戻り値   ：入荷詳細データ
+        //機　能   ：同じ入荷ID入荷詳細データの取得
+        ///////////////////////////////
+        public List<T_ArrivalDetailDsp> GetArIDDetailDspData(int arID)
+        {
+            List<T_ArrivalDetailDsp> ArDetail = new List<T_ArrivalDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.T_ArrivalDetails
+                         join t2 in context.T_Arrivals
+                         on t1.ArID equals t2.ArID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         join t4 in context.T_OrderDetails
+                         on t2.OrID equals t4.OrID
+                         where t1.ArID==arID
+                         select new
+                         {
+                             t1.ArID,
+                             t1.ArDetailID,
+                             t1.PrID,
+                             t3.PrName,
+                             t3.Price,
+                             t1.ArQuantity,
+                             t4.OrTotalPrice
+
+                         };
+                foreach (var p in tb)
+                {
+                    ArDetail.Add(new T_ArrivalDetailDsp()
+                    {
+                        ArID = p.ArID,
+                        ArDetailID = p.ArDetailID,
+                        PrID = p.PrID,
+                        PrName = p.PrName,
+                        Price = p.Price,
+                        ArQuantity = p.ArQuantity,
+                        TotalPrice = p.OrTotalPrice
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return ArDetail;
+        }
+
+        ///////////////////////////////
         //メソッド名：GetArDetailData() オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致受注詳細データ

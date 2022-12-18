@@ -26,10 +26,12 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出庫データ
         private static List<T_SyukkoDsp> Syukko;
+        private TSyukko tSyukko = new TSyukko();
 
         public FormSyukko()
         {
             InitializeComponent();
+            userControlSyukkoDetail1.addTSyukko(tSyukko);
         }
 
         private void FormSyukko_Load(object sender, EventArgs e)
@@ -66,6 +68,78 @@ namespace SalesManagement_SysDev
             checkBox1Hidden.Checked = false;
             checkBoxStateFlag.Checked = false;
             textBoxSyHidden.Text = "";
+        }
+        //データグリッドビュー設定
+
+        ///////////////////////////////
+        //メソッド名：PageSizeCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageSizeCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
+            }
+            return true;
         }
 
         ///////////////////////////////
@@ -137,44 +211,23 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
-            {
-                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
-                {
-                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-                }
-                if (int.Parse(textBoxPageSize.Text) <= 0)
-                {
-                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxPageSize.Focus();
+            if (!PageSizeCheck())
                 return;
-
-            }
 
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 //1510
             dataGridViewSyukko.Columns[0].Width = 100;
-            dataGridViewSyukko.Columns[1].Visible = false;
-            dataGridViewSyukko.Columns[2].Width = 200;
+            dataGridViewSyukko.Columns[1].Width = 100;
+            dataGridViewSyukko.Columns[2].Visible = false;
             dataGridViewSyukko.Columns[3].Width = 100;
             dataGridViewSyukko.Columns[4].Width = 200;
             dataGridViewSyukko.Columns[5].Width = 100;
             dataGridViewSyukko.Columns[6].Width = 200;
             dataGridViewSyukko.Columns[7].Width = 175;
             dataGridViewSyukko.Columns[8].Width = 200;
-            dataGridViewSyukko.Columns[9].Visible = false;
+            dataGridViewSyukko.Columns[9].Width = 50;
             dataGridViewSyukko.Columns[10].Visible = false;
             dataGridViewSyukko.Columns[11].Width = 250;
 
@@ -187,12 +240,164 @@ namespace SalesManagement_SysDev
             dataGridViewSyukko.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSyukko.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSyukko.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewSyukko.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSyukko.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             //dataGridViewの総ページ数
             labelPage.Text = "/" + ((int)Math.Ceiling(Syukko.Count / (double)pageSize)) + "ページ";
 
             dataGridViewSyukko.Refresh();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            textBoxPage.Text = 1.ToString();
+
+            SetDataGridView();
+
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewSyukko.DataSource = Syukko.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSyukko.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSyukko.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Syukko.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSyukko.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Syukko.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Syukko.Count / (double)pageSize) - 1;
+            dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSyukko.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+
+        }
+        private void dataGridViewSyukko_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxSyID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[0].ToString();
+            textBoxOrID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[1].ToString();
+            textBoxClID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[6].ToString();
+            textBoxClName.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[7].ToString();
+
+            //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
+            {
+                checkBoxStateFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxStateFlag.Checked = true;
+            }
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBox1Hidden.Checked = false;
+            }
+            else
+            {
+                checkBox1Hidden.Checked = true;
+            }
+
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[11].Value != null)
+            {
+                checkBox1Hidden.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
         }
 
 
@@ -212,6 +417,12 @@ namespace SalesManagement_SysDev
         {
             if (labelSyukko.Text == "出庫管理")
             {
+                if (!String.IsNullOrEmpty(textBoxSyID.Text.Trim()))
+                {
+                    tSyukko.SyID = int.Parse(textBoxSyID.Text.Trim());
+                    userControlSyukkoDetail1.addTSyukko(tSyukko);
+                }
+
                 labelSyukko.Text = "出庫詳細管理";
                 buttonDetail.Text = "出庫管理";
                 userControlSyukkoDetail1.Visible = true;
@@ -428,106 +639,6 @@ namespace SalesManagement_SysDev
 
         }
 
-        ///////////////////////////////
-        //メソッド名：buttonFirstPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの先頭ページ表示
-        ///////////////////////////////
-
-        private void buttonFirstPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewSyukko.DataSource = Syukko.Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSyukko.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = "1";
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonPageSizeChange_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの表示件数変更
-        ///////////////////////////////
-
-        private void buttonPageSizeChange_Click(object sender, EventArgs e)
-        {
-            SetDataGridView();
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonPreviousPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの前ページ表示
-        ///////////////////////////////
-
-
-        private void buttonPreviousPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text) - 2;
-            dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSyukko.Refresh();
-            //ページ番号の設定
-            if (pageNo + 1 > 1)
-                textBoxPage.Text = (pageNo + 1).ToString();
-            else
-                textBoxPage.Text = "1";
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonNextPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの次ページ表示
-        ///////////////////////////////
-
-        private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text);
-            //最終ページの計算
-            int lastNo = (int)Math.Ceiling(Syukko.Count / (double)pageSize) - 1;
-            //最終ページでなければ
-            if (pageNo <= lastNo)
-                dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSyukko.Refresh();
-            //ページ番号の設定
-            int lastPage = (int)Math.Ceiling(Syukko.Count / (double)pageSize);
-            if (pageNo >= lastPage)
-                textBoxPage.Text = lastPage.ToString();
-            else
-                textBoxPage.Text = (pageNo + 1).ToString();
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonLastPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの最終ページ表示
-        ///////////////////////////////
-
-        private void buttonLastPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            //最終ページの計算
-            int pageNo = (int)Math.Ceiling(Syukko.Count / (double)pageSize) - 1;
-            dataGridViewSyukko.DataSource = Syukko.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSyukko.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = (pageNo + 1).ToString();
-
-        }
         //////入力クリア///////
         private void buttonClear2_Click(object sender, EventArgs e)
         {
@@ -693,5 +804,6 @@ namespace SalesManagement_SysDev
             }
 
         }
+
     }
 }

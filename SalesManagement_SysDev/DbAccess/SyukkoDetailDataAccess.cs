@@ -64,7 +64,7 @@ namespace SalesManagement_SysDev
         //メソッド名：GetSyIDDetailData()
         //引　数   :出庫ID
         //戻り値   :出庫IDの全詳細データ
-        //機　能   ：同じ出庫ID全ての受注詳細情報
+        //機　能   ：同じ出庫ID全ての詳細情報
         /////////////////////////////////////////
         public List<T_SyukkoDetail> GetSyIDDetailData(int syID)
         {
@@ -142,6 +142,62 @@ namespace SalesManagement_SysDev
             }
             return syDetail;
         }
+        ///////////////////////////////
+        //メソッド名：GetSyIDDetailDspData()
+        //引　数   ：なし
+        //戻り値   ：同じ出庫IDのデータグリッド詳細データ
+        //機　能   ：同じ出庫IDのデータグリッド表示用詳細データの取得
+        ///////////////////////////////
+        public List<T_SyukkoDetailDsp> GetSyIDDetailDspData(int syID)
+        {
+            List<T_SyukkoDetailDsp> syDetail = new List<T_SyukkoDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.T_SyukkoDetails
+                         join t2 in context.T_Syukkos
+                         on t1.SyID equals t2.SyID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         join t4 in context.T_OrderDetails
+                         on t2.OrID equals t4.OrID
+                         where t1.SyID==syID
+                         select new
+                         {
+                             t1.SyID,
+                             t1.SyDetailID,
+                             t1.PrID,
+                             t3.PrName,
+                             t3.Price,
+                             t1.SyQuantity,
+                             t4.OrTotalPrice
+
+                         };
+                foreach (var p in tb)
+                {
+                    syDetail.Add(new T_SyukkoDetailDsp()
+                    {
+                        SyID = p.SyID,
+                        SyDetailID = p.SyDetailID,
+                        PrID = p.PrID,
+                        PrName = p.PrName,
+                        Price = p.Price,
+                        SyQuantity = p.SyQuantity,
+                        TotalPrice = p.OrTotalPrice
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return syDetail;
+        }
+
         ///////////////////////////////
         //メソッド名：GetSyDetailData() オーバーロード
         //引　数   ：検索条件

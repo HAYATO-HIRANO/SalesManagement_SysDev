@@ -81,7 +81,7 @@ namespace SalesManagement_SysDev
 
         private void buttonDetail_Click(object sender, EventArgs e)
         {
-            if(labelShipment.Text == "出荷管理")
+            if (labelShipment.Text == "出荷管理")
             {
                 labelShipment.Text = "出荷詳細管理";
                 buttonDetail.Text = "出荷管理";
@@ -98,6 +98,7 @@ namespace SalesManagement_SysDev
                 return;
             }
         }
+
         ///////////////////////////////
         //メソッド名：buttonList_Click()
         //引　数   ：なし
@@ -143,174 +144,77 @@ namespace SalesManagement_SysDev
             textBoxShHidden.Text = "";
             checkBoxStateFlag.Checked = false;
         }
+        //データグリッドビュー設定
 
         ///////////////////////////////
-        //メソッド名：GetDataGridView()
+        //メソッド名：PageSizeCheck()
         //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示するデータの取得
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
         ///////////////////////////////
-        private void GetDataGridView()
+        private bool PageSizeCheck()
         {
-            //出荷データの取得
-            Shipment = shipmentDataAccess.GetShipmentData();
-            // DataGridViewに表示するデータを指定
-            SetDataGridView();
-        }
-
-        ///////////////////////////////
-        //メソッド名：GetHiddenDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示する非表示データの取得
-        ///////////////////////////////
-        private void GetHiddenDataGridView()
-        {
-            //出荷データの取得
-            Shipment = shipmentDataAccess.GetShipmentData();
-            // DataGridViewに表示するデータを指定
-            SetDataGridView();
-        }
-
-        ///////////////////////////////
-        //メソッド名：buttonPageSizeChange_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの表示件数変更
-        ///////////////////////////////
-        private void buttonPageSizeChange_Click(object sender, EventArgs e)
-        {
-            SetDataGridView();
-        }
-        ///////////////////////////////
-        //メソッド名：buttonFirstPage_Click()
-        //引　数   ：なし——
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの先頭ページ表示
-        ///////////////////////////////
-        private void buttonFirstPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewSh.DataSource = Shipment.Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSh.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = "1";
-        }
-        ///////////////////////////////
-        //メソッド名：buttonPreviousPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの前ページ表示
-        ///////////////////////////////
-
-        private void buttonPreviousPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text) - 2;
-            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSh.Refresh();
-            //ページ番号の設定
-            if (pageNo + 1 > 1)
-                textBoxPage.Text = (pageNo + 1).ToString();
-            else
-                textBoxPage.Text = "1";
-
-        }
-
-        ///////////////////////////////
-        //メソッド名：buttonNextPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの次ページ表示
-        ///////////////////////////////
-        private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text);
-            //最終ページの計算
-            int lastNo = (int)Math.Ceiling(Shipment.Count / (double)pageSize) - 1;
-            //最終ページでなければ
-            if (pageNo <= lastNo)
-                dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSh.Refresh();
-            //ページ番号の設定
-            int lastPage = (int)Math.Ceiling(Shipment.Count / (double)pageSize);
-            if (pageNo >= lastPage)
-                textBoxPage.Text = lastPage.ToString();
-            else
-                textBoxPage.Text = (pageNo + 1).ToString();
-        }
-
-        ///////////////////////////////
-        //メソッド名：buttonLastPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの最終ページ表示
-        ///////////////////////////////
-        private void buttonLastPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            //最終ページの計算
-            int pageNo = (int)Math.Ceiling(Shipment.Count / (double)pageSize) - 1;
-            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewSh.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = (pageNo + 1).ToString();
-        }
-
-        //入力クリア
-        private void buttonClear2_Click(object sender, EventArgs e)
-        {
-            ClearInput();
-        }
-
-        private void checkBox1Hidden_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkBox1Hidden.Checked==true)
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
             {
-                textBoxShHidden.TabStop = true;
-                textBoxShHidden.ReadOnly = false;
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
 
+                }
             }
             else
             {
-                textBoxShHidden.Text = "";
-                textBoxShHidden.TabStop = false;
-                textBoxShHidden.ReadOnly = true;
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
             }
+            return true;
         }
-
-        //データグリッドビュー セルクリック
-        private void dataGridViewOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
         {
-            //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxShID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[0].ToString();
-            textBoxOrID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[1].ToString();
-            textBoxClID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[2].ToString();
-            textBoxClName.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[3].ToString();
-
-            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
             {
-                 checkBox1Hidden.Checked = false;
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
             }
             else
             {
-                checkBox1Hidden.Checked = true;
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
             }
-            //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[9].Value != null)
-            {
-                checkBox1Hidden.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[9].Value.ToString();
-            }
+            return true;
         }
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
@@ -342,8 +246,46 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
+        ///////////////////////////////
+        //メソッド名：GetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetDataGridView()
+        {
+            //出荷データの取得
+            Shipment = shipmentDataAccess.GetShipmentData();
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            //出荷データの取得
+            Shipment = shipmentDataAccess.GetShipmentData();
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューへの表示
+        ///////////////////////////////
+
         private void SetDataGridView()
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -380,7 +322,176 @@ namespace SalesManagement_SysDev
 
             dataGridViewSh.Refresh();
         }
-        //14.1.2 出荷情報確定機能
+
+
+
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            textBoxPage.Text = 1.ToString();
+
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし——
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewSh.DataSource = Shipment.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSh.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSh.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Shipment.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSh.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Shipment.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Shipment.Count / (double)pageSize) - 1;
+            dataGridViewSh.DataSource = Shipment.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewSh.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+        }
+        //セルクリック
+        private void dataGridViewSh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxShID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[0].ToString();
+            textBoxOrID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[1].ToString();
+            textBoxClID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[6].ToString();
+            textBoxClName.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[7].ToString();
+
+            //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
+            {
+                checkBoxStateFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxStateFlag.Checked = true;
+            }
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBox1Hidden.Checked = false;
+            }
+            else
+            {
+                checkBox1Hidden.Checked = true;
+            }
+
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[11].Value != null)
+            {
+                checkBox1Hidden.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
+        }
+
+        //入力クリア
+        private void buttonClear2_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        private void checkBox1Hidden_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1Hidden.Checked == true)
+            {
+                textBoxShHidden.TabStop = true;
+                textBoxShHidden.ReadOnly = false;
+
+            }
+            else
+            {
+                textBoxShHidden.Text = "";
+                textBoxShHidden.TabStop = false;
+                textBoxShHidden.ReadOnly = true;
+            }
+        }
+        //////////////14.1.2 出荷情報確定機能///////////////////
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             // 14.1.2.1 妥当な出荷データ取得
@@ -486,12 +597,12 @@ namespace SalesManagement_SysDev
             return new T_Sale
             {
 
-               
+
                 ClID = int.Parse(shipment.ClID.ToString()),
                 EmID = employee.EmID,
                 SoID = int.Parse(shipment.SoID.ToString()),
                 ChID = int.Parse(shipment.OrID.ToString()),
-                SaDate=DateTime.Now,
+                SaDate = DateTime.Now,
                 SaFlag = 0,
                 SaHidden = String.Empty
             };
@@ -513,14 +624,14 @@ namespace SalesManagement_SysDev
             foreach (var p in shipmentDetail)
             {
 
-               var product = productDataAccess.GetPrIDData(p.PrID);
+                var product = productDataAccess.GetPrIDData(p.PrID);
                 int totalPrice = product.Price * p.ShDquantity;
                 saleDetail.Add(new T_SaleDetail()
                 {
 
                     PrID = p.PrID,
                     SaQuantity = p.ShDquantity,
-                    SaPrTotalPrice=totalPrice,
+                    SaPrTotalPrice = totalPrice,
                 });
             }
             return saleDetail;
@@ -580,7 +691,7 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
-        //14.1.3 出荷検索機能
+        ////////////14.1.3 出荷検索機能/////////////////////
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             //14.1.3.1妥当な出荷データ取得
@@ -1037,7 +1148,9 @@ namespace SalesManagement_SysDev
             dataGridViewSh.Refresh();
 
         }
-        //14.1.4 出荷非表示機能
+
+
+        /////////////14.1.4 出荷非表示機能////////////////////
         private void buttonHidden_Click(object sender, EventArgs e)
         {
             // 14.1.4.1 妥当な出荷データ取得

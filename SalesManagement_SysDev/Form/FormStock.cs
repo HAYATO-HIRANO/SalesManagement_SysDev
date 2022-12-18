@@ -162,10 +162,10 @@ namespace SalesManagement_SysDev
                     return false;
                 }
 
-                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxStID.Text.Trim())))
+                if (!StockDataAccess.CheckStIDExistence(int.Parse(textBoxStID.Text.Trim())))
                 {
                     //入力された在庫IDは存在していません
-                    messageDsp.DspMsg("M0503");
+                    messageDsp.DspMsg("M0504");
                     textBoxStID.Focus();
                     return false;
                 }
@@ -174,7 +174,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //在庫IDが入力されていません
-                messageDsp.DspMsg("M0504");
+                messageDsp.DspMsg("M0503");
                 textBoxStID.Focus();
                 return false;
             }
@@ -199,7 +199,7 @@ namespace SalesManagement_SysDev
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                 {
                     //入力された商品IDは存在していません
-                    messageDsp.DspMsg("M0507");
+                    messageDsp.DspMsg("M0511");
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -207,7 +207,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //商品IDが入力されていません
-                messageDsp.DspMsg("M0508");
+                messageDsp.DspMsg("M0507");
                 textBoxPrID.Focus();
                 return false;
             }
@@ -235,10 +235,9 @@ namespace SalesManagement_SysDev
 
             if (!String.IsNullOrEmpty(textBoxStQuantity.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxStQuantity.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumeric(textBoxStQuantity.Text.Trim()))
                 {
-                    //在庫数は半角英数字入力です
-                    messageDsp.DspMsg("M0508");
+                    MessageBox.Show("在庫数は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStQuantity.Focus();
                     return false;
                 }
@@ -352,10 +351,9 @@ namespace SalesManagement_SysDev
             {
                 if (!dataInputFormCheck.CheckNumeric(textBoxStID.Text.Trim()))
                 {
-                    //在庫IDは半角英数値入力です
-                    messageDsp.DspMsg("M0501");
+                    MessageBox.Show("在庫IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStID.Focus();
-
+                    
                 }
                 if (textBoxStID.TextLength > 6)
                 {
@@ -365,10 +363,10 @@ namespace SalesManagement_SysDev
 
                 }
 
-                if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxStID.Text.Trim())))
+                if (!StockDataAccess.CheckStIDExistence(int.Parse(textBoxStID.Text.Trim())))
                 {
                     //入力された在庫IDは存在していません
-                    messageDsp.DspMsg("M0503");
+                    messageDsp.DspMsg("M0504");
                     textBoxStID.Focus();
 
                 }
@@ -378,12 +376,11 @@ namespace SalesManagement_SysDev
             //商品IDの適否
             if (!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxPrID.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrID.Text.Trim()))
                 {
-                    //商品IDは半角英数字入力です
-                    messageDsp.DspMsg("M0505");
+                    MessageBox.Show("商品IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
-
+                    
                 }
                 if (textBoxPrID.TextLength > 6)
                 {
@@ -396,7 +393,7 @@ namespace SalesManagement_SysDev
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                 {
                     //入力された商品IDは存在していません
-                    messageDsp.DspMsg("M0507");
+                    messageDsp.DspMsg("M0511");
                     textBoxPrID.Focus();
 
                 }
@@ -420,12 +417,11 @@ namespace SalesManagement_SysDev
 
             if (!String.IsNullOrEmpty(textBoxStQuantity.Text.Trim()))
             {
-                if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxStQuantity.Text.Trim()))
+                if (!dataInputFormCheck.CheckNumeric(textBoxStQuantity.Text.Trim()))
                 {
-                    //在庫数は半角英数字入力です
-                    messageDsp.DspMsg("M0508");
+                    MessageBox.Show("在庫数は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStQuantity.Focus();
-
+                    
                 }
                 if (textBoxStQuantity.TextLength > 4)
                 {

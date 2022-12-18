@@ -10,25 +10,16 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class FormSale : Form
+    public partial class FormHattyu : Form
     {
-        public FormSale()
+        public FormHattyu()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FormHattyu_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void buttonFormDel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void FormSale_Load(object sender, EventArgs e)
-        {
+            //発注更新
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
@@ -39,30 +30,35 @@ namespace SalesManagement_SysDev
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
             //日時更新
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
-        private void buttonSalesDetail_Click(object sender, EventArgs e)
+        private void buttonDetail_Click(object sender, EventArgs e)
         {
-            if (labelSale.Text == "売上管理")
+            if (labelHattyu.Text == "発注管理")
             {
-                labelSale.Text = "売上詳細管理";
-                buttonSalesDetail.Text = "売上管理";
-                userControlSaleDetail1.Visible = true;
-                panelSale.Visible = false;
+                labelHattyu.Text = "発注詳細管理";
+                buttonDetail.Text = "発注管理";
+                //userControlHattyuDetail1.Visible = true;
+                panelHattyu.Visible = false;
                 return;
             }
-            if (labelSale.Text == "売上詳細管理")
+            if (labelHattyu.Text == "発注詳細管理")
             {
-                labelSale.Text = "売上管理";
-                buttonSalesDetail.Text = "売上詳細";
-                panelSale.Visible = true;
-                userControlSaleDetail1.Visible = false;
+                labelHattyu.Text = "発注管理";
+                buttonDetail.Text = "発注詳細";
+                panelHattyu.Visible = true;
+                //userControlHattyuDetail1.Visible = false;
             }
+        }
+
+        private void buttonFormDel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

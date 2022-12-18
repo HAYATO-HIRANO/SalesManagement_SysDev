@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,10 +23,23 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
         private static List<T_OrderDetailDsp> OrderDetail;
-
+        private TOrder tOrder;
         public UserControlOrderDetail()
         {
             InitializeComponent();
+        }
+        public void addTOrder(TOrder tOrder)
+        {
+            this.tOrder = tOrder;
+        }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (tOrder != null&&tOrder.OrID!=0)
+            {
+                textBoxOrID.Text = tOrder.OrID.ToString();
+                GetOrIDDataGridView();
+            }
+
         }
 
         private void UserControlOrderDetail_Load(object sender, EventArgs e)
@@ -33,10 +47,6 @@ namespace SalesManagement_SysDev
             //商品名名選択不可、入力不可
             textBoxPrName.TabStop = false;
             textBoxPrName.ReadOnly = true;
-            //最新の受注ID表示
-            //int order=orderDataAccess.GetOrIDMaxData();
-            
-            //textBoxOrID.Text = order.ToString();
             
             //データグリッドビューの設定
             SetFormDataGridView();

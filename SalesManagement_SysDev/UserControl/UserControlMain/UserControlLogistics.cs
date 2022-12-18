@@ -40,5 +40,11 @@ namespace SalesManagement_SysDev.UserControlMain
             FormSyukko formSyukko = new FormSyukko();
             formSyukko.Show();
         }
+
+        private void buttonHattyu_Click(object sender, EventArgs e)
+        {
+            FormHattyu formHattyu = new FormHattyu();
+            formHattyu.Show();
+        }
     }
 }

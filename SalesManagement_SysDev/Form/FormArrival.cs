@@ -27,10 +27,13 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出庫データ
         private static List<T_ArrivalDsp> Arrival;
+        //入荷ID参照用クラス
+        private TArrival tArrival = new TArrival();
 
         public FormArrival()
         {
             InitializeComponent();
+            userControlArrivalDetail1.addTArrival(tArrival);
         }
 
         private void FormArrival_Load(object sender, EventArgs e)
@@ -98,7 +101,7 @@ namespace SalesManagement_SysDev
             dataGridViewAr.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //データグリッドビューのデータ取得
-            //GetDataGridView();
+            GetDataGridView();
 
 
         }
@@ -298,6 +301,41 @@ namespace SalesManagement_SysDev
                 textBoxPage.Text = "1";
 
         }
+        private void dataGridViewAr_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxArID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[0].ToString();
+            textBoxOrID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[1].ToString();
+            textBoxClID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[6].ToString();
+            textBoxClName.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[7].ToString();
+
+            //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
+            {
+                checkBoxStateFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxStateFlag.Checked = true;
+            }
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBoxHidden.Checked = false;
+            }
+            else
+            {
+                checkBoxHidden.Checked = true;
+            }
+
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value != null)
+            {
+                checkBoxHidden.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
+        }
+
         ///////////////////////////////
         //メソッド名：ClearInput()
         //引　数   ：なし
@@ -329,6 +367,12 @@ namespace SalesManagement_SysDev
         {
             if (labelArrival.Text == "入荷管理")
             {
+                if (!String.IsNullOrEmpty(textBoxArID.Text.Trim()))
+                {
+                    tArrival.ArID = int.Parse(textBoxArID.Text.Trim());
+                    userControlArrivalDetail1.addTArrival(tArrival);
+                }
+
                 labelArrival.Text = "入荷詳細管理";
                 buttonDetail.Text = "入荷管理";
                 userControlArrivalDetail1.Visible = true;
@@ -1140,5 +1184,6 @@ namespace SalesManagement_SysDev
         {
             ClearInput();
         }
+
     }
 }

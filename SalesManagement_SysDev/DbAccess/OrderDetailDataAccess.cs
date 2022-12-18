@@ -205,7 +205,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         //メソッド名：GetOrIDDetailDspData()
         //引　数   ：受注ID
-        //戻り値   ：同じ受注IDの全データグリッド詳細用データ
+        //戻り値   ：同じ受注IDのデータグリッド詳細データ
         //機　能   ：同じ受注IDのデータグリッド表示用詳細データの取得
         ///////////////////////////////
         public List<T_OrderDetailDsp> GetOrIDDetailDspData(int orID)
@@ -221,7 +221,7 @@ namespace SalesManagement_SysDev
                          on t1.OrID equals t2.OrID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         where t1.OrID == orID && t2.OrFlag == 0
+                         where t1.OrID == orID 
                          select new
                          {
                              t1.OrID,

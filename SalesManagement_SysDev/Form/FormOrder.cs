@@ -14,6 +14,8 @@ namespace SalesManagement_SysDev
         OrderDetailDataAccess orderDetailDataAccess = new OrderDetailDataAccess();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
+        //データベース注文テーブルアクセス用クラスのインスタンス化
+        ChumonDetailDataAccess chumonDetailDataAccess = new ChumonDetailDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データベース社員テーブルアクセス用クラスのインスタンス化
@@ -23,9 +25,11 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の受注データ
         private static List<T_OrderDsp> Order;
+        private TOrder tOrder = new TOrder();
         public FormOrder()
         {
             InitializeComponent();
+            userControlOrderDetail1.addTOrder(tOrder);
         }
 
         private void FormOrder_Load(object sender, EventArgs e)
@@ -85,49 +89,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            ////営業所名の選択チェック
-            //if (comboBoxSoID.SelectedIndex == -1)
-            //{
-            //    //営業所名が選択されていません
-            //    MessageBox.Show("営業所名が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //    comboBoxSoID.Focus();
-            //    return false;
-            //}
-            ////社員IDの適否
-            //if (!String.IsNullOrEmpty(textBoxEmID.Text.Trim()))
-            //{
-            //    //社員IDの半角数値チェック
-            //    if (!dataInputFormCheck.CheckNumeric(textBoxEmID.Text.Trim()))
-            //    {
-            //        MessageBox.Show("社員IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
-            //        return false;
-            //    }
-            //    //文字数
-            //    if (textBoxEmID.TextLength > 6)
-            //    {
-            //        MessageBox.Show("社員IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
-            //        return false;
-            //    }
-
-            //    // 社員IDの存在チェック
-            //    if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
-            //    {
-            //        MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        textBoxEmID.Focus();
-            //        return false;
-            //    }
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("社員ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    textBoxEmID.Focus();
-            //    return false;
-            //}
-
             //顧客IDの適否
             if (!String.IsNullOrEmpty(textBoxClID.Text.Trim()))
             {
@@ -178,15 +139,6 @@ namespace SalesManagement_SysDev
                 return false;
 
             }
-            ////受注日の選択チェック
-            //if (DateTimePickerOrDate.Checked == false)
-            //{
-            //    //受注日が選択されていません
-            //    MessageBox.Show("受注日が選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            //   　DateTimePickerOrDate.Focus();
-            //    return false;
-            //}
 
             //非表示フラグの適否
             if (checkBoxHidden.CheckState == CheckState.Indeterminate)
@@ -201,14 +153,6 @@ namespace SalesManagement_SysDev
                 checkBoxHidden.Focus();
                 return false;
             }
-
-            ////非表示理由の適否　必要なし
-            //if (!String.IsNullOrEmpty(textBoxOrHidden.Text.Trim()))
-            //{
-            //    MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    textBoxOrHidden.Focus();
-            //    return false;
-            //}
 
             //受注状態フラグ
             if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
@@ -242,8 +186,6 @@ namespace SalesManagement_SysDev
             return new T_Order
             {
 
-                //SoID= int.Parse(comboBoxSoID.SelectedValue.ToString()),
-                //EmID =int.Parse(textBoxEmID.Text.Trim()),
                 SoID = employee.SoID,
                 EmID = employee.EmID,
                 ClID = int.Parse(textBoxClID.Text.Trim()),
@@ -270,6 +212,7 @@ namespace SalesManagement_SysDev
                 return;
             // 受注情報の登録
             bool flg = orderDataAccess.AddOrderData(regOrder);
+            tOrder.OrID = regOrder.OrID;
             if (flg == true)
             {
                 result = MessageBox.Show("データを登録しました、詳細登録画面に移動してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -300,6 +243,79 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
+        //データグリッドビュー設定
+        ///////////////////////////////
+        //メソッド名：PageSizeCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageSizeCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
+            }
+            return true;
+        }
+
+
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
         //引　数   ：なし
@@ -368,30 +384,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
-            {
-                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
-                {
-                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-                }
-                if (int.Parse(textBoxPageSize.Text) <= 0)
-                {
-                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxPageSize.Focus();
+            if (!PageSizeCheck())
                 return;
-
-            }
-
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -424,6 +418,124 @@ namespace SalesManagement_SysDev
             labelPage.Text = "/" + ((int)Math.Ceiling(Order.Count / (double)pageSize)) + "ページ";
 
             dataGridViewOrder.Refresh();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            textBoxPage.Text = 1.ToString();
+
+            SetDataGridView();
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewOrder.DataSource = Order.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageCheck())
+                return;
+
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+
+        }
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Order.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Order.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Order.Count / (double)pageSize) - 1;
+            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewOrder.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+
         }
         //////受注情報確定////////
         private void buttonConfirm_Click(object sender, EventArgs e)
@@ -596,7 +708,7 @@ namespace SalesManagement_SysDev
                 AddCh.ChID = chumon.ChID;
                 AddCh.PrID = p.PrID;
                 AddCh.ChQuantity = p.ChQuantity;
-                chumonDataAccess.AddChumonDetailData(AddCh);
+                chumonDetailDataAccess.AddChDetailData(AddCh);
             }
             //受注状態フラグの更新
             bool conFlg = orderDataAccess.UpdateStateFlag(int.Parse(textBoxOrID.Text.Trim()));
@@ -969,10 +1081,16 @@ namespace SalesManagement_SysDev
         {
             if (labelOrder.Text == "受注管理")
             {
+                if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+                {
+                    tOrder.OrID = int.Parse(textBoxOrID.Text.Trim());
+                    userControlOrderDetail1.addTOrder(tOrder);
+                }
                 labelOrder.Text = "受注詳細管理";
                 buttonDetail.Text = "受注管理";
                 userControlOrderDetail1.Visible = true;
                 panelOrder.Visible = false;
+
                 return;
             }
             if (labelOrder.Text == "受注詳細管理")
@@ -984,87 +1102,6 @@ namespace SalesManagement_SysDev
             }
 
 
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonPageSizeChange_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの表示件数変更
-        ///////////////////////////////
-
-        private void buttonPageSizeChange_Click(object sender, EventArgs e)
-        {
-            SetDataGridView();
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonLastPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの最終ページ表示
-        ///////////////////////////////
-
-        private void buttonLastPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            //最終ページの計算
-            int pageNo = (int)Math.Ceiling(Order.Count / (double)pageSize) - 1;
-            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewOrder.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = (pageNo + 1).ToString();
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonNextPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの次ページ表示
-        ///////////////////////////////
-
-        private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text);
-            //最終ページの計算
-            int lastNo = (int)Math.Ceiling(Order.Count / (double)pageSize) - 1;
-            //最終ページでなければ
-            if (pageNo <= lastNo)
-                dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewOrder.Refresh();
-            //ページ番号の設定
-            int lastPage = (int)Math.Ceiling(Order.Count / (double)pageSize);
-            if (pageNo >= lastPage)
-                textBoxPage.Text = lastPage.ToString();
-            else
-                textBoxPage.Text = (pageNo + 1).ToString();
-
-        }
-        ///////////////////////////////
-        //メソッド名：buttonPreviousPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの前ページ表示
-        ///////////////////////////////
-
-        private void buttonPreviousPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text) - 2;
-            dataGridViewOrder.DataSource = Order.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewOrder.Refresh();
-            //ページ番号の設定
-            if (pageNo + 1 > 1)
-                textBoxPage.Text = (pageNo + 1).ToString();
-            else
-                textBoxPage.Text = "1";
 
         }
 
@@ -1209,24 +1246,6 @@ namespace SalesManagement_SysDev
 
 
 
-        ///////////////////////////////
-        //メソッド名：buttonFirstPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの先頭ページ表示
-        ///////////////////////////////
-
-        private void buttonFirstPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewOrder.DataSource = Order.Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewOrder.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = "1";
-
-        }
         ///////////////////////////////
         //メソッド名：ClearInput()
         //引　数   ：なし

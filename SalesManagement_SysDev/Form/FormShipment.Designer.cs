@@ -221,7 +221,7 @@ namespace SalesManagement_SysDev
             // 
             // buttonPageSizeChange
             // 
-            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonPageSizeChange.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonPageSizeChange.Location = new System.Drawing.Point(1733, 266);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
@@ -247,7 +247,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewSh.RowTemplate.Height = 21;
             this.dataGridViewSh.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewSh.TabIndex = 21;
-            this.dataGridViewSh.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrder_CellContentClick);
+            this.dataGridViewSh.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSh_CellClick);
             // 
             // labelPageSize
             // 
@@ -458,7 +458,7 @@ namespace SalesManagement_SysDev
             // 
             // buttonClear2
             // 
-            this.buttonClear2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear2.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonClear2.Location = new System.Drawing.Point(1447, 140);
             this.buttonClear2.Name = "buttonClear2";
             this.buttonClear2.Size = new System.Drawing.Size(102, 30);

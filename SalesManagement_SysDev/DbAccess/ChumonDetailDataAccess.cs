@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    class ChumonDetailAccess
+    class ChumonDetailDataAccess
     {
         ///////////////////////////////
         //メソッド名：CheckChDetailIDExistence()
