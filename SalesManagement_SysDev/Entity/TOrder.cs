@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesManagement_SysDev.Entity
+namespace SalesManagement_SysDev
 {
     public class TOrder
     {

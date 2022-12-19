@@ -205,7 +205,7 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="UserControl\UserControlDetail\TOrder.cs" />
+    <Compile Include="Entity\TOrder.cs" />
     <Compile Include="UserControl\UserControlDetail\UserControlSaleDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
