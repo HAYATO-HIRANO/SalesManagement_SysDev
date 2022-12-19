@@ -204,6 +204,109 @@ namespace SalesManagement_SysDev
             checkBoxScFlag.Checked = false;
             textBoxScHidden.Text = "";
         }
+        //データグリッドビュー設定
+
+        ///////////////////////////////
+        //メソッド名：PageSizeCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageSizeCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：SetFormDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定 
+        ///////////////////////////////
+        private void SetFormDataGridView()
+        {
+            //dataGridViewのページサイズ指定
+            textBoxPageSize.Text = "20";
+            //dataGridViewのページ番号指定
+            textBoxPage.Text = "1";
+            //読み取り専用に指定
+            dataGridViewSc.ReadOnly = true;
+            //直接のサイズの変更を不可
+            dataGridViewSc.AllowUserToResizeRows = false;
+            dataGridViewSc.AllowUserToResizeColumns = false;
+            //直接の登録を不可にする
+            dataGridViewSc.AllowUserToAddRows = false;
+            //行内をクリックすることで行を選択
+            dataGridViewSc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //奇数行の色を変更
+            dataGridViewSc.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
+            //ヘッダー位置の指定
+            dataGridViewSc.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            GetDataGridView();
+
+
+        }
 
         ///////////////////////////////
         //メソッド名：GetDataGridView()
@@ -213,7 +316,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GetDataGridView()
         {
-            // 顧客データの取得
+            // 小分類データの取得
             SmallClass = smallClassification.GetScData();
 
             // DataGridViewに表示するデータを指定
@@ -228,29 +331,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
-            {
-                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
-                {
-                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-                }
-                if (int.Parse(textBoxPageSize.Text) <= 0)
-                {
-                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxPageSize.Focus();
+            if (!PageSizeCheck())
                 return;
-
-            }
 
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
@@ -284,40 +366,9 @@ namespace SalesManagement_SysDev
 
 
             dataGridViewSc.Refresh();
-            
-        }
-
-        ///////////////////////////////
-        //メソッド名：SetFormDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの設定 
-        ///////////////////////////////
-        private void SetFormDataGridView()
-        {
-            //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "20";
-            //dataGridViewのページ番号指定
-            textBoxPage.Text = "1";
-            //読み取り専用に指定
-            dataGridViewSc.ReadOnly = true;
-            //直接のサイズの変更を不可
-            dataGridViewSc.AllowUserToResizeRows = false;
-            dataGridViewSc.AllowUserToResizeColumns = false;
-            //直接の登録を不可にする
-            dataGridViewSc.AllowUserToAddRows = false;
-            //行内をクリックすることで行を選択
-            dataGridViewSc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //奇数行の色を変更
-            dataGridViewSc.AlternatingRowsDefaultCellStyle.BackColor = Color.Honeydew;
-            //ヘッダー位置の指定
-            dataGridViewSc.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            //データグリッドビューのデータ取得
-            GetDataGridView();
-
 
         }
+
         ///////////////小分類情報更新//////////////////
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
@@ -361,7 +412,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 //文字数
-                if(textBoxScID.TextLength > 2)
+                if (textBoxScID.TextLength > 2)
                 {
                     MessageBox.Show("小分類IDは2文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxScID.Focus();
@@ -504,7 +555,7 @@ namespace SalesManagement_SysDev
         {
             //妥当な顧客データを取得
             if (!GetValidAtSelect())
-            return;
+                return;
 
             //小分類情報抽出
             GenerateDataAtSelect();
@@ -611,7 +662,7 @@ namespace SalesManagement_SysDev
                 SmallClass = smallClassification.GetScData(1, selectCondition);
             }
             //小分類IDが入力されていて、大分類が未選択の場合
-            else if(!String.IsNullOrEmpty(textBoxScID.Text.Trim())&&cMajorClass == "")
+            else if (!String.IsNullOrEmpty(textBoxScID.Text.Trim()) && cMajorClass == "")
             {
                 M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
                 {
@@ -625,7 +676,7 @@ namespace SalesManagement_SysDev
                 SmallClass = smallClassification.GetScData(2, selectCondition);
             }
             //小分類IDが未入力で、大分類が選択されている場合
-            else if(cMajorClass != "")
+            else if (cMajorClass != "")
             {
                 M_SmallClassificationDsp selectCondition = new M_SmallClassificationDsp()
                 {
@@ -703,7 +754,7 @@ namespace SalesManagement_SysDev
 
 
 
-            private void buttonClear_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearInput();
         }
@@ -731,7 +782,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GetHiddenDataGridView()
         {
-            // 顧客データの取得
+            // 小分類データの取得
             SmallClass = smallClassification.GetSmallClassHiddenData();
 
             // DataGridViewに表示するデータを指定
@@ -740,7 +791,7 @@ namespace SalesManagement_SysDev
 
         private void checkBoxScFlag_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxScFlag.Checked == true)
+            if (checkBoxScFlag.Checked == true)
             {
                 textBoxScHidden.TabStop = true;
                 textBoxScHidden.ReadOnly = false;
@@ -757,12 +808,15 @@ namespace SalesManagement_SysDev
 
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
-            textBoxPage.Text = "1";
+            textBoxPage.Text = 1.ToString();
             SetDataGridView();
         }
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             dataGridViewSc.DataSource = SmallClass.Take(pageSize).ToList();
 
@@ -774,7 +828,11 @@ namespace SalesManagement_SysDev
 
         private void buttonPreviousPage_Click(object sender, EventArgs e)
         {
-            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
             int pageNo = int.Parse(textBoxPage.Text) - 2;
             dataGridViewSc.DataSource = SmallClass.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
@@ -789,7 +847,11 @@ namespace SalesManagement_SysDev
 
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
-            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
             int pageNo = int.Parse(textBoxPage.Text);
             //最終ページの計算
             int lastNo = (int)Math.Ceiling(SmallClass.Count / (double)pageSize) - 1;
@@ -809,6 +871,9 @@ namespace SalesManagement_SysDev
 
         private void buttonLastPage_Click(object sender, EventArgs e)
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
             int pageNo = (int)Math.Ceiling(SmallClass.Count / (double)pageSize) - 1;
