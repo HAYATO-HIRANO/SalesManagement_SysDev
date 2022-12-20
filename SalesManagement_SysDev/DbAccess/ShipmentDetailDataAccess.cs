@@ -224,7 +224,7 @@ namespace SalesManagement_SysDev
                              t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
                              t1.ShDetailID.ToString().Contains(selectCondition.ShDetailID.ToString()) &&
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.ShFlag == 2
+                             t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,
@@ -263,7 +263,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
                              t1.ShDetailID.ToString().Contains(selectCondition.ShDetailID.ToString()) &&
-                             t2.ShFlag == 2
+                             t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,
@@ -302,7 +302,7 @@ namespace SalesManagement_SysDev
                              where
                               t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.ShFlag == 2
+                             t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,
@@ -340,7 +340,7 @@ namespace SalesManagement_SysDev
                              on t2.OrID equals t4.OrID
                              where
                               t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
-                              t2.ShFlag == 2
+                              t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,
@@ -379,7 +379,7 @@ namespace SalesManagement_SysDev
                              where
                               t1.ShDetailID.ToString().Contains(selectCondition.ShDetailID.ToString()) &&
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.ShFlag == 2
+                             t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,
@@ -417,7 +417,7 @@ namespace SalesManagement_SysDev
                              on t2.OrID equals t4.OrID
                              where
                               t1.ShDetailID.ToString().Contains(selectCondition.ShDetailID.ToString()) &&
-                              t2.ShFlag == 2
+                              t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,
@@ -455,7 +455,7 @@ namespace SalesManagement_SysDev
                              on t2.OrID equals t4.OrID
                              where
                               t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
-                             t2.ShFlag == 2
+                             t2.ShFlag == 0
                              select new
                              {
                                  t1.ShID,

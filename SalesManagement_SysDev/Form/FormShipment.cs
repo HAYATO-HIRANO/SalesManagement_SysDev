@@ -438,10 +438,10 @@ namespace SalesManagement_SysDev
         private void dataGridViewSh_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxShID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[0].ToString();
-            textBoxOrID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[1].ToString();
-            textBoxClID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[6].ToString();
-            textBoxClName.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[7].ToString();
+            textBoxShID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxOrID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxClID.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxClName.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[7].Value.ToString();
 
             //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
@@ -465,7 +465,7 @@ namespace SalesManagement_SysDev
             //非表示理由がnullではない場合テキストボックスに表示させる
             if (dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[11].Value != null)
             {
-                checkBox1Hidden.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[11].Value.ToString();
+                textBoxShHidden.Text = dataGridViewSh.Rows[dataGridViewSh.CurrentRow.Index].Cells[11].Value.ToString();
             }
 
         }
