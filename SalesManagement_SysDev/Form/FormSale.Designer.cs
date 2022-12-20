@@ -215,10 +215,8 @@ namespace SalesManagement_SysDev
             // 
             this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
             this.panelLeft.Controls.Add(this.buttonHidden);
-            this.panelLeft.Controls.Add(this.buttonSalesDetail);
             this.panelLeft.Controls.Add(this.buttonHiddenList);
             this.panelLeft.Controls.Add(this.buttonList);
-            this.panelLeft.Controls.Add(this.buttonLogout);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
@@ -246,7 +244,7 @@ namespace SalesManagement_SysDev
             this.buttonSalesDetail.BackColor = System.Drawing.Color.LightGreen;
             this.buttonSalesDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSalesDetail.Location = new System.Drawing.Point(0, 801);
+            this.buttonSalesDetail.Location = new System.Drawing.Point(0, 901);
             this.buttonSalesDetail.Name = "buttonSalesDetail";
             this.buttonSalesDetail.Size = new System.Drawing.Size(250, 100);
             this.buttonSalesDetail.TabIndex = 42;
@@ -288,7 +286,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(250, 80);
             this.buttonLogout.TabIndex = 7;
@@ -683,6 +681,8 @@ namespace SalesManagement_SysDev
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.buttonSalesDetail);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.panelSale);
             this.Controls.Add(this.userControlSaleDetail1);
