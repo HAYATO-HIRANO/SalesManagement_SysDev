@@ -564,7 +564,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewChumon.RowTemplate.Height = 21;
             this.dataGridViewChumon.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewChumon.TabIndex = 47;
-            this.dataGridViewChumon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewChumon_CellContentClick);
+            this.dataGridViewChumon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewChumon_CellClick);
             // 
             // labelPageSize
             // 
