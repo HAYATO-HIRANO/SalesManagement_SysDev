@@ -1142,6 +1142,11 @@ namespace SalesManagement_SysDev
 
 
         }
+
+        private void buttonHidden_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
