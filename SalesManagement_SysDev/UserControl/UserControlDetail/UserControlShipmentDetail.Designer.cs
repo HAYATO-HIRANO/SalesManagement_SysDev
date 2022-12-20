@@ -36,10 +36,10 @@ namespace SalesManagement_SysDev
             this.labelStateFlag = new System.Windows.Forms.Label();
             this.labelSyState = new System.Windows.Forms.Label();
             this.labelShID = new System.Windows.Forms.Label();
-            this.textBoxSyID = new System.Windows.Forms.TextBox();
+            this.textBoxShID = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.textBoxSyDetailID = new System.Windows.Forms.TextBox();
+            this.textBoxShDetailID = new System.Windows.Forms.TextBox();
             this.labelShDetailID = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelPrID = new System.Windows.Forms.Label();
@@ -90,6 +90,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -113,10 +114,10 @@ namespace SalesManagement_SysDev
             this.panelInput.Controls.Add(this.labelStateFlag);
             this.panelInput.Controls.Add(this.labelSyState);
             this.panelInput.Controls.Add(this.labelShID);
-            this.panelInput.Controls.Add(this.textBoxSyID);
+            this.panelInput.Controls.Add(this.textBoxShID);
             this.panelInput.Controls.Add(this.labelPrice);
             this.panelInput.Controls.Add(this.textBoxPrice);
-            this.panelInput.Controls.Add(this.textBoxSyDetailID);
+            this.panelInput.Controls.Add(this.textBoxShDetailID);
             this.panelInput.Controls.Add(this.labelShDetailID);
             this.panelInput.Controls.Add(this.button1);
             this.panelInput.Controls.Add(this.labelPrID);
@@ -166,13 +167,13 @@ namespace SalesManagement_SysDev
             this.labelShID.TabIndex = 42;
             this.labelShID.Text = "出荷ID";
             // 
-            // textBoxSyID
+            // textBoxShID
             // 
-            this.textBoxSyID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxSyID.Location = new System.Drawing.Point(127, 16);
-            this.textBoxSyID.Name = "textBoxSyID";
-            this.textBoxSyID.Size = new System.Drawing.Size(102, 36);
-            this.textBoxSyID.TabIndex = 43;
+            this.textBoxShID.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxShID.Location = new System.Drawing.Point(127, 16);
+            this.textBoxShID.Name = "textBoxShID";
+            this.textBoxShID.Size = new System.Drawing.Size(102, 36);
+            this.textBoxShID.TabIndex = 43;
             // 
             // labelPrice
             // 
@@ -195,13 +196,13 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Size = new System.Drawing.Size(114, 28);
             this.textBoxPrice.TabIndex = 41;
             // 
-            // textBoxSyDetailID
+            // textBoxShDetailID
             // 
-            this.textBoxSyDetailID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxSyDetailID.Location = new System.Drawing.Point(434, 21);
-            this.textBoxSyDetailID.Name = "textBoxSyDetailID";
-            this.textBoxSyDetailID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxSyDetailID.TabIndex = 37;
+            this.textBoxShDetailID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBoxShDetailID.Location = new System.Drawing.Point(434, 21);
+            this.textBoxShDetailID.Name = "textBoxShDetailID";
+            this.textBoxShDetailID.Size = new System.Drawing.Size(77, 28);
+            this.textBoxShDetailID.TabIndex = 37;
             // 
             // labelShDetailID
             // 
@@ -223,6 +224,7 @@ namespace SalesManagement_SysDev
             this.button1.TabIndex = 28;
             this.button1.Text = "入力クリア";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelPrID
             // 
@@ -440,10 +442,10 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Label labelStateFlag;
         private System.Windows.Forms.Label labelSyState;
         private System.Windows.Forms.Label labelShID;
-        private System.Windows.Forms.TextBox textBoxSyID;
+        private System.Windows.Forms.TextBox textBoxShID;
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.TextBox textBoxSyDetailID;
+        private System.Windows.Forms.TextBox textBoxShDetailID;
         private System.Windows.Forms.Label labelShDetailID;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelPrID;
