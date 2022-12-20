@@ -411,12 +411,10 @@ namespace SalesManagement_SysDev
             // 商品名の適否
             if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
             {
-               
-
                 if (textBoxPrName.TextLength > 50)
                 {
                     //商品名は50文字以下です
-                    messageDsp.DspMsg("M0409");
+                    MessageBox.Show("商品名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrName.Focus();
                     return false;
                 }
@@ -425,7 +423,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //商品名が入力されていません
-                messageDsp.DspMsg("M0410");
+                MessageBox.Show("商品名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrName.Focus();
                 return false;
             }
@@ -434,7 +432,7 @@ namespace SalesManagement_SysDev
             if (comboBoxMc.SelectedIndex == -1)
             {
                 //大分類IDが選択されていません
-                DialogResult result = messageDsp.DspMsg("M0437");
+                DialogResult result = MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (result == DialogResult.Cancel)
                 {
@@ -446,7 +444,7 @@ namespace SalesManagement_SysDev
             if (comboBoxSc.SelectedIndex == -1)
             {
                 //小分類IDが選択されていません
-                DialogResult result = messageDsp.DspMsg("M0419");
+                DialogResult result = MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (result == DialogResult.Cancel)
                 {
@@ -458,19 +456,16 @@ namespace SalesManagement_SysDev
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
-                //価格の半角英数字チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
-                {
-                  
-                    MessageBox.Show("価格は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    textBoxPrice.Focus();
-                    return false;
-                }
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
-                    messageDsp.DspMsg("M0412");
+                    MessageBox.Show("価格は9桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPrice.Focus();
+                    return false;
+                }
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+                    MessageBox.Show("価格は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
@@ -478,10 +473,11 @@ namespace SalesManagement_SysDev
             else
             {
                 //価格が入力されていません
-                messageDsp.DspMsg("M0413");
+                MessageBox.Show("価格が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrice.Focus();
                 return false;
             }
+
             //安全在庫数入力チェック
             if (!String.IsNullOrEmpty(textBoxPrSafetyStock.Text.Trim()))
             {
@@ -489,7 +485,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
 
-                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("安全在庫数は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxPrice.Focus();
                     return false;
@@ -497,7 +493,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
-                    messageDsp.DspMsg("M0415");
+                    MessageBox.Show("安全在庫数は4桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
@@ -505,43 +501,18 @@ namespace SalesManagement_SysDev
             else
             {
                 //安全在庫数が入力されていません
-                messageDsp.DspMsg("M0416");
+                MessageBox.Show("安全在庫数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrSafetyStock.Focus();
                 return false;
             }
-            //色の入力チェック
-            if (!String.IsNullOrEmpty(textBoxColor.Text.Trim()))
-            {
-                if (textBoxColor.TextLength > 20)
-                {
-                    //色は20文字以下です
-                    messageDsp.DspMsg("M0438");
-                    textBoxColor.Focus();
-                    return false;
-                }
-                if (!dataInputFormCheck.CheckFullWidth(textBoxColor.Text.Trim()))
-                {
-                    //色は全角入力です
-                    messageDsp.DspMsg("M0439");
-                    textBoxColor.Focus();
-                    return false;
 
-                }
-            }
-            else
-            {
-                //色が入力されていません
-                messageDsp.DspMsg("M0423");
-                textBoxColor.Focus();
-                return false;
-            }
             //型番の適否
             if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
             {
                 if (!dataInputFormCheck.CheckHalfChar(textBoxPrModelNumber.Text.Trim()))
                 {
                     //型番は半角入力です
-                    messageDsp.DspMsg("M0420");
+                    MessageBox.Show("型番は半角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
                     return false;
                 }
@@ -550,19 +521,52 @@ namespace SalesManagement_SysDev
                 if (textBoxPrModelNumber.TextLength > 20)
                 {
                     //型番は20文字以下です
-                    messageDsp.DspMsg("M0421");
+                    MessageBox.Show("型番は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
 
                 }
 
-                
+                //if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
+                //{
+                //    //入力された型番は存在していません
+                //    messageDsp.DspMsg("M0441");
+                //    textBoxPrModelNumber.Focus();
+                //    return false;
+                //}
 
             }
             else
             {
                 //型番が入力されていません
-                messageDsp.DspMsg("M0422");
+                MessageBox.Show("型番が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrModelNumber.Focus();
+                return false;
+            }
+
+            //色の入力チェック
+            if (!String.IsNullOrEmpty(textBoxColor.Text.Trim()))
+            {
+                if (textBoxColor.TextLength > 20)
+                {
+                    //色は20文字以下です
+                    MessageBox.Show("色は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxColor.Focus();
+                    return false;
+                }
+                if (!dataInputFormCheck.CheckFullWidth(textBoxColor.Text.Trim()))
+                {
+                    //色は全角入力です
+                    MessageBox.Show("色は全角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxColor.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                //色が入力されていません
+                MessageBox.Show("色が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxColor.Focus();
                 return false;
             }
             //非表示フラグのチェック
@@ -637,7 +641,7 @@ namespace SalesManagement_SysDev
         private void RegistrationProduct(M_Product regProduct)
         {
             //商品データを登録してよろしいですか？
-            DialogResult result = messageDsp.DspMsg("M0425");
+            DialogResult result = MessageBox.Show("商品データを登録してよろしいですか？", "確定確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
                 return;
 
@@ -645,12 +649,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //商品データを登録しました
-                messageDsp.DspMsg("M0426");
+                MessageBox.Show("商品データを登録しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 //商品データ登録に失敗しました
-                messageDsp.DspMsg("M0427");
+                MessageBox.Show("商品データ登録に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             textBoxPrID.Focus();
@@ -708,10 +712,11 @@ namespace SalesManagement_SysDev
                     textBoxPrID.Focus();
                     return false;
                 }
+
                 if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
-                    messageDsp.DspMsg("M0402");
+                    MessageBox.Show("商品IDは6文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -719,7 +724,7 @@ namespace SalesManagement_SysDev
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                 {
                     //入力された商品IDは存在していません
-                    messageDsp.DspMsg("M0403");
+                    MessageBox.Show("入力された商品IDは存在していません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -728,7 +733,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //商品IDが入力されていません
-                messageDsp.DspMsg("M0404");
+                MessageBox.Show("商品IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrID.Focus();
                 return false;
             }
@@ -746,11 +751,10 @@ namespace SalesManagement_SysDev
             // 商品名の適否
             if (!String.IsNullOrEmpty(textBoxPrName.Text.Trim()))
             {
-
                 if (textBoxPrName.TextLength > 50)
                 {
                     //商品名は50文字以下です
-                    messageDsp.DspMsg("M0409");
+                    MessageBox.Show("商品名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrName.Focus();
                     return false;
                 }
@@ -759,7 +763,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //商品名が入力されていません
-                messageDsp.DspMsg("M0410");
+                MessageBox.Show("商品名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrName.Focus();
                 return false;
             }
@@ -768,7 +772,7 @@ namespace SalesManagement_SysDev
             if (comboBoxMc.SelectedIndex == -1)
             {
                 //大分類IDが選択されていません
-                DialogResult result = messageDsp.DspMsg("M0437");
+                DialogResult result = MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (result == DialogResult.Cancel)
                 {
@@ -780,7 +784,7 @@ namespace SalesManagement_SysDev
             if (comboBoxSc.SelectedIndex == -1)
             {
                 //小分類IDが選択されていません
-                DialogResult result = messageDsp.DspMsg("M0419");
+                DialogResult result = MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (result == DialogResult.Cancel)
                 {
@@ -792,19 +796,16 @@ namespace SalesManagement_SysDev
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
-                //価格の半角英数字チェック
-                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
-                {
-
-                    MessageBox.Show("価格は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    textBoxPrice.Focus();
-                    return false;
-                }
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
-                    messageDsp.DspMsg("M0412");
+                    MessageBox.Show("価格は9桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPrice.Focus();
+                    return false;
+                }
+                if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
+                {
+                    MessageBox.Show("価格は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
@@ -812,7 +813,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //価格が入力されていません
-                messageDsp.DspMsg("M0413");
+                MessageBox.Show("価格が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrice.Focus();
                 return false;
             }
@@ -824,7 +825,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
 
-                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("安全在庫数は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxPrice.Focus();
                     return false;
@@ -832,7 +833,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
-                    messageDsp.DspMsg("M0415");
+                    MessageBox.Show("安全在庫数は4桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
@@ -840,7 +841,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //安全在庫数が入力されていません
-                messageDsp.DspMsg("M0416");
+                MessageBox.Show("安全在庫数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrSafetyStock.Focus();
                 return false;
             }
@@ -851,16 +852,16 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckHalfChar(textBoxPrModelNumber.Text.Trim()))
                 {
                     //型番は半角入力です
-                    messageDsp.DspMsg("M0420");
+                    MessageBox.Show("型番は半角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
                     return false;
                 }
 
-                
-                if (textBoxPrModelNumber.TextLength >20)
+
+                if (textBoxPrModelNumber.TextLength > 20)
                 {
                     //型番は20文字以下です
-                    messageDsp.DspMsg("M0421");
+                    MessageBox.Show("型番は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
 
                 }
@@ -877,7 +878,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //型番が入力されていません
-                messageDsp.DspMsg("M0422");
+                MessageBox.Show("型番が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrModelNumber.Focus();
                 return false;
             }
@@ -888,14 +889,14 @@ namespace SalesManagement_SysDev
                 if (textBoxColor.TextLength > 20)
                 {
                     //色は20文字以下です
-                    messageDsp.DspMsg("M0438");
+                    MessageBox.Show("色は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxColor.Focus();
                     return false;
                 }
                 if (!dataInputFormCheck.CheckFullWidth(textBoxColor.Text.Trim()))
                 {
                     //色は全角入力です
-                    messageDsp.DspMsg("M0439");
+                    MessageBox.Show("色は全角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxColor.Focus();
                     return false;
 
@@ -904,7 +905,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //色が入力されていません
-                messageDsp.DspMsg("M0423");
+                MessageBox.Show("色が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxColor.Focus();
                 return false;
             }
@@ -912,7 +913,7 @@ namespace SalesManagement_SysDev
             if (checkBoxPrFlag.CheckState == CheckState.Indeterminate)
             {
                 //非表示フラグが未確定な状態です
-                messageDsp.DspMsg("M0433");
+                MessageBox.Show("非表示フラグが未確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxPrFlag.Focus();
                 return false;
             }
@@ -921,7 +922,7 @@ namespace SalesManagement_SysDev
             if (checkBoxPrFlag.Checked == false && !String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
             {
                 //非表示理由が入力されていません
-                messageDsp.DspMsg("M0440");
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrHidden.Focus();
                 return false;
             }
@@ -974,8 +975,8 @@ namespace SalesManagement_SysDev
         private void UpdateProduct(M_Product upProduct)
         {
             //商品データを更新してよろしいですか？
-            DialogResult result = messageDsp.DspMsg("M0428");
-            if(result == DialogResult.Cancel)
+            DialogResult result = MessageBox.Show("商品データを更新してよろしいですか？", "確定確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
             {
                 return;
             }
@@ -983,12 +984,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //在庫データを更新しました
-                messageDsp.DspMsg("M0429");
+                MessageBox.Show("在庫データを更新しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 //在庫データ更新に失敗しました
-                messageDsp.DspMsg("M0430");
+                MessageBox.Show("在庫データ更新に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             textBoxPrID.Focus();
             //入力エリアのクリア
@@ -1041,7 +1042,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
-                    messageDsp.DspMsg("M0402");
+                    MessageBox.Show("商品IDは6文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -1049,7 +1050,7 @@ namespace SalesManagement_SysDev
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                 {
                     //入力された商品IDは存在していません
-                    messageDsp.DspMsg("M0403");
+                    MessageBox.Show("入力された商品IDは存在していません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -1066,7 +1067,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrName.TextLength > 50)
                 {
                     //商品名は50文字以下です
-                    messageDsp.DspMsg("M0409");
+                    MessageBox.Show("商品名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrName.Focus();
                     return false;
                 }
@@ -1081,13 +1082,13 @@ namespace SalesManagement_SysDev
                 if (textBoxPrice.TextLength > 9)
                 {
                     //価格は9桁以下です
-                    messageDsp.DspMsg("M0412");
+                    MessageBox.Show("価格は9桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
                 if (!dataInputFormCheck.CheckNumeric(textBoxPrice.Text.Trim()))
                 {
-                    messageDsp.DspMsg("M0413");
+                    MessageBox.Show("価格は半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
@@ -1101,7 +1102,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckNumeric(textBoxPrSafetyStock.Text.Trim()))
                 {
 
-                    MessageBox.Show("安全在庫数は半角数値です。", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("安全在庫数は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     textBoxPrice.Focus();
                     return false;
@@ -1109,7 +1110,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
-                    messageDsp.DspMsg("M0415");
+                    MessageBox.Show("安全在庫数は4桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrice.Focus();
                     return false;
                 }
@@ -1123,7 +1124,7 @@ namespace SalesManagement_SysDev
                 if (!dataInputFormCheck.CheckHalfChar(textBoxPrModelNumber.Text.Trim()))
                 {
                     //型番は半角入力です
-                    messageDsp.DspMsg("M0420");
+                    MessageBox.Show("型番は半角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
                     return false;
                 }
@@ -1132,7 +1133,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrModelNumber.TextLength > 20)
                 {
                     //型番は20文字以下です
-                    messageDsp.DspMsg("M0421");
+                    MessageBox.Show("型番は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
 
                 }
@@ -1154,14 +1155,14 @@ namespace SalesManagement_SysDev
                 if (textBoxColor.TextLength > 20)
                 {
                     //色は20文字以下です
-                    messageDsp.DspMsg("M0438");
+                    MessageBox.Show("色は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxColor.Focus();
                     return false;
                 }
                 if (!dataInputFormCheck.CheckFullWidth(textBoxColor.Text.Trim()))
                 {
                     //色は全角入力です
-                    messageDsp.DspMsg("M0439");
+                    MessageBox.Show("色は全角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxColor.Focus();
                     return false;
 
@@ -1172,7 +1173,7 @@ namespace SalesManagement_SysDev
             if (checkBoxPrFlag.Checked==true)
             {
                 //非表示フラグがチェックされています
-                messageDsp.DspMsg("M0442");
+                MessageBox.Show(" 非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 checkBoxPrFlag.Focus();
                 return false;
             }

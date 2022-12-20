@@ -1249,7 +1249,7 @@ namespace SalesManagement_SysDev
             ClearInput();
         }
 
-<<<<<<< HEAD
+
         private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxHidden.Checked == true)
@@ -1263,7 +1263,8 @@ namespace SalesManagement_SysDev
                 textBoxArHidden.TabStop = false;
                 textBoxArHidden.ReadOnly = true;
 
-=======
+            }
+        }
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -1273,7 +1274,7 @@ namespace SalesManagement_SysDev
                 //OK時の処理
                 FormMain.loginName = "";
                 Dispose();
->>>>>>> b769ed33727b0b243c54147885c29136ced39146
+
             }
         }
     }

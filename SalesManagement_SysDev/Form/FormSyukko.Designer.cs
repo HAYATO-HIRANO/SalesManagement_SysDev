@@ -628,11 +628,9 @@ namespace SalesManagement_SysDev
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1940, 1100);
-=======
+
             this.ClientSize = new System.Drawing.Size(1920, 1080);
->>>>>>> b769ed33727b0b243c54147885c29136ced39146
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelSyukko);
