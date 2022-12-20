@@ -876,14 +876,14 @@ namespace SalesManagement_SysDev
 
         private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxHidden.Checked==true)
+            if (checkBoxHidden.Checked == true)
             {
                 textBoxChHidden.TabStop = true;
                 textBoxChHidden.ReadOnly = false;
             }
             else
             {
-                textBoxChHidden.Text="";
+                textBoxChHidden.Text = "";
                 textBoxChHidden.TabStop = false;
                 textBoxChHidden.ReadOnly = true;
             }
@@ -916,11 +916,6 @@ namespace SalesManagement_SysDev
 
         }
 
-<<<<<<< HEAD
-        private void buttonLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-=======
         private void buttonKakutei_Click(object sender, EventArgs e)
         {
             // 9.1.2.1 在庫数の確認
@@ -950,12 +945,12 @@ namespace SalesManagement_SysDev
         private bool CheckStockQuantity()
         {
             //注文IDの注文詳細取得
-           var chDetail= chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+            var chDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
 
-            foreach(var p in chDetail)
+            foreach (var p in chDetail)
             {
                 //数量と在庫数の判定(在庫>数量)ならtrue
-                bool flg=stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
+                bool flg = stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
                 if (flg == false)
                 {
                     MessageBox.Show("数量が在庫数を超えています、商品を発注してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1060,7 +1055,7 @@ namespace SalesManagement_SysDev
                 EmID = 0,
                 SoID = int.Parse(chumon.SoID.ToString()),
                 ClID = int.Parse(chumon.ClID.ToString()),
-                OrID= int.Parse(chumon.OrID.ToString()),
+                OrID = int.Parse(chumon.OrID.ToString()),
                 SyDate = null,
                 SyStateFlag = 0,
                 SyFlag = 0,
@@ -1141,9 +1136,10 @@ namespace SalesManagement_SysDev
 
             // データグリッドビューの表示
             GetDataGridView();
-
         }
->>>>>>> 8f7418ba68b160ac8ca0f891c99fe5f30ea7d4d8
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (result == DialogResult.OK)
             {
