@@ -304,10 +304,10 @@ namespace SalesManagement_SysDev
         private void dataGridViewAr_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxArID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[0].ToString();
-            textBoxOrID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[1].ToString();
-            textBoxClID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[6].ToString();
-            textBoxClName.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[7].ToString();
+            textBoxArID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxOrID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxClID.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxClName.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[7].Value.ToString();
 
             //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
@@ -331,7 +331,7 @@ namespace SalesManagement_SysDev
             //非表示理由がnullではない場合テキストボックスに表示させる
             if (dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value != null)
             {
-                checkBoxHidden.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value.ToString();
+                textBoxArHidden.Text = dataGridViewAr.Rows[dataGridViewAr.CurrentRow.Index].Cells[11].Value.ToString();
             }
 
         }
@@ -1185,5 +1185,20 @@ namespace SalesManagement_SysDev
             ClearInput();
         }
 
+        private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxHidden.Checked == true)
+            {
+                textBoxArHidden.TabStop = true;
+                textBoxArHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxArHidden.Text = "";
+                textBoxArHidden.TabStop = false;
+                textBoxArHidden.ReadOnly = true;
+
+            }
+        }
     }
 }
