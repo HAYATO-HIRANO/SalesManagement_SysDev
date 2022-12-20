@@ -124,13 +124,14 @@ namespace SalesManagement_SysDev
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool UpdateStateFlag(int ChID)
+        public bool UpdateChumon(int ChID)
         {
             try
             {
                 var context = new SalesManagement_DevContext();
 
                 var chumon = context.T_Chumons.Single(x => x.ChID == ChID && x.ChFlag == 0);
+                chumon.EmID = FormMain.loginEmID;
                 chumon.ChStateFlag = 1;
 
                 context.SaveChanges();

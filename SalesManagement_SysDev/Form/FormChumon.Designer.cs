@@ -236,6 +236,7 @@ namespace SalesManagement_SysDev
             this.buttonKakutei.TabIndex = 43;
             this.buttonKakutei.Text = "確定";
             this.buttonKakutei.UseVisualStyleBackColor = false;
+            this.buttonKakutei.Click += new System.EventHandler(this.buttonKakutei_Click);
             // 
             // buttonHiddenList
             // 
@@ -543,6 +544,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 56;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -592,6 +594,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 53;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // labelPage
             // 
@@ -612,6 +615,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 52;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -622,6 +626,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 50;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -632,6 +637,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 51;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // userControlChumonDetail1
             // 
@@ -646,7 +652,7 @@ namespace SalesManagement_SysDev
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonChumonDetail);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelChumon);
