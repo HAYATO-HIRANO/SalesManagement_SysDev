@@ -1309,6 +1309,7 @@ namespace SalesManagement_SysDev
                     if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
                     {
                         M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        if(client.ClFlag==0)
                         textBoxClName.Text = client.ClName.ToString();
                     }
 

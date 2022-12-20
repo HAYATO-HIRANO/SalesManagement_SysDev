@@ -67,8 +67,12 @@ namespace SalesManagement_SysDev
                     if (productDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                     {
                         M_Product product = productDataAccess.GetPrIDData(int.Parse(textBoxPrID.Text.Trim()));
-                        textBoxPrName.Text = product.PrName.ToString();
-                        textBoxPrice.Text = product.Price.ToString();
+                        if (product.PrFlag == 0)
+                        {
+                            textBoxPrName.Text = product.PrName.ToString();
+                            textBoxPrice.Text = product.Price.ToString();
+
+                        }
                     }
 
 
