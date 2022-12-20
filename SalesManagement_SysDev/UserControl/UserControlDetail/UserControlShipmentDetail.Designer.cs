@@ -333,6 +333,7 @@ namespace SalesManagement_SysDev
             this.dataGridViewOrderDetail.RowTemplate.Height = 21;
             this.dataGridViewOrderDetail.Size = new System.Drawing.Size(1552, 605);
             this.dataGridViewOrderDetail.TabIndex = 79;
+            this.dataGridViewOrderDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderDetail_CellClick);
             // 
             // labelPageSize
             // 

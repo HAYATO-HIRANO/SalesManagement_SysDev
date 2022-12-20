@@ -163,7 +163,7 @@ namespace SalesManagement_SysDev
                 {
                     ShID = int.Parse(textBoxShID.Text.Trim()),
                     ShDetailID = int.Parse(textBoxShDetailID.Text.Trim()),
-                    PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    //PrID = int.Parse(textBoxPrID.Text.Trim()),
                 };
                 ShipmentDetail = shipmentDetailDataAccess.GetShDetailData(1, selectCondition);
             }
@@ -556,6 +556,15 @@ namespace SalesManagement_SysDev
 
         }
 
-
+        private void dataGridViewOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxShID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxShDetailID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxPrID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxPrName.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxOrQuantity.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxOrTotalPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[6].Value.ToString();
+        }
     }
 }

@@ -680,8 +680,15 @@ namespace SalesManagement_SysDev
             ClearInput();
         }
 
-        
-
-        
+        private void dataGridViewSyukkoDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxSyID.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxSyDetailID.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxPrID.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxPrName.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPrice.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxSyQuantity.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxOrTotalPrice.Text = dataGridViewSyukkoDetail.Rows[dataGridViewSyukkoDetail.CurrentRow.Index].Cells[6].Value.ToString();
+        }
     }
 }
