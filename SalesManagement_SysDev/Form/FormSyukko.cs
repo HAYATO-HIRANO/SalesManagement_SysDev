@@ -368,10 +368,10 @@ namespace SalesManagement_SysDev
         private void dataGridViewSyukko_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxSyID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[0].ToString();
-            textBoxOrID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[1].ToString();
-            textBoxClID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[6].ToString();
-            textBoxClName.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[7].ToString();
+            textBoxSyID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxOrID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxClID.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxClName.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[7].Value.ToString();
 
             //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString())
@@ -395,7 +395,7 @@ namespace SalesManagement_SysDev
             //非表示理由がnullではない場合テキストボックスに表示させる
             if (dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[11].Value != null)
             {
-                checkBox1Hidden.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[11].Value.ToString();
+                textBoxSyHidden.Text = dataGridViewSyukko.Rows[dataGridViewSyukko.CurrentRow.Index].Cells[11].Value.ToString();
             }
 
         }
@@ -805,6 +805,21 @@ namespace SalesManagement_SysDev
 
         }
 
+<<<<<<< HEAD
+        private void checkBox1Hidden_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1Hidden.Checked == true)
+            {
+                textBoxSyHidden.TabStop = true;
+                textBoxSyHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxSyHidden.Text = "";
+                textBoxSyHidden.TabStop = false;
+                textBoxSyHidden.ReadOnly = true;
+
+=======
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -814,6 +829,7 @@ namespace SalesManagement_SysDev
                 //OK時の処理
                 FormMain.loginName = "";
                 Dispose();
+>>>>>>> b769ed33727b0b243c54147885c29136ced39146
             }
         }
     }
