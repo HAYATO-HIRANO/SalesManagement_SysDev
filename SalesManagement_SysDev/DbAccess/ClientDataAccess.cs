@@ -113,7 +113,7 @@ namespace SalesManagement_SysDev
             try
             {
                 var context = new SalesManagement_DevContext();
-                client = context.M_Clients.Single(x => x.ClID == clID && x.ClFlag == 0);
+                client = context.M_Clients.Single(x => x.ClID == clID);
                 context.Dispose();
             }
             catch (Exception ex)
