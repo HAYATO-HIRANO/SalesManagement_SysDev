@@ -288,6 +288,7 @@ namespace SalesManagement_SysDev
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
+            this.Activated += new System.EventHandler(this.FormMain_Activated);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();

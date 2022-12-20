@@ -308,6 +308,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.TabIndex = 5;
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // panelInput
             // 

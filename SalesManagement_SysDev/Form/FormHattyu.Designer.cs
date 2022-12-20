@@ -77,7 +77,6 @@ namespace SalesManagement_SysDev
             this.buttonLogout = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonDetail = new System.Windows.Forms.Button();
-            //this.userControlHattyuDetail1 = new SalesManagement_SysDev.UserControlHattyuDetail();
             this.panelHeader.SuspendLayout();
             this.panelHattyu.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -285,7 +284,6 @@ namespace SalesManagement_SysDev
             this.buttonConfirm.Text = "確定";
             this.buttonConfirm.UseCompatibleTextRendering = true;
             this.buttonConfirm.UseVisualStyleBackColor = false;
-            //this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // buttonSearch
             // 
@@ -615,6 +613,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.TabIndex = 7;
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // timer1
             // 
@@ -635,14 +634,6 @@ namespace SalesManagement_SysDev
             this.buttonDetail.UseVisualStyleBackColor = false;
             this.buttonDetail.Click += new System.EventHandler(this.buttonDetail_Click);
             // 
-            // userControlHattyuDetail1
-            // 
-            //this.userControlHattyuDetail1.BackColor = System.Drawing.Color.Honeydew;
-            //this.userControlHattyuDetail1.Location = new System.Drawing.Point(0, 100);
-            //this.userControlHattyuDetail1.Name = "userControlHattyuDetail1";
-            //this.userControlHattyuDetail1.Size = new System.Drawing.Size(1920, 980);
-            //this.userControlHattyuDetail1.TabIndex = 52;
-            // 
             // FormHattyu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -653,7 +644,6 @@ namespace SalesManagement_SysDev
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelHattyu);
             this.Controls.Add(this.panelHeader);
-            //this.Controls.Add(this.userControlHattyuDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHattyu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -42,11 +42,11 @@ namespace SalesManagement_SysDev
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonHidden = new System.Windows.Forms.Button();
-            this.buttonSalesDetail = new System.Windows.Forms.Button();
             this.buttonHiddenList = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonSalesDetail = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.dateTimePickerDateEnd = new System.Windows.Forms.DateTimePicker();
@@ -239,19 +239,6 @@ namespace SalesManagement_SysDev
             this.buttonHidden.Text = "非表示";
             this.buttonHidden.UseVisualStyleBackColor = false;
             // 
-            // buttonSalesDetail
-            // 
-            this.buttonSalesDetail.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonSalesDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalesDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSalesDetail.Location = new System.Drawing.Point(0, 901);
-            this.buttonSalesDetail.Name = "buttonSalesDetail";
-            this.buttonSalesDetail.Size = new System.Drawing.Size(250, 100);
-            this.buttonSalesDetail.TabIndex = 42;
-            this.buttonSalesDetail.Text = "売上詳細";
-            this.buttonSalesDetail.UseVisualStyleBackColor = false;
-            this.buttonSalesDetail.Click += new System.EventHandler(this.buttonSalesDetail_Click);
-            // 
             // buttonHiddenList
             // 
             this.buttonHiddenList.BackColor = System.Drawing.Color.White;
@@ -280,19 +267,6 @@ namespace SalesManagement_SysDev
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
             // 
-            // buttonLogout
-            // 
-            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
-            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
-            this.buttonLogout.TabIndex = 7;
-            this.buttonLogout.Text = "ログアウト";
-            this.buttonLogout.UseVisualStyleBackColor = false;
-            // 
             // buttonSearch
             // 
             this.buttonSearch.BackColor = System.Drawing.Color.White;
@@ -306,6 +280,33 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            // 
+            // buttonSalesDetail
+            // 
+            this.buttonSalesDetail.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonSalesDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSalesDetail.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSalesDetail.Location = new System.Drawing.Point(0, 901);
+            this.buttonSalesDetail.Name = "buttonSalesDetail";
+            this.buttonSalesDetail.Size = new System.Drawing.Size(250, 100);
+            this.buttonSalesDetail.TabIndex = 42;
+            this.buttonSalesDetail.Text = "売上詳細";
+            this.buttonSalesDetail.UseVisualStyleBackColor = false;
+            this.buttonSalesDetail.Click += new System.EventHandler(this.buttonSalesDetail_Click);
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.DarkGreen;
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.White;
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(250, 80);
+            this.buttonLogout.TabIndex = 7;
+            this.buttonLogout.Text = "ログアウト";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // panelInput
             // 

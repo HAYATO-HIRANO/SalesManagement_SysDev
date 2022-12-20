@@ -73,6 +73,78 @@ namespace SalesManagement_SysDev
             }
 
         }
+        //データグリッドビュー設定
+
+        ///////////////////////////////
+        //メソッド名：PageSizeCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageSizeCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
+            }
+            return true;
+        }
 
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
@@ -143,30 +215,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
-            {
-                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
-                {
-                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-                }
-                if (int.Parse(textBoxPageSize.Text) <= 0)
-                {
-                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPageSize.Focus();
-                    return;
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxPageSize.Focus();
+            if (!PageSizeCheck())
                 return;
-
-            }
-
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewAr.DataSource = Arrival.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -222,6 +272,9 @@ namespace SalesManagement_SysDev
 
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             dataGridViewAr.DataSource = Arrival.Take(pageSize).ToList();
 
@@ -241,6 +294,9 @@ namespace SalesManagement_SysDev
 
         private void buttonLastPage_Click(object sender, EventArgs e)
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
             int pageNo = (int)Math.Ceiling(Arrival.Count / (double)pageSize) - 1;
@@ -261,7 +317,11 @@ namespace SalesManagement_SysDev
 
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
-            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
             int pageNo = int.Parse(textBoxPage.Text);
             //最終ページの計算
             int lastNo = (int)Math.Ceiling(Arrival.Count / (double)pageSize) - 1;
@@ -288,7 +348,11 @@ namespace SalesManagement_SysDev
 
         private void buttonPreviousPage_Click(object sender, EventArgs e)
         {
-            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
             int pageNo = int.Parse(textBoxPage.Text) - 2;
             dataGridViewAr.DataSource = Arrival.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
@@ -1185,6 +1249,7 @@ namespace SalesManagement_SysDev
             ClearInput();
         }
 
+<<<<<<< HEAD
         private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxHidden.Checked == true)
@@ -1198,6 +1263,17 @@ namespace SalesManagement_SysDev
                 textBoxArHidden.TabStop = false;
                 textBoxArHidden.ReadOnly = true;
 
+=======
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                //OK時の処理
+                FormMain.loginName = "";
+                Dispose();
+>>>>>>> b769ed33727b0b243c54147885c29136ced39146
             }
         }
     }

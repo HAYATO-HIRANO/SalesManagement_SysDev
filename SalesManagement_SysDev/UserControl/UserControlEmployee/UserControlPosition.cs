@@ -371,6 +371,79 @@ namespace SalesManagement_SysDev
             // DataGridViewに表示するデータを指定
             SetDataGridView();
         }
+        //データグリッドビュー設定
+
+        ///////////////////////////////
+        //メソッド名：PageSizeCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageSizeCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
+            }
+            return true;
+        }
+
         ///////////////////////////////
         //メソッド名：SetFormDataGridView()
         //引　数   ：なし
@@ -409,6 +482,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -437,6 +513,8 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonPageSizeChange_Click(object sender, EventArgs e)
         {
+            textBoxPage.Text = 1.ToString();
+
             SetDataGridView();
         }
         ///////////////////////////////
@@ -447,6 +525,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonFirstPage_Click(object sender, EventArgs e)
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             dataGridViewPo.DataSource = Position.Take(pageSize).ToList();
 
@@ -463,7 +544,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonPreviousPage_Click(object sender, EventArgs e)
         {
-            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
             int pageNo = int.Parse(textBoxPage.Text) - 2;
             dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
 
@@ -483,7 +568,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
-            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text.Trim());
+            if (!PageCheck())
+                return;
             int pageNo = int.Parse(textBoxPage.Text);
             //最終ページの計算
             int lastNo = (int)Math.Ceiling(Position.Count / (double)pageSize) - 1;
@@ -508,6 +597,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonLastPage_Click(object sender, EventArgs e)
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             //最終ページの計算
             int pageNo = (int)Math.Ceiling(Position.Count / (double)pageSize) - 1;

@@ -962,18 +962,13 @@ namespace SalesManagement_SysDev
         }
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            // ログアウト確認メッセージ
-            DialogResult result = MessageBox.Show("ログアウトしてもよろしいですか？");
+            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (result == DialogResult.OK)
             {
-                // OKの時の処理
+                //OK時の処理
                 FormMain.loginName = "";
                 Dispose();
-            }
-            else
-            {
-                // キャンセルの時の処理
             }
         }
         ///////////////////////////////

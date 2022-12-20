@@ -1068,11 +1068,14 @@ namespace SalesManagement_SysDev
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FormLogin formLogin = new FormLogin();
-            FormMain formMain = new FormMain();
-            formLogin.Show();
-            this.Visible = false;
-            formMain.Close();
+            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                //OK時の処理
+                FormMain.loginName = "";
+                Dispose();
+            }
         }
 
 

@@ -134,5 +134,20 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
         }
+
+        private void FormMain_Activated(object sender, EventArgs e)
+        {
+            labelUserName.Text = "ユーザー名：" + loginName;
+            labelPosition.Text = "権限:" + loginPoName;
+            labelSalesOffice.Text = loginSoName;
+            labelUserID.Text = "ユーザーID：" + loginEmID.ToString();
+            //メインに戻ってきたときにLoginNameが""だったら画面を閉じる
+            if(loginName == "")
+            {
+                this.Close();
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+            }
+        }
     }
 }

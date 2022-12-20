@@ -12,8 +12,6 @@ namespace SalesManagement_SysDev
 {
     public partial class FormChumon : Form
     {
-        //メッセージ表示用クラスのインスタンス化
-        MessageDsp messageDsp = new MessageDsp();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
         //データベース注文詳細テーブルアクセス用クラスのインスタンス化
@@ -25,25 +23,19 @@ namespace SalesManagement_SysDev
         //データベース出庫詳細テーブルアクセス用クラスのインスタンス化
         SyukkoDetailDataAccess syukkoDetailDataAccess = new SyukkoDetailDataAccess();
 
-        //データベース社員テーブルアクセス用クラスのインスタンス化
-        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
-        //データベース営業所テーブルアクセス用クラスのインスタンス化
-        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データグリッドビュー用の注文データ
         private static List<T_ChumonDsp> Chumon;
-        //データグリッドビュー用の社員データ
-        private static List<M_EmployeeDsp> Employee;
-        //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffice;
 
+        private TChumon tChumon = new TChumon();
 
         public FormChumon()
         {
             InitializeComponent();
+            userControlChumonDetail1.addTChumon(tChumon);
         }
 
         private void FormChumon_Load(object sender, EventArgs e)
@@ -366,6 +358,12 @@ namespace SalesManagement_SysDev
         {
             if (labelChumon.Text == "注文管理")
             {
+                if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+                {
+                    tChumon.ChID = int.Parse(textBoxChID.Text.Trim());
+                    userControlChumonDetail1.addTChumon(tChumon);
+                }
+
                 labelChumon.Text = "注文詳細管理";
                 buttonChumonDetail.Text = "注文管理";
                 userControlChumonDetail1.Visible = true;
@@ -878,14 +876,14 @@ namespace SalesManagement_SysDev
 
         private void checkBoxHidden_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxHidden.Checked==true)
+            if (checkBoxHidden.Checked == true)
             {
                 textBoxChHidden.TabStop = true;
                 textBoxChHidden.ReadOnly = false;
             }
             else
             {
-                textBoxChHidden.Text="";
+                textBoxChHidden.Text = "";
                 textBoxChHidden.TabStop = false;
                 textBoxChHidden.ReadOnly = true;
             }
@@ -947,12 +945,12 @@ namespace SalesManagement_SysDev
         private bool CheckStockQuantity()
         {
             //注文IDの注文詳細取得
-           var chDetail= chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+            var chDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
 
-            foreach(var p in chDetail)
+            foreach (var p in chDetail)
             {
                 //数量と在庫数の判定(在庫>数量)ならtrue
-                bool flg=stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
+                bool flg = stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
                 if (flg == false)
                 {
                     MessageBox.Show("数量が在庫数を超えています、商品を発注してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1057,7 +1055,7 @@ namespace SalesManagement_SysDev
                 EmID = 0,
                 SoID = int.Parse(chumon.SoID.ToString()),
                 ClID = int.Parse(chumon.ClID.ToString()),
-                OrID= int.Parse(chumon.OrID.ToString()),
+                OrID = int.Parse(chumon.OrID.ToString()),
                 SyDate = null,
                 SyStateFlag = 0,
                 SyFlag = 0,
@@ -1138,9 +1136,18 @@ namespace SalesManagement_SysDev
 
             // データグリッドビューの表示
             GetDataGridView();
-
         }
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+            if (result == DialogResult.OK)
+            {
+                //OK時の処理
+                FormMain.loginName = "";
+                Dispose();
+            }
+        }
     }
 }
 
