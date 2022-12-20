@@ -716,7 +716,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
-                    MessageBox.Show("商品IDは6文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("商品IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -984,12 +984,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //在庫データを更新しました
-                MessageBox.Show("在庫データを更新しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("商品データを更新しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 //在庫データ更新に失敗しました
-                MessageBox.Show("在庫データ更新に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("商品データの更新に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             textBoxPrID.Focus();
             //入力エリアのクリア
@@ -1042,7 +1042,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrID.TextLength > 6)
                 {
                     //商品IDは6文字です
-                    MessageBox.Show("商品IDは6文字です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("商品IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }

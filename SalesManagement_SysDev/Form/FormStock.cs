@@ -231,7 +231,7 @@ namespace SalesManagement_SysDev
                 if (textBoxStID.TextLength > 6)
                 {
                     //在庫IDは6文字です
-                    messageDsp.DspMsg("M0502");
+                    MessageBox.Show("在庫IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStID.Focus();
                     return false;
                 }
@@ -239,7 +239,7 @@ namespace SalesManagement_SysDev
                 if (!StockDataAccess.CheckStIDExistence(int.Parse(textBoxStID.Text.Trim())))
                 {
                     //入力された在庫IDは存在していません
-                    messageDsp.DspMsg("M0504");
+                    MessageBox.Show("入力された在庫IDは存在していません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStID.Focus();
                     return false;
                 }
@@ -248,7 +248,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //在庫IDが入力されていません
-                messageDsp.DspMsg("M0503");
+                MessageBox.Show("在庫IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxStID.Focus();
                 return false;
             }
@@ -264,8 +264,8 @@ namespace SalesManagement_SysDev
                 }
                 if (textBoxPrID.TextLength > 6)
                 {
-                    //商品IDは6文字です
-                    messageDsp.DspMsg("M0506");
+                    //商品IDは6文字以下です
+                    MessageBox.Show("商品IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -273,7 +273,7 @@ namespace SalesManagement_SysDev
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                 {
                     //入力された商品IDは存在していません
-                    messageDsp.DspMsg("M0511");
+                    MessageBox.Show("入力された商品IDは存在していません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
                     return false;
                 }
@@ -281,7 +281,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //商品IDが入力されていません
-                messageDsp.DspMsg("M0507");
+                MessageBox.Show("商品IDが入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrID.Focus();
                 return false;
             }
@@ -293,7 +293,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrName.TextLength > 50)
                 {
                     //商品名は50文字以下です
-                    messageDsp.DspMsg("M0409");
+                    MessageBox.Show("商品名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrName.Focus();
                     return false;
                 }
@@ -302,7 +302,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //商品名が入力されていません
-                messageDsp.DspMsg("M0410");
+                MessageBox.Show("商品名が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxPrName.Focus();
                 return false;
             }
@@ -318,7 +318,7 @@ namespace SalesManagement_SysDev
                 if (textBoxStQuantity.TextLength > 4)
                 {
                     //在庫数は4桁以下です
-                    messageDsp.DspMsg("M0509");
+                    MessageBox.Show("在庫数は4桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStQuantity.Focus();
                     return false;
                 }
@@ -327,7 +327,7 @@ namespace SalesManagement_SysDev
             else
             {
                 //在庫数が入力されていません
-                messageDsp.DspMsg("M0510");
+                MessageBox.Show("在庫数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxStQuantity.Focus();
                 return false;
             }
@@ -348,7 +348,7 @@ namespace SalesManagement_SysDev
         private void UpdateStock(T_Stock upStock)
         {
             //在庫データを更新してよろしいですか？
-            DialogResult result = messageDsp.DspMsg("M0428");
+            DialogResult result = MessageBox.Show("在庫データを更新してよろしいですか？", "確定確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
             {
                 return;
@@ -357,12 +357,12 @@ namespace SalesManagement_SysDev
             if (flg == true)
             {
                 //商品データを更新しました
-                messageDsp.DspMsg("M0429");
+                MessageBox.Show("在庫データを更新しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 //商品データ更新に失敗しました
-                messageDsp.DspMsg("M0429");
+                MessageBox.Show("在庫データの更新に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             textBoxStID.Focus();
             //入力エリアのクリア
@@ -431,8 +431,8 @@ namespace SalesManagement_SysDev
                 }
                 if (textBoxStID.TextLength > 6)
                 {
-                    //在庫IDは6文字です
-                    messageDsp.DspMsg("M0502");
+                    //在庫IDは6文字以下です
+                    MessageBox.Show("在庫IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStID.Focus();
 
                 }
@@ -440,7 +440,7 @@ namespace SalesManagement_SysDev
                 if (!StockDataAccess.CheckStIDExistence(int.Parse(textBoxStID.Text.Trim())))
                 {
                     //入力された在庫IDは存在していません
-                    messageDsp.DspMsg("M0504");
+                    MessageBox.Show("入力された在庫IDは存在していません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStID.Focus();
 
                 }
@@ -458,8 +458,8 @@ namespace SalesManagement_SysDev
                 }
                 if (textBoxPrID.TextLength > 6)
                 {
-                    //商品IDは6文字です
-                    messageDsp.DspMsg("M0506");
+                    //商品IDは6文字以下です
+                    MessageBox.Show("商品IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
 
                 }
@@ -467,7 +467,7 @@ namespace SalesManagement_SysDev
                 if (!ProductDataAccess.CheckPrIDExistence(int.Parse(textBoxPrID.Text.Trim())))
                 {
                     //入力された商品IDは存在していません
-                    messageDsp.DspMsg("M0511");
+                    MessageBox.Show("入力された商品IDは存在していません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrID.Focus();
 
                 }
@@ -481,7 +481,7 @@ namespace SalesManagement_SysDev
                 if (textBoxPrName.TextLength > 50)
                 {
                     //商品名は50文字以下です
-                    messageDsp.DspMsg("M0409");
+                    MessageBox.Show("商品IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrName.Focus();
 
                 }
@@ -500,7 +500,7 @@ namespace SalesManagement_SysDev
                 if (textBoxStQuantity.TextLength > 4)
                 {
                     //在庫数は4桁以下です
-                    messageDsp.DspMsg("M0509");
+                    MessageBox.Show("在庫数は4桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxStQuantity.Focus();
 
                 }
