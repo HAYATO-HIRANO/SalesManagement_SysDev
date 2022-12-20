@@ -574,6 +574,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.TabStop = false;
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // userControlSyukkoDetail1
             // 
@@ -588,7 +589,7 @@ namespace SalesManagement_SysDev
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelSyukko);

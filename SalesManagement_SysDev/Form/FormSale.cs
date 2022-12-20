@@ -64,5 +64,17 @@ namespace SalesManagement_SysDev
                 userControlSaleDetail1.Visible = false;
             }
         }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                //OK時の処理
+                FormMain.loginName = "";
+                Dispose();
+            }
+        }
     }
 }
