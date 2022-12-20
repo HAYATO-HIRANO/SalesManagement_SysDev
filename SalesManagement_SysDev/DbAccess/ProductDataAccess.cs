@@ -824,7 +824,7 @@ namespace SalesManagement_SysDev//.DbAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                product = context.M_Products.Single(x => x.PrID == prID && x.PrFlag == 0);
+                product = context.M_Products.Single(x => x.PrID == prID );
                 context.Dispose();
             }
             catch (Exception ex)
