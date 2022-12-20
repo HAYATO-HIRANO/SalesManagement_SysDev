@@ -82,6 +82,7 @@
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.userControlSalesOffice1 = new SalesManagement_SysDev.UserControlSalesOffice();
             this.userControlPosition1 = new SalesManagement_SysDev.UserControlPosition();
+            this.buttonClear2 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -367,6 +368,7 @@
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.checkBoxEmFlag);
             this.panelInput.Controls.Add(this.dateTimePickerHiredate);
             this.panelInput.Controls.Add(this.comboBoxPoID);
@@ -702,12 +704,23 @@
             this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
             this.userControlPosition1.TabIndex = 28;
             // 
+            // buttonClear2
+            // 
+            this.buttonClear2.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear2.Location = new System.Drawing.Point(1447, 111);
+            this.buttonClear2.Name = "buttonClear2";
+            this.buttonClear2.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear2.TabIndex = 50;
+            this.buttonClear2.Text = "入力クリア";
+            this.buttonClear2.UseVisualStyleBackColor = true;
+            this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
+            // 
             // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.panelLeft);
@@ -789,5 +802,6 @@
         private System.Windows.Forms.Panel panelEmployee;
         private UserControlSalesOffice userControlSalesOffice1;
         private UserControlPosition userControlPosition1;
+        private System.Windows.Forms.Button buttonClear2;
     }
 }

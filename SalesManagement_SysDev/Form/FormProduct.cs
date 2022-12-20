@@ -606,7 +606,7 @@ namespace SalesManagement_SysDev
             //int Pdflg = 0;
             //if (checkBoxPrFlag.Checked == true)
             //{
-            //    Pdflg = 2;
+            //    Pdflg = 2;Da
             //}
 
             return new M_Product

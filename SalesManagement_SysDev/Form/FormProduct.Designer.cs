@@ -820,7 +820,7 @@ namespace SalesManagement_SysDev
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1050);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.userControlMajorClassification1);
             this.Controls.Add(this.userControlMaker1);
