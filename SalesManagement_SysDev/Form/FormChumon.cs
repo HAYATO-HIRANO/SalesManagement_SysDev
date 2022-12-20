@@ -890,76 +890,20 @@ namespace SalesManagement_SysDev
         }
 
 
-        //データグリッドビュー セルクリック
-        private void dataGridViewChumon_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //データグリッドビューからクリックされたデータを各入力エリアへ
-            textBoxChID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxOrID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxClID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[4].Value.ToString();
-            textBoxClName.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[5].Value.ToString();
-            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
-            {
-                checkBoxHidden.Checked = false;
-            }
-            else
-            {
-                checkBoxHidden.Checked = true;
-            }
-            //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value != null)
-            {
-                checkBoxHidden.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value.ToString();
-            }
-
-
-        }
 
         private void buttonKakutei_Click(object sender, EventArgs e)
         {
-            // 9.1.2.1 在庫数の確認
-            if (!CheckStockQuantity())
-                return;
-            // 9.1.2.2 妥当な注文データ取得
+            // 9.1.2.1 妥当な注文データ取得
             if (!GetValidDataAtConfirm())
                 return;
-            // 9.1.2.3　出庫情報作成
+            // 9.1.2.2　出庫情報作成
             var conSyukko = GenerateDataAtConfirm();
-            // 9.1.2.4 出庫詳細情報作成
+            // 9.1.2.3 出庫詳細情報作成
             var conSyukkoDetail = GenerateDetailDataAtConfirm();
 
-            // 9.1.2.5 注文情報確定
+            // 9.1.2.4 注文情報確定
             ConfirmChumon(conSyukko, conSyukkoDetail);
 
-        }
-        ///////////////////////////////
-        //  9.1.2.1 在庫数の確認
-        //メソッド名：GetValidDataAtConfirm()
-        //引　数   ：なし
-        //戻り値   ：true or false
-        //機　能   ：入力データの形式チェック
-        //          ：エラーがない場合True
-        //          ：エラーがある場合False
-        ///////////////////////////////
-        private bool CheckStockQuantity()
-        {
-            //注文IDの注文詳細取得
-            var chDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
-
-            foreach (var p in chDetail)
-            {
-                //数量と在庫数の判定(在庫>数量)ならtrue
-                bool flg = stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
-                if (flg == false)
-                {
-                    MessageBox.Show("数量が在庫数を超えています、商品を発注してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxChID.Focus();
-                    return false;
-
-                }
-            }
-            return true;
         }
 
         ///////////////////////////////
@@ -1035,6 +979,21 @@ namespace SalesManagement_SysDev
                 MessageBox.Show("詳細情報が登録されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
 
+            }
+            //注文IDの注文詳細取得
+            var chDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+
+            foreach (var p in chDetail)
+            {
+                //数量と在庫数の判定(在庫>数量)ならtrue
+                bool flg = stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
+                if (flg == false)
+                {
+                    MessageBox.Show("数量が在庫数を超えています、商品を発注してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+
+                }
             }
 
             return true;
@@ -1147,6 +1106,41 @@ namespace SalesManagement_SysDev
                 FormMain.loginName = "";
                 Dispose();
             }
+        }
+
+        private void dataGridViewChumon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //データグリッドビューからクリックされたデータを各入力エリアへ
+            textBoxChID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxOrID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxClID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxClName.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[5].Value.ToString();
+            //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value == null||dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString()               )
+            {
+                checkBoxStateFlag.Checked = false;
+            }
+            else
+            {
+                checkBoxStateFlag.Checked = true;
+            }
+
+            //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
+            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[10].Value.ToString() != 2.ToString())
+            {
+                checkBoxHidden.Checked = false;
+            }
+            else
+            {
+                checkBoxHidden.Checked = true;
+            }
+            //非表示理由がnullではない場合テキストボックスに表示させる
+            if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[11].Value != null)
+            {
+                textBoxChHidden.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[11].Value.ToString();
+            }
+
+
         }
     }
 }
