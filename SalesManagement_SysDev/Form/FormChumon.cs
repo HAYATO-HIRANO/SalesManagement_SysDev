@@ -12,8 +12,6 @@ namespace SalesManagement_SysDev
 {
     public partial class FormChumon : Form
     {
-        //メッセージ表示用クラスのインスタンス化
-        MessageDsp messageDsp = new MessageDsp();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
         //データベース注文詳細テーブルアクセス用クラスのインスタンス化
@@ -25,25 +23,19 @@ namespace SalesManagement_SysDev
         //データベース出庫詳細テーブルアクセス用クラスのインスタンス化
         SyukkoDetailDataAccess syukkoDetailDataAccess = new SyukkoDetailDataAccess();
 
-        //データベース社員テーブルアクセス用クラスのインスタンス化
-        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
-        //データベース営業所テーブルアクセス用クラスのインスタンス化
-        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データグリッドビュー用の注文データ
         private static List<T_ChumonDsp> Chumon;
-        //データグリッドビュー用の社員データ
-        private static List<M_EmployeeDsp> Employee;
-        //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffice;
 
+        private TChumon tChumon = new TChumon();
 
         public FormChumon()
         {
             InitializeComponent();
+            userControlChumonDetail1.addTChumon(tChumon);
         }
 
         private void FormChumon_Load(object sender, EventArgs e)
@@ -366,6 +358,12 @@ namespace SalesManagement_SysDev
         {
             if (labelChumon.Text == "注文管理")
             {
+                if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+                {
+                    tChumon.ChID = int.Parse(textBoxChID.Text.Trim());
+                    userControlChumonDetail1.addTChumon(tChumon);
+                }
+
                 labelChumon.Text = "注文詳細管理";
                 buttonChumonDetail.Text = "注文管理";
                 userControlChumonDetail1.Visible = true;
