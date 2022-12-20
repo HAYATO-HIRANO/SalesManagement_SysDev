@@ -51,6 +51,7 @@
             this.buttonSalesOffice = new System.Windows.Forms.Button();
             this.buttonPosition = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.buttonClear2 = new System.Windows.Forms.Button();
             this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
             this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
             this.comboBoxPoID = new System.Windows.Forms.ComboBox();
@@ -367,6 +368,7 @@
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.checkBoxEmFlag);
             this.panelInput.Controls.Add(this.dateTimePickerHiredate);
             this.panelInput.Controls.Add(this.comboBoxPoID);
@@ -388,6 +390,17 @@
             this.panelInput.Size = new System.Drawing.Size(1552, 144);
             this.panelInput.TabIndex = 6;
             this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // buttonClear2
+            // 
+            this.buttonClear2.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonClear2.Location = new System.Drawing.Point(1447, 111);
+            this.buttonClear2.Name = "buttonClear2";
+            this.buttonClear2.Size = new System.Drawing.Size(102, 30);
+            this.buttonClear2.TabIndex = 50;
+            this.buttonClear2.Text = "入力クリア";
+            this.buttonClear2.UseVisualStyleBackColor = true;
+            this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
             // 
             // checkBoxEmFlag
             // 
@@ -718,6 +731,7 @@
             this.Controls.Add(this.userControlPosition1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEmployee";
             this.Load += new System.EventHandler(this.FormEmployee_Load);
             this.panel3.ResumeLayout(false);
@@ -789,5 +803,6 @@
         private System.Windows.Forms.Panel panelEmployee;
         private UserControlSalesOffice userControlSalesOffice1;
         private UserControlPosition userControlPosition1;
+        private System.Windows.Forms.Button buttonClear2;
     }
 }

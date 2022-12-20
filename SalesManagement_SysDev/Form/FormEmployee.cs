@@ -365,13 +365,13 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Employee GenerateDataAtRegistration()
         {
-            DateTime? mHireDate;
-            if (dateTimePickerHiredate.Checked == false)
-                mHireDate = null;
-            else
-                mHireDate = DateTime.Parse(dateTimePickerHiredate.Text);
+            //DateTime? mHireDate;
+            //if (dateTimePickerHiredate.Checked == false)
+            //    mHireDate = null;
+            //else
+            //    mHireDate = DateTime.Parse(dateTimePickerHiredate.Text);
             // パスワードハッシュ化
-            string pw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
+            //string pw = passwordHash.CreatePasswordHash(textBoxEmPassword.Text.Trim());
 
             return new M_Employee
             {
@@ -379,8 +379,8 @@ namespace SalesManagement_SysDev
                 EmName = textBoxEmName.Text.Trim(),
                 SoID = int.Parse(comboBoxSoID.SelectedValue.ToString()),
                 PoID = int.Parse(comboBoxPoID.SelectedValue.ToString()),
-                EmHiredate = (DateTime)mHireDate,
-                EmPassword = pw,
+                EmHiredate = DateTime.Parse(dateTimePickerHiredate.Text),
+                EmPassword = textBoxEmPassword.Text.Trim(),
                 EmPhone = textBoxEmPhone.Text.Trim(),               
                 EmFlag = 0,
                 EmHidden = String.Empty
@@ -499,7 +499,9 @@ namespace SalesManagement_SysDev
 
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
-
+            ClearInput();
+            GetHiddenDataGridView();
+            
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -1022,7 +1024,8 @@ namespace SalesManagement_SysDev
 
         private void buttonList_Click(object sender, EventArgs e)
         {
-
+            ClearInput();
+            GetDataGridView();
         }
 
         private void checkBoxEmFlag_CheckedChanged(object sender, EventArgs e)
@@ -1031,12 +1034,14 @@ namespace SalesManagement_SysDev
             {
                 textBoxEmHidden.TabStop = true;
                 textBoxEmHidden.ReadOnly = false;
+                textBoxEmHidden.Enabled = true;
             }
             else
             {
                 textBoxEmHidden.Text = "";
                 textBoxEmHidden.TabStop = false;
                 textBoxEmHidden.ReadOnly = true;
+                textBoxEmHidden.Enabled = false;
 
             }
         }
@@ -1065,5 +1070,27 @@ namespace SalesManagement_SysDev
                 textBoxEmHidden.Text = dataGridViewEmployee.Rows[dataGridViewEmployee.CurrentRow.Index].Cells[10].Value.ToString();
             }
         }
+
+        private void buttonClear2_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            // 受注データの取得
+            Employee = employeeDataAccess.GetEmployeeHiddenData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+
+        }
     }
+
 }

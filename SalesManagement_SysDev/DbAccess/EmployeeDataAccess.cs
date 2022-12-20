@@ -666,5 +666,64 @@ namespace SalesManagement_SysDev
             return employee;
         }
 
+        ///////////////////////////////
+        //メソッド名：GetEmployeeHiddenData()
+        //引　数   ：なし
+        //戻り値   ：全社員データ
+        //機　能   ：全社員データの取得
+        ///////////////////////////////
+        public List<M_EmployeeDsp> GetEmployeeHiddenData()
+        {
+            List<M_EmployeeDsp> employee = new List<M_EmployeeDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.M_Employees
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         join t3 in context.M_Positions
+                         on t1.PoID equals t3.PoID
+                         where t1.EmFlag == 2
+                         select new
+                         {
+                             t1.EmID,
+                             t1.EmName,
+                             t1.SoID,
+                             t2.SoName,
+                             t1.PoID,
+                             t3.PoName,
+                             t1.EmHiredate,
+                             t1.EmPhone,
+                             t1.EmFlag,
+                             t1.EmHidden
+                         };
+                foreach (var p in tb)
+                {
+                    employee.Add(new M_EmployeeDsp()
+                    {
+                        EmID = p.EmID,
+                        EmName = p.EmName,
+                        SoID = p.SoID,
+                        SoName = p.SoName,
+                        PoID = p.PoID,
+                        PoName = p.PoName,
+                        EmHiredate = p.EmHiredate,
+                        EmPhone = p.EmPhone,
+                        EmFlag = p.EmFlag,
+                        EmHidden = p.EmHidden
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return employee;
+        }
+
     }
 }
