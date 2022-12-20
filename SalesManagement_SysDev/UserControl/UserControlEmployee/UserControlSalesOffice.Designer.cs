@@ -332,6 +332,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 54;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // textBoxPageSize
             // 
@@ -361,6 +362,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 51;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
@@ -371,6 +373,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 50;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -381,6 +384,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 49;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -391,6 +395,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 48;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
@@ -423,7 +428,6 @@ namespace SalesManagement_SysDev
             this.dataGridViewSalesOffice.Size = new System.Drawing.Size(1442, 543);
             this.dataGridViewSalesOffice.TabIndex = 45;
             this.dataGridViewSalesOffice.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellClick);
-            //this.dataGridViewSalesOffice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesOffice_CellContentClick);
             // 
             // UserControlSalesOffice
             // 

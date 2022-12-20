@@ -399,7 +399,7 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(41, 26);
             this.textBoxPageSize.TabIndex = 38;
-            this.textBoxPageSize.Text = "100";
+            this.textBoxPageSize.Text = "20";
             // 
             // labelPageSize
             // 

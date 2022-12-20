@@ -97,6 +97,43 @@ namespace SalesManagement_SysDev//.DbAccess
 
 
         }
+        ///////////////////////////////
+        //メソッド名：CheckQuantity()
+        //引　数   ：商品ID,数量
+        //戻り値   ：True or False
+        //機　能   ：在庫数の確認
+        //          ：在庫が多い場合True
+        //          ：在庫が少ない場合False
+        ///////////////////////////////
+        public bool ChrckQuantity(int prID, int quantity)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var stock = context.T_Stocks.Single(x => x.PrID == prID);
+
+                if (stock.StQuantity > quantity)
+                {
+                    flg=true;
+                }
+
+
+
+
+                context.SaveChanges();
+                context.Dispose();
+
+                return flg;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+            }
+            return flg;
+        }
 
 
 

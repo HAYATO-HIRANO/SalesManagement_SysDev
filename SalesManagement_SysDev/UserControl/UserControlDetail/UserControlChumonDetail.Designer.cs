@@ -141,9 +141,8 @@ namespace SalesManagement_SysDev
             this.labelStateFlag.ForeColor = System.Drawing.Color.Red;
             this.labelStateFlag.Location = new System.Drawing.Point(126, 96);
             this.labelStateFlag.Name = "labelStateFlag";
-            this.labelStateFlag.Size = new System.Drawing.Size(85, 24);
+            this.labelStateFlag.Size = new System.Drawing.Size(0, 24);
             this.labelStateFlag.TabIndex = 45;
-            this.labelStateFlag.Text = "未確定";
             // 
             // labelOrState
             // 

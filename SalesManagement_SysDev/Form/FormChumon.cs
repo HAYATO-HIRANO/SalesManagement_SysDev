@@ -12,31 +12,30 @@ namespace SalesManagement_SysDev
 {
     public partial class FormChumon : Form
     {
-        //メッセージ表示用クラスのインスタンス化
-        MessageDsp messageDsp = new MessageDsp();
         //データベース注文テーブルアクセス用クラスのインスタンス化
         ChumonDataAccess chumonDataAccess = new ChumonDataAccess();
-        //データベース受注テーブルアクセス用クラスのインスタンス化
-        ChumonDataAccess ChumonDataAccess = new ChumonDataAccess();
-        //データベース社員テーブルアクセス用クラスのインスタンス化
-        EmployeeDataAccess employeeDataAccess = new EmployeeDataAccess();
-        //データベース営業所テーブルアクセス用クラスのインスタンス化
-        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
+        //データベース注文詳細テーブルアクセス用クラスのインスタンス化
+        ChumonDetailDataAccess chumonDetailDataAccess = new ChumonDetailDataAccess();
+        //データベース在庫テーブルアクセス用クラスのインスタンス化
+        StockDataAccess stockDataAccess = new StockDataAccess();
+        //データベース出庫テーブルアクセス用クラスのインスタンス化
+        SyukkoDataAccess syukkoDataAccess = new SyukkoDataAccess();
+        //データベース出庫詳細テーブルアクセス用クラスのインスタンス化
+        SyukkoDetailDataAccess syukkoDetailDataAccess = new SyukkoDetailDataAccess();
+
         //入力形式チェック用クラスのインスタンス化
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //データグリッドビュー用の注文データ
         private static List<T_ChumonDsp> Chumon;
-        //データグリッドビュー用の社員データ
-        private static List<M_EmployeeDsp> Employee;
-        //コンボボックス用の営業所データ
-        private static List<M_SalesOffice> SalesOffice;
 
+        private TChumon tChumon = new TChumon();
 
         public FormChumon()
         {
             InitializeComponent();
+            userControlChumonDetail1.addTChumon(tChumon);
         }
 
         private void FormChumon_Load(object sender, EventArgs e)
@@ -54,6 +53,77 @@ namespace SalesManagement_SysDev
             textBoxChHidden.ReadOnly = true;
 
             SetFormDataGridView();
+        }
+        //データグリッドビュー設定
+        ///////////////////////////////
+        //メソッド名：PageSizeCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageSizeCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPageSize.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPageSize.Text.Trim()))
+                {
+                    MessageBox.Show("ページ行数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPageSize.Text) <= 0)
+                {
+                    MessageBox.Show("ページ行数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPageSize.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ行数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPageSize.Focus();
+                return false;
+
+            }
+            return true;
+        }
+        ///////////////////////////////
+        //メソッド名：PageCheck()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool PageCheck()
+        {
+            if (!String.IsNullOrEmpty(textBoxPage.Text.Trim()))
+            {
+                if (!dataInputFormCheck.CheckNumeric(textBoxPage.Text.Trim()))
+                {
+                    MessageBox.Show("ページ数は半角数値のみです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+                }
+                if (int.Parse(textBoxPage.Text) <= 0)
+                {
+                    MessageBox.Show("ページ数は1以上です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxPage.Focus();
+                    return false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("ページ数が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxPage.Focus();
+                return false;
+
+            }
+            return true;
         }
 
         ///////////////////////////////
@@ -86,10 +156,19 @@ namespace SalesManagement_SysDev
             GetDataGridView();
 
         }
-   
+
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定 
+        ///////////////////////////////
 
         private void SetDataGridView()
         {
+            if (!PageSizeCheck())
+                return;
+
             int pageSize = int.Parse(textBoxPageSize.Text);
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
@@ -126,6 +205,142 @@ namespace SalesManagement_SysDev
 
             dataGridViewChumon.Refresh();
         }
+        ///////////////////////////////
+        //メソッド名：GetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetDataGridView()
+        {
+            //注文データの取得
+            Chumon = chumonDataAccess.GetChumonData();
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetHiddenDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示する非表示データの取得
+        ///////////////////////////////
+        private void GetHiddenDataGridView()
+        {
+            //注文データの取得
+            Chumon = chumonDataAccess.GetChumonData();
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPageSizeChange_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示件数変更
+        ///////////////////////////////
+        private void buttonPageSizeChange_Click(object sender, EventArgs e)
+        {
+            textBoxPage.Text = 1.ToString();
+
+            SetDataGridView();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonFirstPage_Click()
+        //引　数   ：なし——
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの先頭ページ表示
+        ///////////////////////////////
+        private void buttonFirstPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            dataGridViewChumon.DataSource = Chumon.Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewChumon.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = "1";
+        }
+        ///////////////////////////////
+        //メソッド名：buttonPreviousPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの前ページ表示
+        ///////////////////////////////
+
+        private void buttonPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageCheck())
+                return;
+
+            int pageNo = int.Parse(textBoxPage.Text) - 2;
+            dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewChumon.Refresh();
+            //ページ番号の設定
+            if (pageNo + 1 > 1)
+                textBoxPage.Text = (pageNo + 1).ToString();
+            else
+                textBoxPage.Text = "1";
+
+        }
+
+        ///////////////////////////////
+        //メソッド名：buttonNextPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの次ページ表示
+        ///////////////////////////////
+        private void buttonNextPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            if (!PageCheck())
+                return;
+            int pageNo = int.Parse(textBoxPage.Text);
+            //最終ページの計算
+            int lastNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
+            //最終ページでなければ
+            if (pageNo <= lastNo)
+                dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewChumon.Refresh();
+            //ページ番号の設定
+            int lastPage = (int)Math.Ceiling(Chumon.Count / (double)pageSize);
+            if (pageNo >= lastPage)
+                textBoxPage.Text = lastPage.ToString();
+            else
+                textBoxPage.Text = (pageNo + 1).ToString();
+        }
+        ///////////////////////////////
+        //メソッド名：buttonLastPage_Click()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの最終ページ表示
+        ///////////////////////////////
+        private void buttonLastPage_Click(object sender, EventArgs e)
+        {
+            if (!PageSizeCheck())
+                return;
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+            //最終ページの計算
+            int pageNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
+            dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
+
+            // DataGridViewを更新
+            dataGridViewChumon.Refresh();
+            //ページ番号の設定
+            textBoxPage.Text = (pageNo + 1).ToString();
+        }
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -143,6 +358,12 @@ namespace SalesManagement_SysDev
         {
             if (labelChumon.Text == "注文管理")
             {
+                if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+                {
+                    tChumon.ChID = int.Parse(textBoxChID.Text.Trim());
+                    userControlChumonDetail1.addTChumon(tChumon);
+                }
+
                 labelChumon.Text = "注文詳細管理";
                 buttonChumonDetail.Text = "注文管理";
                 userControlChumonDetail1.Visible = true;
@@ -309,7 +530,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(1, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(1, selectCondition);
 
                         }
                         else
@@ -323,7 +544,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(2, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(2, selectCondition);
 
                         }
 
@@ -342,7 +563,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(3, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(3, selectCondition);
 
                         }
                         else
@@ -355,7 +576,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(4, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(4, selectCondition);
 
                         }
 
@@ -380,7 +601,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(5, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(5, selectCondition);
 
                         }
                         else
@@ -393,7 +614,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(6, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(6, selectCondition);
 
                         }
 
@@ -411,7 +632,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(7, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(7, selectCondition);
 
                         }
                         else
@@ -423,7 +644,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonData(8, selectCondition);
+                            Chumon = chumonDataAccess.GetChumonData(8, selectCondition);
 
                         }
 
@@ -454,7 +675,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(1, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(1, selectCondition, startDay, endDay);
 
                         }
                         else//顧客ID未入力
@@ -468,7 +689,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(2, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(2, selectCondition, startDay, endDay);
 
                         }
 
@@ -487,7 +708,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(3, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(3, selectCondition, startDay, endDay);
 
                         }
                         else
@@ -500,7 +721,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(4, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(4, selectCondition, startDay, endDay);
 
                         }
                     }
@@ -522,7 +743,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(5, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(5, selectCondition, startDay, endDay);
 
                         }
                         else//顧客ID未入力
@@ -535,7 +756,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(6, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(6, selectCondition, startDay, endDay);
 
                         }
 
@@ -553,7 +774,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(7, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(7, selectCondition, startDay, endDay);
 
                         }
                         else//顧客ID未入力
@@ -565,7 +786,7 @@ namespace SalesManagement_SysDev
                                 ChHidden = textBoxChHidden.Text.Trim()
                             };
                             //データの抽出
-                            Chumon = ChumonDataAccess.GetChumonDateData(8, selectCondition, startDay, endDay);
+                            Chumon = chumonDataAccess.GetChumonDateData(8, selectCondition, startDay, endDay);
 
                         }
                     }
@@ -581,6 +802,18 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetSelectData()
         {
+            textBoxPage.Text = "1";
+
+            int pageSize = int.Parse(textBoxPageSize.Text);
+
+            dataGridViewChumon.DataSource = Chumon;
+            if (Chumon.Count == 0)
+            {
+                MessageBox.Show("該当データが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            labelPage.Text = "/" + ((int)Math.Ceiling(Chumon.Count / (double)pageSize)) + "ページ";
+            dataGridViewChumon.Refresh();
 
         }
         ///////////////////////////////
@@ -633,102 +866,6 @@ namespace SalesManagement_SysDev
             checkBoxHidden.Checked = false;
         }
 
-        ///////////////////////////////
-        //メソッド名：GetDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示するデータの取得
-        ///////////////////////////////
-        private void GetDataGridView()
-        {
-            //注文データの取得
-            Chumon = chumonDataAccess.GetChumonData();
-            // DataGridViewに表示するデータを指定
-            SetDataGridView();
-        }
-
-        ///////////////////////////////
-        //メソッド名：GetHiddenDataGridView()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューに表示する非表示データの取得
-        ///////////////////////////////
-        private void GetHiddenDataGridView()
-        {
-            //注文データの取得
-            Chumon = chumonDataAccess.GetChumonData();
-            // DataGridViewに表示するデータを指定
-            SetDataGridView();
-        }
-        ///////////////////////////////
-        //メソッド名：buttonPageSizeChange_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの表示件数変更
-        ///////////////////////////////
-        private void buttonPageSizeChange_Click(object sender, EventArgs e)
-        {
-            SetDataGridView();
-        }
-        ///////////////////////////////
-        //メソッド名：buttonFirstPage_Click()
-        //引　数   ：なし——
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの先頭ページ表示
-        ///////////////////////////////
-        private void buttonFirstPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            dataGridViewChumon.DataSource = Chumon.Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewChumon.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = "1";
-        }
-        ///////////////////////////////
-        //メソッド名：buttonNextPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの次ページ表示
-        ///////////////////////////////
-        private void buttonNextPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            int pageNo = int.Parse(textBoxPage.Text);
-            //最終ページの計算
-            int lastNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
-            //最終ページでなければ
-            if (pageNo <= lastNo)
-                dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewChumon.Refresh();
-            //ページ番号の設定
-            int lastPage = (int)Math.Ceiling(Chumon.Count / (double)pageSize);
-            if (pageNo >= lastPage)
-                textBoxPage.Text = lastPage.ToString();
-            else
-                textBoxPage.Text = (pageNo + 1).ToString();
-        }
-        ///////////////////////////////
-        //メソッド名：buttonLastPage_Click()
-        //引　数   ：なし
-        //戻り値   ：なし
-        //機　能   ：データグリッドビューの最終ページ表示
-        ///////////////////////////////
-        private void buttonLastPage_Click(object sender, EventArgs e)
-        {
-            int pageSize = int.Parse(textBoxPageSize.Text);
-            //最終ページの計算
-            int pageNo = (int)Math.Ceiling(Chumon.Count / (double)pageSize) - 1;
-            dataGridViewChumon.DataSource = Chumon.Skip(pageSize * pageNo).Take(pageSize).ToList();
-
-            // DataGridViewを更新
-            dataGridViewChumon.Refresh();
-            //ページ番号の設定
-            textBoxPage.Text = (pageNo + 1).ToString();
-        }
 
 
         //入力クリア
@@ -779,9 +916,234 @@ namespace SalesManagement_SysDev
 
         }
 
+<<<<<<< HEAD
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("ログアウトしてよろしいですか？", "ログアウト確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+=======
+        private void buttonKakutei_Click(object sender, EventArgs e)
+        {
+            // 9.1.2.1 在庫数の確認
+            if (!CheckStockQuantity())
+                return;
+            // 9.1.2.2 妥当な注文データ取得
+            if (!GetValidDataAtConfirm())
+                return;
+            // 9.1.2.3　出庫情報作成
+            var conSyukko = GenerateDataAtConfirm();
+            // 9.1.2.4 出庫詳細情報作成
+            var conSyukkoDetail = GenerateDetailDataAtConfirm();
+
+            // 9.1.2.5 注文情報確定
+            ConfirmChumon(conSyukko, conSyukkoDetail);
+
+        }
+        ///////////////////////////////
+        //  9.1.2.1 在庫数の確認
+        //メソッド名：GetValidDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool CheckStockQuantity()
+        {
+            //注文IDの注文詳細取得
+           var chDetail= chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+
+            foreach(var p in chDetail)
+            {
+                //数量と在庫数の判定(在庫>数量)ならtrue
+                bool flg=stockDataAccess.ChrckQuantity(p.PrID, p.ChQuantity);
+                if (flg == false)
+                {
+                    MessageBox.Show("数量が在庫数を超えています、商品を発注してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+
+                }
+            }
+            return true;
+        }
+
+        ///////////////////////////////
+        //  9.1.2.2 妥当な注文データ取得
+        //メソッド名：GetValidDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtConfirm()
+        {
+            //注文IDの適否
+            if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+            {
+                //注文IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxChID.Text.Trim()))
+                {
+                    MessageBox.Show("注文IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxChID.TextLength > 6)
+                {
+                    MessageBox.Show("注文IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+
+                // 注文IDの存在チェック
+                if (!chumonDataAccess.CheckChIDExistence(int.Parse(textBoxChID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された注文IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("注文ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxChID.Focus();
+                return false;
+            }
+            //注文確定状態の判定
+            var order = chumonDataAccess.GetChIDData(int.Parse(textBoxChID.Text.Trim()));
+            if (order.ChStateFlag == 1)
+            {
+                MessageBox.Show("入力された注文IDはすでに確定されています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxChID.Focus();
+                return false;
+
+            }
+            //注文状態フラグ
+            if (checkBoxStateFlag.CheckState == CheckState.Indeterminate)
+            {
+                MessageBox.Show("注文確定が不確定な状態です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            if (checkBoxStateFlag.Checked == false)
+            {
+                MessageBox.Show("注文確定がチェックされていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxStateFlag.Focus();
+                return false;
+            }
+            //詳細情報の件数チェック
+            var chumonDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+            if (chumonDetail.Count == 0)
+            {
+                MessageBox.Show("詳細情報が登録されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+
+            }
+
+            return true;
+        }
+        ///////////////////////////////
+        //　9.1.2.3 出庫情報作成
+        //メソッド名：GenerateDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：注文確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private T_Syukko GenerateDataAtConfirm()
+        {
+            T_Chumon chumon = chumonDataAccess.GetChIDData(int.Parse(textBoxChID.Text.Trim()));
+            //注文データを出庫データに変換
+            return new T_Syukko
+            {
+                EmID = 0,
+                SoID = int.Parse(chumon.SoID.ToString()),
+                ClID = int.Parse(chumon.ClID.ToString()),
+                OrID= int.Parse(chumon.OrID.ToString()),
+                SyDate = null,
+                SyStateFlag = 0,
+                SyFlag = 0,
+                SyHidden = String.Empty
+            };
+
+
+        }
+        ///////////////////////////////
+        //　9.1.2.4 出庫詳細情報作成
+        //メソッド名：GenerateDetailDataAtConfirm()
+        //引　数   ：なし
+        //戻り値   ：注文詳細確定情報
+        //機　能   ：確定データのセット
+        ///////////////////////////////
+        private List<T_SyukkoDetail> GenerateDetailDataAtConfirm()
+        {
+            List<T_ChumonDetail> chumonDetail = chumonDetailDataAccess.GetChIDDetailData(int.Parse(textBoxChID.Text.Trim()));
+
+            List<T_SyukkoDetail> syukkoDetail = new List<T_SyukkoDetail>();
+            foreach (var p in chumonDetail)
+            {
+                syukkoDetail.Add(new T_SyukkoDetail()
+                {
+                    PrID = p.PrID,
+                    SyQuantity = p.ChQuantity
+                });
+            }
+            return syukkoDetail;
+
+
+        }
+        ///////////////////////////////
+        //　9.1.2.5 注文情報確定
+        //メソッド名：ConfirmChumon()
+        //引　数   ：出庫情報,出庫詳細情報
+        //戻り値   ：なし
+        //機　能   ：注文情報の確定
+        ///////////////////////////////
+        private void ConfirmChumon(T_Syukko conSyukko, List<T_SyukkoDetail> conSyukkoDetail)
+        {
+            // 確定確認メッセージ
+            DialogResult result = MessageBox.Show("データを確定してよろしいですか?", "追加確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 注文情報の確定
+            //出庫テーブルにデータ登録
+            bool addFlg = syukkoDataAccess.AddSyukkoData(conSyukko);
+            //出庫IDの取得
+            T_Syukko syukko = syukkoDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+            //注文詳細テーブルにデータ登録/
+            ///成功か失敗の判定は未完成
+            foreach (var p in conSyukkoDetail)
+            {
+                T_SyukkoDetail AddSy = new T_SyukkoDetail();
+                AddSy.SyID = syukko.SyID;
+                AddSy.PrID = p.PrID;
+                AddSy.SyQuantity = p.SyQuantity;
+                syukkoDetailDataAccess.AddSyDetailData(AddSy);
+            }
+            //注文状態フラグと社員IDの更新
+            bool conFlg = chumonDataAccess.UpdateChumon(int.Parse(textBoxChID.Text.Trim()));
+            //全ての登録,更新が成功
+            if (addFlg == true && conFlg == true)
+            {
+
+                MessageBox.Show("データを確定しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("データの確定に失敗しました", "追加確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxChID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+
+        }
+>>>>>>> 8f7418ba68b160ac8ca0f891c99fe5f30ea7d4d8
 
             if (result == DialogResult.OK)
             {

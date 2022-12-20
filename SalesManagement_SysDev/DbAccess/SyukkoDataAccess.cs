@@ -89,6 +89,35 @@ namespace SalesManagement_SysDev
             }
             return syukko;
         }
+        ///////////////////////////////
+        //メソッド名：GetOrIDData()
+        //引　数   :受注ID
+        //戻り値   ：受注IDの出荷データ
+        //機　能   ：受注IDの出荷情報取得
+        ///////////////////////////////
+        public T_Syukko GetOrIDData(int orID)
+        {
+            T_Syukko syukko = new T_Syukko();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                syukko = context.T_Syukkos.Single(x => x.OrID == orID );
+
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return syukko;
+        }
+
 
         ///////////////////////////////
         //メソッド名：UpdateStateFlag()
