@@ -638,13 +638,14 @@ namespace SalesManagement_SysDev
         //機　能   ：確定データのセット
         ///////////////////////////////
         private T_Chumon GenerateDataAtConfirm()
-        {
+        {            
+
             T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
 
             return new T_Chumon
             {
                 OrID = int.Parse(order.OrID.ToString()),
-                EmID = 0,
+                EmID = FormMain.loginEmID,
                 SoID = int.Parse(order.SoID.ToString()),
                 ClID = int.Parse(order.ClID.ToString()),
                 ChDate = DateTime.Now,

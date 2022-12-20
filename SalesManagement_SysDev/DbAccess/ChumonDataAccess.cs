@@ -206,7 +206,6 @@ namespace SalesManagement_SysDev
                              t3.EmName,
                              t1.ClID,
                              t4.ClName,
-
                              t1.ChDate,
                              t1.ChStateFlag,
                              t1.ChFlag,
