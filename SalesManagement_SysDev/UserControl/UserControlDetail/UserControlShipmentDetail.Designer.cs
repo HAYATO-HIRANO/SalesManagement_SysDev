@@ -141,9 +141,9 @@ namespace SalesManagement_SysDev
             this.labelStateFlag.ForeColor = System.Drawing.Color.Red;
             this.labelStateFlag.Location = new System.Drawing.Point(126, 96);
             this.labelStateFlag.Name = "labelStateFlag";
-            this.labelStateFlag.Size = new System.Drawing.Size(85, 24);
+            this.labelStateFlag.Size = new System.Drawing.Size(34, 24);
             this.labelStateFlag.TabIndex = 45;
-            this.labelStateFlag.Text = "未確定";
+            this.labelStateFlag.Text = "   ";
             // 
             // labelSyState
             // 
@@ -174,6 +174,7 @@ namespace SalesManagement_SysDev
             this.textBoxShID.Name = "textBoxShID";
             this.textBoxShID.Size = new System.Drawing.Size(102, 36);
             this.textBoxShID.TabIndex = 43;
+            this.textBoxShID.TextChanged += new System.EventHandler(this.textBoxShID_TextChanged);
             // 
             // labelPrice
             // 
