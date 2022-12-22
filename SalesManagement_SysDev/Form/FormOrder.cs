@@ -1352,10 +1352,5 @@ namespace SalesManagement_SysDev
             }
 
         }
-
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

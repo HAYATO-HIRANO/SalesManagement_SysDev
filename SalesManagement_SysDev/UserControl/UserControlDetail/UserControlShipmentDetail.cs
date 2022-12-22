@@ -22,10 +22,25 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出荷データ
         private static List<T_ShipmentDetailDsp> ShipmentDetail;
+        //出荷ID参照用クラス
+        private TShipment tshipment;
 
         public UserControlShipmentDetail()
         {
             InitializeComponent();
+        }
+        public void addTShipment(TShipment tShipment)
+        {
+            this.tshipment= tShipment;
+        }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (tshipment != null && tshipment.ShID != 0)
+            {
+                textBoxShID.Text = tshipment.ShID.ToString();
+                GetShIDDataGridView();
+            }
+
         }
 
         private void UserControlShipmentDetail_Load(object sender, EventArgs e)
@@ -157,13 +172,13 @@ namespace SalesManagement_SysDev
         private void GenerateDataAtSelect()
         {
             // 検索結果のセット
-            if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()) && !String.IsNullOrEmpty(textBoxShDetailID.Text.Trim()))
+            if (!String.IsNullOrEmpty(textBoxShID.Text.Trim()) && !String.IsNullOrEmpty(textBoxShDetailID.Text.Trim())&&!String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
                 T_ShipmentDetailDsp selectCondition = new T_ShipmentDetailDsp()
                 {
                     ShID = int.Parse(textBoxShID.Text.Trim()),
                     ShDetailID = int.Parse(textBoxShDetailID.Text.Trim()),
-                    //PrID = int.Parse(textBoxPrID.Text.Trim()),
+                    PrID = int.Parse(textBoxPrID.Text.Trim()),
                 };
                 ShipmentDetail = shipmentDetailDataAccess.GetShDetailData(1, selectCondition);
             }
@@ -322,6 +337,21 @@ namespace SalesManagement_SysDev
         {
             // 出庫詳細データの取得
             ShipmentDetail = shipmentDetailDataAccess.GetArDetailData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+
+        }
+        ///////////////////////////////
+        //メソッド名：GetArIDDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetShIDDataGridView()
+        {
+            // 入荷詳細データの取得
+            ShipmentDetail = shipmentDetailDataAccess.GetShIDDetailDspData(int.Parse(textBoxShID.Text.Trim()));
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -532,7 +562,7 @@ namespace SalesManagement_SysDev
         }
         //受注IDの受注確定状態を取得して表示
 
-        private void textBoxSyID_TextChanged(object sender, EventArgs e)
+        private void textBoxShID_TextChanged(object sender, EventArgs e)
         {
             labelStateFlag.Text = "";
             if (dataInputFormCheck.CheckNumeric(textBoxShID.Text.Trim()))
@@ -549,12 +579,14 @@ namespace SalesManagement_SysDev
                         else
                             labelStateFlag.Text = "未確定";
 
+
+
                     }
 
                 }
             }
-
         }
+        
 
         private void dataGridViewOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -566,5 +598,7 @@ namespace SalesManagement_SysDev
             textBoxOrQuantity.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[5].Value.ToString();
             textBoxOrTotalPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[6].Value.ToString();
         }
+
+        
     }
 }
