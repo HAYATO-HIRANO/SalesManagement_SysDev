@@ -217,6 +217,7 @@ namespace SalesManagement_SysDev
                 {
                     syukko.Add(new T_SyukkoDsp()
                     {
+                        SyID = p.SyID,
                         OrID = p.OrID,
                         SoID = p.SoID,
                         SoName = p.SoName,

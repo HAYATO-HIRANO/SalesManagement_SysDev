@@ -106,8 +106,8 @@ namespace SalesManagement_SysDev
                          on t1.SyID equals t2.SyID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         join t4 in  context.T_OrderDetails
-                         on t2.OrID equals t4.OrID
+                         //join t4 in  context.T_OrderDetails
+                         //on t2.OrID equals t4.OrID
                          where t2.SyFlag == 0
                          select new
                          {
@@ -117,7 +117,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.SyQuantity,
-                             t4.OrTotalPrice
+                             //t4.OrTotalPrice
 
                          };
                 foreach (var p in tb)
@@ -130,7 +130,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         SyQuantity = p.SyQuantity,
-                        TotalPrice=p.OrTotalPrice
+                        //TotalPrice=p.OrTotalPrice
                     });
                 }
                 context.Dispose();

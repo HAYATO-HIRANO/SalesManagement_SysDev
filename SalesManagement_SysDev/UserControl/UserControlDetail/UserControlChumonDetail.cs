@@ -632,5 +632,16 @@ namespace SalesManagement_SysDev
         {
             ClearInput();
         }
+
+        private void dataGridViewOrderDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxChID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[0].Value.ToString();
+            textBoxChDetailID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxPrID.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxPrName.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxOrQuantity.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxOrTotalPrice.Text = dataGridViewOrderDetail.Rows[dataGridViewOrderDetail.CurrentRow.Index].Cells[6].Value.ToString();
+        }
     }
 }
