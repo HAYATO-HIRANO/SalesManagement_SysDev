@@ -117,7 +117,6 @@ namespace SalesManagement_SysDev
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1920, 100);
             this.panelHeader.TabIndex = 13;
-            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
             // 
             // labelUserID
             // 
@@ -216,7 +215,6 @@ namespace SalesManagement_SysDev
             this.panelLeft.Controls.Add(this.buttonHiddenList);
             this.panelLeft.Controls.Add(this.buttonHidden);
             this.panelLeft.Controls.Add(this.buttonList);
-            this.panelLeft.Controls.Add(this.buttonLogout);
             this.panelLeft.Controls.Add(this.buttonConfirm);
             this.panelLeft.Controls.Add(this.buttonSearch);
             this.panelLeft.Controls.Add(this.buttonRegist);
@@ -278,7 +276,7 @@ namespace SalesManagement_SysDev
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonLogout.ForeColor = System.Drawing.Color.White;
-            this.buttonLogout.Location = new System.Drawing.Point(0, 900);
+            this.buttonLogout.Location = new System.Drawing.Point(0, 1000);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(250, 80);
             this.buttonLogout.TabIndex = 7;
@@ -683,7 +681,7 @@ namespace SalesManagement_SysDev
             this.panelOrder.Controls.Add(this.buttonNextPage);
             this.panelOrder.Controls.Add(this.buttonFirstPage);
             this.panelOrder.Controls.Add(this.buttonPreviousPage);
-            this.panelOrder.Location = new System.Drawing.Point(0, 101);
+            this.panelOrder.Location = new System.Drawing.Point(0, 100);
             this.panelOrder.Name = "panelOrder";
             this.panelOrder.Size = new System.Drawing.Size(1920, 979);
             this.panelOrder.TabIndex = 48;
@@ -691,7 +689,7 @@ namespace SalesManagement_SysDev
             // userControlOrderDetail1
             // 
             this.userControlOrderDetail1.BackColor = System.Drawing.Color.Honeydew;
-            this.userControlOrderDetail1.Location = new System.Drawing.Point(0, 101);
+            this.userControlOrderDetail1.Location = new System.Drawing.Point(0, 100);
             this.userControlOrderDetail1.Name = "userControlOrderDetail1";
             this.userControlOrderDetail1.Size = new System.Drawing.Size(1920, 979);
             this.userControlOrderDetail1.TabIndex = 49;
@@ -701,6 +699,7 @@ namespace SalesManagement_SysDev
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.panelOrder);
