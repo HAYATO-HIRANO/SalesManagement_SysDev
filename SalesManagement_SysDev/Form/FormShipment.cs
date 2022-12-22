@@ -27,11 +27,13 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の出荷データ
         private static List<T_ShipmentDsp> Shipment;
-
+        //出荷ID参照用クラス
+        private TShipment tshipment = new TShipment();
 
         public FormShipment()
         {
             InitializeComponent();
+            userControlShipmentDetail1.addTShipment(tshipment);
         }
 
         private void FormShipment_Load(object sender, EventArgs e)
