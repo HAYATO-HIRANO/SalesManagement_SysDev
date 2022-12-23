@@ -228,7 +228,7 @@ namespace SalesManagement_SysDev
         private void GetHiddenDataGridView()
         {
             //注文データの取得
-            Chumon = chumonDataAccess.GetChumonData();
+            Chumon = chumonDataAccess.GetChumonHiddenData();
             // DataGridViewに表示するデータを指定
             SetDataGridView();
         }
@@ -1119,8 +1119,8 @@ namespace SalesManagement_SysDev
             //データグリッドビューからクリックされたデータを各入力エリアへ
             textBoxChID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[0].Value.ToString();
             textBoxOrID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[1].Value.ToString();
-            textBoxClID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[4].Value.ToString();
-            textBoxClName.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[5].Value.ToString();
+            textBoxClID.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[6].Value.ToString();
+            textBoxClName.Text = dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[7].Value.ToString();
             //flagの値の「0」「1」をbool型に変換してチェックボックスに表示させる
             if (dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value == null||dataGridViewChumon.Rows[dataGridViewChumon.CurrentRow.Index].Cells[9].Value.ToString() != 1.ToString()               )
             {
@@ -1148,10 +1148,149 @@ namespace SalesManagement_SysDev
 
 
         }
-
+        //////////非表示機能///////////
         private void buttonHidden_Click(object sender, EventArgs e)
         {
+            //9.1.3.1 妥当な注文データ取得
+            if (!GetValidDataAtHidden())
+                return;
+            //9.1.3.2 注文情報作成
+            var hidChumon = GenerateDataAtHidden();
+            //9.1.3.3 注文情報非表示
+            HiddenChumon(hidChumon);
+        }
 
+        ///////////////////////////////
+        //  9.1.3.1 妥当な注文データ取得
+        //メソッド名：GetValidDataAtHidden()
+        //引　数   ：なし
+        //戻り値   ：true or false
+        //機　能   ：入力データの形式チェック
+        //          ：エラーがない場合True
+        //          ：エラーがある場合False
+        ///////////////////////////////
+        private bool GetValidDataAtHidden()
+        {
+            // 注文IDの適否
+            if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()))
+            {
+                //注文IDの半角数値チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxChID.Text.Trim()))
+                {
+                    MessageBox.Show("注文IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxChID.TextLength > 6)
+                {
+                    MessageBox.Show("注文IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+
+                // 注文IDの存在チェック
+                if (!chumonDataAccess.CheckChIDExistence(int.Parse(textBoxChID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された注文IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxChID.Focus();
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("注文ID が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxChID.Focus();
+                return false;
+            }
+            //非表示フラグの適否
+            if (checkBoxHidden.Checked == false)
+            {
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxHidden.Checked = true;
+                textBoxChHidden.Focus();
+                return false;
+
+            }
+            //非表示理由の適否
+            if (checkBoxHidden.Checked == true && String.IsNullOrEmpty(textBoxChHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBoxChHidden.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        ///////////////////////////////
+        //　9.1.3.2 注文情報作成
+        //メソッド名：GenerateDataAtHidden()
+        //引　数   ：なし
+        //戻り値   ：注文非表示情報
+        //機　能   ：非表示データのセット
+        ///////////////////////////////
+        private T_Chumon GenerateDataAtHidden()
+        {
+            int hidFlag = 0;
+            if (checkBoxHidden.Checked == true)
+            {
+                hidFlag = 2;
+            }
+
+            return new T_Chumon
+            {
+                ChID = int.Parse(textBoxChID.Text.Trim()),
+                ChFlag = hidFlag,
+                ChHidden = textBoxChHidden.Text.Trim()
+            };
+        }
+        ///////////////////////////////
+        //　9.1.3.3 注文情報非表示
+        //メソッド名：HiddenChumon()
+        //引　数   ：注文情報
+        //戻り値   ：なし
+        //機　能   ：注文情報の非表示
+        ///////////////////////////////
+        private void HiddenChumon(T_Chumon hidChumon)
+        {
+            // 非表示確認メッセージ
+            DialogResult result = MessageBox.Show("データを非表示にしてよろしいですか?", "非表示確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            // 受注情報の非表示(フラグの更新)
+            bool flg = chumonDataAccess.UpdateHiddenFlag(hidChumon);
+            if (flg == true)
+                MessageBox.Show("データを非表示にしました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("データの非表示に失敗しました", "非表示確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            textBoxChID.Focus();
+
+            // 入力エリアのクリア
+            ClearInput();
+
+            // データグリッドビューの表示
+            GetDataGridView();
+        }
+
+        private void textBoxClID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (textBoxClID.TextLength < 6)
+                {
+                    if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                    {
+                        M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        textBoxClName.Text = client.ClName.ToString();
+                    }
+
+                }
+            }
         }
     }
 }

@@ -293,8 +293,9 @@ namespace SalesManagement_SysDev
                         ChFlag = p.ChFlag,
                         ChHidden = p.ChHidden
                     });
-                    context.Dispose();
+                   
                 }
+                context.Dispose();
             }
 
             catch (Exception ex)
