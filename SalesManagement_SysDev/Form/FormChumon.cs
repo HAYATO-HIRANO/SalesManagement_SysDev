@@ -1011,7 +1011,7 @@ namespace SalesManagement_SysDev
             //注文データを出庫データに変換
             return new T_Syukko
             {
-                EmID = 0,
+                EmID = FormMain.loginEmID,
                 SoID = int.Parse(chumon.SoID.ToString()),
                 ClID = int.Parse(chumon.ClID.ToString()),
                 OrID = int.Parse(chumon.OrID.ToString()),
@@ -1078,7 +1078,7 @@ namespace SalesManagement_SysDev
                 syukkoDetailDataAccess.AddSyDetailData(AddSy);
             }
             //注文状態フラグと社員IDの更新
-            bool conFlg = chumonDataAccess.UpdateChumon(int.Parse(textBoxChID.Text.Trim()));
+            bool conFlg = chumonDataAccess.UpdateChumonData(int.Parse(textBoxChID.Text.Trim()));
             //全ての登録,更新が成功
             if (addFlg == true && conFlg == true)
             {

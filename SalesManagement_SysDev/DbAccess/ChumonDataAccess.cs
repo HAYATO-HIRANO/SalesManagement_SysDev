@@ -117,14 +117,14 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：UpdateStateFlag()
+        //メソッド名：UpdateChumonData()
         //引　数   :注文ID
         //戻り値   ：True or False
         //機　能   ：注文状態フラグの更新(0から1)
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool UpdateChumon(int ChID)
+        public bool UpdateChumonData(int ChID)
         {
             try
             {

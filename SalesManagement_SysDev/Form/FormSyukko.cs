@@ -619,7 +619,7 @@ namespace SalesManagement_SysDev
                 arrivalDetailDataAccess.AddArDetailData(AddAr);
             }
             //出庫状態フラグの更新
-            bool conFlg = syukkoDataAccess.UpdateStateFlag(int.Parse(textBoxSyID.Text.Trim()));
+            bool conFlg = syukkoDataAccess.UpdateSyukkoData(int.Parse(textBoxSyID.Text.Trim()));
             //全ての登録,更新が成功
             if (addFlg == true && conFlg == true)
             {
