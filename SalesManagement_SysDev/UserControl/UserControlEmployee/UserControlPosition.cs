@@ -117,10 +117,9 @@ namespace SalesManagement_SysDev
         {
             return new M_Position
             {
-                PoID = int.Parse(textBoxPoID.Text.Trim()),
                 PoName = textBoxPoName.Text.Trim(),
-                PoFlag = Convert.ToInt32(checkBoxPoFlag.Checked),
-                PoHidden = textBoxPoHidden.Text.Trim(),
+                PoFlag = 0,
+                PoHidden = String.Empty,
             };
         }
         ///////////////////////////////
@@ -332,7 +331,7 @@ namespace SalesManagement_SysDev
             //入力エリアのクリア
             ClearInput();
 
-            SetDataGridView();
+            GetDataGridView();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -492,7 +491,7 @@ namespace SalesManagement_SysDev
             dataGridViewPo.Columns[0].Width = 100;
             dataGridViewPo.Columns[1].Width = 200;
             dataGridViewPo.Columns[2].Width = 100;
-            dataGridViewPo.Columns[3].Width = 400;
+            dataGridViewPo.Columns[3].Width = 480;
 
             //各列の文字位置の指定
             dataGridViewPo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
