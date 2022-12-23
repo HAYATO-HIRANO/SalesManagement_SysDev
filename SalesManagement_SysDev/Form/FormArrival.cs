@@ -222,25 +222,26 @@ namespace SalesManagement_SysDev
             dataGridViewAr.DataSource = Arrival.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定 //1510
             dataGridViewAr.Columns[0].Width = 100;
-            dataGridViewAr.Columns[1].Visible = false;
-            dataGridViewAr.Columns[2].Width = 200;
-            dataGridViewAr.Columns[3].Width = 100;
-            dataGridViewAr.Columns[4].Width = 200;
-            dataGridViewAr.Columns[5].Width = 100;
-            dataGridViewAr.Columns[6].Width = 200;
-            dataGridViewAr.Columns[7].Width = 175;
+            dataGridViewAr.Columns[1].Width = 100;
+            dataGridViewAr.Columns[2].Visible = false;
+            dataGridViewAr.Columns[3].Width = 200;
+            dataGridViewAr.Columns[4].Width = 100;
+            dataGridViewAr.Columns[5].Width = 220;
+            dataGridViewAr.Columns[6].Width = 100;
+            dataGridViewAr.Columns[7].Width = 220;
             dataGridViewAr.Columns[8].Width = 200;
             dataGridViewAr.Columns[9].Visible = false;
             dataGridViewAr.Columns[10].Visible = false;
-            dataGridViewAr.Columns[11].Width = 250;
+            dataGridViewAr.Columns[11].Width = 267;
 
             //各列の文字位置の指定
             dataGridViewAr.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewAr.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewAr.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewAr.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewAr.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewAr.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewAr.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridViewAr.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewAr.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewAr.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewAr.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewAr.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewAr.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewAr.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
