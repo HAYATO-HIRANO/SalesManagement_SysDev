@@ -406,7 +406,7 @@ namespace SalesManagement_SysDev
         private void SetFormDataGridView()
         {
             //dataGridViewのページサイズ指定
-            textBoxPageSize.Text = "20";
+            textBoxPageSize.Text = "32";
             //dataGridViewのページ番号指定
             textBoxPage.Text = "1";
             //読み取り専用に指定

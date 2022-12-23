@@ -227,7 +227,7 @@ namespace SalesManagement_SysDev
             dataGridViewSyukko.Columns[6].Width = 200;
             dataGridViewSyukko.Columns[7].Width = 175;
             dataGridViewSyukko.Columns[8].Width = 200;
-            dataGridViewSyukko.Columns[9].Width = 50;
+            dataGridViewSyukko.Columns[9].Visible = false;
             dataGridViewSyukko.Columns[10].Visible = false;
             dataGridViewSyukko.Columns[11].Width = 283;
 
