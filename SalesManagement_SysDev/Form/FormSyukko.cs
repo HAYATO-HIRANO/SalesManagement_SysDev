@@ -229,7 +229,7 @@ namespace SalesManagement_SysDev
             dataGridViewSyukko.Columns[8].Width = 200;
             dataGridViewSyukko.Columns[9].Width = 50;
             dataGridViewSyukko.Columns[10].Visible = false;
-            dataGridViewSyukko.Columns[11].Width = 250;
+            dataGridViewSyukko.Columns[11].Width = 283;
 
             //各列の文字位置の指定
             dataGridViewSyukko.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
