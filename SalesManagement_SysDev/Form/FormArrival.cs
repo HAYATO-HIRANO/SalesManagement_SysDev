@@ -557,7 +557,7 @@ namespace SalesManagement_SysDev
             {
 
                 OrID = int.Parse(arrival.OrID.ToString()),
-                EmID = 0,
+                EmID = FormMain.loginEmID,
                 SoID = int.Parse(arrival.SoID.ToString()),
                 ClID = int.Parse(arrival.ClID.ToString()),
                 ShFinishDate=null,
