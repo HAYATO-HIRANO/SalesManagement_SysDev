@@ -1292,6 +1292,23 @@ namespace SalesManagement_SysDev
                 Dispose();
             }
         }
+
+        private void textBoxClID_TextChanged_1(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (textBoxClID.TextLength < 6)
+                {
+                    if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                    {
+                        M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        textBoxClName.Text = client.ClName.ToString();
+                    }
+
+                }
+            }
+        }
     }
 
 }

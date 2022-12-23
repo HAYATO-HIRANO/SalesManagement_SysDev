@@ -493,6 +493,7 @@ namespace SalesManagement_SysDev
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(77, 28);
             this.textBoxClID.TabIndex = 4;
+            this.textBoxClID.TextChanged += new System.EventHandler(this.textBoxClID_TextChanged_1);
             // 
             // labelClID
             // 
@@ -656,7 +657,7 @@ namespace SalesManagement_SysDev
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonDetail);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panelShipment);
