@@ -678,10 +678,11 @@ namespace SalesManagement_SysDev
             return new T_OrderDetail
             {          
                 OrID = int.Parse(textBoxOrID.Text.Trim()),
+                OrDetailID=int.Parse(textBoxOrDetailID.Text.Trim()),
                 PrID = int.Parse(textBoxPrID.Text.Trim()),
                 OrQuantity= int.Parse(textBoxOrQuantity.Text.Trim()),
                 OrTotalPrice = int.Parse(textBoxOrTotalPrice.Text.Trim()),
-
+                
             };
         }
         ///////////////////////////////
@@ -707,11 +708,12 @@ namespace SalesManagement_SysDev
 
             textBoxOrID.Focus();
 
-            // 入力エリアのクリア
-            ClearInput();
+            
 
             // データグリッドビューの表示
             GetOrIDDataGridView();
+            // 入力エリアのクリア
+            ClearInput();
 
         }
         //検索機能
