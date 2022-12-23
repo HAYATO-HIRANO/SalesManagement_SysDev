@@ -50,7 +50,7 @@
             // 
             // buttonWarehousing
             // 
-            this.buttonWarehousing.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonWarehousing.BackColor = System.Drawing.Color.Gray;
             this.buttonWarehousing.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonWarehousing.Location = new System.Drawing.Point(918, 397);
             this.buttonWarehousing.Name = "buttonWarehousing";
@@ -63,7 +63,7 @@
             // 
             this.buttonSyukko.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonSyukko.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSyukko.Location = new System.Drawing.Point(918, 704);
+            this.buttonSyukko.Location = new System.Drawing.Point(918, 104);
             this.buttonSyukko.Name = "buttonSyukko";
             this.buttonSyukko.Size = new System.Drawing.Size(590, 210);
             this.buttonSyukko.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             // buttonHattyu
             // 
-            this.buttonHattyu.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.buttonHattyu.BackColor = System.Drawing.Color.Gray;
             this.buttonHattyu.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonHattyu.Location = new System.Drawing.Point(175, 397);
             this.buttonHattyu.Name = "buttonHattyu";
@@ -99,7 +99,7 @@
             // 
             this.buttonStock.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonStock.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonStock.Location = new System.Drawing.Point(918, 104);
+            this.buttonStock.Location = new System.Drawing.Point(918, 704);
             this.buttonStock.Name = "buttonStock";
             this.buttonStock.Size = new System.Drawing.Size(590, 210);
             this.buttonStock.TabIndex = 5;
