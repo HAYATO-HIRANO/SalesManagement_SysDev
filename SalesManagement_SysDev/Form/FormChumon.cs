@@ -1061,12 +1061,18 @@ namespace SalesManagement_SysDev
 
             if (result == DialogResult.Cancel)
                 return;
+            //在庫減らす処理
+            foreach (var p in conSyukkoDetail)
+            {
+                stockDataAccess.UpdateQuantity(p.PrID, p.SyQuantity);
+            }
 
             // 注文情報の確定
             //出庫テーブルにデータ登録
             bool addFlg = syukkoDataAccess.AddSyukkoData(conSyukko);
+            T_Chumon chumon=chumonDataAccess.GetChIDData(int.Parse(textBoxChID.Text.Trim()));
             //出庫IDの取得
-            T_Syukko syukko = syukkoDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+            T_Syukko syukko = syukkoDataAccess.GetOrIDData(chumon.OrID);
             //注文詳細テーブルにデータ登録/
             ///成功か失敗の判定は未完成
             foreach (var p in conSyukkoDetail)

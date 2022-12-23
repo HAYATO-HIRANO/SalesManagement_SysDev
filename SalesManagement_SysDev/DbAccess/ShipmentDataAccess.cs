@@ -304,7 +304,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -356,7 +356,7 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -408,7 +408,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -459,7 +459,7 @@ namespace SalesManagement_SysDev
                              t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -511,7 +511,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -562,7 +562,7 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -613,7 +613,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -662,7 +662,7 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t4.SoID
                              where
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)
 
                              select new
@@ -738,7 +738,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden)&&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay 
@@ -791,7 +791,7 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay
@@ -845,7 +845,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay
@@ -898,7 +898,7 @@ namespace SalesManagement_SysDev
                              t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay
@@ -952,7 +952,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay
@@ -1005,7 +1005,7 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay
@@ -1058,7 +1058,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay
@@ -1109,7 +1109,7 @@ namespace SalesManagement_SysDev
                              on t1.SoID equals t4.SoID
                              where
                              t1.ShFlag == selectCondition.ShFlag &&
-                             t1.ShStateFlag == selectCondition.ShStateFlag &&
+                              
                              t1.ShHidden.Contains(selectCondition.ShHidden) &&
                              t1.ShFinishDate >= startDay &&
                              t1.ShFinishDate <= endDay

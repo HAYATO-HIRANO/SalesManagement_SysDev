@@ -338,7 +338,7 @@ namespace SalesManagement_SysDev
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
 
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -390,7 +390,7 @@ namespace SalesManagement_SysDev
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -442,7 +442,7 @@ namespace SalesManagement_SysDev
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -493,7 +493,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -545,7 +545,7 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -596,7 +596,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -647,7 +647,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -697,7 +697,7 @@ namespace SalesManagement_SysDev
                              on t1.ClID equals t4.ClID
                              where
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -777,7 +777,7 @@ namespace SalesManagement_SysDev
                              t1.ArDate <= endDay&&
 
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -832,7 +832,7 @@ namespace SalesManagement_SysDev
                              t1.ArDate <= endDay &&
 
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)
                              select new
                              {
@@ -884,7 +884,7 @@ namespace SalesManagement_SysDev
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden)&&
                              t1.ArDate >= startDay &&
                              t1.ArDate <= endDay 
@@ -938,7 +938,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden) && 
                              t1.ArDate >= startDay &&
                              t1.ArDate <= endDay
@@ -993,7 +993,7 @@ namespace SalesManagement_SysDev
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden) && 
                              t1.ArDate >= startDay &&
                              t1.ArDate <= endDay
@@ -1047,7 +1047,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.OrID.ToString().Contains(selectCondition.OrID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden) &&
                              t1.ArDate >= startDay &&
                              t1.ArDate <= endDay
@@ -1101,7 +1101,7 @@ namespace SalesManagement_SysDev
                              where
                              t1.ClID.ToString().Contains(selectCondition.ClID.ToString()) &&
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden) && 
                              t1.ArDate >= startDay &&
                              t1.ArDate <= endDay
@@ -1154,7 +1154,7 @@ namespace SalesManagement_SysDev
                              on t1.ClID equals t4.ClID
                              where
                              t1.ArFlag == selectCondition.ArFlag &&
-                             t1.ArStateFlag == selectCondition.ArStateFlag &&
+                              
                              t1.ArHidden.Contains(selectCondition.ArHidden) &&
                              t1.ArDate >= startDay &&
                              t1.ArDate <= endDay

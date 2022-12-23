@@ -803,7 +803,7 @@ namespace SalesManagement_SysDev
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -817,7 +817,7 @@ namespace SalesManagement_SysDev
                                 ArID = int.Parse(textBoxArID.Text.Trim()),
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -836,7 +836,7 @@ namespace SalesManagement_SysDev
                                 ArID = int.Parse(textBoxArID.Text.Trim()),
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -849,7 +849,7 @@ namespace SalesManagement_SysDev
                             {
                                 ArID = int.Parse(textBoxArID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -874,7 +874,7 @@ namespace SalesManagement_SysDev
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -887,7 +887,7 @@ namespace SalesManagement_SysDev
                             {
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -905,7 +905,7 @@ namespace SalesManagement_SysDev
                             {
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -917,7 +917,7 @@ namespace SalesManagement_SysDev
                             T_ArrivalDsp selectCondition = new T_ArrivalDsp()
                             {
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -948,7 +948,7 @@ namespace SalesManagement_SysDev
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -962,7 +962,7 @@ namespace SalesManagement_SysDev
                                 ArID = int.Parse(textBoxArID.Text.Trim()),
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -981,7 +981,7 @@ namespace SalesManagement_SysDev
                                 ArID = int.Parse(textBoxArID.Text.Trim()),
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -994,7 +994,7 @@ namespace SalesManagement_SysDev
                             {
                                 ArID = int.Parse(textBoxArID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -1019,7 +1019,7 @@ namespace SalesManagement_SysDev
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -1032,7 +1032,7 @@ namespace SalesManagement_SysDev
                             {
                                 OrID = int.Parse(textBoxOrID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -1050,7 +1050,7 @@ namespace SalesManagement_SysDev
                             {
                                 ClID = int.Parse(textBoxClID.Text.Trim()),
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
@@ -1062,7 +1062,7 @@ namespace SalesManagement_SysDev
                             T_ArrivalDsp selectCondition = new T_ArrivalDsp()
                             {
                                 ArFlag = hidFlg,
-                                ArStateFlag = stateFlg,
+                                 
                                 ArHidden = textBoxArHidden.Text.Trim()
                             };
                             //データの抽出
