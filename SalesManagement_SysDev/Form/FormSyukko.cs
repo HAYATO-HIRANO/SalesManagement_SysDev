@@ -221,19 +221,19 @@ namespace SalesManagement_SysDev
             dataGridViewSyukko.Columns[0].Width = 100;
             dataGridViewSyukko.Columns[1].Width = 100;
             dataGridViewSyukko.Columns[2].Visible = false;
-            dataGridViewSyukko.Columns[3].Width = 100;
-            dataGridViewSyukko.Columns[4].Width = 200;
-            dataGridViewSyukko.Columns[5].Width = 100;
-            dataGridViewSyukko.Columns[6].Width = 200;
+            dataGridViewSyukko.Columns[3].Width = 200;
+            dataGridViewSyukko.Columns[4].Width = 100;
+            dataGridViewSyukko.Columns[5].Width = 200;
+            dataGridViewSyukko.Columns[6].Width = 100;
             dataGridViewSyukko.Columns[7].Width = 175;
             dataGridViewSyukko.Columns[8].Width = 200;
-            dataGridViewSyukko.Columns[9].Width = 50;
+            dataGridViewSyukko.Columns[9].Visible=false;
             dataGridViewSyukko.Columns[10].Visible = false;
-            dataGridViewSyukko.Columns[11].Width = 283;
+            dataGridViewSyukko.Columns[11].Width = 333;
 
             //各列の文字位置の指定
             dataGridViewSyukko.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewSyukko.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewSyukko.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSyukko.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSyukko.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewSyukko.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
