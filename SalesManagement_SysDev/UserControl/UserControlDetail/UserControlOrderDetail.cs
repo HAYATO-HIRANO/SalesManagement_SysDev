@@ -1130,6 +1130,15 @@ namespace SalesManagement_SysDev
                     textBoxOrDetailID.Focus();
                     return false;
                 }
+                //確定状態の適否
+                T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+                if (order.OrStateFlag == 1)
+                {
+                    MessageBox.Show("入力された受注IDは受注が確定されているため更新できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+
+                }
 
             }
             else
