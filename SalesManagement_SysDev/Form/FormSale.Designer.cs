@@ -77,7 +77,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage = new System.Windows.Forms.Button();
             this.labelPage = new System.Windows.Forms.Label();
             this.textBoxPage = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSale = new System.Windows.Forms.DataGridView();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.panelSale = new System.Windows.Forms.Panel();
@@ -86,7 +86,7 @@ namespace SalesManagement_SysDev
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSale)).BeginInit();
             this.panelSale.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,6 +238,7 @@ namespace SalesManagement_SysDev
             this.buttonHidden.TabIndex = 43;
             this.buttonHidden.Text = "非表示";
             this.buttonHidden.UseVisualStyleBackColor = false;
+            this.buttonHidden.Click += new System.EventHandler(this.buttonHidden_Click);
             // 
             // buttonHiddenList
             // 
@@ -252,6 +253,7 @@ namespace SalesManagement_SysDev
             this.buttonHiddenList.TabIndex = 40;
             this.buttonHiddenList.Text = "非表示リスト";
             this.buttonHiddenList.UseVisualStyleBackColor = false;
+            this.buttonHiddenList.Click += new System.EventHandler(this.buttonHiddenList_Click);
             // 
             // buttonList
             // 
@@ -266,6 +268,7 @@ namespace SalesManagement_SysDev
             this.buttonList.TabIndex = 8;
             this.buttonList.Text = "一覧表示";
             this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
             // buttonSearch
             // 
@@ -280,6 +283,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "検索";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonSalesDetail
             // 
@@ -425,6 +429,7 @@ namespace SalesManagement_SysDev
             this.dateTimePickerSaDate.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dateTimePickerSaDate.Location = new System.Drawing.Point(155, 124);
             this.dateTimePickerSaDate.Name = "dateTimePickerSaDate";
+            this.dateTimePickerSaDate.ShowCheckBox = true;
             this.dateTimePickerSaDate.Size = new System.Drawing.Size(200, 28);
             this.dateTimePickerSaDate.TabIndex = 59;
             // 
@@ -624,14 +629,14 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // dataGridView1
+            // dataGridViewSale
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(315, 272);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1552, 652);
-            this.dataGridView1.TabIndex = 16;
+            this.dataGridViewSale.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSale.Location = new System.Drawing.Point(315, 272);
+            this.dataGridViewSale.Name = "dataGridViewSale";
+            this.dataGridViewSale.RowTemplate.Height = 21;
+            this.dataGridViewSale.Size = new System.Drawing.Size(1552, 652);
+            this.dataGridViewSale.TabIndex = 16;
             // 
             // timer
             // 
@@ -658,7 +663,7 @@ namespace SalesManagement_SysDev
             this.panelSale.Controls.Add(this.labelPageSize);
             this.panelSale.Controls.Add(this.textBoxPage);
             this.panelSale.Controls.Add(this.buttonLastPage);
-            this.panelSale.Controls.Add(this.dataGridView1);
+            this.panelSale.Controls.Add(this.dataGridViewSale);
             this.panelSale.Controls.Add(this.buttonNextPage);
             this.panelSale.Controls.Add(this.labelPage);
             this.panelSale.Controls.Add(this.buttonPreviousPage);
@@ -682,10 +687,10 @@ namespace SalesManagement_SysDev
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panelSale);
             this.Controls.Add(this.buttonSalesDetail);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.panelSale);
             this.Controls.Add(this.userControlSaleDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSale";
@@ -698,7 +703,7 @@ namespace SalesManagement_SysDev
             this.panelLeft.ResumeLayout(false);
             this.panelInput.ResumeLayout(false);
             this.panelInput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSale)).EndInit();
             this.panelSale.ResumeLayout(false);
             this.panelSale.PerformLayout();
             this.ResumeLayout(false);
@@ -721,7 +726,7 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonFirstPage;
         private System.Windows.Forms.Label labelPage;
         private System.Windows.Forms.TextBox textBoxPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSale;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.TextBox textBoxSaID;
         private System.Windows.Forms.ComboBox comboBoxSoID;
