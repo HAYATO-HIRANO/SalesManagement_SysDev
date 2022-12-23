@@ -161,7 +161,7 @@ namespace SalesManagement_SysDev//.DbAccess
                              join t2 in context.M_Products
                              on t1.PrID equals t2.PrID
                              where t1.StID.ToString().Contains(selectCondition.StID.ToString()) &&
-                             t2.PrID == selectCondition.PrID&&
+                             t2.PrID.ToString() .Contains(selectCondition.PrID.ToString())&&
                              t1.StFlag==selectCondition.StFlag
 
                              select new
@@ -225,7 +225,7 @@ namespace SalesManagement_SysDev//.DbAccess
                              join t2 in context.M_Products
                              on t1.PrID equals t2.PrID
                              where //t1.StID.ToString().Contains(selectCondition.StID.ToString()) &&
-                             t2.PrID == selectCondition.PrID &&
+                             t2.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
                              t1.StFlag == selectCondition.StFlag
 
 
