@@ -52,7 +52,7 @@ namespace SalesManagement_SysDev
         //9.2.1 検索機能
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            //9.2.1.1妥当な注文詳細データ取得
+                //9.2.1.1妥当な注文詳細データ取得
             if (!GetValidDataAtSelect())
                 return;
 
@@ -180,7 +180,7 @@ namespace SalesManagement_SysDev
         {
             // 検索条件のセット
             //全部
-            if (!string.IsNullOrEmpty(textBoxChID.Text.Trim()) && !String.IsNullOrEmpty(textBoxChDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+            if (!String.IsNullOrEmpty(textBoxChID.Text.Trim()) && !String.IsNullOrEmpty(textBoxChDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
             {
                 T_ChumonDetailDsp selectCondition = new T_ChumonDetailDsp()
                 {
@@ -211,14 +211,14 @@ namespace SalesManagement_SysDev
                     T_ChumonDetailDsp selectCondition = new T_ChumonDetailDsp()
                     {
                         ChID = int.Parse(textBoxChID.Text.Trim()),
-                        ChDetailID = int.Parse(textBoxChDetailID.Text.Trim()),
+                        PrID = int.Parse(textBoxPrID.Text.Trim()),
 
                     };
                     ChumonDetails = chumonDetailDataAccess.GetChDetailData(3, selectCondition);
 
                 }
                 //詳細ID=空白,商品ID=空白　
-                else if (String.IsNullOrEmpty(textBoxChDetailID.Text.Trim()) && !String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
+                else if (String.IsNullOrEmpty(textBoxChDetailID.Text.Trim()) && String.IsNullOrEmpty(textBoxPrID.Text.Trim()))
                 {
                     T_ChumonDetailDsp selectCondition = new T_ChumonDetailDsp()
                     {
@@ -250,7 +250,7 @@ namespace SalesManagement_SysDev
                         {
                             ChDetailID = int.Parse(textBoxChDetailID.Text.Trim()),
                         };
-                        ChumonDetails = chumonDetailDataAccess.GetChDetailData(1, selectCondition);
+                        ChumonDetails = chumonDetailDataAccess.GetChDetailData(6, selectCondition);
                     }
                 }
             }

@@ -678,10 +678,11 @@ namespace SalesManagement_SysDev
             return new T_OrderDetail
             {          
                 OrID = int.Parse(textBoxOrID.Text.Trim()),
+                OrDetailID=int.Parse(textBoxOrDetailID.Text.Trim()),
                 PrID = int.Parse(textBoxPrID.Text.Trim()),
                 OrQuantity= int.Parse(textBoxOrQuantity.Text.Trim()),
                 OrTotalPrice = int.Parse(textBoxOrTotalPrice.Text.Trim()),
-
+                
             };
         }
         ///////////////////////////////
@@ -707,11 +708,12 @@ namespace SalesManagement_SysDev
 
             textBoxOrID.Focus();
 
-            // 入力エリアのクリア
-            ClearInput();
+            
 
             // データグリッドビューの表示
             GetOrIDDataGridView();
+            // 入力エリアのクリア
+            ClearInput();
 
         }
         //検索機能
@@ -1127,6 +1129,15 @@ namespace SalesManagement_SysDev
                     MessageBox.Show("入力された受注詳細IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxOrDetailID.Focus();
                     return false;
+                }
+                //確定状態の適否
+                T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+                if (order.OrStateFlag == 1)
+                {
+                    MessageBox.Show("入力された受注IDは受注が確定されているため更新できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+
                 }
 
             }
