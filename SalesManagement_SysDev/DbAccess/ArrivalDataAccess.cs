@@ -118,19 +118,21 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：UpdateStateFlag()
+        //メソッド名：UpdateArrivalData()
         //引　数   :入荷ID
         //戻り値   ：True or False
         //機　能   ：入荷状態フラグの更新(0から1)
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool UpdateStateFlag(int ArID)
+        public bool UpdateArrivalData(int ArID)
         {
             try
             {
                 var context = new SalesManagement_DevContext();
                 var arrival = context.T_Arrivals.Single(x => x.ArID == ArID && x.ArFlag == 0);
+                arrival.EmID = FormMain.loginEmID;
+                arrival.ArDate = DateTime.Now;
                 arrival.ArStateFlag = 1;
 
                 context.SaveChanges();

@@ -626,7 +626,7 @@ namespace SalesManagement_SysDev
                 shipmentDetailDataAccess.AddShipmentDetailData(AddSh);
             }
             //入荷状態フラグの更新
-            bool conFlg = arrivalDataAccess.UpdateStateFlag(int.Parse(textBoxArID.Text.Trim()));
+            bool conFlg = arrivalDataAccess.UpdateArrivalData(int.Parse(textBoxArID.Text.Trim()));
             //全ての登録,更新が成功
             if (addFlg == true && conFlg == true)
             {

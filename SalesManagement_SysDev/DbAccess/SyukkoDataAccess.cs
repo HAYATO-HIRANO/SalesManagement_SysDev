@@ -120,19 +120,21 @@ namespace SalesManagement_SysDev
 
 
         ///////////////////////////////
-        //メソッド名：UpdateStateFlag()
+        //メソッド名：UpdateSyukkoData()
         //引　数   :出庫ID
         //戻り値   ：True or False
         //機　能   ：出庫状態フラグの更新(0から1)
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool UpdateStateFlag(int syID)
+        public bool UpdateSyukkoData(int syID)
         {
             try
             {
                 var context = new SalesManagement_DevContext();
                 var Syukko = context.T_Syukkos.Single(x => x.SyID == syID && x.SyFlag == 0);
+                Syukko.EmID = FormMain.loginEmID;
+                Syukko.SyDate = DateTime.Now;
                 Syukko.SyStateFlag = 1;
 
                 context.SaveChanges();
