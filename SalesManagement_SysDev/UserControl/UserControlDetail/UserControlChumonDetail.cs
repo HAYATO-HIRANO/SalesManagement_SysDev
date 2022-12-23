@@ -52,7 +52,7 @@ namespace SalesManagement_SysDev
         //9.2.1 検索機能
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            //9.2.1.1妥当な注文詳細データ取得
+                //9.2.1.1妥当な注文詳細データ取得
             if (!GetValidDataAtSelect())
                 return;
 

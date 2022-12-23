@@ -418,7 +418,7 @@ namespace SalesManagement_SysDev
                              join t4 in context.T_OrderDetails
                              on t2.OrID equals t4.OrID
                              where
-                                                          t1.ArDetailID.ToString().Contains(selectCondition.ArDetailID.ToString()) &&
+                             t1.ArDetailID.ToString().Contains(selectCondition.ArDetailID.ToString()) &&
 
                              t2.ArFlag == 0
                              select new

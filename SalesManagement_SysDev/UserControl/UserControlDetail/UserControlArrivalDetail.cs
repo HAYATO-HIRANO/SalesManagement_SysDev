@@ -212,7 +212,7 @@ namespace SalesManagement_SysDev
                     T_ArrivalDetailDsp selectCondition = new T_ArrivalDetailDsp()
                     {
                         ArID = int.Parse(textBoxArID.Text.Trim()),
-                        ArDetailID = int.Parse(textBoxArDetailID.Text.Trim()),
+                        PrID = int.Parse(textBoxPrID.Text.Trim()),
 
                     };
                     ArrivalDetail = arrivalDetailDataAccess.GetArDetailData(3, selectCondition);
