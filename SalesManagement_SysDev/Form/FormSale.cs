@@ -14,6 +14,8 @@ namespace SalesManagement_SysDev
     {       
         //データベース売上テーブルアクセス用クラスのインスタンス化
         SaleDataAccess saleDataAccess = new SaleDataAccess();
+        //データベース営業所テーブルアクセス用クラスのインスタンス化
+        SalesOfficeDataAccess salesOfficeDataAccess = new SalesOfficeDataAccess();
 
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
@@ -24,15 +26,13 @@ namespace SalesManagement_SysDev
         DataInputFormCheck dataInputFormCheck = new DataInputFormCheck();
         //データグリッドビュー用の売上データ
         private static List<T_SaleDsp> Sale;
+        //コンボボックス用の営業所データ
+        private static List<M_SalesOffice> SalesOffice;
+
 
         public FormSale()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonFormDel_Click(object sender, EventArgs e)
@@ -50,6 +50,13 @@ namespace SalesManagement_SysDev
             labelPosition.Text = "権限:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+            //非表示理由タブ選択不可、入力不可
+            textBoxSaHidden.TabStop = false;
+            textBoxSaHidden.ReadOnly = true;
+
+            //コンボボックス表示
+            SetFormComboBox();
+            //グリッドビュー表示
             SetFormDataGridView();
         }
 
@@ -90,6 +97,61 @@ namespace SalesManagement_SysDev
                 Dispose();
             }
         }
+        ///////////////////////////////
+        //メソッド名：SetFormComboBox()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コンボボックスのデータ設定
+        ///////////////////////////////
+        private void SetFormComboBox()
+        {
+
+            //営業所データの取得
+            SalesOffice = salesOfficeDataAccess.GetSalesOfficeDspData();
+            comboBoxSoID.DataSource = SalesOffice;
+            comboBoxSoID.DisplayMember = "SoName";
+            comboBoxSoID.ValueMember = "SoID";
+            //コンボボックスを読み取り専用
+            comboBoxSoID.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSoID.SelectedIndex = -1;
+        }
+
+        //入力された顧客IDの顧客名を取得
+        private void textBoxClID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxClName.Text = "";
+            if (dataInputFormCheck.CheckNumeric(textBoxClID.Text.Trim()))
+            {
+                if (textBoxClID.TextLength < 6)
+                {
+                    if (clientDataAccess.CheckClIDExistence(int.Parse(textBoxClID.Text.Trim())))
+                    {
+                        M_Client client = clientDataAccess.GetClIDData(int.Parse(textBoxClID.Text.Trim()));
+                        if (client.ClFlag == 0)
+                            textBoxClName.Text = client.ClName.ToString();
+                    }
+
+                }
+            }
+
+        }
+        //非表示フラグが変わった時
+        private void checkBoxSaHidden_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSaHidden.Checked == true)
+            {
+                textBoxSaHidden.TabStop = true;
+                textBoxSaHidden.ReadOnly = false;
+            }
+            else
+            {
+                textBoxSaHidden.Text = "";
+                textBoxSaHidden.TabStop = false;
+                textBoxSaHidden.ReadOnly = true;
+
+            }
+        }
+
         //データグリッドビュー設定
         ///////////////////////////////
         //メソッド名：PageSizeCheck()
@@ -386,6 +448,26 @@ namespace SalesManagement_SysDev
             textBoxPage.Text = (pageNo + 1).ToString();
 
         }
+        ///////////////////////////////
+        //メソッド名：ClearInput()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：入力エリアをクリア
+        ///////////////////////////////
+        private void ClearInput()
+        {
+            textBoxSaID.Text = "";
+            textBoxOrID.Text = "";
+            textBoxClID.Text = "";
+            textBoxEmID.Text = "";
+            comboBoxSoID.SelectedIndex = -1;
+            dateTimePickerSaDate.Checked = false;
+            dateTimePickerDateStart.Checked = false;
+            dateTimePickerDateEnd.Checked = false;
+
+            checkBoxSaHidden.Checked = false;
+            textBoxSaHidden.Text = "";
+        }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -396,15 +478,17 @@ namespace SalesManagement_SysDev
         {
 
         }
-
+        //7.1.1一覧表示
         private void buttonList_Click(object sender, EventArgs e)
         {
-
+            ClearInput();
+            GetDataGridView();
         }
-
+        //7.1.4非表示リスト
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
-
+            ClearInput();
+            GetHiddenDataGridView();
         }
     }
 }

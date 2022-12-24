@@ -196,7 +196,6 @@ namespace SalesManagement_SysDev
             this.labelSale.Size = new System.Drawing.Size(235, 53);
             this.labelSale.TabIndex = 1;
             this.labelSale.Text = "売上管理";
-            this.labelSale.Click += new System.EventHandler(this.label1_Click);
             // 
             // buttonFormDel
             // 
@@ -403,6 +402,7 @@ namespace SalesManagement_SysDev
             this.checkBoxSaHidden.TabIndex = 68;
             this.checkBoxSaHidden.Text = "非表示理由";
             this.checkBoxSaHidden.UseVisualStyleBackColor = true;
+            this.checkBoxSaHidden.CheckedChanged += new System.EventHandler(this.checkBoxSaHidden_CheckedChanged);
             // 
             // textBoxSaHidden
             // 
@@ -499,6 +499,7 @@ namespace SalesManagement_SysDev
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(76, 28);
             this.textBoxClID.TabIndex = 20;
+            this.textBoxClID.TextChanged += new System.EventHandler(this.textBoxClID_TextChanged);
             // 
             // comboBoxSoID
             // 
@@ -578,6 +579,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.TabIndex = 22;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
+            this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
             // 
             // buttonNextPage
             // 
@@ -588,6 +590,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.TabIndex = 21;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
+            this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
             // buttonPreviousPage
             // 
@@ -598,6 +601,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.TabIndex = 20;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
+            this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
             // 
             // buttonFirstPage
             // 
@@ -608,6 +612,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.TabIndex = 19;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
+            this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
             // 
             // labelPage
             // 
@@ -653,6 +658,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.TabIndex = 86;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
+            this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
             // 
             // panelSale
             // 
