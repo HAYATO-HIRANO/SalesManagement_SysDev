@@ -95,7 +95,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public List<T_ChumonDetailDsp> GetChDetailData()
         {
-            List<T_ChumonDetailDsp> ChDetail = new List<T_ChumonDetailDsp>();
+            List<T_ChumonDetailDsp> chDetail = new List<T_ChumonDetailDsp>();
 
             try
             {
@@ -121,7 +121,7 @@ namespace SalesManagement_SysDev
                          };
                 foreach (var p in tb)
                 {
-                    ChDetail.Add(new T_ChumonDetailDsp()
+                    chDetail.Add(new T_ChumonDetailDsp()
                     {
                         ChID = p.ChID,
                         ChDetailID = p.ChDetailID,
@@ -140,7 +140,7 @@ namespace SalesManagement_SysDev
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            return ChDetail;
+            return chDetail;
         }
         ///////////////////////////////
         //メソッド名：GetChDetailData() オーバーロード
@@ -150,7 +150,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public List<T_ChumonDetailDsp> GetChDetailData(int flg, T_ChumonDetailDsp selectCondition)
         {
-            List<T_ChumonDetailDsp> ChDetail = new List<T_ChumonDetailDsp>();
+            List<T_ChumonDetailDsp> chDetail = new List<T_ChumonDetailDsp>();
 
             try
             {
@@ -181,7 +181,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -217,7 +217,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -254,7 +254,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -289,7 +289,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -325,7 +325,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -360,7 +360,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -395,7 +395,7 @@ namespace SalesManagement_SysDev
                              };
                     foreach (var p in tb)
                     {
-                        ChDetail.Add(new T_ChumonDetailDsp()
+                        chDetail.Add(new T_ChumonDetailDsp()
                         {
                             ChID = p.ChID,
                             ChDetailID = p.ChDetailID,
@@ -415,7 +415,62 @@ namespace SalesManagement_SysDev
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            return ChDetail;
+            return chDetail;
         }
+        ///////////////////////////////
+        //メソッド名：GetChIDDetailDspData()
+        //引　数   ：なし
+        //戻り値   ：同じ注文IDのデータグリッド詳細データ
+        //機　能   ：同じ注文IDのデータグリッド表示用詳細データの取得
+        ///////////////////////////////
+        public List<T_ChumonDetailDsp> GetChIDDetailDspData(int chID)
+        {
+            List<T_ChumonDetailDsp> chDetail = new List<T_ChumonDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                var tb = from t1 in context.T_ChumonDetails
+                         join t2 in context.T_Chumons
+                         on t1.ChID equals t2.ChID
+                         join t3 in context.M_Products
+                          on t1.PrID equals t3.PrID
+                         
+                         where t1.ChID==chID && t2.ChFlag == 0
+                         select new
+                         {
+                             t1.ChID,
+                             t1.ChDetailID,
+                             t1.PrID,
+                             t3.PrName,
+                             t3.Price,
+                             t1.ChQuantity,
+                             
+                         };
+                foreach (var p in tb)
+                {
+                    chDetail.Add(new T_ChumonDetailDsp()
+                    {
+                        ChID = p.ChID,
+                        ChDetailID = p.ChDetailID,
+                        PrID = p.PrID,
+                        PrName = p.PrName,
+                        Price = p.Price,
+                        ChQuantity = p.ChQuantity,
+                        TotalPrice = p.Price * p.ChQuantity,
+
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return chDetail;
+        }
+
     }
 }

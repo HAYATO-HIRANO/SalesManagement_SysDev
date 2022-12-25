@@ -658,9 +658,9 @@ namespace SalesManagement_SysDev
             this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonChumonDetail);
             this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.panelChumon);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.userControlChumonDetail1);
+            this.Controls.Add(this.panelChumon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormChumon";
             this.Text = "FormChumon";

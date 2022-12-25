@@ -40,6 +40,8 @@ namespace SalesManagement_SysDev
 
         private void FormChumon_Load(object sender, EventArgs e)
         {
+            //詳細画面
+            userControlChumonDetail1.Visible = false;
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");

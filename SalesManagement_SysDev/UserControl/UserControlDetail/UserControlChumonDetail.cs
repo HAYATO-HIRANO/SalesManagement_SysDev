@@ -33,13 +33,13 @@ namespace SalesManagement_SysDev
         {
             this.tChumon = tChumon;
         }
-        //注文詳細に切り替わった時に発生するイベント
+        //注文詳細が切り替わった時に発生するイベント
         protected override void OnVisibleChanged(EventArgs e)
         {
             if (tChumon != null && tChumon.ChID != 0)
             {
                 textBoxChID.Text = tChumon.ChID.ToString();
-                
+                GetChIDDataGridView();
             }
 
         }
@@ -484,6 +484,22 @@ namespace SalesManagement_SysDev
             //DataGridViewに表示するデータを指定
             SetDataGridView();
         }
+        ///////////////////////////////
+        //メソッド名：GetChIDDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューに表示するデータの取得
+        ///////////////////////////////
+        private void GetChIDDataGridView()
+        {
+            // 注文データの取得
+            ChumonDetails = chumonDetailDataAccess.GetChIDDetailDspData(int.Parse(textBoxChID.Text.Trim()));
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+
+        }
+
         ///////////////////////////////
         //メソッド名：SetDataGridView()
         //引　数   ：なし
