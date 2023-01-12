@@ -432,25 +432,17 @@ namespace SalesManagement_SysDev
             if (comboBoxMc.SelectedIndex == -1)
             {
                 //大分類IDが選択されていません
-                DialogResult result = MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxMc.Focus();
-                    return false;
-                }
+                MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxMc.Focus();
+                return false;
             }
             //小分類IDの選択チェック
             if (comboBoxSc.SelectedIndex == -1)
             {
                 //小分類IDが選択されていません
-                DialogResult result = MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxSc.Focus();
-                    return false;
-                }
+                 MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 comboBoxSc.Focus();
+                 return false;
             }
 
             //価格入力チェック
@@ -772,27 +764,18 @@ namespace SalesManagement_SysDev
             if (comboBoxMc.SelectedIndex == -1)
             {
                 //大分類IDが選択されていません
-                DialogResult result = MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxMc.Focus();
-                    return false;
-                }
+                MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxMc.Focus();
+                return false;
             }
             //小分類IDの選択チェック
             if (comboBoxSc.SelectedIndex == -1)
             {
                 //小分類IDが選択されていません
-                DialogResult result = MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (result == DialogResult.Cancel)
-                {
-                    comboBoxSc.Focus();
-                    return false;
-                }
+                MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxSc.Focus();
+                return false;
             }
-
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
