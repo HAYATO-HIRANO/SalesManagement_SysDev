@@ -488,10 +488,10 @@ namespace SalesManagement_SysDev
             int pageNo = int.Parse(textBoxPage.Text) - 1;
             dataGridViewPo.DataSource = Position.Skip(pageSize * pageNo).Take(pageSize).ToList();
             //各列幅の指定
-            dataGridViewPo.Columns[0].Width = 100;
-            dataGridViewPo.Columns[1].Width = 200;
+            dataGridViewPo.Columns[0].Width = 120;
+            dataGridViewPo.Columns[1].Width = 180;
             dataGridViewPo.Columns[2].Width = 100;
-            dataGridViewPo.Columns[3].Width = 480;
+            dataGridViewPo.Columns[3].Width = 575;
 
             //各列の文字位置の指定
             dataGridViewPo.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
