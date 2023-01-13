@@ -307,9 +307,9 @@ namespace SalesManagement_SysDev
             dataGridViewSale.Columns[5].Width = 100;
             dataGridViewSale.Columns[6].Width = 200;
             dataGridViewSale.Columns[7].Width = 175;
-            dataGridViewSale.Columns[8].Width = 200;
+            dataGridViewSale.Columns[8].Width = 180;
             dataGridViewSale.Columns[9].Visible = false;
-            dataGridViewSale.Columns[10].Width = 250;
+            dataGridViewSale.Columns[10].Width = 253;
             
 
             //各列の文字位置の指定

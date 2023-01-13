@@ -478,7 +478,7 @@ namespace SalesManagement_SysDev
             dataGridViewClient.Columns[6].Width = 110;
             dataGridViewClient.Columns[7].Width = 280;
             dataGridViewClient.Columns[8].Width = 80;
-            dataGridViewClient.Columns[9].Width = 360;
+            dataGridViewClient.Columns[9].Width = 359;
 
             //各列の文字位置の指定
             dataGridViewClient.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

@@ -898,7 +898,7 @@ namespace SalesManagement_SysDev
             dataGridViewSalesOffice.Columns[4].Width = 130;
             dataGridViewSalesOffice.Columns[5].Width = 300;
             dataGridViewSalesOffice.Columns[6].Visible = false;
-            dataGridViewSalesOffice.Columns[7].Width = 250;
+            dataGridViewSalesOffice.Columns[7].Width = 247;
             //各列の文字位置の指定
             dataGridViewSalesOffice.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewSalesOffice.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

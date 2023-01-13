@@ -480,7 +480,7 @@ namespace SalesManagement_SysDev
             dataGridViewOrderDetail.Columns[3].Width = 400;
             dataGridViewOrderDetail.Columns[4].Width = 200;
             dataGridViewOrderDetail.Columns[5].Width = 150;
-            dataGridViewOrderDetail.Columns[6].Width = 235;
+            dataGridViewOrderDetail.Columns[6].Width = 233;
 
 
             //各列の文字位置の指定

@@ -397,11 +397,11 @@ namespace SalesManagement_SysDev
             dataGridViewOrder.Columns[4].Width = 200;
             dataGridViewOrder.Columns[5].Width = 100;
             dataGridViewOrder.Columns[6].Width = 200;
-            dataGridViewOrder.Columns[7].Width = 175;
+            dataGridViewOrder.Columns[7].Width = 165;
             dataGridViewOrder.Columns[8].Width = 200;
             dataGridViewOrder.Columns[9].Visible = false;
             dataGridViewOrder.Columns[10].Visible = false;
-            dataGridViewOrder.Columns[11].Width = 250;
+            dataGridViewOrder.Columns[11].Width = 243;
 
             //各列の文字位置の指定
             dataGridViewOrder.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
