@@ -802,7 +802,7 @@ namespace SalesManagement_SysDev
                 // 社員IDの半角英数字チェック
                 if (!dataInputFormCheck.CheckHalfAlphabetNumeric(textBoxEmID.Text.Trim()))
                 {
-                    MessageBox.Show("社員IDは全て半角英数字入力です");
+                    MessageBox.Show("社員IDは全て半角英数字入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3001");
                     textBoxEmID.Focus();
                     return false;
@@ -810,11 +810,19 @@ namespace SalesManagement_SysDev
                 // 社員IDの文字数チェック
                 if (textBoxEmID.TextLength > 6)
                 {
-                    MessageBox.Show("社員IDは6文字までです");
+                    MessageBox.Show("社員IDは6文字までです", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3002");
                     textBoxEmID.Focus();
                     return false;
                 }
+                //// 社員IDの存在チェック
+                //if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
+                //{
+                //    MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    //messageDsp.DspMsg("");
+                //    textBoxEmID.Focus();
+                //    return false;
+                //}
             }
 
             //社員名入力時のチェック
@@ -823,7 +831,7 @@ namespace SalesManagement_SysDev
                 // 社員名の全角チェック
                 if (!dataInputFormCheck.CheckFullWidth(textBoxEmName.Text.Trim()))
                 {
-                    MessageBox.Show("社員名は全て全角入力です");
+                    MessageBox.Show("社員名は全て全角入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3005");
                     textBoxEmName.Focus();
                     return false;
@@ -831,19 +839,12 @@ namespace SalesManagement_SysDev
                 // 社員名の文字数チェック
                 if (textBoxEmName.TextLength > 20)
                 {
-                    MessageBox.Show("社員名は15文字以下です");
+                    MessageBox.Show("社員名は15文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("M3006");
                     textBoxEmName.Focus();
                     return false;
                 }
-                // 社員IDの存在チェック
-                if (!employeeDataAccess.CheckEmIDExistence(int.Parse(textBoxEmID.Text.Trim())))
-                {
-                    MessageBox.Show("入力された社員IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //messageDsp.DspMsg("");
-                    textBoxEmID.Focus();
-                    return false;
-                }
+                
             }
             return true;
         }
