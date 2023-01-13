@@ -428,23 +428,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //大分類IDの選択チェック
-            if (comboBoxMc.SelectedIndex == -1)
-            {
-                //大分類IDが選択されていません
-                MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboBoxMc.Focus();
-                return false;
-            }
-            //小分類IDの選択チェック
-            if (comboBoxSc.SelectedIndex == -1)
-            {
-                //小分類IDが選択されていません
-                 MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 comboBoxSc.Focus();
-                 return false;
-            }
-
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
@@ -479,14 +462,14 @@ namespace SalesManagement_SysDev
 
                     MessageBox.Show("安全在庫数は半角数値です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    textBoxPrice.Focus();
+                    textBoxPrSafetyStock.Focus();
                     return false;
                 }
                 if (textBoxPrSafetyStock.TextLength > 4)
                 {
                     //安全在庫数は4桁以下です
                     MessageBox.Show("安全在庫数は4桁以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxPrice.Focus();
+                    textBoxPrSafetyStock.Focus();
                     return false;
                 }
             }
@@ -497,6 +480,23 @@ namespace SalesManagement_SysDev
                 textBoxPrSafetyStock.Focus();
                 return false;
             }
+
+            //大分類IDの選択チェック
+            if (comboBoxMc.SelectedIndex == -1)
+            {
+                //大分類IDが選択されていません
+                MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxMc.Focus();
+                return false;
+            }
+            //小分類IDの選択チェック
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                //小分類IDが選択されていません
+                 MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 comboBoxSc.Focus();
+                 return false;
+            }           
 
             //型番の適否
             if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
@@ -760,22 +760,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //大分類IDの選択チェック
-            if (comboBoxMc.SelectedIndex == -1)
-            {
-                //大分類IDが選択されていません
-                MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboBoxMc.Focus();
-                return false;
-            }
-            //小分類IDの選択チェック
-            if (comboBoxSc.SelectedIndex == -1)
-            {
-                //小分類IDが選択されていません
-                MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboBoxSc.Focus();
-                return false;
-            }
             //価格入力チェック
             if (!String.IsNullOrEmpty(textBoxPrice.Text.Trim()))
             {
@@ -829,6 +813,24 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            //大分類IDの選択チェック
+            if (comboBoxMc.SelectedIndex == -1)
+            {
+                //大分類IDが選択されていません
+                MessageBox.Show("大分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxMc.Focus();
+                return false;
+            }
+            //小分類IDの選択チェック
+            if (comboBoxSc.SelectedIndex == -1)
+            {
+                //小分類IDが選択されていません
+                MessageBox.Show("小分類IDが選択されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBoxSc.Focus();
+                return false;
+            }
+            
+
             //型番の適否
             if (!String.IsNullOrEmpty(textBoxPrModelNumber.Text.Trim()))
             {
@@ -846,7 +848,7 @@ namespace SalesManagement_SysDev
                     //型番は20文字以下です
                     MessageBox.Show("型番は20文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPrModelNumber.Focus();
-
+                    return false;
                 }
 
                 //if (!ProductDataAccess.CheckPrModelNumberExistence(textBoxPrModelNumber.Text.Trim()))
@@ -902,7 +904,7 @@ namespace SalesManagement_SysDev
             }
 
             //非表示理由の入力チェック
-            if (checkBoxPrFlag.Checked == false && !String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
+            if (checkBoxPrFlag.Checked == true && String.IsNullOrEmpty(textBoxPrHidden.Text.Trim()))
             {
                 //非表示理由が入力されていません
                 MessageBox.Show("非表示理由が入力されていません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
