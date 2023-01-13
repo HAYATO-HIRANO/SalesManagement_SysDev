@@ -186,8 +186,8 @@ namespace SalesManagement_SysDev
                              t1.EmName.Contains(selectCondition.EmName)&&
                              t1.SoID == selectCondition.SoID&&
                              t1.PoID == selectCondition.PoID&&
-                             t1.EmHiredate == selectCondition.EmHiredate&&
-                             t1.EmPhone == selectCondition.EmPhone&&
+                             //t1.EmHiredate == selectCondition.EmHiredate&&
+                             //t1.EmPhone == selectCondition.EmPhone&&
                              t1.EmFlag == selectCondition.EmFlag&&
                              t1.EmHidden == selectCondition.EmHidden
 
@@ -232,10 +232,10 @@ namespace SalesManagement_SysDev
 
                              t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
                              t1.EmName.Contains(selectCondition.EmName) &&
-                             t1.SoID == selectCondition.SoID &&
-                             //t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             //t1.SoID == selectCondition.SoID &&
+                             t1.PoID == selectCondition.PoID &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
                              t1.EmHidden == selectCondition.EmHidden
 
@@ -280,10 +280,10 @@ namespace SalesManagement_SysDev
 
                              t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
                              t1.EmName.Contains(selectCondition.EmName) &&
-                             //t1.SoID == selectCondition.SoID &&
-                             t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.SoID == selectCondition.SoID &&
+                             //t1.PoID == selectCondition.PoID &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
                              t1.EmHidden == selectCondition.EmHidden
 
@@ -330,8 +330,8 @@ namespace SalesManagement_SysDev
                              t1.EmName.Contains(selectCondition.EmName) &&
                              //t1.SoID == selectCondition.SoID &&
                              //t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
                              t1.EmHidden == selectCondition.EmHidden
 
@@ -378,8 +378,8 @@ namespace SalesManagement_SysDev
                              t1.EmName.Contains(selectCondition.EmName) &&
                              t1.SoID == selectCondition.SoID &&
                              t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
                              t1.EmHidden == selectCondition.EmHidden
 
@@ -424,12 +424,12 @@ namespace SalesManagement_SysDev
 
                              //t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
                              t1.EmName.Contains(selectCondition.EmName) &&
-                             t1.SoID == selectCondition.SoID &&
-                             //t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             //t1.SoID == selectCondition.SoID &&
+                             t1.PoID == selectCondition.PoID &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
-                             t1.EmHidden == selectCondition.EmHidden
+                             t1.EmHidden.Contains(selectCondition.EmHidden)
 
                              select new
                              {
@@ -472,10 +472,10 @@ namespace SalesManagement_SysDev
 
                              //t1.EmID.ToString().Contains(selectCondition.EmID.ToString()) &&
                              t1.EmName.Contains(selectCondition.EmName) &&
-                             //t1.SoID == selectCondition.SoID &&
-                             t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             t1.SoID == selectCondition.SoID &&
+                             //t1.PoID == selectCondition.PoID &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
                              t1.EmHidden == selectCondition.EmHidden
 
@@ -522,8 +522,8 @@ namespace SalesManagement_SysDev
                              t1.EmName.Contains(selectCondition.EmName) &&
                              //t1.SoID == selectCondition.SoID &&
                              //t1.PoID == selectCondition.PoID &&
-                             t1.EmHiredate == selectCondition.EmHiredate &&
-                             t1.EmPhone == selectCondition.EmPhone &&
+                             //t1.EmHiredate == selectCondition.EmHiredate &&
+                             //t1.EmPhone == selectCondition.EmPhone &&
                              t1.EmFlag == selectCondition.EmFlag &&
                              t1.EmHidden == selectCondition.EmHidden
 

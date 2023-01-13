@@ -82,6 +82,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange = new System.Windows.Forms.Button();
             this.panelSale = new System.Windows.Forms.Panel();
             this.userControlSaleDetail1 = new SalesManagement_SysDev.UserControlSaleDetail();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -213,6 +214,7 @@ namespace SalesManagement_SysDev
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.Honeydew;
+            this.panelLeft.Controls.Add(this.button1);
             this.panelLeft.Controls.Add(this.buttonHidden);
             this.panelLeft.Controls.Add(this.buttonHiddenList);
             this.panelLeft.Controls.Add(this.buttonList);
@@ -687,15 +689,28 @@ namespace SalesManagement_SysDev
             this.userControlSaleDetail1.Size = new System.Drawing.Size(1920, 980);
             this.userControlSaleDetail1.TabIndex = 88;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkGreen;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(59, 856);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(250, 80);
+            this.button1.TabIndex = 87;
+            this.button1.Text = "ログアウト";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // FormSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.panelSale);
-            this.Controls.Add(this.buttonSalesDetail);
             this.Controls.Add(this.buttonLogout);
+            this.Controls.Add(this.buttonSalesDetail);
+            this.Controls.Add(this.panelSale);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.userControlSaleDetail1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -770,5 +785,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Panel panelSale;
         private System.Windows.Forms.Button buttonHidden;
         private UserControlSaleDetail userControlSaleDetail1;
+        private System.Windows.Forms.Button button1;
     }
 }
