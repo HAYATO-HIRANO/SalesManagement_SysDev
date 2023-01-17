@@ -1035,13 +1035,13 @@ namespace SalesManagement_SysDev
         {
             //データグリッドビューからクリックされたデータを各入力エリアへ
             textBoxMaID.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[0].Value.ToString();
-            textBoxMaName.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[3].Value.ToString();
-            textBoxMaPhone.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[4].Value.ToString();
-            textBoxMaFAX.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[5].Value.ToString();
-            textBoxMaPostal.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[6].Value.ToString();
-            textBoxMaAddress.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value.ToString();
+            textBoxMaName.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[1].Value.ToString();
+            textBoxMaPhone.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[2].Value.ToString();
+            textBoxMaFAX.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[3].Value.ToString();
+            textBoxMaPostal.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[4].Value.ToString();
+            textBoxMaAddress.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[5].Value.ToString();
             //flagの値の「0」「2」をbool型に変換してチェックボックスに表示させる
-            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[8].Value.ToString() != 2.ToString())
+            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[6].Value.ToString() != 2.ToString())
             {
                 checkBoxMaFlag.Checked = false;
             }
@@ -1050,7 +1050,7 @@ namespace SalesManagement_SysDev
                 checkBoxMaFlag.Checked = true;
             }
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[9].Value != null)
+            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value != null)
             {
                 textBoxMaHidden.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[9].Value.ToString();
             }
