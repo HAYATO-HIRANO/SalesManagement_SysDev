@@ -117,7 +117,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.SyQuantity,
-                             //t4.OrTotalPrice
+                             // 
 
                          };
                 foreach (var p in tb)
@@ -130,7 +130,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         SyQuantity = p.SyQuantity,
-                        //TotalPrice=p.OrTotalPrice
+                        TotalPrice=p.Price*p.SyQuantity,
                     });
                 }
                 context.Dispose();
@@ -161,8 +161,6 @@ namespace SalesManagement_SysDev
                          on t1.SyID equals t2.SyID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         join t4 in context.T_OrderDetails
-                         on t2.OrID equals t4.OrID
                          where t1.SyID==syID
                          select new
                          {
@@ -172,7 +170,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.SyQuantity,
-                             t4.OrTotalPrice
+                             
 
                          };
                 foreach (var p in tb)
@@ -185,7 +183,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         SyQuantity = p.SyQuantity,
-                        TotalPrice = p.OrTotalPrice
+                        TotalPrice = p.Price * p.SyQuantity,
                     });
                 }
                 context.Dispose();
@@ -218,8 +216,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
                              t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
@@ -233,7 +230,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                 
 
                              };
                     foreach (var p in tb)
@@ -246,7 +243,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 
@@ -258,8 +255,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
                              t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
@@ -272,7 +268,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -285,7 +281,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 
@@ -297,8 +293,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
@@ -311,7 +306,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -324,7 +319,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 
@@ -336,8 +331,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.SyID.ToString().Contains(selectCondition.SyID.ToString()) &&
                              t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
@@ -349,7 +343,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -362,7 +356,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 
@@ -374,8 +368,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
@@ -388,7 +381,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -401,7 +394,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 
@@ -413,8 +406,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.SyDetailID.ToString().Contains(selectCondition.SyDetailID.ToString()) &&
                              t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
@@ -426,7 +418,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -439,7 +431,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 
@@ -451,8 +443,7 @@ namespace SalesManagement_SysDev
                              on t1.SyID equals t2.SyID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
                              t2.SyFlag == 0 //出庫IDが非表示の詳細データは表示しない
@@ -464,7 +455,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.SyQuantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -477,7 +468,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             SyQuantity = p.SyQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.SyQuantity,
                         });
                     }
 

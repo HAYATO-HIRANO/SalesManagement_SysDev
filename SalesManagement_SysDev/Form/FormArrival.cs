@@ -780,12 +780,12 @@ namespace SalesManagement_SysDev
             {
                 hidFlg = 2;
             }
-            //入荷確定フラグ変換
-            int stateFlg = 0;
-            if (checkBoxStateFlag.Checked == true)
-            {
-                stateFlg = 1;
-            }
+            ////入荷確定フラグ変換
+            //int stateFlg = 0;
+            //if (checkBoxStateFlag.Checked == true)
+            //{
+            //    stateFlg = 1;
+            //}
             //日付範囲が選択されていない
             if (startDay == null && endDay == null)
             {

@@ -108,7 +108,7 @@ namespace SalesManagement_SysDev
                 {
                     if (orderDataAccess.CheckOrIDExistence(int.Parse(textBoxOrID.Text.Trim())))
                     {
-                        T_Order order = orderDataAccess.GetOrIDData(int.Parse(textBoxOrID.Text.Trim()));
+                        T_Order order = orderDataAccess.GetOrIDAllData(int.Parse(textBoxOrID.Text.Trim()));
                         if (order.OrStateFlag == 1)
                         
                             labelStateFlag.Text = "確定済";

@@ -68,7 +68,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：売上IDの売上データ
         //機　能   ：売上IDの売上情報取得
         ///////////////////////////////
-        public T_Sale GetSaIDData(int SaID)
+        public T_Sale GetSaIDData(int OrID)
         {
             T_Sale Sale = new T_Sale();
 
@@ -76,7 +76,7 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
 
-                Sale = context.T_Sales.Single(x => x.SaID == SaID && x.SaFlag == 0);
+                Sale = context.T_Sales.Single(x => x.ChID == OrID && x.SaFlag == 0);
 
                 context.SaveChanges();
                 context.Dispose();

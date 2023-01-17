@@ -336,7 +336,7 @@ namespace SalesManagement_SysDev
         private void GetDataGridView()
         {
             // 出庫詳細データの取得
-            ShipmentDetail = shipmentDetailDataAccess.GetArDetailData();
+            ShipmentDetail = shipmentDetailDataAccess.GetShDetailData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();

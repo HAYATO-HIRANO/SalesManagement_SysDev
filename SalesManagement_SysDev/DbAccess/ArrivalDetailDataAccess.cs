@@ -130,7 +130,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         ArQuantity = p.ArQuantity,
-                        //TotalPrice = p.OrTotalPrice
+                        TotalPrice = p.Price*p.ArQuantity,
                     });
                 }
                 context.Dispose();
@@ -185,7 +185,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         ArQuantity = p.ArQuantity,
-                        //TotalPrice = p.OrTotalPrice
+                        TotalPrice = p.Price * p.ArQuantity,
                     });
                 }
                 context.Dispose();
@@ -218,8 +218,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t1.ArDetailID.ToString().Contains(selectCondition.ArDetailID.ToString()) && 
@@ -234,7 +233,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                                 
 
                              };
                     foreach (var p in tb)
@@ -247,7 +246,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 
@@ -259,8 +258,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) && 
                              t1.ArDetailID.ToString().Contains(selectCondition.ArDetailID.ToString()) &&
@@ -273,7 +271,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                                 
 
                              };
                     foreach (var p in tb)
@@ -286,7 +284,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 
@@ -298,8 +296,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) && 
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
@@ -313,7 +310,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                                 
 
                              };
                     foreach (var p in tb)
@@ -326,7 +323,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 
@@ -338,8 +335,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.ArID.ToString().Contains(selectCondition.ArID.ToString()) &&
                              t2.ArFlag == 0
@@ -351,7 +347,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                                 
 
                              };
                     foreach (var p in tb)
@@ -364,7 +360,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 
@@ -376,8 +372,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.ArDetailID.ToString().Contains(selectCondition.ArDetailID.ToString()) && 
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
@@ -390,7 +385,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                                 
 
                              };
                     foreach (var p in tb)
@@ -403,7 +398,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 
@@ -415,8 +410,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.ArDetailID.ToString().Contains(selectCondition.ArDetailID.ToString()) &&
 
@@ -429,7 +423,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                                
 
                              };
                     foreach (var p in tb)
@@ -442,7 +436,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 
@@ -454,8 +448,7 @@ namespace SalesManagement_SysDev
                              on t1.ArID equals t2.ArID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             
                              where
                              t1.PrID.ToString().Contains(selectCondition.PrID.ToString()) &&
                              t2.ArFlag == 0
@@ -467,7 +460,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ArQuantity,
-                                 t4.OrTotalPrice
+                               
 
                              };
                     foreach (var p in tb)
@@ -480,7 +473,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ArQuantity = p.ArQuantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ArQuantity,
                         });
                     }
 

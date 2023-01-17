@@ -674,7 +674,7 @@ namespace SalesManagement_SysDev
                 saleDetailDataAccess.AddSaleDetailData(AddSh);
             }
             //出荷状態フラグの更新
-            bool conFlg = shipmentDataAccess.UpdateStateFlag(int.Parse(textBoxShID.Text.Trim()));
+            bool conFlg = shipmentDataAccess.UpdateShioment(int.Parse(textBoxShID.Text.Trim()));
             //全ての登録,更新が成功
             if (addFlg == true && conFlg == true)
             {
@@ -827,12 +827,12 @@ namespace SalesManagement_SysDev
             {
                 hidFlg = 2;
             }
-            //出荷確定フラグ変換
-            int stateFlg = 0;
-            if (checkBoxStateFlag.Checked == true)
-            {
-                stateFlg = 1;
-            }
+            ////出荷確定フラグ変換
+            //int stateFlg = 0;
+            //if (checkBoxStateFlag.Checked == true)
+            //{
+            //    stateFlg = 1;
+            //}
             //日付範囲が選択されていない
             if (startDay == null && endDay == null)
             {

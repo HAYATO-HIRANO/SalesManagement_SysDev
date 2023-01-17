@@ -92,6 +92,36 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：GetOrIDAllData()
+        //引　数   :受注ID
+        //戻り値   ：受注IDの受注データ
+        //機　能   ：受注IDの受注情報取得
+        ///////////////////////////////
+        public T_Order GetOrIDAllData(int orID)
+        {
+            T_Order order = new T_Order();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+
+                order = context.T_Orders.Single(x => x.OrID == orID);
+
+                context.SaveChanges();
+                context.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return order;
+        }
+
+
+        ///////////////////////////////
         //メソッド名：UpdateStateFlag()
         //引　数   :受注ID
         //戻り値   ：True or False
