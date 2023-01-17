@@ -189,10 +189,16 @@ namespace SalesManagement_SysDev
                 checkBoxMaFlag.Focus();
                 return false;
             }
-            // 非表示理由の適否
-            if (String.IsNullOrEmpty(textBoxMaHidden.Text.Trim()))
+            if (checkBoxMaFlag.Checked == true)
             {
-                MessageBox.Show("非表示理由を入力してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("非表示フラグがチェックされています", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkBoxMaFlag.Focus();
+                return false;
+            }
+            // 非表示理由の適否
+            if (!String.IsNullOrEmpty(textBoxMaHidden.Text.Trim()))
+            {
+                MessageBox.Show("非表示理由は登録できません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxMaHidden.Focus();
                 return false;
             }
@@ -540,6 +546,7 @@ namespace SalesManagement_SysDev
             textBoxMaName.Text = "";
             textBoxMaPhone.Text = "";
             textBoxMaPostal.Text = "";
+            textBoxMaAddress.Text = "";
             textBoxMaFAX.Text = "";
             checkBoxMaFlag.Checked = false;
             textBoxMaHidden.Text = "";
