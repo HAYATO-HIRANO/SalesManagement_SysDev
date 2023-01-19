@@ -54,6 +54,7 @@ namespace SalesManagement_SysDev
             this.buttonMajorClassification = new System.Windows.Forms.Button();
             this.buttonMaker = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelExplamation = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.comboBoxMc = new System.Windows.Forms.ComboBox();
             this.labelMc = new System.Windows.Forms.Label();
@@ -92,7 +93,6 @@ namespace SalesManagement_SysDev
             this.userControlMajorClassification1 = new SalesManagement_SysDev.UserControlMajorClassification();
             this.userControlMaker1 = new SalesManagement_SysDev.UserControlMaker();
             this.userControlSmallClassification1 = new SalesManagement_SysDev.UserControlSmallClassification();
-            this.labelExplamation = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -437,6 +437,16 @@ namespace SalesManagement_SysDev
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1552, 230);
             this.panel4.TabIndex = 27;
+            // 
+            // labelExplamation
+            // 
+            this.labelExplamation.AutoSize = true;
+            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelExplamation.Location = new System.Drawing.Point(16, 52);
+            this.labelExplamation.Name = "labelExplamation";
+            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
+            this.labelExplamation.TabIndex = 44;
+            this.labelExplamation.Text = "※登録時入力不要";
             // 
             // buttonClear
             // 
@@ -819,21 +829,11 @@ namespace SalesManagement_SysDev
             this.userControlSmallClassification1.Size = new System.Drawing.Size(1670, 980);
             this.userControlSmallClassification1.TabIndex = 0;
             // 
-            // labelExplamation
-            // 
-            this.labelExplamation.AutoSize = true;
-            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelExplamation.Location = new System.Drawing.Point(16, 52);
-            this.labelExplamation.Name = "labelExplamation";
-            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
-            this.labelExplamation.TabIndex = 44;
-            this.labelExplamation.Text = "※登録時入力不要";
-            // 
             // FormProduct
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.userControlMajorClassification1);
             this.Controls.Add(this.userControlMaker1);
