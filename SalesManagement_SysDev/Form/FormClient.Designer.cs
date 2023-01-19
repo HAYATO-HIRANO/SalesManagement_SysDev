@@ -54,7 +54,6 @@ namespace SalesManagement_SysDev
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonRegist = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
             this.comboBoxSoID = new System.Windows.Forms.ComboBox();
             this.dataGridViewClient = new System.Windows.Forms.DataGridView();
@@ -79,6 +78,7 @@ namespace SalesManagement_SysDev
             this.labelFormClient = new System.Windows.Forms.Label();
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.labelExplamation = new System.Windows.Forms.Label();
             this.panelLeft.SuspendLayout();
             this.panelInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClient)).BeginInit();
@@ -347,7 +347,7 @@ namespace SalesManagement_SysDev
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.panelInput.Controls.Add(this.label1);
+            this.panelInput.Controls.Add(this.labelExplamation);
             this.panelInput.Controls.Add(this.buttonClear);
             this.panelInput.Controls.Add(this.comboBoxSoID);
             this.panelInput.Controls.Add(this.textBoxClID);
@@ -370,16 +370,6 @@ namespace SalesManagement_SysDev
             this.panelInput.Name = "panelInput";
             this.panelInput.Size = new System.Drawing.Size(1552, 230);
             this.panelInput.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(12, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 12);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "※登録時入力不要";
             // 
             // buttonClear
             // 
@@ -648,6 +638,16 @@ namespace SalesManagement_SysDev
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // labelExplamation
+            // 
+            this.labelExplamation.AutoSize = true;
+            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelExplamation.Location = new System.Drawing.Point(16, 51);
+            this.labelExplamation.Name = "labelExplamation";
+            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
+            this.labelExplamation.TabIndex = 38;
+            this.labelExplamation.Text = "※登録時入力不要";
+            // 
             // FormClient
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -733,6 +733,6 @@ namespace SalesManagement_SysDev
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonHiddenList;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelExplamation;
     }
 }

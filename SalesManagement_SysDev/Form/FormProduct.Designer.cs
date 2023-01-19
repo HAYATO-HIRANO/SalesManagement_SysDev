@@ -92,6 +92,7 @@ namespace SalesManagement_SysDev
             this.userControlMajorClassification1 = new SalesManagement_SysDev.UserControlMajorClassification();
             this.userControlMaker1 = new SalesManagement_SysDev.UserControlMaker();
             this.userControlSmallClassification1 = new SalesManagement_SysDev.UserControlSmallClassification();
+            this.labelExplamation = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -408,6 +409,7 @@ namespace SalesManagement_SysDev
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel4.Controls.Add(this.labelExplamation);
             this.panel4.Controls.Add(this.buttonClear);
             this.panel4.Controls.Add(this.comboBoxMc);
             this.panel4.Controls.Add(this.labelMc);
@@ -817,11 +819,21 @@ namespace SalesManagement_SysDev
             this.userControlSmallClassification1.Size = new System.Drawing.Size(1670, 980);
             this.userControlSmallClassification1.TabIndex = 0;
             // 
+            // labelExplamation
+            // 
+            this.labelExplamation.AutoSize = true;
+            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelExplamation.Location = new System.Drawing.Point(16, 52);
+            this.labelExplamation.Name = "labelExplamation";
+            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
+            this.labelExplamation.TabIndex = 44;
+            this.labelExplamation.Text = "※登録時入力不要";
+            // 
             // FormProduct
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.panelProduct);
             this.Controls.Add(this.userControlMajorClassification1);
             this.Controls.Add(this.userControlMaker1);
@@ -912,5 +924,6 @@ namespace SalesManagement_SysDev
         private UserControlMajorClassification userControlMajorClassification1;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Button buttonHiddenList;
+        private System.Windows.Forms.Label labelExplamation;
     }
 }
