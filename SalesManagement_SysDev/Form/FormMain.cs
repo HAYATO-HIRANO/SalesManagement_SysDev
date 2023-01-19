@@ -68,7 +68,7 @@ namespace SalesManagement_SysDev
         {
             DialogResult result = MessageBox.Show("終了してよろしいですか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
-                this.Close();
+                Application.Exit();
         }
 
         private void userControl11_Load(object sender, EventArgs e)
