@@ -36,10 +36,10 @@ namespace SalesManagement_SysDev
             //日時の表示
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
-            labelUserName.Text = "ユーザー名：" + FormMain.loginName;
-            labelPosition.Text = "権限:" + FormMain.loginPoName;
+            labelUserName.Text = "社員名：" + FormMain.loginName;
+            labelPosition.Text = "役職:" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
-            labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+            labelUserID.Text = "社員ID：" + FormMain.loginEmID.ToString();
 
             
            
