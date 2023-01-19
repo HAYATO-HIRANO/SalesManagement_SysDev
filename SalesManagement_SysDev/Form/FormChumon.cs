@@ -829,7 +829,8 @@ namespace SalesManagement_SysDev
         {
             buttonKakutei.Enabled = true;
             buttonKakutei.BackColor = Color.White;
-
+            buttonHidden.Enabled = true;
+            buttonHidden.BackColor = Color.White;
             // 入力エリアのクリア
             ClearInput();
 
@@ -847,7 +848,8 @@ namespace SalesManagement_SysDev
         {
             buttonKakutei.Enabled = false;
             buttonKakutei.BackColor = Color.Gray;
-
+            buttonHidden.Enabled = false;
+            buttonHidden.BackColor = Color.Gray;
             // 入力エリアのクリア
             ClearInput();
 

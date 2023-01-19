@@ -1237,6 +1237,8 @@ namespace SalesManagement_SysDev
         {
             buttonConfirm.Enabled = true;
             buttonConfirm.BackColor = Color.White;
+            buttonHidden.Enabled = true;
+            buttonHidden.BackColor = Color.White;
 
             ClearInput();
             GetDataGridView();
@@ -1246,7 +1248,8 @@ namespace SalesManagement_SysDev
         {
             buttonConfirm.Enabled = false;
             buttonConfirm.BackColor = Color.Gray;
-
+            buttonHidden.Enabled = false;
+            buttonHidden.BackColor = Color.Gray;
             ClearInput();
             GetHiddenDataGridView();
         }
