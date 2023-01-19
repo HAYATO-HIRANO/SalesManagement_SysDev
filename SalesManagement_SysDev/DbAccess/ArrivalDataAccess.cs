@@ -64,7 +64,7 @@ namespace SalesManagement_SysDev
         //メソッド名：GetArIDData()
         //引　数   :入荷ID
         //戻り値   ：入荷IDの入荷データ
-        //機　能   ：入荷IDの入荷情報取得
+        //機　能   ：入荷IDの入荷情報取得(非表示以外)
         ///////////////////////////////
         public T_Arrival GetArIDData(int arID)
         {
@@ -74,7 +74,7 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
 
-                arrival = context.T_Arrivals.Single(x => x.ArID == arID && x.ArFlag == 0);
+                arrival = context.T_Arrivals.Single(x => x.ArID == arID);
 
                 context.SaveChanges();
                 context.Dispose();
@@ -102,7 +102,7 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
 
-                arrival = context.T_Arrivals.Single(x => x.OrID == orID && x.ArFlag == 0);
+                arrival = context.T_Arrivals.Single(x => x.OrID == orID);
 
                 context.SaveChanges();
                 context.Dispose();
@@ -121,7 +121,7 @@ namespace SalesManagement_SysDev
         //メソッド名：UpdateArrivalData()
         //引　数   :入荷ID
         //戻り値   ：True or False
-        //機　能   ：入荷状態フラグの更新(0から1)
+        //機　能   ：入荷情報の更新
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
@@ -130,7 +130,7 @@ namespace SalesManagement_SysDev
             try
             {
                 var context = new SalesManagement_DevContext();
-                var arrival = context.T_Arrivals.Single(x => x.ArID == ArID && x.ArFlag == 0);
+                var arrival = context.T_Arrivals.Single(x => x.ArID == ArID);
                 arrival.EmID = FormMain.loginEmID;
                 arrival.ArDate = DateTime.Now;
                 arrival.ArStateFlag = 1;

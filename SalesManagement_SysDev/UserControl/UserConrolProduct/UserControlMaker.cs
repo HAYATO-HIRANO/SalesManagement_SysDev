@@ -1050,9 +1050,9 @@ namespace SalesManagement_SysDev
                 checkBoxMaFlag.Checked = true;
             }
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value != null)
+            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value != null || dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value.ToString() != String.Empty)
             {
-                textBoxMaHidden.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[9].Value.ToString();
+                textBoxMaHidden.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[8].Value.ToString();
             }
         }
         ///////////////////////////////
