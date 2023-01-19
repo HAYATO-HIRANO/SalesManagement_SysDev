@@ -41,7 +41,6 @@ namespace SalesManagement_SysDev
             this.buttonFormDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonHinagata = new System.Windows.Forms.Button();
             this.buttonEigyou = new System.Windows.Forms.Button();
             this.buttonButuryu = new System.Windows.Forms.Button();
             this.buttonHonbu = new System.Windows.Forms.Button();
@@ -169,7 +168,6 @@ namespace SalesManagement_SysDev
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panel2.Controls.Add(this.buttonLogout);
-            this.panel2.Controls.Add(this.buttonHinagata);
             this.panel2.Controls.Add(this.buttonEigyou);
             this.panel2.Controls.Add(this.buttonButuryu);
             this.panel2.Controls.Add(this.buttonHonbu);
@@ -193,16 +191,6 @@ namespace SalesManagement_SysDev
             this.buttonLogout.Text = "ログアウト";
             this.buttonLogout.UseVisualStyleBackColor = false;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
-            // 
-            // buttonHinagata
-            // 
-            this.buttonHinagata.Location = new System.Drawing.Point(29, 477);
-            this.buttonHinagata.Name = "buttonHinagata";
-            this.buttonHinagata.Size = new System.Drawing.Size(176, 86);
-            this.buttonHinagata.TabIndex = 3;
-            this.buttonHinagata.Text = "ひな形";
-            this.buttonHinagata.UseVisualStyleBackColor = true;
-            this.buttonHinagata.Click += new System.EventHandler(this.buttonHinagata_Click);
             // 
             // buttonEigyou
             // 
@@ -313,7 +301,6 @@ namespace SalesManagement_SysDev
         private UserControlMain.UserControlHQ userControl11;
         private UserControlMain.UserControlSales userControl21;
         private UserControlMain.UserControlLogistics userControl31;
-        private System.Windows.Forms.Button buttonHinagata;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Label labelSalesOffice;
         private System.Windows.Forms.Label labelUserID;
