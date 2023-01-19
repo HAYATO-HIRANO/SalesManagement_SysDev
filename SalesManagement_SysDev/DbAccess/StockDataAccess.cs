@@ -113,7 +113,7 @@ namespace SalesManagement_SysDev//.DbAccess
                 var context = new SalesManagement_DevContext();
                 var stock = context.T_Stocks.Single(x => x.PrID == prID);
 
-                if (stock.StQuantity > quantity)
+                if (stock.StQuantity >= quantity)
                 {
                     flg=true;
                 }
