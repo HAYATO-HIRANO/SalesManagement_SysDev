@@ -37,7 +37,7 @@ namespace SalesManagement_SysDev
             labelTime.Text = DateTime.Now.ToString("HH:mm");
             //ログインユーザーの情報を表示
             labelUserName.Text = "社員名：" + loginName;
-            labelPosition.Text = "役職:" + loginPoName;
+            labelPosition.Text = "役職：" + loginPoName;
             labelSalesOffice.Text = loginSoName;
             labelUserID.Text = "社員ID：" + loginEmID.ToString();
 
@@ -140,7 +140,7 @@ namespace SalesManagement_SysDev
         private void FormMain_Activated(object sender, EventArgs e)
         {
             labelUserName.Text = "社員名：" + loginName;
-            labelPosition.Text = "役職:" + loginPoName;
+            labelPosition.Text = "役職：" + loginPoName;
             labelSalesOffice.Text = loginSoName;
             labelUserID.Text = "社員ID：" + loginEmID.ToString();
             //メインに戻ってきたときにLoginNameが""だったら画面を閉じる

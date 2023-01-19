@@ -42,7 +42,7 @@ namespace SalesManagement_SysDev
             labelTime.Text = DateTime.Now.ToString("HH:mm");
             //panelHeaderに表示するログインデータ
             labelUserName.Text = "社員名：" + FormMain.loginName;
-            labelPosition.Text = "役職:" + FormMain.loginPoName;
+            labelPosition.Text = "役職：" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
             labelUserID.Text = "社員ID：" + FormMain.loginEmID.ToString();
             panel2.Visible = true;
