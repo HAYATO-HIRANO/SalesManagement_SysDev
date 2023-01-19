@@ -109,6 +109,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonList_Click(object sender, EventArgs e)
         {
+            buttonConfirm.Enabled = true;
+            buttonConfirm.BackColor = Color.White;
+
             // 入力エリアのクリア
             ClearInput();
 
@@ -123,6 +126,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            buttonConfirm.Enabled = false;
+            buttonConfirm.BackColor = Color.Gray;
+
             // 入力エリアのクリア
             ClearInput();
 

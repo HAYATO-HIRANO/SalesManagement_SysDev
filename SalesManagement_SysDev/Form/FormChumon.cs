@@ -827,6 +827,9 @@ namespace SalesManagement_SysDev
 
         private void buttonList_Click(object sender, EventArgs e)
         {
+            buttonKakutei.Enabled = true;
+            buttonKakutei.BackColor = Color.White;
+
             // 入力エリアのクリア
             ClearInput();
 
@@ -842,6 +845,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            buttonKakutei.Enabled = false;
+            buttonKakutei.BackColor = Color.Gray;
+
             // 入力エリアのクリア
             ClearInput();
 
