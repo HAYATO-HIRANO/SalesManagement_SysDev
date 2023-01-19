@@ -79,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(184, 144);
+            this.label2.Location = new System.Drawing.Point(235, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(164, 198);
+            this.label3.Location = new System.Drawing.Point(221, 208);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 5;
@@ -97,14 +97,14 @@
             // 
             // textBoxEmID
             // 
-            this.textBoxEmID.Location = new System.Drawing.Point(258, 143);
+            this.textBoxEmID.Location = new System.Drawing.Point(309, 150);
             this.textBoxEmID.Name = "textBoxEmID";
             this.textBoxEmID.Size = new System.Drawing.Size(168, 19);
             this.textBoxEmID.TabIndex = 0;
             // 
             // textBoxEmPassword
             // 
-            this.textBoxEmPassword.Location = new System.Drawing.Point(258, 197);
+            this.textBoxEmPassword.Location = new System.Drawing.Point(309, 204);
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.PasswordChar = '●';
             this.textBoxEmPassword.Size = new System.Drawing.Size(168, 19);
@@ -114,7 +114,7 @@
             // 
             this.buttonLogin.BackColor = System.Drawing.Color.LightYellow;
             this.buttonLogin.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonLogin.Location = new System.Drawing.Point(202, 301);
+            this.buttonLogin.Location = new System.Drawing.Point(209, 301);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(109, 33);
             this.buttonLogin.TabIndex = 2;
@@ -125,7 +125,7 @@
             // buttonClose
             // 
             this.buttonClose.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonClose.Location = new System.Drawing.Point(378, 301);
+            this.buttonClose.Location = new System.Drawing.Point(385, 301);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(109, 33);
             this.buttonClose.TabIndex = 3;
@@ -135,12 +135,14 @@
             // 
             // btn_CleateDabase
             // 
-            this.btn_CleateDabase.Location = new System.Drawing.Point(573, 301);
+            this.btn_CleateDabase.Enabled = false;
+            this.btn_CleateDabase.Location = new System.Drawing.Point(639, 426);
             this.btn_CleateDabase.Name = "btn_CleateDabase";
             this.btn_CleateDabase.Size = new System.Drawing.Size(75, 23);
             this.btn_CleateDabase.TabIndex = 11;
-            this.btn_CleateDabase.Text = "button2";
+            this.btn_CleateDabase.Text = "データベース";
             this.btn_CleateDabase.UseVisualStyleBackColor = true;
+            this.btn_CleateDabase.Visible = false;
             this.btn_CleateDabase.Click += new System.EventHandler(this.btn_CleateDabase_Click_1);
             // 
             // FormLogin
