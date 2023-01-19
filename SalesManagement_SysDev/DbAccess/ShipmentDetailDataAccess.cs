@@ -89,12 +89,12 @@ namespace SalesManagement_SysDev
             return shipmentDetail;
         }
         ///////////////////////////////
-        //メソッド名：GetArDetailData()
+        //メソッド名：GetShDetailData()
         //引　数   ：なし
         //戻り値   ：全出荷詳細データ
         //機　能   ：全出荷詳細データの取得
         ///////////////////////////////
-        public List<T_ShipmentDetailDsp> GetArDetailData()
+        public List<T_ShipmentDetailDsp> GetShDetailData()
         {
             List<T_ShipmentDetailDsp> shDetail = new List<T_ShipmentDetailDsp>();
 
@@ -118,7 +118,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.ShDquantity,
-                             //t4.OrTotalPrice
+                             // 
 
                          };
                 foreach (var p in tb)
@@ -131,7 +131,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         ShDquantity = p.ShDquantity,
-                        //TotalPrice = p.OrTotalPrice
+                        TotalPrice = p.Price*p.ShDquantity,
                     });
                 }
                 context.Dispose();
@@ -144,12 +144,12 @@ namespace SalesManagement_SysDev
             return shDetail;
         }
         ///////////////////////////////
-        //メソッド名：GetArDetailHiddenData()
+        //メソッド名：GetShDetailHiddenData()
         //引　数   ：なし
         //戻り値   ：全出荷非表示詳細データ
         //機　能   ：全出荷非表示詳細データの取得
         ///////////////////////////////
-        public List<T_ShipmentDetailDsp> GetArDetailHiddenData()
+        public List<T_ShipmentDetailDsp> GetShDetailHiddenData()
         {
             List<T_ShipmentDetailDsp> shDetail = new List<T_ShipmentDetailDsp>();
 
@@ -162,8 +162,7 @@ namespace SalesManagement_SysDev
                          on t1.ShID equals t2.ShID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         join t4 in context.T_OrderDetails
-                         on t2.OrID equals t4.OrID
+                        
                          where t2.ShFlag == 2
                          select new
                          {
@@ -173,7 +172,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.ShDquantity,
-                             t4.OrTotalPrice
+                             
 
                          };
                 foreach (var p in tb)
@@ -186,7 +185,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         ShDquantity = p.ShDquantity,
-                        TotalPrice = p.OrTotalPrice
+                        TotalPrice = p.Price * p.ShDquantity,
                     });
                 }
                 context.Dispose();
@@ -199,7 +198,7 @@ namespace SalesManagement_SysDev
             return shDetail;
         }
         ///////////////////////////////
-        //メソッド名：GetArDetailData() オーバーロード
+        //メソッド名：GetShDetailData() オーバーロード
         //引　数   ：検索条件
         //戻り値   ：条件一致出荷詳細データ
         //機　能   ：条件一致出荷詳細データの取得
@@ -218,8 +217,8 @@ namespace SalesManagement_SysDev
                              on t1.ShID equals t2.ShID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             join t4 in context.T_OrderDetails
-                             on t2.OrID equals t4.OrID
+                             //join t4 in context.T_OrderDetails
+                             //on t2.OrID equals t4.OrID
                              where
                              t1.ShID.ToString().Contains(selectCondition.ShID.ToString()) &&
                              t1.ShDetailID.ToString().Contains(selectCondition.ShDetailID.ToString()) &&
@@ -233,7 +232,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -246,7 +245,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -272,7 +271,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -285,7 +284,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -311,7 +310,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -324,7 +323,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -349,7 +348,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -362,7 +361,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -388,7 +387,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -401,7 +400,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -426,7 +425,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -439,7 +438,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -464,7 +463,7 @@ namespace SalesManagement_SysDev
                                  t3.PrName,
                                  t3.Price,
                                  t1.ShDquantity,
-                                 t4.OrTotalPrice
+                                  
 
                              };
                     foreach (var p in tb)
@@ -477,7 +476,7 @@ namespace SalesManagement_SysDev
                             PrName = p.PrName,
                             Price = p.Price,
                             ShDquantity = p.ShDquantity,
-                            TotalPrice = p.OrTotalPrice
+                            TotalPrice = p.Price * p.ShDquantity,
                         });
                     }
 
@@ -523,7 +522,7 @@ namespace SalesManagement_SysDev
                              t3.PrName,
                              t3.Price,
                              t1.ShDquantity,
-                             t4.OrTotalPrice
+                              
 
                          };
                 foreach (var p in tb)
@@ -536,7 +535,7 @@ namespace SalesManagement_SysDev
                         PrName = p.PrName,
                         Price = p.Price,
                         ShDquantity = p.ShDquantity,
-                        TotalPrice = p.OrTotalPrice
+                        TotalPrice = p.Price * p.ShDquantity,
                     });
                 }
                 context.Dispose();

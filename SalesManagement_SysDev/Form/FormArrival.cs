@@ -806,12 +806,12 @@ namespace SalesManagement_SysDev
             {
                 hidFlg = 2;
             }
-            //入荷確定フラグ変換
-            int stateFlg = 0;
-            if (checkBoxStateFlag.Checked == true)
-            {
-                stateFlg = 1;
-            }
+            ////入荷確定フラグ変換
+            //int stateFlg = 0;
+            //if (checkBoxStateFlag.Checked == true)
+            //{
+            //    stateFlg = 1;
+            //}
             //日付範囲が選択されていない
             if (startDay == null && endDay == null)
             {
@@ -1261,12 +1261,21 @@ namespace SalesManagement_SysDev
         //13.1.1 一覧表示機能
         private void buttonList_Click(object sender, EventArgs e)
         {
+            buttonConfirm.Enabled = true;
+            buttonConfirm.BackColor = Color.White;
+            buttonHidden.Enabled = true;
+            buttonHidden.BackColor = Color.White;
+
             ClearInput();
             GetDataGridView();
         }
         //13.1.5 非表示リスト機能
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            buttonConfirm.Enabled = false;
+            buttonConfirm.BackColor = Color.Gray;
+            buttonHidden.Enabled = false;
+            buttonHidden.BackColor = Color.Gray;
             ClearInput();
             GetHiddenDataGridView();
         }

@@ -83,6 +83,7 @@
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.userControlSalesOffice1 = new SalesManagement_SysDev.UserControlSalesOffice();
             this.userControlPosition1 = new SalesManagement_SysDev.UserControlPosition();
+            this.labelExplamation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -368,6 +369,7 @@
             // panelInput
             // 
             this.panelInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panelInput.Controls.Add(this.labelExplamation);
             this.panelInput.Controls.Add(this.buttonClear2);
             this.panelInput.Controls.Add(this.checkBoxEmFlag);
             this.panelInput.Controls.Add(this.dateTimePickerHiredate);
@@ -426,7 +428,7 @@
             // 
             this.comboBoxPoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBoxPoID.FormattingEnabled = true;
-            this.comboBoxPoID.Location = new System.Drawing.Point(1026, 14);
+            this.comboBoxPoID.Location = new System.Drawing.Point(1014, 14);
             this.comboBoxPoID.Name = "comboBoxPoID";
             this.comboBoxPoID.Size = new System.Drawing.Size(196, 29);
             this.comboBoxPoID.TabIndex = 21;
@@ -435,7 +437,7 @@
             // 
             this.comboBoxSoID.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBoxSoID.FormattingEnabled = true;
-            this.comboBoxSoID.Location = new System.Drawing.Point(742, 14);
+            this.comboBoxSoID.Location = new System.Drawing.Point(735, 14);
             this.comboBoxSoID.Name = "comboBoxSoID";
             this.comboBoxSoID.Size = new System.Drawing.Size(185, 29);
             this.comboBoxSoID.TabIndex = 20;
@@ -454,9 +456,9 @@
             // textBoxEmPhone
             // 
             this.textBoxEmPhone.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBoxEmPhone.Location = new System.Drawing.Point(1375, 16);
+            this.textBoxEmPhone.Location = new System.Drawing.Point(1353, 16);
             this.textBoxEmPhone.Name = "textBoxEmPhone";
-            this.textBoxEmPhone.Size = new System.Drawing.Size(144, 28);
+            this.textBoxEmPhone.Size = new System.Drawing.Size(155, 28);
             this.textBoxEmPhone.TabIndex = 17;
             // 
             // textBoxEmPassword
@@ -489,7 +491,7 @@
             this.labelPhone.AutoSize = true;
             this.labelPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelPhone.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPhone.Location = new System.Drawing.Point(1263, 16);
+            this.labelPhone.Location = new System.Drawing.Point(1241, 16);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(106, 24);
             this.labelPhone.TabIndex = 10;
@@ -523,7 +525,7 @@
             this.labelPoID.AutoSize = true;
             this.labelPoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelPoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelPoID.Location = new System.Drawing.Point(962, 16);
+            this.labelPoID.Location = new System.Drawing.Point(950, 16);
             this.labelPoID.Name = "labelPoID";
             this.labelPoID.Size = new System.Drawing.Size(58, 24);
             this.labelPoID.TabIndex = 7;
@@ -534,7 +536,7 @@
             this.labelSoID.AutoSize = true;
             this.labelSoID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.labelSoID.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelSoID.Location = new System.Drawing.Point(654, 16);
+            this.labelSoID.Location = new System.Drawing.Point(647, 16);
             this.labelSoID.Name = "labelSoID";
             this.labelSoID.Size = new System.Drawing.Size(82, 24);
             this.labelSoID.TabIndex = 6;
@@ -715,12 +717,22 @@
             this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
             this.userControlPosition1.TabIndex = 28;
             // 
+            // labelExplamation
+            // 
+            this.labelExplamation.AutoSize = true;
+            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelExplamation.Location = new System.Drawing.Point(17, 46);
+            this.labelExplamation.Name = "labelExplamation";
+            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
+            this.labelExplamation.TabIndex = 51;
+            this.labelExplamation.Text = "※登録時入力不要";
+            // 
             // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.panelLeft);
@@ -804,5 +816,6 @@
         private UserControlSalesOffice userControlSalesOffice1;
         private UserControlPosition userControlPosition1;
         private System.Windows.Forms.Button buttonClear2;
+        private System.Windows.Forms.Label labelExplamation;
     }
 }

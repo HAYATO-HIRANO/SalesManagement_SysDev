@@ -106,14 +106,14 @@ namespace SalesManagement_SysDev
         //          ：更新成功の場合True
         //          ：更新失敗の場合False
         ///////////////////////////////
-        public bool UpdateStateFlag(int shID)
+        public bool UpdateShioment(int shID)
         {
             try
             {
                 var context = new SalesManagement_DevContext();
-                var arrival = context.T_Shipments.Single(x => x.ShID == shID && x.ShFlag == 0);
-                arrival.ShStateFlag = 1;
-
+                var shipment = context.T_Shipments.Single(x => x.ShID == shID && x.ShFlag == 0);
+                shipment.ShStateFlag = 1;
+                shipment.ShFinishDate = DateTime.Now;
                 context.SaveChanges();
                 context.Dispose();
 

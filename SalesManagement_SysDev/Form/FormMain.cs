@@ -66,7 +66,9 @@ namespace SalesManagement_SysDev
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("終了してよろしいですか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+                Application.Exit();
         }
 
         private void userControl11_Load(object sender, EventArgs e)

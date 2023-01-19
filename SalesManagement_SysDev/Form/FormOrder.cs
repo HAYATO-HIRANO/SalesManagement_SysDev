@@ -1274,12 +1274,24 @@ namespace SalesManagement_SysDev
         //////8.1.3.1 一覧表示//////
         private void buttonList_Click(object sender, EventArgs e)
         {
+            buttonRegist.Enabled = true;
+            buttonRegist.BackColor = Color.White;
+            buttonConfirm.Enabled = true;
+            buttonConfirm.BackColor = Color.White;
+            buttonHidden.Enabled = true;
+            buttonHidden.BackColor = Color.White;
             ClearInput();
             GetDataGridView();
         }
         /////8.1.6.1 非表示リスト//////
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            buttonRegist.Enabled = false;
+            buttonRegist.BackColor = Color.Gray;
+            buttonConfirm.Enabled = false;
+            buttonConfirm.BackColor = Color.Gray;
+            buttonHidden.Enabled = false;
+            buttonHidden.BackColor = Color.Gray;
             ClearInput();
             GetHiddenDataGridView();
         }

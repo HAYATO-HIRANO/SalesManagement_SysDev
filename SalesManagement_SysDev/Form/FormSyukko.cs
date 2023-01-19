@@ -441,6 +441,10 @@ namespace SalesManagement_SysDev
         //////12.1.1.1 一覧表示//////
         private void buttonList_Click(object sender, EventArgs e)
         {
+            buttonConfirm.Enabled = true;
+            buttonConfirm.BackColor = Color.White;
+            buttonHidden.Enabled = true;
+            buttonHidden.BackColor = Color.White;
             ClearInput();
             GetDataGridView();
 
@@ -776,6 +780,10 @@ namespace SalesManagement_SysDev
         //12.1.4 非表示リスト表示機能
         private void buttonHiddenList_Click(object sender, EventArgs e)
         {
+            buttonConfirm.Enabled = false;
+            buttonConfirm.BackColor = Color.Gray;
+            buttonHidden.Enabled = false;
+            buttonHidden.BackColor = Color.Gray;
             ClearInput();
 
             GetHiddenDataGridView();
