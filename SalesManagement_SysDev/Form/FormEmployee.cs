@@ -254,18 +254,10 @@ namespace SalesManagement_SysDev
             // 社員名の適否
             if (!String.IsNullOrEmpty(textBoxEmName.Text.Trim()))
             {
-                // 社員名の全角チェック
-                if (!dataInputFormCheck.CheckFullWidth(textBoxEmName.Text.Trim()))
-                {
-                    MessageBox.Show("社員名は全て全角入力です","入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //messageDsp.DspMsg("");
-                    textBoxEmName.Focus();
-                    return false;
-                }
                 // 社員名の文字数チェック
-                if (textBoxEmName.TextLength > 15)
+                if (textBoxEmName.TextLength > 50)
                 {
-                    MessageBox.Show("社員名は15文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("社員名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmName.Focus();
                     return false;
@@ -599,9 +591,9 @@ namespace SalesManagement_SysDev
                     return false;
                 }
                 // 社員名の文字数チェック
-                if (textBoxEmName.TextLength > 15)
+                if (textBoxEmName.TextLength > 50)
                 {
-                    MessageBox.Show("社員名は15文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("社員名は50文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //messageDsp.DspMsg("");
                     textBoxEmName.Focus();
                     return false;
