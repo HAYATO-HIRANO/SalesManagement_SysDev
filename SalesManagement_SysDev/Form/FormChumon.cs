@@ -946,9 +946,9 @@ namespace SalesManagement_SysDev
                 }
 
                 // 注文IDの存在チェック
-                if (!chumonDataAccess.CheckChIDExistence(int.Parse(textBoxChID.Text.Trim())))
+                if (!chumonDataAccess.CheckChIDHidden(int.Parse(textBoxChID.Text.Trim())))
                 {
-                    MessageBox.Show("入力された注文IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("入力された注文IDは非表示です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxChID.Focus();
                     return false;
                 }

@@ -36,6 +36,33 @@ namespace SalesManagement_SysDev
             return flg;
         }
         ///////////////////////////////
+        //メソッド名：CheckSyIDHidden()
+        //引　数   ：出庫ID
+        //戻り値   ：True or False
+        //機　能   ：一致する出庫IDの非表示を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckSyIDHidden(int syID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //出庫IDで一致するデータが存在するか
+                flg = context.T_Syukkos.Any(x => x.SyID == syID&&x.SyFlag==0);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddSyukkoData()
         //引　数   ：出庫データ
         //戻り値   ：True or False

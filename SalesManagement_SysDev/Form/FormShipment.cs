@@ -551,7 +551,13 @@ namespace SalesManagement_SysDev
                     textBoxShID.Focus();
                     return false;
                 }
-
+                // 出荷IDの非表示チェック
+                if (!shipmentDataAccess.CheckShIDHidden(int.Parse(textBoxShID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された出荷IDは非表示です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxShID.Focus();
+                    return false;
+                }
             }
             else
             {
