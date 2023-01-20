@@ -279,7 +279,7 @@ namespace SalesManagement_SysDev
         private void GetHiddenDataGridView()
         {
             //出荷データの取得
-            Shipment = shipmentDataAccess.GetShipmentData();
+            Shipment = shipmentDataAccess.GetShipmentHiddenData();
             // DataGridViewに表示するデータを指定
             SetDataGridView();
         }
