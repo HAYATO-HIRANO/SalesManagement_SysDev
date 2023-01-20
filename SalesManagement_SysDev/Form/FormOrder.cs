@@ -589,7 +589,13 @@ namespace SalesManagement_SysDev
                     textBoxOrID.Focus();
                     return false;
                 }
-
+                // 受注IDの非表示チェック
+                if (!orderDataAccess.CheckOrIDHidden(int.Parse(textBoxOrID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された受注IDは非表示です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
             }
             else
             {
