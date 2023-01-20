@@ -20,7 +20,8 @@ namespace SalesManagement_SysDev
         ShipmentDataAccess shipmentDataAccess = new ShipmentDataAccess();
         //データベース出荷詳細テーブルアクセス用クラスのインスタンス化
         ShipmentDetailDataAccess shipmentDetailDataAccess = new ShipmentDetailDataAccess();
-
+        //データベース受注テーブルアクセス用クラスのインスタンス化
+        OrderDataAccess orderDataAccess = new OrderDataAccess();
         //データベース顧客テーブルアクセス用クラスのインスタンス化
         ClientDataAccess clientDataAccess = new ClientDataAccess();
         //入力形式チェック用クラスのインスタンス化
@@ -42,10 +43,10 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
             //panelHeaderに表示するログインデータ
-            labelUserName.Text = "ユーザー名：" + FormMain.loginName;
-            labelPosition.Text = "権限:" + FormMain.loginPoName;
+            labelUserName.Text = "社員名：" + FormMain.loginName;
+            labelPosition.Text = "役職：" + FormMain.loginPoName;
             labelSalesOffice.Text = FormMain.loginSoName;
-            labelUserID.Text = "ユーザーID：" + FormMain.loginEmID.ToString();
+            labelUserID.Text = "社員ID：" + FormMain.loginEmID.ToString();
 
             //非表示理由タブ選択不可、入力不可
             textBoxArHidden.TabStop = false;
@@ -699,6 +700,31 @@ namespace SalesManagement_SysDev
                 {
                     MessageBox.Show("入力された入荷IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxArID.Focus();
+                    return false;
+                }
+
+            }
+            if (!String.IsNullOrEmpty(textBoxOrID.Text.Trim()))
+            {
+                //文字チェック
+                if (!dataInputFormCheck.CheckNumeric(textBoxOrID.Text.Trim()))
+                {
+                    MessageBox.Show("受注IDは半角数値入力です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                //文字数
+                if (textBoxOrID.TextLength > 6)
+                {
+                    MessageBox.Show("受注IDは6文字以下です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
+                    return false;
+                }
+                // 受注IDの存在チェック
+                if (!orderDataAccess.CheckOrIDExistence(int.Parse(textBoxOrID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された受注IDは存在しません", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxOrID.Focus();
                     return false;
                 }
 

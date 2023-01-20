@@ -109,9 +109,9 @@ namespace SalesManagement_SysDev
             this.labelUserID.ForeColor = System.Drawing.Color.White;
             this.labelUserID.Location = new System.Drawing.Point(245, 14);
             this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.Size = new System.Drawing.Size(110, 27);
             this.labelUserID.TabIndex = 13;
-            this.labelUserID.Text = "ユーザーID：";
+            this.labelUserID.Text = "社員ID：";
             // 
             // labelPosition
             // 
@@ -122,7 +122,7 @@ namespace SalesManagement_SysDev
             this.labelPosition.Name = "labelPosition";
             this.labelPosition.Size = new System.Drawing.Size(83, 27);
             this.labelPosition.TabIndex = 11;
-            this.labelPosition.Text = "権限：";
+            this.labelPosition.Text = "役職：";
             // 
             // labelSalesOffice
             // 
@@ -142,9 +142,9 @@ namespace SalesManagement_SysDev
             this.labelUserName.ForeColor = System.Drawing.Color.White;
             this.labelUserName.Location = new System.Drawing.Point(245, 56);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(147, 27);
+            this.labelUserName.Size = new System.Drawing.Size(111, 27);
             this.labelUserName.TabIndex = 10;
-            this.labelUserName.Text = "ユーザー名：";
+            this.labelUserName.Text = "社員名：";
             // 
             // labelDay
             // 
@@ -213,7 +213,7 @@ namespace SalesManagement_SysDev
             this.buttonList.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.buttonList.FlatAppearance.BorderSize = 4;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonList.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonList.Location = new System.Drawing.Point(25, 225);
             this.buttonList.Name = "buttonList";
             this.buttonList.Size = new System.Drawing.Size(200, 80);
@@ -242,7 +242,7 @@ namespace SalesManagement_SysDev
             this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.buttonUpdate.FlatAppearance.BorderSize = 4;
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonUpdate.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonUpdate.Location = new System.Drawing.Point(25, 15);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(200, 80);
@@ -257,7 +257,7 @@ namespace SalesManagement_SysDev
             this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.buttonSearch.FlatAppearance.BorderSize = 4;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonSearch.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonSearch.Location = new System.Drawing.Point(25, 120);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(200, 80);

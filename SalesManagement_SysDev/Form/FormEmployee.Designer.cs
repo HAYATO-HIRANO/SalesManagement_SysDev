@@ -51,6 +51,7 @@
             this.buttonSalesOffice = new System.Windows.Forms.Button();
             this.buttonPosition = new System.Windows.Forms.Button();
             this.panelInput = new System.Windows.Forms.Panel();
+            this.labelExplamation = new System.Windows.Forms.Label();
             this.buttonClear2 = new System.Windows.Forms.Button();
             this.checkBoxEmFlag = new System.Windows.Forms.CheckBox();
             this.dateTimePickerHiredate = new System.Windows.Forms.DateTimePicker();
@@ -83,7 +84,6 @@
             this.panelEmployee = new System.Windows.Forms.Panel();
             this.userControlSalesOffice1 = new SalesManagement_SysDev.UserControlSalesOffice();
             this.userControlPosition1 = new SalesManagement_SysDev.UserControlPosition();
-            this.labelExplamation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -129,9 +129,9 @@
             this.labelUserID.ForeColor = System.Drawing.Color.White;
             this.labelUserID.Location = new System.Drawing.Point(245, 14);
             this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.Size = new System.Drawing.Size(110, 27);
             this.labelUserID.TabIndex = 13;
-            this.labelUserID.Text = "ユーザーID：";
+            this.labelUserID.Text = "社員ID：";
             // 
             // labelPosition
             // 
@@ -142,7 +142,7 @@
             this.labelPosition.Name = "labelPosition";
             this.labelPosition.Size = new System.Drawing.Size(83, 27);
             this.labelPosition.TabIndex = 11;
-            this.labelPosition.Text = "権限：";
+            this.labelPosition.Text = "役職：";
             // 
             // labelSalesOffice
             // 
@@ -162,9 +162,9 @@
             this.labelUserName.ForeColor = System.Drawing.Color.White;
             this.labelUserName.Location = new System.Drawing.Point(245, 56);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(147, 27);
+            this.labelUserName.Size = new System.Drawing.Size(111, 27);
             this.labelUserName.TabIndex = 10;
-            this.labelUserName.Text = "ユーザー名：";
+            this.labelUserName.Text = "社員名：";
             // 
             // labelDay
             // 
@@ -392,6 +392,16 @@
             this.panelInput.Size = new System.Drawing.Size(1552, 144);
             this.panelInput.TabIndex = 6;
             this.panelInput.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // labelExplamation
+            // 
+            this.labelExplamation.AutoSize = true;
+            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelExplamation.Location = new System.Drawing.Point(17, 46);
+            this.labelExplamation.Name = "labelExplamation";
+            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
+            this.labelExplamation.TabIndex = 51;
+            this.labelExplamation.Text = "※登録時入力不要";
             // 
             // buttonClear2
             // 
@@ -716,16 +726,6 @@
             this.userControlPosition1.Name = "userControlPosition1";
             this.userControlPosition1.Size = new System.Drawing.Size(1670, 980);
             this.userControlPosition1.TabIndex = 28;
-            // 
-            // labelExplamation
-            // 
-            this.labelExplamation.AutoSize = true;
-            this.labelExplamation.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelExplamation.Location = new System.Drawing.Point(17, 46);
-            this.labelExplamation.Name = "labelExplamation";
-            this.labelExplamation.Size = new System.Drawing.Size(119, 13);
-            this.labelExplamation.TabIndex = 51;
-            this.labelExplamation.Text = "※登録時入力不要";
             // 
             // FormEmployee
             // 

@@ -109,9 +109,9 @@ namespace SalesManagement_SysDev
             this.labelUserID.ForeColor = System.Drawing.Color.White;
             this.labelUserID.Location = new System.Drawing.Point(245, 14);
             this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(146, 27);
+            this.labelUserID.Size = new System.Drawing.Size(110, 27);
             this.labelUserID.TabIndex = 13;
-            this.labelUserID.Text = "ユーザーID：";
+            this.labelUserID.Text = "社員ID：";
             // 
             // labelPosition
             // 
@@ -122,7 +122,7 @@ namespace SalesManagement_SysDev
             this.labelPosition.Name = "labelPosition";
             this.labelPosition.Size = new System.Drawing.Size(83, 27);
             this.labelPosition.TabIndex = 11;
-            this.labelPosition.Text = "権限：";
+            this.labelPosition.Text = "役職：";
             // 
             // labelSalesOffice
             // 
@@ -155,9 +155,9 @@ namespace SalesManagement_SysDev
             this.labelUserName.ForeColor = System.Drawing.Color.White;
             this.labelUserName.Location = new System.Drawing.Point(245, 56);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(147, 27);
+            this.labelUserName.Size = new System.Drawing.Size(111, 27);
             this.labelUserName.TabIndex = 10;
-            this.labelUserName.Text = "ユーザー名：";
+            this.labelUserName.Text = "社員名：";
             // 
             // labelDay
             // 

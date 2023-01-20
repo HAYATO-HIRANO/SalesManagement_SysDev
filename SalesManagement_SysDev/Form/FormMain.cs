@@ -36,10 +36,10 @@ namespace SalesManagement_SysDev
             labelDay.Text = DateTime.Now.ToString("yyyy/MM/dd/(ddd)");
             labelTime.Text = DateTime.Now.ToString("HH:mm");
             //ログインユーザーの情報を表示
-            labelUserName.Text = "ユーザー名：" + loginName;
-            labelPosition.Text = "権限:" + loginPoName;
+            labelUserName.Text = "社員名：" + loginName;
+            labelPosition.Text = "役職：" + loginPoName;
             labelSalesOffice.Text = loginSoName;
-            labelUserID.Text = "ユーザーID：" + loginEmID.ToString();
+            labelUserID.Text = "社員ID：" + loginEmID.ToString();
 
             //機能分割
             //ログインしたユーザーが営業だった場合
@@ -139,10 +139,10 @@ namespace SalesManagement_SysDev
 
         private void FormMain_Activated(object sender, EventArgs e)
         {
-            labelUserName.Text = "ユーザー名：" + loginName;
-            labelPosition.Text = "権限:" + loginPoName;
+            labelUserName.Text = "社員名：" + loginName;
+            labelPosition.Text = "役職：" + loginPoName;
             labelSalesOffice.Text = loginSoName;
-            labelUserID.Text = "ユーザーID：" + loginEmID.ToString();
+            labelUserID.Text = "社員ID：" + loginEmID.ToString();
             //メインに戻ってきたときにLoginNameが""だったら画面を閉じる
             if(loginName == "")
             {

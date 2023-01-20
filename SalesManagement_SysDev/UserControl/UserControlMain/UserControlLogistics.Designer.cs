@@ -51,6 +51,7 @@
             // buttonWarehousing
             // 
             this.buttonWarehousing.BackColor = System.Drawing.Color.Gray;
+            this.buttonWarehousing.Enabled = false;
             this.buttonWarehousing.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonWarehousing.Location = new System.Drawing.Point(918, 397);
             this.buttonWarehousing.Name = "buttonWarehousing";
@@ -74,6 +75,7 @@
             // buttonHattyu
             // 
             this.buttonHattyu.BackColor = System.Drawing.Color.Gray;
+            this.buttonHattyu.Enabled = false;
             this.buttonHattyu.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.buttonHattyu.Location = new System.Drawing.Point(175, 397);
             this.buttonHattyu.Name = "buttonHattyu";
