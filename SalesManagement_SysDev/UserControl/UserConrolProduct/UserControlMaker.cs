@@ -1050,7 +1050,7 @@ namespace SalesManagement_SysDev
                 checkBoxMaFlag.Checked = true;
             }
             //非表示理由がnullではない場合テキストボックスに表示させる
-            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value != null || dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value.ToString() != String.Empty)
+            if (dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[7].Value != null)
             {
                 textBoxMaHidden.Text = dataGridViewMaker.Rows[dataGridViewMaker.CurrentRow.Index].Cells[8].Value.ToString();
             }
