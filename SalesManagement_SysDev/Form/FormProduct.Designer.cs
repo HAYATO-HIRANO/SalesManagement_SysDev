@@ -454,7 +454,7 @@ namespace SalesManagement_SysDev
             this.buttonClear.Location = new System.Drawing.Point(1447, 197);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear.TabIndex = 29;
+            this.buttonClear.TabIndex = 12;
             this.buttonClear.Text = "入力クリア";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
@@ -466,7 +466,7 @@ namespace SalesManagement_SysDev
             this.comboBoxMc.Location = new System.Drawing.Point(129, 80);
             this.comboBoxMc.Name = "comboBoxMc";
             this.comboBoxMc.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxMc.TabIndex = 24;
+            this.comboBoxMc.TabIndex = 5;
             this.comboBoxMc.SelectedIndexChanged += new System.EventHandler(this.comboBoxMc_SelectedIndexChanged);
             // 
             // labelMc
@@ -496,7 +496,7 @@ namespace SalesManagement_SysDev
             this.DateTimePickerDateTimePickerPrReleaseDate.Location = new System.Drawing.Point(111, 137);
             this.DateTimePickerDateTimePickerPrReleaseDate.Name = "DateTimePickerDateTimePickerPrReleaseDate";
             this.DateTimePickerDateTimePickerPrReleaseDate.Size = new System.Drawing.Size(214, 30);
-            this.DateTimePickerDateTimePickerPrReleaseDate.TabIndex = 21;
+            this.DateTimePickerDateTimePickerPrReleaseDate.TabIndex = 9;
             // 
             // comboBoxSc
             // 
@@ -505,7 +505,7 @@ namespace SalesManagement_SysDev
             this.comboBoxSc.Location = new System.Drawing.Point(477, 77);
             this.comboBoxSc.Name = "comboBoxSc";
             this.comboBoxSc.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxSc.TabIndex = 20;
+            this.comboBoxSc.TabIndex = 6;
             this.comboBoxSc.SelectedIndexChanged += new System.EventHandler(this.comboBoxSc_SelectedIndexChanged);
             // 
             // labelSc
@@ -528,7 +528,7 @@ namespace SalesManagement_SysDev
             this.comboBoxMaker.Location = new System.Drawing.Point(333, 21);
             this.comboBoxMaker.Name = "comboBoxMaker";
             this.comboBoxMaker.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxMaker.TabIndex = 7;
+            this.comboBoxMaker.TabIndex = 1;
             // 
             // textBoxPrID
             // 
@@ -536,7 +536,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrID.Location = new System.Drawing.Point(101, 21);
             this.textBoxPrID.Name = "textBoxPrID";
             this.textBoxPrID.Size = new System.Drawing.Size(84, 28);
-            this.textBoxPrID.TabIndex = 2;
+            this.textBoxPrID.TabIndex = 0;
             // 
             // textBoxPrHidden
             // 
@@ -545,7 +545,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrHidden.Multiline = true;
             this.textBoxPrHidden.Name = "textBoxPrHidden";
             this.textBoxPrHidden.Size = new System.Drawing.Size(787, 84);
-            this.textBoxPrHidden.TabIndex = 18;
+            this.textBoxPrHidden.TabIndex = 11;
             // 
             // labelPrID
             // 
@@ -565,7 +565,7 @@ namespace SalesManagement_SysDev
             this.checkBoxPrFlag.Location = new System.Drawing.Point(369, 140);
             this.checkBoxPrFlag.Name = "checkBoxPrFlag";
             this.checkBoxPrFlag.Size = new System.Drawing.Size(152, 28);
-            this.checkBoxPrFlag.TabIndex = 16;
+            this.checkBoxPrFlag.TabIndex = 10;
             this.checkBoxPrFlag.Text = "非表示フラグ";
             this.checkBoxPrFlag.UseVisualStyleBackColor = true;
             this.checkBoxPrFlag.CheckedChanged += new System.EventHandler(this.checkBoxPrFlag_CheckedChanged);
@@ -586,7 +586,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrSafetyStock.Location = new System.Drawing.Point(1221, 21);
             this.textBoxPrSafetyStock.Name = "textBoxPrSafetyStock";
             this.textBoxPrSafetyStock.Size = new System.Drawing.Size(150, 28);
-            this.textBoxPrSafetyStock.TabIndex = 14;
+            this.textBoxPrSafetyStock.TabIndex = 4;
             this.textBoxPrSafetyStock.TextChanged += new System.EventHandler(this.textBoxClFAX_TextChanged);
             // 
             // labelMaker
@@ -615,7 +615,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrName.Location = new System.Drawing.Point(652, 22);
             this.textBoxPrName.Name = "textBoxPrName";
             this.textBoxPrName.Size = new System.Drawing.Size(199, 28);
-            this.textBoxPrName.TabIndex = 6;
+            this.textBoxPrName.TabIndex = 2;
             // 
             // textBoxPrModelNumber
             // 
@@ -623,7 +623,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrModelNumber.Location = new System.Drawing.Point(775, 78);
             this.textBoxPrModelNumber.Name = "textBoxPrModelNumber";
             this.textBoxPrModelNumber.Size = new System.Drawing.Size(267, 28);
-            this.textBoxPrModelNumber.TabIndex = 12;
+            this.textBoxPrModelNumber.TabIndex = 7;
             // 
             // labelColor
             // 
@@ -659,7 +659,7 @@ namespace SalesManagement_SysDev
             this.textBoxPrice.Location = new System.Drawing.Point(952, 21);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(107, 28);
-            this.textBoxPrice.TabIndex = 10;
+            this.textBoxPrice.TabIndex = 3;
             // 
             // labelPrice
             // 
