@@ -361,7 +361,7 @@ namespace SalesManagement_SysDev
             this.buttonClear2.Location = new System.Drawing.Point(1447, 139);
             this.buttonClear2.Name = "buttonClear2";
             this.buttonClear2.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear2.TabIndex = 85;
+            this.buttonClear2.TabIndex = 11;
             this.buttonClear2.Text = "入力クリア";
             this.buttonClear2.UseVisualStyleBackColor = true;
             // 
@@ -373,7 +373,7 @@ namespace SalesManagement_SysDev
             this.dateTimePickerDateEnd.Name = "dateTimePickerDateEnd";
             this.dateTimePickerDateEnd.ShowCheckBox = true;
             this.dateTimePickerDateEnd.Size = new System.Drawing.Size(198, 26);
-            this.dateTimePickerDateEnd.TabIndex = 84;
+            this.dateTimePickerDateEnd.TabIndex = 10;
             this.dateTimePickerDateEnd.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
             // 
             // label7
@@ -404,7 +404,7 @@ namespace SalesManagement_SysDev
             this.dateTimePickerDateStart.Name = "dateTimePickerDateStart";
             this.dateTimePickerDateStart.ShowCheckBox = true;
             this.dateTimePickerDateStart.Size = new System.Drawing.Size(198, 26);
-            this.dateTimePickerDateStart.TabIndex = 81;
+            this.dateTimePickerDateStart.TabIndex = 9;
             this.dateTimePickerDateStart.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
             // 
             // checkBoxSaHidden
@@ -414,7 +414,7 @@ namespace SalesManagement_SysDev
             this.checkBoxSaHidden.Location = new System.Drawing.Point(376, 73);
             this.checkBoxSaHidden.Name = "checkBoxSaHidden";
             this.checkBoxSaHidden.Size = new System.Drawing.Size(149, 28);
-            this.checkBoxSaHidden.TabIndex = 68;
+            this.checkBoxSaHidden.TabIndex = 7;
             this.checkBoxSaHidden.Text = "非表示理由";
             this.checkBoxSaHidden.UseVisualStyleBackColor = true;
             this.checkBoxSaHidden.CheckedChanged += new System.EventHandler(this.checkBoxSaHidden_CheckedChanged);
@@ -426,7 +426,7 @@ namespace SalesManagement_SysDev
             this.textBoxSaHidden.Multiline = true;
             this.textBoxSaHidden.Name = "textBoxSaHidden";
             this.textBoxSaHidden.Size = new System.Drawing.Size(520, 70);
-            this.textBoxSaHidden.TabIndex = 67;
+            this.textBoxSaHidden.TabIndex = 8;
             // 
             // labelSaDate
             // 
@@ -446,7 +446,7 @@ namespace SalesManagement_SysDev
             this.dateTimePickerSaDate.Name = "dateTimePickerSaDate";
             this.dateTimePickerSaDate.ShowCheckBox = true;
             this.dateTimePickerSaDate.Size = new System.Drawing.Size(200, 28);
-            this.dateTimePickerSaDate.TabIndex = 59;
+            this.dateTimePickerSaDate.TabIndex = 6;
             // 
             // textBoxEmID
             // 
@@ -454,7 +454,7 @@ namespace SalesManagement_SysDev
             this.textBoxEmID.Location = new System.Drawing.Point(1277, 12);
             this.textBoxEmID.Name = "textBoxEmID";
             this.textBoxEmID.Size = new System.Drawing.Size(76, 28);
-            this.textBoxEmID.TabIndex = 58;
+            this.textBoxEmID.TabIndex = 4;
             // 
             // labelEmID
             // 
@@ -473,7 +473,7 @@ namespace SalesManagement_SysDev
             this.textBoxOrID.Location = new System.Drawing.Point(105, 71);
             this.textBoxOrID.Name = "textBoxOrID";
             this.textBoxOrID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxOrID.TabIndex = 56;
+            this.textBoxOrID.TabIndex = 5;
             // 
             // labelOrID
             // 
@@ -495,7 +495,7 @@ namespace SalesManagement_SysDev
             this.textBoxClName.Location = new System.Drawing.Point(531, 15);
             this.textBoxClName.Name = "textBoxClName";
             this.textBoxClName.Size = new System.Drawing.Size(190, 27);
-            this.textBoxClName.TabIndex = 54;
+            this.textBoxClName.TabIndex = 2;
             // 
             // labelClName
             // 
@@ -513,7 +513,7 @@ namespace SalesManagement_SysDev
             this.textBoxClID.Location = new System.Drawing.Point(327, 14);
             this.textBoxClID.Name = "textBoxClID";
             this.textBoxClID.Size = new System.Drawing.Size(76, 28);
-            this.textBoxClID.TabIndex = 20;
+            this.textBoxClID.TabIndex = 1;
             this.textBoxClID.TextChanged += new System.EventHandler(this.textBoxClID_TextChanged);
             // 
             // comboBoxSoID
@@ -523,7 +523,7 @@ namespace SalesManagement_SysDev
             this.comboBoxSoID.Location = new System.Drawing.Point(864, 11);
             this.comboBoxSoID.Name = "comboBoxSoID";
             this.comboBoxSoID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxSoID.TabIndex = 17;
+            this.comboBoxSoID.TabIndex = 3;
             // 
             // textBoxSaID
             // 
@@ -531,7 +531,7 @@ namespace SalesManagement_SysDev
             this.textBoxSaID.Location = new System.Drawing.Point(105, 14);
             this.textBoxSaID.Name = "textBoxSaID";
             this.textBoxSaID.Size = new System.Drawing.Size(77, 28);
-            this.textBoxSaID.TabIndex = 15;
+            this.textBoxSaID.TabIndex = 0;
             // 
             // labelSoID
             // 
@@ -572,7 +572,7 @@ namespace SalesManagement_SysDev
             this.textBoxPageSize.Location = new System.Drawing.Point(1729, 244);
             this.textBoxPageSize.Name = "textBoxPageSize";
             this.textBoxPageSize.Size = new System.Drawing.Size(27, 26);
-            this.textBoxPageSize.TabIndex = 24;
+            this.textBoxPageSize.TabIndex = 5;
             this.textBoxPageSize.Text = "20";
             // 
             // labelPageSize
@@ -582,7 +582,7 @@ namespace SalesManagement_SysDev
             this.labelPageSize.Location = new System.Drawing.Point(1618, 248);
             this.labelPageSize.Name = "labelPageSize";
             this.labelPageSize.Size = new System.Drawing.Size(105, 19);
-            this.labelPageSize.TabIndex = 23;
+            this.labelPageSize.TabIndex = 5;
             this.labelPageSize.Text = "1ページ行数";
             // 
             // buttonLastPage
@@ -591,7 +591,7 @@ namespace SalesManagement_SysDev
             this.buttonLastPage.Location = new System.Drawing.Point(1156, 238);
             this.buttonLastPage.Name = "buttonLastPage";
             this.buttonLastPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonLastPage.TabIndex = 22;
+            this.buttonLastPage.TabIndex = 4;
             this.buttonLastPage.Text = "▶l";
             this.buttonLastPage.UseVisualStyleBackColor = true;
             this.buttonLastPage.Click += new System.EventHandler(this.buttonLastPage_Click);
@@ -602,7 +602,7 @@ namespace SalesManagement_SysDev
             this.buttonNextPage.Location = new System.Drawing.Point(1088, 238);
             this.buttonNextPage.Name = "buttonNextPage";
             this.buttonNextPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonNextPage.TabIndex = 21;
+            this.buttonNextPage.TabIndex = 3;
             this.buttonNextPage.Text = "▶";
             this.buttonNextPage.UseVisualStyleBackColor = true;
             this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
@@ -613,7 +613,7 @@ namespace SalesManagement_SysDev
             this.buttonPreviousPage.Location = new System.Drawing.Point(1008, 238);
             this.buttonPreviousPage.Name = "buttonPreviousPage";
             this.buttonPreviousPage.Size = new System.Drawing.Size(50, 31);
-            this.buttonPreviousPage.TabIndex = 20;
+            this.buttonPreviousPage.TabIndex = 2;
             this.buttonPreviousPage.Text = "◀";
             this.buttonPreviousPage.UseVisualStyleBackColor = true;
             this.buttonPreviousPage.Click += new System.EventHandler(this.buttonPreviousPage_Click);
@@ -624,7 +624,7 @@ namespace SalesManagement_SysDev
             this.buttonFirstPage.Location = new System.Drawing.Point(941, 238);
             this.buttonFirstPage.Name = "buttonFirstPage";
             this.buttonFirstPage.Size = new System.Drawing.Size(50, 30);
-            this.buttonFirstPage.TabIndex = 19;
+            this.buttonFirstPage.TabIndex = 1;
             this.buttonFirstPage.Text = "l◀";
             this.buttonFirstPage.UseVisualStyleBackColor = true;
             this.buttonFirstPage.Click += new System.EventHandler(this.buttonFirstPage_Click);
@@ -645,7 +645,7 @@ namespace SalesManagement_SysDev
             this.textBoxPage.Location = new System.Drawing.Point(315, 241);
             this.textBoxPage.Name = "textBoxPage";
             this.textBoxPage.Size = new System.Drawing.Size(45, 31);
-            this.textBoxPage.TabIndex = 17;
+            this.textBoxPage.TabIndex = 0;
             this.textBoxPage.Text = "1";
             this.textBoxPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -670,7 +670,7 @@ namespace SalesManagement_SysDev
             this.buttonPageSizeChange.Location = new System.Drawing.Point(1765, 241);
             this.buttonPageSizeChange.Name = "buttonPageSizeChange";
             this.buttonPageSizeChange.Size = new System.Drawing.Size(99, 28);
-            this.buttonPageSizeChange.TabIndex = 86;
+            this.buttonPageSizeChange.TabIndex = 6;
             this.buttonPageSizeChange.Text = "行数変更";
             this.buttonPageSizeChange.UseVisualStyleBackColor = true;
             this.buttonPageSizeChange.Click += new System.EventHandler(this.buttonPageSizeChange_Click);
