@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
@@ -24,6 +22,31 @@ namespace SalesManagement_SysDev
             {
                 var context = new SalesManagement_DevContext();
                 flg = context.T_Shipments.Any(x => x.ShID == shID);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+        ///////////////////////////////
+        //メソッド名：CheckShIDHIdden()
+        //引　数   ：出荷ID
+        //戻り値   ：True or False
+        //機　能   ：一致する出荷IDの非表示を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckShIDHidden(int shID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                flg = context.T_Shipments.Any(x => x.ShID == shID&&x.ShFlag==0);
                 context.Dispose();
 
             }

@@ -36,6 +36,32 @@ namespace SalesManagement_SysDev
             return flg;
         }
         ///////////////////////////////
+        //メソッド名：CheckArIDHidden()
+        //引　数   ：入荷ID
+        //戻り値   ：True or False
+        //機　能   ：一致する入荷IDの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckArIDHidden(int arID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入荷IDで一致するデータが存在するか
+                flg = context.T_Arrivals.Any(x => x.ArID == arID&&x.ArFlag==0);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+        ///////////////////////////////
         //メソッド名：AddArrivalData()
         //引　数   ：入荷データ
         //戻り値   ：True or False

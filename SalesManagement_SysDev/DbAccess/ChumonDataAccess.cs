@@ -37,6 +37,33 @@ namespace SalesManagement_SysDev
             return flg;
         }
         ///////////////////////////////
+        //メソッド名：CheckChIDExistence()
+        //引　数   ：注文ID
+        //戻り値   ：True or False
+        //機　能   ：一致する注文IDの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckChIDHidden(int chID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //注文IDで一致するデータが存在するか
+                flg = context.T_Chumons.Any(x => x.ChID == chID&&x.ChFlag==0);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
         //メソッド名：AddChumonData()
         //引　数   ：注文データ
         //戻り値   ：True or False

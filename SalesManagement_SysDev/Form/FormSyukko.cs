@@ -196,7 +196,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void GetHiddenDataGridView()
         {
-            // 受注データの取得
+            // 出庫データの取得
             Syukko = syukkoDataAccess.GetSyukkoHiddenData();
 
             // DataGridViewに表示するデータを指定
@@ -499,7 +499,13 @@ namespace SalesManagement_SysDev
                     textBoxSyID.Focus();
                     return false;
                 }
-
+                // 出庫IDの存在チェック
+                if (!syukkoDataAccess.CheckSyIDHidden(int.Parse(textBoxSyID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された出庫IDは非表示です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSyID.Focus();
+                    return false;
+                }
             }
             else
             {

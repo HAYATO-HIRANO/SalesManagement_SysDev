@@ -504,7 +504,13 @@ namespace SalesManagement_SysDev
                     textBoxArID.Focus();
                     return false;
                 }
-
+                // 入荷IDの存在チェック
+                if (!arrivalDataAccess.CheckArIDHidden(int.Parse(textBoxArID.Text.Trim())))
+                {
+                    MessageBox.Show("入力された入荷IDは非表示です", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxArID.Focus();
+                    return false;
+                }
             }
             else
             {

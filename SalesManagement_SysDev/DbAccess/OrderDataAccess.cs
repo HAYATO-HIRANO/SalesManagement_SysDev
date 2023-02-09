@@ -34,6 +34,32 @@ namespace SalesManagement_SysDev
             }
             return flg;
         }
+        ///////////////////////////////
+        //メソッド名：CheckHIddenOrIDExistence()
+        //引　数   ：受注ID
+        //戻り値   ：True or False
+        //機　能   ：一致する受注IDの有無を確認
+        //          ：一致データありの場合True
+        //          ：一致データなしの場合False
+        ///////////////////////////////
+        public bool CheckOrIDHidden(int orID)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //受注IDで一致するデータが存在するか
+                flg = context.T_Orders.Any(x => x.OrID == orID && x.OrFlag == 0);
+                context.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            return flg;
+        }
 
         ///////////////////////////////
         //メソッド名：AddOrderData()
