@@ -409,7 +409,7 @@
             this.buttonClear2.Location = new System.Drawing.Point(1447, 111);
             this.buttonClear2.Name = "buttonClear2";
             this.buttonClear2.Size = new System.Drawing.Size(102, 30);
-            this.buttonClear2.TabIndex = 50;
+            this.buttonClear2.TabIndex = 9;
             this.buttonClear2.Text = "入力クリア";
             this.buttonClear2.UseVisualStyleBackColor = true;
             this.buttonClear2.Click += new System.EventHandler(this.buttonClear2_Click);
@@ -421,7 +421,7 @@
             this.checkBoxEmFlag.Location = new System.Drawing.Point(658, 73);
             this.checkBoxEmFlag.Name = "checkBoxEmFlag";
             this.checkBoxEmFlag.Size = new System.Drawing.Size(152, 28);
-            this.checkBoxEmFlag.TabIndex = 17;
+            this.checkBoxEmFlag.TabIndex = 7;
             this.checkBoxEmFlag.Text = "非表示フラグ";
             this.checkBoxEmFlag.UseVisualStyleBackColor = true;
             this.checkBoxEmFlag.CheckedChanged += new System.EventHandler(this.checkBoxEmFlag_CheckedChanged);
@@ -432,7 +432,7 @@
             this.dateTimePickerHiredate.Location = new System.Drawing.Point(411, 70);
             this.dateTimePickerHiredate.Name = "dateTimePickerHiredate";
             this.dateTimePickerHiredate.Size = new System.Drawing.Size(200, 31);
-            this.dateTimePickerHiredate.TabIndex = 22;
+            this.dateTimePickerHiredate.TabIndex = 6;
             // 
             // comboBoxPoID
             // 
@@ -441,7 +441,7 @@
             this.comboBoxPoID.Location = new System.Drawing.Point(1014, 14);
             this.comboBoxPoID.Name = "comboBoxPoID";
             this.comboBoxPoID.Size = new System.Drawing.Size(196, 29);
-            this.comboBoxPoID.TabIndex = 21;
+            this.comboBoxPoID.TabIndex = 3;
             // 
             // comboBoxSoID
             // 
@@ -450,7 +450,7 @@
             this.comboBoxSoID.Location = new System.Drawing.Point(735, 14);
             this.comboBoxSoID.Name = "comboBoxSoID";
             this.comboBoxSoID.Size = new System.Drawing.Size(185, 29);
-            this.comboBoxSoID.TabIndex = 20;
+            this.comboBoxSoID.TabIndex = 2;
             // 
             // textBoxEmHidden
             // 
@@ -461,7 +461,7 @@
             this.textBoxEmHidden.Name = "textBoxEmHidden";
             this.textBoxEmHidden.ReadOnly = true;
             this.textBoxEmHidden.Size = new System.Drawing.Size(541, 60);
-            this.textBoxEmHidden.TabIndex = 19;
+            this.textBoxEmHidden.TabIndex = 8;
             // 
             // textBoxEmPhone
             // 
@@ -469,7 +469,7 @@
             this.textBoxEmPhone.Location = new System.Drawing.Point(1353, 16);
             this.textBoxEmPhone.Name = "textBoxEmPhone";
             this.textBoxEmPhone.Size = new System.Drawing.Size(155, 28);
-            this.textBoxEmPhone.TabIndex = 17;
+            this.textBoxEmPhone.TabIndex = 4;
             // 
             // textBoxEmPassword
             // 
@@ -477,7 +477,7 @@
             this.textBoxEmPassword.Location = new System.Drawing.Point(121, 72);
             this.textBoxEmPassword.Name = "textBoxEmPassword";
             this.textBoxEmPassword.Size = new System.Drawing.Size(144, 28);
-            this.textBoxEmPassword.TabIndex = 16;
+            this.textBoxEmPassword.TabIndex = 5;
             this.textBoxEmPassword.TextChanged += new System.EventHandler(this.textBoxEmPassword_TextChanged);
             // 
             // textBoxEmName
@@ -486,7 +486,7 @@
             this.textBoxEmName.Location = new System.Drawing.Point(363, 13);
             this.textBoxEmName.Name = "textBoxEmName";
             this.textBoxEmName.Size = new System.Drawing.Size(248, 28);
-            this.textBoxEmName.TabIndex = 15;
+            this.textBoxEmName.TabIndex = 1;
             // 
             // textBoxEmID
             // 
@@ -494,7 +494,7 @@
             this.textBoxEmID.Location = new System.Drawing.Point(99, 14);
             this.textBoxEmID.Name = "textBoxEmID";
             this.textBoxEmID.Size = new System.Drawing.Size(144, 28);
-            this.textBoxEmID.TabIndex = 14;
+            this.textBoxEmID.TabIndex = 0;
             // 
             // labelPhone
             // 
